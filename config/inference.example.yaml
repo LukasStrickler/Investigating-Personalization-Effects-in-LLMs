@@ -1,0 +1,91 @@
+# =============================================================================
+# Inference Scaffold Example Configuration
+# =============================================================================
+# Copy this file to config/inference.yaml and set OPENROUTER_API_KEY in .env.
+# Example uses OpenRouter with 5 free models (see docs/FREE_AI_API_PROVIDERS.md).
+# Mock provider allows running the notebooks without any API key.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Providers
+# -----------------------------------------------------------------------------
+providers:
+  # OpenRouter – free tier: 50 RPD / 20 RPM (shared across :free models)
+  # https://openrouter.ai/docs | https://openrouter.ai/keys
+  openrouter:
+    name: openrouter
+    api_key_env: OPENROUTER_API_KEY
+    # max_concurrency: 2          # max in-flight requests for this provider (0 = unlimited)
+    # per_model_concurrency: 1   # max in-flight per model alias (0 = use max_concurrency only)
+    rate_limit:
+      requests_per_minute: 20
+      tokens_per_minute: 100000
+    retry:
+      max_retries: 3
+      base_delay: 2.0
+      max_delay: 120.0
+    base_url: https://openrouter.ai/api/v1
+    default_model: google/gemma-3-4b-it:free
+
+  # Mock (TEST ONLY – for CI and running examples without an API key)
+  mock:
+    name: mock
+    api_key_env: MOCK_API_KEY
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 1
+      base_delay: 0.1
+      max_delay: 1.0
+    default_model: mock-model
+
+# -----------------------------------------------------------------------------
+# Model Aliases – 5 free OpenRouter models + mock
+# -----------------------------------------------------------------------------
+# Free model IDs from docs/FREE_AI_API_PROVIDERS.md (OpenRouter section).
+# All share the same free quota (50 RPD / 20 RPM without payment).
+model_aliases:
+  # OpenRouter free general-purpose chat models
+  gemma-3-4b:
+    alias: gemma-3-4b
+    provider: openrouter
+    model: google/gemma-3-4b-it:free
+
+  llama-3.2-3b:
+    alias: llama-3.2-3b
+    provider: openrouter
+    model: meta-llama/llama-3.2-3b-instruct:free
+
+  qwen3-4b:
+    alias: qwen3-4b
+    provider: openrouter
+    model: qwen/qwen3-4b:free
+
+  mistral-small-24b:
+    alias: mistral-small-24b
+    provider: openrouter
+    model: mistralai/mistral-small-3.1-24b-instruct:free
+
+  step-3.5-flash:
+    alias: step-3.5-flash
+    provider: openrouter
+    model: stepfun/step-3.5-flash:free
+
+  # Mock (no API key required)
+  mock-test:
+    alias: mock-test
+    provider: mock
+    model: mock-model
+
+# -----------------------------------------------------------------------------
+# Defaults
+# -----------------------------------------------------------------------------
+default_retry:
+  max_retries: 2
+  base_delay: 0.5
+  max_delay: 30.0
+
+log_path: logs/inference.jsonl
+checkpoint_path: checkpoints/
+default_provider: openrouter
