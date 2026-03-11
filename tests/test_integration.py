@@ -307,7 +307,7 @@ async def test_no_network_mock_provider_flow_works_without_api_keys_or_litellm(
     def fail_network(*_args: Any, **_kwargs: Any) -> Any:
         raise AssertionError("network access should not happen in mocked integration tests")
 
-    monkeypatch.setattr("inference.providers._load_litellm_completion", fail_litellm_load)
+    monkeypatch.setattr("inference.providers._get_litellm_acompletion", fail_litellm_load)
     monkeypatch.setattr("socket.create_connection", fail_network)
 
     checkpoint_path = tmp_path / "checkpoint.jsonl"

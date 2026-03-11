@@ -246,7 +246,6 @@ class TestEnvResolution:
 
         provider = ProviderConfig(name="openai", api_key_env="MISSING_API_KEY")
 
-
         with pytest.raises(ValueError) as exc_info:
             resolve_api_key(provider)
 
@@ -347,8 +346,6 @@ class TestRetryConfig:
         assert retry.max_retries == 0
 
 
-
-
 class TestExampleConfig:
     """Tests for the example configuration file."""
 
@@ -359,9 +356,7 @@ class TestExampleConfig:
 
     def test_example_config_file_exists(self, example_config_path: Path) -> None:
         """Example config file should exist."""
-        assert example_config_path.exists(), (
-            f"Example config not found at {example_config_path}"
-        )
+        assert example_config_path.exists(), f"Example config not found at {example_config_path}"
 
     def test_example_config_loads_without_secrets(
         self, example_config_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -377,25 +372,18 @@ class TestExampleConfig:
         config = load_config_from_file(example_config_path)
 
         assert config is not None
-        assert len(config.providers) == 4  # openai, anthropic, openrouter, mock
+        assert len(config.providers) == 2  # openrouter, mock (simplified example)
 
-    def test_example_config_has_all_supported_providers(
-        self, example_config_path: Path
-    ) -> None:
-        """Example config should include all v1 supported providers."""
+    def test_example_config_has_all_supported_providers(self, example_config_path: Path) -> None:
+        """Example config should include openrouter and mock (simplified for free tier)."""
         from inference.config import load_config_from_file
 
         config = load_config_from_file(example_config_path)
 
-        # Check all v1 providers are present
-        assert "openai" in config.providers
-        assert "anthropic" in config.providers
         assert "openrouter" in config.providers
         assert "mock" in config.providers
 
-    def test_example_config_provider_names_valid(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_provider_names_valid(self, example_config_path: Path) -> None:
         """All provider names in example config should be valid."""
         from inference.config import load_config_from_file, SUPPORTED_PROVIDERS, TEST_ONLY_PROVIDERS
 
@@ -407,9 +395,7 @@ class TestExampleConfig:
                 f"Provider '{provider_key}' has invalid name '{provider.name}'"
             )
 
-    def test_example_config_has_model_aliases_per_provider(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_has_model_aliases_per_provider(self, example_config_path: Path) -> None:
         """Example config should have at least one model alias per provider."""
         from inference.config import load_config_from_file
 
@@ -420,29 +406,23 @@ class TestExampleConfig:
         for alias_config in config.model_aliases.values():
             providers_with_aliases.add(alias_config.provider)
 
-        # Each supported provider should have at least one alias
-        for provider in ["openai", "anthropic", "openrouter", "mock"]:
+        # Example config providers (openrouter, mock) should have at least one alias
+        for provider in ["openrouter", "mock"]:
             assert provider in providers_with_aliases, (
                 f"No model alias defined for provider '{provider}'"
             )
 
-    def test_example_config_has_mock_alias(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_has_mock_alias(self, example_config_path: Path) -> None:
         """Example config should have an explicit test-only mock alias."""
         from inference.config import load_config_from_file
 
         config = load_config_from_file(example_config_path)
 
         # Find at least one mock alias
-        mock_aliases = [
-            a for a in config.model_aliases.values() if a.provider == "mock"
-        ]
+        mock_aliases = [a for a in config.model_aliases.values() if a.provider == "mock"]
         assert len(mock_aliases) >= 1, "No mock alias defined for testing"
 
-    def test_example_config_paths_are_valid(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_paths_are_valid(self, example_config_path: Path) -> None:
         """Example config paths should be valid relative paths."""
         from inference.config import load_config_from_file
 
@@ -460,9 +440,7 @@ class TestExampleConfig:
             f"checkpoint_path should be relative, got: {config.checkpoint_path}"
         )
 
-    def test_example_config_has_default_retry(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_has_default_retry(self, example_config_path: Path) -> None:
         """Example config should define default_retry settings."""
         from inference.config import load_config_from_file
 
@@ -473,9 +451,7 @@ class TestExampleConfig:
         assert config.default_retry.base_delay > 0
         assert config.default_retry.max_delay >= config.default_retry.base_delay
 
-    def test_example_config_rate_limits_valid(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_rate_limits_valid(self, example_config_path: Path) -> None:
         """All rate limits in example config should be valid."""
         from inference.config import load_config_from_file
 
@@ -490,9 +466,7 @@ class TestExampleConfig:
                     f"{provider_key}: tokens_per_minute must be >= 0"
                 )
 
-    def test_example_config_default_provider_set(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_default_provider_set(self, example_config_path: Path) -> None:
         """Example config should have a default_provider set."""
         from inference.config import load_config_from_file
 
@@ -501,9 +475,7 @@ class TestExampleConfig:
         assert config.default_provider is not None
         assert config.default_provider in config.providers
 
-    def test_example_config_uses_env_var_placeholders(
-        self, example_config_path: Path
-    ) -> None:
+    def test_example_config_uses_env_var_placeholders(self, example_config_path: Path) -> None:
         """Example config should use env var names, not actual keys."""
         yaml_content = example_config_path.read_text()
 
@@ -524,7 +496,6 @@ class TestExampleConfig:
                 f"Example config contains what looks like a real API key: {matches}"
             )
 
-        # Should use env var references
-        assert "OPENAI_API_KEY" in yaml_content
-        assert "ANTHROPIC_API_KEY" in yaml_content
+        # Should use env var references (example uses openrouter + mock)
         assert "OPENROUTER_API_KEY" in yaml_content
+        assert "MOCK_API_KEY" in yaml_content

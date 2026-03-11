@@ -155,6 +155,7 @@ class TestInternalModulesNotExposed:
             "'CheckpointStatus' should not be imported via 'from inference import *'."
         )
 
+
 class TestCreateClientHelper:
     """Tests for the create_client factory function."""
 
@@ -215,6 +216,7 @@ model_aliases:
         # Client should have a complete method (protocol check)
         assert hasattr(client, "complete")
         assert callable(getattr(client, "complete"))
+
 
 class TestRunCompletionHelper:
     """Tests for the run_completion helper function."""
@@ -294,6 +296,7 @@ checkpoint_path: {checkpoint_dir}/
         assert checkpoint_dir.exists()
         checkpoint_file = checkpoint_dir / "batch.jsonl"
         assert checkpoint_file.exists()
+
 
 class TestVersionExposed:
     """Tests for package version exposure."""

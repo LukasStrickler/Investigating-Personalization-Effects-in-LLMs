@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -80,13 +81,18 @@ def _status_row(result: Any) -> dict[str, str]:
 
 
 def _status_rows_by_prompt(result: Any) -> dict[str, dict[str, str | None]]:
+    """Key by prompt_id (row key); value = {alias: status} for model columns."""
     rows_by_prompt: dict[str, dict[str, str | None]] = {}
     for row in result.dataframe.to_dict(orient="records"):
-        rows_by_prompt[row["prompt"]] = {
-            alias: cell_payload["status"]
-            for alias, cell_payload in row.items()
+        pid = row.get("prompt_id")
+        if pid is None:
+            continue
+        cell_like = {
+            alias: (cell.get("status") if isinstance(cell, dict) else None)
+            for alias, cell in row.items()
             if alias not in {"prompt", "prompt_id"}
         }
+        rows_by_prompt[pid] = cell_like
     return rows_by_prompt
 
 
@@ -193,15 +199,25 @@ async def test_run_returns_dataframe_matching_csv_contents(
     assert isinstance(result.dataframe, pd.DataFrame)
     assert result.csv_path.exists()
     assert result.csv_name == result.csv_path.name
+    # Raw DataFrame: prompt column is canonical serialized (messages JSON); cells include metadata
+    from inference.experiments.csv_schema import canonical_prompt_spec, serialize_prompt_content
+
+    expected_prompt = serialize_prompt_content(canonical_prompt_spec("prompt-1"))
     assert result.dataframe.to_dict(orient="records") == [
         {
             "prompt_id": result.dataframe.iloc[0]["prompt_id"],
-            "prompt": "prompt-1",
-            "alias-a": {"status": "success", "response": "ok-a", "error_message": None},
+            "prompt": expected_prompt,
+            "alias-a": {
+                "status": "success",
+                "response": "ok-a",
+                "error_message": None,
+                "metadata": None,
+            },
             "alias-b": {
                 "status": "failed",
                 "response": None,
                 "error_message": "provider down",
+                "metadata": None,
             },
         }
     ]
@@ -399,11 +415,10 @@ async def test_resume_with_prompt_expansion_appends_only_new_rows(
     assert client2.calls[("prompt-3", "alias-a")] == 1
     assert client2.calls[("prompt-3", "alias-b")] == 1
     assert len(result2.dataframe) == 3
-    assert _status_rows_by_prompt(result2) == {
-        "prompt-1": {"alias-a": "success", "alias-b": "success"},
-        "prompt-2": {"alias-a": "success", "alias-b": "success"},
-        "prompt-3": {"alias-a": "success", "alias-b": "success"},
-    }
+    by_prompt = _status_rows_by_prompt(result2)
+    expected_statuses = {"alias-a": "success", "alias-b": "success"}
+    for _, row in result2.dataframe.iterrows():
+        assert by_prompt[row["prompt_id"]] == expected_statuses
 
 
 @pytest.mark.asyncio

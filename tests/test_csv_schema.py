@@ -35,9 +35,24 @@ def test_cell_identity_is_deterministic_from_prompt_and_alias() -> None:
     assert first_id != different_alias_id
 
 
-def test_matrix_header_is_prompt_id_then_alias_columns() -> None:
+def test_matrix_header_is_prompt_id_prompt_then_alias_columns() -> None:
     headers = csv_schema.build_matrix_headers(["model_a", "model_b"])
-    assert headers == ["prompt_id", "model_a", "model_b"]
+    assert headers == ["prompt_id", "prompt", "model_a", "model_b"]
+
+
+def test_canonical_prompt_spec_normalizes_to_messages() -> None:
+    # str -> single user message
+    assert csv_schema.canonical_prompt_spec("hello") == {
+        "messages": [{"role": "user", "content": "hello"}]
+    }
+    # dict with system + user -> system then user
+    assert csv_schema.canonical_prompt_spec({"system": "S", "user": "U"}) == {
+        "messages": [{"role": "system", "content": "S"}, {"role": "user", "content": "U"}]
+    }
+    # dict with messages only -> unchanged structure
+    assert csv_schema.canonical_prompt_spec({"messages": [{"role": "user", "content": "x"}]}) == {
+        "messages": [{"role": "user", "content": "x"}]
+    }
 
 
 def test_matrix_cell_csv_round_trip() -> None:
