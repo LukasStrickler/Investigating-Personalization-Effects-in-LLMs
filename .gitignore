@@ -96,6 +96,7 @@ checkpoints/
 !tests/fixtures/*.jsonl
 
 # Miscellaneous
+.ada/
 .sisyphus/
 .vscode/
 .idea/
