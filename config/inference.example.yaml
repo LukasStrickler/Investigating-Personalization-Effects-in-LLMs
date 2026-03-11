@@ -1,0 +1,176 @@
+# =============================================================================
+# Inference Scaffold Example Configuration
+# =============================================================================
+# Copy this file to config/inference.yaml and set your API keys via environment
+# variables. Never commit real API keys to source control.
+#
+# Usage:
+#   1. Copy .env.example to .env
+#   2. Add your API keys to .env
+#   3. Copy this file to config/inference.yaml (or use this file directly)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Provider Configurations
+# -----------------------------------------------------------------------------
+# Each provider requires:
+#   - name: Provider identifier (openai, anthropic, openrouter, mock)
+#   - api_key_env: Environment variable name containing the API key
+#
+# Optional settings:
+#   - rate_limit: Requests/tokens per minute limits
+#   - retry: Override retry behavior for this provider
+#   - base_url: Custom endpoint URL (for proxies)
+#   - default_model: Default model when not specified in alias
+# -----------------------------------------------------------------------------
+providers:
+  # OpenAI Provider
+  # API Docs: https://platform.openai.com/docs/api-reference
+  openai:
+    name: openai
+    api_key_env: OPENAI_API_KEY
+    rate_limit:
+      requests_per_minute: 500   # Tier 1 default; adjust based on your tier
+      tokens_per_minute: 150000  # Tier 1 default; adjust based on your tier
+    retry:
+      max_retries: 3
+      base_delay: 1.0
+      max_delay: 60.0
+    default_model: gpt-4o-mini
+
+  # Anthropic Provider
+  # API Docs: https://docs.anthropic.com/claude/reference
+  anthropic:
+    name: anthropic
+    api_key_env: ANTHROPIC_API_KEY
+    rate_limit:
+      requests_per_minute: 60    # Anthropic default rate limit
+      tokens_per_minute: 100000
+    retry:
+      max_retries: 3
+      base_delay: 1.0
+      max_delay: 60.0
+    default_model: claude-3-5-sonnet-20241022
+
+  # OpenRouter Provider (multi-model gateway)
+  # API Docs: https://openrouter.ai/docs
+  openrouter:
+    name: openrouter
+    api_key_env: OPENROUTER_API_KEY
+    rate_limit:
+      requests_per_minute: 200
+      tokens_per_minute: 100000
+    retry:
+      max_retries: 3
+      base_delay: 2.0
+      max_delay: 120.0
+    base_url: https://openrouter.ai/api/v1
+    default_model: meta-llama/llama-3-8b-instruct
+
+  # Mock Provider (TEST ONLY - not for production)
+  # Used for local testing and CI without real API calls
+  mock:
+    name: mock
+    api_key_env: MOCK_API_KEY  # No real key required; placeholder only
+    rate_limit:
+      requests_per_minute: 0    # 0 = unlimited
+      tokens_per_minute: 0
+    retry:
+      max_retries: 1
+      base_delay: 0.1
+      max_delay: 1.0
+    default_model: mock-model
+
+# -----------------------------------------------------------------------------
+# Model Aliases
+# -----------------------------------------------------------------------------
+# Short names for commonly used models. Research scripts can reference these
+# aliases instead of full model identifiers.
+#
+# Structure:
+#   alias: Short memorable name
+#   provider: Which provider to route to
+#   model: Full model identifier on that provider
+# -----------------------------------------------------------------------------
+model_aliases:
+  # OpenAI models
+  gpt-4o-mini:
+    alias: gpt-4o-mini
+    provider: openai
+    model: gpt-4o-mini
+
+  gpt-4o:
+    alias: gpt-4o
+    provider: openai
+    model: gpt-4o
+
+  gpt-4-turbo:
+    alias: gpt-4-turbo
+    provider: openai
+    model: gpt-4-turbo
+
+  # Anthropic models
+  claude-3-5-sonnet:
+    alias: claude-3-5-sonnet
+    provider: anthropic
+    model: claude-3-5-sonnet-20241022
+
+  claude-3-5-haiku:
+    alias: claude-3-5-haiku
+    provider: anthropic
+    model: claude-3-5-haiku-20241022
+
+  claude-3-opus:
+    alias: claude-3-opus
+    provider: anthropic
+    model: claude-3-opus-20240229
+
+  # OpenRouter models (access to open-source models)
+  llama-3-8b:
+    alias: llama-3-8b
+    provider: openrouter
+    model: meta-llama/llama-3-8b-instruct
+
+  llama-3-70b:
+    alias: llama-3-70b
+    provider: openrouter
+    model: meta-llama/llama-3-70b-instruct
+
+  mistral-7b:
+    alias: mistral-7b
+    provider: openrouter
+    model: mistralai/mistral-7b-instruct
+
+  # Mock model (TEST ONLY)
+  mock-test:
+    alias: mock-test
+    provider: mock
+    model: mock-model
+
+# -----------------------------------------------------------------------------
+# Default Retry Configuration
+# -----------------------------------------------------------------------------
+# Applied to all providers unless overridden at the provider level.
+# -----------------------------------------------------------------------------
+default_retry:
+  max_retries: 2
+  base_delay: 0.5
+  max_delay: 30.0
+
+# -----------------------------------------------------------------------------
+# Logging and Checkpoint Paths
+# -----------------------------------------------------------------------------
+# Paths are relative to the repository root.
+#
+# log_path: JSONL file for structured inference logs
+# checkpoint_path: Directory for batch processing checkpoints
+# -----------------------------------------------------------------------------
+log_path: logs/inference.jsonl
+checkpoint_path: checkpoints/batch.jsonl
+
+# -----------------------------------------------------------------------------
+# Default Provider
+# -----------------------------------------------------------------------------
+# Provider to use when not explicitly specified.
+# -----------------------------------------------------------------------------
+default_provider: openai
