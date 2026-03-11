@@ -53,6 +53,23 @@ class ScriptedClient:
         return SimpleNamespace(content=str(outcome))
 
 
+class SchedulingProbeClient:
+    def __init__(self) -> None:
+        self.call_count = 0
+        self.started_first_call = asyncio.Event()
+        self.started_second_call = asyncio.Event()
+        self.release_first_call = asyncio.Event()
+
+    async def complete(self, request: InferenceRequest) -> Any:
+        self.call_count += 1
+        if self.call_count == 1:
+            self.started_first_call.set()
+            await self.release_first_call.wait()
+        elif self.call_count == 2:
+            self.started_second_call.set()
+        return SimpleNamespace(content=f"{request.model_alias}:{request.prompt}")
+
+
 def _status_row(result: Any) -> dict[str, str]:
     first_row = result.dataframe.iloc[0].to_dict()
     return {
@@ -60,6 +77,17 @@ def _status_row(result: Any) -> dict[str, str]:
         for alias, cell_payload in first_row.items()
         if alias not in {"prompt", "prompt_id"}
     }
+
+
+def _status_rows_by_prompt(result: Any) -> dict[str, dict[str, str | None]]:
+    rows_by_prompt: dict[str, dict[str, str | None]] = {}
+    for row in result.dataframe.to_dict(orient="records"):
+        rows_by_prompt[row["prompt"]] = {
+            alias: cell_payload["status"]
+            for alias, cell_payload in row.items()
+            if alias not in {"prompt", "prompt_id"}
+        }
+    return rows_by_prompt
 
 
 @pytest.mark.asyncio
@@ -183,17 +211,17 @@ async def test_run_returns_dataframe_matching_csv_contents(
 
 
 @pytest.mark.asyncio
-async def test_resume_skips_success_cells(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+async def test_resume_skips_success_cells(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Resume mode should skip cells already marked as SUCCESS in existing CSV."""
     monkeypatch.chdir(tmp_path)
 
     # First run: create CSV with success and failed cells
-    client1 = ScriptedClient({
-        ("prompt-1", "alias-a"): ["ok-a"],
-        ("prompt-1", "alias-b"): [RuntimeError("fail-b")],
-    })
+    client1 = ScriptedClient(
+        {
+            ("prompt-1", "alias-a"): ["ok-a"],
+            ("prompt-1", "alias-b"): [RuntimeError("fail-b")],
+        }
+    )
     runner1 = ExperimentRunner(client=client1)  # type: ignore[arg-type]
     config1 = ExperimentConfig(
         experiment_name="resume-test",
@@ -209,9 +237,11 @@ async def test_resume_skips_success_cells(
     assert row1 == {"alias-a": "success", "alias-b": "failed"}
 
     # Second run: resume with fixed client (only failed cell should be called)
-    client2 = ScriptedClient({
-        ("prompt-1", "alias-b"): ["ok-b-fixed"],
-    })
+    client2 = ScriptedClient(
+        {
+            ("prompt-1", "alias-b"): ["ok-b-fixed"],
+        }
+    )
     runner2 = ExperimentRunner(client=client2)  # type: ignore[arg-type]
     config2 = ExperimentConfig(
         experiment_name="resume-test",
@@ -242,10 +272,12 @@ async def test_resume_retries_rate_limited_cells(
     monkeypatch.chdir(tmp_path)
 
     # First run: create CSV with rate_limited cell
-    client1 = ScriptedClient({
-        ("prompt-1", "alias-a"): ["ok-a"],
-        ("prompt-1", "alias-b"): [RetryAfterError(7200.0)],  # Long wait = rate_limited
-    })
+    client1 = ScriptedClient(
+        {
+            ("prompt-1", "alias-a"): ["ok-a"],
+            ("prompt-1", "alias-b"): [RetryAfterError(7200.0)],  # Long wait = rate_limited
+        }
+    )
     runner1 = ExperimentRunner(client=client1)  # type: ignore[arg-type]
     config1 = ExperimentConfig(
         experiment_name="rate-limit-resume",
@@ -261,9 +293,11 @@ async def test_resume_retries_rate_limited_cells(
     assert row1 == {"alias-a": "success", "alias-b": "rate_limited"}
 
     # Second run: resume with fixed client
-    client2 = ScriptedClient({
-        ("prompt-1", "alias-b"): ["ok-b-recovered"],
-    })
+    client2 = ScriptedClient(
+        {
+            ("prompt-1", "alias-b"): ["ok-b-recovered"],
+        }
+    )
     runner2 = ExperimentRunner(client=client2)  # type: ignore[arg-type]
     config2 = ExperimentConfig(
         experiment_name="rate-limit-resume",
@@ -281,6 +315,137 @@ async def test_resume_retries_rate_limited_cells(
     # Verify final state shows both successful
     row2 = _status_row(result2)
     assert row2 == {"alias-a": "success", "alias-b": "success"}
+
+
+@pytest.mark.asyncio
+async def test_resume_retries_failed_cells(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.chdir(tmp_path)
+
+    client1 = ScriptedClient(
+        {
+            ("prompt-1", "alias-a"): [RuntimeError("transient failure")],
+        }
+    )
+    runner1 = ExperimentRunner(client=client1)  # type: ignore[arg-type]
+    config1 = ExperimentConfig(
+        experiment_name="failed-resume",
+        model_aliases=["alias-a"],
+        prompts=["prompt-1"],
+        retry=ExperimentRetryOptions(max_retries=1, base_delay=0.001, max_delay=0.001),
+    )
+    result1 = await runner1.run(config1)
+
+    assert _status_row(result1) == {"alias-a": "failed"}
+
+    client2 = ScriptedClient(
+        {
+            ("prompt-1", "alias-a"): ["ok-after-retry"],
+        }
+    )
+    runner2 = ExperimentRunner(client=client2)  # type: ignore[arg-type]
+    config2 = ExperimentConfig(
+        experiment_name="failed-resume",
+        model_aliases=["alias-a"],
+        prompts=["prompt-1"],
+        resume_from_existing_csv=True,
+        existing_csv_path=result1.csv_path,
+    )
+    result2 = await runner2.run(config2)
+
+    assert client2.calls == {("prompt-1", "alias-a"): 1}
+    assert _status_row(result2) == {"alias-a": "success"}
+
+
+@pytest.mark.asyncio
+async def test_resume_with_prompt_expansion_appends_only_new_rows(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    initial_prompts = ["prompt-1", "prompt-2"]
+    expanded_prompts = ["prompt-1", "prompt-2", "prompt-3"]
+
+    client1 = ScriptedClient(
+        {
+            (prompt, alias): [f"{alias}:{prompt}"]
+            for prompt in initial_prompts
+            for alias in ["alias-a", "alias-b"]
+        }
+    )
+    runner1 = ExperimentRunner(client=client1)  # type: ignore[arg-type]
+    config1 = ExperimentConfig(
+        experiment_name="prompt-expansion",
+        model_aliases=["alias-a", "alias-b"],
+        prompts=initial_prompts,
+    )
+    result1 = await runner1.run(config1)
+
+    client2 = ScriptedClient(
+        {
+            ("prompt-3", "alias-a"): ["alias-a:prompt-3"],
+            ("prompt-3", "alias-b"): ["alias-b:prompt-3"],
+        }
+    )
+    runner2 = ExperimentRunner(client=client2)  # type: ignore[arg-type]
+    config2 = ExperimentConfig(
+        experiment_name="prompt-expansion",
+        model_aliases=["alias-a", "alias-b"],
+        prompts=expanded_prompts,
+        resume_from_existing_csv=True,
+    )
+    result2 = await runner2.run(config2)
+
+    assert result2.csv_path == result1.csv_path
+    assert set(client2.calls) == {("prompt-3", "alias-a"), ("prompt-3", "alias-b")}
+    assert client2.calls[("prompt-3", "alias-a")] == 1
+    assert client2.calls[("prompt-3", "alias-b")] == 1
+    assert len(result2.dataframe) == 3
+    assert _status_rows_by_prompt(result2) == {
+        "prompt-1": {"alias-a": "success", "alias-b": "success"},
+        "prompt-2": {"alias-a": "success", "alias-b": "success"},
+        "prompt-3": {"alias-a": "success", "alias-b": "success"},
+    }
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("interleave_model_aliases", "expect_concurrent_second_start"),
+    [(True, True), (False, False)],
+)
+async def test_scheduling_interleave_toggles_alias_parallelism(
+    interleave_model_aliases: bool,
+    expect_concurrent_second_start: bool,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    client = SchedulingProbeClient()
+    runner = ExperimentRunner(client=client)  # type: ignore[arg-type]
+    config = ExperimentConfig(
+        experiment_name=(
+            "scheduling-non-blocking" if interleave_model_aliases else "scheduling-grouped"
+        ),
+        model_aliases=["alias-a", "alias-b"],
+        prompts=["prompt-1"],
+        scheduling=ExperimentSchedulingOptions(
+            interleave_model_aliases=interleave_model_aliases,
+        ),
+    )
+
+    run_task = asyncio.create_task(runner.run(config))
+    await asyncio.wait_for(client.started_first_call.wait(), timeout=1.0)
+
+    if expect_concurrent_second_start:
+        await asyncio.wait_for(client.started_second_call.wait(), timeout=1.0)
+    else:
+        with pytest.raises(asyncio.TimeoutError):
+            await asyncio.wait_for(client.started_second_call.wait(), timeout=0.1)
+
+    client.release_first_call.set()
+    result = await run_task
+
+    assert client.call_count == 2
+    assert result.summary.total_cells == 2
+    assert result.summary.completed_cells == 2
 
 
 def test_empty_prompts_raises_value_error() -> None:
@@ -311,4 +476,3 @@ def test_empty_experiment_name_raises_value_error() -> None:
             model_aliases=["alias-a"],
             prompts=["prompt-1"],
         )
-

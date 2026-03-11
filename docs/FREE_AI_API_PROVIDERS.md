@@ -35,7 +35,7 @@ All providers MUST meet these criteria:
 
 ## Provider Rankings
 
-> **Note**: This overview is the authoritative section. Providers marked "dashboard-only" do not publish static rate limits; live values are visible in their developer consoles. See individual provider sections for scope details (per-model vs per-provider vs account-level).
+> **Note**: This overview is the authoritative section. Providers marked `Free-tier (D)` do not publish static rate limits; live values are tied to the free tier and surfaced through provider docs, plan tiers, or developer consoles. See individual provider sections for scope details (per-model vs per-provider vs account-level).
 
 ### By Overall Value (Quality × Quota)
 
@@ -45,8 +45,8 @@ All providers MUST meet these criteria:
 | 2 | **Google Gemini** | Unlimited | Gemini 2.5 Pro | ★★★★★ | Dashboard | `gemini/` |
 | 3 | **NVIDIA NIM** | Dev member access | Llama 3.1 405B | ★★★★★ | Dashboard | `nvidia_nim/` |
 | 4 | **Cerebras** | 1M tok/day | Llama 3.1 8B | ★★★★ | ~500 | `cerebras/` |
-| 5 | **OpenRouter** | 50/day free, 1K/day paid | Qwen3 Coder / Hermes 405B | ★★★★ | Shared quota | `openrouter/` |
-| 6 | **Mistral** | Dashboard | Mistral Small | ★★★★★ | Dashboard | `mistral/` |
+| 5 | **OpenRouter** | 50/day free, 1K/day with $10+ credits | Qwen3 Coder / Hermes 405B | ★★★★ | Shared quota | `openrouter/` |
+| 6 | **Mistral** | Dashboard | Mistral Large | ★★★★★ | Dashboard | `mistral/` |
 | 7 | **Silicon Flow** | 12 free chat models | Qwen/GLM/DeepSeek | ★★★★ | Dashboard | `openai/` |
 | 8 | **Zhipu AI** | 3 free chat models | GLM-4.x Flash | ★★★★ | Dashboard | `zai/` |
 | 9 | **Cohere** | 1K calls/month | Command A | ★★★★ | ~33/day | `cohere_chat/` |
@@ -57,7 +57,7 @@ All providers MUST meet these criteria:
 
 ## Universal Model-Provider Matrix
 
-> Rows = selected validated chat models (alphabetical) | Columns = Providers | Cells = Availability + Rate Limits
+> Rows = validated general-purpose chat models from the provider sections (alphabetical) | Columns = Providers | Cells = Availability + Rate Limits
 >
 > This matrix is a curated comparison layer, not a full vendor catalog. It includes general-purpose chat / reasoning models that support normal text input and text output, including eligible multimodal models. Specialized OCR, speech, image-generation, video-generation, embedding, rerank, and computer-use-only endpoints are still excluded.
 
@@ -66,12 +66,11 @@ All providers MUST meet these criteria:
 **Cell format**: `VALUE (SCOPE)`
 - `(M)` = model-specific quota
 - `(S)` = one shared pool across models / account / workspace / task
-- `(D)` = dashboard-only / plan-dependent / live console value
+- `(D)` = free-tier / plan-dependent / live console value
 
 **Value labels**:
 - `Unlimited` = no published hard daily cap; still rate-limited
-- `FREE` = model is listed as free; exact live quota is not cleanly published
-- `Dashboard` = check provider console for the live limit
+- `Free-tier` = model is on the provider's free tier; exact live quota is not cleanly published
 - `Preview` = available, but GitHub/plan tier decides the actual quota
 - `—` = not available
 
@@ -82,24 +81,25 @@ All providers MUST meet these criteria:
 | **Command A** | — | — | — | — | — | — | — | — | 20 RPM (M) | — | — |
 | **DeepSeek-R1** | — | — | — | — | — | — | — | — | — | 8-12/day (D) | — |
 | **DeepSeek-R1-0528** | — | — | — | — | — | — | — | — | — | 8-12/day (D) | — |
-| **DeepSeek-R1-Distill-Qwen-7B** | — | — | — | — | — | — | FREE (D) | — | — | — | — |
+| **DeepSeek-R1-0528-Qwen3-8B** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
+| **DeepSeek-R1-Distill-Qwen-7B** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
 | **Dolphin-Mistral-24B** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
 | **Gemma-3-4B** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
 | **Gemma-3-12B** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Gemma-3-27B** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Gemma-3n-E2B** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Gemma-3n-E4B** | — | Dashboard (D) | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **GLM-4-Flash** | — | — | — | — | — | — | — | FREE (D) | — | — | — |
-| **GLM-4-9B-0414** | — | — | — | — | — | — | FREE (D) | — | — | — | — |
+| **Gemma-3-27B** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Gemma-3n-E2B** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Gemma-3n-E4B** | — | Free-tier (D) | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **GLM-4-Flash** | — | — | — | — | — | — | — | Free-tier (D) | — | — | — |
+| **GLM-4-9B-0414** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
 | **GLM-4.5-Air** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **GLM-4.5-Flash** | — | — | — | — | — | — | — | FREE (D) | — | — | — |
+| **GLM-4.5-Flash** | — | — | — | — | — | — | — | Free-tier (D) | — | — | — |
 | **GLM-4.7** | — | — | — | 10 RPM (M) | — | — | — | — | — | — | — |
-| **GLM-4.7-Flash** | — | — | — | — | — | — | — | FREE (D) | — | — | ~609/day (S) |
-| **GLM-Z1-9B-0414** | — | — | — | — | — | — | FREE (D) | — | — | — | — |
+| **GLM-4.7-Flash** | — | — | — | — | — | — | — | Free-tier (D) | — | — | ~609/day (S) |
+| **GLM-Z1-9B-0414** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
 | **GPT-4o** | — | — | — | — | — | — | — | — | — | Preview (D) | — |
 | **GPT-4o-Mini** | — | — | — | — | — | — | — | — | — | Preview (D) | — |
-| **GPT-OSS-120B** | 30 RPM (M) | — | Dashboard (D) | 30 RPM (M) | 50/1K RPD (S) | — | — | — | — | — | ~191/day (S) |
-| **GPT-OSS-20B** | 30 RPM (M) | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | ~379/day (S) |
+| **GPT-OSS-120B** | 30 RPM (M) | — | Free-tier (D) | 30 RPM (M) | 50/1K RPD (S) | — | — | — | — | — | ~191/day (S) |
+| **GPT-OSS-20B** | 30 RPM (M) | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | ~379/day (S) |
 | **GPT-5** | — | — | — | — | — | — | — | — | — | 8-12/day (D) | — |
 | **GPT-5-Chat** | — | — | — | — | — | — | — | — | — | 12-20/day (D) | — |
 | **GPT-5-Mini** | — | — | — | — | — | — | — | — | — | 12-20/day (D) | — |
@@ -107,45 +107,46 @@ All providers MUST meet these criteria:
 | **Grok-3** | — | — | — | — | — | — | — | — | — | 15-30/day (D) | — |
 | **Grok-3-Mini** | — | — | — | — | — | — | — | — | — | 30-50/day (D) | — |
 | **Hermes-3-405B** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Hunyuan-MT-7B** | — | — | — | — | — | — | FREE (D) | — | — | — | — |
+| **InternLM-2.5-7B** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
+| **Hunyuan-MT-7B** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
 | **LFM-2.5-1.2B-Instruct** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
 | **LFM-2.5-1.2B-Thinking** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Llama-3.1-8B** | 30 RPM (M) | — | Dashboard (D) | 30 RPM (M) | — | — | — | — | — | — | ~208/day (S) |
-| **Llama-3.2-1B** | — | — | Dashboard (D) | — | — | — | — | — | — | — | ~1.3K/day (S) |
-| **Llama-3.2-3B** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | ~726/day (S) |
-| **Llama-3.3-70B** | 30 RPM (M) | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Llama-4-Scout-17B** | 30 RPM (M) | — | Dashboard (D) | — | — | — | — | — | — | — | ~210/day (S) |
-| **Mistral-Large** | — | — | Dashboard (D) | — | — | Dashboard (D) | — | — | — | — | — |
+| **Llama-3.1-8B** | 30 RPM (M) | — | Free-tier (D) | 30 RPM (M) | — | — | — | — | — | — | ~208/day (S) |
+| **Llama-3.2-1B** | — | — | Free-tier (D) | — | — | — | — | — | — | — | ~1.3K/day (S) |
+| **Llama-3.2-3B** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | ~726/day (S) |
+| **Llama-3.3-70B** | 30 RPM (M) | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Llama-4-Scout-17B** | 30 RPM (M) | — | Free-tier (D) | — | — | — | — | — | — | — | ~210/day (S) |
+| **Mistral-Large** | — | — | Free-tier (D) | — | — | Free-tier (D) | — | — | — | — | — |
 | **Mistral-Small-3.1-24B** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
 | **MAI-DS-R1** | — | — | — | — | — | — | — | — | — | 8-12/day (D) | — |
-| **Nemotron-3-Nano-30B** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Nemotron-Nano-9B-V2** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Qwen2-7B** | — | — | Dashboard (D) | — | — | — | FREE (D) | — | — | — | — |
-| **Qwen2.5-7B** | — | — | Dashboard (D) | — | — | — | FREE (D) | — | — | — | — |
-| **Qwen2.5-Coder-32B** | — | — | Dashboard (D) | — | — | — | — | — | — | — | — |
-| **Qwen2.5-Coder-7B** | — | — | Dashboard (D) | — | — | — | FREE (D) | — | — | — | — |
+| **Nemotron-3-Nano-30B** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Nemotron-Nano-9B-V2** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Qwen2-7B** | — | — | Free-tier (D) | — | — | — | Free-tier (D) | — | — | — | — |
+| **Qwen2.5-7B** | — | — | Free-tier (D) | — | — | — | Free-tier (D) | — | — | — | — |
+| **Qwen2.5-Coder-32B** | — | — | Free-tier (D) | — | — | — | — | — | — | — | — |
+| **Qwen2.5-Coder-7B** | — | — | Free-tier (D) | — | — | — | Free-tier (D) | — | — | — | — |
 | **Qwen3-4B** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Qwen3-8B** | — | — | — | — | — | — | FREE (D) | — | — | — | — |
+| **Qwen3-8B** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
 | **Qwen3-32B** | 60 RPM (M) | — | — | 30 RPM (M) | — | — | — | — | — | — | — |
 | **Qwen3-Coder** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Qwen3-Next-80B** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
-| **Qwen3.5-4B** | — | — | — | — | — | — | FREE (D) | — | — | — | — |
+| **Qwen3-Next-80B** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Qwen3.5-4B** | — | — | — | — | — | — | Free-tier (D) | — | — | — | — |
 | **Qwen-3-235B** | — | — | — | 30 RPM (M) | — | — | — | — | — | — | — |
-| **Step-3.5-Flash** | — | — | Dashboard (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
+| **Step-3.5-Flash** | — | — | Free-tier (D) | — | 50/1K RPD (S) | — | — | — | — | — | — |
 | **Trinity-Large-Preview** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
 | **Trinity-Mini** | — | — | — | — | 50/1K RPD (S) | — | — | — | — | — | — |
 
 **Notes:**
 - **Groq**: per-model limits are explicitly published. `Llama-3.1-8B` has 7,000 RPD on the free plan; most other free chat models are closer to 1,000 RPD.
 - **Gemini**: all free-tier limits are per-project and dashboard-driven. The matrix only marks models that Google still documents as free.
-- **NVIDIA NIM**: public docs do not publish a static numeric rate-limit table. NVIDIA says effective limits vary by model and concurrent load, so the matrix treats NIM availability as dashboard-only.
+- **NVIDIA NIM**: public docs do not publish a static numeric rate-limit table. NVIDIA says effective limits vary by model and concurrent load, so the matrix treats NIM availability as `Free-tier (D)`.
 - **Cerebras**: RPM/TPM are explicit and per-model. The current public free-tier table lists `llama3.1-8b`, `gpt-oss-120b`, `qwen-3-235b-a22b-instruct-2507`, and `zai-glm-4.7`.
 - **OpenRouter**: free accounts get `50 RPD / 20 RPM`; accounts with at least $10 in credits get `1K RPD / 20 RPM` on `:free` models. That quota is shared across all free models, including eligible multimodal chat models.
-- **Mistral**: a free API tier exists, but live limits remain dashboard-only.
-- **Silicon Flow**: the official pricing page confirms which models are free, but does not publish RPM/TPM. The matrix therefore uses `FREE (D)` instead of unsupported numeric limits.
-- **Zhipu**: the listed flash models are marked free; exact live limits are dashboard-driven, so the matrix uses `FREE (D)`.
+- **Mistral**: a free API tier exists, but live limits remain `Free-tier (D)`.
+- **Silicon Flow**: the official pricing page confirms which models are free, but does not publish RPM/TPM. The matrix therefore uses `Free-tier (D)` instead of unsupported numeric limits.
+- **Zhipu**: the listed flash models are marked free; exact live limits are dashboard-driven, so the matrix uses `Free-tier (D)`.
 - **Cohere**: trial/evaluation keys have a 1,000-calls/month cap; chat models run at 20 RPM per model.
-- **GitHub**: GitHub publishes plan-based quotas for model tiers and named model families, but not a single per-model matrix for every Marketplace entry. `GPT-4o` / `GPT-4o-mini` are available in preview, while GPT-5, DeepSeek, and Grok families have explicit published free-tier limits.
+- **GitHub**: GitHub publishes plan-based quotas for model tiers and named model families, but not a single per-model matrix for every Marketplace entry. `GPT-4o` / `GPT-4o-mini` remain `Preview (D)` because GitHub marks OpenAI access as public preview without giving those two models a dedicated quota row, while GPT-5, DeepSeek, and Grok families have explicit published free-tier limits.
 - **Cloudflare**: daily estimates assume `1K input + 300 output tokens` and divide the free 10,000-neurons/day pool by each model's published neuron cost.
 
 ---
@@ -213,17 +214,17 @@ response = completion(
 
 #### Free Tier Availability
 
-> **Dashboard-only quotas**: Google publishes free-tier availability, but not fixed public RPM/RPD/TPM tables for these models. Official rate-limit docs say limits depend on multiple factors and should be checked in [Google AI Studio](https://aistudio.google.com).
+> **Free-tier quotas**: Google publishes free-tier availability, but not fixed public RPM/RPD/TPM tables for these models. Official rate-limit docs say limits depend on multiple factors and should be checked in [Google AI Studio](https://aistudio.google.com).
 
 | Model / Family | Free Tier | Public quota table | Notes |
 |----------------|-----------|--------------------|-------|
-| `gemini-2.5-pro` | Yes | Dashboard only (D) | State-of-the-art text/reasoning model; pricing page lists free access |
-| `gemini-2.5-flash` | Yes | Dashboard only (D) | 1M-context flash model with free availability |
-| `gemini-2.5-flash-lite` | Yes | Dashboard only (D) | Lower-cost flash variant with free availability |
-| `gemini-3-flash-preview` | Yes | Dashboard only (D) | Free preview model |
-| `gemini-3.1-flash-lite-preview` | Yes | Dashboard only (D) | Free preview model |
-| `gemma-3` | Yes | Dashboard only (D) | Free family on Gemini Developer API |
-| `gemma-3n` | Yes | Dashboard only (D) | Free family on Gemini Developer API |
+| `gemini-2.5-pro` | Yes | Free-tier (D) | State-of-the-art text/reasoning model; pricing page lists free access |
+| `gemini-2.5-flash` | Yes | Free-tier (D) | 1M-context flash model with free availability |
+| `gemini-2.5-flash-lite` | Yes | Free-tier (D) | Lower-cost flash variant with free availability |
+| `gemini-3-flash-preview` | Yes | Free-tier (D) | Free preview model |
+| `gemini-3.1-flash-lite-preview` | Yes | Free-tier (D) | Free preview model |
+| `gemma-3` | Yes | Free-tier (D) | Free family on Gemini Developer API |
+| `gemma-3n` | Yes | Free-tier (D) | Free family on Gemini Developer API |
 
 **Paid-only / not free on Developer API**: `gemini-3-pro-preview`, `gemini-3.1-pro-preview`, `imagen-4`, `veo-3`, `gemini-2.5-computer-use-preview`
 
@@ -248,7 +249,7 @@ response = completion(
 
 #### Current Text-Capable Model Coverage
 
-> **Text-model quota**: NVIDIA does not publish a static public per-model rate-limit table. Treat limits as dashboard-only unless you have verified live account values yourself.
+> **Text-model quota**: NVIDIA does not publish a static public per-model rate-limit table. Treat limits as `Free-tier (D)` unless you have verified live account values yourself.
 
 | Publisher | Current visible text-capable models on the API-endpoint filtered catalog |
 |-----------|---------------------------------------------------------------|
@@ -341,7 +342,7 @@ response = completion(
 
 #### Current Free General-Purpose Chat Models
 
-These are the current free general-purpose chat models derived from the official OpenRouter free-model roster and verified against `https://openrouter.ai/api/v1/models`. At the time of validation, OpenRouter exposed `24` free models total; `23` qualify for this document once general multimodal chat models are allowed, while `nvidia/nemotron-nano-12b-v2-vl:free` remains excluded as a vision-specialized model.
+These are the current free general-purpose chat models derived from the official OpenRouter free-model roster and verified against `https://openrouter.ai/api/v1/models`. The roster changes over time, so this section intentionally lists the qualifying general-purpose chat models directly instead of hard-coding a total count. `nvidia/nemotron-nano-12b-v2-vl:free` remains excluded as a vision-specialized model.
 
 | Model ID | Context |
 |----------|---------|
@@ -384,15 +385,15 @@ These are the current free general-purpose chat models derived from the official
 | **Pricing** | https://mistral.ai/pricing |
 | **LiteLLM** | https://docs.litellm.ai/docs/providers/mistral |
 | **Credit Card** | ❌ Not required |
-| **Free Quota** | Dashboard-only (see AI Studio limits page) |
+| **Free Quota** | Free-tier (D) (see AI Studio limits page) |
 
 #### Free Tier Limits
 
-> **Dashboard-only**: Mistral offers a free API tier. Exact live limits are viewed in the AI Studio limits page. Do not rely on hard-coded values.
+> **Free-tier (D)**: Mistral offers a free API tier. Exact live limits are viewed in the AI Studio limits page. Do not rely on hard-coded values.
 
 | Metric | Value | Scope |
 |--------|-------|-------|
-| Rate limits | Dashboard | Account (D) |
+| Rate limits | Free-tier (D) | Account (D) |
 | Available models | Check console | — |
 
 **Source**: https://docs.mistral.ai/deployment/ai-studio/tier, https://mistral.ai/pricing
@@ -406,7 +407,7 @@ These are the current free general-purpose chat models derived from the official
 | **Platform** | https://siliconflow.cn |
 | **Pricing** | https://siliconflow.cn/pricing |
 | **Docs** | https://docs.siliconflow.cn |
-|| **LiteLLM** | OpenAI-compatible endpoint |
+| **LiteLLM** | OpenAI-compatible endpoint |
 | **Credit Card** | ❌ Not required |
 | **Free Quota** | 12 general-purpose chat models explicitly marked FREE on the pricing page |
 
@@ -414,7 +415,7 @@ These are the current free general-purpose chat models derived from the official
 
 #### Free General-Purpose Chat Models
 
-> **Important**: The official pricing page confirms which models are free, but it does **not** publish RPM/TPM tables. This section therefore lists only source-backed free general-purpose chat models and treats live limits as dashboard-only.
+> **Important**: The official pricing page confirms which models are free, but it does **not** publish RPM/TPM tables. This section therefore lists only source-backed free general-purpose chat models and treats live limits as `Free-tier (D)`.
 
 | Model | Free status |
 |-------|-------------|
@@ -453,13 +454,13 @@ These are the current free general-purpose chat models derived from the official
 
 #### Completely Free General-Purpose Chat Models
 
-> **Verified free general-purpose chat models**: `GLM-4-Flash`, `GLM-4.5-Flash`, and `GLM-4.7-Flash` are marked free on the official pricing page. Public rate-limit numbers are not clearly published, so treat them as dashboard-only.
+> **Verified free general-purpose chat models**: `GLM-4-Flash`, `GLM-4.5-Flash`, and `GLM-4.7-Flash` are marked free on the official pricing page. Public rate-limit numbers are not clearly published, so treat them as `Free-tier (D)`.
 
 | Model | Notes | Scope |
 |-------|-------|-------|
-| `glm-4-flash` | Older free flash chat model | Dashboard (D) |
-| `glm-4.5-flash` | Current free flash chat model | Dashboard (D) |
-| `glm-4.7-flash` | Newer free flash chat model | Dashboard (D) |
+| `glm-4-flash` | Older free flash chat model | Free-tier (D) |
+| `glm-4.5-flash` | Current free flash chat model | Free-tier (D) |
+| `glm-4.7-flash` | Newer free flash chat model | Free-tier (D) |
 
 **Excluded specialized multimodal model**: `GLM-4.6V-Flash` is also free on the pricing page, but Z.ai documents it as a vision-language model for visual reasoning and multimodal tool use, so it remains outside this general-purpose chat matrix.
 
@@ -482,7 +483,7 @@ These are the current free general-purpose chat models derived from the official
 
 #### Free Tier Limits
 
-> **Trial/evaluation keys**: Limited to 1,000 API calls/month. Chat API trial limits are 20 req/min per model. Other endpoints have separate minute limits.
+> **Trial/evaluation keys**: Limited to 1,000 API calls/month. Chat API trial limits are 20 req/min per model. Other endpoints have separate minute limits. Embed and rerank remain out of scope for the main comparison matrix.
 
 | Endpoint | RPM | Monthly | Scope |
 |----------|-----|---------|-------|
@@ -509,7 +510,7 @@ These are the current free general-purpose chat models derived from the official
 
 #### Free Tier Limits
 
-> **Official rate limits**: free playground/API usage is preview, but GitHub now publishes concrete limits by plan and model tier.
+> **Official rate limits**: free playground/API usage is preview, but GitHub now publishes concrete limits by plan and model tier. `GPT-4o` and `GPT-4o-mini` are still kept as `Preview (D)` here because the published table does not give either model its own dedicated quota row.
 
 **Representative general-purpose chat models in free preview**: `GPT-4o`, `GPT-4o-mini`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5-chat`, `DeepSeek-R1`, `DeepSeek-R1-0528`, `MAI-DS-R1`, `xAI Grok-3`, `xAI Grok-3-Mini`
 
@@ -623,7 +624,7 @@ model_list:
 
 ### Environment Variables (.env)
 ```bash
-# Top 4 (unlimited free)
+# Top free providers (3 unlimited-style + Cerebras capped by daily tokens)
 GROQ_API_KEY=gsk_...
 GEMINI_API_KEY=AIza...
 NVIDIA_NIM_API_KEY=nvapi-...

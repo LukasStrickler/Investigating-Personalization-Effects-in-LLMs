@@ -17,8 +17,8 @@ uv sync
 cp .env.example .env
 # Edit .env and add your API keys
 
-# Run a quick test
-uv run python examples/smoke_test.py
+# Open the inference example notebook
+uv run jupyter lab examples/inference_example.ipynb
 ```
 
 ## Documentation
@@ -28,15 +28,17 @@ uv run python examples/smoke_test.py
 
 ## Examples
 
-See [`examples/`](examples/) for:
+See [`examples/`](examples/) for comprehensive usage examples:
 
-**Research Workflows (High-Level)**
-- `run_experiment_matrix.py` - Run prompt x model matrices with CSV persistence and DataFrame results. This is the primary entry point for research experiments.
+**Example Notebooks (Start Here)**
+- `inference_example.ipynb` - Complete low-level API guide: single completion, batch processing, error handling
+- `experiments_example.ipynb` - Complete experiments layer guide: prompt×model matrices, resume/extend, scheduling controls
 
-**Low-Level API**
-- `smoke_test.py` - Minimal single-request example
-- `batch_example.py` - Batch processing with checkpoint/resume
-- `basic_usage.ipynb` - Jupyter notebook with interactive examples
+**Quick Start**
+```bash
+# Run a quick test in Jupyter Lab
+jupyter lab  # Or use the notebooks directly in VS Code/Jupyter
+```
 ## Development
 
 ```bash

@@ -44,22 +44,15 @@ class ExperimentRunner:
         aliases = [alias.strip() for alias in config.model_aliases]
         prompt_entries = _build_prompt_entries(config.prompts)
         prompt_row_keys = [entry.row_key for entry in prompt_entries]
+        completed_cells: dict[tuple[str, str], CellStatus] = {}
 
-        completed_cells: dict[tuple[str, str], str] = {}
         if config.resume_from_existing_csv:
-            if config.existing_csv_path:
-                csv_path = config.existing_csv_path
-            else:
-                log_dir = Path("logs") / config.experiment_name
-                csv_path = build_experiment_csv_path(config.experiment_name)
-                if log_dir.exists():
-                    csv_files = sorted(log_dir.glob("*.csv"), reverse=True)
-                    if csv_files:
-                        csv_path = csv_files[0]
-            _prompt_ids_seen, completed_cells = load_existing_matrix(csv_path, aliases)
+            csv_path = _resolve_resume_path(config)
             writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=aliases)
-            if not csv_path.exists():
-                await asyncio.to_thread(writer.initialize, config.prompts)
+            _prompt_ids_seen, completed_cells = await asyncio.to_thread(
+                load_existing_matrix, csv_path
+            )
+            await asyncio.to_thread(writer.append_missing_prompts, config.prompts)
         else:
             csv_path = build_experiment_csv_path(config.experiment_name)
             writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=aliases)
@@ -99,10 +92,8 @@ class ExperimentRunner:
         tasks = []
         for entry in prompt_entries:
             for alias in aliases:
-                cell_key = (entry.prompt_id, alias)
-                if cell_key in completed_cells:
+                if completed_cells.get((entry.prompt_id, alias)) is CellStatus.SUCCESS:
                     status_matrix[entry.row_key][alias] = ExperimentCellStatus.SUCCESS
-                    response_matrix[entry.row_key][alias] = completed_cells[cell_key]
                     continue
                 tasks.append(
                     asyncio.create_task(
@@ -242,6 +233,22 @@ def _build_prompt_entries(prompts: Sequence[str]) -> list[_PromptEntry]:
         row_key = f"{prompt_id}:{index}"
         entries.append(_PromptEntry(row_key=row_key, prompt_id=prompt_id, prompt=prompt))
     return entries
+
+
+def _resolve_resume_path(config: ExperimentConfig) -> Path:
+    if config.existing_csv_path is not None:
+        if not config.existing_csv_path.exists():
+            raise FileNotFoundError(f"Resume CSV does not exist: {config.existing_csv_path}")
+        return config.existing_csv_path
+
+    log_dir = Path("logs") / config.experiment_name
+    if not log_dir.exists():
+        raise FileNotFoundError(f"No existing experiment logs found: {log_dir}")
+
+    csv_files = sorted(log_dir.glob("*.csv"), reverse=True)
+    if not csv_files:
+        raise FileNotFoundError(f"No CSV files found in experiment logs: {log_dir}")
+    return csv_files[0]
 
 
 def _to_scheduling_config(config: ExperimentConfig) -> ExperimentSchedulingConfig:

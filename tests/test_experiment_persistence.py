@@ -90,6 +90,37 @@ def test_build_dataframe_from_csv_matches_matrix_contents(tmp_path: Path) -> Non
     ]
 
 
+def test_load_existing_state_returns_only_success_cells(tmp_path: Path) -> None:
+    csv_path = tmp_path / "logs" / "experiment" / "20260311T143022.csv"
+    writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=["alias-a", "alias-b"])
+    prompt_1 = "prompt-1"
+    prompt_2 = "prompt-2"
+    prompt_id_1 = compute_prompt_id(prompt_1)
+    prompt_id_2 = compute_prompt_id(prompt_2)
+
+    writer.initialize(prompts=[prompt_1, prompt_2])
+    writer.write_cell(
+        prompt_id=prompt_id_1,
+        alias="alias-a",
+        cell=MatrixCell(status=CellStatus.SUCCESS, response="ok-a"),
+    )
+    writer.write_cell(
+        prompt_id=prompt_id_1,
+        alias="alias-b",
+        cell=MatrixCell(status=CellStatus.FAILED, error_message="boom"),
+    )
+    writer.write_cell(
+        prompt_id=prompt_id_2,
+        alias="alias-a",
+        cell=MatrixCell(status=CellStatus.RATE_LIMITED, error_message="retry-after=7200"),
+    )
+
+    prompt_ids, completed_cells = writer.load_existing_state()
+
+    assert prompt_ids == [prompt_id_1, prompt_id_2]
+    assert completed_cells == {prompt_id_1: {"alias-a": CellStatus.SUCCESS}}
+
+
 class BlockingClient:
     def __init__(self) -> None:
         self.first_completion_written = asyncio.Event()
