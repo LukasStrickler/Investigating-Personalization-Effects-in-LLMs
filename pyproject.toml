@@ -104,6 +104,7 @@ ignore = [
 "scripts/*" = ["T201"]  # allow print in scripts
 "tests/test_config.py" = ["I001"]
 "tests/test_public_api.py" = ["B009", "F401", "SIM118"]
+"examples/*.ipynb" = ["I001", "SIM115"]  # generated/demo: import order and open() without context manager
 
 [tool.ruff.format]
 quote-style = "double"
