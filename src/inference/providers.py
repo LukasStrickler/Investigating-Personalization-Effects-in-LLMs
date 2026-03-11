@@ -22,7 +22,12 @@ _litellm_configured = False
 
 @contextlib.contextmanager
 def _suppress_litellm_provider_list_print() -> Any:
-    """Per-call capture of stdout/stderr; re-emit lines except LiteLLM 'Provider List' noise (avoids global print patch)."""
+    """Per-call capture of stdout/stderr; re-emit lines except LiteLLM 'Provider List' noise (avoids global print patch).
+
+    Note: redirect_stdout/redirect_stderr are process-global. Concurrent
+    completions may interleave captured output; primary use is single-threaded
+    (e.g. notebooks, sequential scripts).
+    """
     out_buf = io.StringIO()
     err_buf = io.StringIO()
     with contextlib.redirect_stdout(out_buf), contextlib.redirect_stderr(err_buf):
