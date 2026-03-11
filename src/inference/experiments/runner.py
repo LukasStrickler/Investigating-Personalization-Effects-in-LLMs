@@ -3,13 +3,18 @@ from __future__ import annotations
 import asyncio
 import math
 import re
-from collections.abc import Mapping, Sequence
+from collections.abc import Awaitable, Callable, Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from inference.client import InferenceRequest, UnifiedInferenceClient
-from inference.experiments.csv_schema import CellStatus, MatrixCell, compute_prompt_id
+from inference.experiments.csv_schema import (
+    CellStatus,
+    MatrixCell,
+    canonical_prompt_spec,
+    compute_prompt_id,
+)
 from inference.experiments.dataframe import build_dataframe_from_csv
 from inference.experiments.persistence import (
     MatrixCSVWriter,
@@ -26,6 +31,7 @@ from inference.experiments.scheduling import (
     resolve_retry,
 )
 from inference.experiments.types import ExperimentConfig, ExperimentResult, ExperimentSummary
+from inference.logging import CONSOLE_LOG_HEADER, format_completion_console_line
 from inference.retry import RetryPolicy
 
 
@@ -33,7 +39,7 @@ from inference.retry import RetryPolicy
 class _PromptEntry:
     row_key: str
     prompt_id: str
-    prompt: str
+    prompt_spec: str | dict
 
 
 class ExperimentRunner:
@@ -42,7 +48,9 @@ class ExperimentRunner:
 
     async def run(self, config: ExperimentConfig) -> ExperimentResult:
         aliases = [alias.strip() for alias in config.model_aliases]
-        prompt_entries = _build_prompt_entries(config.prompts)
+        prompt_entries = _build_prompt_entries(
+            config.prompts, default_system_prompt=config.default_system_prompt
+        )
         prompt_row_keys = [entry.row_key for entry in prompt_entries]
         completed_cells: dict[tuple[str, str], CellStatus] = {}
 
@@ -53,10 +61,23 @@ class ExperimentRunner:
                 load_existing_matrix, csv_path
             )
             await asyncio.to_thread(writer.append_missing_prompts, config.prompts)
+            # Trim CSV and sidecar to current prompts so removals are reflected in file and results
+            current_prompt_ids = {entry.prompt_id for entry in prompt_entries}
+            await asyncio.to_thread(writer.retain_only_prompts, current_prompt_ids)
         else:
             csv_path = build_experiment_csv_path(config.experiment_name)
             writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=aliases)
             await asyncio.to_thread(writer.initialize, config.prompts)
+            if config.run_cells is not None:
+                for entry in prompt_entries:
+                    for alias in aliases:
+                        if (entry.prompt_id, alias) not in config.run_cells:
+                            await asyncio.to_thread(
+                                writer.write_cell,
+                                entry.prompt_id,
+                                alias,
+                                MatrixCell(status=CellStatus.NOT_REQUESTED),
+                            )
 
         retry_config = ExperimentRetryConfig(
             max_retries=config.retry.max_retries,
@@ -81,39 +102,111 @@ class ExperimentRunner:
             entry.row_key: dict.fromkeys(aliases, None) for entry in prompt_entries
         }
 
-        global_semaphore = (
-            asyncio.Semaphore(config.scheduling.max_concurrency)
-            if config.scheduling.max_concurrency > 0
-            else None
-        )
-        alias_semaphores = _build_alias_semaphores(aliases, config.scheduling.per_model_concurrency)
         group_locks = _build_group_locks(aliases, scheduling_config)
 
-        tasks = []
+        # Build list of (entry, alias) to run; skip NOT_REQUESTED and completed
+        run_cells_set = config.run_cells
+        cells_to_run: list[tuple[_PromptEntry, str]] = []
         for entry in prompt_entries:
             for alias in aliases:
                 if completed_cells.get((entry.prompt_id, alias)) is CellStatus.SUCCESS:
                     status_matrix[entry.row_key][alias] = ExperimentCellStatus.SUCCESS
                     continue
-                tasks.append(
-                    asyncio.create_task(
-                        self._run_cell(
-                            prompt_entry=entry,
-                            alias=alias,
-                            status_matrix=status_matrix,
-                            response_matrix=response_matrix,
-                            error_matrix=error_matrix,
-                            csv_writer=writer,
-                            retry_policy=retry_policy,
-                            retry_config=retry_config,
-                            global_semaphore=global_semaphore,
-                            alias_semaphore=alias_semaphores.get(alias),
-                            group_lock=group_locks.get(alias),
-                        )
-                    )
+                if run_cells_set is not None and (entry.prompt_id, alias) not in run_cells_set:
+                    status_matrix[entry.row_key][alias] = ExperimentCellStatus.NOT_REQUESTED
+                    continue
+                cells_to_run.append((entry, alias))
+
+        total_cells = len(cells_to_run)
+
+        # Resume existing run: if no cells to run, load CSV and return without calling inference
+        if total_cells == 0:
+            summary = _build_summary(
+                status_matrix, prompt_count=len(config.prompts), model_count=len(aliases)
+            )
+            dataframe = await asyncio.to_thread(build_dataframe_from_csv, csv_path)
+            if config.verbosity != "quiet" and config.resume_from_existing_csv:
+                print(
+                    "Resume existing run: no cells to run; returning loaded results.",
+                    flush=True,
                 )
+            return ExperimentResult(
+                dataframe=dataframe,
+                csv_path=csv_path,
+                csv_name=csv_path.name,
+                summary=summary,
+            )
+
+        done_count = 0
+        done_lock = asyncio.Lock()
+
+        async def on_cell_done(
+            success_result: Any | None = None,
+            alias: str = "",
+        ) -> None:
+            nonlocal done_count
+            async with done_lock:
+                done_count += 1
+                if config.verbosity != "quiet":
+                    if success_result is not None:
+                        line = format_completion_console_line(
+                            provider=getattr(success_result, "provider", "-"),
+                            model=getattr(success_result, "model", alias),
+                            status="success",
+                            latency_ms=getattr(success_result, "latency_ms", None),
+                            done_count=done_count,
+                            total_cells=total_cells,
+                        )
+                    else:
+                        get_provider = getattr(self._client, "get_provider_model", None)
+                        resolved = get_provider(alias) if callable(get_provider) else None
+                        if isinstance(resolved, tuple) and len(resolved) == 2:
+                            provider, model = resolved
+                        else:
+                            provider, model = "-", alias
+                        line = format_completion_console_line(
+                            provider=provider,
+                            model=model,
+                            status="fail",
+                            latency_ms=None,
+                            done_count=done_count,
+                            total_cells=total_cells,
+                        )
+                    print(f"  {line}", flush=True)
+
+        if config.verbosity != "quiet":
+            label = "Resume existing run" if config.resume_from_existing_csv else "Experiment"
+            print(
+                f"{label}: {len(prompt_entries)} prompts × {len(aliases)} models = {total_cells} cells",
+                flush=True,
+            )
+            print(f"  {CONSOLE_LOG_HEADER}", flush=True)
+
+        tasks = [
+            asyncio.create_task(
+                self._run_cell(
+                    prompt_entry=entry,
+                    alias=alias,
+                    status_matrix=status_matrix,
+                    response_matrix=response_matrix,
+                    error_matrix=error_matrix,
+                    csv_writer=writer,
+                    retry_policy=retry_policy,
+                    retry_config=retry_config,
+                    group_lock=group_locks.get(alias),
+                    on_cell_done=on_cell_done,
+                    system_prompt=config.default_system_prompt,
+                    tools=config.tools,
+                    tool_choice=config.tool_choice,
+                    system_prompt_by_model=config.system_prompt_by_model,
+                )
+            )
+            for entry, alias in cells_to_run
+        ]
 
         await asyncio.gather(*tasks)
+        if config.verbosity != "quiet":
+            print("Done.", flush=True)
 
         if not is_await_all_complete(status_matrix, prompt_ids=prompt_row_keys, aliases=aliases):
             raise RuntimeError("Experiment run ended before full matrix reached terminal states.")
@@ -141,9 +234,12 @@ class ExperimentRunner:
         csv_writer: MatrixCSVWriter,
         retry_policy: RetryPolicy,
         retry_config: ExperimentRetryConfig,
-        global_semaphore: asyncio.Semaphore | None,
-        alias_semaphore: asyncio.Semaphore | None,
         group_lock: asyncio.Lock | None,
+        on_cell_done: Callable[..., Awaitable[None]] | None = None,
+        system_prompt: str | None = None,
+        tools: list[dict] | None = None,
+        tool_choice: str | dict | None = None,
+        system_prompt_by_model: dict[str, str] | None = None,
     ) -> None:
         row_key = prompt_entry.row_key
         status_matrix[row_key][alias] = ExperimentCellStatus.RUNNING
@@ -152,11 +248,26 @@ class ExperimentRunner:
         while True:
             attempt += 1
             try:
-                request = InferenceRequest(model_alias=alias, prompt=prompt_entry.prompt)
+                request = _inference_request_from_spec(
+                    prompt_entry.prompt_spec,
+                    alias,
+                    system_prompt,
+                    tools=tools,
+                    tool_choice=tool_choice,
+                )
+                if system_prompt_by_model and alias in system_prompt_by_model:
+                    request = InferenceRequest(
+                        model_alias=request.model_alias,
+                        prompt=request.prompt,
+                        system_prompt=system_prompt_by_model[alias],
+                        messages=request.messages,
+                        tools=request.tools,
+                        tool_choice=request.tool_choice,
+                        max_tokens=request.max_tokens,
+                        temperature=request.temperature,
+                    )
                 result = await self._complete_with_limits(
                     request=request,
-                    global_semaphore=global_semaphore,
-                    alias_semaphore=alias_semaphore,
                     group_lock=group_lock,
                 )
             except Exception as error:
@@ -188,50 +299,93 @@ class ExperimentRunner:
                         error_message=error_matrix[row_key][alias],
                     ),
                 )
+                if on_cell_done is not None:
+                    await on_cell_done(success_result=None, alias=alias)
                 return
 
             status_matrix[row_key][alias] = ExperimentCellStatus.SUCCESS
             response_matrix[row_key][alias] = result.content
+            metadata = getattr(result, "metadata", None)
             await asyncio.to_thread(
                 csv_writer.write_cell,
                 prompt_entry.prompt_id,
                 alias,
-                MatrixCell(status=CellStatus.SUCCESS, response=result.content),
+                MatrixCell(
+                    status=CellStatus.SUCCESS,
+                    response=result.content,
+                    metadata=metadata,
+                ),
             )
+            if on_cell_done is not None:
+                await on_cell_done(success_result=result, alias=alias)
             return
 
     async def _complete_with_limits(
         self,
         *,
         request: InferenceRequest,
-        global_semaphore: asyncio.Semaphore | None,
-        alias_semaphore: asyncio.Semaphore | None,
         group_lock: asyncio.Lock | None,
     ) -> Any:
-        if global_semaphore is not None:
-            await global_semaphore.acquire()
-        if alias_semaphore is not None:
-            await alias_semaphore.acquire()
         if group_lock is not None:
             await group_lock.acquire()
-
         try:
             return await self._client.complete(request)
         finally:
             if group_lock is not None:
                 group_lock.release()
-            if alias_semaphore is not None:
-                alias_semaphore.release()
-            if global_semaphore is not None:
-                global_semaphore.release()
 
 
-def _build_prompt_entries(prompts: Sequence[str]) -> list[_PromptEntry]:
+def _inference_request_from_spec(
+    spec: str | dict,
+    model_alias: str,
+    default_system_prompt: str | None,
+    *,
+    tools: list[dict] | None = None,
+    tool_choice: str | dict | None = None,
+) -> InferenceRequest:
+    if isinstance(spec, str):
+        return InferenceRequest(
+            model_alias=model_alias,
+            prompt=spec,
+            system_prompt=default_system_prompt,
+            tools=tools,
+            tool_choice=tool_choice,
+        )
+    if "messages" in spec:
+        return InferenceRequest(
+            model_alias=model_alias,
+            prompt="",
+            system_prompt=spec.get("system"),
+            messages=spec["messages"],
+            tools=tools,
+            tool_choice=tool_choice,
+        )
+    return InferenceRequest(
+        model_alias=model_alias,
+        prompt=spec.get("user", ""),
+        system_prompt=spec.get("system") or default_system_prompt,
+        tools=tools,
+        tool_choice=tool_choice,
+    )
+
+
+def _build_prompt_entries(
+    prompts: Sequence[str | dict],
+    *,
+    default_system_prompt: str | None = None,
+) -> list[_PromptEntry]:
     entries: list[_PromptEntry] = []
-    for index, prompt in enumerate(prompts):
-        prompt_id = compute_prompt_id(prompt)
+    for index, item in enumerate(prompts):
+        if isinstance(item, str) and default_system_prompt:
+            prompt_spec: str | dict = {
+                "system": default_system_prompt,
+                "user": item,
+            }
+        else:
+            prompt_spec = item
+        prompt_id = compute_prompt_id(canonical_prompt_spec(prompt_spec))
         row_key = f"{prompt_id}:{index}"
-        entries.append(_PromptEntry(row_key=row_key, prompt_id=prompt_id, prompt=prompt))
+        entries.append(_PromptEntry(row_key=row_key, prompt_id=prompt_id, prompt_spec=prompt_spec))
     return entries
 
 
@@ -258,15 +412,6 @@ def _to_scheduling_config(config: ExperimentConfig) -> ExperimentSchedulingConfi
         policy=SchedulingPolicy.GROUPED,
         alias_group_by_name=dict.fromkeys(config.model_aliases, "default"),
     )
-
-
-def _build_alias_semaphores(
-    aliases: Sequence[str],
-    per_model_concurrency: int,
-) -> dict[str, asyncio.Semaphore]:
-    if per_model_concurrency <= 0:
-        return {}
-    return {alias: asyncio.Semaphore(per_model_concurrency) for alias in aliases}
 
 
 def _build_group_locks(
@@ -313,6 +458,8 @@ def _to_csv_status(status: ExperimentCellStatus) -> CellStatus:
         return CellStatus.SUCCESS
     if status is ExperimentCellStatus.RATE_LIMITED:
         return CellStatus.RATE_LIMITED
+    if status is ExperimentCellStatus.NOT_REQUESTED:
+        return CellStatus.NOT_REQUESTED
     return CellStatus.FAILED
 
 

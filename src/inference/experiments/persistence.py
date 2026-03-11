@@ -8,17 +8,22 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-from typing import BinaryIO
+from typing import Any, BinaryIO
 
 from inference.experiments.csv_schema import (
-    CellStatus,
     MISSING_CELL,
+    PROMPT_COLUMN,
+    PROMPT_ID_COLUMN,
+    SCHEMA_VERSION,
+    CellStatus,
     MatrixCell,
     build_matrix_headers,
     build_sidecar_metadata,
+    canonical_prompt_spec,
     compute_prompt_id,
     csv_writer_kwargs,
     metadata_sidecar_path,
+    serialize_prompt_content,
 )
 
 
@@ -33,8 +38,10 @@ def load_existing_matrix(
 ) -> tuple[set[str], dict[tuple[str, str], CellStatus]]:
     """Load existing CSV state for resume mode.
 
+    Reads UTF-8 CSV (prompt_id, prompt, then one column per model). Only SUCCESS cells are completed for resume.
+
     Returns:
-        - prompt_ids_seen: set of prompt_id values in the CSV
+        - prompt_ids_seen: set of prompt_id values in the CSV (normalized, stripped)
         - completed_cells: dict mapping (prompt_id, alias) -> CellStatus for SUCCESS cells
     """
     prompt_ids_seen: set[str] = set()
@@ -45,9 +52,11 @@ def load_existing_matrix(
 
     with csv_path.open("r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f, **csv_writer_kwargs())
-        aliases = [name for name in reader.fieldnames or [] if name != "prompt_id"]
+        fieldnames = reader.fieldnames or []
+        aliases = [n for n in fieldnames if n not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)]
         for row in reader:
-            prompt_id = row.get("prompt_id", "")
+            raw_pid = row.get(PROMPT_ID_COLUMN, "")
+            prompt_id = raw_pid.strip() if isinstance(raw_pid, str) else ""
             if prompt_id:
                 prompt_ids_seen.add(prompt_id)
 
@@ -62,24 +71,37 @@ def load_existing_matrix(
 
 
 class MatrixCSVWriter:
+    """Writes experiment CSV: prompt_id, prompt, then one column per model. Cells hold status/response/error/metadata only.
+
+    Single-writer per path (file locking). UTF-8. Schema version in sidecar.
+    """
+
     def __init__(self, csv_path: Path, model_aliases: list[str]) -> None:
         self._csv_path = csv_path
-        self._model_aliases = [
-            header for header in build_matrix_headers(model_aliases) if header != "prompt_id"
-        ]
         self._headers = build_matrix_headers(model_aliases)
+        self._model_aliases = [
+            h for h in self._headers if h not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)
+        ]
         self._lock_path = Path(f"{csv_path}.lock")
 
     @property
     def csv_path(self) -> Path:
         return self._csv_path
 
-    def initialize(self, prompts: list[str]) -> None:
-        rows = [self._empty_row(prompt_id=compute_prompt_id(prompt)) for prompt in prompts]
+    def initialize(self, prompts: Sequence[str | dict[str, Any]]) -> None:
+        rows = []
+        for p in prompts:
+            c = canonical_prompt_spec(p)
+            rows.append(
+                self._empty_row(
+                    prompt_id=compute_prompt_id(c),
+                    prompt=serialize_prompt_content(c),
+                )
+            )
         self._csv_path.parent.mkdir(parents=True, exist_ok=True)
         with self._locked_file():
             self._rewrite_rows(rows)
-            self._write_sidecar(prompts)
+            self._write_sidecar()
 
     def load_existing_state(self) -> tuple[list[str], dict[str, dict[str, CellStatus]]]:
         prompt_ids: list[str] = []
@@ -110,7 +132,7 @@ class MatrixCSVWriter:
 
         return prompt_ids, completed_cells
 
-    def append_missing_prompts(self, prompts: Sequence[str]) -> list[str]:
+    def append_missing_prompts(self, prompts: Sequence[str | dict[str, Any]]) -> list[str]:
         with self._locked_file():
             if not self._csv_path.exists():
                 raise FileNotFoundError(f"Matrix CSV does not exist: {self._csv_path}")
@@ -119,20 +141,37 @@ class MatrixCSVWriter:
             existing_prompt_ids = {row["prompt_id"] for row in rows if row.get("prompt_id")}
             appended_prompt_ids: list[str] = []
 
-            for prompt in prompts:
-                prompt_id = compute_prompt_id(prompt)
+            for p in prompts:
+                c = canonical_prompt_spec(p)
+                prompt_id = compute_prompt_id(c)
                 if prompt_id in existing_prompt_ids:
                     continue
-                rows.append(self._empty_row(prompt_id=prompt_id))
+                rows.append(
+                    self._empty_row(
+                        prompt_id=prompt_id,
+                        prompt=serialize_prompt_content(c),
+                    )
+                )
                 existing_prompt_ids.add(prompt_id)
                 appended_prompt_ids.append(prompt_id)
 
             if appended_prompt_ids:
                 self._rewrite_rows(rows)
 
-            self._write_sidecar(prompts)
+            self._write_sidecar()
 
         return appended_prompt_ids
+
+    def retain_only_prompts(self, prompt_ids: set[str]) -> None:
+        """Keep only rows whose prompt_id is in prompt_ids; drop the rest. Updates CSV and sidecar."""
+        with self._locked_file():
+            if not self._csv_path.exists():
+                return
+            rows = self._read_rows()
+            kept = [r for r in rows if r.get(PROMPT_ID_COLUMN) in prompt_ids]
+            if len(kept) < len(rows):
+                self._rewrite_rows(kept)
+            self._write_sidecar()
 
     def write_cell(self, prompt_id: str, alias: str, cell: MatrixCell) -> None:
         if alias not in self._model_aliases:
@@ -144,10 +183,12 @@ class MatrixCSVWriter:
             target_row[alias] = cell.to_csv_cell()
             self._rewrite_rows(rows)
 
-    def _empty_row(self, *, prompt_id: str) -> dict[str, str]:
+    def _empty_row(self, *, prompt_id: str, prompt: str) -> dict[str, str]:
+        pending_cell = MatrixCell(status=CellStatus.PENDING).to_csv_cell()
         return {
-            header: (prompt_id if header == "prompt_id" else MISSING_CELL)
-            for header in self._headers
+            PROMPT_ID_COLUMN: prompt_id,
+            PROMPT_COLUMN: prompt,
+            **dict.fromkeys(self._model_aliases, pending_cell),
         }
 
     def _read_rows(self) -> list[dict[str, str]]:
@@ -156,7 +197,8 @@ class MatrixCSVWriter:
 
         with self._csv_path.open("r", encoding="utf-8", newline="") as csv_file:
             reader = csv.DictReader(csv_file, **csv_writer_kwargs())
-            if reader.fieldnames != self._headers:
+            fieldnames = list(reader.fieldnames or [])
+            if fieldnames != self._headers:
                 raise ValueError(f"Unexpected matrix CSV headers in {self._csv_path}")
             return [
                 {header: row.get(header, MISSING_CELL) for header in self._headers}
@@ -166,9 +208,10 @@ class MatrixCSVWriter:
     def _locate_row(
         self, *, rows: list[dict[str, str]], prompt_id: str, alias: str
     ) -> dict[str, str]:
-        matching_rows = [row for row in rows if row["prompt_id"] == prompt_id]
+        pid = prompt_id.strip() if isinstance(prompt_id, str) else ""
+        matching_rows = [row for row in rows if (row.get(PROMPT_ID_COLUMN) or "").strip() == pid]
         if not matching_rows:
-            raise KeyError(f"Unknown prompt_id: {prompt_id}")
+            raise KeyError(f"Unknown prompt_id: {prompt_id!r}")
 
         for row in matching_rows:
             if row[alias] == MISSING_CELL:
@@ -199,31 +242,14 @@ class MatrixCSVWriter:
 
         os.replace(temp_path, self._csv_path)
 
-    def _write_sidecar(self, prompts: Sequence[str]) -> None:
+    def _write_sidecar(self) -> None:
         sidecar_payload = build_sidecar_metadata(model_aliases=self._model_aliases)
-        sidecar_payload["prompt_text_by_id"] = self._merge_prompt_text_by_id(prompts)
-
+        sidecar_payload["schema_version"] = SCHEMA_VERSION
         sidecar_path = metadata_sidecar_path(self._csv_path)
         sidecar_path.write_text(
             json.dumps(sidecar_payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
-
-    def _merge_prompt_text_by_id(self, prompts: Sequence[str]) -> dict[str, str]:
-        sidecar_path = metadata_sidecar_path(self._csv_path)
-        merged_prompt_text_by_id: dict[str, str] = {}
-        if sidecar_path.exists():
-            existing_payload = json.loads(sidecar_path.read_text(encoding="utf-8"))
-            existing_prompt_map = existing_payload.get("prompt_text_by_id", {})
-            if isinstance(existing_prompt_map, dict):
-                for prompt_id, prompt in existing_prompt_map.items():
-                    if isinstance(prompt_id, str) and isinstance(prompt, str):
-                        merged_prompt_text_by_id[prompt_id] = prompt
-
-        for prompt in prompts:
-            merged_prompt_text_by_id[compute_prompt_id(prompt)] = prompt
-
-        return merged_prompt_text_by_id
 
     @contextmanager
     def _locked_file(self) -> Iterator[None]:

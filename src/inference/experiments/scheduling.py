@@ -39,6 +39,7 @@ class ExperimentCellStatus(str, Enum):
     SUCCESS = "success"
     FAILED = "failed"
     RATE_LIMITED = "rate_limited"
+    NOT_REQUESTED = "not_requested"
 
     @property
     def is_terminal(self) -> bool:
@@ -47,6 +48,7 @@ class ExperimentCellStatus(str, Enum):
             ExperimentCellStatus.SUCCESS,
             ExperimentCellStatus.FAILED,
             ExperimentCellStatus.RATE_LIMITED,
+            ExperimentCellStatus.NOT_REQUESTED,
         }
 
 

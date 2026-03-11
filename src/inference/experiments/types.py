@@ -17,6 +17,23 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
+# String or dict spec (e.g. {"system": "...", "user": "..."} or {"system": "...", "messages": [...]})
+PromptSpec = str | dict[str, Any]
+
+
+@dataclass(frozen=True, slots=True)
+class ExperimentGrid:
+    """Standard experiment grid: rows = full prompt specs, cols = models, cells = response or not_requested.
+
+    Use with build_experiment_grid(...). Pass grid.prompts and grid.model_aliases to
+    ExperimentConfig; pass grid.run_cells for sparse runs (only those cells are run).
+    """
+
+    prompts: list[PromptSpec]
+    model_aliases: list[str]
+    run_cells: set[tuple[str, str]] | None = None
+
+
 if TYPE_CHECKING:
     from inference.client import UnifiedInferenceClient
 
@@ -49,18 +66,17 @@ class ExperimentRetryOptions:
 
 @dataclass(frozen=True, slots=True)
 class ExperimentSchedulingOptions:
-    """Scheduling controls for high-level experiment orchestration."""
+    """Scheduling controls for high-level experiment orchestration.
 
-    max_concurrency: int = 0
-    per_model_concurrency: int = 0
+    Concurrency (how many requests in flight at once) is configured per provider
+    in the inference config (YAML), not here. These options only control matrix
+    policy (e.g. interleave vs grouped model execution).
+    """
+
     interleave_model_aliases: bool = True
     max_retry_after_wait_seconds: float = 3600.0
 
     def __post_init__(self) -> None:
-        if self.max_concurrency < 0:
-            raise ValueError("max_concurrency must be >= 0")
-        if self.per_model_concurrency < 0:
-            raise ValueError("per_model_concurrency must be >= 0")
         if self.max_retry_after_wait_seconds <= 0:
             raise ValueError("max_retry_after_wait_seconds must be > 0")
 
@@ -82,7 +98,12 @@ class ExperimentConfig:
 
     experiment_name: str
     model_aliases: list[str]
-    prompts: list[str]
+    prompts: list[PromptSpec]
+    default_system_prompt: str | None = None
+    system_prompt_by_model: dict[str, str] | None = None
+    run_cells: set[tuple[str, str]] | None = None
+    tools: list[dict[str, Any]] | None = None
+    tool_choice: str | dict[str, Any] | None = None
     retry: ExperimentRetryOptions = field(default_factory=ExperimentRetryOptions)
     scheduling: ExperimentSchedulingOptions = field(default_factory=ExperimentSchedulingOptions)
     verbosity: VerbosityLevel = "normal"
@@ -98,8 +119,15 @@ class ExperimentConfig:
             raise ValueError("prompts must contain at least one prompt")
         if any(not alias.strip() for alias in self.model_aliases):
             raise ValueError("model_aliases cannot contain empty values")
-        if any(not prompt.strip() for prompt in self.prompts):
-            raise ValueError("prompts cannot contain empty values")
+        for i, prompt in enumerate(self.prompts):
+            if isinstance(prompt, str):
+                if not prompt.strip():
+                    raise ValueError("prompts cannot contain empty strings")
+            elif isinstance(prompt, dict):
+                if "user" not in prompt and "messages" not in prompt:
+                    raise ValueError(f"prompts[{i}] dict must contain 'user' or 'messages'")
+            else:
+                raise ValueError(f"prompts must be str or dict, got {type(prompt).__name__}")
 
 
 @dataclass(frozen=True, slots=True)
@@ -155,10 +183,12 @@ class ExperimentRunner:
 
 __all__ = [
     "ExperimentConfig",
+    "ExperimentGrid",
     "ExperimentResult",
     "ExperimentRetryOptions",
     "ExperimentRunner",
     "ExperimentSchedulingOptions",
     "ExperimentSummary",
+    "PromptSpec",
     "VerbosityLevel",
 ]
