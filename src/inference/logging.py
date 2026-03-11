@@ -143,7 +143,9 @@ class InferenceLogger:
     """Append-safe JSONL logger for inference events.
 
     Writes one JSON object per line to a file, appending to existing content.
-    Thread-safe for concurrent writes to the same file.
+    Thread-safe for concurrent writes from a single instance. The lock is
+    per-instance; do not share the same log_file path across multiple
+    InferenceLogger instances if they write concurrently.
     """
 
     def __init__(self, log_file: Path) -> None:
