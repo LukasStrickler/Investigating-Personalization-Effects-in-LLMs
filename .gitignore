@@ -95,10 +95,6 @@ checkpoints/
 *.jsonl
 !tests/fixtures/*.jsonl
 
-# Keep evidence directory structure but ignore contents
-.sisyphus/evidence/*
-!.sisyphus/evidence/.gitkeep
-
 # Miscellaneous
 .sisyphus/
 .vscode/
