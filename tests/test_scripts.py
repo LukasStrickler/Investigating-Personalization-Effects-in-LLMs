@@ -160,6 +160,7 @@ class TestBatchScript:
         checkpoint_path = tmp_path / "checkpoints" / "batch.jsonl"
         assert checkpoint_path.exists(), f"Checkpoint file not created at {checkpoint_path}"
 
+    @skip_if_no_batch
     def test_batch_script_fails_without_required_args(self) -> None:
         """Batch script exits non-zero when required args are missing."""
         # Missing --input

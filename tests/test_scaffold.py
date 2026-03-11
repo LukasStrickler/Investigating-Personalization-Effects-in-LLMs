@@ -1,6 +1,6 @@
 """Test inference package imports and basic functionality."""
 
-# pytest is not needed for these simple tests
+import pytest
 
 
 class TestPackageImport:
@@ -19,17 +19,14 @@ class TestPackageImport:
         assert hasattr(inference, "__version__")
         assert inference.__version__ == "0.1.0"
 
-    def test_import_without_env_file(self) -> None:
+    def test_import_without_env_file(self, monkeypatch: pytest.MonkeyPatch) -> None:
         """Verify package imports successfully even without .env file.
 
         This tests the lazy-loading requirement: secrets should not be loaded
         at import time.
         """
-        import os
-
-        # Ensure no API keys are set
         for key in ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "OPENROUTER_API_KEY"]:
-            _ = os.environ.pop(key, None)  # noqa: PLW2901
+            monkeypatch.delenv(key, raising=False)
 
         # Import should still work
         import inference

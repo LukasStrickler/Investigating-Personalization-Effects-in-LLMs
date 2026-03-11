@@ -87,5 +87,5 @@ default_retry:
   max_delay: 30.0
 
 log_path: logs/inference.jsonl
-checkpoint_path: checkpoints/batch.jsonl
+checkpoint_path: checkpoints/
 default_provider: openrouter

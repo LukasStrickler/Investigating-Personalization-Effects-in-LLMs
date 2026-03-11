@@ -50,7 +50,7 @@ default_retry:
   max_delay: 30.0
 
 log_path: logs/inference.jsonl
-checkpoint_path: checkpoints/batch.jsonl
+checkpoint_path: checkpoints/
 ```
 
 ### Provider Configuration
@@ -215,7 +215,7 @@ logs/<experiment-name>/<timestamp>.csv
 #### Experiment grid contract
 
 - **Row** = full prompt spec (one JSON/serializable spec per row). Stored in sidecar by `prompt_id`.
-- **Columns** = `prompt_id`, `prompt`, `system_prompt`, `user_prompt` (parsed), then one per model alias.
+- **Columns** = `prompt_id`, `prompt`, then one column per model alias.
 - **Cell** = `{ "status": "...", "response": ...?, "error_message": ...?, "metadata": ...? }`. Optional `metadata` may record e.g. `system_prompt_folded` and `system_prompt` when the provider folded system into the user message (e.g. for Gemma).
 - **Traceability:** `(prompt_id, model_alias)` identifies the cell; sidecar holds full spec by `prompt_id`.
 - **Sparse grids:** set `ExperimentConfig.run_cells` to run only selected (prompt_id, model) pairs; other cells are written as `not_requested`. Filter the DataFrame with e.g. `df[df[alias].apply(lambda c: c.get("status") != "not_requested")]` to analyse only run cells. Use `build_experiment_grid(...)` for the unified grid helper.
@@ -246,7 +246,7 @@ When `resume_from_existing_csv=True`:
 **Default Retry Options:**
 ```python
 ExperimentRetryOptions(
-    max_retries=3,          # Retry failed cells up to 3 times
+    max_retries=3,          # Up to 3 total attempts per cell (1 initial + up to 2 retries)
     base_delay=1.0,         # Initial delay between retries (seconds)
     max_delay=60.0,         # Maximum delay between retries (seconds)
 )

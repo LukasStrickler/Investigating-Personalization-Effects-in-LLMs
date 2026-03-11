@@ -7,10 +7,11 @@ and wraps completion calls to suppress its "Provider List" print() in notebooks.
 
 from __future__ import annotations
 
-import builtins
 import contextlib
+import io
 import importlib
 import logging
+import sys
 from dataclasses import dataclass
 from typing import Any, Protocol
 
@@ -21,20 +22,17 @@ _litellm_configured = False
 
 @contextlib.contextmanager
 def _suppress_litellm_provider_list_print() -> Any:
-    """Patch builtins.print so LiteLLM's 'Provider List' lines are dropped (works in Jupyter)."""
-    real_print = builtins.print
-
-    def filtered(*args: Any, **kwargs: Any) -> None:
-        s = " ".join(str(a) for a in args)
-        if "Provider List" in s or "docs.litellm.ai" in s:
-            return
-        real_print(*args, **kwargs)
-
-    try:
-        builtins.print = filtered
+    """Per-call capture of stdout/stderr; re-emit lines except LiteLLM 'Provider List' noise (avoids global print patch)."""
+    out_buf = io.StringIO()
+    err_buf = io.StringIO()
+    with contextlib.redirect_stdout(out_buf), contextlib.redirect_stderr(err_buf):
         yield
-    finally:
-        builtins.print = real_print
+    for line in out_buf.getvalue().splitlines():
+        if "Provider List" not in line and "docs.litellm.ai" not in line:
+            print(line)  # noqa: T201
+    for line in err_buf.getvalue().splitlines():
+        if "Provider List" not in line and "docs.litellm.ai" not in line:
+            print(line, file=sys.stderr)  # noqa: T201
 
 
 def _configure_litellm() -> None:
@@ -44,7 +42,10 @@ def _configure_litellm() -> None:
         return
     litellm = importlib.import_module("litellm")
     setattr(litellm, "suppress_debug_info", True)  # noqa: B010
-    if not callable(getattr(litellm, "set_verbose", None)):
+    set_verbose = getattr(litellm, "set_verbose", None)
+    if callable(set_verbose):
+        set_verbose(False)
+    elif not callable(set_verbose):
         setattr(litellm, "set_verbose", False)  # noqa: B010
     if hasattr(litellm, "verbose"):
         setattr(litellm, "verbose", False)  # noqa: B010
@@ -278,10 +279,6 @@ def _int(obj: Any, key: str) -> int | None:
     v = obj.get(key) if isinstance(obj, dict) else getattr(obj, key, None)
     return int(v) if v is not None else None
 
-
-# Configure LiteLLM as soon as this module is loaded so it is set before any completion runs
-# (e.g. when user runs "from inference.experiments import ..." or "from inference import create_client").
-_configure_litellm()
 
 __all__ = [
     "LiteLLMProviderAdapter",

@@ -172,12 +172,12 @@ async def run_batch(
     log_path = Path(config.log_path) if config.log_path else Path("logs/inference.jsonl")
     logger = InferenceLogger(log_file=log_path)
 
-    # Determine checkpoint path
-    checkpoint_path = (
-        Path(config.checkpoint_path) / "batch.jsonl"
-        if config.checkpoint_path
-        else Path("checkpoints/batch.jsonl")
-    )
+    # Determine checkpoint path (config may be directory or file path)
+    if config.checkpoint_path:
+        base = Path(config.checkpoint_path)
+        checkpoint_path = base if base.suffix else base / "batch.jsonl"
+    else:
+        checkpoint_path = Path("checkpoints/batch.jsonl")
 
     runner = BatchRunner(client=client, logger=logger, checkpoint_path=checkpoint_path)
     await runner.run_batch(requests)

@@ -2,6 +2,7 @@
 
 import json
 import re
+import threading
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -152,6 +153,7 @@ class InferenceLogger:
             log_file: Path to JSONL log file
         """
         self.log_file = Path(log_file)
+        self._lock = threading.Lock()
         # Ensure parent directory exists
         self.log_file.parent.mkdir(parents=True, exist_ok=True)
 
@@ -162,10 +164,9 @@ class InferenceLogger:
             entry: LogEntry to write
         """
         json_line = entry.to_json()
-
-        # Append to file with newline
-        with open(self.log_file, "a", encoding="utf-8") as f:
-            f.write(json_line + "\n")
+        with self._lock:
+            with open(self.log_file, "a", encoding="utf-8") as f:
+                f.write(json_line + "\n")
 
 
 def log_success(
