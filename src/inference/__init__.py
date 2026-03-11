@@ -175,7 +175,11 @@ async def run_batch(
     # Determine checkpoint path (config may be directory or file path)
     if config.checkpoint_path:
         base = Path(config.checkpoint_path)
-        checkpoint_path = base if base.suffix else base / "batch.jsonl"
+        if base.exists():
+            checkpoint_path = base if base.is_file() else base / "batch.jsonl"
+        else:
+            # Path doesn't exist yet: treat as file only for known checkpoint extension
+            checkpoint_path = base if base.suffix == ".jsonl" else base / "batch.jsonl"
     else:
         checkpoint_path = Path("checkpoints/batch.jsonl")
 
