@@ -16,9 +16,6 @@ uv sync
 # Set up environment
 cp .env.example .env
 # Edit .env and add your API keys
-
-# Open the inference example notebook
-uv run jupyter lab examples/inference_example.ipynb
 ```
 
 ## Documentation

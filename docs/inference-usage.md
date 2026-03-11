@@ -149,12 +149,15 @@ print(result.csv_path)   # Path to CSV file
 class ExperimentConfig:
     experiment_name: str                    # Labels outputs and metadata
     model_aliases: list[str]                # Model columns in the matrix
-    prompts: list[str]                      # Row inputs (at least one required)
-    retry: ExperimentRetryOptions           # Retry behavior per cell
+    prompts: list[PromptSpec]               # Row inputs (str or dict; at least one required)
+    default_system_prompt: str | None       # Optional system prompt for all rows
+    system_prompt_by_model: dict[str, str] | None  # Per-model system (e.g. fake interfaces)
+    run_cells: set[tuple[str, str]] | None  # Sparse grid: only run these (prompt_id, alias) pairs
+    retry: ExperimentRetryOptions          # Retry behavior per cell
     scheduling: ExperimentSchedulingOptions # Concurrency and rate-limit handling
     verbosity: Literal["quiet", "normal", "verbose", "debug"]
-    resume_from_existing_csv: bool           # Enable recovery from existing CSV
-    existing_csv_path: Path | None           # Explicit CSV path (optional)
+    resume_from_existing_csv: bool          # Resume from existing CSV (add/remove prompts)
+    existing_csv_path: Path | None         # Explicit CSV path (optional)
 ```
 
 ### ExperimentRunner
@@ -207,23 +210,35 @@ logs/<experiment-name>/<timestamp>.csv
 - `success` - Cell completed successfully
 - `failed` - Cell failed after retry exhaustion
 - `rate_limited` - Terminal status for long provider retry-after waits
+- `not_requested` - Cell intentionally not run (sparse grid); use for filter/merge
 
-### Resume and Retry-In-Place
+#### Experiment grid contract
 
-Enable resume to recover from interruptions without reprocessing completed cells:
+- **Row** = full prompt spec (one JSON/serializable spec per row). Stored in sidecar by `prompt_id`.
+- **Columns** = `prompt_id`, `prompt`, `system_prompt`, `user_prompt` (parsed), then one per model alias.
+- **Cell** = `{ "status": "...", "response": ...?, "error_message": ...?, "metadata": ...? }`. Optional `metadata` may record e.g. `system_prompt_folded` and `system_prompt` when the provider folded system into the user message (e.g. for Gemma).
+- **Traceability:** `(prompt_id, model_alias)` identifies the cell; sidecar holds full spec by `prompt_id`.
+- **Sparse grids:** set `ExperimentConfig.run_cells` to run only selected (prompt_id, model) pairs; other cells are written as `not_requested`. Filter the DataFrame with e.g. `df[df[alias].apply(lambda c: c.get("status") != "not_requested")]` to analyse only run cells. Use `build_experiment_grid(...)` for the unified grid helper.
+
+### Resume existing run
+
+Enable **resume existing run** to continue from an existing CSV without re-running completed cells:
 
 ```python
 config = ExperimentConfig(
     experiment_name="my-research",
     model_aliases=["gpt-4o-mini", "claude-3-5-sonnet"],
     prompts=["Prompt 1", "Prompt 2"],
-    resume_from_existing_csv=True,  # Retry only failed/rate-limited cells
+    resume_from_existing_csv=True,
 )
 ```
 
 When `resume_from_existing_csv=True`:
-- The runner locates the existing CSV for this experiment
-- Only cells with status `failed`, `rate_limited`, or missing are reprocessed
+- The runner loads the existing CSV for this experiment and reads which cells are already successful
+- Only cells that are **not** successful (missing, `failed`, or `rate_limited`) are scheduled; no inference is run for cells that are already complete
+- If **no cells need to run**, the runner returns the DataFrame from the loaded CSV without calling the API
+- **Additions:** if you pass more prompts than before, new rows are appended and only the new cells are run
+- **Removals:** if you pass fewer prompts, the CSV and sidecar are trimmed to the current prompt set, so removed prompts are dropped from the file and from the returned DataFrame
 - Successfully completed cells are preserved
 
 ### Retry Defaults and Rate-Limit Handling
@@ -237,11 +252,9 @@ ExperimentRetryOptions(
 )
 ```
 
-**Scheduling Options:**
+**Scheduling Options:** (concurrency is set per provider in the inference config YAML, not here)
 ```python
 ExperimentSchedulingOptions(
-    max_concurrency=0,                      # 0 = unlimited
-    per_model_concurrency=0,              # 0 = unlimited
     interleave_model_aliases=True,        # Round-robin across models
     max_retry_after_wait_seconds=3600.0,   # 1 hour max wait for rate limits
 )
