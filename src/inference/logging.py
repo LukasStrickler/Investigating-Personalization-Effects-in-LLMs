@@ -6,6 +6,45 @@ from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
+# Fixed-width column sizes for console completion logs (truncate with ".." when over)
+_CONSOLE_COLS = (20, 12, 26, 8, 8, 8)  # timestamp, provider, model, status, latency, progress
+
+CONSOLE_LOG_HEADER = (
+    f"{'TIMESTAMP':<20} {'PROVIDER':<12} {'MODEL':<26} {'STATUS':<8} {'LATENCY':>8} {'PROGRESS':>8}"
+)
+
+
+def _truncate(s: str, width: int) -> str:
+    if len(s) <= width:
+        return s
+    return s[: width - 2] + ".."
+
+
+def format_completion_console_line(
+    *,
+    provider: str,
+    model: str,
+    status: str,
+    latency_ms: float | None,
+    done_count: int,
+    total_cells: int,
+    timestamp: datetime | None = None,
+) -> str:
+    """Format a single completion log line for console: fixed-width columns, truncated longs."""
+    ts = (timestamp or datetime.now(timezone.utc)).strftime("%Y-%m-%d %H:%M:%S")
+    latency_s = f"{latency_ms / 1000:.2f}s" if latency_ms is not None else "-"
+    progress = f"({done_count}/{total_cells})"
+    w_ts, w_prov, w_model, w_status, w_lat, w_prog = _CONSOLE_COLS
+    return (
+        f"{_truncate(ts, w_ts):<{w_ts}} "
+        f"{_truncate(provider, w_prov):<{w_prov}} "
+        f"{_truncate(model, w_model):<{w_model}} "
+        f"{_truncate(status, w_status):<{w_status}} "
+        f"{latency_s:>{w_lat}} "
+        f"{progress:>{w_prog}}"
+    )
+
+
 # Patterns for common secrets
 SECRET_PATTERNS = [
     # OpenAI API keys (sk-...) - match 10+ chars after sk-

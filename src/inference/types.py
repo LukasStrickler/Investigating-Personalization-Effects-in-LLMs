@@ -114,6 +114,16 @@ class ProviderConfig(BaseModel):
         default=None,
         description="Optional default model for this provider",
     )
+    max_concurrency: int = Field(
+        default=0,
+        ge=0,
+        description="Max concurrent requests for this provider (0 = unlimited)",
+    )
+    per_model_concurrency: int = Field(
+        default=0,
+        ge=0,
+        description="Max concurrent requests per model alias (0 = use max_concurrency only)",
+    )
 
 
 class ModelAliasConfig(BaseModel):
@@ -187,9 +197,7 @@ class InferenceConfig(BaseModel):
     def validate_default_provider(self) -> InferenceConfig:
         """Ensure default_provider exists in providers if specified."""
         if self.default_provider is not None and self.default_provider not in self.providers:
-            raise ValueError(
-                f"default_provider '{self.default_provider}' not found in providers"
-            )
+            raise ValueError(f"default_provider '{self.default_provider}' not found in providers")
         return self
 
     @field_validator("providers")

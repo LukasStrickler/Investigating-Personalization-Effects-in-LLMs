@@ -84,7 +84,9 @@ def create_client(config_path: str | Path) -> UnifiedInferenceClient:
         >>> result = await client.complete(request)
     """
     from inference.client import UnifiedInferenceClient
+    from inference.providers import _configure_litellm
 
+    _configure_litellm()
     return UnifiedInferenceClient.from_config_file(config_path)
 
 
@@ -179,6 +181,7 @@ async def run_batch(
 
     runner = BatchRunner(client=client, logger=logger, checkpoint_path=checkpoint_path)
     await runner.run_batch(requests)
+
 
 # Assign to module-level name for direct access
 _run_batch = run_batch

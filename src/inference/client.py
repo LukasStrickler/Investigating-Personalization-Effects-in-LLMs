@@ -58,6 +58,10 @@ class InferenceRequestError(InferenceClientError):
 class InferenceRequest:
     model_alias: str
     prompt: str
+    system_prompt: str | None = None
+    messages: list[dict] | None = None
+    tools: list[dict] | None = None
+    tool_choice: str | dict | None = None
     max_tokens: int | None = None
     temperature: float | None = None
 
@@ -73,6 +77,9 @@ class InferenceResult:
     total_tokens: int | None
     latency_ms: float
     retry_count: int
+    tool_calls: list[dict] | None = None
+    """Optional metadata from the provider (e.g. system_prompt_folded + system_prompt when applied)."""
+    metadata: dict | None = None
 
 
 class UnifiedInferenceClient:
@@ -90,6 +97,7 @@ class UnifiedInferenceClient:
         self._sleep = sleep or asyncio.sleep
         self._log_path = Path(config.log_path) if config.log_path else None
         self._providers_by_name = _index_providers(config)
+        self._concurrency_limiter = _ProviderConcurrencyLimiter(self._providers_by_name)
         self._configure_rate_limits()
 
     @classmethod
@@ -107,6 +115,18 @@ class UnifiedInferenceClient:
     async def complete(self, request: InferenceRequest) -> InferenceResult:
         alias_cfg = self._resolve_alias(request.model_alias)
         provider_cfg = self._resolve_provider(alias_cfg.provider)
+        await self._concurrency_limiter.acquire(alias_cfg.provider, request.model_alias)
+        try:
+            return await self._complete_impl(request, alias_cfg, provider_cfg)
+        finally:
+            self._concurrency_limiter.release(alias_cfg.provider, request.model_alias)
+
+    async def _complete_impl(
+        self,
+        request: InferenceRequest,
+        alias_cfg: ModelAliasConfig,
+        provider_cfg: ProviderConfig,
+    ) -> InferenceResult:
         retry_policy = _to_retry_policy(provider_cfg.retry or self._config.default_retry)
 
         attempt = 0
@@ -126,6 +146,10 @@ class UnifiedInferenceClient:
                     provider=alias_cfg.provider,
                     model=alias_cfg.model,
                     prompt=request.prompt,
+                    system_prompt=request.system_prompt,
+                    messages=request.messages,
+                    tools=request.tools,
+                    tool_choice=request.tool_choice,
                     api_key=self._resolve_api_key(provider_cfg),
                     base_url=provider_cfg.base_url,
                     max_tokens=request.max_tokens,
@@ -191,7 +215,16 @@ class UnifiedInferenceClient:
                 total_tokens=provider_response.total_tokens,
                 latency_ms=elapsed_ms,
                 retry_count=attempt - 1,
+                tool_calls=provider_response.tool_calls,
+                metadata=provider_response.metadata,
             )
+
+    def get_provider_model(self, model_alias: str) -> tuple[str, str] | None:
+        """Return (provider, model) for an alias, or None if alias is not configured."""
+        alias_cfg = self._config.model_aliases.get(model_alias)
+        if alias_cfg is None:
+            return None
+        return (alias_cfg.provider, alias_cfg.model)
 
     def _resolve_alias(self, model_alias: str) -> ModelAliasConfig:
         alias = self._config.model_aliases.get(model_alias)
@@ -223,6 +256,39 @@ class UnifiedInferenceClient:
                 "default",
                 _to_rate_limit_policy(provider_cfg.rate_limit),
             )
+
+
+class _ProviderConcurrencyLimiter:
+    """Limits concurrent requests per provider (and optionally per model) from config."""
+
+    def __init__(self, providers_by_name: dict[str, ProviderConfig]) -> None:
+        self._providers = providers_by_name
+        self._semaphores: dict[tuple[str, str | None], asyncio.Semaphore] = {}
+        self._lock = asyncio.Lock()
+
+    def _key(self, provider: str, model_alias: str | None) -> tuple[str, str | None]:
+        cfg = self._providers.get(provider)
+        if cfg and cfg.per_model_concurrency > 0 and model_alias is not None:
+            return (provider, model_alias)
+        return (provider, None)
+
+    async def acquire(self, provider: str, model_alias: str | None = None) -> None:
+        cfg = self._providers.get(provider)
+        if not cfg or (cfg.max_concurrency <= 0 and cfg.per_model_concurrency <= 0):
+            return
+        key = self._key(provider, model_alias)
+        limit = cfg.per_model_concurrency if key[1] is not None else cfg.max_concurrency
+        if limit <= 0:
+            return
+        async with self._lock:
+            if key not in self._semaphores:
+                self._semaphores[key] = asyncio.Semaphore(limit)
+        await self._semaphores[key].acquire()
+
+    def release(self, provider: str, model_alias: str | None = None) -> None:
+        key = self._key(provider, model_alias)
+        if key in self._semaphores:
+            self._semaphores[key].release()
 
 
 def _index_providers(config: InferenceConfig) -> dict[str, ProviderConfig]:

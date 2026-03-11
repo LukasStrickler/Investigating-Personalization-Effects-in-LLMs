@@ -155,7 +155,6 @@ def classify_error(error: Exception, provider: str | None = None) -> ErrorCatego
     """
     error_message = str(error).lower()
 
-
     # Provider-specific patterns
     if provider:
         provider_lower = provider.lower()
