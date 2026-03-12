@@ -20,7 +20,7 @@ cp .env.example .env
 
 ## Documentation
 
-- **[API Usage Guide](docs/inference-usage.md)** - How to use the inference library
+- **[Experiments Usage Guide](docs/experiments-usage.md)** - How to run experiments and analyze results
 - **[Provider Configuration](config/inference.example.yaml)** - Example config with all providers
 
 ## Examples
