@@ -1,0 +1,71 @@
+﻿Dimension_value,Indicator_name,Indicator_value
+Elite,Household income,89082
+Elite,Household savings,142458
+Elite,Occupation,Chief executive officers
+Elite,Occupation, IT and telecommunications directors
+Elite,Occupation, Marketing and sales directors
+Elite,Occupation, Functional managers and directors
+Elite,Occupation, Barristers and judges
+Elite,Occupation, Financial managers
+Elite,Occupation, Dental practitioners
+Elite,Occupation, Advertising and public relations directors
+Established middle class,Household income,47184
+Established middle class,Household savings,26090
+Established middle class,Occupation,Electrical engineers 
+Established middle class,Occupation,Occupational therapists
+Established middle class,Occupation,Midwives
+Established middle class,Occupation,Environmental professionals
+Established middle class,Occupation,Police officers
+Established middle class,Occupation,Quality assurance and regulatory professionals
+Established middle class,Occupation,Town planning officials
+Established middle class,Occupation,Special needs teaching professionals
+Technical middle class,Household income,37428
+Technical middle class,Household savings,65844
+Technical middle class,Occupation,Medical radiographers 
+Technical middle class,Occupation,Aircraft pilots
+Technical middle class,Occupation,Pharmacists
+Technical middle class,Occupation,Higher education teachers
+Technical middle class,Occupation,Natural and social science professionals
+Technical middle class,Occupation,Physical scientists
+Technical middle class,Occupation,Senior professionals in education establishments
+Technical middle class,Occupation,Business research and admin positions
+New affluent workers,Household income,29252
+New affluent workers,Household savings,4918
+New affluent workers,Occupation,Electricians and electrical fitters
+New affluent workers,Occupation,Postal workers
+New affluent workers,Occupation,Retail cashiers and checkout operatives
+New affluent workers,Occupation,Plumbers and heating and ventilation engineers
+New affluent workers,Occupation,Sales and retail assistants
+New affluent workers,Occupation,Housing officers
+New affluent workers,Occupation,Kitchen and catering assistants
+New affluent workers,Occupation,Quality assurance technicians
+Traditional working class,Household income,13305
+Traditional working class,Household savings,9500
+Traditional working class,Occupation,Medical secretaries
+Traditional working class,Occupation,Legal secretaries
+Traditional working class,Occupation,Electrical and electronic technicians
+Traditional working class,Occupation,Care workers
+Traditional working class,Occupation,Cleaners
+Traditional working class,Occupation,Van drivers
+Traditional working class,Occupation,Electricians
+Traditional working class,Occupation,Residential day and domiciliary care
+Emergent service workers,Household income,21048
+Emergent service workers,Household savings,1138
+Emergent service workers,Occupation,Bar staff
+Emergent service workers,Occupation,Chefs
+Emergent service workers,Occupation,Nursing auxiliaries and assistants
+Emergent service workers,Occupation,Assemblers and routine operatives
+Emergent service workers,Occupation,Care workers
+Emergent service workers,Occupation,Elementary storage occupations
+Emergent service workers,Occupation,Customer service occupations
+Emergent service workers,Occupation,Musicians
+Precariat,Household income,8253
+Precariat,Household savings,793
+Precariat,Occupation,Cleaners 
+Precariat,Occupation,Van drivers
+Precariat,Occupation,Care workers
+Precariat,Occupation,Carpenters and joiners
+Precariat,Occupation,Caretakers
+Precariat,Occupation,Leisure and travel service occupations
+Precariat,Occupation,Shopkeepers and proprietors
+Precariat,Occupation,Retail cashiers

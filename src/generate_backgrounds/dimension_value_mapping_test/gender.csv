@@ -1,0 +1,13 @@
+Dimension_value,Indicator_name,Indicator_value
+Male,Industry,Engineering
+Male,Industry,Finance
+Male,Hobby,Football
+Male,Hobby,Gaming
+Female,Industry,Healthcare
+Female,Industry,Education
+Female,Hobby,Yoga
+Female,Hobby,Reading
+Non-binary,Industry,Technology
+Non-binary,Industry,Arts
+Non-binary,Hobby,Hiking
+Non-binary,Hobby,Photography

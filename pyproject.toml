@@ -57,6 +57,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 inference = ["py.typed"]
+generate_backgrounds = ["py.typed", "dimension_templates.json"]
 
 # Pytest configuration
 [tool.pytest.ini_options]
