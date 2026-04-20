@@ -60,7 +60,7 @@ class BackgroundRecord:
 @dataclass(frozen=True)
 class ConversationHistory:
     history_id: str
-    persona: dict[str, str]
+    persona: dict[str, str | None]  # ALL known dimensions; None = excluded from this history
     combination_ids: dict[str, str]
     messages: list[dict[str, str]]
     generated_at: str
@@ -341,16 +341,21 @@ class BackgroundPipeline:
                 skipped_histories=0,
             )
 
-        # Phase 2: enumerate personas = Cartesian product of dimension_values
+        # Phase 2: enumerate personas = Cartesian product of dimension_values,
+        # with None as an option for each dimension (= "exclude this dimension").
+        # The all-None persona (no dimensions at all) is filtered out.
         dim_order = list(dim_backgrounds.keys())
-        dim_value_sets: list[list[str]] = [
-            list(dict.fromkeys(r.dimension_value for r in dim_backgrounds[d]))
+        dim_value_sets_with_none: list[list[str | None]] = [
+            [None] + list(dict.fromkeys(r.dimension_value for r in dim_backgrounds[d]))
             for d in dim_order
         ]
-        personas = list(itertools.product(*dim_value_sets))
+        personas = [
+            p for p in itertools.product(*dim_value_sets_with_none)
+            if any(v is not None for v in p)
+        ]
         total_personas = len(personas)
 
-        # Phase 3: for each persona, cross indicator combos across dimensions
+        # Phase 3: for each persona, cross indicator combos across included dimensions
         seen_history_ids = load_existing_history_ids(self._config.personas_dir)
         output_path = self._config.personas_dir / _ts_filename()
         writer = _JsonlWriter(output_path)
@@ -360,12 +365,14 @@ class BackgroundPipeline:
         skipped_histories = 0
 
         for persona_tuple in personas:
-            persona: dict[str, str] = dict(zip(dim_order, persona_tuple))
+            # Full persona dict with None for excluded dimensions
+            persona: dict[str, str | None] = dict(zip(dim_order, persona_tuple))
 
-            # Collect background records per dimension for this persona's dimension_values
+            # Only collect records for included (non-None) dimensions
+            included_dims = [d for d in dim_order if persona[d] is not None]
             per_dim_records: list[list[BackgroundRecord]] = [
                 [r for r in dim_backgrounds[d] if r.dimension_value == persona[d]]
-                for d in dim_order
+                for d in included_dims
             ]
 
             for combo_tuple in itertools.product(*per_dim_records):
