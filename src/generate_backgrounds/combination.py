@@ -44,6 +44,10 @@ def load_combinations(csv_path: Path, dimension: str) -> list[IndicatorCombo]:
 
     with open(csv_path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
+        # Normalize headers: strip whitespace and replace spaces with underscores
+        # so that "Dimension value" and "Dimension_value" both work.
+        if reader.fieldnames:
+            reader.fieldnames = [fn.strip().replace(" ", "_") for fn in reader.fieldnames]
         for row in reader:
             dim_value = row["Dimension_value"].strip()
             ind_name = row["Indicator_name"].strip()

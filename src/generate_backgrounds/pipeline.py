@@ -7,6 +7,7 @@ import hashlib
 import itertools
 import json
 import threading
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -210,6 +211,30 @@ class BackgroundPipeline:
         self._client = client
         self._config = config
 
+    def count_pending(self, dimensions: list[str] | None = None) -> dict[str, int]:
+        """Return {dimension: pending_combo_count} without making any LLM calls."""
+        from generate_backgrounds.combination import load_combinations
+        from generate_backgrounds.rendering import (
+            discover_dimensions,
+            find_dimension_csv,
+            load_templates,
+        )
+
+        templates = load_templates(self._config.templates_path)
+        available = discover_dimensions(self._config.mapping_dir, templates)
+        if dimensions is not None:
+            requested = {d.lower() for d in dimensions}
+            available = [d for d in available if d.lower() in requested]
+
+        result: dict[str, int] = {}
+        for dimension in available:
+            csv_path = find_dimension_csv(self._config.mapping_dir, dimension)
+            assert csv_path is not None
+            combos = load_combinations(csv_path, dimension)
+            seen_ids = load_existing_ids(self._config.output_dir, dimension)
+            result[dimension] = sum(1 for c in combos if c.combination_id not in seen_ids)
+        return result
+
     async def run(self, dimensions: list[str] | None = None) -> PipelineResult:
         """Run all three phases: generation, persona enumeration, history assembly."""
         gen_result = await self.run_generation(dimensions)
@@ -217,7 +242,9 @@ class BackgroundPipeline:
         return PipelineResult(dimension_results=gen_result, assembly=assembly)
 
     async def run_generation(
-        self, dimensions: list[str] | None = None
+        self,
+        dimensions: list[str] | None = None,
+        on_combo_done: Callable[[str, BackgroundRecord | None], None] | None = None,
     ) -> list[DimensionResult]:
         """Phase 1: generate per-dimension background records via LLM calls."""
         from generate_backgrounds.combination import load_combinations
@@ -258,7 +285,16 @@ class BackgroundPipeline:
                 )
                 for combo in pending
             ]
-            task_results = await asyncio.gather(*tasks, return_exceptions=True)
+
+            task_results: list[BackgroundRecord | None] = []
+            for coro in asyncio.as_completed(tasks):
+                try:
+                    record = await coro
+                except Exception:
+                    record = None
+                task_results.append(record)
+                if on_combo_done is not None:
+                    on_combo_done(dimension, record)
 
             generated = sum(1 for r in task_results if isinstance(r, BackgroundRecord))
             failed = len(task_results) - generated

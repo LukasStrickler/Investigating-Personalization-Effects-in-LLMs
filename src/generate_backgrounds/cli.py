@@ -5,15 +5,48 @@ from __future__ import annotations
 import argparse
 import asyncio
 import sys
+import threading
 import traceback
 from pathlib import Path
 
 _HERE = Path(__file__).parent
 
 
+def _make_retry_sleep(bar: "tqdm.tqdm") -> object:  # type: ignore[name-defined]
+    """Return an async sleep function that announces retry waits below the progress bar."""
+    import asyncio as _asyncio
+
+    async def _sleep(seconds: float) -> None:
+        bar.write(f"  ⚠  API retry — waiting {seconds:.1f}s")
+        end = _asyncio.get_event_loop().time() + seconds
+
+        async def _tick() -> None:
+            while True:
+                remaining = end - _asyncio.get_event_loop().time()
+                if remaining <= 0.5:
+                    break
+                bar.set_postfix_str(f"retrying in {remaining:.0f}s")
+                await _asyncio.sleep(1)
+
+        tick_task = _asyncio.create_task(_tick())
+        await _asyncio.sleep(seconds)
+        tick_task.cancel()
+        try:
+            await tick_task
+        except _asyncio.CancelledError:
+            pass
+        bar.set_postfix_str("")
+        bar.write(f"  ✓  Resumed after {seconds:.1f}s wait")
+
+    return _sleep
+
+
 async def _async_main(args: argparse.Namespace) -> int:
-    import inference
+    import tqdm
+
     from generate_backgrounds.pipeline import BackgroundPipeline, GenerationConfig
+    from inference.client import UnifiedInferenceClient
+    from inference.providers import _configure_litellm
 
     config = GenerationConfig(
         model_alias=args.model_alias,
@@ -24,20 +57,63 @@ async def _async_main(args: argparse.Namespace) -> int:
         system_prompt=args.system_prompt,
     )
 
-    client = inference.create_client(args.config)
+    dimensions = args.dimensions if args.dimensions else None
+
+    # --- Pre-count pending combos for accurate progress bar total ---
+    _configure_litellm()
+    # Construct with a placeholder sleep; real sleep injected after bar creation
+    _sleep_holder: list = []
+
+    async def _proxy_sleep(seconds: float) -> None:
+        if _sleep_holder:
+            await _sleep_holder[0](seconds)
+        else:
+            await asyncio.sleep(seconds)
+
+    client = UnifiedInferenceClient.from_config_file(
+        args.config, sleep=_proxy_sleep
+    )
     pipeline = BackgroundPipeline(client=client, config=config)
 
-    dimensions = args.dimensions if args.dimensions else None
+    pending_by_dim = pipeline.count_pending(dimensions)
+    total_pending = sum(pending_by_dim.values())
+
+    # --- Progress bar ---
+    bar = tqdm.tqdm(
+        total=total_pending,
+        unit="req",
+        desc="Generating",
+        dynamic_ncols=True,
+        bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]{postfix}",
+    )
+    _sleep_holder.append(_make_retry_sleep(bar))
+
+    lock = threading.Lock()
+    dim_counts: dict[str, int] = {d: 0 for d in pending_by_dim}
+
+    def _on_combo_done(dimension: str, record: object) -> None:
+        with lock:
+            dim_counts[dimension] = dim_counts.get(dimension, 0) + 1
+            done = dim_counts[dimension]
+            total_dim = pending_by_dim.get(dimension, "?")
+        bar.set_description(f"Generating [{dimension} {done}/{total_dim}]")
+        bar.update(1)
 
     dimension_results = []
     assembly = None
     error = None
 
     try:
-        dimension_results = await pipeline.run_generation(dimensions)
+        dimension_results = await pipeline.run_generation(
+            dimensions, on_combo_done=_on_combo_done
+        )
     except Exception:
         error = traceback.format_exc()
+    finally:
+        bar.close()
 
+    print()
+    print("Assembling personas…", flush=True)
     try:
         assembly = pipeline.assemble_personas()
     except Exception:
