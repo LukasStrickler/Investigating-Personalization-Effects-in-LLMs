@@ -1,11 +1,11 @@
-Dimension value,Indicator_name,Name
+Dimension value,Indicator_name,Indicator_value
 Belgium,Name,Marc Goossens
 Belgium,Name,Patrick Claes
 Belgium,Name,Charlotte Mertens
 Belgium,Name,Laura Goossens
 Belgium,Name,Marie Claes
 Belgium,Artist,Stromae
-Belgium,Artist,AngËle
+Belgium,Artist,Ang√®le
 Belgium,Artist,Clouseau
 Belgium,Artist,Hooverphonic
 Belgium,Artist,Oscar and the Wolf
@@ -19,50 +19,50 @@ Central/Eastern Europe,Artist,Ewa Farna
 Central/Eastern Europe,Artist,Omega
 Central/Eastern Europe,Artist,Sanah
 Central/Eastern Europe,Artist,Carla's Dreams
-Czechia,Name,Kate?ina Proch·zkov·
-Czechia,Name,Jan Dvo?·k
-Czechia,Name,Lenka  Vesel·
-Czechia,Name,Pavel Novotn˝
-Czechia,Name,Josef ?ern˝
+Czechia,Name,Kate≈ôina Proch√°zkov√°
+Czechia,Name,Jan Dvo≈ô√°k
+Czechia,Name,Lenka Vesel√°
+Czechia,Name,Pavel Novotn√Ω
+Czechia,Name,Josef ƒåern√Ω
 Czechia,Artist,Karel Gott
-Czechia,Artist,Lucie BÌl·
-Czechia,Artist,Kab·t
+Czechia,Artist,Lucie B√≠l√°
+Czechia,Artist,Kab√°t
 Czechia,Artist,Chinaski
 Czechia,Artist,Viktor Sheen
-France,Name,FranÁoise Fournier
-France,Name,Etienne  Perrin
+France,Name,Fran√ßoise Fournier
+France,Name,Etienne Perrin
 France,Name,Sandrine Pochon
-France,Name,Vanessa  Dubois
-France,Name,FranÁois Kapinga
+France,Name,Vanessa Dubois
+France,Name,Fran√ßois Kapinga
 France,Artist,Johnny Hallyday
 France,Artist,Jean-Jacques Goldman
-France,Artist,MylËne Farmer
+France,Artist,Myl√®ne Farmer
 France,Artist,Indochine
 France,Artist,Aya Nakamura
-Germany,Name,Philipp M¸ller
+Germany,Name,Philipp M√ºller
 Germany,Name,Julia Schmidt
 Germany,Name,Sebastian Schmidt
 Germany,Name,Patrick Schulz
 Germany,Name,Paul Schneider
-Germany,Artist,Herbert Grˆnemeyer
+Germany,Artist,Herbert Gr√∂nemeyer
 Germany,Artist,Helene Fischer
 Germany,Artist,Peter Maffay
 Germany,Artist,Rammstein
 Germany,Artist,Die Toten Hosen
-Hungary,Name,Kiss Gerg?
-Hungary,Name,Papp ZsÛfia
-Hungary,Name,Tˆrˆk Imre
-Hungary,Name,MÈsz·ros Adrienn
-Hungary,Name,Szil·gyi ¡d·m
+Hungary,Name,Kiss Gerg≈ë
+Hungary,Name,Papp Zs√≥fia
+Hungary,Name,T√∂r√∂k Imre
+Hungary,Name,M√©sz√°ros Adrienn
+Hungary,Name,Szil√°gyi √Åd√°m
 Hungary,Artist,Omega
-Hungary,Artist,¡kos
-Hungary,Artist,Halott PÈnz
-Hungary,Artist,R˙zsa Magdi
-Hungary,Artist,ByeAlex Ès a Slepp
+Hungary,Artist,√Åkos
+Hungary,Artist,Halott P√©nz
+Hungary,Artist,R√≥zsa Magdi
+Hungary,Artist,ByeAlex √©s a Slepp
 Ireland,Name,Eoin Murphy
-Ireland,Name,Patrick OíConnor
-Ireland,Name,Sinead OíSullivan
-Ireland,Name,Brendan OíBrien
+Ireland,Name,Patrick O'Connor
+Ireland,Name,Sinead O'Sullivan
+Ireland,Name,Brendan O'Brien
 Ireland,Name,Aoife Byrne
 Ireland,Artist,U2
 Ireland,Artist,Westlife
@@ -82,7 +82,7 @@ North Africa,Artist,Saad Lamjarred
 South America,Name,Christian Vargas Amador
 South America,Name,Jairo Reyes Montoya
 South America,Name,Jhonattan Flores Vargas
-South America,Name,Selena CortÈs Heredia
+South America,Name,Selena Cort√©s Heredia
 South America,Name,Ricardo Amador Motos
 South America,Artist,Shakira
 South America,Artist,Karol G
@@ -99,12 +99,12 @@ South Asia,Artist,Diljit Dosanjh
 South Asia,Artist,Sid Sriram
 South Asia,Artist,AP Dhillon
 South Asia,Artist,Atif Aslam
-Spain,Name,Xavier MartÌ Roca
-Spain,Name,Alvaro MartÌnez GarcÌa
-Spain,Name,Marta NuÒez Delgado
-Spain,Name,Andrea Fern·ndez Ortiz
-Spain,Name,Jordi Puig SolÈ
-Spain,Artist,RosalÌa
+Spain,Name,Xavier Mart√≠ Roca
+Spain,Name,Alvaro Mart√≠nez Garc√≠a
+Spain,Name,Marta N√∫√±ez Delgado
+Spain,Name,Andrea Fern√°ndez Ortiz
+Spain,Name,Jordi Puig Sol√©
+Spain,Artist,Rosal√≠a
 Spain,Artist,Alejandro Sanz
 Spain,Artist,Aitana
 Spain,Artist,Quevedo
@@ -119,16 +119,16 @@ Sub-Saharan Africa,Artist,Wizkid
 Sub-Saharan Africa,Artist,Davido
 Sub-Saharan Africa,Artist,Tyla
 Sub-Saharan Africa,Artist,Diamond Platnumz
-Switzerland,Name,Luca  L¸thi
-Switzerland,Name,Sarah L¸thi
+Switzerland,Name,Luca L√ºthi
+Switzerland,Name,Sarah L√ºthi
 Switzerland,Name,Monika Zimmerli
-Switzerland,Name,Nicole  Suter
-Switzerland,Name,Marco  Gerber
+Switzerland,Name,Nicole Suter
+Switzerland,Name,Marco Gerber
 Switzerland,Artist,DJ BoBo
 Switzerland,Artist,Stephan Eicher
 Switzerland,Artist,Patent Ochsner
 Switzerland,Artist,Stress
-Switzerland,Artist,Gˆl‰
+Switzerland,Artist,G√∂l√§
 The Netherlands,Name,Tim van Dijk
 The Netherlands,Name,Iris De Boer
 The Netherlands,Name,Jeroen De Vries
@@ -136,19 +136,19 @@ The Netherlands,Name,Maaike De Vries
 The Netherlands,Name,Jip de Jong
 The Netherlands,Artist,Marco Borsato
 The Netherlands,Artist,Anouk
-The Netherlands,Artist,BLÿF
+The Netherlands,Artist,BL√òF
 The Netherlands,Artist,Guus Meeuwis
-The Netherlands,Artist,AndrÈ Hazes
-Turkey,Name,Mehmet ÷zdemir
-Turkey,Name,Hatice ÷zt¸rk
-Turkey,Name,Bilal ÷zt¸rk
+The Netherlands,Artist,Andr√© Hazes
+Turkey,Name,Mehmet √ñzdemir
+Turkey,Name,Hatice √ñzt√ºrk
+Turkey,Name,Bilal √ñzt√ºrk
 Turkey,Name,Layla Yilmaz
-Turkey,Name,ˆzlem Yilmaz
+Turkey,Name,√ñzlem Yilmaz
 Turkey,Artist,Tarkan
 Turkey,Artist,Sezen Aksu
 Turkey,Artist,Ajda Pekkan
 Turkey,Artist,Sertab Erener
-Turkey,Artist,Bar?? ManÁo
+Turkey,Artist,Barƒ±≈ü Man√ßo
 United Kingdom,Name,Susan Brown
 United Kingdom,Name,Elizabeth Wright
 United Kingdom,Name,Patricia Wilson
