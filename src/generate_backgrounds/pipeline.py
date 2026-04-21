@@ -6,6 +6,7 @@ import asyncio
 import hashlib
 import itertools
 import json
+import logging
 import threading
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -13,6 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 _HERE = Path(__file__).parent
+_logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -290,7 +292,8 @@ class BackgroundPipeline:
                 if not pending:
                     break
                 if pass_num > 1:
-                    print(f"  ↻  Retry pass {pass_num}/{max_passes} for {len(pending)} failed {dimension} combo(s)")
+                    _logger.info("Retry pass %d/%d for %d failed %s combo(s)",
+                                 pass_num, max_passes, len(pending), dimension)
 
                 tasks = [
                     asyncio.create_task(
@@ -346,12 +349,12 @@ class BackgroundPipeline:
         try:
             rendered = render_template(template, combo.indicators)
         except Exception as e:
-            print(f"[warn] render failed for {combo.combination_id}: {e}")
+            _logger.warning("render failed for %s: %s", combo.combination_id, e)
             return None
 
         async with semaphore:
             if self._config.verbose:
-                print(f"[verbose] starting {combo.dimension}/{combo.dimension_value} {combo.combination_id[:12]}…")
+                _logger.debug("starting %s/%s %s…", combo.dimension, combo.dimension_value, combo.combination_id[:12])
             try:
                 request = InferenceRequest(
                     model_alias=self._config.model_alias,
@@ -361,11 +364,11 @@ class BackgroundPipeline:
                 result = await self._client.complete(request)
             except Exception as e:
                 root = e.__cause__ or e
-                print(f"[warn] LLM call failed for {combo.combination_id}: {type(root).__name__}: {root}")
+                _logger.warning("LLM call failed for %s: %s: %s", combo.combination_id, type(root).__name__, root)
                 return None
 
         if self._config.verbose:
-            print(f"[verbose] done    {combo.dimension}/{combo.dimension_value} {combo.combination_id[:12]}…")
+            _logger.debug("done %s/%s %s…", combo.dimension, combo.dimension_value, combo.combination_id[:12])
 
         record = BackgroundRecord(
             schema_version=1,
