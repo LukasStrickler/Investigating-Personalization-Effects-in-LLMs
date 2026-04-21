@@ -79,7 +79,10 @@ async def _async_main(args: argparse.Namespace) -> int:
     )
     pipeline = BackgroundPipeline(client=client, config=config)
 
-    pending_by_dim = pipeline.count_pending(dimensions)
+    try:
+        pending_by_dim = pipeline.count_pending(dimensions)
+    except Exception:
+        pending_by_dim = {}
     total_pending = sum(pending_by_dim.values())
 
     # --- Progress bar ---
@@ -159,10 +162,11 @@ async def _async_main(args: argparse.Namespace) -> int:
                 on_history_done=_on_history,
                 on_total=_on_total,
             )
-            assemble_bar.close()
         except Exception:
             if error is None:
                 error = traceback.format_exc()
+        finally:
+            assemble_bar.close()
     else:
         print("Skipping persona assembly (use --assemble to enable).", flush=True)
 

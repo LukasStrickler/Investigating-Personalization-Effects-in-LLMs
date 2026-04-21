@@ -34,6 +34,10 @@ class GenerationConfig:
     system_prompt: str | None = None
     verbose: bool = False
 
+    def __post_init__(self) -> None:
+        if self.concurrency < 1:
+            raise ValueError(f"concurrency must be >= 1, got {self.concurrency}")
+
 
 @dataclass(frozen=True)
 class BackgroundRecord:
@@ -296,6 +300,7 @@ class BackgroundPipeline:
                 ]
 
                 failed_combos: list[object] = []
+                is_last_pass = pass_num == max_passes
                 for i, coro in enumerate(asyncio.as_completed(tasks)):
                     try:
                         record = await coro
@@ -303,10 +308,12 @@ class BackgroundPipeline:
                         record = None
                     if isinstance(record, BackgroundRecord):
                         total_generated += 1
+                        if on_combo_done is not None:
+                            on_combo_done(dimension, record)
                     else:
                         failed_combos.append(pending[i] if i < len(pending) else None)
-                    if on_combo_done is not None:
-                        on_combo_done(dimension, record)
+                        if is_last_pass and on_combo_done is not None:
+                            on_combo_done(dimension, None)
 
                 # Reload seen ids and rebuild pending for next pass
                 seen_ids = load_existing_ids(self._config.output_dir, dimension)
@@ -402,6 +409,14 @@ class BackgroundPipeline:
                 skipped_histories=0,
             )
 
+        # Pre-group records by (dimension, dimension_value) for O(1) lookups
+        grouped: dict[str, dict[str, list[BackgroundRecord]]] = {}
+        for dim, records in dim_backgrounds.items():
+            by_value: dict[str, list[BackgroundRecord]] = {}
+            for r in records:
+                by_value.setdefault(r.dimension_value, []).append(r)
+            grouped[dim] = by_value
+
         # Phase 2: enumerate personas = Cartesian product of dimension_values,
         # with None as an option for each dimension (= "exclude this dimension").
         # The all-None persona (no dimensions at all) is filtered out.
@@ -422,7 +437,7 @@ class BackgroundPipeline:
             persona_tmp: dict[str, str | None] = dict(zip(dim_order, persona_tuple))
             included = [d for d in dim_order if persona_tmp[d] is not None]
             counts = [
-                sum(1 for r in dim_backgrounds[d] if r.dimension_value == persona_tmp[d])
+                len(grouped[d][persona_tmp[d]])
                 for d in included
             ]
             product = 1
@@ -449,7 +464,7 @@ class BackgroundPipeline:
             # Only collect records for included (non-None) dimensions
             included_dims = [d for d in dim_order if persona[d] is not None]
             per_dim_records: list[list[BackgroundRecord]] = [
-                [r for r in dim_backgrounds[d] if r.dimension_value == persona[d]]
+                grouped[d][persona[d]]
                 for d in included_dims
             ]
 
