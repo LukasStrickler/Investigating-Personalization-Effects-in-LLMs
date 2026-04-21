@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import logging
 import time
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
@@ -26,8 +25,6 @@ from inference.types import (
     RateLimit,
     RetryConfig,
 )
-
-_logger = logging.getLogger(__name__)
 
 SleepFn = Callable[[float], Awaitable[None]]
 
@@ -170,12 +167,9 @@ class UnifiedInferenceClient:
                         category=category,
                         backoff_seconds=backoff_seconds,
                     )
-                    _logger.warning(
-                        "retry %d/%d [%s] %s",
-                        attempt,
-                        retry_policy.max_retries,
-                        category.name,
-                        str(error)[:120],
+                    print(
+                        f"  ⚠  retry {attempt}/{retry_policy.max_retries}"
+                        f" [{category.name}] {error!s:.120}"
                     )
                     await self._sleep(backoff_seconds)
                     continue
