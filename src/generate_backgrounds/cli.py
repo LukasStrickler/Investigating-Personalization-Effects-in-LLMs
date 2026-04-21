@@ -47,6 +47,7 @@ async def _async_main(args: argparse.Namespace) -> int:
     from generate_backgrounds.pipeline import BackgroundPipeline, GenerationConfig
     from inference.client import UnifiedInferenceClient
     from inference.providers import _configure_litellm
+    from inference.rate_limits import ProviderRateLimiter
 
     config = GenerationConfig(
         model_alias=args.model_alias,
@@ -55,9 +56,11 @@ async def _async_main(args: argparse.Namespace) -> int:
         personas_dir=Path(args.personas_dir),
         concurrency=args.concurrency,
         system_prompt=args.system_prompt,
+        verbose=args.verbose,
     )
 
     dimensions = args.dimensions if args.dimensions else None
+    assemble = args.assemble
 
     # --- Pre-count pending combos for accurate progress bar total ---
     _configure_litellm()
@@ -70,8 +73,9 @@ async def _async_main(args: argparse.Namespace) -> int:
         else:
             await asyncio.sleep(seconds)
 
+    limiter = ProviderRateLimiter(sleep=_proxy_sleep)
     client = UnifiedInferenceClient.from_config_file(
-        args.config, sleep=_proxy_sleep
+        args.config, sleep=_proxy_sleep, limiter=limiter,
     )
     pipeline = BackgroundPipeline(client=client, config=config)
 
@@ -90,14 +94,26 @@ async def _async_main(args: argparse.Namespace) -> int:
 
     lock = threading.Lock()
     dim_counts: dict[str, int] = {d: 0 for d in pending_by_dim}
+    ok_total = 0
+    fail_total = 0
+
+    verbose = getattr(args, "verbose", False)
 
     def _on_combo_done(dimension: str, record: object) -> None:
+        nonlocal ok_total, fail_total
         with lock:
             dim_counts[dimension] = dim_counts.get(dimension, 0) + 1
             done = dim_counts[dimension]
             total_dim = pending_by_dim.get(dimension, "?")
+            if record is not None:
+                ok_total += 1
+            else:
+                fail_total += 1
         bar.set_description(f"Generating [{dimension} {done}/{total_dim}]")
+        bar.set_postfix_str(f"✓{ok_total} ✗{fail_total}")
         bar.update(1)
+        if verbose and record is None:
+            bar.write(f"  ✗  [{dimension}] request failed (returned None)")
 
     dimension_results = []
     assembly = None
@@ -113,12 +129,37 @@ async def _async_main(args: argparse.Namespace) -> int:
         bar.close()
 
     print()
-    print("Assembling personas…", flush=True)
-    try:
-        assembly = pipeline.assemble_personas()
-    except Exception:
-        if error is None:
-            error = traceback.format_exc()
+    if assemble:
+        print("Assembling personas…", flush=True)
+        try:
+            import tqdm as _tqdm_mod
+
+            assemble_bar = _tqdm_mod.tqdm(
+                unit="hist",
+                desc="Assembling",
+                dynamic_ncols=True,
+            )
+            _asm_gen = 0
+            _asm_skip = 0
+
+            def _on_history(generated: bool) -> None:
+                nonlocal _asm_gen, _asm_skip
+                if generated:
+                    _asm_gen += 1
+                else:
+                    _asm_skip += 1
+                assemble_bar.set_postfix_str(f"new {_asm_gen}, skip {_asm_skip}")
+                assemble_bar.update(1)
+
+            assembly = pipeline.assemble_personas(on_history_done=_on_history)
+            assemble_bar.total = assembly.total_histories
+            assemble_bar.refresh()
+            assemble_bar.close()
+        except Exception:
+            if error is None:
+                error = traceback.format_exc()
+    else:
+        print("Skipping persona assembly (use --assemble to enable).", flush=True)
 
     # --- Print summary ---
     print()
@@ -199,8 +240,8 @@ def main() -> None:
     parser.add_argument(
         "--concurrency",
         type=int,
-        default=8,
-        help="Maximum simultaneous LLM requests",
+        default=1,
+        help="Maximum simultaneous LLM requests (default: 1)",
     )
     parser.add_argument(
         "--mapping-dir",
@@ -212,10 +253,24 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--assemble",
+        dest="assemble",
+        action="store_true",
+        default=False,
+        help="Run persona assembly (Phases 2+3) after background generation.",
+    )
+    parser.add_argument(
         "--system-prompt",
         dest="system_prompt",
         default=None,
         help="Optional system prompt applied to all generation requests",
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        default=False,
+        help="Print detailed per-request logging (start, finish, errors, retries)",
     )
 
     args = parser.parse_args()

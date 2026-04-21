@@ -32,6 +32,7 @@ class GenerationConfig:
     )
     concurrency: int = 8
     system_prompt: str | None = None
+    verbose: bool = False
 
 
 @dataclass(frozen=True)
@@ -271,39 +272,53 @@ class BackgroundPipeline:
             combos = load_combinations(csv_path, dimension)
             template = templates[dimension]
 
+            output_path = self._config.output_dir / dimension / f"{dimension.lower()}.jsonl"
+            writer = _JsonlWriter(output_path)
+            semaphore = asyncio.Semaphore(self._config.concurrency)
+
             seen_ids = load_existing_ids(self._config.output_dir, dimension)
             pending = [c for c in combos if c.combination_id not in seen_ids]
             skipped = len(combos) - len(pending)
 
-            output_path = self._config.output_dir / dimension / _ts_filename()
-            writer = _JsonlWriter(output_path)
+            total_generated = 0
+            max_passes = 3
+            for pass_num in range(1, max_passes + 1):
+                if not pending:
+                    break
+                if pass_num > 1:
+                    print(f"  ↻  Retry pass {pass_num}/{max_passes} for {len(pending)} failed {dimension} combo(s)")
 
-            semaphore = asyncio.Semaphore(self._config.concurrency)
-            tasks = [
-                asyncio.create_task(
-                    self._generate_one(combo, template, semaphore, writer)
-                )
-                for combo in pending
-            ]
+                tasks = [
+                    asyncio.create_task(
+                        self._generate_one(combo, template, semaphore, writer)
+                    )
+                    for combo in pending
+                ]
 
-            task_results: list[BackgroundRecord | None] = []
-            for coro in asyncio.as_completed(tasks):
-                try:
-                    record = await coro
-                except Exception:
-                    record = None
-                task_results.append(record)
-                if on_combo_done is not None:
-                    on_combo_done(dimension, record)
+                failed_combos: list[object] = []
+                for i, coro in enumerate(asyncio.as_completed(tasks)):
+                    try:
+                        record = await coro
+                    except Exception:
+                        record = None
+                    if isinstance(record, BackgroundRecord):
+                        total_generated += 1
+                    else:
+                        failed_combos.append(pending[i] if i < len(pending) else None)
+                    if on_combo_done is not None:
+                        on_combo_done(dimension, record)
 
-            generated = sum(1 for r in task_results if isinstance(r, BackgroundRecord))
-            failed = len(task_results) - generated
+                # Reload seen ids and rebuild pending for next pass
+                seen_ids = load_existing_ids(self._config.output_dir, dimension)
+                pending = [c for c in combos if c.combination_id not in seen_ids]
+
+            failed = len(combos) - skipped - total_generated
 
             results.append(
                 DimensionResult(
                     dimension=dimension,
                     total=len(combos),
-                    generated=generated,
+                    generated=total_generated,
                     skipped=skipped,
                     failed=failed,
                 )
@@ -328,6 +343,8 @@ class BackgroundPipeline:
             return None
 
         async with semaphore:
+            if self._config.verbose:
+                print(f"[verbose] starting {combo.dimension}/{combo.dimension_value} {combo.combination_id[:12]}…")
             try:
                 request = InferenceRequest(
                     model_alias=self._config.model_alias,
@@ -336,8 +353,12 @@ class BackgroundPipeline:
                 )
                 result = await self._client.complete(request)
             except Exception as e:
-                print(f"[warn] LLM call failed for {combo.combination_id}: {e}")
+                root = e.__cause__ or e
+                print(f"[warn] LLM call failed for {combo.combination_id}: {type(root).__name__}: {root}")
                 return None
+
+        if self._config.verbose:
+            print(f"[verbose] done    {combo.dimension}/{combo.dimension_value} {combo.combination_id[:12]}…")
 
         record = BackgroundRecord(
             schema_version=1,
@@ -355,7 +376,10 @@ class BackgroundPipeline:
         await asyncio.to_thread(writer.append, record.to_dict())
         return record
 
-    def assemble_personas(self) -> AssemblyResult:
+    def assemble_personas(
+        self,
+        on_history_done: Callable[[bool], None] | None = None,
+    ) -> AssemblyResult:
         """Phase 2 + 3: enumerate personas and assemble conversation histories."""
         from generate_backgrounds.rendering import discover_dimensions, load_templates
 
@@ -391,9 +415,23 @@ class BackgroundPipeline:
         ]
         total_personas = len(personas)
 
+        # Pre-count total histories for progress reporting
+        _total_expected = 0
+        for persona_tuple in personas:
+            persona_tmp: dict[str, str | None] = dict(zip(dim_order, persona_tuple))
+            included = [d for d in dim_order if persona_tmp[d] is not None]
+            counts = [
+                sum(1 for r in dim_backgrounds[d] if r.dimension_value == persona_tmp[d])
+                for d in included
+            ]
+            product = 1
+            for c in counts:
+                product *= c
+            _total_expected += product
+
         # Phase 3: for each persona, cross indicator combos across included dimensions
         seen_history_ids = load_existing_history_ids(self._config.personas_dir)
-        output_path = self._config.personas_dir / _ts_filename()
+        output_path = self._config.personas_dir / "personas.jsonl"
         writer = _JsonlWriter(output_path)
 
         total_histories = 0
@@ -418,6 +456,8 @@ class BackgroundPipeline:
 
                 if hid in seen_history_ids:
                     skipped_histories += 1
+                    if on_history_done is not None:
+                        on_history_done(False)
                     continue
 
                 messages: list[dict[str, str]] = []
@@ -434,10 +474,12 @@ class BackgroundPipeline:
                 writer.append(history.to_dict())
                 seen_history_ids.add(hid)
                 generated_histories += 1
+                if on_history_done is not None:
+                    on_history_done(True)
 
         return AssemblyResult(
             total_personas=total_personas,
-            total_histories=total_histories,
+            total_histories=_total_expected,
             generated_histories=generated_histories,
             skipped_histories=skipped_histories,
         )

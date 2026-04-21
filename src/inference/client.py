@@ -167,6 +167,10 @@ class UnifiedInferenceClient:
                         category=category,
                         backoff_seconds=backoff_seconds,
                     )
+                    print(
+                        f"  ⚠  retry {attempt}/{retry_policy.max_retries}"
+                        f" [{category.name}] {error!s:.120}"
+                    )
                     await self._sleep(backoff_seconds)
                     continue
 
