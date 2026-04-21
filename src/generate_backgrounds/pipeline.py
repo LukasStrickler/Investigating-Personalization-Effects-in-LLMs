@@ -379,6 +379,7 @@ class BackgroundPipeline:
     def assemble_personas(
         self,
         on_history_done: Callable[[bool], None] | None = None,
+        on_total: Callable[[int], None] | None = None,
     ) -> AssemblyResult:
         """Phase 2 + 3: enumerate personas and assemble conversation histories."""
         from generate_backgrounds.rendering import discover_dimensions, load_templates
@@ -428,6 +429,9 @@ class BackgroundPipeline:
             for c in counts:
                 product *= c
             _total_expected += product
+
+        if on_total is not None:
+            on_total(_total_expected)
 
         # Phase 3: for each persona, cross indicator combos across included dimensions
         seen_history_ids = load_existing_history_ids(self._config.personas_dir)

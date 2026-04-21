@@ -142,6 +142,10 @@ async def _async_main(args: argparse.Namespace) -> int:
             _asm_gen = 0
             _asm_skip = 0
 
+            def _on_total(total: int) -> None:
+                assemble_bar.total = total
+                assemble_bar.refresh()
+
             def _on_history(generated: bool) -> None:
                 nonlocal _asm_gen, _asm_skip
                 if generated:
@@ -151,9 +155,10 @@ async def _async_main(args: argparse.Namespace) -> int:
                 assemble_bar.set_postfix_str(f"new {_asm_gen}, skip {_asm_skip}")
                 assemble_bar.update(1)
 
-            assembly = pipeline.assemble_personas(on_history_done=_on_history)
-            assemble_bar.total = assembly.total_histories
-            assemble_bar.refresh()
+            assembly = pipeline.assemble_personas(
+                on_history_done=_on_history,
+                on_total=_on_total,
+            )
             assemble_bar.close()
         except Exception:
             if error is None:
