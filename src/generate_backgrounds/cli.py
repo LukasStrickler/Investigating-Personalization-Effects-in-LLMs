@@ -134,6 +134,7 @@ async def _async_main(args: argparse.Namespace) -> int:
     print()
     if assemble:
         print("Assembling personas…", flush=True)
+        assemble_bar = None
         try:
             import tqdm as _tqdm_mod
 
@@ -166,7 +167,8 @@ async def _async_main(args: argparse.Namespace) -> int:
             if error is None:
                 error = traceback.format_exc()
         finally:
-            assemble_bar.close()
+            if assemble_bar is not None:
+                assemble_bar.close()
     else:
         print("Skipping persona assembly (use --assemble to enable).", flush=True)
 
