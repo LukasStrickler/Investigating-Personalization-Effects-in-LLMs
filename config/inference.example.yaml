@@ -52,6 +52,16 @@ model_aliases:
     provider: openrouter
     model: google/gemma-3-4b-it:free
 
+  paid-gemma-3-4b:
+    alias: gemma-3-4b
+    provider: openrouter
+    model: google/gemma-3-4b-it
+
+  paid-gemma-4-31b:
+    alias: gemma-4-31b
+    provider: openrouter
+    model: google/gemma-4-31b-it
+
   llama-3.2-3b:
     alias: llama-3.2-3b
     provider: openrouter
