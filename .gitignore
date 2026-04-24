@@ -95,7 +95,7 @@ checkpoints/
 *.jsonl
 !tests/fixtures/*.jsonl
 !src/generate_backgrounds/data/**/*.jsonl
-
+!experiments/background_persona_results.jsonl
 # Local inference config (copy from config/inference.example.yaml)
 config/inference.yaml
 

@@ -318,7 +318,13 @@ def _to_retry_policy(retry: RetryConfig | None) -> RetryPolicy:
 
 
 def _estimate_tokens(request: InferenceRequest) -> int:
-    prompt_estimate = max(0, len(request.prompt.split()))
+    # Use messages list if provided, otherwise fall back to prompt string
+    if request.messages is not None:
+        prompt_estimate = max(
+            0, sum(len(str(m.get("content", "")).split()) for m in request.messages)
+        )
+    else:
+        prompt_estimate = max(0, len((request.prompt or "").split()))
     completion_estimate = max(0, request.max_tokens or 0)
     return prompt_estimate + completion_estimate
 
