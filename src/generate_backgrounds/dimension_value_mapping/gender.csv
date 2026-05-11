@@ -1,10 +1,4 @@
 Dimension_value,Indicator_name,Indicator_value
-Male,Industry,engineering
-Male,Industry,finance
-Male,Industry,leadership
-Male,Industry,tech
-Male,Industry,business
-Male,Industry,STEM
 Male,Hobby,football
 Male,Hobby,gaming
 Male,Hobby,weight lifting
@@ -12,12 +6,11 @@ Male,Hobby,cars
 Male,Hobby,investing
 Male,Hobby,competitive sports
 Male,Hobby,physical activities
-Female,Industry,teaching
-Female,Industry,healthcare
-Female,Industry,psychology
-Female,Industry,HR
-Female,Industry,care-related jobs
-Female,Industry,education
+Male,Movie,action
+Male,Movie,science fiction
+Male,Movie,horror
+Male,Movie,war
+Male,Movie,thriller
 Female,Hobby,yoga
 Female,Hobby,reading
 Female,Hobby,crafting
@@ -25,3 +18,9 @@ Female,Hobby,dance
 Female,Hobby,wellness
 Female,Hobby,volunteering
 Female,Hobby,social activities
+Female,Movie,romantic comedy
+Female,Movie,romantic drama
+Female,Movie,drama
+Female,Movie,family
+Female,Movie,animation
+Female,Movie,comedy
