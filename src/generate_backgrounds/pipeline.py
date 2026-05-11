@@ -390,8 +390,16 @@ class BackgroundPipeline:
         self,
         on_history_done: Callable[[bool], None] | None = None,
         on_total: Callable[[int], None] | None = None,
+        persona_filter: dict[str, str] | None = None,
     ) -> AssemblyResult:
-        """Phase 2 + 3: enumerate personas and assemble conversation histories."""
+        """Phase 2 + 3: enumerate personas and assemble conversation histories.
+
+        Args:
+            persona_filter: If given, only assemble histories for personas that
+                match **all** specified dimension=value pairs.  Dimensions not
+                mentioned in the filter are unconstrained (any value or None).
+                Example: ``{"Gender": "Male", "Age": "Young"}``
+        """
         from generate_backgrounds.rendering import discover_dimensions, load_templates
 
         templates = load_templates(self._config.templates_path)
@@ -432,6 +440,17 @@ class BackgroundPipeline:
             p for p in itertools.product(*dim_value_sets_with_none)
             if any(v is not None for v in p)
         ]
+
+        # Apply persona filter if provided
+        if persona_filter:
+            personas = [
+                p for p in personas
+                if all(
+                    dict(zip(dim_order, p)).get(dim) == val
+                    for dim, val in persona_filter.items()
+                )
+            ]
+
         total_personas = len(personas)
 
         # Pre-count total histories for progress reporting
