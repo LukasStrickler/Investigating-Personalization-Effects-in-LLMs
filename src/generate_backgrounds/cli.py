@@ -175,6 +175,7 @@ async def _async_main(args: argparse.Namespace) -> int:
                 on_history_done=_on_history,
                 on_total=_on_total,
                 persona_filter=persona_filter,
+                include_partial=args.include_partial,
             )
         except Exception:
             if error is None:
@@ -282,6 +283,13 @@ def main() -> None:
         action="store_true",
         default=False,
         help="Run persona assembly (Phases 2+3) after background generation.",
+    )
+    parser.add_argument(
+        "--include-partial",
+        dest="include_partial",
+        action="store_true",
+        default=False,
+        help="Include partial personas (some dimensions set to None). Default: full personas only.",
     )
     parser.add_argument(
         "--persona",

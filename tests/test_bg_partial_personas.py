@@ -77,7 +77,7 @@ def two_dim_pipeline(tmp_path: Path) -> BackgroundPipeline:
 async def test_full_run_produces_partial_combinations(
     two_dim_pipeline: BackgroundPipeline,
 ) -> None:
-    result = await two_dim_pipeline.run()
+    result = await two_dim_pipeline.run(include_partial=True)
 
     # 2 dimensions × 2 values each → (2+1)*(2+1) - 1 = 8 personas
     assert result.assembly.total_personas == 8
