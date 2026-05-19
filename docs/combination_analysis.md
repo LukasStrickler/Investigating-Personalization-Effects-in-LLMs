@@ -1,14 +1,14 @@
 # Combination Analysis
 
-## Current Status (Gender + Race, full personas only)
+## Current Status (Gender + Race, including partial personas)
 
 |                                   | Count                      |
 | --------------------------------- | -------------------------- |
 | **Gender backgrounds**            | 77 (Male: 35, Female: 42)  |
 | **Race backgrounds**              | 132 (11 regions × 12 each) |
 | **Total backgrounds (LLM calls)** | 209                        |
-| **Personas**                      | 22                         |
-| **Conversation histories**        | 5,082                      |
+| **Personas (full + partial)**     | 35                         |
+| **Conversation histories**        | 5,291                      |
 
 ### Gender dimension breakdown
 
@@ -22,9 +22,12 @@
 
 ### Histories per persona
 
-- Male persona: 35 × 6 = 210 histories
-- Female persona: 42 × 6 = 252 histories
-- Total: 11 × 210 + 11 × 252 = 2,310 + 2,772 = **5,082**
+- Male × Race persona: 35 × 6 = 210 histories
+- Female × Race persona: 42 × 6 = 252 histories
+- Full personas: 11 × 210 + 11 × 252 = 2,310 + 2,772 = 5,082
+- Gender-only partials (Male + Female): 35 + 42 = 77 histories
+- Race-only partials (11 regions): 11 × 12 = 132 histories
+- Total: 5,082 + 77 + 132 = **5,291**
 
 ---
 
@@ -70,15 +73,13 @@ The explosive growth comes from adding **new indicators or dimensions** (multipl
 
 ---
 
-## --include-partial
+## Without --include-partial (full personas only)
 
-Partial personas (where one dimension is None) add a small number of single-dimension histories.
+Without partial personas, only full cross-dimensional personas are assembled.
 
-|                                      | Count                   |
-| ------------------------------------ | ----------------------- |
-| Gender-only personas (Male + Female) | 35 + 42 = 77 histories  |
-| Race-only personas (11 regions)      | 11 × 12 = 132 histories |
-| **Total partial histories added**    | **+209**                |
-| **New grand total**                  | **5,291**               |
+|                            | Count |
+| -------------------------- | ----- |
+| **Personas**               | 22    |
+| **Conversation histories** | 5,082 |
 
-Partial personas add +4.1% on top of the full-persona total.
+Full-persona-only mode produces −3.9% fewer histories compared to the current setup.
