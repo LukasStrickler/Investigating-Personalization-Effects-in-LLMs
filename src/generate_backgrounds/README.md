@@ -16,43 +16,58 @@ Dimension value  ──► indicator combos  ──► LLM call  ──► Backg
 
 ---
 
+## Current quick run
+
+Only for Gender and Race dimensions including partial personas.
+
+```
+uv run python -m generate_backgrounds \
+  --config config/inference.yaml \
+  --model-alias gemma-4-31b \
+  --dimensions Gender Race \
+  --include-partial \
+  --assemble
+```
+
 ## Directory structure
 
 ```
+
 src/generate_backgrounds/
 │
-│  # Source modules
-├── __init__.py                      Public API exports
-├── __main__.py                      Entry point for `python -m generate_backgrounds`
-├── cli.py                           argparse CLI — argument parsing + summary printing
-├── pipeline.py                      Three-phase async pipeline + all data classes
-├── combination.py                   CSV loading + indicator combination generation
-├── rendering.py                     Template loading + placeholder rendering
+│ # Source modules
+├── **init**.py Public API exports
+├── **main**.py Entry point for `python -m generate_backgrounds`
+├── cli.py argparse CLI — argument parsing + summary printing
+├── pipeline.py Three-phase async pipeline + all data classes
+├── combination.py CSV loading + indicator combination generation
+├── rendering.py Template loading + placeholder rendering
 │
-│  # Static data
-├── dimension_templates.json         One prompt template per dimension
+│ # Static data
+├── dimension_templates.json One prompt template per dimension
 │
-│  # Dimension value mappings (production data — add CSVs here)
+│ # Dimension value mappings (production data — add CSVs here)
 ├── dimension_value_mapping/
-│   └── social_status.csv
+│ └── social_status.csv
 │
-│  # Dummy data for testing (delete when real data is ready)
+│ # Dummy data for testing (delete when real data is ready)
 ├── dimension_value_mapping_test/
-│   ├── race.csv
-│   ├── age.csv
-│   ├── gender.csv
-│   └── social_status.csv
+│ ├── race.csv
+│ ├── age.csv
+│ ├── gender.csv
+│ └── social_status.csv
 │
-│  # Generated output (created at runtime — safe to delete and regenerate)
+│ # Generated output (created at runtime — safe to delete and regenerate)
 └── data/
-    ├── backgrounds/
-    │   ├── Social_Status/
-    │   │   └── <timestamp>.jsonl    One BackgroundRecord per indicator combo
-    │   ├── Age/...
-    │   ├── Race/...
-    │   └── Gender/...
-    └── personas/
-        └── <timestamp>.jsonl        One ConversationHistory per persona × indicator cross
+├── backgrounds/
+│ ├── Social_Status/
+│ │ └── <timestamp>.jsonl One BackgroundRecord per indicator combo
+│ ├── Age/...
+│ ├── Race/...
+│ └── Gender/...
+└── personas/
+└── <timestamp>.jsonl One ConversationHistory per persona × indicator cross
+
 ```
 
 ---
@@ -66,17 +81,21 @@ Reads a dimension CSV and generates every possible `IndicatorCombo`.
 **CSV format** (`Dimension_value`, `Indicator_name`, `Indicator_value`):
 
 ```
+
 Dimension_value,Indicator_name,Indicator_value
 Elite,Household income,89082
 Elite,Household savings,142458
 Elite,Occupation,Chief executive officer
 Elite,Occupation,Barrister
+
 ```
 
 **Logic**: indicators that appear once per dimension value are _scalars_ (fixed); indicators that appear multiple times are _lists_ (varying). The Cartesian product of all list indicators is taken while scalars are held constant:
 
 ```
+
 Elite × {CEO, Barrister} → 2 combos, each with income=89082, savings=142458
+
 ```
 
 Each combo gets a deterministic `combination_id` (SHA-256 of its content) used for deduplication.
