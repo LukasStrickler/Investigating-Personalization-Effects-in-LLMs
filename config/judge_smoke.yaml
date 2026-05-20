@@ -1,0 +1,47 @@
+# Local-only config for the judge smoke test. Uses currently-live free models on OpenRouter.
+providers:
+  openrouter:
+    name: openrouter
+    api_key_env: OPENROUTER_API_KEY
+    rate_limit:
+      requests_per_minute: 10
+      tokens_per_minute: 60000
+    retry:
+      max_retries: 3
+      base_delay: 3.0
+      max_delay: 60.0
+    base_url: https://openrouter.ai/api/v1
+    default_model: google/gemma-4-31b-it:free
+    max_concurrency: 2
+    per_model_concurrency: 1
+
+model_aliases:
+  gemma-4-31b-free:
+    alias: gemma-4-31b-free
+    provider: openrouter
+    model: google/gemma-4-31b-it:free
+  gpt-oss-20b-free:
+    alias: gpt-oss-20b-free
+    provider: openrouter
+    model: openai/gpt-oss-20b:free
+  llama-3.3-70b-free:
+    alias: llama-3.3-70b-free
+    provider: openrouter
+    model: meta-llama/llama-3.3-70b-instruct:free
+  qwen3-4b-free:
+    alias: qwen3-4b-free
+    provider: openrouter
+    model: qwen/qwen3-4b:free
+  mistral-small-24b-free:
+    alias: mistral-small-24b-free
+    provider: openrouter
+    model: mistralai/mistral-small-3.1-24b-instruct:free
+
+default_retry:
+  max_retries: 3
+  base_delay: 2.0
+  max_delay: 60.0
+
+log_path: logs/inference.jsonl
+checkpoint_path: checkpoints/
+default_provider: openrouter

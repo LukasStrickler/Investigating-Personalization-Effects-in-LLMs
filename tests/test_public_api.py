@@ -55,13 +55,26 @@ class TestPublicApiSurface:
 
         # Expected public exports (alphabetical)
         expected_exports = {
+            "ExperimentDataFrameAdapter",
+            "GenericRecordsAdapter",
             "InferenceConfig",
             "InferenceRequest",
             "InferenceResult",
+            "JudgeConfig",
+            "JudgeExecutionConfig",
+            "JudgeLogger",
+            "JudgeResult",
+            "JudgeRunner",
+            "JudgeStatus",
+            "JudgeSubject",
+            "JudgeVerdict",
             "__version__",
             "create_client",
+            "judge_config_hash",
             "run_batch",
             "run_completion",
+            "run_judges",
+            "subjects_from_dataframe",
         }
 
         actual_exports = set(inference.__all__)

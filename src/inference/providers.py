@@ -47,6 +47,10 @@ def _configure_litellm() -> None:
         return
     litellm = importlib.import_module("litellm")
     setattr(litellm, "suppress_debug_info", True)  # noqa: B010
+    # Drop kwargs that the target provider does not support (e.g. forwarding
+    # `thinking` to a non-reasoning model). Without this, LiteLLM raises
+    # UnsupportedParamsError instead of just calling the model without the kwarg.
+    setattr(litellm, "drop_params", True)  # noqa: B010
     set_verbose = getattr(litellm, "set_verbose", None)
     if callable(set_verbose):
         set_verbose(False)
@@ -89,6 +93,7 @@ class ProviderRequest:
     base_url: str | None = None
     max_tokens: int | None = None
     temperature: float | None = None
+    thinking_budget_tokens: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -134,6 +139,13 @@ class LiteLLMProviderAdapter:
             kwargs["tools"] = request.tools
         if request.tool_choice is not None:
             kwargs["tool_choice"] = request.tool_choice
+        if request.thinking_budget_tokens is not None and request.thinking_budget_tokens > 0:
+            # Anthropic-native shape; LiteLLM forwards this through to compatible
+            # reasoning providers. Non-reasoning providers ignore it.
+            kwargs["thinking"] = {
+                "type": "enabled",
+                "budget_tokens": int(request.thinking_budget_tokens),
+            }
         with _suppress_litellm_provider_list_print():
             response = await completion_fn(**kwargs)
         return _to_provider_response(response, metadata=fold_metadata)

@@ -102,6 +102,7 @@ config/inference.yaml
 # Miscellaneous
 .ada/
 .sisyphus/
+.omo/
 .vscode/
 .idea/
 .pytest_cache/
