@@ -10,6 +10,7 @@ from typing import Any
 
 import pytest
 
+from inference.judges.runner import _judgment_id
 from inference.judges import (
     JUDGE_PROMPT_VERSION,
     NONE_SENTINEL,
@@ -47,6 +48,14 @@ def _cfg(**kw: Any) -> JudgeConfig:
     return JudgeConfig(**base)
 
 
+class TestJudgmentId:
+    def test_includes_subject_model_alias(self) -> None:
+        h = "abc"
+        a = _judgment_id("p1", "alice", "judge", h)
+        b = _judgment_id("p1", "bob", "judge", h)
+        assert a != b
+
+
 class TestConfig:
     def test_rejects_empty_experiment_name(self) -> None:
         with pytest.raises(ValueError):
@@ -63,6 +72,10 @@ class TestConfig:
     def test_rejects_reserved_sentinel_as_class(self) -> None:
         with pytest.raises(ValueError):
             _cfg(classes=[NONE_SENTINEL])
+
+    def test_rejects_non_positive_max_tokens(self) -> None:
+        with pytest.raises(ValueError):
+            _cfg(max_tokens=0)
 
     def test_rejects_non_positive_thinking_budget(self) -> None:
         with pytest.raises(ValueError):
@@ -180,6 +193,11 @@ class TestParsing:
         p = parse_final_answer("<final_answer>   A   </final_answer>", ["A"])
         assert p.final_class == "A"
 
+    def test_trailing_text_after_sentinel_is_unmatched(self) -> None:
+        p = parse_final_answer("<final_answer>A</final_answer>\nextra", ["A"])
+        assert p.parse_status is ParseStatus.UNMATCHED
+        assert p.final_class is None
+
 
 # ----- persistence -----
 
@@ -274,10 +292,26 @@ class TestAdapters:
         assert ids1 == ids2
         assert len(set(ids1)) == 2
 
+    def test_generic_adapter_skips_empty_messages(self) -> None:
+        recs = [{"id": "a", "messages": []}, {"id": "b", "messages": [{"role": "user", "content": "hi"}]}]
+        subs = list(
+            GenericRecordsAdapter(recs, id_field="id", messages_field="messages").iter_subjects()
+        )
+        assert len(subs) == 1
+        assert subs[0].subject_id == "b"
+
     def test_generic_adapter_explicit_id(self) -> None:
         recs = [{"id": "x", "content": "a"}, {"id": "y", "content": "b"}]
         ids = [s.subject_id for s in GenericRecordsAdapter(recs, id_field="id").iter_subjects()]
         assert ids == ["x", "y"]
+
+    def test_experiment_adapter_skips_nan_prompt_id(self) -> None:
+        import pandas as pd
+
+        ok = json.dumps({"status": "success", "response": "hello"})
+        df = pd.DataFrame([{"prompt_id": float("nan"), "prompt": "{}", "alice": ok}])
+        subs = list(ExperimentDataFrameAdapter(df).iter_subjects())
+        assert subs == []
 
     def test_experiment_adapter_emits_successes_only(self) -> None:
         import pandas as pd

@@ -30,12 +30,15 @@ if TYPE_CHECKING:
         GenericRecordsAdapter,
         JudgeConfig,
         JudgeExecutionConfig,
+        JudgeLogger,
         JudgeResult,
         JudgeRunner,
         JudgeStatus,
         JudgeSubject,
         JudgeVerdict,
+        judge_config_hash,
         run_judges,
+        subjects_from_dataframe,
     )
     from inference.types import InferenceConfig
 

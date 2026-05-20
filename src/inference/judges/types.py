@@ -56,6 +56,8 @@ class JudgeConfig:
             raise ValueError("judges cannot contain empty aliases")
         if not self.judge_prompt.strip():
             raise ValueError("judge_prompt must be non-empty")
+        if self.max_tokens is not None and self.max_tokens <= 0:
+            raise ValueError("max_tokens must be a positive integer when set")
         if self.thinking_budget_tokens is not None and self.thinking_budget_tokens <= 0:
             raise ValueError("thinking_budget_tokens must be a positive integer when set")
         if self.classes is not None:
@@ -99,10 +101,15 @@ class JudgeSubject:
     def __post_init__(self) -> None:
         if not self.subject_id.strip():
             raise ValueError("subject_id must be non-empty")
-        if self.subject_content is None and not self.messages:
+        if self.messages:
+            if not isinstance(self.messages, list) or len(self.messages) == 0:
+                raise ValueError("messages must be a non-empty list when set")
+        elif self.subject_content is None:
             raise ValueError(
                 "JudgeSubject needs either subject_content or messages (non-empty)"
             )
+        elif not self.subject_content.strip():
+            raise ValueError("subject_content must be non-empty when set")
 
 
 @dataclass(frozen=True, slots=True)

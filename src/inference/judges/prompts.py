@@ -20,10 +20,13 @@ from inference.judges.types import (
 )
 
 
+def _escape_closing_tag(text: str, tag: str) -> str:
+    # Light escaping of closing tags so subject text cannot break block boundaries.
+    return text.replace(f"</{tag}>", f"</ {tag}>")
+
+
 def _escape(text: str) -> str:
-    # Light, reversible escaping of the closing tag only; transcripts may contain XML-ish
-    # content from the subject which we shouldn't let collapse the surrounding tag.
-    return text.replace("</turn>", "</ turn>")
+    return _escape_closing_tag(text, "turn")
 
 
 def render_transcript(messages: list[dict[str, Any]]) -> str:
@@ -78,7 +81,7 @@ def build_judge_messages(config: JudgeConfig, subject: JudgeSubject) -> list[dic
     elif subject.subject_content is not None:
         user_parts.append("You are evaluating the following content:")
         user_parts.append("<content>")
-        user_parts.append(subject.subject_content)
+        user_parts.append(_escape_closing_tag(subject.subject_content, "content"))
         user_parts.append("</content>")
     else:
         # JudgeSubject validation prevents this, but guard anyway.
@@ -88,7 +91,9 @@ def build_judge_messages(config: JudgeConfig, subject: JudgeSubject) -> list[dic
         user_parts.append("")
         user_parts.append("<metadata>")
         for k, v in subject.metadata.items():
-            user_parts.append(f"{k}: {v}")
+            key = _escape_closing_tag(str(k), "metadata")
+            val = _escape_closing_tag(str(v), "metadata")
+            user_parts.append(f"{key}: {val}")
         user_parts.append("</metadata>")
 
     if config.classes:

@@ -4,9 +4,9 @@ Write strategy: keep the full in-memory row table; after each completed verdict,
 the entire table to a tempfile and ``os.replace()`` it over the destination. This is
 durable on POSIX and matches the "abort and resume without data loss" requirement.
 
-For multi-worker safety inside one process, all writes go through an ``asyncio.Lock``
-that the runner injects into the writer. We do not provide inter-process locking; if
-two processes target the same CSV, last write wins.
+For multi-worker safety inside one process, the runner serializes ``upsert()`` calls
+with a local ``asyncio.Lock``. We do not provide inter-process locking; if two
+processes target the same CSV, last write wins.
 """
 
 from __future__ import annotations

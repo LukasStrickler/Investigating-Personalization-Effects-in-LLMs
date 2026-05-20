@@ -39,9 +39,15 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def _judgment_id(subject_id: str, judge_alias: str, config_hash: str) -> str:
+def _judgment_id(
+    subject_id: str,
+    subject_model_alias: str | None,
+    judge_alias: str,
+    config_hash: str,
+) -> str:
+    model_part = subject_model_alias or ""
     return hashlib.sha256(
-        f"{subject_id}|{judge_alias}|{config_hash}".encode()
+        f"{subject_id}|{model_part}|{judge_alias}|{config_hash}".encode()
     ).hexdigest()[:24]
 
 
@@ -75,6 +81,16 @@ class JudgeRunner:
         writer.initialize()
         write_lock = asyncio.Lock()
 
+        summary_by_judge: dict[str, dict[str, int]] = {
+            a: {
+                "completed": 0,
+                "classification_failed": 0,
+                "call_failed": 0,
+                "skipped_resume": 0,
+            }
+            for a in config.judges
+        }
+
         # Build per-judge work lists, skipping rows already SUCCESS in the CSV.
         per_judge_pending: dict[str, list[JudgeSubject]] = {a: [] for a in config.judges}
         skipped = 0
@@ -87,18 +103,9 @@ class JudgeRunner:
                     judge_config_hash=cfg_hash,
                 ):
                     skipped += 1
+                    summary_by_judge[judge_alias]["skipped_resume"] += 1
                     continue
                 per_judge_pending[judge_alias].append(s)
-
-        summary_by_judge: dict[str, dict[str, int]] = {
-            a: {
-                "completed": 0,
-                "classification_failed": 0,
-                "call_failed": 0,
-                "skipped_resume": 0,
-            }
-            for a in config.judges
-        }
 
         run_log.run_start(
             experiment_name=config.experiment_name,
@@ -172,10 +179,28 @@ class JudgeRunner:
                             judge_alias,
                             item.subject_id,
                         )
+                        crash_verdict = self._failed_verdict(
+                            jid=_judgment_id(
+                                item.subject_id,
+                                item.subject_model_alias,
+                                judge_alias,
+                                cfg_hash,
+                            ),
+                            subject=item,
+                            judge_alias=judge_alias,
+                            config_hash=cfg_hash,
+                            error=f"worker exception: {type(exc).__name__}: {exc}",
+                            started_at=_now_iso(),
+                            latency_ms=0.0,
+                            exc=exc,
+                        )
+                        async with write_lock:
+                            writer.upsert(crash_verdict)
+                        summary_by_judge[judge_alias]["call_failed"] += 1
                         run_log.row_call_failed(
                             judge_alias=judge_alias,
                             subject_id=item.subject_id,
-                            error=f"worker exception: {type(exc).__name__}: {exc}",
+                            error=crash_verdict.error_message or "<unknown>",
                             latency_ms=0.0,
                         )
                     finally:
@@ -223,7 +248,9 @@ class JudgeRunner:
     ) -> JudgeVerdict:
         started_at = _now_iso()
         started_perf = asyncio.get_event_loop().time()
-        jid = _judgment_id(subject.subject_id, judge_alias, config_hash)
+        jid = _judgment_id(
+            subject.subject_id, subject.subject_model_alias, judge_alias, config_hash
+        )
 
         messages = build_judge_messages(config, subject)
         judge_req = InferenceRequest(

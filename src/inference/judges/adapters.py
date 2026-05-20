@@ -25,6 +25,22 @@ class SubjectAdapter(Protocol):
     def summary(self) -> dict[str, Any]: ...
 
 
+def _is_missing_scalar(value: Any) -> bool:
+    """True for pandas NA/NaN and other missing scalars."""
+    if value is None:
+        return True
+    try:
+        import pandas as pd
+
+        if pd.isna(value):
+            return True
+    except ImportError:
+        pass
+    if isinstance(value, float) and value != value:  # NaN
+        return True
+    return False
+
+
 def _stable_hash(payload: Any) -> str:
     blob = json.dumps(payload, sort_keys=True, ensure_ascii=False, default=str)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
@@ -63,7 +79,11 @@ class GenericRecordsAdapter:
         for i, rec in enumerate(self._records):
             messages = rec.get(self._messages_field) if self._messages_field else None
             content = rec.get(self._content_field) if self._content_field else None
-            if messages is None and (content is None or content == ""):
+            if self._messages_field:
+                if not isinstance(messages, list) or len(messages) == 0:
+                    self._counts["skipped_empty"] += 1
+                    continue
+            elif content is None or content == "":
                 self._counts["skipped_empty"] += 1
                 continue
             sid = (
@@ -103,7 +123,7 @@ class ExperimentDataFrameAdapter:
       - subject_model_alias = column header (model alias)
       - subject_content = the cell's "response" field
       - prompt_id       = same as subject_id (lineage)
-      - metadata        = {"prompt": <prompt spec, if column present>}
+      - metadata        = {"prompt_spec": <prompt spec, if column present>}
     """
 
     def __init__(
@@ -144,8 +164,11 @@ class ExperimentDataFrameAdapter:
         cols = self._model_columns()
         for _, row in self._df.iterrows():
             self._counts["rows"] += 1
-            prompt_id = str(row.get("prompt_id") or "")
-            if not prompt_id:
+            raw_pid = row.get("prompt_id")
+            if raw_pid is None or _is_missing_scalar(raw_pid):
+                continue
+            prompt_id = str(raw_pid).strip()
+            if not prompt_id or prompt_id.casefold() == "nan":
                 continue
             prompt_spec = row.get("prompt") if "prompt" in self._df.columns else None
             for alias in cols:

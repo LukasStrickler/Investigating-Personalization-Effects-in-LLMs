@@ -62,7 +62,17 @@ def parse_final_answer(raw: str, classes: list[str] | None) -> ParseOutcome:
             parse_status=ParseStatus.MISSING_SENTINEL,
         )
 
-    inner = matches[-1].group(1).strip()
+    last = matches[-1]
+    if raw[last.end() :]:
+        return ParseOutcome(
+            final_class=None,
+            none_declared=False,
+            sentinel_found=True,
+            sentinel_raw=None,
+            parse_status=ParseStatus.UNMATCHED,
+        )
+
+    inner = last.group(1).strip()
     if inner == NONE_SENTINEL:
         return ParseOutcome(
             final_class=None,

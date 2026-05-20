@@ -8,20 +8,19 @@ Verbosity levels (most → least output):
     "silent"  – nothing.
 
 Writes to stderr by default (so notebooks don't pollute cell stdout output) but the
-sink is injectable for testing. Thread-safe via an internal asyncio.Lock so workers
-can log concurrently without interleaving lines.
+sink is injectable for testing. Concurrent workers may interleave lines on stderr;
+use verbosity=\"silent\" or a dedicated sink if that matters.
 """
 
 from __future__ import annotations
 
-import asyncio
 import sys
 import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Literal, TextIO
+from typing import TextIO
 
-LogVerbosity = Literal["silent", "normal", "verbose", "debug"]
+from inference.judges.types import LogVerbosity
 
 _LEVEL_ORDER: dict[str, int] = {"silent": 0, "normal": 1, "verbose": 2, "debug": 3}
 
@@ -57,7 +56,6 @@ class JudgeLogger:
             )
         self._level = _LEVEL_ORDER[self.verbosity]
         self._stream = self.sink if self.sink is not None else sys.stderr
-        self._lock = asyncio.Lock()
         self._counters: dict[str, _JudgeCounters] = {}
         self._t0: float = self.clock()
 
@@ -204,10 +202,6 @@ class JudgeLogger:
         return f"[{done:>3}/{total:<3}]"
 
     def _emit(self, line: str) -> None:
-        # Best-effort flush. We don't take the asyncio lock here because each call is
-        # a single write(); interleaving at sub-line granularity is unlikely with
-        # CPython buffered streams and the cost of awaiting a lock from sync code is
-        # not worth it. Workers should call public methods, not _emit directly.
         try:
             self._stream.write(line + "\n")
             self._stream.flush()
