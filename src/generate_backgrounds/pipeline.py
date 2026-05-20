@@ -111,6 +111,38 @@ def _history_id(combination_ids: dict[str, str]) -> str:
     return hashlib.sha256(payload.encode()).hexdigest()
 
 
+def _load_name_gender_map(mapping_dir: Path) -> dict[str, str]:
+    """Load gender_name.csv → {name: gender} for cross-dimension filtering."""
+    import csv as _csv
+
+    csv_path = mapping_dir / "gender_name.csv"
+    if not csv_path.exists():
+        return {}
+    result: dict[str, str] = {}
+    with open(csv_path, encoding="utf-8", newline="") as f:
+        for row in _csv.DictReader(f):
+            result[row["Name"].strip()] = row["Gender"].strip()
+    return result
+
+
+def _filter_by_gender(
+    records: list[BackgroundRecord],
+    gender_value: str | None,
+    name_to_gender: dict[str, str],
+) -> list[BackgroundRecord]:
+    """Keep only records whose Name indicator matches the persona gender.
+
+    Records without a Name indicator pass through unfiltered.
+    """
+    if not gender_value or not name_to_gender:
+        return records
+    return [
+        r for r in records
+        if "Name" not in r.indicators
+        or name_to_gender.get(r.indicators["Name"]) == gender_value
+    ]
+
+
 def _now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
 
@@ -242,10 +274,14 @@ class BackgroundPipeline:
             result[dimension] = sum(1 for c in combos if c.combination_id not in seen_ids)
         return result
 
-    async def run(self, dimensions: list[str] | None = None) -> PipelineResult:
+    async def run(
+        self,
+        dimensions: list[str] | None = None,
+        include_partial: bool = False,
+    ) -> PipelineResult:
         """Run all three phases: generation, persona enumeration, history assembly."""
         gen_result = await self.run_generation(dimensions)
-        assembly = self.assemble_personas()
+        assembly = self.assemble_personas(include_partial=include_partial)
         return PipelineResult(dimension_results=gen_result, assembly=assembly)
 
     async def run_generation(
@@ -390,8 +426,20 @@ class BackgroundPipeline:
         self,
         on_history_done: Callable[[bool], None] | None = None,
         on_total: Callable[[int], None] | None = None,
+        persona_filter: dict[str, str] | None = None,
+        include_partial: bool = False,
     ) -> AssemblyResult:
-        """Phase 2 + 3: enumerate personas and assemble conversation histories."""
+        """Phase 2 + 3: enumerate personas and assemble conversation histories.
+
+        Args:
+            persona_filter: If given, only assemble histories for personas that
+                match **all** specified dimension=value pairs.  Dimensions not
+                mentioned in the filter are unconstrained (any value or None).
+                Example: ``{"Gender": "Male", "Age": "Young"}``
+            include_partial: If False (default), only assemble histories for
+                personas where every dimension has a value (no Nones).
+                If True, also include partial personas.
+        """
         from generate_backgrounds.rendering import discover_dimensions, load_templates
 
         templates = load_templates(self._config.templates_path)
@@ -428,19 +476,41 @@ class BackgroundPipeline:
             [None] + list(dict.fromkeys(r.dimension_value for r in dim_backgrounds[d]))
             for d in dim_order
         ]
-        personas = [
-            p for p in itertools.product(*dim_value_sets_with_none)
-            if any(v is not None for v in p)
-        ]
+        if include_partial:
+            personas = [
+                p for p in itertools.product(*dim_value_sets_with_none)
+                if any(v is not None for v in p)
+            ]
+        else:
+            personas = [
+                p for p in itertools.product(*dim_value_sets_with_none)
+                if all(v is not None for v in p)
+            ]
+
+        # Apply persona filter if provided
+        if persona_filter:
+            personas = [
+                p for p in personas
+                if all(
+                    dict(zip(dim_order, p)).get(dim) == val
+                    for dim, val in persona_filter.items()
+                )
+            ]
+
         total_personas = len(personas)
+
+        # Load cross-dimension gender→name constraint
+        name_to_gender = _load_name_gender_map(self._config.mapping_dir)
 
         # Pre-count total histories for progress reporting
         _total_expected = 0
         for persona_tuple in personas:
             persona_tmp: dict[str, str | None] = dict(zip(dim_order, persona_tuple))
             included = [d for d in dim_order if persona_tmp[d] is not None]
+            gender_val = persona_tmp.get("Gender")
             counts = [
-                len(grouped[d][persona_tmp[d]])
+                len(_filter_by_gender(grouped[d][persona_tmp[d]], gender_val, name_to_gender)
+                    if d != "Gender" else grouped[d][persona_tmp[d]])
                 for d in included
             ]
             product = 1
@@ -466,8 +536,10 @@ class BackgroundPipeline:
 
             # Only collect records for included (non-None) dimensions
             included_dims = [d for d in dim_order if persona[d] is not None]
+            gender_value = persona.get("Gender")
             per_dim_records: list[list[BackgroundRecord]] = [
-                grouped[d][persona[d]]
+                _filter_by_gender(grouped[d][persona[d]], gender_value, name_to_gender)
+                if d != "Gender" else grouped[d][persona[d]]
                 for d in included_dims
             ]
 

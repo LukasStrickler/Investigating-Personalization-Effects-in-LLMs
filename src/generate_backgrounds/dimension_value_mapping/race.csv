@@ -1,171 +1,78 @@
-Dimension value,Indicator_name,Indicator_value
-Belgium,Name,Marc Goossens
-Belgium,Name,Patrick Claes
-Belgium,Name,Charlotte Mertens
-Belgium,Name,Laura Goossens
-Belgium,Name,Marie Claes
-Belgium,Artist,Stromae
-Belgium,Artist,Angèle
-Belgium,Artist,Clouseau
-Belgium,Artist,Hooverphonic
-Belgium,Artist,Oscar and the Wolf
-Central/Eastern Europe,Name,Anastasia Tkatschenko
-Central/Eastern Europe,Name,Victoria Krawtschenko
-Central/Eastern Europe,Name,Maxym Krawtschenko
-Central/Eastern Europe,Name,Yuri Tkatschenko
-Central/Eastern Europe,Name,Dmytro Kowaltschuk
-Central/Eastern Europe,Artist,Karel Gott
-Central/Eastern Europe,Artist,Ewa Farna
-Central/Eastern Europe,Artist,Omega
-Central/Eastern Europe,Artist,Sanah
-Central/Eastern Europe,Artist,Carla's Dreams
-Czechia,Name,Kateřina Procházková
-Czechia,Name,Jan Dvořák
-Czechia,Name,Lenka Veselá
-Czechia,Name,Pavel Novotný
-Czechia,Name,Josef Černý
-Czechia,Artist,Karel Gott
-Czechia,Artist,Lucie Bílá
-Czechia,Artist,Kabát
-Czechia,Artist,Chinaski
-Czechia,Artist,Viktor Sheen
-France,Name,Françoise Fournier
+﻿Dimension value,Indicator_name,Indicator_value
 France,Name,Etienne Perrin
-France,Name,Sandrine Pochon
+France,Name,Kevin Fournier
+France,Name,Françoise Fournier
 France,Name,Vanessa Dubois
-France,Name,François Kapinga
+Germany,Name,Sebastian Schmidt
+Germany,Name,Patrick Schulz
+Germany,Name,Julia Schmidt
+Germany,Name,Anna Müller
+Spain,Name,Xavier Martí Roca
+Spain,Name,Alvaro Martínez García
+Spain,Name,Marta Nuñez Delgado
+Spain,Name,Andrea Fernández Ortiz
+United Kingdom,Name,Robert Taylor
+United Kingdom,Name,Peter Davies
+United Kingdom,Name,Elizabeth Wright
+United Kingdom,Name,Mary Davies
+Central/Eastern Europe,Name,Pavel Novotný
+Central/Eastern Europe,Name,Kiss Gergő
+Central/Eastern Europe,Name,Eva Svobodová
+Central/Eastern Europe,Name,Mészáros Adrienn
+North America,Name,Michael Johnson
+North America,Name,Kelvin John
+North America,Name,Jennifer Johnson
+North America,Name,Edith John
+North Africa,Name,Muhammad Ahmed
+North Africa,Name,Yasir Ahmad
+North Africa,Name,Amina Ahmed
+North Africa,Name,Yasmina Mustafa
+Middle East / Western Asia,Name,Yusuf Yilmaz
+Middle East / Western Asia,Name,Bilal Öztürk
+Middle East / Western Asia,Name,Yasemin Öztürk
+Middle East / Western Asia,Name,Hatice Öztürk
+Sub-Saharan Africa,Name,Michael Mbombo
+Sub-Saharan Africa,Name,Nkulu Monga
+Sub-Saharan Africa,Name,Josephine Mbombo
+Sub-Saharan Africa,Name,Anne Mwamba
+Latin America,Name,Christian Vargas Amador
+Latin America,Name,Jhonattan Flores Vargas
+Latin America,Name,Selena Cortés Heredia
+Latin America,Name,Judit Ortega Ruiz
+South/Central Asia,Name,Ahmad Iqbal
+South/Central Asia,Name,Zahid Rashid
+South/Central Asia,Name,Ayesha Khan
+South/Central Asia,Name,Sakina Bakhash
 France,Artist,Johnny Hallyday
 France,Artist,Jean-Jacques Goldman
 France,Artist,Mylène Farmer
-France,Artist,Indochine
-France,Artist,Aya Nakamura
-Germany,Name,Philipp Müller
-Germany,Name,Julia Schmidt
-Germany,Name,Sebastian Schmidt
-Germany,Name,Patrick Schulz
-Germany,Name,Paul Schneider
 Germany,Artist,Herbert Grönemeyer
-Germany,Artist,Helene Fischer
-Germany,Artist,Peter Maffay
 Germany,Artist,Rammstein
-Germany,Artist,Die Toten Hosen
-Hungary,Name,Kiss Gergő
-Hungary,Name,Papp Zsófia
-Hungary,Name,Török Imre
-Hungary,Name,Mészáros Adrienn
-Hungary,Name,Szilágyi Ádám
-Hungary,Artist,Omega
-Hungary,Artist,Ákos
-Hungary,Artist,Halott Pénz
-Hungary,Artist,Rózsa Magdi
-Hungary,Artist,ByeAlex és a Slepp
-Ireland,Name,Eoin Murphy
-Ireland,Name,Patrick O'Connor
-Ireland,Name,Sinead O'Sullivan
-Ireland,Name,Brendan O'Brien
-Ireland,Name,Aoife Byrne
-Ireland,Artist,U2
-Ireland,Artist,Westlife
-Ireland,Artist,Boyzone
-Ireland,Artist,The Cranberries
-Ireland,Artist,Hozier
-North Africa,Name,Amina Ahmed
-North Africa,Name,Rachida El Moussaoui
-North Africa,Name,Yasmina Mustafa
-North Africa,Name,Muhammad Ahmed
-North Africa,Name,Mohammad Butt
-North Africa,Artist,Amr Diab
-North Africa,Artist,ElGrandeToto
-North Africa,Artist,Cheb Khaled
-North Africa,Artist,Sherine Abdel-Wahab
-North Africa,Artist,Saad Lamjarred
-South America,Name,Christian Vargas Amador
-South America,Name,Jairo Reyes Montoya
-South America,Name,Jhonattan Flores Vargas
-South America,Name,Selena Cortés Heredia
-South America,Name,Ricardo Amador Motos
-South America,Artist,Shakira
-South America,Artist,Karol G
-South America,Artist,Bizarrap
-South America,Artist,Anitta
-South America,Artist,Feid
-South Asia,Name,Sakina Bakhash
-South Asia,Name,Manahil Bhutt
-South Asia,Name,Sakina Rashid
-South Asia,Name,Ipek Sahin
-South Asia,Name,Ayesha Khan
-South Asia,Artist,Arijit Singh
-South Asia,Artist,Diljit Dosanjh
-South Asia,Artist,Sid Sriram
-South Asia,Artist,AP Dhillon
-South Asia,Artist,Atif Aslam
-Spain,Name,Xavier Martí Roca
-Spain,Name,Alvaro Martínez García
-Spain,Name,Marta Núñez Delgado
-Spain,Name,Andrea Fernández Ortiz
-Spain,Name,Jordi Puig Solé
-Spain,Artist,Rosalía
+Germany,Artist,Helene Fischer
 Spain,Artist,Alejandro Sanz
-Spain,Artist,Aitana
-Spain,Artist,Quevedo
 Spain,Artist,Julio Iglesias
-Sub-Saharan Africa,Name,Michael Mbombo
-Sub-Saharan Africa,Name,Andre Mbongo
-Sub-Saharan Africa,Name,Nkulu Monga
-Sub-Saharan Africa,Name,Tambwe Umba
-Sub-Saharan Africa,Name,Nogaye Kebe
+Spain,Artist,Mecano
+United Kingdom,Artist,The Beatles
+United Kingdom,Artist,Queen
+United Kingdom,Artist,Elton John
+Central/Eastern Europe,Artist,Karel Gott
+Central/Eastern Europe,Artist,Lucie
+Central/Eastern Europe,Artist,Viktor Sheen
+North America,Artist,Taylor Swift
+North America,Artist,Drake
+North America,Artist,The Weeknd
+North Africa,Artist,Amr Diab
+North Africa,Artist,Cheb Khaled
+North Africa,Artist,Soolking
+Middle East / Western Asia,Artist,Tarkan
+Middle East / Western Asia,Artist,Sezen Aksu
+Middle East / Western Asia,Artist,İbrahim Tatlıses
 Sub-Saharan Africa,Artist,Burna Boy
 Sub-Saharan Africa,Artist,Wizkid
 Sub-Saharan Africa,Artist,Davido
-Sub-Saharan Africa,Artist,Tyla
-Sub-Saharan Africa,Artist,Diamond Platnumz
-Switzerland,Name,Luca Lüthi
-Switzerland,Name,Sarah Lüthi
-Switzerland,Name,Monika Zimmerli
-Switzerland,Name,Nicole Suter
-Switzerland,Name,Marco Gerber
-Switzerland,Artist,DJ BoBo
-Switzerland,Artist,Stephan Eicher
-Switzerland,Artist,Patent Ochsner
-Switzerland,Artist,Stress
-Switzerland,Artist,Gölä
-The Netherlands,Name,Tim van Dijk
-The Netherlands,Name,Iris De Boer
-The Netherlands,Name,Jeroen De Vries
-The Netherlands,Name,Maaike De Vries
-The Netherlands,Name,Jip de Jong
-The Netherlands,Artist,Marco Borsato
-The Netherlands,Artist,Anouk
-The Netherlands,Artist,BLØF
-The Netherlands,Artist,Guus Meeuwis
-The Netherlands,Artist,André Hazes
-Turkey,Name,Mehmet Özdemir
-Turkey,Name,Hatice Öztürk
-Turkey,Name,Bilal Öztürk
-Turkey,Name,Layla Yilmaz
-Turkey,Name,Özlem Yilmaz
-Turkey,Artist,Tarkan
-Turkey,Artist,Sezen Aksu
-Turkey,Artist,Ajda Pekkan
-Turkey,Artist,Sertab Erener
-Turkey,Artist,Barış Manço
-United Kingdom,Name,Susan Brown
-United Kingdom,Name,Elizabeth Wright
-United Kingdom,Name,Patricia Wilson
-United Kingdom,Name,Robert Taylor
-United Kingdom,Name,Peter Davies
-United Kingdom,Artist,The Beatles
-United Kingdom,Artist,Cliff Richard
-United Kingdom,Artist,Elton John
-United Kingdom,Artist,Queen
-United Kingdom,Artist,David Bowie
-United States of America,Name,Michael Johnson
-United States of America,Name,Jennifer Johnson
-United States of America,Name,Kelvin John
-United States of America,Name,Lucky Joseph
-United States of America,Name,Edith John
-United States of America,Artist,Madonna
-United States of America,Artist,Elvis Presley
-United States of America,Artist,Mariah Carey
-United States of America,Artist,Michael Jackson
-United States of America,Artist,Taylor Swift
+Latin America,Artist,Shakira
+Latin America,Artist,J Balvin
+Latin America,Artist,Karol G
+South/Central Asia,Artist,Arijit Singh
+South/Central Asia,Artist,A.R. Rahman
+South/Central Asia,Artist,Lata Mangeshkar

@@ -62,6 +62,18 @@ async def _async_main(args: argparse.Namespace) -> int:
     dimensions = args.dimensions if args.dimensions else None
     assemble = args.assemble
 
+    # Parse --persona flags into a filter dict
+    persona_filter: dict[str, str] | None = None
+    if args.persona:
+        persona_filter = {}
+        for spec in args.persona:
+            if "=" not in spec:
+                print(f"Error: --persona value must be DIM=VALUE, got {spec!r}", file=sys.stderr)
+                return 1
+            dim, val = spec.split("=", 1)
+            persona_filter[dim] = val
+        assemble = True  # --persona implies --assemble
+
     # --- Pre-count pending combos for accurate progress bar total ---
     _configure_litellm()
     # Construct with a placeholder sleep; real sleep injected after bar creation
@@ -162,6 +174,8 @@ async def _async_main(args: argparse.Namespace) -> int:
             assembly = pipeline.assemble_personas(
                 on_history_done=_on_history,
                 on_total=_on_total,
+                persona_filter=persona_filter,
+                include_partial=args.include_partial,
             )
         except Exception:
             if error is None:
@@ -269,6 +283,24 @@ def main() -> None:
         action="store_true",
         default=False,
         help="Run persona assembly (Phases 2+3) after background generation.",
+    )
+    parser.add_argument(
+        "--include-partial",
+        dest="include_partial",
+        action="store_true",
+        default=False,
+        help="Include partial personas (some dimensions set to None). Default: full personas only.",
+    )
+    parser.add_argument(
+        "--persona",
+        dest="persona",
+        action="append",
+        metavar="DIM=VALUE",
+        default=None,
+        help=(
+            "Filter assembly to a specific persona. Repeat for multiple dimensions. "
+            "E.g. --persona Gender=Male --persona Age=Young. Implies --assemble."
+        ),
     )
     parser.add_argument(
         "--system-prompt",
