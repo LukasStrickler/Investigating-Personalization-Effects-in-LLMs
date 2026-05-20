@@ -64,6 +64,11 @@ class InferenceRequest:
     tool_choice: str | dict | None = None
     max_tokens: int | None = None
     temperature: float | None = None
+    # When set (>0), request hidden reasoning/thinking from compatible providers
+    # (Anthropic extended thinking, Gemini thinking). Forwarded by the LiteLLM adapter
+    # as ``thinking={"type": "enabled", "budget_tokens": N}``. Ignored by providers
+    # that do not support it.
+    thinking_budget_tokens: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -154,6 +159,7 @@ class UnifiedInferenceClient:
                     base_url=provider_cfg.base_url,
                     max_tokens=request.max_tokens,
                     temperature=request.temperature,
+                    thinking_budget_tokens=request.thinking_budget_tokens,
                 )
                 provider_response = await self._adapter.complete(provider_request)
             except Exception as error:
