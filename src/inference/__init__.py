@@ -25,6 +25,18 @@ __version__ = "0.1.0"
 # Type-only imports for type checkers (not executed at runtime)
 if TYPE_CHECKING:
     from inference.client import InferenceRequest, InferenceResult, UnifiedInferenceClient
+    from inference.judges import (
+        ExperimentDataFrameAdapter,
+        GenericRecordsAdapter,
+        JudgeConfig,
+        JudgeExecutionConfig,
+        JudgeResult,
+        JudgeRunner,
+        JudgeStatus,
+        JudgeSubject,
+        JudgeVerdict,
+        run_judges,
+    )
     from inference.types import InferenceConfig
 
 
@@ -57,6 +69,26 @@ def __getattr__(name: str) -> object:
         return _run_completion
     if name == "run_batch":
         return _run_batch
+
+    # Judges public surface
+    if name in {
+        "JudgeConfig",
+        "JudgeExecutionConfig",
+        "JudgeLogger",
+        "JudgeSubject",
+        "JudgeResult",
+        "JudgeStatus",
+        "JudgeVerdict",
+        "JudgeRunner",
+        "run_judges",
+        "ExperimentDataFrameAdapter",
+        "GenericRecordsAdapter",
+        "judge_config_hash",
+        "subjects_from_dataframe",
+    }:
+        import inference.judges as _judges
+
+        return getattr(_judges, name)
 
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
@@ -194,11 +226,24 @@ _run_batch = run_batch
 # Explicit public API surface
 # These are the ONLY names that will be imported with "from inference import *"
 __all__ = [
-    "__version__",
-    "create_client",
-    "run_completion",
-    "run_batch",
+    "ExperimentDataFrameAdapter",
+    "GenericRecordsAdapter",
+    "InferenceConfig",
     "InferenceRequest",
     "InferenceResult",
-    "InferenceConfig",
+    "JudgeConfig",
+    "JudgeExecutionConfig",
+    "JudgeLogger",
+    "JudgeResult",
+    "JudgeRunner",
+    "JudgeStatus",
+    "JudgeSubject",
+    "JudgeVerdict",
+    "__version__",
+    "create_client",
+    "judge_config_hash",
+    "run_batch",
+    "run_completion",
+    "run_judges",
+    "subjects_from_dataframe",
 ]
