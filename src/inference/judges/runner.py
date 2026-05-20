@@ -195,7 +195,14 @@ class JudgeRunner:
                             exc=exc,
                         )
                         async with write_lock:
-                            writer.upsert(crash_verdict)
+                            try:
+                                writer.upsert(crash_verdict)
+                            except Exception:
+                                logger.exception(
+                                    "failed to persist crash verdict: judge=%s subject=%s",
+                                    judge_alias,
+                                    item.subject_id,
+                                )
                         summary_by_judge[judge_alias]["call_failed"] += 1
                         run_log.row_call_failed(
                             judge_alias=judge_alias,

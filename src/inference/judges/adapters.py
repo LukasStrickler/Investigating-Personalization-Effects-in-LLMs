@@ -32,7 +32,11 @@ def _is_missing_scalar(value: Any) -> bool:
     try:
         import pandas as pd
 
-        if pd.isna(value):
+        try:
+            is_missing = pd.isna(value)
+        except Exception:
+            is_missing = False
+        if isinstance(is_missing, bool) and is_missing:
             return True
     except ImportError:
         pass

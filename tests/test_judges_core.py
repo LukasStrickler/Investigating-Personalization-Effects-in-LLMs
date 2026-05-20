@@ -10,6 +10,7 @@ from typing import Any
 
 import pytest
 
+from inference.judges.adapters import _is_missing_scalar
 from inference.judges.runner import _judgment_id
 from inference.judges import (
     JUDGE_PROMPT_VERSION,
@@ -304,6 +305,10 @@ class TestAdapters:
         recs = [{"id": "x", "content": "a"}, {"id": "y", "content": "b"}]
         ids = [s.subject_id for s in GenericRecordsAdapter(recs, id_field="id").iter_subjects()]
         assert ids == ["x", "y"]
+
+    def test_is_missing_scalar_handles_non_scalar(self) -> None:
+        assert not _is_missing_scalar([1, 2])
+        assert not _is_missing_scalar("prompt-1")
 
     def test_experiment_adapter_skips_nan_prompt_id(self) -> None:
         import pandas as pd
