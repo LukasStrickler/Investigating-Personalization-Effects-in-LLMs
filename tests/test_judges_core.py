@@ -4,14 +4,12 @@ from __future__ import annotations
 
 import asyncio
 import json
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import pytest
 
-from inference.judges.adapters import _is_missing_scalar
-from inference.judges.runner import _judgment_id
+from inference.client import InferenceRequest, InferenceResult, UnifiedInferenceClient
 from inference.judges import (
     JUDGE_PROMPT_VERSION,
     NONE_SENTINEL,
@@ -30,13 +28,17 @@ from inference.judges import (
     run_judges,
     subjects_from_dataframe,
 )
+from inference.judges.adapters import _is_missing_scalar
 from inference.judges.csv_schema import COLUMNS
 from inference.judges.persistence import (
     JudgeCSVCorruptError,
     JudgmentCSVWriter,
 )
+from inference.judges.runner import _judgment_id
+from inference.judges.types import JudgeVerdict
 
 # ----- types / config hash -----
+
 
 def _cfg(**kw: Any) -> JudgeConfig:
     base: dict[str, Any] = {
@@ -116,13 +118,16 @@ class TestConfig:
 
 # ----- prompts -----
 
+
 class TestPrompts:
     def test_transcript_skips_system_and_labels_turns(self) -> None:
-        out = render_transcript([
-            {"role": "system", "content": "secret"},
-            {"role": "user", "content": "hi"},
-            {"role": "assistant", "content": "hello"},
-        ])
+        out = render_transcript(
+            [
+                {"role": "system", "content": "secret"},
+                {"role": "user", "content": "hi"},
+                {"role": "assistant", "content": "hello"},
+            ]
+        )
         assert "secret" not in out
         assert '<turn role="user">hi</turn>' in out
         assert '<turn role="assistant">hello</turn>' in out
@@ -158,6 +163,7 @@ class TestPrompts:
 
 # ----- parsing -----
 
+
 class TestParsing:
     def test_free_form_when_no_classes(self) -> None:
         p = parse_final_answer("anything", None)
@@ -168,7 +174,9 @@ class TestParsing:
         assert p.parse_status is ParseStatus.MISSING_SENTINEL
 
     def test_matches_last_sentinel(self) -> None:
-        raw = "first try <final_answer>WRONG</final_answer>\nactually <final_answer>A</final_answer>"
+        raw = (
+            "first try <final_answer>WRONG</final_answer>\nactually <final_answer>A</final_answer>"
+        )
         p = parse_final_answer(raw, ["A"])
         assert p.final_class == "A"
         assert p.parse_status is ParseStatus.MATCHED
@@ -201,6 +209,7 @@ class TestParsing:
 
 
 # ----- persistence -----
+
 
 class TestPersistence:
     def test_initialize_creates_file_with_header(self, tmp_path: Path) -> None:
@@ -253,9 +262,7 @@ class TestPersistence:
             JudgmentCSVWriter(p).load()
 
 
-def _vd(status: JudgeStatus, sid: str, judge: str, h: str):
-    from inference.judges.types import JudgeVerdict
-
+def _vd(status: JudgeStatus, sid: str, judge: str, h: str) -> JudgeVerdict:
     return JudgeVerdict(
         judgment_id=f"{sid}-{judge}-{h}",
         subject_id=sid,
@@ -268,7 +275,9 @@ def _vd(status: JudgeStatus, sid: str, judge: str, h: str):
         raw_output="raw",
         final_class="X" if status is JudgeStatus.SUCCESS else None,
         none_declared=False,
-        parse_status=ParseStatus.MATCHED if status is JudgeStatus.SUCCESS else ParseStatus.MISSING_SENTINEL,
+        parse_status=ParseStatus.MATCHED
+        if status is JudgeStatus.SUCCESS
+        else ParseStatus.MISSING_SENTINEL,
         error_message=None if status is JudgeStatus.SUCCESS else "boom",
         prompt_tokens=1,
         completion_tokens=1,
@@ -283,6 +292,7 @@ def _vd(status: JudgeStatus, sid: str, judge: str, h: str):
 
 # ----- adapters -----
 
+
 class TestAdapters:
     def test_generic_adapter_stable_hash_ids(self) -> None:
         recs = [{"content": "a"}, {"content": "b"}]
@@ -294,7 +304,10 @@ class TestAdapters:
         assert len(set(ids1)) == 2
 
     def test_generic_adapter_skips_empty_messages(self) -> None:
-        recs = [{"id": "a", "messages": []}, {"id": "b", "messages": [{"role": "user", "content": "hi"}]}]
+        recs = [
+            {"id": "a", "messages": []},
+            {"id": "b", "messages": [{"role": "user", "content": "hi"}]},
+        ]
         subs = list(
             GenericRecordsAdapter(recs, id_field="id", messages_field="messages").iter_subjects()
         )
@@ -341,15 +354,6 @@ class TestAdapters:
 
 # ----- runner (with a stub client) -----
 
-@dataclass
-class _StubResp:
-    content: str
-    prompt_tokens: int | None = 10
-    completion_tokens: int | None = 5
-    total_tokens: int | None = 15
-    latency_ms: float = 1.0
-    retry_count: int = 0
-
 
 class StubClient:
     def __init__(self, scripts: dict[str, list[Any]]) -> None:
@@ -359,29 +363,52 @@ class StubClient:
         self.calls: list[dict[str, Any]] = []
         self._lock = asyncio.Lock()
 
-    async def complete(self, request):  # noqa: ANN001 - duck-typed
+    async def complete(self, request: InferenceRequest) -> InferenceResult:
         async with self._lock:
             script = self._scripts.get(request.model_alias, [])
             if not script:
                 raise RuntimeError(f"stub exhausted for {request.model_alias}")
             head = script.pop(0)
         await asyncio.sleep(0)
-        self.calls.append({
-            "alias": request.model_alias,
-            "messages": request.messages,
-            "thinking_budget_tokens": getattr(request, "thinking_budget_tokens", None),
-        })
+        self.calls.append(
+            {
+                "alias": request.model_alias,
+                "messages": request.messages,
+                "thinking_budget_tokens": request.thinking_budget_tokens,
+            }
+        )
         if isinstance(head, Exception):
             raise head
         if isinstance(head, tuple):
             delay, content = head
             await asyncio.sleep(delay)
-            return _StubResp(content=content)
-        return _StubResp(content=head)
+        else:
+            content = str(head)
+        return InferenceResult(
+            model_alias=request.model_alias,
+            provider="stub",
+            model="stub",
+            content=content,
+            prompt_tokens=10,
+            completion_tokens=5,
+            total_tokens=15,
+            latency_ms=1.0,
+            retry_count=0,
+        )
 
 
 class TestRunner:
-    async def _run(self, scripts, classes=None, judges=("alice", "bob"), subjects=None, output_dir=None, resume=True, exec_cfg=None, thinking_budget_tokens=None):
+    async def _run(
+        self,
+        scripts,
+        classes=None,
+        judges=("alice", "bob"),
+        subjects=None,
+        output_dir=None,
+        resume=True,
+        exec_cfg=None,
+        thinking_budget_tokens=None,
+    ):
         client = StubClient(scripts)
         subs = subjects or [
             JudgeSubject(subject_id="s1", subject_content="content one"),
@@ -396,7 +423,11 @@ class TestRunner:
             resume=resume,
             thinking_budget_tokens=thinking_budget_tokens,
         )
-        return client, cfg, await run_judges(client, subs, cfg, exec_cfg)
+        return (
+            client,
+            cfg,
+            await run_judges(cast(UnifiedInferenceClient, client), subs, cfg, exec_cfg),
+        )
 
     async def test_strict_match_one_call_per_row(self, tmp_path: Path) -> None:
         scripts = {
@@ -420,11 +451,13 @@ class TestRunner:
             per_alias[c["alias"]] = per_alias.get(c["alias"], 0) + 1
         assert per_alias == {"alice": 2, "bob": 2}
 
-    async def test_missing_sentinel_marks_classification_failed_no_second_call(self, tmp_path: Path) -> None:
+    async def test_missing_sentinel_marks_classification_failed_no_second_call(
+        self, tmp_path: Path
+    ) -> None:
         """No extraction fallback: a missing sentinel becomes CLASSIFICATION_FAILED immediately."""
         scripts = {
             "alice": [
-                "no sentinel here",       # judge call 1 -> missing sentinel, no retry
+                "no sentinel here",  # judge call 1 -> missing sentinel, no retry
                 "<final_answer>B</final_answer>",  # judge call 2 -> ok
             ],
             "bob": [
@@ -440,12 +473,16 @@ class TestRunner:
 
         alice_rows = df[df["judge_alias"] == "alice"]
         statuses = sorted(alice_rows["status"].tolist())
-        assert statuses == sorted([
-            JudgeStatus.CLASSIFICATION_FAILED.value,
-            JudgeStatus.SUCCESS.value,
-        ])
+        assert statuses == sorted(
+            [
+                JudgeStatus.CLASSIFICATION_FAILED.value,
+                JudgeStatus.SUCCESS.value,
+            ]
+        )
         # Parse status for the miss is MISSING_SENTINEL (no tag at all).
-        miss_row = alice_rows[alice_rows["status"] == JudgeStatus.CLASSIFICATION_FAILED.value].iloc[0]
+        miss_row = alice_rows[alice_rows["status"] == JudgeStatus.CLASSIFICATION_FAILED.value].iloc[
+            0
+        ]
         assert miss_row["parse_status"] == ParseStatus.MISSING_SENTINEL.value
 
     async def test_unmatched_inner_text_marks_classification_failed(self, tmp_path: Path) -> None:
@@ -474,7 +511,10 @@ class TestRunner:
             ],
         }
         client, _, res = await self._run(
-            scripts, classes=["A"], judges=("alice",), output_dir=tmp_path,
+            scripts,
+            classes=["A"],
+            judges=("alice",),
+            output_dir=tmp_path,
         )
         df = res.dataframe
         assert df[df["subject_id"] == "s1"]["none_declared"].iloc[0]
@@ -510,7 +550,7 @@ class TestRunner:
             JudgeSubject(subject_id="s1", subject_content="content one"),
             JudgeSubject(subject_id="s2", subject_content="content two"),
         ]
-        res2 = await run_judges(client2, subs, cfg1)
+        res2 = await run_judges(cast(UnifiedInferenceClient, client2), subs, cfg1)
         assert len(client2.calls) == 0
         assert len(res2.dataframe) == 4
 
@@ -528,7 +568,7 @@ class TestRunner:
         )
         execution = JudgeExecutionConfig(call_timeout_s=0.01)
         res = await run_judges(
-            client,
+            cast(UnifiedInferenceClient, client),
             [JudgeSubject(subject_id="s1", subject_content="x")],
             cfg,
             execution,
@@ -553,6 +593,7 @@ class TestRunner:
 
 
 # ----- public API smoke -----
+
 
 def test_public_api_imports() -> None:
     from inference import (
@@ -614,7 +655,12 @@ class TestLogger:
             total_tokens=100,
         )
         log.judge_done("a")
-        log.run_done({"per_judge": {"a": {"completed": 1, "classification_failed": 0, "call_failed": 0}}, "skipped_resume": 0})
+        log.run_done(
+            {
+                "per_judge": {"a": {"completed": 1, "classification_failed": 0, "call_failed": 0}},
+                "skipped_resume": 0,
+            }
+        )
         out = sink.getvalue()
         assert "starting run" in out
         assert "s1" in out
@@ -637,8 +683,12 @@ class TestLogger:
             workers_per_judge={"a": 1},
         )
         log.row_success(
-            judge_alias="a", subject_id="s1", final_class="X", none_declared=False,
-            latency_ms=1.0, total_tokens=10,
+            judge_alias="a",
+            subject_id="s1",
+            final_class="X",
+            none_declared=False,
+            latency_ms=1.0,
+            total_tokens=10,
         )
         log.run_done({"per_judge": {}, "skipped_resume": 0})
         assert sink.getvalue() == ""

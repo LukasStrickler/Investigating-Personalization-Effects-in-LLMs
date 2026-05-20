@@ -13,7 +13,7 @@ import hashlib
 import json
 from collections.abc import Iterable, Iterator
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Any, Protocol, cast
 
 from inference.judges.types import JudgeSubject
 
@@ -40,9 +40,7 @@ def _is_missing_scalar(value: Any) -> bool:
             return True
     except ImportError:
         pass
-    if isinstance(value, float) and value != value:  # NaN
-        return True
-    return False
+    return isinstance(value, float) and value != value  # NaN
 
 
 def _stable_hash(payload: Any) -> str:
@@ -74,10 +72,18 @@ class GenericRecordsAdapter:
         self._counts = {"total": len(self._records), "emitted": 0, "skipped_empty": 0}
 
     @staticmethod
-    def _normalize(records: Any) -> list[dict[str, Any]]:
-        if hasattr(records, "to_dict") and callable(records.to_dict):
-            return list(records.to_dict(orient="records"))
-        return [dict(r) for r in records]
+    def _normalize(records: Iterable[dict[str, Any]] | Any) -> list[dict[str, Any]]:
+        to_dict = getattr(records, "to_dict", None)
+        if callable(to_dict):
+            rows = to_dict(orient="records")
+            if not isinstance(rows, list):
+                raise TypeError(
+                    f"to_dict(orient='records') must return a list, got {type(rows).__name__}"
+                )
+            return cast(list[dict[str, Any]], rows)
+        if isinstance(records, Iterable) and not isinstance(records, (str, bytes)):
+            return [dict(r) for r in cast(Iterable[dict[str, Any]], records)]
+        raise TypeError(f"Unsupported records type: {type(records).__name__}")
 
     def iter_subjects(self) -> Iterator[JudgeSubject]:
         for i, rec in enumerate(self._records):
@@ -139,8 +145,10 @@ class ExperimentDataFrameAdapter:
     ) -> None:
         self._df = self._load_df(source)
         self._only_models = set(only_models) if only_models else None
-        self._source_id = source_id if source_id is not None else (
-            str(source) if isinstance(source, (str, Path)) else None
+        self._source_id = (
+            source_id
+            if source_id is not None
+            else (str(source) if isinstance(source, (str, Path)) else None)
         )
         self._counts: dict[str, int] = {
             "rows": 0,
@@ -257,9 +265,7 @@ def coerce_to_adapter(input_obj: Any) -> SubjectAdapter:
     guess. Use ``subjects_from_dataframe(df, content_field=..., id_field=...)`` or
     construct a ``GenericRecordsAdapter`` explicitly.
     """
-    if isinstance(input_obj, list) and (
-        not input_obj or isinstance(input_obj[0], JudgeSubject)
-    ):
+    if isinstance(input_obj, list) and (not input_obj or isinstance(input_obj[0], JudgeSubject)):
         return _BareSubjectsAdapter(input_obj)
     if hasattr(input_obj, "iter_subjects") and hasattr(input_obj, "summary"):
         return input_obj  # type: ignore[no-any-return]
