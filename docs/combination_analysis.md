@@ -2,13 +2,13 @@
 
 ## Current Status (Gender + Race, including partial personas)
 
-|                                   | Count                      |
-| --------------------------------- | -------------------------- |
-| **Gender backgrounds**            | 77 (Male: 35, Female: 42)  |
-| **Race backgrounds**              | 132 (11 regions × 12 each) |
-| **Total backgrounds (LLM calls)** | 209                        |
-| **Personas (full + partial)**     | 35                         |
-| **Conversation histories**        | 5,291                      |
+|                                   | Count                     |
+| --------------------------------- | ------------------------- |
+| **Gender backgrounds**            | 77 (Male: 35, Female: 42) |
+| **Race backgrounds**              | 96 (8 regions × 12 each)  |
+| **Total backgrounds (LLM calls)** | 173                       |
+| **Personas (full + partial)**     | 26                        |
+| **Conversation histories**        | 3,869                     |
 
 ### Gender dimension breakdown
 
@@ -17,17 +17,17 @@
 
 ### Race dimension breakdown
 
-- 11 regions × (4 Names × 3 Artists) = 132 combos
+- 8 regions × (4 Names × 3 Artists) = 96 combos
 - After gender filtering: 2 Names × 3 Artists = 6 combos per persona
 
 ### Histories per persona
 
 - Male × Race persona: 35 × 6 = 210 histories
 - Female × Race persona: 42 × 6 = 252 histories
-- Full personas: 11 × 210 + 11 × 252 = 2,310 + 2,772 = 5,082
+- Full personas: 8 × 210 + 8 × 252 = 1,680 + 2,016 = 3,696
 - Gender-only partials (Male + Female): 35 + 42 = 77 histories
-- Race-only partials (11 regions): 11 × 12 = 132 histories
-- Total: 5,082 + 77 + 132 = **5,291**
+- Race-only partials (8 regions): 8 × 12 = 96 histories
+- Total: 3,696 + 77 + 96 = **3,869**
 
 ---
 
@@ -37,12 +37,12 @@ Each new value multiplies through all other indicators in that dimension and all
 
 | Addition                     | New combos       | Δ histories                  | New total |
 | ---------------------------- | ---------------- | ---------------------------- | --------- |
-| +1 Male Hobby (7→8)          | 8×5=40           | +11×5×6 = +330               | 5,412     |
-| +1 Male Movie (5→6)          | 7×6=42           | +11×7×6 = +462               | 5,544     |
-| +1 Female Hobby (7→8)        | 8×6=48           | +11×6×6 = +396               | 5,478     |
-| +1 Female Movie (6→7)        | 7×7=49           | +11×7×6 = +462               | 5,544     |
-| +1 Name (1 region, 1 gender) | 3×3=9            | +35 or 42 × 3 = +105 to +126 | ~5,190    |
-| +1 Artist (1 region)         | 2×4=8 per gender | +(35+42)×2 = +154            | 5,236     |
+| +1 Male Hobby (7→8)          | 8×5=40           | +8×5×6 = +240                | 3,936     |
+| +1 Male Movie (5→6)          | 7×6=42           | +8×7×6 = +336                | 4,032     |
+| +1 Female Hobby (7→8)        | 8×6=48           | +8×6×6 = +288                | 3,984     |
+| +1 Female Movie (6→7)        | 7×7=49           | +8×7×6 = +336                | 4,032     |
+| +1 Name (1 region, 1 gender) | 3×3=9            | +35 or 42 × 3 = +105 to +126 | ~3,801    |
+| +1 Artist (1 region)         | 2×4=8 per gender | +(35+42)×2 = +154            | 3,850     |
 
 ---
 
@@ -50,14 +50,14 @@ Each new value multiplies through all other indicators in that dimension and all
 
 Adding a new indicator name introduces a multiplicative factor of K on top of existing combos.
 
-| Addition                                 | Effect                   | Δ histories                       |
-| ---------------------------------------- | ------------------------ | --------------------------------- |
-| New indicator (K values) on Male         | Male combos: 35 → 35×K   | +11 × 35×(K−1) × 6 = +2,310×(K−1) |
-| New indicator (K values) on Female       | Female combos: 42 → 42×K | +11 × 42×(K−1) × 6 = +2,772×(K−1) |
-| New indicator (K values) on both         | Both multiply by K       | +5,082×(K−1)                      |
-| New indicator (K values) per Race region | Region combos: 12 → 12×K | (K−1) × current total             |
+| Addition                                 | Effect                   | Δ histories                      |
+| ---------------------------------------- | ------------------------ | -------------------------------- |
+| New indicator (K values) on Male         | Male combos: 35 → 35×K   | +8 × 35×(K−1) × 6 = +1,680×(K−1) |
+| New indicator (K values) on Female       | Female combos: 42 → 42×K | +8 × 42×(K−1) × 6 = +2,016×(K−1) |
+| New indicator (K values) on both         | Both multiply by K       | +3,696×(K−1)                     |
+| New indicator (K values) per Race region | Region combos: 12 → 12×K | (K−1) × current total            |
 
-Example: adding a new indicator with 3 values to both genders → +5,082 × 2 = +10,164 → **15,246** total.
+Example: adding a new indicator with 3 values to both genders → +3,696 × 2 = +7,392 → **11,088** total.
 
 ---
 
@@ -65,7 +65,7 @@ Example: adding a new indicator with 3 values to both genders → +5,082 × 2 = 
 
 | What you add                                                    | Growth type        | Why                                                                                                                      |
 | --------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| +1 indicator value (e.g., +1 hobby)                             | **Linear**         | Adds a fixed number of histories each time. Going from 7→8→9 hobbies adds ~330 each step.                                |
+| +1 indicator value (e.g., +1 hobby)                             | **Linear**         | Adds a fixed number of histories each time. Going from 7→8→9 hobbies adds ~240 each step.                                |
 | +1 indicator name (e.g., a new "Sport" indicator with K values) | **Multiplicative** | Multiplies all existing combos in that dimension by K. Two new indicators with 3 values each: total × 3 × 3 = total × 9. |
 | +1 dimension                                                    | **Multiplicative** | Multiplies the entire history count by the number of combos in the new dimension.                                        |
 
@@ -79,7 +79,7 @@ Without partial personas, only full cross-dimensional personas are assembled.
 
 |                            | Count |
 | -------------------------- | ----- |
-| **Personas**               | 22    |
-| **Conversation histories** | 5,082 |
+| **Personas**               | 16    |
+| **Conversation histories** | 3,696 |
 
-Full-persona-only mode produces −3.9% fewer histories compared to the current setup.
+Full-persona-only mode produces −4.5% fewer histories compared to the current setup.

@@ -119,7 +119,7 @@ def _load_name_gender_map(mapping_dir: Path) -> dict[str, str]:
     if not csv_path.exists():
         return {}
     result: dict[str, str] = {}
-    with open(csv_path, encoding="utf-8", newline="") as f:
+    with open(csv_path, encoding="utf-8-sig", newline="") as f:
         for row in _csv.DictReader(f):
             result[row["Name"].strip()] = row["Gender"].strip()
     return result
