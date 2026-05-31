@@ -11,7 +11,7 @@ import asyncio
 import contextlib
 import hashlib
 import logging
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from datetime import datetime, timezone
 from typing import Any
 
@@ -66,6 +66,7 @@ class JudgeRunner:
         subjects: SubjectAdapter | list[JudgeSubject] | Any,
         config: JudgeConfig,
         execution: JudgeExecutionConfig | None = None,
+        on_verdict: Callable[[JudgeVerdict], None] | None = None,
     ) -> JudgeResult:
         execution = execution or JudgeExecutionConfig()
         adapter = coerce_to_adapter(subjects)
@@ -146,6 +147,8 @@ class JudgeRunner:
                         )
                         async with write_lock:
                             writer.upsert(verdict)
+                        if on_verdict is not None:
+                            on_verdict(verdict)
                         bucket = summary_by_judge[judge_alias]
                         if verdict.status is JudgeStatus.SUCCESS:
                             bucket["completed"] += 1
@@ -203,6 +206,8 @@ class JudgeRunner:
                                     judge_alias,
                                     item.subject_id,
                                 )
+                        if on_verdict is not None:
+                            on_verdict(crash_verdict)
                         summary_by_judge[judge_alias]["call_failed"] += 1
                         run_log.row_call_failed(
                             judge_alias=judge_alias,
@@ -462,8 +467,10 @@ async def run_judges(
     subjects: SubjectAdapter | list[JudgeSubject] | Any,
     config: JudgeConfig,
     execution: JudgeExecutionConfig | None = None,
+    on_verdict: Callable[[JudgeVerdict], None] | None = None,
+    log: JudgeLogger | None = None,
 ) -> JudgeResult:
-    return await JudgeRunner(client).run(subjects, config, execution)
+    return await JudgeRunner(client, log=log).run(subjects, config, execution, on_verdict=on_verdict)
 
 
 __all__ = ["JudgeRunner", "run_judges"]
