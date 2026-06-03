@@ -66,7 +66,7 @@ def verdict_to_row(v: JudgeVerdict) -> dict[str, str]:
         "judge_alias": v.judge_alias,
         "judge_config_hash": v.judge_config_hash,
         "status": v.status.value,
-        "raw_output": v.raw_output.replace("\n", " ").strip(),
+        "raw_output": v.raw_output,
         "final_class": v.final_class or "",
         "none_declared": "true" if v.none_declared else "false",
         "parse_status": v.parse_status.value,

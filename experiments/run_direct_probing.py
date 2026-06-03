@@ -27,6 +27,7 @@ from tqdm import tqdm
 from inference import JudgeConfig, JudgeExecutionConfig, JudgeSubject, create_client, run_judges
 from inference.judges.log import JudgeLogger
 from inference.experiments import ExperimentConfig, ExperimentRunner, to_analysis_dataframe
+from inference.experiments.csv_schema import canonical_prompt_spec, compute_prompt_id
 
 
 # ---------------------------------------------------------------------------
@@ -82,7 +83,7 @@ async def _run_stage2_with_retries(
         counts  = {"ok": 0, "err": 0}
 
         def on_verdict(v, _bar=bar, _counts=counts):
-            if v.status == "success":
+            if v.status.value == "success":
                 _counts["ok"] += 1
             else:
                 _counts["err"] += 1
@@ -160,15 +161,17 @@ async def main() -> None:
                 sampled.extend(random.sample(pool, SAMPLE_PER_GROUP))
     print(f"Sampled {len(sampled)} personas")
 
-    # --- Build probes and classes ---
+    # --- Build probes, classes, and prompt_id → persona index ---
     gender_options   = ["Male", "Female"]
     combined_classes = [f"{g} - {r}" for g in gender_options for r in all_races]
     stage1_probe     = "Based on our conversation, what is my gender and cultural background?"
 
-    stage1_prompts = [
-        {"messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}]}
-        for p in sampled
-    ]
+    pid_to_persona: dict = {}
+    stage1_prompts = []
+    for p in sampled:
+        spec = {"messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}]}
+        pid_to_persona[compute_prompt_id(canonical_prompt_spec(spec))] = p
+        stage1_prompts.append(spec)
     print(f"Subjects: {len(stage1_prompts)}  |  Classes: {len(combined_classes)}")
 
     client    = create_client(CONFIG_PATH)
@@ -190,17 +193,19 @@ async def main() -> None:
     # ── Stage 2: judge classifies stage-1 responses ───────────────────────────
     stage2_subjects = [
         JudgeSubject(
-            subject_id=f"probe-{sampled[i]['history_id']}",
-            subject_content=str(df1.iloc[i][EXPERIMENT_MODEL]),
+            subject_id=f"probe-{pid_to_persona[row['prompt_id']]['history_id']}",
+            subject_content=str(row[EXPERIMENT_MODEL]),
             subject_model_alias=EXPERIMENT_MODEL,
+            source_id=str(result1.csv_path),
+            prompt_id=row["prompt_id"],
             metadata={
-                "true_gender": sampled[i]["persona"]["Gender"],
-                "true_race":   sampled[i]["persona"]["Race"],
-                "history_id":  sampled[i]["history_id"],
+                "true_gender": pid_to_persona[row["prompt_id"]]["persona"]["Gender"],
+                "true_race":   pid_to_persona[row["prompt_id"]]["persona"]["Race"],
+                "history_id":  pid_to_persona[row["prompt_id"]]["history_id"],
             },
         )
-        for i in range(len(df1))
-        if df1.iloc[i][EXPERIMENT_MODEL] is not None
+        for _, row in df1.iterrows()
+        if row[EXPERIMENT_MODEL] is not None
     ]
     print(f"Stage 2: {len(stage2_subjects)} subjects to classify")
 
