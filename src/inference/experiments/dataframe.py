@@ -8,16 +8,23 @@ from typing import Any
 import pandas as pd
 
 from inference.experiments.csv_schema import (
+    NON_ALIAS_COLUMNS,
     PROMPT_COLUMN,
     PROMPT_ID_COLUMN,
+    PROMPT_METADATA_COLUMN,
     CellStatus,
     MatrixCell,
     csv_writer_kwargs,
+    deserialize_prompt_metadata,
 )
 
 
 def build_dataframe_from_csv(csv_path: Path) -> pd.DataFrame:
-    """Build raw experiment DataFrame: prompt_id, prompt, then one column per model. Cells are dicts (status, response, error_message, metadata)."""
+    """Build raw experiment DataFrame: prompt_id, prompt, prompt_metadata, then one column per model.
+
+    Cells are dicts (status, response, error_message, metadata); prompt_metadata is a parsed dict
+    or None. Legacy CSVs without the prompt_metadata column get None.
+    """
     if not csv_path.exists():
         raise FileNotFoundError(f"Matrix CSV does not exist: {csv_path}")
 
@@ -31,10 +38,10 @@ def build_dataframe_from_csv(csv_path: Path) -> pd.DataFrame:
         if PROMPT_COLUMN not in headers:
             raise ValueError(f"Matrix CSV must have '{PROMPT_COLUMN}' column (second column).")
 
-        aliases = [h for h in headers if h not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)]
+        aliases = [h for h in headers if h not in NON_ALIAS_COLUMNS]
         rows = [_build_raw_row(raw_row, aliases) for raw_row in reader]
 
-    return pd.DataFrame(rows, columns=[PROMPT_ID_COLUMN, PROMPT_COLUMN, *aliases])
+    return pd.DataFrame(rows, columns=[*NON_ALIAS_COLUMNS, *aliases])
 
 
 def _build_raw_row(raw_row: dict[str, str | None], aliases: list[str]) -> dict[str, Any]:
@@ -43,8 +50,13 @@ def _build_raw_row(raw_row: dict[str, str | None], aliases: list[str]) -> dict[s
         raise ValueError("Matrix CSV row is missing prompt_id.")
     prompt_id = str(prompt_id).strip()
     prompt_raw = raw_row.get(PROMPT_COLUMN) or ""
+    prompt_metadata = deserialize_prompt_metadata(raw_row.get(PROMPT_METADATA_COLUMN) or "")
 
-    row: dict[str, Any] = {PROMPT_ID_COLUMN: prompt_id, PROMPT_COLUMN: prompt_raw}
+    row: dict[str, Any] = {
+        PROMPT_ID_COLUMN: prompt_id,
+        PROMPT_COLUMN: prompt_raw,
+        PROMPT_METADATA_COLUMN: prompt_metadata,
+    }
     for alias in aliases:
         try:
             cell = MatrixCell.from_csv_cell(str(raw_row.get(alias, "") or ""))
@@ -86,7 +98,8 @@ def filter_experiment_dataframe(
     """
     if PROMPT_ID_COLUMN not in raw_df.columns or PROMPT_COLUMN not in raw_df.columns:
         raise ValueError("DataFrame must have prompt_id and prompt columns (universal raw shape).")
-    model_cols = [c for c in raw_df.columns if c not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)]
+    fixed_cols = [c for c in NON_ALIAS_COLUMNS if c in raw_df.columns]
+    model_cols = [c for c in raw_df.columns if c not in NON_ALIAS_COLUMNS]
     if not model_cols:
         return raw_df.copy()
 
@@ -95,7 +108,7 @@ def filter_experiment_dataframe(
         if missing:
             raise ValueError(f"Model columns not in DataFrame: {missing}")
         model_cols = [m for m in models if m in raw_df.columns]
-    cols = [PROMPT_ID_COLUMN, PROMPT_COLUMN, *model_cols]
+    cols = [*fixed_cols, *model_cols]
     out = raw_df[cols].copy()
 
     def _row_prompt(row: pd.Series) -> str:
@@ -133,16 +146,19 @@ def filter_experiment_dataframe(
 
 
 def to_analysis_dataframe(raw_df: pd.DataFrame, **filter_kwargs: Any) -> pd.DataFrame:
-    """Transform raw experiment DataFrame to analysis shape: prompt_id, prompt (full raw), then per-model response text.
+    """Transform raw experiment DataFrame to analysis shape: prompt_id, prompt (full raw), prompt_metadata, then per-model response text.
 
-    Prompt is the raw prompt column as stored (canonical JSON or string). Model columns are response text or None
+    Prompt is the raw prompt column as stored (canonical JSON or string). prompt_metadata (when present)
+    is the parsed tracking metadata dict or None. Model columns are response text or None
     when the cell did not succeed. If filter_kwargs are provided, filter_experiment_dataframe is applied first.
     """
     if filter_kwargs:
         raw_df = filter_experiment_dataframe(raw_df, **filter_kwargs)
     if PROMPT_ID_COLUMN not in raw_df.columns or PROMPT_COLUMN not in raw_df.columns:
         raise ValueError("DataFrame must have prompt_id and prompt columns (universal raw shape).")
-    model_cols = [c for c in raw_df.columns if c not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)]
+    has_metadata_col = PROMPT_METADATA_COLUMN in raw_df.columns
+    fixed_cols = [c for c in NON_ALIAS_COLUMNS if c in raw_df.columns]
+    model_cols = [c for c in raw_df.columns if c not in NON_ALIAS_COLUMNS]
 
     rows = []
     for _, row in raw_df.iterrows():
@@ -152,6 +168,9 @@ def to_analysis_dataframe(raw_df: pd.DataFrame, **filter_kwargs: Any) -> pd.Data
             PROMPT_ID_COLUMN: prompt_id,
             PROMPT_COLUMN: prompt_raw,
         }
+        if has_metadata_col:
+            metadata = row.get(PROMPT_METADATA_COLUMN)
+            out_row[PROMPT_METADATA_COLUMN] = metadata if isinstance(metadata, dict) else None
         for alias in model_cols:
             cell = row.get(alias)
             if isinstance(cell, dict) and cell.get("status") == CellStatus.SUCCESS.value:
@@ -160,7 +179,7 @@ def to_analysis_dataframe(raw_df: pd.DataFrame, **filter_kwargs: Any) -> pd.Data
                 out_row[alias] = None
         rows.append(out_row)
 
-    return pd.DataFrame(rows, columns=[PROMPT_ID_COLUMN, PROMPT_COLUMN, *model_cols])
+    return pd.DataFrame(rows, columns=[*fixed_cols, *model_cols])
 
 
 __all__ = [

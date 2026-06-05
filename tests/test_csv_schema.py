@@ -35,9 +35,9 @@ def test_cell_identity_is_deterministic_from_prompt_and_alias() -> None:
     assert first_id != different_alias_id
 
 
-def test_matrix_header_is_prompt_id_prompt_then_alias_columns() -> None:
+def test_matrix_header_is_prompt_id_prompt_metadata_then_alias_columns() -> None:
     headers = csv_schema.build_matrix_headers(["model_a", "model_b"])
-    assert headers == ["prompt_id", "prompt", "model_a", "model_b"]
+    assert headers == ["prompt_id", "prompt", "prompt_metadata", "model_a", "model_b"]
 
 
 def test_canonical_prompt_spec_normalizes_to_messages() -> None:
@@ -53,6 +53,44 @@ def test_canonical_prompt_spec_normalizes_to_messages() -> None:
     assert csv_schema.canonical_prompt_spec({"messages": [{"role": "user", "content": "x"}]}) == {
         "messages": [{"role": "user", "content": "x"}]
     }
+    # metadata key is excluded from the canonical form
+    assert csv_schema.canonical_prompt_spec(
+        {"messages": [{"role": "user", "content": "x"}], "metadata": {"history_id": "h1"}}
+    ) == {"messages": [{"role": "user", "content": "x"}]}
+
+
+def test_prompt_metadata_is_excluded_from_prompt_id() -> None:
+    bare = {"messages": [{"role": "user", "content": "x"}]}
+    tagged = {"messages": [{"role": "user", "content": "x"}], "metadata": {"history_id": "h1"}}
+
+    pid_bare = csv_schema.compute_prompt_id(csv_schema.canonical_prompt_spec(bare))
+    pid_tagged = csv_schema.compute_prompt_id(csv_schema.canonical_prompt_spec(tagged))
+
+    assert pid_bare == pid_tagged
+
+
+def test_extract_prompt_metadata() -> None:
+    metadata = {"history_id": "h1", "true_gender": "Female"}
+    spec = {"messages": [{"role": "user", "content": "x"}], "metadata": metadata}
+
+    assert csv_schema.extract_prompt_metadata(spec) == metadata
+    assert csv_schema.extract_prompt_metadata({"messages": []}) is None
+    assert csv_schema.extract_prompt_metadata({"messages": [], "metadata": {}}) is None
+    assert csv_schema.extract_prompt_metadata({"messages": [], "metadata": "bad"}) is None
+    assert csv_schema.extract_prompt_metadata("plain string") is None
+
+
+def test_prompt_metadata_serialization_round_trip() -> None:
+    metadata = {"history_id": "h1", "nested": {"k": [1, 2]}}
+
+    serialized = csv_schema.serialize_prompt_metadata(metadata)
+    assert csv_schema.deserialize_prompt_metadata(serialized) == metadata
+
+    # absent/empty metadata maps to the empty cell, and back to None
+    assert csv_schema.serialize_prompt_metadata(None) == ""
+    assert csv_schema.serialize_prompt_metadata({}) == ""
+    assert csv_schema.deserialize_prompt_metadata("") is None
+    assert csv_schema.deserialize_prompt_metadata("   ") is None
 
 
 def test_matrix_cell_csv_round_trip() -> None:

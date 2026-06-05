@@ -12,8 +12,10 @@ from typing import Any, BinaryIO
 
 from inference.experiments.csv_schema import (
     MISSING_CELL,
+    NON_ALIAS_COLUMNS,
     PROMPT_COLUMN,
     PROMPT_ID_COLUMN,
+    PROMPT_METADATA_COLUMN,
     SCHEMA_VERSION,
     CellStatus,
     MatrixCell,
@@ -22,8 +24,10 @@ from inference.experiments.csv_schema import (
     canonical_prompt_spec,
     compute_prompt_id,
     csv_writer_kwargs,
+    extract_prompt_metadata,
     metadata_sidecar_path,
     serialize_prompt_content,
+    serialize_prompt_metadata,
 )
 
 
@@ -38,7 +42,8 @@ def load_existing_matrix(
 ) -> tuple[set[str], dict[tuple[str, str], CellStatus]]:
     """Load existing CSV state for resume mode.
 
-    Reads UTF-8 CSV (prompt_id, prompt, then one column per model). Only SUCCESS cells are completed for resume.
+    Reads UTF-8 CSV (prompt_id, prompt, prompt_metadata, then one column per model;
+    legacy files without prompt_metadata are accepted). Only SUCCESS cells are completed for resume.
 
     Returns:
         - prompt_ids_seen: set of prompt_id values in the CSV (normalized, stripped)
@@ -53,7 +58,7 @@ def load_existing_matrix(
     with csv_path.open("r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f, **csv_writer_kwargs())
         fieldnames = reader.fieldnames or []
-        aliases = [n for n in fieldnames if n not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)]
+        aliases = [n for n in fieldnames if n not in NON_ALIAS_COLUMNS]
         for row in reader:
             raw_pid = row.get(PROMPT_ID_COLUMN, "")
             prompt_id = raw_pid.strip() if isinstance(raw_pid, str) else ""
@@ -71,17 +76,17 @@ def load_existing_matrix(
 
 
 class MatrixCSVWriter:
-    """Writes experiment CSV: prompt_id, prompt, then one column per model. Cells hold status/response/error/metadata only.
+    """Writes experiment CSV: prompt_id, prompt, prompt_metadata, then one column per model. Cells hold status/response/error/metadata only.
 
     Single-writer per path (file locking). UTF-8. Schema version in sidecar.
+    Legacy files without the prompt_metadata column are read tolerantly and upgraded
+    in place on the next rewrite.
     """
 
     def __init__(self, csv_path: Path, model_aliases: list[str]) -> None:
         self._csv_path = csv_path
         self._headers = build_matrix_headers(model_aliases)
-        self._model_aliases = [
-            h for h in self._headers if h not in (PROMPT_ID_COLUMN, PROMPT_COLUMN)
-        ]
+        self._model_aliases = [h for h in self._headers if h not in NON_ALIAS_COLUMNS]
         self._lock_path = Path(f"{csv_path}.lock")
 
     @property
@@ -96,6 +101,7 @@ class MatrixCSVWriter:
                 self._empty_row(
                     prompt_id=compute_prompt_id(c),
                     prompt=serialize_prompt_content(c),
+                    prompt_metadata=serialize_prompt_metadata(extract_prompt_metadata(p)),
                 )
             )
         self._csv_path.parent.mkdir(parents=True, exist_ok=True)
@@ -113,8 +119,7 @@ class MatrixCSVWriter:
 
         with self._csv_path.open("r", encoding="utf-8", newline="") as csv_file:
             reader = csv.DictReader(csv_file, **csv_writer_kwargs())
-            if reader.fieldnames != self._headers:
-                raise ValueError(f"Unexpected matrix CSV headers in {self._csv_path}")
+            self._validate_headers(list(reader.fieldnames or []))
 
             for row in reader:
                 prompt_id = row.get("prompt_id", "")
@@ -140,22 +145,38 @@ class MatrixCSVWriter:
             rows = self._read_rows()
             existing_prompt_ids = {row["prompt_id"] for row in rows if row.get("prompt_id")}
             appended_prompt_ids: list[str] = []
+            metadata_by_prompt_id: dict[str, str] = {}
 
             for p in prompts:
                 c = canonical_prompt_spec(p)
                 prompt_id = compute_prompt_id(c)
+                prompt_metadata = serialize_prompt_metadata(extract_prompt_metadata(p))
+                if prompt_metadata:
+                    metadata_by_prompt_id[prompt_id] = prompt_metadata
                 if prompt_id in existing_prompt_ids:
                     continue
                 rows.append(
                     self._empty_row(
                         prompt_id=prompt_id,
                         prompt=serialize_prompt_content(c),
+                        prompt_metadata=prompt_metadata,
                     )
                 )
                 existing_prompt_ids.add(prompt_id)
                 appended_prompt_ids.append(prompt_id)
 
-            if appended_prompt_ids:
+            # Backfill metadata for pre-existing rows (e.g. legacy CSVs or specs that
+            # gained metadata). prompt_ids match because metadata is excluded from the hash.
+            backfilled = False
+            for row in rows:
+                if row.get(PROMPT_METADATA_COLUMN, MISSING_CELL) != MISSING_CELL:
+                    continue
+                new_metadata = metadata_by_prompt_id.get(row.get(PROMPT_ID_COLUMN, ""))
+                if new_metadata:
+                    row[PROMPT_METADATA_COLUMN] = new_metadata
+                    backfilled = True
+
+            if appended_prompt_ids or backfilled:
                 self._rewrite_rows(rows)
 
             self._write_sidecar()
@@ -183,25 +204,33 @@ class MatrixCSVWriter:
             target_row[alias] = cell.to_csv_cell()
             self._rewrite_rows(rows)
 
-    def _empty_row(self, *, prompt_id: str, prompt: str) -> dict[str, str]:
+    def _empty_row(
+        self, *, prompt_id: str, prompt: str, prompt_metadata: str = MISSING_CELL
+    ) -> dict[str, str]:
         pending_cell = MatrixCell(status=CellStatus.PENDING).to_csv_cell()
         return {
             PROMPT_ID_COLUMN: prompt_id,
             PROMPT_COLUMN: prompt,
+            PROMPT_METADATA_COLUMN: prompt_metadata,
             **dict.fromkeys(self._model_aliases, pending_cell),
         }
 
+    def _validate_headers(self, fieldnames: list[str]) -> None:
+        """Accept current headers and the legacy shape without prompt_metadata; reject anything else."""
+        legacy_headers = [h for h in self._headers if h != PROMPT_METADATA_COLUMN]
+        if fieldnames not in (self._headers, legacy_headers):
+            raise ValueError(f"Unexpected matrix CSV headers in {self._csv_path}")
+
     def _read_rows(self) -> list[dict[str, str]]:
+        """Read all rows normalized to current headers; legacy rows get an empty prompt_metadata cell."""
         if not self._csv_path.exists():
             raise FileNotFoundError(f"Matrix CSV does not exist: {self._csv_path}")
 
         with self._csv_path.open("r", encoding="utf-8", newline="") as csv_file:
             reader = csv.DictReader(csv_file, **csv_writer_kwargs())
-            fieldnames = list(reader.fieldnames or [])
-            if fieldnames != self._headers:
-                raise ValueError(f"Unexpected matrix CSV headers in {self._csv_path}")
+            self._validate_headers(list(reader.fieldnames or []))
             return [
-                {header: row.get(header, MISSING_CELL) for header in self._headers}
+                {header: row.get(header) or MISSING_CELL for header in self._headers}
                 for row in reader
             ]
 

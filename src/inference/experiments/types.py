@@ -13,11 +13,15 @@ actual execution behavior for running experiments.
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Literal
 
-# String or dict spec (e.g. {"system": "...", "user": "..."} or {"system": "...", "messages": [...]})
+# String or dict spec (e.g. {"system": "...", "user": "..."} or {"system": "...", "messages": [...]}).
+# Dict specs may carry an optional "metadata" dict for tracking/traceability: it is persisted in
+# the experiment CSV (prompt_metadata column) and carried into judge subjects/verdicts, but is
+# excluded from prompt_id, so it never affects identity, dedup, or resume.
 PromptSpec = str | dict[str, Any]
 
 
@@ -126,6 +130,16 @@ class ExperimentConfig:
             elif isinstance(prompt, dict):
                 if "user" not in prompt and "messages" not in prompt:
                     raise ValueError(f"prompts[{i}] dict must contain 'user' or 'messages'")
+                if "metadata" in prompt:
+                    metadata = prompt["metadata"]
+                    if not isinstance(metadata, dict):
+                        raise ValueError(f"prompts[{i}] 'metadata' must be a dict")
+                    try:
+                        json.dumps(metadata)
+                    except (TypeError, ValueError) as error:
+                        raise ValueError(
+                            f"prompts[{i}] 'metadata' must be JSON-serializable"
+                        ) from error
             else:
                 raise ValueError(f"prompts must be str or dict, got {type(prompt).__name__}")
 

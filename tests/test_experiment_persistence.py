@@ -12,11 +12,13 @@ import pytest
 
 from inference.client import InferenceRequest
 from inference.experiments.csv_schema import (
+    SCHEMA_VERSION,
     CellStatus,
     MatrixCell,
     canonical_prompt_spec,
     compute_prompt_id,
     csv_writer_kwargs,
+    metadata_sidecar_path,
     serialize_prompt_content,
 )
 from inference.experiments.dataframe import (
@@ -24,7 +26,7 @@ from inference.experiments.dataframe import (
     filter_experiment_dataframe,
     to_analysis_dataframe,
 )
-from inference.experiments.persistence import MatrixCSVWriter
+from inference.experiments.persistence import MatrixCSVWriter, load_existing_matrix
 from inference.experiments.runner import ExperimentRunner
 from inference.experiments.types import ExperimentConfig
 
@@ -55,6 +57,7 @@ def test_matrix_csv_writer_initializes_and_updates_single_cells(tmp_path: Path) 
     assert len(rows) == 2
     assert rows[0]["prompt_id"] == prompt_id_1
     assert rows[0]["prompt"] == serialize_prompt_content(c1)
+    assert rows[0]["prompt_metadata"] == ""
     assert rows[0]["alias-a"] == pending_cell
     assert rows[0]["alias-b"] == json.dumps(
         {"status": "rate_limited", "error_message": "retry-after=7200"},
@@ -88,12 +91,13 @@ def test_build_dataframe_from_csv_matches_matrix_contents(tmp_path: Path) -> Non
     dataframe = build_dataframe_from_csv(csv_path)
 
     assert isinstance(dataframe, pd.DataFrame)
-    # v2: prompt column holds canonical serialized prompt (messages JSON); cells have status, response, error_message, metadata
+    # prompt column holds canonical serialized prompt (messages JSON); cells have status, response, error_message, metadata
     expected_prompt = serialize_prompt_content(c)
     assert dataframe.to_dict(orient="records") == [
         {
             "prompt_id": prompt_id,
             "prompt": expected_prompt,
+            "prompt_metadata": None,
             "alias-a": {
                 "status": "success",
                 "response": "alias-a:prompt-1",
@@ -134,7 +138,7 @@ def test_filter_experiment_dataframe(tmp_path: Path) -> None:
     assert len(raw) == 3
 
     filtered = filter_experiment_dataframe(raw, models=["a", "b"])
-    assert list(filtered.columns) == ["prompt_id", "prompt", "a", "b"]
+    assert list(filtered.columns) == ["prompt_id", "prompt", "prompt_metadata", "a", "b"]
     assert len(filtered) == 3
 
     filtered_complete = filter_experiment_dataframe(raw, all_complete=True)
@@ -159,7 +163,7 @@ def test_to_analysis_dataframe(tmp_path: Path) -> None:
 
     raw = build_dataframe_from_csv(csv_path)
     analysis = to_analysis_dataframe(raw)
-    assert list(analysis.columns) == ["prompt_id", "prompt", "m1", "m2"]
+    assert list(analysis.columns) == ["prompt_id", "prompt", "prompt_metadata", "m1", "m2"]
     assert "You are helpful." in analysis.iloc[0]["prompt"]
     assert "What is 2+2?" in analysis.iloc[0]["prompt"]
     assert analysis.iloc[0]["m1"] == "4"
@@ -168,6 +172,65 @@ def test_to_analysis_dataframe(tmp_path: Path) -> None:
     analysis_filtered = to_analysis_dataframe(raw, prompt_contains="2+2")
     assert len(analysis_filtered) == 1
     assert "2+2" in analysis_filtered.iloc[0]["prompt"]
+
+
+def test_prompt_metadata_round_trips_to_analysis_dataframe(tmp_path: Path) -> None:
+    csv_path = tmp_path / "metadata_test.csv"
+    writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=["m1"])
+    metadata = {"history_id": "h1", "true_gender": "Female", "true_race": "Asian"}
+    spec = {"messages": [{"role": "user", "content": "What is 2+2?"}], "metadata": metadata}
+    writer.initialize(prompts=[spec])
+    pid = compute_prompt_id(canonical_prompt_spec(spec))
+    writer.write_cell(pid, "m1", MatrixCell(status=CellStatus.SUCCESS, response="4"))
+
+    rows = _read_rows(csv_path)
+    assert json.loads(rows[0]["prompt_metadata"]) == metadata
+
+    raw = build_dataframe_from_csv(csv_path)
+    assert raw.iloc[0]["prompt_metadata"] == metadata
+
+    analysis = to_analysis_dataframe(raw)
+    assert analysis.iloc[0]["prompt_metadata"] == metadata
+    assert analysis.iloc[0]["m1"] == "4"
+
+
+def test_legacy_csv_without_metadata_column_is_upgraded_on_resume(tmp_path: Path) -> None:
+    csv_path = tmp_path / "legacy.csv"
+    metadata = {"history_id": "h1"}
+    spec = {"messages": [{"role": "user", "content": "hello"}], "metadata": metadata}
+    c = canonical_prompt_spec(spec)
+    pid = compute_prompt_id(c)
+    success_cell = MatrixCell(status=CellStatus.SUCCESS, response="hi").to_csv_cell()
+
+    # Hand-write a legacy (pre-prompt_metadata) CSV with one completed cell.
+    with csv_path.open("w", encoding="utf-8", newline="") as f:
+        legacy_writer = csv.DictWriter(
+            f, fieldnames=["prompt_id", "prompt", "alias-a"], **csv_writer_kwargs()
+        )
+        legacy_writer.writeheader()
+        legacy_writer.writerow(
+            {"prompt_id": pid, "prompt": serialize_prompt_content(c), "alias-a": success_cell}
+        )
+
+    # Resume path must not mistake a metadata column for a model alias on legacy or upgraded files.
+    prompt_ids_seen, completed_cells = load_existing_matrix(csv_path)
+    assert prompt_ids_seen == {pid}
+    assert completed_cells == {(pid, "alias-a"): CellStatus.SUCCESS}
+
+    writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=["alias-a"])
+    appended = writer.append_missing_prompts(prompts=[spec])
+    assert appended == []  # same prompt_id: metadata does not change identity
+
+    rows = _read_rows(csv_path)
+    assert list(rows[0].keys()) == ["prompt_id", "prompt", "prompt_metadata", "alias-a"]
+    assert json.loads(rows[0]["prompt_metadata"]) == metadata  # backfilled
+    assert rows[0]["alias-a"] == success_cell  # completed cell preserved
+
+    sidecar = json.loads(metadata_sidecar_path(csv_path).read_text(encoding="utf-8"))
+    assert sidecar["schema_version"] == SCHEMA_VERSION
+
+    prompt_ids_seen, completed_cells = load_existing_matrix(csv_path)
+    assert completed_cells == {(pid, "alias-a"): CellStatus.SUCCESS}
 
 
 def test_matrix_cell_from_csv_cell_rejects_invalid_status() -> None:

@@ -5,7 +5,7 @@ This package exposes only experiment-facing contracts for matrix execution,
 resume-from-CSV behavior, and aggregate experiment outputs.
 
 Experiment grid contract (universal raw shape):
-- Row = one prompt combination; columns = prompt_id, prompt (canonical serialized), then one per model alias.
+- Row = one prompt combination; columns = prompt_id, prompt, prompt_metadata, then one per model alias.
 - Cell = {status, response?, error_message?, metadata?}; no prompt in cell; status may be not_requested for sparse grids.
 - Load CSV with build_dataframe_from_csv → raw DataFrame. Use filter_experiment_dataframe to subset; use to_analysis_dataframe to get prompt (full raw) and response text per model for analysis.
 

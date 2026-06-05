@@ -76,7 +76,7 @@ def _status_row(result: Any) -> dict[str, str]:
     return {
         alias: cell_payload["status"]
         for alias, cell_payload in first_row.items()
-        if alias not in {"prompt", "prompt_id"}
+        if alias not in {"prompt", "prompt_id", "prompt_metadata"}
     }
 
 
@@ -90,7 +90,7 @@ def _status_rows_by_prompt(result: Any) -> dict[str, dict[str, str | None]]:
         cell_like = {
             alias: (cell.get("status") if isinstance(cell, dict) else None)
             for alias, cell in row.items()
-            if alias not in {"prompt", "prompt_id"}
+            if alias not in {"prompt", "prompt_id", "prompt_metadata"}
         }
         rows_by_prompt[pid] = cell_like
     return rows_by_prompt
@@ -124,7 +124,13 @@ async def test_run_executes_full_prompt_alias_matrix_and_waits_for_all_cells() -
     assert result.summary.rate_limited_cells == 0
     assert isinstance(result.dataframe, pd.DataFrame)
     assert result.csv_name == result.csv_path.name
-    assert set(result.dataframe.columns) == {"prompt_id", "prompt", "alias-a", "alias-b"}
+    assert set(result.dataframe.columns) == {
+        "prompt_id",
+        "prompt",
+        "prompt_metadata",
+        "alias-a",
+        "alias-b",
+    }
 
 
 @pytest.mark.asyncio
@@ -207,6 +213,7 @@ async def test_run_returns_dataframe_matching_csv_contents(
         {
             "prompt_id": result.dataframe.iloc[0]["prompt_id"],
             "prompt": expected_prompt,
+            "prompt_metadata": None,
             "alias-a": {
                 "status": "success",
                 "response": "ok-a",
@@ -490,4 +497,28 @@ def test_empty_experiment_name_raises_value_error() -> None:
             experiment_name="",  # Should raise
             model_aliases=["alias-a"],
             prompts=["prompt-1"],
+        )
+
+
+def test_prompt_metadata_validation() -> None:
+    """ExperimentConfig accepts dict metadata and rejects non-dict / non-JSON-serializable metadata."""
+    messages = [{"role": "user", "content": "hi"}]
+    ExperimentConfig(
+        experiment_name="metadata-ok",
+        model_aliases=["alias-a"],
+        prompts=[{"messages": messages, "metadata": {"history_id": "h1"}}],
+    )
+
+    with pytest.raises(ValueError, match="'metadata' must be a dict"):
+        ExperimentConfig(
+            experiment_name="metadata-not-dict",
+            model_aliases=["alias-a"],
+            prompts=[{"messages": messages, "metadata": "h1"}],
+        )
+
+    with pytest.raises(ValueError, match="'metadata' must be JSON-serializable"):
+        ExperimentConfig(
+            experiment_name="metadata-not-serializable",
+            model_aliases=["alias-a"],
+            prompts=[{"messages": messages, "metadata": {"bad": object()}}],
         )
