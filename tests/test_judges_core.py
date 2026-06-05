@@ -351,6 +351,40 @@ class TestAdapters:
         assert s["subjects_emitted"] == 2
         assert s["skipped_non_success"] == 2
 
+    def test_experiment_adapter_merges_prompt_metadata(self) -> None:
+        import pandas as pd
+
+        ok = json.dumps({"status": "success", "response": "hello"})
+        df = pd.DataFrame(
+            [
+                # dict form (build_dataframe_from_csv) and JSON-string form (raw pd.read_csv)
+                {
+                    "prompt_id": "p1",
+                    "prompt": "{}",
+                    "prompt_metadata": {"history_id": "h1", "true_gender": "Female"},
+                    "alice": ok,
+                },
+                {
+                    "prompt_id": "p2",
+                    "prompt": "{}",
+                    "prompt_metadata": json.dumps({"history_id": "h2"}),
+                    "alice": ok,
+                },
+                {"prompt_id": "p3", "prompt": "{}", "prompt_metadata": None, "alice": ok},
+            ]
+        )
+        subs = {s.prompt_id: s for s in ExperimentDataFrameAdapter(df).iter_subjects()}
+        assert len(subs) == 3
+        # prompt_metadata is never a model column
+        assert all(s.subject_model_alias == "alice" for s in subs.values())
+        assert subs["p1"].metadata == {
+            "prompt_spec": "{}",
+            "history_id": "h1",
+            "true_gender": "Female",
+        }
+        assert subs["p2"].metadata == {"prompt_spec": "{}", "history_id": "h2"}
+        assert subs["p3"].metadata == {"prompt_spec": "{}"}
+
 
 # ----- runner (with a stub client) -----
 
