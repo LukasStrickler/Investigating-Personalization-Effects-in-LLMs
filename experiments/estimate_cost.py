@@ -149,7 +149,7 @@ def _p90(xs: list[float]) -> float:
 def sample_personas() -> tuple[list[dict], list[str]]:
     from collections import defaultdict
 
-    all_personas = [json.loads(line) for line in PERSONAS_PATH.open()]
+    all_personas = [json.loads(line) for line in PERSONAS_PATH.open(encoding="utf-8-sig")]
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for p in all_personas:
         g = p["persona"].get("Gender")
@@ -170,7 +170,7 @@ def sample_personas() -> tuple[list[dict], list[str]]:
     return sampled, all_races
 
 
-def count_input_tokens(personas: list[dict]) -> dict:
+def count_input_tokens(personas: list[dict], models: list[str]) -> dict:
     """Exact Stage-1 input-token totals, broken down by component.
 
     Each persona is asked both questions, so its conversation history is sent
@@ -202,7 +202,7 @@ def count_input_tokens(personas: list[dict]) -> dict:
         "question_per_model": question_per_model,
         "overhead_per_model": overhead_per_model,
         "input_tokens_per_model": per_model_in,
-        "input_tokens_all_models": per_model_in * len(EXPERIMENT_MODELS),
+        "input_tokens_all_models": per_model_in * len(models),
         "mean_input_per_request": per_model_in / n_requests_per_model,
     }
 
@@ -287,7 +287,7 @@ async def calibrate(client, personas: list[dict], per_question: int,
             "per_question": per_question}
 
 
-def calib_from_log() -> dict:
+def calib_from_log(models: list[str]) -> dict:
     """Rebuild a calibration record from the persisted inference log.
 
     Robust to interrupted live runs: every completed call is logged with its
@@ -313,7 +313,7 @@ def calib_from_log() -> dict:
                             "prompt_tokens": r.get("prompt_tokens"),
                             "completion_tokens": r.get("completion_tokens")})
     per_q = min(len(s) for s in (
-        [[x for x in samples if x["model"] == m] for m in EXPERIMENT_MODELS]
+        [[x for x in samples if x["model"] == m] for m in models]
     )) if samples else 0
     return {"samples": samples, "judge_samples": judge_samples, "failures": [],
             "per_question": per_q}
@@ -322,11 +322,11 @@ def calib_from_log() -> dict:
 # --------------------------------------------------------------------------- #
 # Aggregation + extrapolation
 # --------------------------------------------------------------------------- #
-def aggregate(calib: dict, input_stats: dict) -> dict:
+def aggregate(calib: dict, input_stats: dict, models: list[str]) -> dict:
     samples, jsamples = calib["samples"], calib["judge_samples"]
     n_personas = input_stats["n_personas"]
     stage1_per_model = n_personas * 2          # both questions
-    total_stage1 = stage1_per_model * len(EXPERIMENT_MODELS)
+    total_stage1 = stage1_per_model * len(models)
     total_judge = total_stage1                 # one judge call per response
 
     # Proxy for models with no live endpoint: mean output of the models we COULD
@@ -334,12 +334,12 @@ def aggregate(calib: dict, input_stats: dict) -> dict:
     # silently zeroing an unavailable model's output cost.
     measured_means = [statistics.mean([s["completion_tokens"] for s in samples
                                        if s["model"] == m and s["completion_tokens"] is not None])
-                      for m in EXPERIMENT_MODELS
+                      for m in models
                       if any(s["model"] == m and s["completion_tokens"] is not None for s in samples)]
     proxy_out = statistics.mean(measured_means) if measured_means else 0.0
 
     per_model = {}
-    for model in EXPERIMENT_MODELS:
+    for model in models:
         outs = [s["completion_tokens"] for s in samples
                 if s["model"] == model and s["completion_tokens"] is not None]
         in_price, out_price = PRICING[model]
@@ -403,12 +403,12 @@ def aggregate(calib: dict, input_stats: dict) -> dict:
 ESTIMATE_JSON = CALIB_DIR / "estimate.json"
 
 
-def emit_numbers(agg: dict, input_stats: dict) -> Path:
+def emit_numbers(agg: dict, input_stats: dict, models: list[str]) -> Path:
     """Print the estimate as a numbers table and persist a JSON for downstream use."""
     pm = agg["per_model"]
     j = agg["judge"]
     s = input_stats
-    n_models = len(EXPERIMENT_MODELS)
+    n_models = len(models)
     total_req = agg["total_stage1"] + agg["total_judge"]
     total_paid = agg["stage1_cost_mean"] + j["cost_paid"]
 
@@ -426,7 +426,7 @@ def emit_numbers(agg: dict, input_stats: dict) -> Path:
            f"{'$in/M':>7}{'$out/M':>8}{'cost_mean':>11}{'cost_p90':>11}")
     print(hdr)
     print("-" * len(hdr))
-    for m in EXPERIMENT_MODELS:
+    for m in models:
         d = pm[m]
         tag = m + ("*" if d["proxied"] else "")
         print(f"{tag:22s}{d['n_samples']:>4}{d['mean_out']:>9.0f}{d['p90_out']:>9.0f}"
@@ -449,7 +449,7 @@ def emit_numbers(agg: dict, input_stats: dict) -> Path:
     payload = {
         "personas": s["n_personas"],
         "questions": 2,
-        "models": list(EXPERIMENT_MODELS),
+        "models": list(models),
         "requests": {
             "stage1_per_model": agg["stage1_per_model"],
             "stage1_total": agg["total_stage1"],
@@ -470,7 +470,7 @@ def emit_numbers(agg: dict, input_stats: dict) -> Path:
             "q1_tokens": s["q1_tokens"],
             "q2_tokens": s["q2_tokens"],
         },
-        "per_model": {m: {k: pm[m][k] for k in keys} for m in EXPERIMENT_MODELS},
+        "per_model": {m: {k: pm[m][k] for k in keys} for m in models},
         "stage1_cost_mean": agg["stage1_cost_mean"],
         "stage1_cost_p90": agg["stage1_cost_p90"],
         "judge": j,
@@ -485,23 +485,23 @@ def emit_numbers(agg: dict, input_stats: dict) -> Path:
 # --------------------------------------------------------------------------- #
 # Main
 # --------------------------------------------------------------------------- #
-def _emit(input_stats: dict) -> None:
+def _emit(input_stats: dict, models: list[str]) -> None:
     """Compute the estimate from the persisted inference log and emit the numbers."""
-    calib = calib_from_log()
-    agg = aggregate(calib, input_stats)
-    path = emit_numbers(agg, input_stats)
+    calib = calib_from_log(models)
+    agg = aggregate(calib, input_stats, models)
+    path = emit_numbers(agg, input_stats, models)
     print(f"\nnumbers JSON: {path}")
 
 
 async def _amain(per_question: int, dry_run: bool, report_only: bool, models: list[str]) -> None:
     _load_env()
     personas, all_races = sample_personas()
-    input_stats = count_input_tokens(personas)
+    input_stats = count_input_tokens(personas, models)
     print(f"Personas sampled: {input_stats['n_personas']:,} ({len(all_races)} races × 2 × {SAMPLE_PER_GROUP})")
     print(f"Stage-1 input tokens/model: {input_stats['input_tokens_per_model']/1e6:.2f}M "
           f"| all models: {input_stats['input_tokens_all_models']/1e6:.2f}M")
-    print(f"Request matrix: {input_stats['n_personas']*2*len(EXPERIMENT_MODELS):,} stage-1 + "
-          f"{input_stats['n_personas']*2*len(EXPERIMENT_MODELS):,} judge")
+    print(f"Request matrix: {input_stats['n_personas']*2*len(models):,} stage-1 + "
+          f"{input_stats['n_personas']*2*len(models):,} judge")
 
     if dry_run:
         print("\n--dry-run: skipping live API calibration.")
@@ -509,7 +509,7 @@ async def _amain(per_question: int, dry_run: bool, report_only: bool, models: li
 
     if report_only:
         print("\n--report-only: computing numbers from logs/cost-calibration/inference.jsonl")
-        _emit(input_stats)
+        _emit(input_stats, models)
         return
 
     client = create_client(CONFIG_PATH)
@@ -521,7 +521,7 @@ async def _amain(per_question: int, dry_run: bool, report_only: bool, models: li
           f"| failures: {len(calib['failures'])}")
 
     # Always recompute from the full accumulated log so partial/repeated runs combine.
-    _emit(input_stats)
+    _emit(input_stats, models)
 
 
 def main() -> None:

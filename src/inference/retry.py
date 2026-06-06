@@ -127,7 +127,7 @@ class RetryMetadata:
         # Pattern for common API key formats
         patterns = [
             # sk-or-v1-xxx (OpenRouter style, contains hyphens)
-            (r"sk-or-v\d+-[a-zA-Z0-9]{5,}", "sk-***REDACTED***"),
+            (r"sk-or-v\d+-[a-zA-Z0-9_-]{5,}", "sk-***REDACTED***"),
             # sk-xxx (OpenAI style) - catch keys with 5+ chars
             (r"sk-[a-zA-Z0-9]{5,}", "sk-***REDACTED***"),
             # Generic long alphanumeric strings that look like keys

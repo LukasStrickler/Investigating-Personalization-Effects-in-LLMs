@@ -193,7 +193,7 @@ class ExperimentDataFrameAdapter:
             if prompt_spec is not None:
                 metadata["prompt_spec"] = prompt_spec
             if prompt_metadata:
-                metadata.update(prompt_metadata)
+                metadata = {**prompt_metadata, **metadata}
             for alias in cols:
                 cell_raw = row.get(alias)
                 cell = self._parse_cell(cell_raw)
