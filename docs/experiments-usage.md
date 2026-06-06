@@ -8,11 +8,26 @@ matrices, resume/extend runs, and dataframe-based analysis. The low-level
 
 Primary references in this repo:
 
-- `examples/experiments_example.ipynb` - end-to-end experiments workflows
-- `examples/inference_example.ipynb` - low-level runtime usage
-- `config/inference.example.yaml` - provider and alias configuration
+- [Architecture Overview](architecture.md) - how experiments fit into the runtime and judge layers
+- [Experiments notebook](../examples/experiments_example.ipynb) - end-to-end experiments workflows
+- [Inference notebook](../examples/inference_example.ipynb) - low-level runtime usage
+- [Judge notebook](../examples/llm_judge_example.ipynb) - evaluate experiment outputs with LLM judges
+- [Example config](../config/inference.example.yaml) - provider and alias configuration
 
 ## Start Here
+
+Experiment runs follow one durable data path:
+
+```mermaid
+flowchart LR
+    Prompts[Prompt specs] --> Config[ExperimentConfig]
+    Models[Model aliases] --> Config
+    Config --> Runner[ExperimentRunner]
+    Runner --> Runtime[Runtime inference client]
+    Runtime --> Csv[Experiment CSV]
+    Csv --> Dataframes[Raw and analysis dataframes]
+    Csv -. optional .-> Judges[LLM judge layer]
+```
 
 Use this default order:
 
@@ -179,6 +194,34 @@ Stage 2: read `prompt_metadata` from `to_analysis_dataframe`, or use
 `ExperimentDataFrameAdapter` (see `examples/llm_judge_example.ipynb`,
 `experiments/behavioral_audit.ipynb`).
 
+## Send Experiment Results to Judges
+
+Use the judge layer when experiment responses need classification, rubric
+evaluation, or a second-model review pass.
+
+```python
+from inference import JudgeConfig, create_client, run_judges
+from inference.judges import ExperimentDataFrameAdapter
+
+client = create_client("config/inference.yaml")
+subjects = ExperimentDataFrameAdapter(result.dataframe, only_models=["gemma-3-4b"])
+
+judge_config = JudgeConfig(
+    experiment_name="research-comparison-judge",
+    judges=["gpt-oss-20b-free"],
+    judge_prompt="Classify whether the response directly answers the user.",
+    classes=["Direct", "Indirect"],
+)
+
+judge_result = await run_judges(client, subjects, judge_config)
+print(judge_result.csv_path)
+```
+
+`ExperimentDataFrameAdapter` emits one judge subject for each successful
+experiment cell. It skips failed, rate-limited, `not_requested`, and empty cells.
+See the [judge notebook](../examples/llm_judge_example.ipynb) for the full
+judge workflow.
+
 ## ExperimentConfig Reference
 
 `ExperimentConfig` fields:
@@ -296,16 +339,23 @@ Top-level config includes `model_aliases`, `default_retry`, `log_path`,
 Where results are written:
 
 - experiments: `logs/<experiment_name>/<timestamp>.csv`
+- experiment schema sidecar: `logs/<experiment_name>/<timestamp>.csv.meta.json`
 - runtime structured logs: `logs/inference.jsonl`
 - batch checkpoint default: `checkpoints/batch.jsonl`
 - cost calibration: `experiments/estimate_cost.py` → `logs/cost-calibration/estimate.json`
 
-Common experiment cell statuses:
+Experiment cell statuses:
 
 - `success`
 - `failed`
 - `rate_limited`
 - `not_requested`
+- `pending`
+- `retrying`
+
+Most completed result files contain terminal statuses (`success`, `failed`,
+`rate_limited`, `not_requested`). `pending` and `retrying` are schema values used
+during execution and recovery.
 
 ## Development Commands
 
