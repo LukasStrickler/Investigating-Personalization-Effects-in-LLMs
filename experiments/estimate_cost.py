@@ -524,6 +524,11 @@ async def _amain(per_question: int, dry_run: bool, report_only: bool, models: li
     _emit(input_stats, models)
 
 
+def _normalize_models(models: list[str]) -> list[str]:
+    """Deduplicate aliases while preserving order."""
+    return list(dict.fromkeys(models))
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--per-question", type=int, default=DEFAULT_PER_QUESTION,
@@ -535,7 +540,9 @@ def main() -> None:
     ap.add_argument("--models", type=str, default="",
                     help="comma-separated subset of experiment models to sample (default: all)")
     args = ap.parse_args()
-    models = [m.strip() for m in args.models.split(",") if m.strip()] or EXPERIMENT_MODELS
+    models = _normalize_models(
+        [m.strip() for m in args.models.split(",") if m.strip()]
+    ) or EXPERIMENT_MODELS
     asyncio.run(_amain(args.per_question, args.dry_run, args.report_only, models))
 
 
