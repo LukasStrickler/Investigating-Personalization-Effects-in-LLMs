@@ -1,0 +1,74 @@
+# =============================================================================
+# Cost-Estimation Config (standalone — used ONLY by experiments/estimate_cost.py)
+# =============================================================================
+# This file is intentionally separate from config/inference.yaml so the estimation
+# never touches the production config or the behavioral_audit notebook.
+# Maps the behavioral-audit aliases to real OpenRouter model IDs (June 2026).
+# Requires OPENROUTER_API_KEY in .env.
+# =============================================================================
+
+providers:
+  openrouter:
+    name: openrouter
+    api_key_env: OPENROUTER_API_KEY
+    rate_limit:
+      requests_per_minute: 20
+      tokens_per_minute: 100000
+    retry:
+      max_retries: 3
+      base_delay: 2.0
+      max_delay: 120.0
+    base_url: https://openrouter.ai/api/v1
+    default_model: openai/gpt-5.5
+
+model_aliases:
+  # --- 5 experiment models (Stage 1) -------------------------------------
+  gemma-4-31b:
+    alias: gemma-4-31b
+    provider: openrouter
+    model: google/gemma-4-31b-it          # paid; :free variant also exists
+
+  gpt-5.5:
+    alias: gpt-5.5
+    provider: openrouter
+    model: openai/gpt-5.5
+
+  gemini-3.5-flash:
+    alias: gemini-3.5-flash
+    provider: openrouter
+    model: google/gemini-3.5-flash
+
+  deepseek-v4-pro:
+    alias: deepseek-v4-pro
+    provider: openrouter
+    model: deepseek/deepseek-v4-pro
+
+  olmo-3-32b-think:
+    alias: olmo-3-32b-think
+    provider: openrouter
+    model: allenai/olmo-3-32b-think
+
+  claude-opus-4.8:
+    alias: claude-opus-4.8
+    provider: openrouter
+    model: anthropic/claude-opus-4.8
+
+  # --- Judge model (Stage 2) ---------------------------------------------
+  nemotron-3-super-120b-a12b:
+    alias: nemotron-3-super-120b-a12b
+    provider: openrouter
+    model: nvidia/nemotron-3-super-120b-a12b:free   # free judge
+
+  nemotron-paid:
+    alias: nemotron-paid
+    provider: openrouter
+    model: nvidia/nemotron-3-super-120b-a12b        # paid judge (price the fast path)
+
+default_retry:
+  max_retries: 2
+  base_delay: 0.5
+  max_delay: 30.0
+
+log_path: logs/cost-calibration/inference.jsonl
+checkpoint_path: checkpoints/
+default_provider: openrouter
