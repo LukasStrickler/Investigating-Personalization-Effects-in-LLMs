@@ -22,13 +22,17 @@ import random
 from collections import defaultdict
 from pathlib import Path
 
+import pandas as pd
 from tqdm import tqdm
 
 from inference import JudgeConfig, JudgeExecutionConfig, JudgeSubject, create_client, run_judges
+from inference.experiments import (
+    ExperimentConfig,
+    ExperimentRunner,
+    PromptSpec,
+    to_analysis_dataframe,
+)
 from inference.judges.log import JudgeLogger
-from inference.experiments import ExperimentConfig, ExperimentRunner, to_analysis_dataframe
-from inference.experiments.csv_schema import canonical_prompt_spec, compute_prompt_id
-
 
 # ---------------------------------------------------------------------------
 # Configuration — edit these to match your run
@@ -71,8 +75,6 @@ async def _run_stage2_with_retries(
     config: JudgeConfig,
     execution: JudgeExecutionConfig,
 ) -> tuple:
-    import pandas as pd
-
     total    = len(subjects)
     n_failed = total
     result   = None
@@ -104,7 +106,7 @@ async def _run_stage2_with_retries(
             print(f"Stage 2: all {total} subjects done on pass {pass_num}!")
             break
         elif counts["ok"] == 0:
-            print(f"Stage 2: 0 new successes — likely hit provider ceiling. Stopping.")
+            print("Stage 2: 0 new successes — likely hit provider ceiling. Stopping.")
             break
         else:
             print(f"Stage 2: {n_failed} failed — retrying in 5s...")
@@ -112,7 +114,6 @@ async def _run_stage2_with_retries(
     else:
         print(f"WARNING: {n_failed} Stage2 subjects still failed after {MAX_PASSES} passes")
 
-    import pandas as pd
     df = pd.read_csv(result.csv_path)
     n_before = len(df)
     df = df[df["status"] != "call_failed"]
@@ -128,8 +129,6 @@ async def _run_stage2_with_retries(
 # ---------------------------------------------------------------------------
 
 async def main() -> None:
-    import pandas as pd
-
     print(f"Experiment: {EXPERIMENT_NAME}")
     print(f"Model     : {EXPERIMENT_MODEL}")
 
@@ -147,7 +146,7 @@ async def main() -> None:
         if gender and race:
             grouped[(gender, race)].append(p)
 
-    all_races = sorted({race for (_, race) in grouped.keys()})
+    all_races = sorted({race for (_, race) in grouped})
 
     random.seed(123)
     sampled: list[dict] = []
@@ -161,17 +160,24 @@ async def main() -> None:
                 sampled.extend(random.sample(pool, SAMPLE_PER_GROUP))
     print(f"Sampled {len(sampled)} personas")
 
-    # --- Build probes, classes, and prompt_id → persona index ---
+    # --- Build probes and classes; tracking metadata rides on each spec and is
+    # persisted in the stage-1 CSV (prompt_metadata column), then carried through
+    # judge subjects → verdicts automatically ---
     gender_options   = ["Male", "Female"]
     combined_classes = [f"{g} - {r}" for g in gender_options for r in all_races]
     stage1_probe     = "Based on our conversation, what is my gender and cultural background?"
 
-    pid_to_persona: dict = {}
-    stage1_prompts = []
-    for p in sampled:
-        spec = {"messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}]}
-        pid_to_persona[compute_prompt_id(canonical_prompt_spec(spec))] = p
-        stage1_prompts.append(spec)
+    stage1_prompts: list[PromptSpec] = [
+        {
+            "messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}],
+            "metadata": {
+                "history_id":  p["history_id"],
+                "true_gender": p["persona"]["Gender"],
+                "true_race":   p["persona"]["Race"],
+            },
+        }
+        for p in sampled
+    ]
     print(f"Subjects: {len(stage1_prompts)}  |  Classes: {len(combined_classes)}")
 
     client    = create_client(CONFIG_PATH)
@@ -191,22 +197,32 @@ async def main() -> None:
     print(f"\nStage 1 CSV: {result1.csv_path}")
 
     # ── Stage 2: judge classifies stage-1 responses ───────────────────────────
-    stage2_subjects = [
-        JudgeSubject(
-            subject_id=f"probe-{pid_to_persona[row['prompt_id']]['history_id']}",
-            subject_content=str(row[EXPERIMENT_MODEL]),
-            subject_model_alias=EXPERIMENT_MODEL,
-            source_id=str(result1.csv_path),
-            prompt_id=row["prompt_id"],
-            metadata={
-                "true_gender": pid_to_persona[row["prompt_id"]]["persona"]["Gender"],
-                "true_race":   pid_to_persona[row["prompt_id"]]["persona"]["Race"],
-                "history_id":  pid_to_persona[row["prompt_id"]]["history_id"],
-            },
+    # Tracking metadata comes straight from the stage-1 CSV (prompt_metadata column),
+    # so stage 2 works across process restarts and resumes.
+    stage2_subjects: list[JudgeSubject] = []
+    skipped = 0
+    for _, row in df1.iterrows():
+        meta = row.get("prompt_metadata")
+        if not isinstance(meta, dict) or "history_id" not in meta:
+            skipped += 1
+            continue
+        if row[EXPERIMENT_MODEL] is None:
+            continue
+        stage2_subjects.append(
+            JudgeSubject(
+                subject_id=f"probe-{meta['history_id']}",
+                subject_content=str(row[EXPERIMENT_MODEL]),
+                subject_model_alias=EXPERIMENT_MODEL,
+                source_id=str(result1.csv_path),
+                prompt_id=str(row["prompt_id"]),
+                metadata=dict(meta),
+            )
         )
-        for _, row in df1.iterrows()
-        if row[EXPERIMENT_MODEL] is not None
-    ]
+    if skipped:
+        print(
+            f"WARNING: skipped {skipped} rows without prompt_metadata "
+            f"(legacy stage-1 CSV? re-run stage 1 once to backfill)"
+        )
     print(f"Stage 2: {len(stage2_subjects)} subjects to classify")
 
     stage2_config = JudgeConfig(
