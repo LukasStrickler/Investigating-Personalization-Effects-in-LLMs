@@ -156,10 +156,28 @@ analysis_df = to_analysis_dataframe(complete_df)
 
 Dataframe shapes:
 
-- raw dataframe columns: `prompt_id`, `prompt`, then one per model alias
+- raw dataframe columns: `prompt_id`, `prompt`, `prompt_metadata`, then one per
+  model alias
+- `prompt_metadata`: parsed dict (or `None`) — caller-supplied tracking fields,
+  not part of `prompt_id`
 - raw model cell: dict with `status`, `response`, `error_message`, `metadata`
-- analysis dataframe: `prompt_id`, `prompt`, and one response-text column per
-  model alias (`None` for non-success cells)
+  (provider/runtime cell metadata, separate from `prompt_metadata`)
+- analysis dataframe: `prompt_id`, `prompt`, `prompt_metadata`, and one
+  response-text column per model alias (`None` for non-success cells)
+
+## Per-prompt tracking metadata
+
+Optional `"metadata"` dict on dict prompt specs → `prompt_metadata` column in the CSV.
+Not included in `prompt_id` (content hash only). Use for persona ids, ground truth, etc.
+Legacy CSVs without the column still load; it is added on the next write.
+
+```python
+{"messages": [...], "metadata": {"history_id": "h1", "true_gender": "Female"}}
+```
+
+Stage 2: read `prompt_metadata` from `to_analysis_dataframe`, or use
+`ExperimentDataFrameAdapter` (see `examples/llm_judge_example.ipynb`,
+`experiments/behavioral_audit.ipynb`).
 
 ## ExperimentConfig Reference
 
@@ -215,6 +233,12 @@ Prompt shapes supported by `prompts`:
         {"role": "assistant", "content": "4"},
         {"role": "user", "content": "What is 3+3?"},
     ],
+}
+
+# Messages + per-row tracking metadata (persisted as prompt_metadata in CSV)
+{
+    "messages": [{"role": "user", "content": "Recommend a career path."}],
+    "metadata": {"history_id": "h-001", "condition": "control"},
 }
 ```
 
@@ -274,6 +298,7 @@ Where results are written:
 - experiments: `logs/<experiment_name>/<timestamp>.csv`
 - runtime structured logs: `logs/inference.jsonl`
 - batch checkpoint default: `checkpoints/batch.jsonl`
+- cost calibration: `experiments/estimate_cost.py` → `logs/cost-calibration/estimate.json`
 
 Common experiment cell statuses:
 

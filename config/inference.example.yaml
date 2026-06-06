@@ -25,7 +25,7 @@ providers:
       base_delay: 2.0
       max_delay: 120.0
     base_url: https://openrouter.ai/api/v1
-    default_model: google/gemma-3-4b-it:free
+    default_model: stepfun/step-3.5-flash:free
 
   # Mock (TEST ONLY – for CI and running examples without an API key)
   mock:
@@ -47,10 +47,11 @@ providers:
 # All share the same free quota (50 RPD / 20 RPM without payment).
 model_aliases:
   # OpenRouter free general-purpose chat models
+  # gemma-3-4b-it:free retired on OpenRouter; alias kept for notebook compat → step-3.5-flash:free
   gemma-3-4b:
     alias: gemma-3-4b
     provider: openrouter
-    model: google/gemma-3-4b-it:free
+    model: stepfun/step-3.5-flash:free
 
   paid-gemma-3-4b:
     alias: gemma-3-4b
