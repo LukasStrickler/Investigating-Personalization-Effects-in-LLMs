@@ -47,6 +47,7 @@ class _JudgeCounters:
 class JudgeLogger:
     verbosity: LogVerbosity = "normal"
     sink: TextIO | None = None
+    write_fn: Callable[[str], None] | None = None
     clock: Callable[[], float] = field(default_factory=lambda: time.monotonic)
 
     def __post_init__(self) -> None:
@@ -55,7 +56,14 @@ class JudgeLogger:
                 f"verbosity must be one of {sorted(_LEVEL_ORDER)}; got {self.verbosity!r}"
             )
         self._level = _LEVEL_ORDER[self.verbosity]
-        self._stream = self.sink if self.sink is not None else sys.stderr
+        if self.write_fn is not None:
+            self._emit_fn: Callable[[str], None] = self.write_fn
+        else:
+            stream = self.sink if self.sink is not None else sys.stderr
+            def _stream_write(line: str, _s: TextIO = stream) -> None:
+                _s.write(line + "\n")
+                _s.flush()
+            self._emit_fn = _stream_write
         self._counters: dict[str, _JudgeCounters] = {}
         self._t0: float = self.clock()
 
@@ -203,8 +211,7 @@ class JudgeLogger:
 
     def _emit(self, line: str) -> None:
         try:
-            self._stream.write(line + "\n")
-            self._stream.flush()
+            self._emit_fn(line)
         except Exception:
             pass
 

@@ -94,6 +94,11 @@ def _build_config(log_path: Path) -> InferenceConfig:
                 provider="openrouter",
                 model="openrouter/meta-llama/llama-3.1-8b-instruct",
             ),
+            "research-openrouter-free": ModelAliasConfig(
+                alias="research-openrouter-free",
+                provider="openrouter",
+                model="meta-llama/llama-3.1-8b-instruct:free",
+            ),
             "research-mock": ModelAliasConfig(
                 alias="research-mock",
                 provider="mock",
@@ -344,3 +349,267 @@ async def test_mock_provider_path_does_not_require_api_key_or_network(
     assert result.provider == "mock"
     assert result.content
     assert call_count == 0
+
+
+@pytest.mark.asyncio
+async def test_openrouter_rotates_to_next_key_on_rate_limit(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from inference.client import InferenceRequest, UnifiedInferenceClient
+    from inference.providers import LiteLLMProviderAdapter
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "key-one,key-two")
+
+    keys_used: list[str] = []
+    sleep_calls: list[float] = []
+
+    async def sleep_spy(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    async def completion(**kwargs: Any) -> dict[str, Any]:
+        keys_used.append(kwargs["api_key"])
+        if len(keys_used) == 1:
+            raise RuntimeError("429 Rate limit exceeded: free-models-per-day")
+        return {
+            "choices": [{"message": {"content": "ok"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3},
+        }
+
+    client = UnifiedInferenceClient(
+        config=_build_config(tmp_path / "inference.jsonl"),
+        adapter=LiteLLMProviderAdapter(completion_callable=completion),
+        sleep=sleep_spy,
+    )
+
+    result = await client.complete(
+        InferenceRequest(model_alias="research-openrouter-free", prompt="hello")
+    )
+
+    assert result.content == "ok"
+    assert keys_used == ["key-one", "key-two"]
+    # Rotation retries immediately and does not consume the retry budget.
+    assert sleep_calls == []
+    assert result.retry_count == 0
+
+
+@pytest.mark.asyncio
+async def test_openrouter_all_keys_exhausted_sleeps_until_reset(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from inference.client import InferenceRequest, UnifiedInferenceClient
+    from inference.providers import LiteLLMProviderAdapter
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "key-one,key-two")
+    monkeypatch.setattr("inference.client.parse_cooldown_seconds", lambda error: 30.0)
+
+    keys_used: list[str] = []
+    sleep_calls: list[float] = []
+
+    async def sleep_spy(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    async def completion(**kwargs: Any) -> dict[str, Any]:
+        keys_used.append(kwargs["api_key"])
+        if len(keys_used) <= 2:
+            raise RuntimeError("429 rate limit")
+        return {
+            "choices": [{"message": {"content": "ok"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3},
+        }
+
+    client = UnifiedInferenceClient(
+        config=_build_config(tmp_path / "inference.jsonl"),
+        adapter=LiteLLMProviderAdapter(completion_callable=completion),
+        sleep=sleep_spy,
+    )
+
+    result = await client.complete(
+        InferenceRequest(model_alias="research-openrouter-free", prompt="hello")
+    )
+
+    assert result.content == "ok"
+    # key-one fails -> rotate to key-two (no sleep); key-two fails -> all
+    # exhausted -> sleep until earliest reset -> retry on key-two.
+    assert keys_used == ["key-one", "key-two", "key-two"]
+    assert len(sleep_calls) == 1
+    assert 29.0 < sleep_calls[0] <= 30.0
+    assert result.retry_count == 0
+
+
+@pytest.mark.asyncio
+async def test_concurrent_rate_limits_rotate_once(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import asyncio
+
+    from inference.client import InferenceRequest, UnifiedInferenceClient
+    from inference.providers import LiteLLMProviderAdapter
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "k1,k2,k3")
+
+    keys_used: list[str] = []
+
+    async def sleep_spy(seconds: float) -> None:
+        del seconds
+
+    async def completion(**kwargs: Any) -> dict[str, Any]:
+        keys_used.append(kwargs["api_key"])
+        # Yield so both in-flight requests build with the same key before
+        # either one fails.
+        await asyncio.sleep(0)
+        if kwargs["api_key"] == "k1":
+            raise RuntimeError("429 rate limit per-minute")
+        return {
+            "choices": [{"message": {"content": "ok"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3},
+        }
+
+    client = UnifiedInferenceClient(
+        config=_build_config(tmp_path / "inference.jsonl"),
+        adapter=LiteLLMProviderAdapter(completion_callable=completion),
+        sleep=sleep_spy,
+    )
+
+    request = InferenceRequest(model_alias="research-openrouter-free", prompt="hello")
+    results = await asyncio.gather(client.complete(request), client.complete(request))
+
+    assert all(result.content == "ok" for result in results)
+    # Both requests failed on k1, but the stale-key guard allows only one
+    # rotation: everything recovers on k2 and k3 is never touched.
+    assert keys_used.count("k1") == 2
+    assert "k3" not in keys_used
+
+
+@pytest.mark.asyncio
+async def test_single_openrouter_key_preserves_backoff_behavior(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from inference.client import InferenceRequest, UnifiedInferenceClient
+    from inference.providers import LiteLLMProviderAdapter
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "solo-key")
+
+    keys_used: list[str] = []
+    sleep_calls: list[float] = []
+
+    async def sleep_spy(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    async def completion(**kwargs: Any) -> dict[str, Any]:
+        keys_used.append(kwargs["api_key"])
+        if len(keys_used) == 1:
+            raise RuntimeError("429 rate limit")
+        return {
+            "choices": [{"message": {"content": "ok"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3},
+        }
+
+    client = UnifiedInferenceClient(
+        config=_build_config(tmp_path / "inference.jsonl"),
+        adapter=LiteLLMProviderAdapter(completion_callable=completion),
+        sleep=sleep_spy,
+    )
+
+    result = await client.complete(
+        InferenceRequest(model_alias="research-openrouter-free", prompt="hello")
+    )
+
+    # A single key never rotates: the classic backoff-and-retry path applies.
+    assert result.content == "ok"
+    assert keys_used == ["solo-key", "solo-key"]
+    assert len(sleep_calls) == 1
+    assert result.retry_count == 1
+
+
+@pytest.mark.asyncio
+async def test_paid_model_pinned_to_primary_key(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from inference.client import InferenceRequest, UnifiedInferenceClient
+    from inference.providers import LiteLLMProviderAdapter
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "primary-key,key-two,key-three")
+
+    keys_used: list[str] = []
+    sleep_calls: list[float] = []
+
+    async def sleep_spy(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    async def completion(**kwargs: Any) -> dict[str, Any]:
+        keys_used.append(kwargs["api_key"])
+        if len(keys_used) == 1:
+            raise RuntimeError("429 rate limit")
+        return {
+            "choices": [{"message": {"content": "ok"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3},
+        }
+
+    client = UnifiedInferenceClient(
+        config=_build_config(tmp_path / "inference.jsonl"),
+        adapter=LiteLLMProviderAdapter(completion_callable=completion),
+        sleep=sleep_spy,
+    )
+
+    # research-openrouter is a paid model (no :free suffix): even with multiple
+    # keys configured it must stay on the primary (budget-carrying) key and use
+    # plain backoff instead of rotating.
+    result = await client.complete(
+        InferenceRequest(model_alias="research-openrouter", prompt="hello")
+    )
+
+    assert result.content == "ok"
+    assert keys_used == ["primary-key", "primary-key"]
+    assert len(sleep_calls) == 1
+    assert result.retry_count == 1
+
+
+@pytest.mark.asyncio
+async def test_free_model_rotation_does_not_affect_paid_primary_key(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from inference.client import InferenceRequest, UnifiedInferenceClient
+    from inference.providers import LiteLLMProviderAdapter
+
+    monkeypatch.setenv("OPENROUTER_API_KEY", "primary-key,key-two")
+
+    keys_used: list[str] = []
+
+    async def sleep_spy(seconds: float) -> None:
+        del seconds
+
+    async def completion(**kwargs: Any) -> dict[str, Any]:
+        keys_used.append(kwargs["api_key"])
+        model: str = kwargs["model"]
+        # The free model's primary-key quota is exhausted; paid calls are fine.
+        if model.endswith(":free") and kwargs["api_key"] == "primary-key":
+            raise RuntimeError("429 Rate limit exceeded: free-models-per-day")
+        return {
+            "choices": [{"message": {"content": "ok"}}],
+            "usage": {"prompt_tokens": 1, "completion_tokens": 2, "total_tokens": 3},
+        }
+
+    client = UnifiedInferenceClient(
+        config=_build_config(tmp_path / "inference.jsonl"),
+        adapter=LiteLLMProviderAdapter(completion_callable=completion),
+        sleep=sleep_spy,
+    )
+
+    # Free model exhausts the primary key and rotates to key-two...
+    free_result = await client.complete(
+        InferenceRequest(model_alias="research-openrouter-free", prompt="hello")
+    )
+    # ...but a subsequent paid call still goes out on the primary key.
+    paid_result = await client.complete(
+        InferenceRequest(model_alias="research-openrouter", prompt="hello")
+    )
+
+    assert free_result.content == "ok"
+    assert paid_result.content == "ok"
+    assert keys_used == ["primary-key", "key-two", "primary-key"]

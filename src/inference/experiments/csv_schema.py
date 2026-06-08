@@ -3,6 +3,8 @@
 Traceability (stable for production):
 - prompt_id = sha256(canonical_json(prompt)); row key; one row per prompt combination.
 - prompt column = canonical serialized prompt per row; cells do not duplicate it.
+- prompt_metadata column = caller-supplied tracking metadata per prompt (JSON object or
+  empty); excluded from prompt_id so identity stays content-derived.
 - cell identity = (prompt_id, model_alias); cell payload = {status, response?, error_message?, metadata?}.
 """
 
@@ -24,7 +26,11 @@ PROMPT_ID_COLUMN = "prompt_id"
 """Column name for the row key: sha256(canonical_json(prompt)). First column in CSV."""
 PROMPT_COLUMN = "prompt"
 """Column name for the canonical serialized prompt per row. Second column."""
-SCHEMA_VERSION = 2
+PROMPT_METADATA_COLUMN = "prompt_metadata"
+"""Column name for caller-supplied per-prompt tracking metadata (canonical JSON object or empty). Third column."""
+NON_ALIAS_COLUMNS = (PROMPT_ID_COLUMN, PROMPT_COLUMN, PROMPT_METADATA_COLUMN)
+"""Fixed (non model-alias) matrix columns; every other header is a model alias."""
+SCHEMA_VERSION = 3
 MISSING_CELL = ""
 
 
@@ -110,9 +116,9 @@ def csv_writer_kwargs() -> dict[str, Any]:
 
 
 def build_matrix_headers(model_aliases: list[str]) -> list[str]:
-    """Headers: prompt_id, prompt, then one column per model alias."""
+    """Headers: prompt_id, prompt, prompt_metadata, then one column per model alias."""
     aliases = _validated_aliases(model_aliases)
-    return [PROMPT_ID_COLUMN, PROMPT_COLUMN, *aliases]
+    return [*NON_ALIAS_COLUMNS, *aliases]
 
 
 def canonical_prompt_spec(spec: str | dict[str, Any]) -> dict[str, Any]:
@@ -120,6 +126,10 @@ def canonical_prompt_spec(spec: str | dict[str, Any]) -> dict[str, Any]:
 
     Ensures consistency: single text prompts become one user message; system+user become system then user.
     Use this before compute_prompt_id and serialize_prompt_content so stored prompts have one JSON shape.
+
+    A spec dict may carry an optional "metadata" key (caller-supplied tracking data). It is
+    intentionally NOT part of the canonical form, so prompt_id stays content-derived and stable;
+    use extract_prompt_metadata to read it.
     """
     if isinstance(spec, str):
         s = spec.strip()
@@ -141,6 +151,33 @@ def canonical_prompt_spec(spec: str | dict[str, Any]) -> dict[str, Any]:
     if not messages:
         raise ValueError("Prompt spec has no system or user content.")
     return {"messages": messages}
+
+
+def extract_prompt_metadata(spec: str | dict[str, Any]) -> dict[str, Any] | None:
+    """Return the caller-supplied tracking metadata of a prompt spec, or None when absent/empty.
+
+    Metadata is excluded from canonical_prompt_spec and therefore from prompt_id.
+    """
+    if isinstance(spec, dict):
+        metadata = spec.get("metadata")
+        if isinstance(metadata, dict) and metadata:
+            return metadata
+    return None
+
+
+def serialize_prompt_metadata(metadata: dict[str, Any] | None) -> str:
+    """Serialize prompt metadata for the prompt_metadata column; absent/empty metadata becomes ""."""
+    if not metadata:
+        return MISSING_CELL
+    return _canonical_json(metadata)
+
+
+def deserialize_prompt_metadata(serialized_metadata: str) -> dict[str, Any] | None:
+    """Parse a prompt_metadata cell; empty/non-object cells become None."""
+    if serialized_metadata is None or serialized_metadata.strip() == "":
+        return None
+    value = _parse_json(serialized_metadata)
+    return dict(value) if isinstance(value, Mapping) else None
 
 
 def compute_prompt_id(prompt: JSONValue) -> str:
@@ -182,10 +219,12 @@ def build_sidecar_metadata(*, model_aliases: list[str]) -> dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
         "prompt_id_column": PROMPT_ID_COLUMN,
+        "prompt_metadata_column": PROMPT_METADATA_COLUMN,
         "model_aliases": aliases,
         "cell_status_values": [status.value for status in CellStatus],
         "missing_cell": MISSING_CELL,
-        "prompt_identity": "sha256(canonical_json(prompt))",
+        "prompt_identity": "sha256(canonical_json(prompt)); prompt_metadata excluded",
+        "prompt_metadata": "caller-supplied tracking metadata (canonical JSON object) or empty",
         "cell_identity": "sha256(prompt_id + '\\x1f' + alias)",
         "cell_payload": {
             "format": "json",
@@ -220,8 +259,10 @@ __all__ = [
     "JSONValue",
     "MISSING_CELL",
     "MatrixCell",
+    "NON_ALIAS_COLUMNS",
     "PROMPT_COLUMN",
     "PROMPT_ID_COLUMN",
+    "PROMPT_METADATA_COLUMN",
     "RETRYABLE_CELL_STATUSES",
     "SCHEMA_VERSION",
     "TERMINAL_CELL_STATUSES",
@@ -233,8 +274,11 @@ __all__ = [
     "compute_prompt_id",
     "csv_writer_kwargs",
     "deserialize_prompt_content",
+    "deserialize_prompt_metadata",
     "deserialize_response_content",
+    "extract_prompt_metadata",
     "metadata_sidecar_path",
     "serialize_prompt_content",
+    "serialize_prompt_metadata",
     "serialize_response_content",
 ]

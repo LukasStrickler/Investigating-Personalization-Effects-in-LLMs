@@ -143,6 +143,35 @@ def resolve_api_key(provider: ProviderConfig) -> str:
     return api_key
 
 
+def resolve_api_keys(provider: ProviderConfig) -> list[str]:
+    """Resolve one or more API keys from environment variables.
+
+    Multiple keys may be provided comma-separated in the same env var
+    (e.g. ``OPENROUTER_API_KEY=sk-or-...,sk-or-...``) to enable key rotation.
+    A single key without commas resolves to a list of one.
+
+    Raises:
+        ValueError: If the environment variable is not set (or empty) for a
+            non-mock provider.
+    """
+    env_var_name = provider.api_key_env
+    raw = os.environ.get(env_var_name)
+
+    if raw is not None:
+        keys = [key.strip() for key in raw.split(",") if key.strip()]
+        if keys:
+            return keys
+
+    # Allow mock provider to work without a real key
+    if provider.name == MOCK_PROVIDER:
+        return [f"mock-key-for-{provider.name}"]
+
+    raise ValueError(
+        f"API key environment variable '{env_var_name}' is not set. "
+        f"Please set it before using provider '{provider.name}'."
+    )
+
+
 __all__ = [
     "SUPPORTED_PROVIDERS",
     "MOCK_PROVIDER",
@@ -152,4 +181,5 @@ __all__ = [
     "load_config_from_yaml",
     "load_config_from_file",
     "resolve_api_key",
+    "resolve_api_keys",
 ]

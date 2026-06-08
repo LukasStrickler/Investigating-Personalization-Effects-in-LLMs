@@ -17,7 +17,7 @@ from typing import Any, Protocol, cast
 
 from inference.judges.types import JudgeSubject
 
-_EXPERIMENT_METADATA_COLS = ("prompt_id", "prompt")
+_EXPERIMENT_METADATA_COLS = ("prompt_id", "prompt", "prompt_metadata")
 
 
 class SubjectAdapter(Protocol):
@@ -133,7 +133,8 @@ class ExperimentDataFrameAdapter:
       - subject_model_alias = column header (model alias)
       - subject_content = the cell's "response" field
       - prompt_id       = same as subject_id (lineage)
-      - metadata        = {"prompt_spec": <prompt spec, if column present>}
+      - metadata        = {"prompt_spec": <prompt spec, if column present>} merged with the
+        row's prompt_metadata tracking dict (if column present) — carried through to verdicts
     """
 
     def __init__(
@@ -183,6 +184,16 @@ class ExperimentDataFrameAdapter:
             if not prompt_id or prompt_id.casefold() == "nan":
                 continue
             prompt_spec = row.get("prompt") if "prompt" in self._df.columns else None
+            prompt_metadata = (
+                self._parse_prompt_metadata(row.get("prompt_metadata"))
+                if "prompt_metadata" in self._df.columns
+                else None
+            )
+            metadata: dict[str, Any] = {}
+            if prompt_spec is not None:
+                metadata["prompt_spec"] = prompt_spec
+            if prompt_metadata:
+                metadata = {**prompt_metadata, **metadata}
             for alias in cols:
                 cell_raw = row.get(alias)
                 cell = self._parse_cell(cell_raw)
@@ -204,8 +215,24 @@ class ExperimentDataFrameAdapter:
                     subject_model_alias=alias,
                     source_id=self._source_id,
                     prompt_id=prompt_id,
-                    metadata={"prompt_spec": prompt_spec} if prompt_spec is not None else None,
+                    metadata=dict(metadata) if metadata else None,
                 )
+
+    @staticmethod
+    def _parse_prompt_metadata(raw: Any) -> dict[str, Any] | None:
+        """Accept a dict (build_dataframe_from_csv) or a JSON string (raw pd.read_csv)."""
+        if isinstance(raw, dict):
+            return raw or None
+        if isinstance(raw, str):
+            s = raw.strip()
+            if not s:
+                return None
+            try:
+                obj = json.loads(s)
+            except json.JSONDecodeError:
+                return None
+            return obj if isinstance(obj, dict) and obj else None
+        return None
 
     @staticmethod
     def _parse_cell(raw: Any) -> dict[str, Any] | None:

@@ -54,6 +54,8 @@ SECRET_PATTERNS = [
     (r"sk-proj-[a-zA-Z0-9]{20,}", "[REDACTED]"),
     # Anthropic API keys
     (r"sk-ant-[a-zA-Z0-9-]{20,}", "[REDACTED]"),
+    # OpenRouter API keys (sk-or-v1-...)
+    (r"sk-or-v\d+-[a-zA-Z0-9_-]{5,}", "[REDACTED]"),
     # Bearer tokens - match "Bearer <token>" or "Bearer token <token>"
     (r"Bearer\s+(?:token\s+)?[a-zA-Z0-9_-]{6,}", "Bearer [REDACTED]"),
     # Generic long hex strings (32+ chars, likely API keys)

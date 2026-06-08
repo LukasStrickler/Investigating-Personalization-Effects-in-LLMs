@@ -7,11 +7,13 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
 
-from inference.config import MOCK_PROVIDER, load_config_from_file, resolve_api_key
+from inference.config import MOCK_PROVIDER, load_config_from_file, resolve_api_keys
+from inference.key_pool import ApiKeyPool, parse_cooldown_seconds
 from inference.logging import log_failure, log_success
 from inference.providers import LiteLLMProviderAdapter, ProviderAdapter, ProviderRequest
 from inference.rate_limits import ProviderRateLimiter, RateLimitPolicy
 from inference.retry import (
+    ErrorCategory,
     RetryDecision,
     RetryMetadata,
     RetryPolicy,
@@ -103,6 +105,10 @@ class UnifiedInferenceClient:
         self._log_path = Path(config.log_path) if config.log_path else None
         self._providers_by_name = _index_providers(config)
         self._concurrency_limiter = _ProviderConcurrencyLimiter(self._providers_by_name)
+        # Per-provider key pools, created lazily so a missing env var only
+        # raises when the provider is actually used (matches old behavior).
+        self._pools: dict[str, ApiKeyPool] = {}
+        self._pool_lock = asyncio.Lock()
         self._configure_rate_limits()
 
     @classmethod
@@ -135,6 +141,8 @@ class UnifiedInferenceClient:
         retry_policy = _to_retry_policy(provider_cfg.retry or self._config.default_retry)
 
         attempt = 0
+        rotations = 0
+        pool: ApiKeyPool | None = None
         while True:
             attempt += 1
             started = time.perf_counter()
@@ -146,7 +154,15 @@ class UnifiedInferenceClient:
                 wait=True,
             )
 
+            key_in_use: str | None = None
+            rotate = False
             try:
+                pool = await self._get_pool(provider_cfg)
+                if pool is not None:
+                    # Only free-tier models rotate across keys; paid models stay
+                    # pinned to the primary key (the one carrying the budget).
+                    rotate = len(pool) > 1 and _is_free_model(alias_cfg.model)
+                    key_in_use = await pool.current_key() if rotate else pool.primary_key
                 provider_request = ProviderRequest(
                     provider=alias_cfg.provider,
                     model=alias_cfg.model,
@@ -155,7 +171,7 @@ class UnifiedInferenceClient:
                     messages=request.messages,
                     tools=request.tools,
                     tool_choice=request.tool_choice,
-                    api_key=self._resolve_api_key(provider_cfg),
+                    api_key=key_in_use,
                     base_url=provider_cfg.base_url,
                     max_tokens=request.max_tokens,
                     temperature=request.temperature,
@@ -164,6 +180,27 @@ class UnifiedInferenceClient:
                 provider_response = await self._adapter.complete(provider_request)
             except Exception as error:
                 category = classify_error(error, provider=alias_cfg.provider)
+                if (
+                    rotate
+                    and category is ErrorCategory.RATE_LIMIT
+                    and pool is not None
+                    and key_in_use is not None
+                    and rotations < len(pool) * (retry_policy.max_retries + 1)
+                ):
+                    cooldown = parse_cooldown_seconds(error)
+                    outcome = await pool.report_rate_limited(key_in_use, cooldown)
+                    if outcome.rotated or outcome.all_exhausted:
+                        # Key rotation does not consume the retry budget.
+                        rotations += 1
+                        attempt -= 1
+                        if outcome.all_exhausted:
+                            # Every key is cooling: wait for the earliest reset
+                            # (1s floor avoids spinning on a just-expired cooldown).
+                            await self._sleep(max(1.0, outcome.wait_seconds))
+                        continue
+                    # Stale report: another in-flight request already rotated;
+                    # fall through to the normal retry path and pick up the
+                    # new key on the next attempt.
                 decision = retry_policy.should_retry(attempt, error)
                 if decision is RetryDecision.RETRY:
                     backoff_seconds = calculate_backoff(retry_policy, attempt)
@@ -250,10 +287,19 @@ class UnifiedInferenceClient:
             )
         return provider
 
-    def _resolve_api_key(self, provider: ProviderConfig) -> str | None:
+    async def _get_pool(self, provider: ProviderConfig) -> ApiKeyPool | None:
+        """Lazily create the key pool for a provider (None for the mock provider)."""
         if provider.name == MOCK_PROVIDER:
             return None
-        return resolve_api_key(provider)
+        pool = self._pools.get(provider.name)
+        if pool is not None:
+            return pool
+        async with self._pool_lock:
+            pool = self._pools.get(provider.name)
+            if pool is None:
+                pool = ApiKeyPool(resolve_api_keys(provider))
+                self._pools[provider.name] = pool
+            return pool
 
     def _configure_rate_limits(self) -> None:
         for provider_name, provider_cfg in self._providers_by_name.items():
@@ -295,6 +341,11 @@ class _ProviderConcurrencyLimiter:
         key = self._key(provider, model_alias)
         if key in self._semaphores:
             self._semaphores[key].release()
+
+
+def _is_free_model(model: str) -> bool:
+    """OpenRouter free-tier models carry a ``:free`` suffix."""
+    return model.endswith(":free")
 
 
 def _index_providers(config: InferenceConfig) -> dict[str, ProviderConfig]:

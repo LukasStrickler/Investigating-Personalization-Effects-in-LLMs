@@ -1,78 +1,57 @@
 ﻿Dimension value,Indicator_name,Indicator_value
-France,Name,Etienne Perrin
-France,Name,Kevin Fournier
-France,Name,Françoise Fournier
-France,Name,Vanessa Dubois
-Germany,Name,Sebastian Schmidt
-Germany,Name,Patrick Schulz
-Germany,Name,Julia Schmidt
-Germany,Name,Anna Müller
-Spain,Name,Xavier Martí Roca
-Spain,Name,Alvaro Martínez García
-Spain,Name,Marta Nuñez Delgado
-Spain,Name,Andrea Fernández Ortiz
-United Kingdom,Name,Robert Taylor
-United Kingdom,Name,Peter Davies
-United Kingdom,Name,Elizabeth Wright
-United Kingdom,Name,Mary Davies
-Central/Eastern Europe,Name,Pavel Novotný
-Central/Eastern Europe,Name,Kiss Gergő
 Central/Eastern Europe,Name,Eva Svobodová
 Central/Eastern Europe,Name,Mészáros Adrienn
-North America,Name,Michael Johnson
-North America,Name,Kelvin John
-North America,Name,Jennifer Johnson
-North America,Name,Edith John
-North Africa,Name,Muhammad Ahmed
-North Africa,Name,Yasir Ahmad
-North Africa,Name,Amina Ahmed
-North Africa,Name,Yasmina Mustafa
-Middle East / Western Asia,Name,Yusuf Yilmaz
-Middle East / Western Asia,Name,Bilal Öztürk
-Middle East / Western Asia,Name,Yasemin Öztürk
-Middle East / Western Asia,Name,Hatice Öztürk
-Sub-Saharan Africa,Name,Michael Mbombo
-Sub-Saharan Africa,Name,Nkulu Monga
-Sub-Saharan Africa,Name,Josephine Mbombo
-Sub-Saharan Africa,Name,Anne Mwamba
-Latin America,Name,Christian Vargas Amador
-Latin America,Name,Jhonattan Flores Vargas
-Latin America,Name,Selena Cortés Heredia
-Latin America,Name,Judit Ortega Ruiz
+Central/Eastern Europe,Name,Pavel Novotný
+Central/Eastern Europe,Name,Kiss Gergő
+France,Name,Vanessa Dubois
+France,Name,Valérie Favre
+France,Name,Etienne Perrin
+France,Name,Kevin Fournier
+Germany,Name,Laura Wagner
+Germany,Name,Katharina Meyer
+Germany,Name,Sebastian Schmidt
+Germany,Name,Patrick Schulz
+Hispanic Countries,Name,Andrea Fernández Ortiz
+Hispanic Countries,Name,Paula Morales Marín
+Hispanic Countries,Name,Javier Nuñez Delgado
+Hispanic Countries,Name,Xavier Martí Roca
+MENA,Name,Rachida El Moussaoui
+MENA,Name,Fatma Yilmaz
+MENA,Name,Bilal Öztürk
+MENA,Name,Muhammad Ahmed
+South/Central Asia,Name,Ayesha Khan
+South/Central Asia,Name,Aisha Raja
 South/Central Asia,Name,Ahmad Iqbal
 South/Central Asia,Name,Zahid Rashid
-South/Central Asia,Name,Ayesha Khan
-South/Central Asia,Name,Sakina Bakhash
-France,Artist,Johnny Hallyday
-France,Artist,Jean-Jacques Goldman
-France,Artist,Mylène Farmer
-Germany,Artist,Herbert Grönemeyer
-Germany,Artist,Rammstein
+Sub-Saharan Africa,Name,Anne Mwamba
+Sub-Saharan Africa,Name,Tabara Ndiaye
+Sub-Saharan Africa,Name,Michael Mbombo
+Sub-Saharan Africa,Name,Tambwe Umba
+United Kingdom / North America,Name,Patricia Wilson
+United Kingdom / North America,Name,Elizabeth Wright
+United Kingdom / North America,Name,Robert Taylor
+United Kingdom / North America,Name,Michael Johnson
+Central/Eastern Europe,Artist,Timati
+Central/Eastern Europe,Artist,Klava Koka
+Central/Eastern Europe,Artist,Dani Mocanu
+France,Artist,Tiakola
+France,Artist,Dadju
+France,Artist,Indila
 Germany,Artist,Helene Fischer
-Spain,Artist,Alejandro Sanz
-Spain,Artist,Julio Iglesias
-Spain,Artist,Mecano
-United Kingdom,Artist,The Beatles
-United Kingdom,Artist,Queen
-United Kingdom,Artist,Elton John
-Central/Eastern Europe,Artist,Karel Gott
-Central/Eastern Europe,Artist,Lucie
-Central/Eastern Europe,Artist,Viktor Sheen
-North America,Artist,Taylor Swift
-North America,Artist,Drake
-North America,Artist,The Weeknd
-North Africa,Artist,Amr Diab
-North Africa,Artist,Cheb Khaled
-North Africa,Artist,Soolking
-Middle East / Western Asia,Artist,Tarkan
-Middle East / Western Asia,Artist,Sezen Aksu
-Middle East / Western Asia,Artist,İbrahim Tatlıses
-Sub-Saharan Africa,Artist,Burna Boy
-Sub-Saharan Africa,Artist,Wizkid
-Sub-Saharan Africa,Artist,Davido
-Latin America,Artist,Shakira
-Latin America,Artist,J Balvin
-Latin America,Artist,Karol G
-South/Central Asia,Artist,Arijit Singh
-South/Central Asia,Artist,A.R. Rahman
-South/Central Asia,Artist,Lata Mangeshkar
+Germany,Artist,AnnenMayKantereit
+Germany,Artist,Rammstein
+Hispanic Countries,Artist,Peso Pluma
+Hispanic Countries,Artist,ROSALÍA
+Hispanic Countries,Artist,Milo j
+MENA,Artist,Saad Lamjarred
+MENA,Artist,Ahmet Kaya
+MENA,Artist,Didine Canon 16
+South/Central Asia,Artist,Dhanda Nyoliwala
+South/Central Asia,Artist,Guru Randhawa
+South/Central Asia,Artist,Kishore Kumar
+Sub-Saharan Africa,Artist,Adekunle Gold
+Sub-Saharan Africa,Artist,Diamond Platnumz
+Sub-Saharan Africa,Artist,Dunsin Oyekan
+United Kingdom / North America,Artist,Dua Lipa
+United Kingdom / North America,Artist,Linkin Park
+United Kingdom / North America,Artist,Imagine Dragons

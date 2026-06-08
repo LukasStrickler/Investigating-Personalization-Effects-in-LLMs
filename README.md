@@ -10,10 +10,7 @@ A team research project at the University of Mannheim examining whether LLMs inf
 ## Quick Start
 
 ```bash
-# Install dependencies
 uv sync
-
-# Set up environment
 cp .env.example .env
 # Edit .env and add your API keys
 ```
@@ -64,19 +61,22 @@ and judge verdicts fit together.
 
 ## Documentation
 
-- **[Architecture Overview](docs/architecture.md)** - How the runtime, experiments, judges, and data artifacts connect
-- **[Experiments Usage Guide](docs/experiments-usage.md)** - How to run prompt x model matrices and analyze results
-- **[Provider Configuration](config/inference.example.yaml)** - Example provider, alias, retry, rate-limit, and output-path config
-- **[Background Generation](src/generate_backgrounds/README.md)** - Optional persona conversation-history generation
+- **[Architecture Overview](docs/architecture.md)** — how runtime, experiments, judges, and artifacts connect
+- **[Experiments Usage Guide](docs/experiments-usage.md)** — matrices, resume, `prompt_metadata` tracking
+- **[Behavioral audit cost estimate](docs/cost-estimate-behavioral-audit.md)** — scope and pricing; calibrate with `experiments/estimate_cost.py`
+- **[Provider Configuration](config/inference.example.yaml)** — provider, alias, retry, rate-limit, and output-path config
+- **[Background Generation](src/generate_backgrounds/README.md)** — optional persona conversation-history generation
 
 ## Examples
 
-See [`examples/`](examples/) for comprehensive usage examples:
+See [`examples/`](examples/):
 
 **Example Notebooks (Start Here)**
-- [`inference_example.ipynb`](examples/inference_example.ipynb) - Runtime layer: single completion, batch processing, error handling
-- [`experiments_example.ipynb`](examples/experiments_example.ipynb) - Experiments layer: prompt x model matrices, resume/extend, scheduling controls
-- [`llm_judge_example.ipynb`](examples/llm_judge_example.ipynb) - Judge layer: subjects, judge configs, resume, verdict dataframes
+- [`inference_example.ipynb`](examples/inference_example.ipynb) — runtime layer: single completion, batch processing, error handling
+- [`experiments_example.ipynb`](examples/experiments_example.ipynb) — experiments layer: prompt x model matrices, resume/extend
+- [`llm_judge_example.ipynb`](examples/llm_judge_example.ipynb) — judge layer: subjects, configs, verdict dataframes
+
+**Research runs:** [`behavioral_audit.ipynb`](experiments/behavioral_audit.ipynb), [`direct_probing.ipynb`](experiments/direct_probing.ipynb)
 
 Recommended onboarding order:
 
@@ -92,20 +92,14 @@ Default output locations:
 - Experiment matrices: `logs/<experiment_name>/<timestamp>.csv`
 - Judge verdicts: `logs/judges/<experiment_name>.judgments.csv`
 
-**Quick Start**
 ```bash
-# Run a quick test in Jupyter Lab
-jupyter lab  # Or use the notebooks directly in VS Code/Jupyter
+jupyter lab
 ```
+
 ## Development
 
 ```bash
-# Run tests
 pytest tests -q
-
-# Type check
 mypy src --ignore-missing-imports
-
-# Lint
 ruff check .
 ```
