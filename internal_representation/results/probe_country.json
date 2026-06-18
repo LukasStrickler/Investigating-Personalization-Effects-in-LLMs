@@ -1,0 +1,512 @@
+[
+  {
+    "attribute": "country",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.34,
+    "f1_macro": 0.3287,
+    "cv_mean": 0.3325,
+    "cv_std": 0.04,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 0,
+    "classifier": "svm",
+    "accuracy": 0.3,
+    "f1_macro": 0.288,
+    "cv_mean": 0.25,
+    "cv_std": 0.044,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.23,
+    "f1_macro": 0.2142,
+    "cv_mean": 0.1775,
+    "cv_std": 0.0267,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 0.36,
+    "f1_macro": 0.3604,
+    "cv_mean": 0.4125,
+    "cv_std": 0.0296,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 1,
+    "classifier": "svm",
+    "accuracy": 0.38,
+    "f1_macro": 0.3875,
+    "cv_mean": 0.3825,
+    "cv_std": 0.0257,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 0.2,
+    "f1_macro": 0.1925,
+    "cv_mean": 0.19,
+    "cv_std": 0.0443,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 0.46,
+    "f1_macro": 0.4577,
+    "cv_mean": 0.4025,
+    "cv_std": 0.0289,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 2,
+    "classifier": "svm",
+    "accuracy": 0.47,
+    "f1_macro": 0.4592,
+    "cv_mean": 0.4075,
+    "cv_std": 0.0127,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 0.23,
+    "f1_macro": 0.2274,
+    "cv_mean": 0.1475,
+    "cv_std": 0.0539,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 0.44,
+    "f1_macro": 0.4269,
+    "cv_mean": 0.425,
+    "cv_std": 0.0354,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 3,
+    "classifier": "svm",
+    "accuracy": 0.44,
+    "f1_macro": 0.4186,
+    "cv_mean": 0.44,
+    "cv_std": 0.0374,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 0.24,
+    "f1_macro": 0.2377,
+    "cv_mean": 0.17,
+    "cv_std": 0.0245,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 0.49,
+    "f1_macro": 0.4824,
+    "cv_mean": 0.4725,
+    "cv_std": 0.0267,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 4,
+    "classifier": "svm",
+    "accuracy": 0.45,
+    "f1_macro": 0.4403,
+    "cv_mean": 0.4675,
+    "cv_std": 0.0458,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 0.21,
+    "f1_macro": 0.2105,
+    "cv_mean": 0.165,
+    "cv_std": 0.0429,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 0.44,
+    "f1_macro": 0.4343,
+    "cv_mean": 0.48,
+    "cv_std": 0.04,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 5,
+    "classifier": "svm",
+    "accuracy": 0.47,
+    "f1_macro": 0.4623,
+    "cv_mean": 0.455,
+    "cv_std": 0.0257,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 0.14,
+    "f1_macro": 0.136,
+    "cv_mean": 0.155,
+    "cv_std": 0.0322,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 0.48,
+    "f1_macro": 0.4775,
+    "cv_mean": 0.4525,
+    "cv_std": 0.0215,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 6,
+    "classifier": "svm",
+    "accuracy": 0.48,
+    "f1_macro": 0.4756,
+    "cv_mean": 0.4275,
+    "cv_std": 0.0242,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 0.16,
+    "f1_macro": 0.1585,
+    "cv_mean": 0.1575,
+    "cv_std": 0.0359,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 7,
+    "classifier": "logistic",
+    "accuracy": 0.55,
+    "f1_macro": 0.5456,
+    "cv_mean": 0.41,
+    "cv_std": 0.0398,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 7,
+    "classifier": "svm",
+    "accuracy": 0.54,
+    "f1_macro": 0.5385,
+    "cv_mean": 0.41,
+    "cv_std": 0.0406,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 7,
+    "classifier": "logistic",
+    "accuracy": 0.22,
+    "f1_macro": 0.217,
+    "cv_mean": 0.1575,
+    "cv_std": 0.0341,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 8,
+    "classifier": "logistic",
+    "accuracy": 0.49,
+    "f1_macro": 0.4818,
+    "cv_mean": 0.4625,
+    "cv_std": 0.0548,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 8,
+    "classifier": "svm",
+    "accuracy": 0.5,
+    "f1_macro": 0.494,
+    "cv_mean": 0.4475,
+    "cv_std": 0.031,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 8,
+    "classifier": "logistic",
+    "accuracy": 0.21,
+    "f1_macro": 0.1997,
+    "cv_mean": 0.1425,
+    "cv_std": 0.0302,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 9,
+    "classifier": "logistic",
+    "accuracy": 0.51,
+    "f1_macro": 0.5083,
+    "cv_mean": 0.465,
+    "cv_std": 0.0436,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 9,
+    "classifier": "svm",
+    "accuracy": 0.48,
+    "f1_macro": 0.4742,
+    "cv_mean": 0.465,
+    "cv_std": 0.02,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 9,
+    "classifier": "logistic",
+    "accuracy": 0.2,
+    "f1_macro": 0.1992,
+    "cv_mean": 0.165,
+    "cv_std": 0.0502,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 10,
+    "classifier": "logistic",
+    "accuracy": 0.47,
+    "f1_macro": 0.4686,
+    "cv_mean": 0.4625,
+    "cv_std": 0.0224,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 10,
+    "classifier": "svm",
+    "accuracy": 0.42,
+    "f1_macro": 0.4142,
+    "cv_mean": 0.43,
+    "cv_std": 0.0408,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 10,
+    "classifier": "logistic",
+    "accuracy": 0.22,
+    "f1_macro": 0.2183,
+    "cv_mean": 0.155,
+    "cv_std": 0.0384,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 11,
+    "classifier": "logistic",
+    "accuracy": 0.48,
+    "f1_macro": 0.4805,
+    "cv_mean": 0.485,
+    "cv_std": 0.0464,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 11,
+    "classifier": "svm",
+    "accuracy": 0.39,
+    "f1_macro": 0.3757,
+    "cv_mean": 0.4575,
+    "cv_std": 0.043,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 11,
+    "classifier": "logistic",
+    "accuracy": 0.18,
+    "f1_macro": 0.1822,
+    "cv_mean": 0.1825,
+    "cv_std": 0.0187,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 12,
+    "classifier": "logistic",
+    "accuracy": 0.48,
+    "f1_macro": 0.4808,
+    "cv_mean": 0.49,
+    "cv_std": 0.0215,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 12,
+    "classifier": "svm",
+    "accuracy": 0.48,
+    "f1_macro": 0.4786,
+    "cv_mean": 0.4725,
+    "cv_std": 0.0521,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 12,
+    "classifier": "logistic",
+    "accuracy": 0.22,
+    "f1_macro": 0.2167,
+    "cv_mean": 0.155,
+    "cv_std": 0.0367,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 13,
+    "classifier": "logistic",
+    "accuracy": 0.5,
+    "f1_macro": 0.4977,
+    "cv_mean": 0.48,
+    "cv_std": 0.0269,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 13,
+    "classifier": "svm",
+    "accuracy": 0.5,
+    "f1_macro": 0.4911,
+    "cv_mean": 0.4625,
+    "cv_std": 0.0403,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 13,
+    "classifier": "logistic",
+    "accuracy": 0.18,
+    "f1_macro": 0.1792,
+    "cv_mean": 0.1775,
+    "cv_std": 0.045,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 14,
+    "classifier": "logistic",
+    "accuracy": 0.5,
+    "f1_macro": 0.5001,
+    "cv_mean": 0.5225,
+    "cv_std": 0.0357,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 14,
+    "classifier": "svm",
+    "accuracy": 0.46,
+    "f1_macro": 0.4553,
+    "cv_mean": 0.465,
+    "cv_std": 0.0366,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 14,
+    "classifier": "logistic",
+    "accuracy": 0.18,
+    "f1_macro": 0.1761,
+    "cv_mean": 0.175,
+    "cv_std": 0.0285,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 15,
+    "classifier": "logistic",
+    "accuracy": 0.53,
+    "f1_macro": 0.5314,
+    "cv_mean": 0.54,
+    "cv_std": 0.0267,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 15,
+    "classifier": "svm",
+    "accuracy": 0.53,
+    "f1_macro": 0.526,
+    "cv_mean": 0.525,
+    "cv_std": 0.0395,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 15,
+    "classifier": "logistic",
+    "accuracy": 0.14,
+    "f1_macro": 0.1425,
+    "cv_mean": 0.175,
+    "cv_std": 0.0371,
+    "is_control": true
+  },
+  {
+    "attribute": "country",
+    "layer": 16,
+    "classifier": "logistic",
+    "accuracy": 0.52,
+    "f1_macro": 0.5132,
+    "cv_mean": 0.56,
+    "cv_std": 0.033,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 16,
+    "classifier": "svm",
+    "accuracy": 0.47,
+    "f1_macro": 0.4615,
+    "cv_mean": 0.52,
+    "cv_std": 0.0415,
+    "is_control": false
+  },
+  {
+    "attribute": "country",
+    "layer": 16,
+    "classifier": "logistic",
+    "accuracy": 0.16,
+    "f1_macro": 0.159,
+    "cv_mean": 0.22,
+    "cv_std": 0.0359,
+    "is_control": true
+  }
+]

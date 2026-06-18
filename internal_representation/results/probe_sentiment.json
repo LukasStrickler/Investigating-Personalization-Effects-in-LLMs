@@ -1,0 +1,692 @@
+[
+  {
+    "attribute": "sentiment",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 0,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 1,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 2,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 3,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 4,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 5,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 6,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 7,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 7,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 7,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 8,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 8,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 8,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 9,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 9,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 9,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 10,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 10,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 10,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 11,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 11,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 11,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 12,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 12,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 12,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 13,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 13,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 13,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 14,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 14,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 14,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 15,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 15,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 15,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 16,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 16,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 16,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 17,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 17,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 17,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 18,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 18,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 18,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 19,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 19,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 19,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 20,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 20,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 20,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 21,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 21,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 21,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 22,
+    "classifier": "logistic",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 22,
+    "classifier": "svm",
+    "accuracy": 0.35,
+    "f1_macro": 0.1728,
+    "cv_mean": 0.3521,
+    "cv_std": 0.0029,
+    "is_control": false
+  },
+  {
+    "attribute": "sentiment",
+    "layer": 22,
+    "classifier": "logistic",
+    "accuracy": 0.3167,
+    "f1_macro": 0.1603,
+    "cv_mean": 0.3604,
+    "cv_std": 0.0029,
+    "is_control": true
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "expertise": {
+    "best_layer": 1,
+    "real_accuracy": 1.0,
+    "control_accuracy": 0.3,
+    "selectivity_gap": 0.7,
+    "verdict": "\u2713 ENCODED"
+  }
+}

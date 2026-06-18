@@ -1,0 +1,21 @@
+sample_index,split,actual_label,predicted_label,is_correct,confidence,conversation
+4,test,low,low,True,0.7038,"User: What's the difference between a list and a tuple? I'm new to this.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list.
+User: Mutable? What does that mean?
+Assistant: It means you can change the contents after creation.
+User: Okay I think I need to re-read the basics again."
+8,test,high,high,True,0.7738,"User: I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute."
+12,test,low,high,False,0.8671,"User: I keep getting errors when I run my code. It says SyntaxError.
+Assistant: A SyntaxError means Python can't understand your code's structure.
+User: I don't understand what structure means here. Can you explain simply?
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation.
+User: Oh I see, I forgot a colon after my if statement! Thanks!"
+13,test,high,high,True,0.5914,"User: I need to implement a lock-free concurrent hash map for our real-time trading system.
+Assistant: Robin Hood hashing with atomic CAS operations is a proven approach.
+User: Right, but I'm worried about ABA problems on the delete path with our epoch-based reclamation.
+Assistant: Hazard pointers might be more suitable for your use case — they avoid ABA entirely.
+User: Agreed. I'll implement a hazard pointer scheme with thread-local retired lists and amortized reclamation."

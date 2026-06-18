@@ -1,0 +1,12 @@
+{
+  "attribute": "expertise",
+  "classes": [
+    "low",
+    "high"
+  ],
+  "best_layer": 0,
+  "real_accuracy": 1.0,
+  "control_accuracy": 0.525,
+  "selectivity_gap": 0.475,
+  "verdict": "ENCODED"
+}

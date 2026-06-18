@@ -1,0 +1,12 @@
+{
+  "attribute": "expertise",
+  "classes": [
+    "high",
+    "low"
+  ],
+  "layer": 0,
+  "train_size": 120,
+  "test_size": 40,
+  "train_accuracy": 0.5,
+  "test_accuracy": 0.475
+}
