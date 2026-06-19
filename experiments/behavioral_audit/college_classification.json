@@ -1,0 +1,299 @@
+{
+	"college_major_classification": {
+		"name": "ISCED-F 2013 Fields of Education and Training",
+		"broad_fields": [
+			{
+				"name": "Generic programmes and qualifications",
+				"narrow_fields": [
+					{
+						"name": "Basic programmes and qualifications",
+						"detailed_fields": [
+							{ "name": "Basic programmes and qualifications" }
+						]
+					},
+					{
+						"name": "Literacy and numeracy",
+						"detailed_fields": [{ "name": "Literacy and numeracy" }]
+					},
+					{
+						"name": "Personal skills and development",
+						"detailed_fields": [
+							{ "name": "Personal skills and development" }
+						]
+					}
+				]
+			},
+			{
+				"name": "Education",
+				"narrow_fields": [
+					{
+						"name": "Education",
+						"detailed_fields": [
+							{ "name": "Education science" },
+							{ "name": "Training for pre-school teachers" },
+							{
+								"name": "Teacher training without subject specialisation"
+							},
+							{
+								"name": "Teacher training with subject specialisation"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Arts and humanities",
+				"narrow_fields": [
+					{
+						"name": "Arts",
+						"detailed_fields": [
+							{
+								"name": "Audio-visual techniques and media production"
+							},
+							{
+								"name": "Fashion, interior and industrial design"
+							},
+							{ "name": "Fine arts" },
+							{ "name": "Handicrafts" },
+							{ "name": "Music and performing arts" }
+						]
+					},
+					{
+						"name": "Humanities (except languages)",
+						"detailed_fields": [
+							{ "name": "Religion and theology" },
+							{ "name": "History and archaeology" },
+							{ "name": "Philosophy and ethics" }
+						]
+					},
+					{
+						"name": "Languages",
+						"detailed_fields": [
+							{ "name": "Language acquisition" },
+							{ "name": "Literature and linguistics" }
+						]
+					}
+				]
+			},
+			{
+				"name": "Social sciences, journalism and information",
+				"narrow_fields": [
+					{
+						"name": "Social and behavioural sciences",
+						"detailed_fields": [
+							{ "name": "Economics" },
+							{ "name": "Political sciences and civics" },
+							{ "name": "Psychology" },
+							{ "name": "Sociology and cultural studies" }
+						]
+					},
+					{
+						"name": "Journalism and information",
+						"detailed_fields": [
+							{ "name": "Journalism and reporting" },
+							{
+								"name": "Library, information and archival studies"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Business, administration and law",
+				"narrow_fields": [
+					{
+						"name": "Business and administration",
+						"detailed_fields": [
+							{ "name": "Accounting and taxation" },
+							{ "name": "Finance, banking and insurance" },
+							{ "name": "Management and administration" },
+							{ "name": "Marketing and advertising" },
+							{ "name": "Secretarial and office work" },
+							{ "name": "Wholesale and retail sales" },
+							{ "name": "Work skills" }
+						]
+					},
+					{
+						"name": "Law",
+						"detailed_fields": [{ "name": "Law" }]
+					}
+				]
+			},
+			{
+				"name": "Natural sciences, mathematics and statistics",
+				"narrow_fields": [
+					{
+						"name": "Biological and related sciences",
+						"detailed_fields": [
+							{ "name": "Biology" },
+							{ "name": "Biochemistry" }
+						]
+					},
+					{
+						"name": "Environment",
+						"detailed_fields": [
+							{ "name": "Environmental sciences" },
+							{ "name": "Natural environments and wildlife" }
+						]
+					},
+					{
+						"name": "Physical sciences",
+						"detailed_fields": [
+							{ "name": "Chemistry" },
+							{ "name": "Earth sciences" },
+							{ "name": "Physics" }
+						]
+					},
+					{
+						"name": "Mathematics and statistics",
+						"detailed_fields": [
+							{ "name": "Mathematics" },
+							{ "name": "Statistics" }
+						]
+					}
+				]
+			},
+			{
+				"name": "Information and Communication Technologies (ICTs)",
+				"narrow_fields": [
+					{
+						"name": "Information and Communication Technologies (ICTs)",
+						"detailed_fields": [
+							{ "name": "Computer use" },
+							{
+								"name": "Database and network design and administration"
+							},
+							{
+								"name": "Software and applications development and analysis"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "Engineering, manufacturing and construction",
+				"narrow_fields": [
+					{
+						"name": "Engineering and engineering trades",
+						"detailed_fields": [
+							{ "name": "Chemical engineering and processes" },
+							{ "name": "Environmental protection technology" },
+							{ "name": "Electricity and energy" },
+							{ "name": "Electronics and automation" },
+							{ "name": "Mechanics and metal trades" },
+							{ "name": "Motor vehicles, ships and aircraft" }
+						]
+					},
+					{
+						"name": "Manufacturing and processing",
+						"detailed_fields": [
+							{ "name": "Food processing" },
+							{
+								"name": "Materials (glass, paper, plastic and wood)"
+							},
+							{
+								"name": "Textiles (clothes, footwear and leather)"
+							},
+							{ "name": "Mining and extraction" }
+						]
+					},
+					{
+						"name": "Architecture and construction",
+						"detailed_fields": [
+							{ "name": "Architecture and town planning" },
+							{ "name": "Building and civil engineering" }
+						]
+					}
+				]
+			},
+			{
+				"name": "Agriculture, forestry, fisheries and veterinary",
+				"narrow_fields": [
+					{
+						"name": "Agriculture",
+						"detailed_fields": [
+							{ "name": "Crop and livestock production" },
+							{ "name": "Horticulture" }
+						]
+					},
+					{
+						"name": "Forestry",
+						"detailed_fields": [{ "name": "Forestry" }]
+					},
+					{
+						"name": "Fisheries",
+						"detailed_fields": [{ "name": "Fisheries" }]
+					},
+					{
+						"name": "Veterinary",
+						"detailed_fields": [{ "name": "Veterinary" }]
+					}
+				]
+			},
+			{
+				"name": "Health and welfare",
+				"narrow_fields": [
+					{
+						"name": "Health",
+						"detailed_fields": [
+							{ "name": "Dental studies" },
+							{ "name": "Medicine" },
+							{ "name": "Nursing and midwifery" },
+							{
+								"name": "Medical diagnostic and treatment technology"
+							},
+							{ "name": "Therapy and rehabilitation" },
+							{ "name": "Pharmacy" },
+							{
+								"name": "Traditional and complementary medicine and therapy"
+							}
+						]
+					},
+					{
+						"name": "Welfare",
+						"detailed_fields": [
+							{
+								"name": "Care of the elderly and of disabled adults"
+							},
+							{ "name": "Child care and youth services" },
+							{ "name": "Social work and counselling" }
+						]
+					}
+				]
+			},
+			{
+				"name": "Services",
+				"narrow_fields": [
+					{
+						"name": "Personal services",
+						"detailed_fields": [
+							{ "name": "Domestic services" },
+							{ "name": "Hair and beauty services" },
+							{ "name": "Hotel, restaurants and catering" },
+							{ "name": "Sports" },
+							{ "name": "Travel, tourism and leisure" }
+						]
+					},
+					{
+						"name": "Hygiene and occupational health services",
+						"detailed_fields": [
+							{ "name": "Community sanitation" },
+							{ "name": "Occupational health and safety" }
+						]
+					},
+					{
+						"name": "Security services",
+						"detailed_fields": [
+							{ "name": "Military and defence" },
+							{ "name": "Protection of persons and property" }
+						]
+					},
+					{
+						"name": "Transport services",
+						"detailed_fields": [{ "name": "Transport services" }]
+					}
+				]
+			}
+		]
+	}
+}

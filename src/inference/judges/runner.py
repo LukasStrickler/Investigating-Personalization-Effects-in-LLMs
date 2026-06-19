@@ -67,6 +67,7 @@ class JudgeRunner:
         config: JudgeConfig,
         execution: JudgeExecutionConfig | None = None,
         on_verdict: Callable[[JudgeVerdict], None] | None = None,
+        on_resume: Callable[[int], None] | None = None,
     ) -> JudgeResult:
         execution = execution or JudgeExecutionConfig()
         adapter = coerce_to_adapter(subjects)
@@ -118,6 +119,9 @@ class JudgeRunner:
             config_hash=cfg_hash,
             workers_per_judge={a: execution.workers_for(a) for a in config.judges},
         )
+        if on_resume is not None and skipped > 0:
+            on_resume(skipped)
+            await asyncio.sleep(0)  # yield to event loop so tqdm can flush
 
         async def queue_for_judge(judge_alias: str) -> None:
             pending = per_judge_pending[judge_alias]
@@ -472,9 +476,10 @@ async def run_judges(
     config: JudgeConfig,
     execution: JudgeExecutionConfig | None = None,
     on_verdict: Callable[[JudgeVerdict], None] | None = None,
+    on_resume: Callable[[int], None] | None = None,
     log: JudgeLogger | None = None,
 ) -> JudgeResult:
-    return await JudgeRunner(client, log=log).run(subjects, config, execution, on_verdict=on_verdict)
+    return await JudgeRunner(client, log=log).run(subjects, config, execution, on_verdict=on_verdict, on_resume=on_resume)
 
 
 __all__ = ["JudgeRunner", "run_judges"]

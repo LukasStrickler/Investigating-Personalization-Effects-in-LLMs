@@ -156,12 +156,9 @@ def judge_config_hash(config: JudgeConfig) -> str:
     constant so bumping it invalidates prior rows on resume.
     """
     payload = {
-        "judges": sorted(config.judges),
         "judge_prompt": config.judge_prompt,
         "classes": config.classes,
-        "max_tokens": config.max_tokens,
         "temperature": config.temperature,
-        "thinking_budget_tokens": config.thinking_budget_tokens,
         "include_metadata_in_prompt": config.include_metadata_in_prompt,
         "judge_prompt_version": JUDGE_PROMPT_VERSION,
     }

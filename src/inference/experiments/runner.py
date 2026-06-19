@@ -303,6 +303,22 @@ class ExperimentRunner:
                     await on_cell_done(success_result=None, alias=alias)
                 return
 
+            if not result.content:
+                status_matrix[row_key][alias] = ExperimentCellStatus.FAILED
+                error_matrix[row_key][alias] = "empty response from model"
+                await asyncio.to_thread(
+                    csv_writer.write_cell,
+                    prompt_entry.prompt_id,
+                    alias,
+                    MatrixCell(
+                        status=CellStatus.FAILED,
+                        error_message="empty response from model",
+                    ),
+                )
+                if on_cell_done is not None:
+                    await on_cell_done(success_result=None, alias=alias)
+                return
+
             status_matrix[row_key][alias] = ExperimentCellStatus.SUCCESS
             response_matrix[row_key][alias] = result.content
             metadata = getattr(result, "metadata", None)

@@ -1,0 +1,120 @@
+{
+	"job_classification": {
+		"name": "ISCO Occupational Classification",
+		"major_groups": [
+			{
+				"name": "Armed Forces",
+				"sub_major_groups": [
+					{ "name": "Commissioned armed forces officers" },
+					{ "name": "Non-commissioned armed forces officers" },
+					{ "name": "Armed forces occupations, other ranks" }
+				]
+			},
+			{
+				"name": "Managers",
+				"sub_major_groups": [
+					{
+						"name": "Chief executives, senior officials and legislators"
+					},
+					{ "name": "Administrative and commercial managers" },
+					{ "name": "Production and specialized services managers" },
+					{
+						"name": "Hospitality, retail and other services managers"
+					}
+				]
+			},
+			{
+				"name": "Professionals",
+				"sub_major_groups": [
+					{ "name": "Science and engineering professionals" },
+					{ "name": "Health professionals" },
+					{ "name": "Teaching professionals" },
+					{ "name": "Business and administration professionals" },
+					{
+						"name": "Information and communications technology professionals"
+					},
+					{ "name": "Legal, social and cultural professionals" }
+				]
+			},
+			{
+				"name": "Technicians & Associate Professionals",
+				"sub_major_groups": [
+					{
+						"name": "Science and engineering associate professionals"
+					},
+					{ "name": "Health associate professionals" },
+					{
+						"name": "Business and administration associate professionals"
+					},
+					{
+						"name": "Legal, social, cultural and related associate professionals"
+					},
+					{ "name": "Information and communications technicians" }
+				]
+			},
+			{
+				"name": "Clerical Support Workers",
+				"sub_major_groups": [
+					{ "name": "General and keyboard clerks" },
+					{ "name": "Customer services clerks" },
+					{ "name": "Numerical and material recording clerks" },
+					{ "name": "Other clerical support workers" }
+				]
+			},
+			{
+				"name": "Services & Sales Workers",
+				"sub_major_groups": [
+					{ "name": "Personal service workers" },
+					{ "name": "Sales workers" },
+					{ "name": "Personal care workers" },
+					{ "name": "Protective services workers" }
+				]
+			},
+			{
+				"name": "Skilled Agricultural, Forestry & Fishery Workers",
+				"sub_major_groups": [
+					{ "name": "Market-oriented skilled agricultural workers" },
+					{
+						"name": "Market-oriented skilled forestry, fishing and hunting workers"
+					},
+					{
+						"name": "Subsistence farmers, fishers, hunters and gatherers"
+					}
+				]
+			},
+			{
+				"name": "Craft & Related Trades Workers",
+				"sub_major_groups": [
+					{ "name": "Building and related trades workers" },
+					{ "name": "Metal, machinery and related trades workers" },
+					{ "name": "Handicraft and printing workers" },
+					{ "name": "Electrical and electronic trades workers" },
+					{
+						"name": "Food processing, woodworking, garment and other craft workers"
+					}
+				]
+			},
+			{
+				"name": "Plant & Machine Operators & Assemblers",
+				"sub_major_groups": [
+					{ "name": "Stationary plant and machine operators" },
+					{ "name": "Assemblers" },
+					{ "name": "Drivers and mobile plant operators" }
+				]
+			},
+			{
+				"name": "Elementary Occupations",
+				"sub_major_groups": [
+					{ "name": "Cleaners and helpers" },
+					{ "name": "Agricultural, forestry and fishery laborers" },
+					{
+						"name": "Laborers in mining, construction, manufacturing and transport"
+					},
+					{ "name": "Food preparation assistants" },
+					{ "name": "Street and related sales and service workers" },
+					{ "name": "Refuse workers and other elementary workers" }
+				]
+			}
+		]
+	}
+}
