@@ -1,0 +1,201 @@
+sample_index,split,actual_label,predicted_label,is_correct,confidence,conversation
+0,test,low,high,False,0.5474,"User: [team-chat/api-design/concise] What's the difference between a list and a tuple? I'm new to this. This came up during study prep.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. Let's keep it concrete.
+User: Mutable? What does that mean? I care about correctness over speed right now.
+Assistant: It means you can change the contents after creation. That should be enough to get unstuck.
+User: Okay I think I need to re-read the basics again. I am testing this in a sandbox setup."
+2,test,high,low,False,0.5371,"User: [study-group/best-practices/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. This is for a small project.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. We can verify with a quick example.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I am trying to keep the solution simple.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. We can refine details after the basics.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I need a practical explanation."
+4,test,high,low,False,0.5234,"User: [pair-debug/api-design/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I am collecting notes for later.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. I'll focus on the core concept.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. This came up during study prep.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. Let's keep it concrete.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I care about correctness over speed right now."
+10,test,low,high,False,0.538,"User: [forum-thread/runtime-issue/concise] Hi! I just started learning Python. What is a variable? I am trying to keep the solution simple.
+Assistant: A variable is like a labeled box where you store data. We can refine details after the basics.
+User: Oh cool! So if I write x = 5, the box is called x? I need a practical explanation.
+Assistant: Exactly! And you can change the value inside anytime. You can validate this with a small test.
+User: This is so confusing, but I think I get it now. I want to understand the idea first."
+17,test,low,high,False,0.5439,"User: [mentoring/systems-topic/concise] I keep getting errors when I run my code. It says SyntaxError. I am testing this in a sandbox setup.
+Assistant: A SyntaxError means Python can't understand your code's structure. Step-by-step usually helps here.
+User: I don't understand what structure means here. Can you explain simply? I am collecting notes for later.
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation. I'll focus on the core concept.
+User: Oh I see, I forgot a colon after my if statement! Thanks! This came up during study prep."
+18,test,low,low,True,0.5561,"User: [office-hours/performance-topic/concise] What's the difference between a list and a tuple? I'm new to this. I need a practical explanation.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. You can validate this with a small test.
+User: Mutable? What does that mean? I want to understand the idea first.
+Assistant: It means you can change the contents after creation. We can add edge cases next.
+User: Okay I think I need to re-read the basics again. This is for a small project."
+21,test,low,low,True,0.5397,"User: [office-hours/tooling-question/concise] Hi! I just started learning Python. What is a variable? This is for a small project.
+Assistant: A variable is like a labeled box where you store data. We can verify with a quick example.
+User: Oh cool! So if I write x = 5, the box is called x? I am trying to keep the solution simple.
+Assistant: Exactly! And you can change the value inside anytime. We can refine details after the basics.
+User: This is so confusing, but I think I get it now. I need a practical explanation."
+22,test,high,high,True,0.5823,"User: [team-chat/performance-topic/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I care about correctness over speed right now.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. That should be enough to get unstuck.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I am testing this in a sandbox setup.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. Step-by-step usually helps here.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I am collecting notes for later."
+28,test,low,high,False,0.5072,"User: [mentoring/api-design/concise] What's the difference between a list and a tuple? I'm new to this. I care about correctness over speed right now.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. That should be enough to get unstuck.
+User: Mutable? What does that mean? I am testing this in a sandbox setup.
+Assistant: It means you can change the contents after creation. Step-by-step usually helps here.
+User: Okay I think I need to re-read the basics again. I am collecting notes for later."
+29,test,high,low,False,0.571,"User: [support-room/tooling-question/concise] We're seeing GIL contention on our asyncio event loop when C extensions acquire the GIL. I need a practical explanation.
+Assistant: You could release the GIL in your C extension with Py_BEGIN_ALLOW_THREADS. You can validate this with a small test.
+User: We already do that for I/O, but the NumPy ufunc calls hold it during computation. I want to understand the idea first.
+Assistant: Have you considered moving that workload to a ProcessPoolExecutor or using nogil Cython? We can add edge cases next.
+User: ProcessPool adds serialization overhead. I'll benchmark the nogil Cython path with typed memoryviews. This is for a small project."
+43,test,high,high,True,0.5713,"User: [mentoring/systems-topic/concise] I need to implement a lock-free concurrent hash map for our real-time trading system. I am testing this in a sandbox setup.
+Assistant: Robin Hood hashing with atomic CAS operations is a proven approach. Step-by-step usually helps here.
+User: Right, but I'm worried about ABA problems on the delete path with our epoch-based reclamation. I am collecting notes for later.
+Assistant: Hazard pointers might be more suitable for your use case — they avoid ABA entirely. I'll focus on the core concept.
+User: Agreed. I'll implement a hazard pointer scheme with thread-local retired lists and amortized reclamation. This came up during study prep."
+46,test,high,low,False,0.5844,"User: [office-hours/systems-topic/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I need a practical explanation.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. You can validate this with a small test.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I want to understand the idea first.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. We can add edge cases next.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. This is for a small project."
+50,test,high,high,True,0.5823,"User: [pair-debug/python-help/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I care about correctness over speed right now.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. That should be enough to get unstuck.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I am testing this in a sandbox setup.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. Step-by-step usually helps here.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I am collecting notes for later."
+53,test,low,high,False,0.535,"User: [code-review/best-practices/concise] What's the difference between a list and a tuple? I'm new to this. I am testing this in a sandbox setup.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. Step-by-step usually helps here.
+User: Mutable? What does that mean? I am collecting notes for later.
+Assistant: It means you can change the contents after creation. I'll focus on the core concept.
+User: Okay I think I need to re-read the basics again. This came up during study prep."
+61,test,low,low,True,0.5515,"User: [forum-thread/api-design/concise] Hi! I just started learning Python. What is a variable? I need a practical explanation.
+Assistant: A variable is like a labeled box where you store data. You can validate this with a small test.
+User: Oh cool! So if I write x = 5, the box is called x? I want to understand the idea first.
+Assistant: Exactly! And you can change the value inside anytime. We can add edge cases next.
+User: This is so confusing, but I think I get it now. This is for a small project."
+62,test,high,high,True,0.5227,"User: [team-chat/systems-topic/concise] I need to implement a lock-free concurrent hash map for our real-time trading system. I care about correctness over speed right now.
+Assistant: Robin Hood hashing with atomic CAS operations is a proven approach. That should be enough to get unstuck.
+User: Right, but I'm worried about ABA problems on the delete path with our epoch-based reclamation. I am testing this in a sandbox setup.
+Assistant: Hazard pointers might be more suitable for your use case — they avoid ABA entirely. Step-by-step usually helps here.
+User: Agreed. I'll implement a hazard pointer scheme with thread-local retired lists and amortized reclamation. I am collecting notes for later."
+65,test,low,high,False,0.5277,"User: [study-group/tooling-question/concise] I keep getting errors when I run my code. It says SyntaxError. I want to understand the idea first.
+Assistant: A SyntaxError means Python can't understand your code's structure. We can add edge cases next.
+User: I don't understand what structure means here. Can you explain simply? This is for a small project.
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation. We can verify with a quick example.
+User: Oh I see, I forgot a colon after my if statement! Thanks! I am trying to keep the solution simple."
+69,test,high,low,False,0.5166,"User: [code-review/systems-topic/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I am collecting notes for later.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. I'll focus on the core concept.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. This came up during study prep.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. Let's keep it concrete.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I care about correctness over speed right now."
+75,test,high,high,True,0.5519,"User: [mentoring/runtime-issue/concise] We're seeing GIL contention on our asyncio event loop when C extensions acquire the GIL. This came up during study prep.
+Assistant: You could release the GIL in your C extension with Py_BEGIN_ALLOW_THREADS. Let's keep it concrete.
+User: We already do that for I/O, but the NumPy ufunc calls hold it during computation. I care about correctness over speed right now.
+Assistant: Have you considered moving that workload to a ProcessPoolExecutor or using nogil Cython? That should be enough to get unstuck.
+User: ProcessPool adds serialization overhead. I'll benchmark the nogil Cython path with typed memoryviews. I am testing this in a sandbox setup."
+78,test,low,high,False,0.5122,"User: [team-chat/runtime-issue/concise] What's the difference between a list and a tuple? I'm new to this. I am collecting notes for later.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. I'll focus on the core concept.
+User: Mutable? What does that mean? This came up during study prep.
+Assistant: It means you can change the contents after creation. Let's keep it concrete.
+User: Okay I think I need to re-read the basics again. I care about correctness over speed right now."
+82,test,low,high,False,0.5047,"User: [knowledge-base/python-help/concise] Hi! I just started learning Python. What is a variable? I am testing this in a sandbox setup.
+Assistant: A variable is like a labeled box where you store data. Step-by-step usually helps here.
+User: Oh cool! So if I write x = 5, the box is called x? I am collecting notes for later.
+Assistant: Exactly! And you can change the value inside anytime. I'll focus on the core concept.
+User: This is so confusing, but I think I get it now. This came up during study prep."
+84,test,low,low,True,0.508,"User: [study-group/runtime-issue/concise] What's the difference between a list and a tuple? I'm new to this. I want to understand the idea first.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. We can add edge cases next.
+User: Mutable? What does that mean? This is for a small project.
+Assistant: It means you can change the contents after creation. We can verify with a quick example.
+User: Okay I think I need to re-read the basics again. I am trying to keep the solution simple."
+95,test,high,high,True,0.5468,"User: [knowledge-base/systems-topic/concise] We're seeing GIL contention on our asyncio event loop when C extensions acquire the GIL. I care about correctness over speed right now.
+Assistant: You could release the GIL in your C extension with Py_BEGIN_ALLOW_THREADS. That should be enough to get unstuck.
+User: We already do that for I/O, but the NumPy ufunc calls hold it during computation. I am testing this in a sandbox setup.
+Assistant: Have you considered moving that workload to a ProcessPoolExecutor or using nogil Cython? Step-by-step usually helps here.
+User: ProcessPool adds serialization overhead. I'll benchmark the nogil Cython path with typed memoryviews. I am collecting notes for later."
+96,test,high,low,False,0.5566,"User: [office-hours/runtime-issue/concise] I need to implement a lock-free concurrent hash map for our real-time trading system. This is for a small project.
+Assistant: Robin Hood hashing with atomic CAS operations is a proven approach. We can verify with a quick example.
+User: Right, but I'm worried about ABA problems on the delete path with our epoch-based reclamation. I am trying to keep the solution simple.
+Assistant: Hazard pointers might be more suitable for your use case — they avoid ABA entirely. We can refine details after the basics.
+User: Agreed. I'll implement a hazard pointer scheme with thread-local retired lists and amortized reclamation. I need a practical explanation."
+99,test,low,high,False,0.5394,"User: [knowledge-base/best-practices/concise] I keep getting errors when I run my code. It says SyntaxError. This came up during study prep.
+Assistant: A SyntaxError means Python can't understand your code's structure. Let's keep it concrete.
+User: I don't understand what structure means here. Can you explain simply? I care about correctness over speed right now.
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation. That should be enough to get unstuck.
+User: Oh I see, I forgot a colon after my if statement! Thanks! I am testing this in a sandbox setup."
+102,test,high,high,True,0.5389,"User: [knowledge-base/api-design/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. This came up during study prep.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. Let's keep it concrete.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I care about correctness over speed right now.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. That should be enough to get unstuck.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I am testing this in a sandbox setup."
+108,test,high,low,False,0.5887,"User: [forum-thread/python-help/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. This is for a small project.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. We can verify with a quick example.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I am trying to keep the solution simple.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. We can refine details after the basics.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I need a practical explanation."
+109,test,high,high,True,0.5554,"User: [support-room/best-practices/concise] I need to implement a lock-free concurrent hash map for our real-time trading system. I want to understand the idea first.
+Assistant: Robin Hood hashing with atomic CAS operations is a proven approach. We can add edge cases next.
+User: Right, but I'm worried about ABA problems on the delete path with our epoch-based reclamation. This is for a small project.
+Assistant: Hazard pointers might be more suitable for your use case — they avoid ABA entirely. We can verify with a quick example.
+User: Agreed. I'll implement a hazard pointer scheme with thread-local retired lists and amortized reclamation. I am trying to keep the solution simple."
+117,test,high,high,True,0.5932,"User: [pair-debug/systems-topic/concise] We're seeing GIL contention on our asyncio event loop when C extensions acquire the GIL. This came up during study prep.
+Assistant: You could release the GIL in your C extension with Py_BEGIN_ALLOW_THREADS. Let's keep it concrete.
+User: We already do that for I/O, but the NumPy ufunc calls hold it during computation. I care about correctness over speed right now.
+Assistant: Have you considered moving that workload to a ProcessPoolExecutor or using nogil Cython? That should be enough to get unstuck.
+User: ProcessPool adds serialization overhead. I'll benchmark the nogil Cython path with typed memoryviews. I am testing this in a sandbox setup."
+124,test,low,high,False,0.5345,"User: [code-review/architecture-note/concise] Hi! I just started learning Python. What is a variable? This came up during study prep.
+Assistant: A variable is like a labeled box where you store data. Let's keep it concrete.
+User: Oh cool! So if I write x = 5, the box is called x? I care about correctness over speed right now.
+Assistant: Exactly! And you can change the value inside anytime. That should be enough to get unstuck.
+User: This is so confusing, but I think I get it now. I am testing this in a sandbox setup."
+125,test,low,low,True,0.5804,"User: [office-hours/systems-topic/concise] Hi! I just started learning Python. What is a variable? I need a practical explanation.
+Assistant: A variable is like a labeled box where you store data. You can validate this with a small test.
+User: Oh cool! So if I write x = 5, the box is called x? I want to understand the idea first.
+Assistant: Exactly! And you can change the value inside anytime. We can add edge cases next.
+User: This is so confusing, but I think I get it now. This is for a small project."
+130,test,high,high,True,0.5184,"User: [support-room/api-design/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I want to understand the idea first.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. We can add edge cases next.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. This is for a small project.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. We can verify with a quick example.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I am trying to keep the solution simple."
+133,test,high,low,False,0.525,"User: [mentoring/python-help/concise] We're seeing GIL contention on our asyncio event loop when C extensions acquire the GIL. I am collecting notes for later.
+Assistant: You could release the GIL in your C extension with Py_BEGIN_ALLOW_THREADS. I'll focus on the core concept.
+User: We already do that for I/O, but the NumPy ufunc calls hold it during computation. This came up during study prep.
+Assistant: Have you considered moving that workload to a ProcessPoolExecutor or using nogil Cython? Let's keep it concrete.
+User: ProcessPool adds serialization overhead. I'll benchmark the nogil Cython path with typed memoryviews. I care about correctness over speed right now."
+135,test,low,low,True,0.5513,"User: [forum-thread/architecture-note/concise] What's the difference between a list and a tuple? I'm new to this. This is for a small project.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. We can verify with a quick example.
+User: Mutable? What does that mean? I am trying to keep the solution simple.
+Assistant: It means you can change the contents after creation. We can refine details after the basics.
+User: Okay I think I need to re-read the basics again. I need a practical explanation."
+137,test,low,low,True,0.5756,"User: [team-chat/tooling-question/concise] I keep getting errors when I run my code. It says SyntaxError. I am collecting notes for later.
+Assistant: A SyntaxError means Python can't understand your code's structure. I'll focus on the core concept.
+User: I don't understand what structure means here. Can you explain simply? This came up during study prep.
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation. Let's keep it concrete.
+User: Oh I see, I forgot a colon after my if statement! Thanks! I care about correctness over speed right now."
+140,test,high,high,True,0.5823,"User: [mentoring/best-practices/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. I care about correctness over speed right now.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. That should be enough to get unstuck.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I am testing this in a sandbox setup.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. Step-by-step usually helps here.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I am collecting notes for later."
+141,test,high,low,False,0.5371,"User: [office-hours/tooling-question/concise] I'm profiling a custom CUDA kernel and seeing register spilling at 128 threads per block. This is for a small project.
+Assistant: Try reducing register usage with __launch_bounds__ or refactor to use shared memory. We can verify with a quick example.
+User: Already using shared mem for the reduction step. The bottleneck is the FFT butterfly stage. I am trying to keep the solution simple.
+Assistant: Consider a radix-4 decomposition to cut register pressure while maintaining throughput. We can refine details after the basics.
+User: Good call — I'll prototype radix-4 and compare occupancy with Nsight Compute. I need a practical explanation."
+142,test,low,low,True,0.518,"User: [forum-thread/performance-topic/concise] I keep getting errors when I run my code. It says SyntaxError. I want to understand the idea first.
+Assistant: A SyntaxError means Python can't understand your code's structure. We can add edge cases next.
+User: I don't understand what structure means here. Can you explain simply? This is for a small project.
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation. We can verify with a quick example.
+User: Oh I see, I forgot a colon after my if statement! Thanks! I am trying to keep the solution simple."
+148,test,low,high,False,0.5059,"User: [mentoring/python-help/concise] What's the difference between a list and a tuple? I'm new to this. I am collecting notes for later.
+Assistant: A list is mutable, a tuple is not. Think of a tuple as a read-only list. I'll focus on the core concept.
+User: Mutable? What does that mean? This came up during study prep.
+Assistant: It means you can change the contents after creation. Let's keep it concrete.
+User: Okay I think I need to re-read the basics again. I care about correctness over speed right now."
+153,test,low,high,False,0.5277,"User: [support-room/best-practices/concise] I keep getting errors when I run my code. It says SyntaxError. I want to understand the idea first.
+Assistant: A SyntaxError means Python can't understand your code's structure. We can add edge cases next.
+User: I don't understand what structure means here. Can you explain simply? This is for a small project.
+Assistant: Sure — it usually means a missing colon, parenthesis, or wrong indentation. We can verify with a quick example.
+User: Oh I see, I forgot a colon after my if statement! Thanks! I am trying to keep the solution simple."

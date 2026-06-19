@@ -1,0 +1,142 @@
+[
+  {
+    "attribute": "expertise",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.4417,
+    "cv_std": 0.025,
+    "is_control": true
+  },
+  {
+    "attribute": "expertise",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.425,
+    "cv_std": 0.0417,
+    "is_control": true
+  },
+  {
+    "attribute": "expertise",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.425,
+    "cv_std": 0.0417,
+    "is_control": true
+  },
+  {
+    "attribute": "expertise",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.4417,
+    "cv_std": 0.025,
+    "is_control": true
+  },
+  {
+    "attribute": "expertise",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.425,
+    "cv_std": 0.0417,
+    "is_control": true
+  },
+  {
+    "attribute": "expertise",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.425,
+    "cv_std": 0.0417,
+    "is_control": true
+  },
+  {
+    "attribute": "expertise",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "expertise",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 0.425,
+    "f1_macro": 0.4068,
+    "cv_mean": 0.4417,
+    "cv_std": 0.025,
+    "is_control": true
+  }
+]
