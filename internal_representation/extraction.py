@@ -118,15 +118,17 @@ def _find_last_user_token_idx(
         else:
             target_char = next_assistant_pos - 1
 
-        # Map character offset back to a token index (approximate)
-        char_count = 0
-        token_idx = 0
-        for i, tok in enumerate(ids):
-            tok_str = tokenizer.decode([tok])
-            char_count += len(tok_str)
-            if char_count >= target_char:
-                token_idx = i
-                break
+        # Binary search to find the token index corresponding to target_char
+        low, high = 0, len(ids)
+        token_idx = len(ids) - 1
+        while low < high:
+            mid = (low + high) // 2
+            prefix_str = tokenizer.decode(ids[:mid], skip_special_tokens=False)
+            if len(prefix_str) > target_char:
+                token_idx = mid - 1
+                high = mid
+            else:
+                low = mid + 1
         return min(token_idx, len(ids) - 1)
 
     # Fallback: last non-padding token

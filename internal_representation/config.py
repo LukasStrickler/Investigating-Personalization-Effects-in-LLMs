@@ -56,6 +56,10 @@ class ProbeConfig:
     max_iter: int = 1000
     # Number of cross-validation folds
     cv_folds: int = 5
+    # Evaluation mode: "split" = single train/test split, "repeated_kfold" = repeated stratified k-fold
+    eval_mode: str = "repeated_kfold"
+    # Number of repeats for repeated k-fold
+    n_repeats: int = 5
 
 
 @dataclass

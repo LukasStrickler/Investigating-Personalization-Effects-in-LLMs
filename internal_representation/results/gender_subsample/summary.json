@@ -1,0 +1,9 @@
+{
+  "gender": {
+    "best_layer": 5,
+    "real_accuracy": 1.0,
+    "control_accuracy": 0.55,
+    "selectivity_gap": 0.45,
+    "verdict": "\u2713 ENCODED"
+  }
+}

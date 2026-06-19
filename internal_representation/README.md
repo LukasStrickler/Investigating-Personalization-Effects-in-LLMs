@@ -5,12 +5,12 @@ Detect whether an LLM internally encodes pre-labeled user attributes (expertise 
 ## Architecture
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│  1. Dataset  │────▶│  2. Extract  │────▶│  3. Train    │────▶│  4. Control  │────▶│  5. Steer    │
-│  Generation  │     │  Hidden      │     │  Linear      │     │  Evaluation  │     │  (Causal     │
-│              │     │  States      │     │  Probes      │     │  (Shuffled)  │     │  Intervent.) │
-└─────────────┘     └──────────────┘     └──────────────┘     └──────────────┘     └──────────────┘
-   dataset.py         extraction.py         probing.py           probing.py          steering.py
+┌─────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
+│  1. Dataset  │────▶│  2. Extract  │────▶│  3. Train    │────▶│  4. Control  │
+│  Generation  │     │  Hidden      │     │  Linear      │     │  Evaluation  │
+│              │     │  States      │     │  Probes      │     │  (Shuffled)  │
+└─────────────┘     └──────────────┘     └──────────────┘     └──────────────┘
+   dataset.py         extraction.py         probing.py           probing.py
 ```
 
 ## Quick Start
@@ -19,19 +19,16 @@ Detect whether an LLM internally encodes pre-labeled user attributes (expertise 
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Run the full pipeline (default: Llama-3.2-1B-Instruct)
+# 2. Run the full pipeline (default: Gemma-4-E2B)
 python main.py
 
-# 3. Skip activation steering if you just want probing results
-python main.py --skip-steering
-
-# 4. Use a different model
+# 3. Use a different model
 python main.py --model mistralai/Mistral-7B-Instruct-v0.3
 
-# 5. Run on CPU (slower but no GPU required)
+# 4. Run on CPU (slower but no GPU required)
 python main.py --device-map cpu --dtype float32
 
-# 6. More samples per class for better statistics
+# 5. More samples per class for better statistics
 python main.py --samples 100
 ```
 
@@ -43,7 +40,6 @@ python main.py --samples 100
 | `dataset.py`       | Step 1 — Synthetic conversation dataset with labeled attributes   |
 | `extraction.py`    | Step 2 — Forward pass through frozen LLM, hidden state extraction |
 | `probing.py`       | Steps 3–4 — Linear probe training + selectivity control task      |
-| `steering.py`      | Step 5 — Activation steering (causal intervention)                |
 | `visualization.py` | Layer-accuracy plots, selectivity gaps, heatmaps                  |
 | `main.py`          | Pipeline orchestrator with CLI arguments                          |
 
@@ -76,10 +72,6 @@ Labels are randomized and a control probe is trained on the same hidden states. 
 | Weak signal     | ~50%       | ~33%          | Some encoding, needs more data   |
 | Artifact        | ~60%       | ~55%          | Probe is picking up noise        |
 
-### Step 5 — Activation Steering (Optional)
-
-The probe's learned weight vector defines a "direction" for the attribute in the LLM's latent space. Injecting this direction (scaled by α) into the residual stream during generation causally tests whether the model _uses_ this information when generating responses.
-
 ## Outputs
 
 After running, you'll find:
@@ -87,7 +79,6 @@ After running, you'll find:
 - `results/summary.json` — per-attribute verdict (ENCODED / WEAK / NOT FOUND)
 - `results/probe_<attribute>.json` — full metrics per layer
 - `results/hidden_states.npz` — cached hidden states (reuse with `--skip-extraction`)
-- `results/steering_results.json` — baseline vs. steered generations
 - `plots/probe_accuracy_<attribute>_logistic.png` — accuracy over layers
 - `plots/selectivity_gap_<attribute>.png` — real−control accuracy gap
 - `plots/heatmap_logistic.png` — all attributes × layers
