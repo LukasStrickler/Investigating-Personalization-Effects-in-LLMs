@@ -39,11 +39,11 @@ from inference.judges.log import JudgeLogger
 # Configuration — edit these to match your run
 # ---------------------------------------------------------------------------
 
-RUN_TAG = "full002"
+RUN_TAG = "full001"
 
 EXPERIMENT_MODELS = [
-    "grok-4.3_paid",
-    "glm-5.2_paid",
+    "gemma-4-31b_paid",
+    "deepseek-v4-flash_paid",
 ]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
@@ -225,11 +225,14 @@ async def main() -> None:
     print(f"Loaded {len(all_personas)} personas")
 
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    unknown: list[dict] = []
     for p in all_personas:
         gender = p["persona"].get("Gender")
         race = p["persona"].get("Race")
         if gender and race:
             grouped[(gender, race)].append(p)
+        else:
+            unknown.append(p)
 
     all_races = sorted({race for (_, race) in grouped})
 
@@ -243,7 +246,17 @@ async def main() -> None:
                 sampled.extend(pool)
             else:
                 sampled.extend(random.sample(pool, SAMPLE_PER_GROUP))
-    print(f"Sampled {len(sampled)} personas\n")
+
+    # Personas missing Gender and/or Race were previously dropped by the `if gender and race`
+    # filter, so they never showed up in results. Include them as an explicit cohort whose
+    # true_gender/true_race come through as null. Appended AFTER the main loop, so the existing
+    # (gender × race) sample order and RNG state are untouched: prompt_ids of already-answered
+    # personas stay identical and resume reuses them — only these new personas get generated.
+    if len(unknown) < SAMPLE_PER_GROUP:
+        sampled.extend(unknown)
+    else:
+        sampled.extend(random.sample(unknown, SAMPLE_PER_GROUP))
+    print(f"Sampled {len(sampled)} personas ({len(unknown)} with missing gender/race)\n")
 
     # --- Build prompts ---
     def _make_spec(p, probe, q_tag):
@@ -251,8 +264,8 @@ async def main() -> None:
             "messages": list(p["messages"]) + [{"role": "user", "content": probe}],
             "metadata": {
                 "history_id":  p["history_id"],
-                "true_gender": p["persona"]["Gender"],
-                "true_race":   p["persona"]["Race"],
+                "true_gender": p["persona"].get("Gender"),
+                "true_race":   p["persona"].get("Race"),
                 "question":    q_tag,
             },
         }
