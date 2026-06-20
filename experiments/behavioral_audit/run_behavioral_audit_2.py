@@ -39,11 +39,11 @@ from inference.judges.log import JudgeLogger
 # Configuration — edit these to match your run
 # ---------------------------------------------------------------------------
 
-RUN_TAG = "full001"
+RUN_TAG = "full002"
 
 EXPERIMENT_MODELS = [
-    "gemma-4-31b_paid",
-    "deepseek-v4-flash_paid",
+    "grok-4.3_paid",
+    "glm-5.2_paid",
 ]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
@@ -52,7 +52,7 @@ MAX_PASSES = 10
 WORKERS = 50
 
 # Set to True to skip stage 1 (if CSVs already exist) and only run stage 2
-STAGE2_ONLY = True
+STAGE2_ONLY = False
 
 # Set to True to run only stage 1 (no judging)
 STAGE1_ONLY = False
