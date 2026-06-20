@@ -39,15 +39,11 @@ from inference.judges.log import JudgeLogger
 # Configuration — edit these to match your run
 # ---------------------------------------------------------------------------
 
-RUN_TAG = "full001"
+RUN_TAG = "full002"
 
 EXPERIMENT_MODELS = [
-    "gemma-4-31b_paid",
-    # "gpt-5.5",
-    # "gemini-3.5-flash",
-    "deepseek-v4-flash_paid",
-    # "olmo-3-32b-think",
-    # "claude-opus-4.8",
+    "grok-4.3_paid",
+    "glm-5.2_paid",
 ]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
@@ -56,10 +52,10 @@ MAX_PASSES = 10
 WORKERS = 50
 
 # Set to True to skip stage 1 (if CSVs already exist) and only run stage 2
-STAGE2_ONLY = True
+STAGE2_ONLY = False
 
 # Set to True to run only stage 1 (no judging)
-STAGE1_ONLY = False
+STAGE1_ONLY = True
 
 
 # ---------------------------------------------------------------------------
@@ -139,7 +135,8 @@ async def _run_stage2_with_retries(
     result = None
 
     for pass_num in range(1, MAX_PASSES + 1):
-        bar = tqdm(total=total, initial=n_success_prev, desc=f"{label} pass {pass_num}/{MAX_PASSES}", unit="subject", file=sys.stdout)
+        bar = tqdm(total=total, initial=n_success_prev,
+                   desc=f"{label} pass {pass_num}/{MAX_PASSES}", unit="subject", file=sys.stdout)
         counts = {"ok": 0, "err": 0, "resumed": 0}
 
         def on_verdict(v, _bar=bar, _counts=counts):
