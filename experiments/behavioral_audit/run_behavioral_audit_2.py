@@ -52,7 +52,7 @@ MAX_PASSES = 10
 WORKERS = 50
 
 # Set to True to skip stage 1 (if CSVs already exist) and only run stage 2
-STAGE2_ONLY = False
+STAGE2_ONLY = True
 
 # Set to True to run only stage 1 (no judging)
 STAGE1_ONLY = False
