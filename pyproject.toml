@@ -41,6 +41,10 @@ dev = [
     "mypy>=1.0.0",
     "types-pyyaml>=6.0.0",
 ]
+# Optional vLLM server install (cluster RUNTIME=venv only; client uses HTTP, not this package).
+vllm = [
+    "vllm==0.8.5",  # match slurm/vllm_constants.sh
+]
 
 [tool.repo_quality]
 lint = "ruff check ."

@@ -29,6 +29,7 @@ SUPPORTED_PROVIDERS: frozenset[str] = frozenset(
         "openai",
         "anthropic",
         "openrouter",
+        "vllm",
     }
 )
 
@@ -143,6 +144,15 @@ def resolve_api_key(provider: ProviderConfig) -> str:
     return api_key
 
 
+def resolve_provider_base_url(provider: ProviderConfig) -> str | None:
+    """HTTP base URL; ``VLLM_BASE_URL`` env overrides YAML for vllm."""
+    if provider.name == "vllm":
+        override = os.environ.get("VLLM_BASE_URL")
+        if override:
+            return override
+    return provider.base_url
+
+
 def resolve_api_keys(provider: ProviderConfig) -> list[str]:
     """Resolve one or more API keys from environment variables.
 
@@ -182,4 +192,5 @@ __all__ = [
     "load_config_from_file",
     "resolve_api_key",
     "resolve_api_keys",
+    "resolve_provider_base_url",
 ]
