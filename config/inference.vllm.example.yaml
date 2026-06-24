@@ -1,0 +1,58 @@
+# vLLM config — cp to config/inference.yaml for local GPU or cluster Stage 1.
+# Docs: docs/running-vllm-on-clusters.md
+#
+#   vllm serve google/gemma-3-27b-it --served-model-name gemma-4-31b --port 8000
+#
+# SERVED / --served-model-name must match each alias's model: field below.
+# HF weights (first arg to vllm serve / MODEL=) can differ from the alias name.
+
+providers:
+  vllm:
+    name: vllm
+    api_key_env: VLLM_API_KEY
+    base_url: http://127.0.0.1:8000/v1   # overridden by VLLM_BASE_URL on cluster
+    max_concurrency: 64
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 3
+      base_delay: 1.0
+      max_delay: 30.0
+
+  mock:
+    name: mock
+    api_key_env: MOCK_API_KEY
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 1
+      base_delay: 0.1
+      max_delay: 1.0
+    default_model: mock-model
+
+model_aliases:
+  gemma-4-31b:
+    alias: gemma-4-31b
+    provider: vllm
+    model: gemma-4-31b
+
+  qwen2.5-7b-instruct:
+    alias: qwen2.5-7b-instruct
+    provider: vllm
+    model: qwen2.5-7b-instruct
+
+  mock-test:
+    alias: mock-test
+    provider: mock
+    model: mock-model
+
+default_retry:
+  max_retries: 2
+  base_delay: 0.5
+  max_delay: 30.0
+
+log_path: logs/inference.jsonl
+checkpoint_path: checkpoints/
+default_provider: vllm
