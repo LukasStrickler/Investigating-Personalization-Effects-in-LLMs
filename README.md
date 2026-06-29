@@ -66,6 +66,7 @@ and judge verdicts fit together.
 - **[Behavioral audit cost estimate](docs/cost-estimate-behavioral-audit.md)** — scope and pricing; calibrate with `experiments/estimate_cost.py`
 - **[Provider Configuration](config/inference.example.yaml)** — provider, alias, retry, rate-limit, and output-path config
 - **[Background Generation](src/generate_backgrounds/README.md)** — optional persona conversation-history generation
+- **[vLLM on bwUniCluster / Helix](docs/running-vllm-on-clusters.md)** — cluster batch and local GPU setup
 
 ## Examples
 

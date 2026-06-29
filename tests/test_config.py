@@ -110,6 +110,7 @@ class TestProviderRegistry:
         assert "openai" in SUPPORTED_PROVIDERS
         assert "anthropic" in SUPPORTED_PROVIDERS
         assert "openrouter" in SUPPORTED_PROVIDERS
+        assert "vllm" in SUPPORTED_PROVIDERS
 
     def test_mock_provider_is_test_only(self) -> None:
         """Mock provider should be marked as test-only."""
