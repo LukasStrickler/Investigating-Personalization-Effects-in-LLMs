@@ -113,6 +113,13 @@ class ExperimentConfig:
     verbosity: VerbosityLevel = "normal"
     resume_from_existing_csv: bool = False
     existing_csv_path: Path | None = None
+    prompt_id_includes_metadata: bool = False
+    """When True, each prompt's metadata is mixed into its prompt_id hash. This lets
+    callers intentionally repeat the same message content N times under different metadata
+    (e.g. metadata={"iteration": i}) and get N distinct rows in the experiment matrix.
+    Leave at the default False unless you explicitly need this behavior — it changes
+    prompt_id from a stable content fingerprint to a content+metadata fingerprint, which
+    affects cross-experiment joining and resume semantics."""
 
     def __post_init__(self) -> None:
         if not self.experiment_name.strip():
