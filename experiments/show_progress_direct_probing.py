@@ -24,7 +24,15 @@ def _repo_root() -> Path:
     return Path.cwd()
 
 
-def _compute_total(root: Path) -> int:
+def _compute_total(root: Path, stage1_csv: Path | None) -> int:
+    """Use the stage-1 CSV row count when available; otherwise fall back to
+    counting from personas.jsonl (original behaviour for the standard run)."""
+    if stage1_csv is not None:
+        try:
+            with open(stage1_csv, encoding="utf-8", errors="replace") as f:
+                return sum(1 for _ in f) - 1  # subtract header row
+        except OSError:
+            pass
     personas_path = root / "src" / "generate_backgrounds" / "data" / "personas" / "personas.jsonl"
     grouped: dict[tuple[str, str], int] = defaultdict(int)
     with open(personas_path) as f:
@@ -116,7 +124,20 @@ def _status_str(age_s: float) -> str:
 
 def _report(root: Path, run_tag: str | None, total: int) -> None:
     s1 = _find_stage1_csv(root, run_tag)
-    s2 = _find_stage2_csv(root, run_tag)
+    total = _compute_total(root, s1)
+
+    # If no run_tag was given, derive it from the stage-1 CSV path so stage-2
+    # lookup is scoped to the same run (avoids showing a stale run's stage-2).
+    effective_tag = run_tag
+    if effective_tag is None and s1 is not None:
+        # path looks like logs/direct-probing-<tag>-stage1/<timestamp>.csv
+        for part in s1.parts:
+            if "direct-probing" in part and "stage1" in part:
+                # strip leading "direct-probing-" and trailing "-stage1"
+                effective_tag = part.removeprefix("direct-probing-").removesuffix("-stage1")
+                break
+
+    s2 = _find_stage2_csv(root, effective_tag)
 
     print(f"Run tag : {run_tag or '(latest)'}")
     print(f"Total   : {total} subjects")
@@ -158,13 +179,12 @@ def main() -> None:
     args = parser.parse_args()
 
     root = _repo_root()
-    total = _compute_total(root)
 
     interval = 10
     while True:
         if args.watch:
             print("\033[2J\033[H", end="")
-        _report(root, args.run_tag, total)
+        _report(root, args.run_tag, 0)  # total computed inside _report from stage-1 CSV
         if not args.watch:
             break
         print(f"\n(refreshing every {interval}s — Ctrl-C to stop)")
