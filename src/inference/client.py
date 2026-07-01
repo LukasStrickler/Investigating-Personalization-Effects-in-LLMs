@@ -7,7 +7,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
 
-from inference.config import MOCK_PROVIDER, load_config_from_file, resolve_api_keys
+from inference.config import (
+    MOCK_PROVIDER,
+    load_config_from_file,
+    resolve_api_keys,
+    resolve_provider_base_url,
+)
 from inference.key_pool import ApiKeyPool, parse_cooldown_seconds
 from inference.logging import log_failure, log_success
 from inference.providers import LiteLLMProviderAdapter, ProviderAdapter, ProviderRequest
@@ -172,7 +177,7 @@ class UnifiedInferenceClient:
                     tools=request.tools,
                     tool_choice=request.tool_choice,
                     api_key=key_in_use,
-                    base_url=provider_cfg.base_url,
+                    base_url=resolve_provider_base_url(provider_cfg),
                     max_tokens=request.max_tokens,
                     temperature=request.temperature,
                     thinking_budget_tokens=request.thinking_budget_tokens,

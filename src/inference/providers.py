@@ -135,6 +135,8 @@ class LiteLLMProviderAdapter:
             "max_tokens": request.max_tokens,
             "temperature": request.temperature,
         }
+        if request.provider in _LITELLM_PROVIDER_PREFIX:
+            kwargs["api_base"] = request.base_url
         if request.tools is not None:
             kwargs["tools"] = request.tools
         if request.tool_choice is not None:
@@ -176,8 +178,13 @@ def _build_messages(prompt: str, system_prompt: str | None) -> list[dict[str, An
     ]
 
 
+# vLLM exposes OpenAI-compatible HTTP — route as openai/ so LiteLLM uses base_url.
+_LITELLM_PROVIDER_PREFIX = {"vllm": "openai"}
+
+
 def _model_string(*, provider: str, model: str) -> str:
-    prefix = f"{provider}/"
+    litellm_provider = _LITELLM_PROVIDER_PREFIX.get(provider, provider)
+    prefix = f"{litellm_provider}/"
     return model if model.startswith(prefix) else f"{prefix}{model}"
 
 
