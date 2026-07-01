@@ -1,0 +1,27 @@
+{
+  "_comment": "Gender-neutral hobby and movie words for the ablation experiment. None of these appear in gender.csv. Each is plausible in the template sentence: 'I enjoy watching [movie] movies' / 'I spend a lot of time on [hobby]'.",
+  "movies": [
+    "documentary",
+    "mystery",
+    "historical",
+    "biographical",
+    "foreign",
+    "independent",
+    "crime",
+    "adventure",
+    "cult",
+    "international"
+  ],
+  "hobbies": [
+    "hiking",
+    "photography",
+    "traveling",
+    "swimming",
+    "cycling",
+    "writing",
+    "cooking",
+    "baking",
+    "journaling",
+    "budgeting"
+  ]
+}
