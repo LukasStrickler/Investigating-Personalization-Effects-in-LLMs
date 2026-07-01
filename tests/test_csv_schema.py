@@ -69,6 +69,36 @@ def test_prompt_metadata_is_excluded_from_prompt_id() -> None:
     assert pid_bare == pid_tagged
 
 
+def test_compute_prompt_id_for_spec_default_excludes_metadata() -> None:
+    bare = {"messages": [{"role": "user", "content": "x"}]}
+    tagged_a = {"messages": [{"role": "user", "content": "x"}], "metadata": {"iteration": 0}}
+    tagged_b = {"messages": [{"role": "user", "content": "x"}], "metadata": {"iteration": 1}}
+
+    # Default: metadata ignored, same content -> same id
+    assert csv_schema.compute_prompt_id_for_spec(bare) == csv_schema.compute_prompt_id_for_spec(tagged_a)
+    assert csv_schema.compute_prompt_id_for_spec(tagged_a) == csv_schema.compute_prompt_id_for_spec(tagged_b)
+
+
+def test_compute_prompt_id_for_spec_with_metadata_distinguishes_iterations() -> None:
+    bare = {"messages": [{"role": "user", "content": "x"}]}
+    tagged_a = {"messages": [{"role": "user", "content": "x"}], "metadata": {"iteration": 0}}
+    tagged_b = {"messages": [{"role": "user", "content": "x"}], "metadata": {"iteration": 1}}
+
+    pid_bare = csv_schema.compute_prompt_id_for_spec(bare, include_metadata=True)
+    pid_a = csv_schema.compute_prompt_id_for_spec(tagged_a, include_metadata=True)
+    pid_b = csv_schema.compute_prompt_id_for_spec(tagged_b, include_metadata=True)
+
+    # No metadata vs with-metadata should still differ
+    assert pid_bare != pid_a
+    # Each iteration gets a distinct id
+    assert pid_a != pid_b
+    # Same metadata reproduces same id
+    assert pid_a == csv_schema.compute_prompt_id_for_spec(
+        {"messages": [{"role": "user", "content": "x"}], "metadata": {"iteration": 0}},
+        include_metadata=True,
+    )
+
+
 def test_extract_prompt_metadata() -> None:
     metadata = {"history_id": "h1", "true_gender": "Female"}
     spec = {"messages": [{"role": "user", "content": "x"}], "metadata": metadata}

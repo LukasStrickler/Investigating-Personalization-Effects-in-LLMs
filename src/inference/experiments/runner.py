@@ -12,8 +12,7 @@ from inference.client import InferenceRequest, UnifiedInferenceClient
 from inference.experiments.csv_schema import (
     CellStatus,
     MatrixCell,
-    canonical_prompt_spec,
-    compute_prompt_id,
+    compute_prompt_id_for_spec,
 )
 from inference.experiments.dataframe import build_dataframe_from_csv
 from inference.experiments.persistence import (
@@ -49,14 +48,20 @@ class ExperimentRunner:
     async def run(self, config: ExperimentConfig) -> ExperimentResult:
         aliases = [alias.strip() for alias in config.model_aliases]
         prompt_entries = _build_prompt_entries(
-            config.prompts, default_system_prompt=config.default_system_prompt
+            config.prompts,
+            default_system_prompt=config.default_system_prompt,
+            prompt_id_includes_metadata=config.prompt_id_includes_metadata,
         )
         prompt_row_keys = [entry.row_key for entry in prompt_entries]
         completed_cells: dict[tuple[str, str], CellStatus] = {}
 
         if config.resume_from_existing_csv:
             csv_path = _resolve_resume_path(config)
-            writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=aliases)
+            writer = MatrixCSVWriter(
+                csv_path=csv_path,
+                model_aliases=aliases,
+                prompt_id_includes_metadata=config.prompt_id_includes_metadata,
+            )
             _prompt_ids_seen, completed_cells = await asyncio.to_thread(
                 load_existing_matrix, csv_path
             )
@@ -66,7 +71,11 @@ class ExperimentRunner:
             await asyncio.to_thread(writer.retain_only_prompts, current_prompt_ids)
         else:
             csv_path = build_experiment_csv_path(config.experiment_name)
-            writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=aliases)
+            writer = MatrixCSVWriter(
+                csv_path=csv_path,
+                model_aliases=aliases,
+                prompt_id_includes_metadata=config.prompt_id_includes_metadata,
+            )
             await asyncio.to_thread(writer.initialize, config.prompts)
             if config.run_cells is not None:
                 for entry in prompt_entries:
@@ -303,6 +312,22 @@ class ExperimentRunner:
                     await on_cell_done(success_result=None, alias=alias)
                 return
 
+            if not result.content:
+                status_matrix[row_key][alias] = ExperimentCellStatus.FAILED
+                error_matrix[row_key][alias] = "empty response from model"
+                await asyncio.to_thread(
+                    csv_writer.write_cell,
+                    prompt_entry.prompt_id,
+                    alias,
+                    MatrixCell(
+                        status=CellStatus.FAILED,
+                        error_message="empty response from model",
+                    ),
+                )
+                if on_cell_done is not None:
+                    await on_cell_done(success_result=None, alias=alias)
+                return
+
             status_matrix[row_key][alias] = ExperimentCellStatus.SUCCESS
             response_matrix[row_key][alias] = result.content
             metadata = getattr(result, "metadata", None)
@@ -373,6 +398,7 @@ def _build_prompt_entries(
     prompts: Sequence[str | dict],
     *,
     default_system_prompt: str | None = None,
+    prompt_id_includes_metadata: bool = False,
 ) -> list[_PromptEntry]:
     entries: list[_PromptEntry] = []
     for index, item in enumerate(prompts):
@@ -383,7 +409,9 @@ def _build_prompt_entries(
             }
         else:
             prompt_spec = item
-        prompt_id = compute_prompt_id(canonical_prompt_spec(prompt_spec))
+        prompt_id = compute_prompt_id_for_spec(
+            prompt_spec, include_metadata=prompt_id_includes_metadata
+        )
         row_key = f"{prompt_id}:{index}"
         entries.append(_PromptEntry(row_key=row_key, prompt_id=prompt_id, prompt_spec=prompt_spec))
     return entries

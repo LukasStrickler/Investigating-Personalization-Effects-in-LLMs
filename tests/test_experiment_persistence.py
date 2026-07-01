@@ -331,3 +331,41 @@ async def _wait_for_partial_state(csv_path: Path) -> list[dict[str, str]]:
                 pass
         await asyncio.sleep(0.01)
     raise AssertionError("Timed out waiting for partial CSV persistence")
+
+
+def test_writer_handles_duplicate_content_when_metadata_distinguishes(tmp_path: Path) -> None:
+    """Repeating the same message N times with metadata={"iteration": i} must yield
+    N distinct rows when prompt_id_includes_metadata=True. Without the flag the writer
+    would refuse the second write as ambiguous."""
+    csv_path = tmp_path / "logs" / "experiment" / "dup.csv"
+    writer = MatrixCSVWriter(
+        csv_path=csv_path,
+        model_aliases=["alias-a"],
+        prompt_id_includes_metadata=True,
+    )
+    n = 5
+    prompts = [
+        {
+            "messages": [{"role": "user", "content": "same question"}],
+            "metadata": {"iteration": i},
+        }
+        for i in range(n)
+    ]
+    writer.initialize(prompts=prompts)
+
+    from inference.experiments.csv_schema import compute_prompt_id_for_spec
+
+    pids = [compute_prompt_id_for_spec(p, include_metadata=True) for p in prompts]
+    assert len(set(pids)) == n, "Each iteration must produce a distinct prompt_id"
+
+    # Write a distinct response into each row
+    for i, pid in enumerate(pids):
+        writer.write_cell(pid, "alias-a", MatrixCell(status=CellStatus.SUCCESS, response=f"r{i}"))
+
+    df = build_dataframe_from_csv(csv_path)
+    assert len(df) == n
+    responses = sorted(
+        json.loads(row["alias-a"])["response"]
+        for row in _read_rows(csv_path)
+    )
+    assert responses == [f"r{i}" for i in range(n)]

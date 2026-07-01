@@ -4,13 +4,6 @@ Stage 1: ExperimentRunner — model responds naturally to the probing question,
          no system prompt imposed, raw conversation messages passed directly.
 Stage 2: judge classifies stage 1 responses into COMBINED_CLASSES.
 
-Run inside tmux so the process survives lid-close / screen-off:
-
-    tmux new -s probe
-    cd <repo-root>
-    python experiments/run_direct_probing.py
-    # detach with Ctrl-B D, reattach later with: tmux attach -t probe
-
 Set RUN_TAG below to match the experiment you want to run or resume.
 """
 
@@ -38,12 +31,12 @@ from inference.judges.log import JudgeLogger
 # Configuration — edit these to match your run
 # ---------------------------------------------------------------------------
 
-RUN_TAG          = "gemma4test"
-EXPERIMENT_MODEL = "gemma-4-31b"  # model that acts as participant in stage 1
-JUDGE_MODEL      = ["gemma-4-31b"]
-SAMPLE_PER_GROUP = 10_000
-MAX_PASSES       = 5
-WORKERS          = 5
+RUN_TAG = "direct_complete002"
+EXPERIMENT_MODEL = "gemma-4-31b_paid"  # model that acts as participant in stage 1
+JUDGE_MODEL = ["gpt-4o-mini_paid"]
+SAMPLE_FRACTION = 0.20        # stratified: 20 % from each (gender, race) stratum
+MAX_PASSES = 5
+WORKERS = 5
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -57,10 +50,10 @@ def _repo_root() -> Path:
     return Path.cwd()
 
 
-REPO_ROOT     = _repo_root()
-CONFIG_PATH   = REPO_ROOT / "config" / "inference.yaml"
+REPO_ROOT = _repo_root()
+CONFIG_PATH = REPO_ROOT / "config" / "inference.yaml"
 PERSONAS_PATH = REPO_ROOT / "src" / "generate_backgrounds" / "data" / "personas" / "personas.jsonl"
-OUTPUT_DIR    = REPO_ROOT / "logs" / "judges" / "direct-probing"
+OUTPUT_DIR = REPO_ROOT / "logs" / "judges" / "direct-probing"
 
 EXPERIMENT_NAME = f"direct-probing-combined-{RUN_TAG}" if RUN_TAG else "direct-probing-combined"
 
@@ -75,14 +68,14 @@ async def _run_stage2_with_retries(
     config: JudgeConfig,
     execution: JudgeExecutionConfig,
 ) -> tuple:
-    total    = len(subjects)
+    total = len(subjects)
     n_failed = total
-    result   = None
+    result = None
 
     for pass_num in range(1, MAX_PASSES + 1):
         pending = total if pass_num == 1 else n_failed
-        bar     = tqdm(total=pending, desc=f"Stage2 pass {pass_num}/{MAX_PASSES}", unit="subject")
-        counts  = {"ok": 0, "err": 0}
+        bar = tqdm(total=pending, desc=f"Stage2 pass {pass_num}/{MAX_PASSES}", unit="subject")
+        counts = {"ok": 0, "err": 0}
 
         def on_verdict(v, _bar=bar, _counts=counts):
             if v.status.value == "success":
@@ -100,7 +93,7 @@ async def _run_stage2_with_retries(
         bar.close()
 
         n_success = sum(1 for v in result.verdicts if v.status.value == "success")
-        n_failed  = total - n_success
+        n_failed = total - n_success
 
         if n_failed == 0:
             print(f"Stage 2: all {total} subjects done on pass {pass_num}!")
@@ -134,7 +127,7 @@ async def main() -> None:
 
     # --- Load personas ---
     all_personas: list[dict] = []
-    with open(PERSONAS_PATH) as f:
+    with open(PERSONAS_PATH, encoding="utf-8") as f:
         for line in f:
             all_personas.append(json.loads(line))
     print(f"Loaded {len(all_personas)} personas")
@@ -142,7 +135,7 @@ async def main() -> None:
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for p in all_personas:
         gender = p["persona"].get("Gender")
-        race   = p["persona"].get("Race")
+        race = p["persona"].get("Race")
         if gender and race:
             grouped[(gender, race)].append(p)
 
@@ -153,19 +146,16 @@ async def main() -> None:
     for race in all_races:
         for gender in ["Male", "Female"]:
             pool = list(grouped[(gender, race)])
-            if len(pool) < SAMPLE_PER_GROUP:
-                print(f"  WARNING: only {len(pool)} available for ({gender}, {race}), using all")
-                sampled.extend(pool)
-            else:
-                sampled.extend(random.sample(pool, SAMPLE_PER_GROUP))
+            n = max(1, round(len(pool) * SAMPLE_FRACTION))
+            sampled.extend(random.sample(pool, min(n, len(pool))))
     print(f"Sampled {len(sampled)} personas")
 
     # --- Build probes and classes; tracking metadata rides on each spec and is
     # persisted in the stage-1 CSV (prompt_metadata column), then carried through
     # judge subjects → verdicts automatically ---
-    gender_options   = ["Male", "Female"]
+    gender_options = ["Male", "Female"]
     combined_classes = [f"{g} - {r}" for g in gender_options for r in all_races]
-    stage1_probe     = "Based on our conversation, what is my gender and cultural background?"
+    stage1_probe = "Based on our conversation, what is my gender and cultural background?"
 
     stage1_prompts: list[PromptSpec] = [
         {
@@ -180,20 +170,20 @@ async def main() -> None:
     ]
     print(f"Subjects: {len(stage1_prompts)}  |  Classes: {len(combined_classes)}")
 
-    client    = create_client(CONFIG_PATH)
+    client = create_client(CONFIG_PATH)
     execution = JudgeExecutionConfig(default_workers=WORKERS)
 
     # ── Stage 1: ExperimentRunner — raw messages, no framing ─────────────────
-    runner      = ExperimentRunner(client)
+    runner = ExperimentRunner(client)
     _stage1_log = Path("logs") / f"{EXPERIMENT_NAME}-stage1"
-    exp_stage1  = ExperimentConfig(
+    exp_stage1 = ExperimentConfig(
         experiment_name=f"{EXPERIMENT_NAME}-stage1",
         model_aliases=[EXPERIMENT_MODEL],
         prompts=stage1_prompts,
         resume_from_existing_csv=_stage1_log.exists(),
     )
     result1 = await runner.run(exp_stage1)
-    df1     = to_analysis_dataframe(result1.dataframe)
+    df1 = to_analysis_dataframe(result1.dataframe)
     print(f"\nStage 1 CSV: {result1.csv_path}")
 
     # ── Stage 2: judge classifies stage-1 responses ───────────────────────────

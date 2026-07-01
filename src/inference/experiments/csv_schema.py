@@ -129,7 +129,9 @@ def canonical_prompt_spec(spec: str | dict[str, Any]) -> dict[str, Any]:
 
     A spec dict may carry an optional "metadata" key (caller-supplied tracking data). It is
     intentionally NOT part of the canonical form, so prompt_id stays content-derived and stable;
-    use extract_prompt_metadata to read it.
+    use extract_prompt_metadata to read it. Callers that need metadata-aware ids (e.g. to
+    intentionally repeat the same prompt N times under different metadata) should compute the
+    id via compute_prompt_id_for_spec(spec, include_metadata=True) instead.
     """
     if isinstance(spec, str):
         s = spec.strip()
@@ -156,7 +158,8 @@ def canonical_prompt_spec(spec: str | dict[str, Any]) -> dict[str, Any]:
 def extract_prompt_metadata(spec: str | dict[str, Any]) -> dict[str, Any] | None:
     """Return the caller-supplied tracking metadata of a prompt spec, or None when absent/empty.
 
-    Metadata is excluded from canonical_prompt_spec and therefore from prompt_id.
+    Metadata is excluded from canonical_prompt_spec and therefore from the default
+    prompt_id. Opt in to metadata-aware ids via compute_prompt_id_for_spec(spec, include_metadata=True).
     """
     if isinstance(spec, dict):
         metadata = spec.get("metadata")
@@ -183,6 +186,27 @@ def deserialize_prompt_metadata(serialized_metadata: str) -> dict[str, Any] | No
 def compute_prompt_id(prompt: JSONValue) -> str:
     canonical_prompt = _canonical_json(prompt)
     return hashlib.sha256(canonical_prompt.encode("utf-8")).hexdigest()
+
+
+def compute_prompt_id_for_spec(
+    spec: str | dict[str, Any], *, include_metadata: bool = False
+) -> str:
+    """Compute prompt_id from a raw spec, optionally mixing the spec's metadata into the hash.
+
+    Default behavior (include_metadata=False) hashes only the canonical message content,
+    so prompt_id stays content-derived and stable across runs that share the same prompt.
+
+    Pass include_metadata=True to make identical message content with different metadata
+    yield distinct prompt_ids. This is needed for experiments that intentionally repeat
+    the same prompt N times (e.g. baseline runs sampling a model's response distribution):
+    set metadata={"iteration": i, ...} on each spec and each entry gets a unique id.
+    """
+    canonical = canonical_prompt_spec(spec)
+    if include_metadata:
+        meta = extract_prompt_metadata(spec)
+        if meta is not None:
+            canonical = {**canonical, "metadata": meta}
+    return compute_prompt_id(canonical)
 
 
 def compute_cell_id(prompt: JSONValue, model_alias: str) -> str:
@@ -272,6 +296,7 @@ __all__ = [
     "compute_cell_id",
     "compute_cell_id_from_prompt_id",
     "compute_prompt_id",
+    "compute_prompt_id_for_spec",
     "csv_writer_kwargs",
     "deserialize_prompt_content",
     "deserialize_prompt_metadata",

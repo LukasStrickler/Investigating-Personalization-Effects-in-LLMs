@@ -96,6 +96,7 @@ checkpoints/
 !tests/fixtures/*.jsonl
 !src/generate_backgrounds/data/**/*.jsonl
 !experiments/background_persona_results.jsonl
+!experiments/behavioral_audit/wildchat_personas.jsonl
 # Local inference config (copy from config/inference.example.yaml)
 config/inference.yaml
 

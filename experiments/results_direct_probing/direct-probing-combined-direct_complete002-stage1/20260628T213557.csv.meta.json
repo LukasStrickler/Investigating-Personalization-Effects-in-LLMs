@@ -1,0 +1,29 @@
+{
+  "cell_identity": "sha256(prompt_id + '\\x1f' + alias)",
+  "cell_payload": {
+    "format": "json",
+    "optional_keys": [
+      "response",
+      "error_message",
+      "metadata"
+    ],
+    "required_key": "status"
+  },
+  "cell_status_values": [
+    "success",
+    "failed",
+    "rate_limited",
+    "not_requested",
+    "pending",
+    "retrying"
+  ],
+  "missing_cell": "",
+  "model_aliases": [
+    "gemma-4-31b_paid"
+  ],
+  "prompt_id_column": "prompt_id",
+  "prompt_identity": "sha256(canonical_json(prompt)); prompt_metadata excluded",
+  "prompt_metadata": "caller-supplied tracking metadata (canonical JSON object) or empty",
+  "prompt_metadata_column": "prompt_metadata",
+  "schema_version": 3
+}

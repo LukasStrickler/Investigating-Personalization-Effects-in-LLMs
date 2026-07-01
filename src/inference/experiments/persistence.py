@@ -22,7 +22,7 @@ from inference.experiments.csv_schema import (
     build_matrix_headers,
     build_sidecar_metadata,
     canonical_prompt_spec,
-    compute_prompt_id,
+    compute_prompt_id_for_spec,
     csv_writer_kwargs,
     extract_prompt_metadata,
     metadata_sidecar_path,
@@ -83,11 +83,18 @@ class MatrixCSVWriter:
     in place on the next rewrite.
     """
 
-    def __init__(self, csv_path: Path, model_aliases: list[str]) -> None:
+    def __init__(
+        self,
+        csv_path: Path,
+        model_aliases: list[str],
+        *,
+        prompt_id_includes_metadata: bool = False,
+    ) -> None:
         self._csv_path = csv_path
         self._headers = build_matrix_headers(model_aliases)
         self._model_aliases = [h for h in self._headers if h not in NON_ALIAS_COLUMNS]
         self._lock_path = Path(f"{csv_path}.lock")
+        self._prompt_id_includes_metadata = prompt_id_includes_metadata
 
     @property
     def csv_path(self) -> Path:
@@ -99,7 +106,9 @@ class MatrixCSVWriter:
             c = canonical_prompt_spec(p)
             rows.append(
                 self._empty_row(
-                    prompt_id=compute_prompt_id(c),
+                    prompt_id=compute_prompt_id_for_spec(
+                        p, include_metadata=self._prompt_id_includes_metadata
+                    ),
                     prompt=serialize_prompt_content(c),
                     prompt_metadata=serialize_prompt_metadata(extract_prompt_metadata(p)),
                 )
@@ -149,7 +158,9 @@ class MatrixCSVWriter:
 
             for p in prompts:
                 c = canonical_prompt_spec(p)
-                prompt_id = compute_prompt_id(c)
+                prompt_id = compute_prompt_id_for_spec(
+                    p, include_metadata=self._prompt_id_includes_metadata
+                )
                 prompt_metadata = serialize_prompt_metadata(extract_prompt_metadata(p))
                 if prompt_metadata:
                     metadata_by_prompt_id[prompt_id] = prompt_metadata
