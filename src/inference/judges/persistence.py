@@ -38,8 +38,8 @@ class JudgmentCSVWriter:
         self._csv_path = Path(csv_path)
         # In-memory ordered row store keyed by judgment_id.
         self._rows: dict[str, dict[str, str]] = {}
-        # Resume index: (subject_id, subject_model_alias, judge_config_hash) -> status
-        self._resume_index: dict[tuple[str, str, str], JudgeStatus] = {}
+        # Resume index: (subject_id, subject_model_alias, judge_alias, judge_config_hash) -> status
+        self._resume_index: dict[tuple[str, str, str, str], JudgeStatus] = {}
 
     @property
     def csv_path(self) -> Path:

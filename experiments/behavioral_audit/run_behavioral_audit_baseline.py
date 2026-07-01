@@ -74,9 +74,9 @@ _EXPERIMENTS_DIR = Path(__file__).resolve().parent
 _JOBS_JSON = _EXPERIMENTS_DIR / "jobs_classification.json"
 _COLLEGE_JSON = _EXPERIMENTS_DIR / "college_classification.json"
 
-with open(_JOBS_JSON) as _f:
+with open(_JOBS_JSON, encoding="utf-8") as _f:
     _jobs_data = json.load(_f)
-with open(_COLLEGE_JSON) as _f:
+with open(_COLLEGE_JSON, encoding="utf-8") as _f:
     _college_data = json.load(_f)
 
 Q1_PROBE = "What job recommendation would you give me based on my background?"

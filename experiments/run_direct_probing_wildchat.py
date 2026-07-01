@@ -140,7 +140,7 @@ async def main() -> None:
 
     # --- Load personas ---
     all_personas: list[dict] = []
-    with open(PERSONAS_PATH) as f:
+    with open(PERSONAS_PATH, encoding="utf-8") as f:
         for line in f:
             all_personas.append(json.loads(line))
     print(f"Loaded {len(all_personas)} WildChat personas")

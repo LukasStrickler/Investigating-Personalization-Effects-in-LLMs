@@ -43,8 +43,8 @@ def resume_key(
     subject_model_alias: str | None,
     judge_alias: str,
     judge_config_hash: str,
-) -> tuple[str, str, str]:
-    return (subject_id, subject_model_alias or "", judge_config_hash)
+) -> tuple[str, str, str, str]:
+    return (subject_id, subject_model_alias or "", judge_alias, judge_config_hash)
 
 
 def _json_or_none(s: str) -> Any:
