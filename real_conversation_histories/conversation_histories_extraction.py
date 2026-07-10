@@ -1,1 +1,1 @@
-#extracyion f wildchat
+#extraction of wildchat
