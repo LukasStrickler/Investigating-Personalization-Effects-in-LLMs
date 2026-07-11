@@ -163,7 +163,7 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     bad_probe = [
         (r["judgment_id"], r["question"])
         for r in rows
-        if r.get("probe_question", "").strip() != CANONICAL_PROBES.get(r["question"], "")
+        if (r.get("probe_question") or "").strip() != CANONICAL_PROBES.get(r["question"], "")
     ]
     if not bad_probe:
         ok("probe_question matches canonical text for every question type")
