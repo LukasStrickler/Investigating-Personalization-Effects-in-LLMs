@@ -10,9 +10,8 @@ Dataset reference:
     https://huggingface.co/datasets/allenai/WildChat-1M
 
 Requirements:
-    pip install datasets --break-system-packages
+    `datasets`
 """
-
 import argparse
 import csv
 import json
@@ -20,10 +19,11 @@ import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-
-
+ 
+ 
 OUTPUT_DIR = Path(__file__).resolve().parent
-
+ 
+ 
 _STRICT = {
     "male_self_identified": "Male",
     "female_self_identified": "Female",
@@ -34,22 +34,22 @@ _LOOSE = {
     "male_contextual_evidence": "Male",
     "female_contextual_evidence": "Female",
 }
-
+ 
 def to_persona_gender(label, strict):
     return (_STRICT if strict else _LOOSE).get((label or "").strip())
-
-
+ 
+ 
 def combination_id(gender_value):
     """Short, readable id, one fixed value per gender (e.g. Female -> 'female_001')."""
     if gender_value is None:
         return None
     return f"{gender_value.lower()}_001"
-
-
+ 
+ 
 def _now_iso():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f") + "Z"
-
-
+ 
+ 
 def is_kept(cell, keep_value):
     """Treat 1 / 1.0 / true / yes (case-insensitive) as keep; everything else drop."""
     if cell is None:
@@ -58,8 +58,8 @@ def is_kept(cell, keep_value):
     if keep_value == "1":
         return s in {"1", "1.0", "true", "yes", "y"}
     return s == keep_value.strip().lower()
-
-
+ 
+ 
 def load_keep_map(checked_csv, correct_col, id_col, gender_col, keep_value, strict):
     """Return {conversation_id: persona_gender} for verified-correct, gendered rows."""
     keep = {}
@@ -85,8 +85,19 @@ def load_keep_map(checked_csv, correct_col, id_col, gender_col, keep_value, stri
                 continue
             keep[cid] = gender
     return keep, stats
-
-
+ 
+ 
+def wildchat_conversation_id(example):
+    """Same unique ID scheme as conversation_histories_extraction.py:
+    the first turn's globally unique `turn_identifier` (conversation_hash
+    is a content hash and is NOT unique across distinct conversations)."""
+    for m in example.get("conversation", []) or []:
+        if isinstance(m, dict) and m.get("turn_identifier") is not None:
+            return f"wc_{m['turn_identifier']}"
+    h = example.get("conversation_hash")
+    return f"hash_{h}" if h else None
+ 
+ 
 def clean_messages(conversation):
     out = []
     for turn in conversation or []:
@@ -97,15 +108,15 @@ def clean_messages(conversation):
             continue
         out.append({"role": role, "content": content})
     return out
-
-
+ 
+ 
 def flatten_transcript(messages, max_chars):
     text = "\n\n".join(f"{m['role'].upper()}: {m['content']}" for m in messages)
     if max_chars and len(text) > max_chars:
         text = text[:max_chars] + " …[truncated]"
     return text
-
-
+ 
+ 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -135,7 +146,7 @@ def main():
                     help="Stop re-streaming after this many WildChat examples "
                          "(safety cap; default: scan until all ids are found).")
     args = ap.parse_args()
-
+ 
     keep, stats = load_keep_map(args.checked_csv, args.correct_column,
                                 args.id_column, args.gender_column,
                                 args.keep_value, args.strict)
@@ -146,7 +157,7 @@ def main():
           f"missing id: {stats['missing_id']:,}")
     if not keep:
         sys.exit("Nothing to build — no usable gendered rows marked as kept.")
-
+ 
     pending = dict(keep)  
     written = [0]
     csv_fields = ["history_id", "Gender", "num_turns", "generated_at", "transcript"]
@@ -154,13 +165,18 @@ def main():
     csv_fh = open(args.csv, "w", encoding="utf-8", newline="")
     csv_writer = csv.DictWriter(csv_fh, fieldnames=csv_fields)
     csv_writer.writeheader()
-
-    def emit(cid, gender, messages):
+ 
+    def emit(history_id, gender, messages):
+        """history_id is the ORIGINAL WildChat conversation_hash — the final
+        personas file keeps the old ID scheme so records stay comparable with
+        experiments already run. The unique wc_<turn_identifier> key is used
+        only internally to join the CSV against the sidecar without collapsing
+        distinct conversations that share a hash."""
         if not messages:
             return
         generated_at = _now_iso()
         record = {
-            "history_id": cid,
+            "history_id": history_id,
             "persona": {"Race": None, "Gender": gender},
             "combination_ids": {"Gender": combination_id(gender)},
             "messages": messages,
@@ -168,14 +184,14 @@ def main():
         }
         out.write(json.dumps(record, ensure_ascii=False) + "\n")
         csv_writer.writerow({
-            "history_id": cid,
+            "history_id": history_id,
             "Gender": gender,
             "num_turns": len(messages),
             "generated_at": generated_at,
             "transcript": flatten_transcript(messages, args.csv_max_chars),
         })
         written[0] += 1
-
+ 
     used_local = os.path.exists(args.conversations)
     try:
         if used_local:
@@ -191,7 +207,8 @@ def main():
                     cid = rec.get("conversation_id")
                     if cid in pending:
                         gender = pending.pop(cid)
-                        emit(cid, gender, clean_messages(rec.get("messages", [])))
+                        history_id = rec.get("conversation_hash") or cid
+                        emit(history_id, gender, clean_messages(rec.get("messages", [])))
         else:
             print(f"Local conversations file '{args.conversations}' not found — "
                   f"streaming WildChat instead (slower).")
@@ -204,16 +221,17 @@ def main():
                 if args.max_scan is not None and scanned >= args.max_scan:
                     break
                 scanned += 1
-                cid = example.get("conversation_hash")
+                cid = wildchat_conversation_id(example)
                 if cid in pending:
                     gender = pending.pop(cid)
-                    emit(cid, gender, clean_messages(example.get("conversation", []) or []))
+                    history_id = example.get("conversation_hash") or cid
+                    emit(history_id, gender, clean_messages(example.get("conversation", []) or []))
                     if written[0] % 1000 == 0:
                         print(f"  matched={written[0]}/{len(keep)} scanned={scanned:,} ...")
     finally:
         out.close()
         csv_fh.close()
-
+ 
     print(f"\nDone. Wrote {written[0]:,} records "
           f"({'local join' if used_local else 'WildChat stream'}) to:")
     print(f"  JSON : {args.out}")
@@ -227,7 +245,7 @@ def main():
             print("  Try leaving --max-scan unset, or check --split.")
         for cid in list(pending)[:5]:
             print(f"    unmatched: {cid}")
-
-
+ 
+ 
 if __name__ == "__main__":
     main()

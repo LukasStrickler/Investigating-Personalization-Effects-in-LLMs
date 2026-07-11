@@ -1,5 +1,6 @@
 real_conversation_histories
 ============================
+
 Pipeline that extracts real WildChat conversations with explicit gender
 evidence and turns them into personas for the project.
 
@@ -11,19 +12,39 @@ Dataset reference:
 FINAL FILE TO USE: wildchat_personas.jsonl
 (one JSON record per kept conversation, full turns, gender-labeled persona)
 
+REQUIREMENTS
+------------
+`datasets` and `pandas` are declared as project dependencies in
+pyproject.toml. From the repo root:
+
+    uv sync
+
+(`datasets` is needed by the extraction script and by tojson.py's
+streaming fallback; `pandas` only by the extraction script.)
+
 WORKFLOW
 --------
 1. Run conversation_histories_extraction.py
    -> produces wildchat_conversations.jsonl + wildchat_gender_evidence_results.csv
       (and a copy, wildchat_gender_evidence_results_checked.csv)
-
 2. Open wildchat_gender_evidence_results_checked.csv by hand and fill the
    "correct" column: 1 = keep this row's gender label, 0 = drop it.
-
 3. Run tojson.py
    -> reads the checked CSV, joins each kept id's full conversation from
       wildchat_conversations.jsonl, and writes wildchat_personas.jsonl /
-      wildchat_personas.csv.
+      wildchat_personas.csv into this folder.
+4. IMPORTANT — copy the refreshed personas file to where the experiments
+   read it. The file at experiments/behavioral_audit/wildchat_personas.jsonl
+   is a duplicate of the one produced here, consumed by:
+     - experiments/run_direct_probing_wildchat.py
+     - experiments/behavioral_audit/run_behavioral_audit_wildchat.py
+   It does NOT update automatically: after every rebuild, re-copy it or
+   the experiments will silently keep using stale data. From this folder:
+
+     copy wildchat_personas.jsonl ..\experiments\behavioral_audit\wildchat_personas.jsonl
+
+   (PowerShell/Windows; on Linux/macOS use `cp` with forward slashes.)
+
 
 SCRIPTS
 -------
@@ -31,7 +52,9 @@ conversation_histories_extraction.py
     Streams the WildChat-1M dataset, filters to English / non-toxic /
     reasonable-length first prompts, and scores each conversation's first
     user message for explicit gender evidence (self-identification,
-    shorthand like "25F", gendered roles, contextual requests). Outputs:
+    shorthand like "25F", gendered roles, contextual requests). The
+    conversations sidecar is written incrementally during the stream, so
+    a full 1M-conversation run has a flat memory profile. Outputs:
       - wildchat_conversations.jsonl : full conversation turns, keyed by
         conversation_id (needed by tojson.py so it doesn't have to
         re-stream WildChat).
@@ -43,10 +66,13 @@ conversation_histories_extraction.py
 tojson.py
     Step 3 of the workflow. Reads the hand-checked CSV, keeps only rows
     marked correct==1, and builds one persona record per kept conversation
-    (joining full turns from wildchat_conversations.jsonl). Outputs:
+    (joining full turns from wildchat_conversations.jsonl; if the sidecar
+    is missing it falls back to re-streaming WildChat, deriving the same
+    "wc_<turn_identifier>" key). Outputs:
       - wildchat_personas.jsonl : the final dataset, one JSON object per
         conversation ({history_id, persona, combination_ids, messages,
-        generated_at}).
+        generated_at}). Remember step 4: copy it to
+        experiments/behavioral_audit/ after every rebuild.
       - wildchat_personas.csv : same conversations, one row each, with a
         flattened transcript column (for quick spreadsheet review).
 
