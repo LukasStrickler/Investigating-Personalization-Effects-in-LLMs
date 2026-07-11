@@ -145,7 +145,10 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     else:
         fail(f"unexpected judge_alias mix: {dict(judges)} — rebuild with prepare_judge_audit_sample.py", fails)
 
-    bad_strata = [r["judgment_id"] for r in rows if len(r.get("stratum", "").split("|")) != len(INPUT_STRATUM_AXES)]
+    bad_strata = [
+        r["judgment_id"] for r in rows
+        if len((r.get("stratum") or "").split("|")) != len(INPUT_STRATUM_AXES)
+    ]
     if not bad_strata:
         ok(f"stratum uses {len(INPUT_STRATUM_AXES)} input axes (no outcome label in key)")
     else:

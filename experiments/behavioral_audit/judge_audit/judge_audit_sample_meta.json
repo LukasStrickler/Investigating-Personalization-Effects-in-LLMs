@@ -53,7 +53,7 @@
     "France": 60,
     "MENA": 60,
     "United Kingdom / North America": 62,
-    "(unknown)": 12,
+    "(empty)": 12,
     "Hispanic Countries": 61
   },
   "distribution_vs_research_population": {

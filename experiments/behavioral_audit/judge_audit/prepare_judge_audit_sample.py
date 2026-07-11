@@ -165,6 +165,13 @@ def _stage1_key(source_id: str) -> str:
     return parts[-1] if parts else source_id
 
 
+def _sanitize_source_id(source_id: str) -> str:
+    """Store a portable stage-1 locator, not an absolute local path."""
+    if not source_id:
+        return ""
+    return _stage1_key(source_id)
+
+
 def _index_stage1() -> dict[str, Path]:
     index: dict[str, Path] = {}
     for pattern in STAGE1_GLOBS:
@@ -191,8 +198,12 @@ def _last_user_message(prompt_raw: object) -> str:
     spec = _parse_json_dict(prompt_raw)
     if not spec:
         return ""
-    messages = spec.get("messages") or []
+    messages = spec.get("messages")
+    if not isinstance(messages, list):
+        return ""
     for msg in reversed(messages):
+        if not isinstance(msg, dict):
+            continue
         if str(msg.get("role", "")).lower() == "user":
             content = msg.get("content", "")
             return content if isinstance(content, str) else str(content)
@@ -308,7 +319,7 @@ def load_population(stage1_index: dict[str, Path] | None = None) -> list[dict]:
                     "subject_id": row["subject_id"],
                     "stage1_csv": str(stage1_path.relative_to(REPO_ROOT)),
                     "judgments_file": str(jpath.relative_to(REPO_ROOT)),
-                    "source_id": row.get("source_id") or "",
+                    "source_id": _sanitize_source_id(row.get("source_id") or ""),
                     "error_message": row.get("error_message") or "",
                     "latency_ms": row.get("latency_ms") or "",
                     "total_tokens": row.get("total_tokens") or "",
@@ -415,11 +426,6 @@ def _gender_balanced_sample(
     if len(chosen) < n:
         used = {r["judgment_id"] for r in chosen}
         rest = [r for r in pool if r["judgment_id"] not in used]
-        rng.shuffle(rest)
-        chosen.extend(rest[: n - len(chosen)])
-    if other and len(chosen) < n:
-        used = {r["judgment_id"] for r in chosen}
-        rest = [r for r in other if r["judgment_id"] not in used]
         rng.shuffle(rest)
         chosen.extend(rest[: n - len(chosen)])
     return chosen[:n]
@@ -537,8 +543,8 @@ def main() -> None:
         "excluded_cells": ["full001|q1 (incomplete gpt-4o-mini judging)"],
         "question_counts": dict(Counter(r["question"] for r in sample)),
         "run_tag_counts": dict(Counter(r["run_tag"] for r in sample)),
-        "gender_counts": dict(Counter(r["true_gender"] or "(unknown)" for r in sample)),
-        "race_counts": dict(Counter(r["true_race"] or "(unknown)" for r in sample)),
+        "gender_counts": dict(Counter(r["true_gender"] or "(empty)" for r in sample)),
+        "race_counts": dict(Counter(r["true_race"] or "(empty)" for r in sample)),
         "distribution_vs_research_population": dist,
     }
     OUT_META.write_text(json.dumps(meta, indent=2), encoding="utf-8")
