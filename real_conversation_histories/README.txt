@@ -57,6 +57,3 @@ wildchat_gender_evidence_results.csv          gender-evidence rows, unreviewed
 wildchat_gender_evidence_results_checked.csv  same, hand-marked with "correct" column
 wildchat_personas.jsonl                FINAL: personas dataset used downstream
 wildchat_personas.csv                  FINAL (spreadsheet view of the same data)
-
-All outputs are written next to these scripts regardless of the working
-directory the scripts are run from.
