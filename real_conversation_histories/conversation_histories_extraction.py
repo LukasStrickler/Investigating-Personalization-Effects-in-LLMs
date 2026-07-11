@@ -8,7 +8,7 @@ Dataset reference:
     https://huggingface.co/datasets/allenai/WildChat-1M
 
 Requirements:
-    pip install datasets pandas --break-system-packages
+    `datasets` and `pandas`
 """
 
 import re
@@ -501,6 +501,27 @@ def score_initial_prompt(first_prompt):
 
 
 # ---------------------------------------------------------------------------
+# 9b. Unique per-conversation ID
+# ---------------------------------------------------------------------------
+# WildChat's `conversation_hash` is a content hash and is documented as
+# NON-unique: distinct conversations with identical text share a hash, which
+# would collapse them into one manual-review row and one persona record.
+# Each turn, however, carries a globally unique `turn_identifier`, so the
+# first turn's identifier is a stable, unique per-conversation key.
+
+def get_conversation_id(example, messages):
+    """Unique conversation ID: first turn's turn_identifier (prefixed 'wc_')."""
+    for m in messages:
+        tid = m.get("turn_identifier")
+        if tid is not None:
+            return f"wc_{tid}"
+    # Fallback for rows missing turn identifiers: hash is better than nothing,
+    # but flagged with a prefix so collisions are at least visible downstream.
+    h = example.get("conversation_hash")
+    return f"hash_{h}" if h else None
+
+
+# ---------------------------------------------------------------------------
 # 10. Main pipeline
 # ---------------------------------------------------------------------------
 
@@ -517,81 +538,83 @@ def analyze_wildchat(
     )
 
     rows = []
-    conversations = []  # full conversations (role+content) keyed by id
     scanned = 0
 
-    for example in ds:
-        # Gate 1: non-English rows don't count toward max_scan
-        lang_ok, _ = passes_language_gate(example)
-        if not lang_ok:
-            continue
-
-        if len(rows) >= max_samples or scanned >= max_scan:
-            break
-
-        scanned += 1
-
-        messages = example.get("conversation", [])
-        if not messages:
-            continue
-
-        first_prompt = get_first_user_prompt(messages)
-
-        # Gate 2 + safety and content filters
-        keep, _ = passes_filters(example, first_prompt)
-        if not keep:
-            continue
-        prompt_words = len(first_prompt.split())
-
-        result = score_initial_prompt(first_prompt)
-
-        # WildChat's unique identifier is conversation_hash
-        conversation_id = example.get("conversation_hash", str(scanned))
-        country = example.get("country", "")
-        language = example.get("language", "")
-        model = example.get("model", "")
-
-        row = {
-            "conversation_id": conversation_id,
-            "country": country,
-            "language": language,
-            "model": model,
-            "num_turns": len(messages),
-            "first_prompt_words": prompt_words,
-
-            "predicted_gender": result["predicted_gender"],
-            "confidence": result["confidence"],
-            "female_score": result["female_score"],
-            "male_score": result["male_score"],
-
-            "male_self_hits": result["male_self_hits"],
-            "female_self_hits": result["female_self_hits"],
-            "male_context_hits": result["male_context_hits"],
-            "female_context_hits": result["female_context_hits"],
-            "gender_transition_hits": result["gender_transition_hits"],
-
-            "initial_prompt": first_prompt,
-        }
-
-        rows.append(row)
-
-        # Save the full conversation keyed by id for local joining later
-        conversations.append({
-            "conversation_id": conversation_id,
-            "messages": [
-                {"role": m.get("role"), "content": m.get("content")}
-                for m in messages
-                if m.get("role") is not None and m.get("content") is not None
-            ],
-        })
-
-    df = pd.DataFrame(rows)
-
-    # Sidecar file with full conversations, needed for the downstream analysis
+    # Sidecar file with full conversations, needed for the downstream analysis.
+    # Written incrementally during iteration so a full 1M-conversation run
+    # never holds every transcript in memory at once.
     import json as _json
     with open(conversations_path, "w", encoding="utf-8") as _cf:
-        for _c in conversations:
-            _cf.write(_json.dumps(_c, ensure_ascii=False) + "\n")
+        for example in ds:
+            # Gate 1: non-English rows don't count toward max_scan
+            lang_ok, _ = passes_language_gate(example)
+            if not lang_ok:
+                continue
+
+            if len(rows) >= max_samples or scanned >= max_scan:
+                break
+
+            scanned += 1
+
+            messages = example.get("conversation", [])
+            if not messages:
+                continue
+
+            first_prompt = get_first_user_prompt(messages)
+
+            # Gate 2 + safety and content filters
+            keep, _ = passes_filters(example, first_prompt)
+            if not keep:
+                continue
+            prompt_words = len(first_prompt.split())
+
+            result = score_initial_prompt(first_prompt)
+
+            # Unique per-conversation ID (conversation_hash is NOT unique)
+            conversation_id = get_conversation_id(example, messages)
+            if conversation_id is None:
+                conversation_id = f"scan_{scanned}"
+            country = example.get("country", "")
+            language = example.get("language", "")
+            model = example.get("model", "")
+
+            row = {
+                "conversation_id": conversation_id,
+                "conversation_hash": example.get("conversation_hash", ""),
+                "country": country,
+                "language": language,
+                "model": model,
+                "num_turns": len(messages),
+                "first_prompt_words": prompt_words,
+
+                "predicted_gender": result["predicted_gender"],
+                "confidence": result["confidence"],
+                "female_score": result["female_score"],
+                "male_score": result["male_score"],
+
+                "male_self_hits": result["male_self_hits"],
+                "female_self_hits": result["female_self_hits"],
+                "male_context_hits": result["male_context_hits"],
+                "female_context_hits": result["female_context_hits"],
+                "gender_transition_hits": result["gender_transition_hits"],
+
+                "initial_prompt": first_prompt,
+            }
+
+            rows.append(row)
+
+            # Stream the full conversation to the sidecar as we go
+            _cf.write(_json.dumps({
+                "conversation_id": conversation_id,
+                "conversation_hash": example.get("conversation_hash", ""),
+                "messages": [
+                    {"role": m.get("role"), "content": m.get("content")}
+                    for m in messages
+                    if m.get("role") is not None and m.get("content") is not None
+                ],
+            }, ensure_ascii=False) + "\n")
+
+    df = pd.DataFrame(rows)
 
     return df
 
