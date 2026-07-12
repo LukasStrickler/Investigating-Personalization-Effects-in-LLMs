@@ -1,0 +1,101 @@
+# =============================================================================
+# Modal config — cp to config/inference.yaml to run Stage 1 with a self-hosted
+# subject model on Modal GPUs. Includes OpenRouter judge aliases for Stage 2
+# (run separately via run_behavioral_audit.py STAGE2_ONLY=True).
+# =============================================================================
+# The `modal` provider targets a DEPLOYED vLLM OpenAI-compatible server on Modal
+# (see experiments/modal_gpu_poc/modal_serve.py). Its URL changes per deploy, so
+# set it from the environment:
+#
+#   modal deploy experiments/modal_gpu_poc/modal_serve.py     # prints the *.modal.run URL
+#   export MODAL_BASE_URL="https://<workspace>--pers-subject-serve.modal.run/v1"
+#   export MODAL_API_KEY="EMPTY"        # or the bearer token the server enforces
+#
+# `model:` on each modal alias must equal the server's --served-model-name.
+# -----------------------------------------------------------------------------
+providers:
+  # Subject models — self-hosted vLLM on a Modal GPU (Stage 1).
+  modal:
+    name: modal
+    api_key_env: MODAL_API_KEY
+    base_url: https://REPLACE-ME--pers-subject-serve.modal.run/v1  # overridden by MODAL_BASE_URL
+    max_concurrency: 100        # in-flight requests the vLLM server batches (continuous batching)
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 3
+      base_delay: 1.0
+      max_delay: 30.0
+
+  # Judge — OpenRouter (Stage 2). Mirrors config/inference.example.yaml.
+  openrouter:
+    name: openrouter
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    rate_limit:
+      requests_per_minute: 20
+      tokens_per_minute: 100000
+    retry:
+      max_retries: 3
+      base_delay: 2.0
+      max_delay: 120.0
+
+  # Mock (TEST ONLY — CI / examples without any endpoint).
+  mock:
+    name: mock
+    api_key_env: MOCK_API_KEY
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 1
+      base_delay: 0.1
+      max_delay: 1.0
+    default_model: mock-model
+
+# -----------------------------------------------------------------------------
+# Model aliases
+# -----------------------------------------------------------------------------
+model_aliases:
+  # Subject models served on Modal. `model:` == the server's --served-model-name.
+  gemma-4-e2b_modal:
+    alias: gemma-4-e2b_modal
+    provider: modal
+    model: gemma-4-e2b
+
+  gemma-4-31b_modal:            # the bigger subject (needs a bigger GPU on the server)
+    alias: gemma-4-31b_modal
+    provider: modal
+    model: gemma-4-31b
+
+  # Any vLLM-servable model works — the provider is model-agnostic. Deploy with
+  # MODAL_SERVE_MODEL_ID=mistralai/Mistral-7B-Instruct-v0.3 MODAL_SERVE_NAME=mistral-7b
+  # (fits an L4). Unlike Gemma, Mistral takes a native system role (no folding).
+  mistral-7b_modal:
+    alias: mistral-7b_modal
+    provider: modal
+    model: mistral-7b
+
+  # Judge — the alias the behavioral-audit Stage 2 uses (OpenRouter GPT-4o-mini).
+  gpt-4o-mini_paid:
+    alias: gpt-4o-mini_paid
+    provider: openrouter
+    model: openai/gpt-4o-mini
+
+  mock-test:
+    alias: mock-test
+    provider: mock
+    model: mock-model
+
+# -----------------------------------------------------------------------------
+# Defaults
+# -----------------------------------------------------------------------------
+default_retry:
+  max_retries: 2
+  base_delay: 0.5
+  max_delay: 30.0
+
+log_path: logs/inference.jsonl
+checkpoint_path: checkpoints/
+default_provider: modal
