@@ -75,14 +75,14 @@ class RetryConfig(BaseModel):
 
 
 # Supported provider names (v1 scope)
-ProviderName = Literal["openai", "anthropic", "openrouter", "vllm", "mock"]
+ProviderName = Literal["openai", "anthropic", "openrouter", "vllm", "modal", "mock"]
 
 
 class ProviderConfig(BaseModel):
     """Configuration for a single inference provider.
 
     Attributes:
-        name: Provider identifier (openai, anthropic, openrouter, vllm, mock).
+        name: Provider identifier (openai, anthropic, openrouter, vllm, modal, mock).
         api_key_env: Environment variable name for the API key.
         rate_limit: Optional rate limiting configuration.
         retry: Optional retry configuration override.
@@ -204,7 +204,7 @@ class InferenceConfig(BaseModel):
     @classmethod
     def validate_provider_names(cls, v: dict[str, ProviderConfig]) -> dict[str, ProviderConfig]:
         """Ensure all provider names are supported."""
-        supported = {"openai", "anthropic", "openrouter", "vllm", "mock"}
+        supported = {"openai", "anthropic", "openrouter", "vllm", "modal", "mock"}
         for _key, provider in v.items():
             if provider.name not in supported:
                 raise ValueError(
@@ -215,11 +215,19 @@ class InferenceConfig(BaseModel):
 
     @model_validator(mode="after")
     def validate_vllm_base_urls(self) -> InferenceConfig:
-        """The vllm provider must target a local OpenAI-compatible HTTP server."""
+        """The vllm and modal providers must target an OpenAI-compatible HTTP server.
+
+        Both self-host an OpenAI-compatible vLLM endpoint (vllm = local/cluster,
+        modal = a deployed ``*.modal.run`` URL), so both require a ``base_url``.
+        """
         for key, provider in self.providers.items():
-            if provider.name == "vllm" and not provider.base_url:
+            if provider.name in ("vllm", "modal") and not provider.base_url:
+                example = (
+                    "http://127.0.0.1:8000/v1 for a local vLLM server"
+                    if provider.name == "vllm"
+                    else "https://<workspace>--<app>.modal.run/v1 for a deployed Modal server"
+                )
                 raise ValueError(
-                    f"provider '{key}' uses vllm but has no base_url "
-                    "(set e.g. http://127.0.0.1:8000/v1 for a local vLLM server)"
+                    f"provider '{key}' uses {provider.name} but has no base_url (set e.g. {example})"
                 )
         return self

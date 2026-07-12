@@ -178,8 +178,9 @@ def _build_messages(prompt: str, system_prompt: str | None) -> list[dict[str, An
     ]
 
 
-# vLLM exposes OpenAI-compatible HTTP — route as openai/ so LiteLLM uses base_url.
-_LITELLM_PROVIDER_PREFIX = {"vllm": "openai"}
+# vLLM and Modal both expose OpenAI-compatible HTTP (Modal = a deployed vLLM
+# server) — route as openai/ so LiteLLM dispatches to base_url, not a named vendor.
+_LITELLM_PROVIDER_PREFIX = {"vllm": "openai", "modal": "openai"}
 
 
 def _model_string(*, provider: str, model: str) -> str:
