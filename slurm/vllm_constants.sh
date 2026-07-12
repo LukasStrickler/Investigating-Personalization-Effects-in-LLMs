@@ -7,6 +7,6 @@
 #
 # shellcheck shell=bash
 
-VLLM_IMAGE_TAG="${VLLM_IMAGE_TAG:-v0.8.5}"
+VLLM_IMAGE_TAG="${VLLM_IMAGE_TAG:-v0.24.0}"
 # Pyxis/Enroot accepts docker:// or bare image refs depending on site config.
 VLLM_IMAGE="${VLLM_IMAGE:-docker://vllm/vllm-openai:${VLLM_IMAGE_TAG}}"

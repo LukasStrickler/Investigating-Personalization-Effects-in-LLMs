@@ -12,6 +12,7 @@
 #   GPU_MEM_UTIL=0.85  READINESS_TIMEOUT=1200  PROMPTS_SOURCE=direct-probing  SEED=0
 #   MAXLEN=<n>  COLUMNS=...  EXPERIMENT_NAME=...  CSV_PATH=...  LIMIT=<n>  SAMPLE_PER_GROUP=10000
 #   SIF=<path>  (Helix)  IMAGE=...  (from slurm/vllm_constants.sh when unset)
+#   STOP_TOKEN_IDS=<id>  (e.g. 107 for Gemma <end_of_turn> when using a custom chat template)
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -35,6 +36,8 @@ PROMPTS_SOURCE="${PROMPTS_SOURCE:-direct-probing}"
 SEED="${SEED:-0}"
 SAMPLE_PER_GROUP="${SAMPLE_PER_GROUP:-10000}"
 MAXLEN="${MAXLEN:-}"
+CHAT_TEMPLATE="${CHAT_TEMPLATE:-}"
+STOP_TOKEN_IDS="${STOP_TOKEN_IDS:-}"
 VLLM_BASE_URL="http://127.0.0.1:${PORT}/v1"
 
 JOB_ID="${SLURM_JOB_ID:-local}"
@@ -79,7 +82,7 @@ if [[ "$TP" -gt 1 ]]; then
 fi
 
 log "validating config alias=$RUN_CELLS_ALIAS SERVED=$SERVED"
-if ! validate_out=$("$VENV/bin/python" - <<PY 2>&1)
+validate_out=$("$VENV/bin/python" - 2>&1 <<PY
 from pathlib import Path
 from inference.experiments.vllm_matrix import validate_launch_config
 try:
@@ -89,7 +92,8 @@ except ValueError as e:
     raise SystemExit(2) from e
 print("config OK")
 PY
-then
+)
+if ! echo "$validate_out" | grep -q "config OK"; then
   log "ERROR: config validation failed:"
   echo "$validate_out" | tee -a "$LAUNCH_LOG"
   exit 2
@@ -136,6 +140,8 @@ vllm_args=(
   --seed "$SEED"
 )
 [[ -n "$MAXLEN" ]] && vllm_args+=(--max-model-len "$MAXLEN")
+[[ -n "$CHAT_TEMPLATE" ]] && vllm_args+=(--chat-template "$CHAT_TEMPLATE")
+[[ -n "$STOP_TOKEN_IDS" ]] && vllm_args+=(--stop-token-ids "$STOP_TOKEN_IDS")
 
 container_mounts="$HF_HOME:$HF_HOME"
 if [[ "$TP" -gt 1 ]]; then

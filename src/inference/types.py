@@ -136,6 +136,8 @@ class ModelAliasConfig(BaseModel):
         alias: Short name for the model (e.g., "gpt4", "claude3").
         provider: Provider to use for this model.
         model: Full model identifier on the provider.
+        max_tokens: Optional per-alias output token cap (overrides request default when set).
+        temperature: Optional per-alias temperature (overrides request default when set).
     """
 
     model_config = ConfigDict(frozen=True)
@@ -148,6 +150,16 @@ class ModelAliasConfig(BaseModel):
     )
     model: str = Field(
         description="Full model identifier on the provider",
+    )
+    max_tokens: int | None = Field(
+        default=None,
+        gt=0,
+        description="Optional per-alias output token cap",
+    )
+    temperature: float | None = Field(
+        default=None,
+        ge=0.0,
+        description="Optional per-alias temperature override",
     )
 
 

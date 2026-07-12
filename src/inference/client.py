@@ -178,8 +178,8 @@ class UnifiedInferenceClient:
                     tool_choice=request.tool_choice,
                     api_key=key_in_use,
                     base_url=resolve_provider_base_url(provider_cfg),
-                    max_tokens=request.max_tokens,
-                    temperature=request.temperature,
+                    max_tokens=request.max_tokens if request.max_tokens is not None else alias_cfg.max_tokens,
+                    temperature=request.temperature if request.temperature is not None else alias_cfg.temperature,
                     thinking_budget_tokens=request.thinking_budget_tokens,
                 )
                 provider_response = await self._adapter.complete(provider_request)

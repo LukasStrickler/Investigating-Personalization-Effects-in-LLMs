@@ -50,7 +50,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--prompts-source",
-        choices=["direct-probing", "demo"],
+        choices=["direct-probing", "demo", "behavioral-audit-q1", "behavioral-audit-q2"],
         default="direct-probing",
     )
     parser.add_argument(

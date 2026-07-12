@@ -38,6 +38,13 @@ model_aliases:
     provider: vllm
     model: gemma-4-31b
 
+  # Example: cap output tokens per alias to prevent repetition loops consuming the full context.
+  # gemma-4-E2B:
+  #   alias: gemma-4-E2B
+  #   provider: vllm
+  #   model: gemma-4-E2B
+  #   max_tokens: 2048
+
   qwen2.5-7b-instruct:
     alias: qwen2.5-7b-instruct
     provider: vllm
