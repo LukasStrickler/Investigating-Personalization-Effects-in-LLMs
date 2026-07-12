@@ -1,0 +1,110 @@
+﻿perceived_region,selected_gender_group,rank,gender_fit,Name,intended_gender,intended_origin_mode,intended_region,origin_match,category_selected_count,n_total_evaluations,category_perception_pct,adjusted_perception_pct,dominant_perceived_gender,dominant_gender_count,dominant_gender_pct,source_country_counts
+Central/Eastern Europe,Female,0,Not fit - wrong intended gender,Pavel Novotný,Male,Czech,Central/Eastern Europe,1,184,184,100.0,102.0,Male,181,98.4,"Czechia (183), Slovakia (9), Poland (2)"
+Central/Eastern Europe,Female,0,Not fit - wrong intended gender,Kiss Gergő,Male,Hungary,Central/Eastern Europe,1,71,71,100.0,102.0,Male,67,94.4,"Hungary (67), Romania (7), Slovakia (2), Ukraine (2)"
+Central/Eastern Europe,Female,1,Fit,Eva Svobodová,Female,Czech,Central/Eastern Europe,1,185,185,100.0,102.0,Female,178,96.2,"Czechia (175), Slovakia (17), Poland (2), Romania (2), Ukraine (1)"
+Central/Eastern Europe,Female,2,Fit,Mészáros Adrienn,Female,Hungary,Central/Eastern Europe,1,87,87,100.0,102.0,Female,84,96.6,"Hungary (86), Slovakia (9), Romania (8), Ukraine (5), Czechia (3)"
+Central/Eastern Europe,Female,3,Fit,Simon Renáta,Female,Hungary,Central/Eastern Europe,1,68,68,100.0,102.0,Female,67,98.5,"Hungary (61), Slovakia (9), Ukraine (7), Romania (6), Czechia (2), Poland (2), Russia (1)"
+Central/Eastern Europe,Male,0,Not fit - wrong intended gender,Eva Svobodová,Female,Czech,Central/Eastern Europe,1,185,185,100.0,102.0,Female,178,96.2,"Czechia (175), Slovakia (17), Poland (2), Romania (2), Ukraine (1)"
+Central/Eastern Europe,Male,0,Not fit - wrong intended gender,Mészáros Adrienn,Female,Hungary,Central/Eastern Europe,1,87,87,100.0,102.0,Female,84,96.6,"Hungary (86), Slovakia (9), Romania (8), Ukraine (5), Czechia (3)"
+Central/Eastern Europe,Male,0,Not fit - wrong intended gender,Simon Renáta,Female,Hungary,Central/Eastern Europe,1,68,68,100.0,102.0,Female,67,98.5,"Hungary (61), Slovakia (9), Ukraine (7), Romania (6), Czechia (2), Poland (2), Russia (1)"
+Central/Eastern Europe,Male,1,Fit,Pavel Novotný,Male,Czech,Central/Eastern Europe,1,184,184,100.0,102.0,Male,181,98.4,"Czechia (183), Slovakia (9), Poland (2)"
+Central/Eastern Europe,Male,2,Fit,Kiss Gergő,Male,Hungary,Central/Eastern Europe,1,71,71,100.0,102.0,Male,67,94.4,"Hungary (67), Romania (7), Slovakia (2), Ukraine (2)"
+Central/Eastern Europe,Male,3,Fit,Török Imre,Male,Hungary,Central/Eastern Europe,1,63,63,100.0,102.0,Male,61,96.8,"Hungary (58), Slovakia (6), Ukraine (4), Romania (3), Czechia (1)"
+France,Female,0,Not fit - wrong intended gender,Etienne  Perrin,Male,CH-FR,France,1,87,126,69.0,71.0,Male,78,89.7,France (87)
+France,Female,1,Fit,Vanessa  Dubois,Female,CH-FR,France,1,102,147,69.4,71.4,Female,101,99.0,France (102)
+France,Female,2,Fit,Valérie Favre,Female,CH-FR,France,1,100,151,66.2,68.2,Female,96,96.0,France (100)
+France,Female,3,Fit,Sandrine Pochon,Female,CH-FR,France,1,85,137,62.0,64.0,Female,82,96.5,France (85)
+France,Male,0,Not fit - wrong intended gender,Françoise Fournier,Female,CH-FR,France,1,101,135,74.8,76.8,Female,63,62.4,France (101)
+France,Male,0,Not fit - wrong intended gender,Vanessa  Dubois,Female,CH-FR,France,1,102,147,69.4,71.4,Female,101,99.0,France (102)
+France,Male,0,Not fit - wrong intended gender,Valérie Favre,Female,CH-FR,France,1,100,151,66.2,68.2,Female,96,96.0,France (100)
+France,Male,0,Not fit - wrong intended gender,Sandrine Pochon,Female,CH-FR,France,1,85,137,62.0,64.0,Female,82,96.5,France (85)
+France,Male,0,Not fit - wrong intended gender,Chantal Perrin,Female,CH-FR,France,1,83,143,58.0,60.0,Female,80,96.4,France (83)
+France,Male,0,Not fit - wrong intended gender,Anne  Fleury,Female,CH-FR,France,1,68,121,56.2,58.2,Female,63,92.6,France (68)
+France,Male,1,Fit,Etienne  Perrin,Male,CH-FR,France,1,87,126,69.0,71.0,Male,78,89.7,France (87)
+France,Male,2,Fit,Kevin Fournier,Male,CH-FR,France,1,72,125,57.6,59.6,Male,70,97.2,France (72)
+France,Male,3,Fit,Jean Rosset,Male,CH-FR,France,1,84,150,56.0,58.0,Male,81,96.4,France (84)
+Germany,Female,0,Not fit - wrong intended gender,Sebastian Schmidt,Male,Germany,Germany,1,63,74,85.1,87.1,Male,62,98.4,Germany (63)
+Germany,Female,0,Not fit - wrong intended gender,Patrick Schulz,Male,Germany,Germany,1,55,65,84.6,86.6,Male,53,96.4,Germany (55)
+Germany,Female,0,Not fit - wrong intended gender,Philipp Müller,Male,Germany,Germany,1,54,64,84.4,86.4,Male,53,98.1,Germany (54)
+Germany,Female,0,Not fit - wrong intended gender,Maximilian Wagner,Male,Germany,Germany,1,63,77,81.8,83.8,Male,60,95.2,Germany (63)
+Germany,Female,0,Not fit - wrong intended gender,Paul Schneider,Male,Germany,Germany,1,52,65,80.0,82.0,Male,52,100.0,Germany (52)
+Germany,Female,0,Not fit - wrong intended gender,Martin Meyer,Male,Germany,Germany,1,48,60,80.0,82.0,Male,47,97.9,Germany (48)
+Germany,Female,0,Not fit - wrong intended gender,Alexander Weber,Male,Germany,Germany,1,44,56,78.6,80.6,Male,43,97.7,Germany (44)
+Germany,Female,1,Fit,Laura Wagner,Female,Germany,Germany,1,49,61,80.3,82.3,Female,48,98.0,Germany (49)
+Germany,Female,2,Fit,Katharina Meyer,Female,Germany,Germany,1,59,76,77.6,79.6,Female,55,93.2,Germany (59)
+Germany,Female,3,Fit,Anne Weber,Female,Germany,Germany,1,50,65,76.9,78.9,Female,49,98.0,Germany (50)
+Germany,Male,0,Not fit - wrong intended gender,Julia Schmidt,Female,Germany,Germany,1,61,69,88.4,90.4,Female,61,100.0,Germany (61)
+Germany,Male,1,Fit,Sebastian Schmidt,Male,Germany,Germany,1,63,74,85.1,87.1,Male,62,98.4,Germany (63)
+Germany,Male,2,Fit,Patrick Schulz,Male,Germany,Germany,1,55,65,84.6,86.6,Male,53,96.4,Germany (55)
+Germany,Male,3,Fit,Philipp Müller,Male,Germany,Germany,1,54,64,84.4,86.4,Male,53,98.1,Germany (54)
+Hispanic Countries,Female,0,Not fit - wrong intended gender,Javier Nuñez Delgado,Male,Spain,Hispanic Countries,1,38,38,100.0,102.0,Male,38,100.0,"Spain (34), Colombia (2), Mexico (1), Venezuela (1)"
+Hispanic Countries,Female,0,Not fit - wrong intended gender,Xavier Martí Roca,Male,Spain,Hispanic Countries,1,35,36,97.2,99.2,Male,35,100.0,Spain (35)
+Hispanic Countries,Female,0,Not fit - wrong intended gender,Sergio Ramírez García,Male,Spain,Hispanic Countries,1,33,34,97.1,99.1,Male,33,100.0,"Spain (28), Mexico (2), Venezuela (2), Colombia (1)"
+Hispanic Countries,Female,0,Not fit - wrong intended gender,Alejandro Morales Marín,Male,Spain,Hispanic Countries,1,35,37,94.6,96.6,Male,35,100.0,"Spain (23), Mexico (8), Colombia (5), Venezuela (5), Argentina (2), Peru (2), Brazil (1), Suriname (1)"
+Hispanic Countries,Female,1,Fit,Andrea Fernández Ortiz,Female,Spain,Hispanic Countries,1,31,32,96.9,98.9,Female,28,90.3,"Spain (29), Argentina (1), Mexico (1), Venezuela (1)"
+Hispanic Countries,Female,2,Fit,Paula Morales Marín,Female,Spain,Hispanic Countries,1,33,35,94.3,96.3,Female,31,93.9,"Spain (27), Mexico (2), Brazil (1), Colombia (1), Venezuela (1), Argentina (1)"
+Hispanic Countries,Female,3,Fit,Sara Rodríguez Gómez,Female,Spain,Hispanic Countries,1,32,34,94.1,96.1,Female,32,100.0,"Spain (30), Mexico (2), Argentina (1), Colombia (1), Peru (1), Venezuela (1)"
+Hispanic Countries,Male,0,Not fit - wrong intended gender,Alba Martínez García,Female,Spain,Hispanic Countries,1,34,35,97.1,99.1,Female,33,97.1,"Spain (30), Argentina (4), Colombia (2), Mexico (1), Peru (1), Venezuela (1)"
+Hispanic Countries,Male,1,Fit,Javier Nuñez Delgado,Male,Spain,Hispanic Countries,1,38,38,100.0,102.0,Male,38,100.0,"Spain (34), Colombia (2), Mexico (1), Venezuela (1)"
+Hispanic Countries,Male,2,Fit,Xavier Martí Roca,Male,Spain,Hispanic Countries,1,35,36,97.2,99.2,Male,35,100.0,Spain (35)
+Hispanic Countries,Male,3,Fit,Sergio Ramírez García,Male,Spain,Hispanic Countries,1,33,34,97.1,99.1,Male,33,100.0,"Spain (28), Mexico (2), Venezuela (2), Colombia (1)"
+MENA,Female,0,Not fit - wrong intended gender,Bilal Öztürk,Male,Turkey,MENA,1,47,61,77.0,79.0,Male,42,89.4,"Turkey (42), Morocco (12), Saudi Arabia (4), Algeria (2), Egypt (2), Iran (2), Iraq (1)"
+MENA,Female,0,Not fit - wrong intended gender,Muhammad Ahmed,Male,Pakistan,South/Central Asia,0,29,37,78.4,78.4,Male,28,96.6,"Morocco (20), Algeria (11), Saudi Arabia (8), Turkey (6), Iran (5), Iraq (5), Egypt (4)"
+MENA,Female,0,Not fit - wrong intended gender,Shahid Hussain,Male,Pakistan,South/Central Asia,0,54,69,78.3,78.3,Male,50,92.6,"Iraq (20), Saudi Arabia (14), Morocco (13), Iran (11), Egypt (10), Algeria (8), Turkey (4)"
+MENA,Female,0,Not fit - wrong intended gender,Mustafa Yilmaz,Male,Turkey,MENA,1,25,35,71.4,73.4,Male,24,96.0,"Morocco (17), Turkey (8), Algeria (6), Egypt (6), Iran (1), Saudi Arabia (1)"
+MENA,Female,0,Not fit - wrong intended gender,Yusuf Yilmaz,Male,Turkey,MENA,1,47,66,71.2,73.2,Male,44,93.6,"Turkey (42), Saudi Arabia (7), Iraq (5), Iran (4), Algeria (3), Egypt (3), Morocco (3)"
+MENA,Female,0,Not fit - wrong intended gender,Mehmet Özdemir,Male,Turkey,MENA,1,98,140,70.0,72.0,Male,96,98.0,"Turkey (96), Algeria (4), Egypt (3), Morocco (3), Saudi Arabia (2), Iran (1), Iraq (1)"
+MENA,Female,1,Fit,Rachida El Moussaoui,Female,Morocco,MENA,1,29,33,87.9,89.9,Female,19,65.5,"Morocco (19), Algeria (11), Saudi Arabia (6), Iraq (4), Iran (4), Turkey (4), Egypt (2)"
+MENA,Female,2,Fit,Fatma Yilmaz,Female,Turkey,MENA,1,48,68,70.6,72.6,Female,43,89.6,"Turkey (37), Morocco (13), Saudi Arabia (5), Iraq (4), Algeria (4), Iran (3), Egypt (2)"
+MENA,Female,3,Fit,Yasmina Mustafa,Female,Morocco,MENA,1,56,81,69.1,71.1,Female,54,96.4,"Morocco (34), Turkey (17), Algeria (16), Egypt (15), Iraq (3), Saudi Arabia (3), Iran (2)"
+MENA,Male,0,Not fit - wrong intended gender,Rachida El Moussaoui,Female,Morocco,MENA,1,29,33,87.9,89.9,Female,19,65.5,"Morocco (19), Algeria (11), Saudi Arabia (6), Iraq (4), Iran (4), Turkey (4), Egypt (2)"
+MENA,Male,1,Fit,Bilal Öztürk,Male,Turkey,MENA,1,47,61,77.0,79.0,Male,42,89.4,"Turkey (42), Morocco (12), Saudi Arabia (4), Algeria (2), Egypt (2), Iran (2), Iraq (1)"
+MENA,Male,2,Fit,Muhammad Ahmed,Male,Pakistan,South/Central Asia,0,29,37,78.4,78.4,Male,28,96.6,"Morocco (20), Algeria (11), Saudi Arabia (8), Turkey (6), Iran (5), Iraq (5), Egypt (4)"
+MENA,Male,3,Fit,Shahid Hussain,Male,Pakistan,South/Central Asia,0,54,69,78.3,78.3,Male,50,92.6,"Iraq (20), Saudi Arabia (14), Morocco (13), Iran (11), Egypt (10), Algeria (8), Turkey (4)"
+South/Central Asia,Female,0,Not fit - wrong intended gender,Ahmad Iqbal,Male,Pakistan,South/Central Asia,1,30,74,40.5,42.5,Male,29,96.7,"Pakistan (20), India (10), Afghanistan (7), Bangladesh (7), Kazakhstan (4), Sri Lanka (3), Tajikistan (2)"
+South/Central Asia,Female,0,Not fit - perceived differently,Manahil Bhutt,Female,Pakistan,South/Central Asia,1,49,129,38.0,40.0,Male,32,65.3,"India (24), Pakistan (18), Sri Lanka (15), Bangladesh (14), Afghanistan (8), Kazakhstan (4), Tajikistan (3)"
+South/Central Asia,Female,0,Not fit - perceived differently,Parveen Iqbal,Female,Pakistan,South/Central Asia,1,25,66,37.9,39.9,Male,18,72.0,"India (13), Pakistan (10), Bangladesh (4), Afghanistan (4), Kazakhstan (2), Sri Lanka (2), Tajikistan (1)"
+South/Central Asia,Female,0,Not fit - wrong intended gender,Ahmad Khan,Male,Pakistan,South/Central Asia,1,216,571,37.8,39.8,Male,211,97.7,"Pakistan (120), India (76), Afghanistan (46), Bangladesh (41), Kazakhstan (23), Sri Lanka (22), Tajikistan (14)"
+South/Central Asia,Female,0,Not fit - wrong intended gender,Zahid Rashid,Male,Pakistan,South/Central Asia,1,27,72,37.5,39.5,Male,24,88.9,"India (16), Pakistan (8), Afghanistan (5), Bangladesh (3), Kazakhstan (1), Sri Lanka (1)"
+South/Central Asia,Female,0,Not fit - wrong intended gender,Muhammad Bakhash,Male,Pakistan,South/Central Asia,1,25,68,36.8,38.8,Male,24,96.0,"Pakistan (12), Bangladesh (7), Afghanistan (6), India (4), Tajikistan (2), Kazakhstan (1), Sri Lanka (1)"
+South/Central Asia,Female,1,Fit,Ayesha Khan,Female,Pakistan,South/Central Asia,1,219,527,41.6,43.6,Female,191,87.2,"Pakistan (100), India (88), Afghanistan (32), Bangladesh (31), Kazakhstan (25), Sri Lanka (23), Tajikistan (11)"
+South/Central Asia,Female,2,Fit,Aisha Raja,Female,Pakistan,South/Central Asia,1,20,54,37.0,39.0,Female,19,95.0,"India (13), Bangladesh (7), Pakistan (5), Sri Lanka (5), Tajikistan (2), Kazakhstan (1), Afghanistan (1)"
+South/Central Asia,Female,3,Fit,Samina Anwar,Female,Pakistan,South/Central Asia,1,22,61,36.1,38.1,Female,20,90.9,"India (16), Pakistan (5), Sri Lanka (4), Bangladesh (4), Afghanistan (3), Kazakhstan (1)"
+South/Central Asia,Male,0,Not fit - wrong intended gender,Ayesha Khan,Female,Pakistan,South/Central Asia,1,219,527,41.6,43.6,Female,191,87.2,"Pakistan (100), India (88), Afghanistan (32), Bangladesh (31), Kazakhstan (25), Sri Lanka (23), Tajikistan (11)"
+South/Central Asia,Male,0,Not fit - wrong intended gender,Sakina Bakhash,Female,Pakistan,South/Central Asia,1,25,63,39.7,41.7,Female,24,96.0,"India (15), Bangladesh (11), Pakistan (10), Afghanistan (6), Sri Lanka (4), Kazakhstan (2), Tajikistan (2)"
+South/Central Asia,Male,0,Not fit - wrong intended gender,Sakina Rashid,Female,Pakistan,South/Central Asia,1,28,71,39.4,41.4,Female,28,100.0,"India (21), Bangladesh (8), Pakistan (5), Sri Lanka (3), Afghanistan (2)"
+South/Central Asia,Male,0,Not fit - wrong intended gender,Manahil Bhutt,Female,Pakistan,South/Central Asia,1,49,129,38.0,40.0,Male,32,65.3,"India (24), Pakistan (18), Sri Lanka (15), Bangladesh (14), Afghanistan (8), Kazakhstan (4), Tajikistan (3)"
+South/Central Asia,Male,0,Not fit - wrong intended gender,Parveen Iqbal,Female,Pakistan,South/Central Asia,1,25,66,37.9,39.9,Male,18,72.0,"India (13), Pakistan (10), Bangladesh (4), Afghanistan (4), Kazakhstan (2), Sri Lanka (2), Tajikistan (1)"
+South/Central Asia,Male,0,Not fit - wrong intended gender,Aisha Raja,Female,Pakistan,South/Central Asia,1,20,54,37.0,39.0,Female,19,95.0,"India (13), Bangladesh (7), Pakistan (5), Sri Lanka (5), Tajikistan (2), Kazakhstan (1), Afghanistan (1)"
+South/Central Asia,Male,1,Fit,Ahmad Iqbal,Male,Pakistan,South/Central Asia,1,30,74,40.5,42.5,Male,29,96.7,"Pakistan (20), India (10), Afghanistan (7), Bangladesh (7), Kazakhstan (4), Sri Lanka (3), Tajikistan (2)"
+South/Central Asia,Male,2,Fit,Zahid Rashid,Male,Pakistan,South/Central Asia,1,27,72,37.5,39.5,Male,24,88.9,"India (16), Pakistan (8), Afghanistan (5), Bangladesh (3), Kazakhstan (1), Sri Lanka (1)"
+South/Central Asia,Male,3,Fit,Muhammad Bakhash,Male,Pakistan,South/Central Asia,1,25,68,36.8,38.8,Male,24,96.0,"Pakistan (12), Bangladesh (7), Afghanistan (6), India (4), Tajikistan (2), Kazakhstan (1), Sri Lanka (1)"
+Sub-Saharan Africa,Female,0,Not fit - wrong intended gender,Michael Mbombo,Male,Congo,Sub-Saharan Africa,1,87,132,65.9,67.9,Male,83,95.4,"Nigeria (38), Senegal (38), DR Congo (34), Kenya (29), Uganda (19), Tanzania (13), Ethiopia (7)"
+Sub-Saharan Africa,Female,0,Not fit - perceived differently,Nkulu Monga,Female,Congo,Sub-Saharan Africa,1,88,140,62.9,64.9,Male,73,83.0,"DR Congo (35), Nigeria (34), Senegal (32), Kenya (25), Uganda (23), Tanzania (16), Ethiopia (13)"
+Sub-Saharan Africa,Female,0,Not fit - wrong intended gender,Tambwe Umba,Male,Congo,Sub-Saharan Africa,1,82,134,61.2,63.2,Male,63,76.8,"Senegal (27), Kenya (27), DR Congo (27), Uganda (24), Nigeria (22), Tanzania (21), Ethiopia (19)"
+Sub-Saharan Africa,Female,0,Not fit - wrong intended gender,Mutombo Tshibola,Male,Congo,Sub-Saharan Africa,1,79,136,58.1,60.1,Male,73,92.4,"DR Congo (34), Nigeria (29), Uganda (25), Senegal (22), Kenya (21), Tanzania (14), Ethiopia (10)"
+Sub-Saharan Africa,Female,0,Not fit - perceived differently,Bijou Kasongo,Female,Congo,Sub-Saharan Africa,1,98,169,58.0,60.0,Male,58,59.2,"DR Congo (38), Senegal (38), Kenya (31), Nigeria (20), Uganda (20), Ethiopia (15), Tanzania (9)"
+Sub-Saharan Africa,Female,0,Not fit - perceived differently,Nogaye Kebe,Female,Senegal,Sub-Saharan Africa,1,79,139,56.8,58.8,Male,52,65.8,"Kenya (27), Senegal (23), Ethiopia (22), Uganda (21), Nigeria (20), DR Congo (17), Tanzania (14)"
+Sub-Saharan Africa,Female,0,Not fit - wrong intended gender,Andre Mbongo,Male,Congo,Sub-Saharan Africa,1,19,34,55.9,57.9,Male,19,100.0,"Nigeria (12), Senegal (11), DR Congo (9), Uganda (7), Kenya (5), Ethiopia (5), Tanzania (3)"
+Sub-Saharan Africa,Female,0,Not fit - wrong intended gender,Guy Mwanza,Male,Congo,Sub-Saharan Africa,1,35,64,54.7,56.7,Male,35,100.0,"Kenya (16), Nigeria (16), Tanzania (11), Uganda (9), Senegal (8), DR Congo (7), Ethiopia (5)"
+Sub-Saharan Africa,Female,1,Fit,Anne Mwamba,Female,Congo,Sub-Saharan Africa,1,120,212,56.6,58.6,Female,118,98.3,"Nigeria (46), Kenya (42), DR Congo (32), Uganda (28), Tanzania (25), Senegal (23), Ethiopia (20)"
+Sub-Saharan Africa,Female,2,Fit,Tabara Ndiaye,Female,Senegal,Sub-Saharan Africa,1,76,136,55.9,57.9,Female,68,89.5,"Senegal (39), Nigeria (24), Kenya (20), DR Congo (17), Uganda (15), Ethiopia (13), Tanzania (10)"
+Sub-Saharan Africa,Female,3,Fit,Nsimba Bokila,Female,Congo,Sub-Saharan Africa,1,38,70,54.3,56.3,Female,19,50.0,"Nigeria (19), Uganda (14), Tanzania (14), DR Congo (13), Senegal (12), Ethiopia (12), Kenya (10)"
+Sub-Saharan Africa,Male,0,Not fit - wrong intended gender,Nkulu Monga,Female,Congo,Sub-Saharan Africa,1,88,140,62.9,64.9,Male,73,83.0,"DR Congo (35), Nigeria (34), Senegal (32), Kenya (25), Uganda (23), Tanzania (16), Ethiopia (13)"
+Sub-Saharan Africa,Male,1,Fit,Michael Mbombo,Male,Congo,Sub-Saharan Africa,1,87,132,65.9,67.9,Male,83,95.4,"Nigeria (38), Senegal (38), DR Congo (34), Kenya (29), Uganda (19), Tanzania (13), Ethiopia (7)"
+Sub-Saharan Africa,Male,2,Fit,Tambwe Umba,Male,Congo,Sub-Saharan Africa,1,82,134,61.2,63.2,Male,63,76.8,"Senegal (27), Kenya (27), DR Congo (27), Uganda (24), Nigeria (22), Tanzania (21), Ethiopia (19)"
+Sub-Saharan Africa,Male,3,Fit,Mutombo Tshibola,Male,Congo,Sub-Saharan Africa,1,79,136,58.1,60.1,Male,73,92.4,"DR Congo (34), Nigeria (29), Uganda (25), Senegal (22), Kenya (21), Tanzania (14), Ethiopia (10)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,Robert Taylor,Male,UK,United Kingdom / North America,1,57,64,89.1,91.1,Male,57,100.0,"United Kingdom (51), United States (4), Canada (3)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,Michael Johnson,Male,Nigeria,Sub-Saharan Africa,0,32,36,88.9,88.9,Male,30,93.8,"United States (28), United Kingdom (4), Canada (1)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,Peter Davies,Male,UK,United Kingdom / North America,1,55,65,84.6,86.6,Male,54,98.2,"United Kingdom (48), United States (7), Canada (2)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,John Wilson,Male,UK,United Kingdom / North America,1,60,71,84.5,86.5,Male,60,100.0,"United Kingdom (51), United States (8), Canada (2)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,Mark Jones,Male,UK,United Kingdom / North America,1,70,87,80.5,82.5,Male,68,97.1,"United Kingdom (60), United States (8), Canada (3)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,Paul Brown,Male,UK,United Kingdom / North America,1,49,61,80.3,82.3,Male,48,98.0,"United Kingdom (44), United States (4), Canada (2)"
+United Kingdom / North America,Female,0,Not fit - wrong intended gender,Andrew Wright,Male,UK,United Kingdom / North America,1,48,60,80.0,82.0,Male,48,100.0,"United Kingdom (40), Canada (5), United States (4)"
+United Kingdom / North America,Female,1,Fit,Patricia Wilson,Female,UK,United Kingdom / North America,1,55,66,83.3,85.3,Female,53,96.4,"United Kingdom (47), United States (7), Canada (3)"
+United Kingdom / North America,Female,2,Fit,Elizabeth Wright,Female,UK,United Kingdom / North America,1,69,83,83.1,85.1,Female,68,98.6,"United Kingdom (62), United States (6), Canada (1)"
+United Kingdom / North America,Female,3,Fit,Susan Brown,Female,UK,United Kingdom / North America,1,48,60,80.0,82.0,Female,46,95.8,"United Kingdom (42), United States (5), Canada (1)"
+United Kingdom / North America,Male,0,Not fit - wrong intended gender,Margaret Johnson,Female,UK,United Kingdom / North America,1,54,63,85.7,87.7,Female,53,98.1,"United Kingdom (44), United States (10), Canada (2)"
+United Kingdom / North America,Male,1,Fit,Robert Taylor,Male,UK,United Kingdom / North America,1,57,64,89.1,91.1,Male,57,100.0,"United Kingdom (51), United States (4), Canada (3)"
+United Kingdom / North America,Male,2,Fit,Michael Johnson,Male,Nigeria,Sub-Saharan Africa,0,32,36,88.9,88.9,Male,30,93.8,"United States (28), United Kingdom (4), Canada (1)"
+United Kingdom / North America,Male,3,Fit,Peter Davies,Male,UK,United Kingdom / North America,1,55,65,84.6,86.6,Male,54,98.2,"United Kingdom (48), United States (7), Canada (2)"
