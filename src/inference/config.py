@@ -30,6 +30,7 @@ SUPPORTED_PROVIDERS: frozenset[str] = frozenset(
         "anthropic",
         "openrouter",
         "vllm",
+        "modal",
     }
 )
 
@@ -145,9 +146,12 @@ def resolve_api_key(provider: ProviderConfig) -> str:
 
 
 def resolve_provider_base_url(provider: ProviderConfig) -> str | None:
-    """HTTP base URL; ``VLLM_BASE_URL`` env overrides YAML for vllm."""
-    if provider.name == "vllm":
-        override = os.environ.get("VLLM_BASE_URL")
+    """HTTP base URL; a ``<PROVIDER>_BASE_URL`` env overrides YAML for self-hosted
+    OpenAI-compatible providers (``VLLM_BASE_URL`` for vllm, ``MODAL_BASE_URL`` for
+    modal) — the deployed Modal URL changes per deploy, so it is set from the env."""
+    override_env = {"vllm": "VLLM_BASE_URL", "modal": "MODAL_BASE_URL"}.get(provider.name)
+    if override_env:
+        override = os.environ.get(override_env)
         if override:
             return override
     return provider.base_url

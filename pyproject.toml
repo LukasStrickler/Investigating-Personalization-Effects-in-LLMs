@@ -45,6 +45,11 @@ dev = [
 vllm = [
     "vllm==0.8.5",  # match slurm/vllm_constants.sh
 ]
+# Optional Modal SDK — only the deploy/serve tooling needs it (experiments/modal_gpu_poc).
+# The inference client reaches the deployed endpoint over HTTP, so it needs no new dep.
+modal = [
+    "modal>=1.0",
+]
 
 [tool.repo_quality]
 lint = "ruff check ."
@@ -139,6 +144,10 @@ disallow_untyped_defs = false
 
 [[tool.mypy.overrides]]
 module = "litellm.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "modal.*"
 ignore_missing_imports = true
 
 # Coverage configuration

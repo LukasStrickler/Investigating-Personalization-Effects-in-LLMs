@@ -1,0 +1,120 @@
+# =============================================================================
+# Modal config — cp to config/inference.yaml to run Stage 1 with a self-hosted
+# subject model on Modal GPUs. Includes OpenRouter judge aliases for Stage 2
+# (run separately via run_behavioral_audit.py STAGE2_ONLY=True).
+# =============================================================================
+# The `modal` provider targets a DEPLOYED vLLM OpenAI-compatible server on Modal
+# (see experiments/modal_gpu_poc/modal_serve.py). Its URL changes per deploy, so
+# set it from the environment:
+#
+#   modal deploy experiments/modal_gpu_poc/modal_serve.py     # prints the *.modal.run URL
+#   export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
+#   export MODAL_API_KEY="EMPTY"        # or the bearer token the server enforces
+#
+# URL note: Modal names the HTTPS host after the *app* and the *function* (`serve`), so the
+# default app `pers-subject-serve` becomes `…--pers-subject-serve-serve.modal.run` (not
+# `…--pers-subject-serve.modal.run`). Always copy the URL printed by `modal deploy`.
+#
+# Throughput: keep provider `max_concurrency` ≈ MODAL_SERVE_MAX_INPUTS × MODAL_SERVE_MAX_CONTAINERS
+# on the deployed server (default deploy: 100 × 1 = 100). For Ministral 3 on multiple L4s use
+# 30 × 6 = 180 — see experiments/modal_gpu_poc/README.md § Throughput.
+#
+# `model:` on each modal alias must equal the server's --served-model-name.
+# -----------------------------------------------------------------------------
+providers:
+  # Subject models — self-hosted vLLM on a Modal GPU (Stage 1).
+  modal:
+    name: modal
+    api_key_env: MODAL_API_KEY
+    base_url: https://REPLACE-ME--pers-subject-serve-serve.modal.run/v1  # overridden by MODAL_BASE_URL
+    max_concurrency: 100        # default single-L4 deploy (MAX_INPUTS=100 × MAX_CONTAINERS=1)
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 3
+      base_delay: 1.0
+      max_delay: 30.0
+
+  # Judge — OpenRouter (Stage 2). Mirrors config/inference.example.yaml.
+  openrouter:
+    name: openrouter
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    rate_limit:
+      requests_per_minute: 20
+      tokens_per_minute: 100000
+    retry:
+      max_retries: 3
+      base_delay: 2.0
+      max_delay: 120.0
+
+  # Mock (TEST ONLY — CI / examples without any endpoint).
+  mock:
+    name: mock
+    api_key_env: MOCK_API_KEY
+    rate_limit:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+    retry:
+      max_retries: 1
+      base_delay: 0.1
+      max_delay: 1.0
+    default_model: mock-model
+
+# -----------------------------------------------------------------------------
+# Model aliases
+# -----------------------------------------------------------------------------
+model_aliases:
+  # Subject models served on Modal. `model:` == the server's --served-model-name.
+  gemma-4-e2b_modal:
+    alias: gemma-4-e2b_modal
+    provider: modal
+    model: gemma-4-e2b
+
+  gemma-4-31b_modal:            # the bigger subject (needs a bigger GPU on the server)
+    alias: gemma-4-31b_modal
+    provider: modal
+    model: gemma-4-31b
+
+  # Ministral 3 8B — Modal L4 (gated; run setup_modal_hf.py). OpenRouter fallback below.
+  ministral-3-8b_modal:
+    alias: ministral-3-8b_modal
+    provider: modal
+    model: ministral-3-8b
+
+  # Smoke / no-GPU fallback only — OpenRouter slug is the closest public API match, not
+  # bit-identical to the self-hosted mistralai/Ministral-3-8B-Instruct-2512 weights.
+  ministral-3-8b_openrouter:
+    alias: ministral-3-8b_openrouter
+    provider: openrouter
+    model: mistralai/ministral-8b-2512
+
+  # Ungated on HF — fits L4 without HF_TOKEN (older gen, Sep 2023 lineage).
+  mistral-7b_modal:
+    alias: mistral-7b_modal
+    provider: modal
+    model: mistral-7b
+
+  # Judge — the alias the behavioral-audit Stage 2 uses (OpenRouter GPT-4o-mini).
+  gpt-4o-mini_paid:
+    alias: gpt-4o-mini_paid
+    provider: openrouter
+    model: openai/gpt-4o-mini
+
+  mock-test:
+    alias: mock-test
+    provider: mock
+    model: mock-model
+
+# -----------------------------------------------------------------------------
+# Defaults
+# -----------------------------------------------------------------------------
+default_retry:
+  max_retries: 2
+  base_delay: 0.5
+  max_delay: 30.0
+
+log_path: logs/inference.jsonl
+checkpoint_path: checkpoints/
+default_provider: modal
