@@ -24,30 +24,54 @@ def _repo_root() -> Path:
     return Path.cwd()
 
 
+# Directory holding exported stage-1 results for runs where stage 1 was produced
+# elsewhere (e.g. Modal) and only stage 2 is run locally. Layout mirrors logs/:
+#   experiments/behavioral_audit/results_<run_id>/behavioral-audit-<run_id>-q{n}-stage1/
+_AUDIT_DIR = Path(__file__).resolve().parent
+
+
+def _stage1_dir(root: Path, run_id: str, q: str) -> Path | None:
+    """Locate a run's stage1 dir, preferring logs/ then the exported results_<run_id>/."""
+    candidates = [
+        root / "logs" / f"behavioral-audit-{run_id}-{q}-stage1",
+        _AUDIT_DIR / f"results_{run_id}" / f"behavioral-audit-{run_id}-{q}-stage1",
+    ]
+    for d in candidates:
+        if d.exists() and any(d.glob("*.csv")):
+            return d
+    return None
+
+
 def _find_run_ids(root: Path) -> list[str]:
-    """Return all run IDs found in logs/, sorted by most-recently-modified file."""
-    logs = root / "logs"
+    """Return all run IDs found in logs/ and exported results_*/ dirs, newest first."""
     run_ids: dict[str, float] = {}
-    # stage1 dirs: logs/behavioral-audit-<run_id>-q{1,2}-stage1/
-    for d in logs.glob("behavioral-audit-*-stage1"):
-        parts = d.name.split("-")
-        # name format: behavioral-audit-<run_id>-q1-stage1
-        # run_id is everything between "audit-" and "-q{n}-stage1"
-        try:
-            q_idx = next(i for i, p in enumerate(parts) if p.startswith("q") and p[1:].isdigit())
-            run_id = "-".join(parts[2:q_idx])
-            mtime = max((f.stat().st_mtime for f in d.glob("*.csv")), default=0.0)
-            run_ids[run_id] = max(run_ids.get(run_id, 0.0), mtime)
-        except StopIteration:
-            continue
+    # stage1 dirs live under logs/ (local runs) or results_<run_id>/ (exported stage 1).
+    search_globs = [
+        (root / "logs").glob("behavioral-audit-*-stage1"),
+        _AUDIT_DIR.glob("results_*/behavioral-audit-*-stage1"),
+    ]
+    for it in search_globs:
+        for d in it:
+            parts = d.name.split("-")
+            # name format: behavioral-audit-<run_id>-q1-stage1
+            # run_id is everything between "audit-" and "-q{n}-stage1"
+            try:
+                q_idx = next(
+                    i for i, p in enumerate(parts) if p.startswith("q") and p[1:].isdigit()
+                )
+                run_id = "-".join(parts[2:q_idx])
+                mtime = max((f.stat().st_mtime for f in d.glob("*.csv")), default=0.0)
+                run_ids[run_id] = max(run_ids.get(run_id, 0.0), mtime)
+            except StopIteration:
+                continue
     return sorted(run_ids, key=lambda r: run_ids[r], reverse=True)
 
 
 def _detect_models(root: Path, run_id: str) -> list[str]:
     """Infer the model list from the stage1 CSV header."""
     for q in ("q1", "q2"):
-        d = root / "logs" / f"behavioral-audit-{run_id}-{q}-stage1"
-        csvs = sorted(d.glob("*.csv"), key=lambda p: p.stat().st_mtime) if d.exists() else []
+        d = _stage1_dir(root, run_id, q)
+        csvs = sorted(d.glob("*.csv"), key=lambda p: p.stat().st_mtime) if d else []
         if not csvs:
             continue
         with open(csvs[-1]) as f:
@@ -75,14 +99,11 @@ def _status_str(age_s: float) -> str:
 
 def _report_stage1(root: Path, run_id: str, models: list[str]) -> None:
     for q in ("q1", "q2"):
-        d = root / "logs" / f"behavioral-audit-{run_id}-{q}-stage1"
-        if not d.exists():
+        d = _stage1_dir(root, run_id, q)
+        if d is None:
             print(f"  stage1 {q}: not started")
             continue
         csvs = sorted(d.glob("*.csv"), key=lambda p: p.stat().st_mtime)
-        if not csvs:
-            print(f"  stage1 {q}: dir exists but no CSVs yet")
-            continue
         p = csvs[-1]
         age = time.time() - os.path.getmtime(p)
         with open(p) as f:

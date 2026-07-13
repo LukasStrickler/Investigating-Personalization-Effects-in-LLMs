@@ -1,0 +1,27 @@
+{
+  "run_tag": "full001-e2b",
+  "subject_alias": "gemma-4-e2b_modal",
+  "experiment_name": "behavioral-audit-full001-e2b",
+  "exported": [
+    {
+      "question": "q1",
+      "kind": "stage1",
+      "files": [
+        "20260711T212847.csv",
+        "20260711T212847.csv.meta.json"
+      ],
+      "success": 3869,
+      "rows": 3869
+    },
+    {
+      "question": "q2",
+      "kind": "stage1",
+      "files": [
+        "20260711T225017.csv",
+        "20260711T225017.csv.meta.json"
+      ],
+      "success": 3869,
+      "rows": 3869
+    }
+  ]
+}
