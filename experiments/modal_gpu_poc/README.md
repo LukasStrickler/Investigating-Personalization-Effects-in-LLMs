@@ -9,10 +9,7 @@ Stage 1 writes matrix CSVs to the gitignored `logs/` working area. Use
 `results_<tag>/` directory (same layout as `results_full001/`, …).
 
 Stage 2 (LLM judge) is **not** part of this path — run it separately with
-`run_behavioral_audit.py` (`STAGE2_ONLY=True`) once Stage-1 CSVs exist in
-`logs/behavioral-audit-<run-tag>-q{1,2}-stage1/` (export does not move them;
-it copies a snapshot into `results_<tag>/` for git). Set `RUN_TAG` and
-`EXPERIMENT_MODELS = ["gemma-4-e2b_modal"]` in that script before running.
+`run_behavioral_audit.py` (`STAGE2_ONLY=True`) once Stage-1 CSVs exist.
 
 ## Workflow
 
@@ -23,53 +20,139 @@ set -a; source .env; set +a    # MODAL_TOKEN_ID / MODAL_TOKEN_SECRET for deploy
 # 1. Deploy the subject-model server (prints a *.modal.run URL)
 modal deploy experiments/modal_gpu_poc/modal_serve.py
 export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
-export MODAL_API_KEY="EMPTY"   # or the server's bearer token if MODAL_SERVE_AUTH=1
+export MODAL_API_KEY="EMPTY"
+# Always copy the URL from `modal deploy` output — see § Modal URL pattern below.
 
 # 2. Point the inference client at Modal
 cp config/inference.modal.example.yaml config/inference.yaml
+# Default example uses max_concurrency: 100 (single L4). Tune if you scale out — § Throughput.
 
 # 3. Stage 1 — generate subject responses → logs/…-stage1/*.csv
-#    Add --limit 4 for a smoke test.
 python experiments/behavioral_audit/run_behavioral_audit_modal.py \
     --run-tag full001-e2b --subject-alias gemma-4-e2b_modal
+# Smoke: add --limit 4
 
 # 4. Export Stage-1 CSVs from logs/ into a committable results dir
 python experiments/behavioral_audit/export_results.py \
     --run-tag full001-e2b --subject-alias gemma-4-e2b_modal
-git add experiments/behavioral_audit/results_full001-e2b && git commit -m "Add full001-e2b stage1"
 
 # 5. Tear down (or let it scale to zero after MODAL_SERVE_SCALEDOWN idle seconds)
 modal app stop pers-subject-serve
 ```
 
-| file | role |
-|---|---|
-| `modal_serve.py` | deploy a vLLM OpenAI server for a subject model on Modal |
-| `config/inference.modal.example.yaml` | `modal` subject provider config |
-| `../behavioral_audit/run_behavioral_audit_modal.py` | Stage 1 — subject responses → matrix CSVs in `logs/` |
-| `../behavioral_audit/export_results.py` | copy finished Stage-1 from `logs/` → `results_<tag>/` |
+## Gated models (e.g. Ministral 3 8B)
 
-### Bigger subject model
-
-Deploy with a larger GPU and matching alias:
+Gated HuggingFace repos need a token synced to Modal before deploy:
 
 ```bash
-MODAL_SERVE_MODEL_ID=google/gemma-4-31b-it MODAL_SERVE_NAME=gemma-4-31b \
-  MODAL_SERVE_GPU=A100-80GB modal deploy experiments/modal_gpu_poc/modal_serve.py
+# Accept license + add HF_TOKEN to .env, then:
+.venv/bin/python experiments/modal_gpu_poc/setup_modal_hf.py
+
+MODAL_SERVE_APP_NAME=pers-ministral3-8b-serve \
+MODAL_SERVE_MODEL_ID=mistralai/Ministral-3-8B-Instruct-2512 \
+MODAL_SERVE_NAME=ministral-3-8b \
+MODAL_SERVE_GPU=L4 \
+MODAL_SERVE_MAX_MODEL_LEN=8192 \
+MODAL_SERVE_MAX_CONTAINERS=6 \
+MODAL_SERVE_MAX_INPUTS=30 \
+MODAL_SERVE_HF_TOKEN=1 \
+modal deploy experiments/modal_gpu_poc/modal_serve.py
+
+export MODAL_BASE_URL="https://<workspace>--pers-ministral3-8b-serve-serve.modal.run/v1"
+
+# Multi-L4 deploy — raise client concurrency to match (30 × 6 = 180):
+# edit config/inference.yaml → providers.modal.max_concurrency: 180
+
 python experiments/behavioral_audit/run_behavioral_audit_modal.py \
-    --run-tag my-run --subject-alias gemma-4-31b_modal
+    --run-tag full001-ministral3-8b --subject-alias ministral-3-8b_modal
+
+python experiments/behavioral_audit/export_results.py \
+    --run-tag full001-ministral3-8b --subject-alias ministral-3-8b_modal
 ```
 
-### Throughput
+OpenRouter smoke test (no GPU, **not** weight-identical to the Modal subject):
+`--subject-alias ministral-3-8b_openrouter`.
 
-The server uses `@modal.concurrent(max_inputs=100)` so one GPU batches many
-in-flight requests (vLLM continuous batching). Keep the client's provider
-`max_concurrency` in the YAML config ≈ `MODAL_SERVE_MAX_INPUTS` (default 100).
-Without this, a `@modal.web_server` serves one request at a time and the run is
-much slower.
+## Files
 
-### Persona set
+| file | role |
+|---|---|
+| `modal_serve.py` | vLLM OpenAI server on Modal (model selected via deploy env vars) |
+| `setup_modal_hf.py` | verify HF token + sync Modal `huggingface-token` secret |
+| `modal_utils.py` | shared `.env` loader for setup script |
+| `config/inference.modal.example.yaml` | provider + model aliases |
+| `../behavioral_audit/run_behavioral_audit_modal.py` | Stage 1 matrix runner |
+| `../behavioral_audit/export_results.py` | copy finished Stage-1 from `logs/` → `results_<tag>/` |
 
-With default `--sample-per-group 10000` and `--seed 42`, the runner uses all
-**3869** personas from `personas.jsonl` — the same `prompt_id` set as
-`results_full001/` and `results_full002/`.
+## Bug fixes since the initial Modal PR (#28)
+
+The first Modal integration (PR #28, Gemma 4 E2B) shipped with `@modal.web_server`.
+That run completed successfully, but the Ministral 3 8B deploy exposed bugs the Gemma
+path did not trigger. The changes below are **fixes**, not arbitrary reversions.
+
+| Change | Symptom / reason | What we do now |
+|--------|----------------|----------------|
+| `@modal.web_server` → ASGI proxy | Container healthy, vLLM loaded, but HTTP requests hung forever — traffic never reached vLLM on port 8000 | Run `vllm serve` on `127.0.0.1` and expose a Starlette reverse proxy via `@modal.asgi_app()` |
+| Doc URL `…-serve.modal.run` → `…-serve-serve.modal.run` | Copy-paste from docs failed to connect | Modal hostnames include **both** the app name and the function name (`serve`) |
+| `max_concurrency: 180` in example YAML | Would over-subscribe a single default L4 (tuned for 6× L4 Ministral fleet) | Example stays **100** (1 container × 100 inputs); Ministral README shows **180** when scaling out |
+| HF volume `gemma4-hf-cache` → `pers-hf-cache` | Volume name was Gemma-specific | Generic shared cache; old volume is orphaned but harmless |
+| `vllm` unpinned → `vllm>=0.20.0` + `ffmpeg` | vLLM 0.20+ needs torchcodec/ffmpeg on debian-slim | Pin minimum version, install ffmpeg in image |
+| `TRITON_ATTN` for all models | Ministral 3 needs Mistral tokenizer/config/load format | Gemma keeps `TRITON_ATTN`; Ministral gets `--*-format mistral` flags and no forced Triton backend |
+| `setup_modal_hf.py` | Gated repos 401 without in-container `HF_TOKEN` | Verify HF access locally, sync `huggingface-token` Modal secret |
+
+Gemma 4 E2B on the **new** `modal_serve.py` (ASGI path) should still work with the
+default deploy — no Ministral-specific env vars required.
+
+## Serving: ASGI proxy, not `web_server`
+
+`modal_serve.py` runs `vllm serve` on `127.0.0.1:8000` and puts a tiny **Starlette ASGI
+reverse proxy** (`@modal.asgi_app()`) in front of it — it deliberately does **not** use
+`@modal.web_server`. Modal's raw TCP port-proxy (`web_server`) is not routed in every
+workspace (the container comes up healthy but requests hang with nothing reaching vLLM),
+whereas the ASGI path is routed everywhere. The proxy passes routes, the served model name
+and the auth header straight through, and holds the first requests until vLLM's `/health`
+is ready — so scale-to-zero cold starts just look like a slow first response (no
+`min_containers` needed).
+
+## Modal URL pattern
+
+For app `pers-subject-serve` and function `serve`, Modal prints:
+
+```text
+https://<workspace>--pers-subject-serve-serve.modal.run
+```
+
+The trailing `-serve` is the **function** name, not a typo. Always use the URL from
+`modal deploy` output; set `MODAL_BASE_URL` to that host with `/v1` appended.
+
+## Throughput / GPU choice
+
+`@modal.concurrent(max_inputs=N)` gives each container vLLM continuous batching. Keep the
+client's provider `max_concurrency` in `config/inference.yaml` ≈
+`MODAL_SERVE_MAX_INPUTS × MODAL_SERVE_MAX_CONTAINERS`.
+
+| Deploy | Server knobs | Client `max_concurrency` |
+|--------|--------------|--------------------------|
+| Default (Gemma 4 E2B, 1× L4) | `MAX_INPUTS=100`, `MAX_CONTAINERS=1` | **100** (shipped in example YAML) |
+| Ministral 3 8B, scaled out | `MAX_INPUTS=30`, `MAX_CONTAINERS=6` | **180** |
+
+An 8B model on an **L4** is KV-cache-bound (16 GB weights leave little KV room), so one L4
+runs only ~30 concurrent sequences at ~350 tok/s and the audit's long (~1,800-token) responses
+make a single L4 slow. Scale **out** instead of up on free-tier workspaces.
+
+The full 7,738-response Ministral 3 8B run used 6× L4 with `max_concurrency: 180` and
+finished in ~1.5 h with 0 failures. A single **A100-40GB** would be faster and cheaper total,
+but Modal gates A100/H100 behind a workspace payment method — free-tier workspaces are
+limited to L4/A10/T4.
+
+Check spend any time with `modal billing report --for "this month"`.
+
+## Suggested commits (when ready)
+
+Split infra from data so review stays focused:
+
+1. **`feat(modal): ASGI proxy, gated HF setup, Ministral serving`** — `modal_serve.py`,
+   `setup_modal_hf.py`, `modal_utils.py`, `README.md`, `config/inference.modal.example.yaml`,
+   `.env.example`
+2. **`data(behavioral-audit): add full001-ministral3-8b stage1 results`** —
+   `experiments/behavioral_audit/results_full001-ministral3-8b/` only

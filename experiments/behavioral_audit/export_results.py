@@ -21,7 +21,9 @@ match the source).
 Usage
     python experiments/behavioral_audit/export_results.py --run-tag full001-e2b \
         --subject-alias gemma-4-e2b_modal
-    # then:  git add experiments/behavioral_audit/results_full001-e2b && git commit
+    python experiments/behavioral_audit/export_results.py --run-tag full001-ministral3-8b \
+        --subject-alias ministral-3-8b_modal
+    # then:  git add experiments/behavioral_audit/results_<tag> && git commit
 """
 
 from __future__ import annotations

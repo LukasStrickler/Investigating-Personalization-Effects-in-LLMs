@@ -14,6 +14,6 @@ cp .env.example .env
 
 For vLLM: `cp config/inference.vllm.example.yaml config/inference.yaml`
 
-For Modal (self-hosted subject on rented GPU): `cp config/inference.modal.example.yaml config/inference.yaml`, then `export MODAL_BASE_URL=…` to the URL printed by `modal deploy experiments/modal_gpu_poc/modal_serve.py`.
+For Modal (self-hosted subject on rented GPU): `cp config/inference.modal.example.yaml config/inference.yaml`, then `export MODAL_BASE_URL=…` to the URL printed by `modal deploy experiments/modal_gpu_poc/modal_serve.py`. See [experiments/modal_gpu_poc/README.md](../experiments/modal_gpu_poc/README.md) for URL pattern, throughput tuning, and bug-fix notes vs PR #28.
 
 See [docs/architecture.md](../docs/architecture.md) for the full data-flow map.
