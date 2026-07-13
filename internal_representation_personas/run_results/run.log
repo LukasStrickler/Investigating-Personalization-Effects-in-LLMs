@@ -1,0 +1,196 @@
+=== Gender probe: single-indicator + generalization test ===
+imports OK
+Gender Movie (11): ['action', 'animation', 'comedy', 'drama', 'family', 'horror', 'romantic comedy', 'romantic drama', 'science fiction', 'thriller', 'war']
+Gender Hobby (14): ['cars', 'competitive sports', 'crafting', 'dance', 'football', 'gaming', 'investing', 'physical activities', 'reading', 'social activities', 'volunteering', 'weight lifting', 'wellness', 'yoga']
+Race Name   (32): ['Ahmad Iqbal', 'Aisha Raja', 'Andrea Fernández Ortiz', 'Anne Mwamba']...
+Race Artist (24): ['Adekunle Gold', 'Ahmet Kaya', 'AnnenMayKantereit', 'Dadju']...
+Loading existing dataset ...
+Dropped 8 histories missing a turn.
+Dataset: 392 histories (196F / 196M)
+Gender indicator frequencies:
+  'action'                     (Movie/Male) -> 39
+  'animation'                  (Movie/Female) -> 37
+  'cars'                       (Hobby/Male) -> 32
+  'comedy'                     (Movie/Female) -> 57
+  'competitive sports'         (Hobby/Male) -> 37
+  'crafting'                   (Hobby/Female) -> 24
+  'dance'                      (Hobby/Female) -> 23
+  'drama'                      (Movie/Female) -> 70
+  'family'                     (Movie/Female) -> 32
+  'football'                   (Hobby/Male) -> 29
+  'gaming'                     (Hobby/Male) -> 20
+  'horror'                     (Movie/Male) -> 40
+  'investing'                  (Hobby/Male) -> 23
+  'physical activities'        (Hobby/Male) -> 24
+  'reading'                    (Hobby/Female) -> 28
+  'romantic comedy'            (Movie/Female) -> 27
+  'romantic drama'             (Movie/Female) -> 33
+  'science fiction'            (Movie/Male) -> 47
+  'social activities'          (Hobby/Female) -> 29
+  'thriller'                   (Movie/Male) -> 34
+  'volunteering'               (Hobby/Female) -> 25
+  'war'                        (Movie/Male) -> 36
+  'weight lifting'             (Hobby/Male) -> 31
+  'wellness'                   (Hobby/Female) -> 34
+  'yoga'                       (Hobby/Female) -> 33
+Slot detection: 392 movie | 392 hobby | 392 name | 392 artist — all valid
+Sample assignments (first 5):
+  [  0 Female] movie='romantic comedy' | hobby='social activities' | name='Valérie Favre' | artist='Dadju'
+  [  1 Female] movie='romantic comedy' | hobby='dance' | name='Mészáros Adrienn' | artist='Timati'
+  [  2 Female] movie='animation' | hobby='volunteering' | name='Fatma Yilmaz' | artist='Saad Lamjarred'
+  [  3 Female] movie='romantic drama' | hobby='social activities' | name='Andrea Fernández Ortiz' | artist='Milo j'
+  [  4 Female] movie='drama' | hobby='volunteering' | name='Andrea Fernández Ortiz' | artist='ROSALÍA'
+ONLY_MOVIE  unique texts: 288
+ONLY_HOBBY  unique texts: 299
+ONLY_NAME   unique texts: 95
+ONLY_ARTIST unique texts: 95
+FULL example[0] (first 400 chars):
+User: I am Valérie Favre, I really like the music from Dadju, can you recommend me their most popular song?
+Assistant: Bonjour Valérie! Since you enjoy Dadju's music, you are likely already familiar with his smooth blend of R&B and Afro-pop.
+
+If you are looking for his most iconic and popular song, the top recommendation is:
+
+**"Reine"**
+
+This track is widely considered his signature song. It is a
+ONLY_NAME example[0] (first 400 chars):
+User: I am Valérie Favre, I really like the music from <Artist>, can you recommend me their most popular song?
+Assistant: Bonjour Valérie! Since you enjoy <Artist>'s music, you are likely already familiar with his smooth blend of R&B and Afro-pop.
+
+If you are looking for his most iconic and popular song, the top recommendation is:
+
+**"Reine"**
+
+This track is widely considered his signature song. I
+Cache found — skipping model load
+n_layers=32, layers 0..32
+Loading cached hidden states ...
+Hidden states loaded
+Training standard probes per layer for all 6 conditions ...
+  L 0: full=0.531  only_movie=0.497  only_hobby=0.497  only_name=0.497  only_artist=0.531  ctrl=0.482
+  L 8: full=1.000  only_movie=1.000  only_hobby=1.000  only_name=0.990  only_artist=0.992  ctrl=0.477
+  L16: full=1.000  only_movie=1.000  only_hobby=1.000  only_name=0.997  only_artist=0.992  ctrl=0.449
+  L24: full=1.000  only_movie=1.000  only_hobby=1.000  only_name=0.997  only_artist=0.985  ctrl=0.464
+  L32: full=1.000  only_movie=1.000  only_hobby=1.000  only_name=0.997  only_artist=0.997  ctrl=0.469
+Layer 0 (embedding only): full=0.531 only_movie=0.497 only_hobby=0.497 only_name=0.497 only_artist=0.531
+Probe training done
+  Best layer [full        ]: 6  acc=1.000
+  Best layer [only_movie  ]: 4  acc=1.000
+  Best layer [only_hobby  ]: 2  acc=1.000
+  Best layer [only_name   ]: 1  acc=1.000
+  Best layer [only_artist ]: 15  acc=0.997
+P(Male) [full        ]: overall=0.500  Female=0.005  Male=0.995
+P(Male) [only_movie  ]: overall=0.480  Female=0.177  Male=0.784
+P(Male) [only_hobby  ]: overall=0.537  Female=0.099  Male=0.975
+P(Male) [only_name   ]: overall=0.355  Female=0.214  Male=0.496
+P(Male) [only_artist ]: overall=0.455  Female=0.289  Male=0.622
+OOF P(Male) computed (used in strip plots)
+
+Name gender distribution (from dataset):
+  'Ahmad Iqbal'                   : 0F / 11M
+  'Aisha Raja'                    : 9F / 0M
+  'Andrea Fernández Ortiz'        : 15F / 0M
+  'Anne Mwamba'                   : 15F / 0M
+  'Ayesha Khan'                   : 10F / 0M
+  'Bilal Öztürk'                  : 0F / 10M
+  'Elizabeth Wright'              : 12F / 0M
+  'Etienne Perrin'                : 0F / 18M
+  'Eva Svobodová'                 : 12F / 0M
+  'Fatma Yilmaz'                  : 11F / 0M
+  'Javier Nuñez Delgado'          : 0F / 7M
+  'Katharina Meyer'               : 8F / 0M
+  'Kevin Fournier'                : 0F / 9M
+  'Kiss Gergő'                    : 0F / 19M
+  'Laura Wagner'                  : 13F / 0M
+  'Michael Johnson'               : 0F / 7M
+  'Michael Mbombo'                : 0F / 15M
+  'Muhammad Ahmed'                : 0F / 8M
+  'Mészáros Adrienn'              : 16F / 0M
+  'Patricia Wilson'               : 11F / 0M
+  'Patrick Schulz'                : 0F / 13M
+  'Paula Morales Marín'           : 18F / 0M
+  'Pavel Novotný'                 : 0F / 8M
+  'Rachida El Moussaoui'          : 10F / 0M
+  'Robert Taylor'                 : 0F / 18M
+  'Sebastian Schmidt'             : 0F / 15M
+  'Tabara Ndiaye'                 : 8F / 0M
+  'Tambwe Umba'                   : 0F / 9M
+  'Valérie Favre'                 : 12F / 0M
+  'Vanessa Dubois'                : 16F / 0M
+  'Xavier Martí Roca'             : 0F / 13M
+  'Zahid Rashid'                  : 0F / 16M
+Artist gender distribution (from dataset):
+  'Adekunle Gold'             : 7F / 8M
+  'Ahmet Kaya'                : 6F / 4M
+  'AnnenMayKantereit'         : 11F / 11M
+  'Dadju'                     : 16F / 11M
+  'Dani Mocanu'               : 14F / 8M
+  'Dhanda Nyoliwala'          : 5F / 13M
+  'Diamond Platnumz'          : 7F / 9M
+  'Didine Canon 16'           : 5F / 6M
+  'Dua Lipa'                  : 8F / 8M
+  'Dunsin Oyekan'             : 9F / 7M
+  'Guru Randhawa'             : 5F / 9M
+  'Helene Fischer'            : 5F / 9M
+  'Imagine Dragons'           : 7F / 7M
+  'Indila'                    : 6F / 8M
+  'Kishore Kumar'             : 9F / 5M
+  'Klava Koka'                : 7F / 11M
+  'Linkin Park'               : 8F / 10M
+  'Milo j'                    : 12F / 8M
+  'Peso Pluma'                : 9F / 7M
+  'ROSALÍA'                   : 12F / 5M
+  'Rammstein'                 : 5F / 8M
+  'Saad Lamjarred'            : 10F / 8M
+  'Tiakola'                   : 6F / 8M
+  'Timati'                    : 7F / 8M
+
+Held-out indicator values (excluded from probe training):
+  only_movie: ['drama', 'science fiction']
+  only_hobby: ['wellness', 'competitive sports']
+  only_name: ['Paula Morales Marín', 'Kiss Gergő']
+  only_artist: []
+
+=== GENERALIZATION TEST ===
+(Probe trained on all non-held-out histories, tested on held-out histories)
+
+  [only_movie]  held-out=['drama', 'science fiction']
+    train=308  test=84  layer=4
+    test gender: 37F / 47M
+    standard CV acc  = 1.000
+    generalization   = 0.976
+
+  [only_hobby]  held-out=['wellness', 'competitive sports']
+    train=321  test=71  layer=2
+    test gender: 34F / 37M
+    standard CV acc  = 1.000
+    generalization   = 1.000
+
+  [only_name]  held-out=['Paula Morales Marín', 'Kiss Gergő']
+    train=355  test=37  layer=1
+    test gender: 18F / 19M
+    standard CV acc  = 1.000
+    generalization   = 0.378
+  only_artist: no valid holdout found — skipping
+  [only_artist]: artists are ~50/50 gender split in dataset — no valid holdout
+
+Generalization results saved
+Saved probe_accuracy.png
+Saved p_male_distribution.png
+Saved generalization_test.png
+Saved per_indicator_single.png
+
+=== SUMMARY ===
+  [full        ] best_layer=6  acc=1.000  Female P(Male)=0.005  Male P(Male)=0.995
+  [only_movie  ] best_layer=4  acc=1.000  Female P(Male)=0.177  Male P(Male)=0.784
+  [only_hobby  ] best_layer=2  acc=1.000  Female P(Male)=0.099  Male P(Male)=0.975
+  [only_name   ] best_layer=1  acc=1.000  Female P(Male)=0.214  Male P(Male)=0.496
+  [only_artist ] best_layer=15  acc=0.997  Female P(Male)=0.289  Male P(Male)=0.622
+  [ctrl        ] best_layer=6  acc=0.451
+
+Generalization test:
+  [only_movie  ] std_acc=1.000  gen_acc=0.976  held-out=['drama', 'science fiction']  (train=308, test=84 [37F/47M])
+  [only_hobby  ] std_acc=1.000  gen_acc=1.000  held-out=['wellness', 'competitive sports']  (train=321, test=71 [34F/37M])
+  [only_name   ] std_acc=1.000  gen_acc=0.378  held-out=['Paula Morales Marín', 'Kiss Gergő']  (train=355, test=37 [18F/19M])
+  [only_artist ] std_acc=0.997  gen_acc=nan  held-out=[]  (train=392, test=0 [0F/0M])
+=== ALL DONE ===

@@ -1,0 +1,10 @@
+# Model weights (too large for git)
+models/
+
+# Large hidden-state cache files
+run_results/data/*.npz
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

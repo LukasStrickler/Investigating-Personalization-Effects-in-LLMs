@@ -1,0 +1,5 @@
+condition,holdout_vals,n_train,n_test,test_f,test_m,best_layer,std_acc,gen_acc
+only_movie,drama|science fiction,308,84,37,47,4,1.0,0.9761904761904762
+only_hobby,wellness|competitive sports,321,71,34,37,2,1.0,1.0
+only_name,Paula Morales Marín|Kiss Gergő,355,37,18,19,1,1.0,0.3783783783783784
+only_artist,,392,0,0,0,15,0.9974683544303797,nan
