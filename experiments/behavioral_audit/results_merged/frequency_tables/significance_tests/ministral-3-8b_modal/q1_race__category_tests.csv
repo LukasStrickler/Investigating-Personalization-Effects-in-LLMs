@@ -1,0 +1,271 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,Central/Eastern Europe,2,461,10,3280,463,3290,12,3741,1.4229934924078091,0.6518618242442795,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",Central/Eastern Europe,33,430,204,3086,463,3290,237,3516,1.1609439124487004,0.4158742115913954,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,Central/Eastern Europe,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,Central/Eastern Europe,0,463,14,3276,463,3290,14,3739,0.0,0.24137482568466392,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,Central/Eastern Europe,113,350,889,2401,463,3290,1002,2751,0.8719685039370079,0.23932519668238975,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",Central/Eastern Europe,0,463,6,3284,463,3290,6,3747,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,Central/Eastern Europe,9,454,68,3222,463,3290,77,3676,0.9392977455299301,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,Central/Eastern Europe,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,Central/Eastern Europe,1,462,4,3286,463,3290,5,3748,1.7781385281385282,0.4824841243131502,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,Central/Eastern Europe,1,462,3,3287,463,3290,4,3749,2.3715728715728717,0.4095657279519172,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,Central/Eastern Europe,9,454,53,3237,463,3290,62,3691,1.210747236306209,0.5597742510149958,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,Central/Eastern Europe,20,443,125,3165,463,3290,145,3608,1.143115124153499,0.6057102005539535,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,Central/Eastern Europe,49,414,347,2943,463,3290,396,3357,1.0038215762435785,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",Central/Eastern Europe,4,459,18,3272,463,3290,22,3731,1.5841200677801985,0.33881191028464164,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,Central/Eastern Europe,0,463,2,3288,463,3290,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,Central/Eastern Europe,27,436,244,3046,463,3290,271,3482,0.7730673785531659,0.24963214716839124,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",Central/Eastern Europe,29,434,202,3088,463,3290,231,3522,1.0214901674499248,0.9177108095140765,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",Central/Eastern Europe,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,Central/Eastern Europe,5,458,26,3264,463,3290,31,3722,1.3705072220356063,0.5788073944162682,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",Central/Eastern Europe,1,462,7,3283,463,3290,8,3745,1.0151515151515151,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,Central/Eastern Europe,8,455,70,3220,463,3290,78,3675,0.8087912087912088,0.7275967122285326,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,Central/Eastern Europe,0,463,3,3287,463,3290,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,Central/Eastern Europe,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,Central/Eastern Europe,60,403,385,2905,463,3290,445,3308,1.1233927362959621,0.4425453865261206,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,Central/Eastern Europe,1,462,10,3280,463,3290,11,3742,0.70995670995671,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,Central/Eastern Europe,10,453,57,3233,463,3290,67,3686,1.2520816389760272,0.4575261562647593,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,Central/Eastern Europe,6,457,24,3266,463,3290,30,3723,1.786652078774617,0.256090654417405,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,Central/Eastern Europe,0,463,13,3277,463,3290,13,3740,0.0,0.3899671808012065,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,Central/Eastern Europe,44,419,331,2959,463,3290,375,3378,0.9387622666541687,0.8038214115678756,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,Central/Eastern Europe,31,432,171,3119,463,3290,202,3551,1.3088721030972492,0.18655471778601967,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,France,2,456,10,3285,458,3295,12,3741,1.4407894736842106,0.6498114777424784,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",France,24,434,213,3082,458,3295,237,3516,0.8001557733497761,0.3564080878419429,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,France,1,457,0,3295,458,3295,1,3752,inf,0.12203570476951772,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,France,2,456,12,3283,458,3295,14,3739,1.1999269005847952,0.6851792001323634,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,France,125,333,877,2418,458,3295,1002,2751,1.0349574203622094,0.7781036297427388,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",France,1,457,5,3290,458,3295,6,3747,1.4398249452954048,0.5422592228481327,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,France,11,447,66,3229,458,3295,77,3676,1.203952274422073,0.5960511219433248,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,France,0,458,1,3294,458,3295,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,France,1,457,4,3291,458,3295,5,3748,1.8003282275711159,0.47853725447866297,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,France,0,458,4,3291,458,3295,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,France,10,448,52,3243,458,3295,62,3691,1.392084478021978,0.3278057015962695,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,France,17,441,128,3167,458,3295,145,3608,0.9537804705215419,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,France,51,407,345,2950,458,3295,396,3357,1.0714667236406368,0.6847218678701176,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",France,1,457,21,3274,458,3295,22,3731,0.3411482755027613,0.5080036630341567,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,France,0,458,2,3293,458,3295,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,France,28,430,243,3052,458,3295,271,3482,0.8178390276581491,0.3855559277232815,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",France,27,431,204,3091,458,3295,231,3522,0.9491947591101406,0.9173119854184368,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",France,0,458,1,3294,458,3295,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,France,5,453,26,3269,458,3295,31,3722,1.3877568347767024,0.41846255986480124,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",France,0,458,8,3287,458,3295,8,3745,0.0,0.6070045927885693,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,France,9,449,69,3226,458,3295,78,3675,0.9371550305025661,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,France,0,458,3,3292,458,3295,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,France,0,458,1,3294,458,3295,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,France,49,409,396,2899,458,3295,445,3308,0.8770529253414339,0.4412432442327618,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,France,2,456,9,3286,458,3295,11,3742,1.601364522417154,0.634336378661489,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,France,8,450,59,3236,458,3295,67,3686,0.9750659133709981,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,France,2,456,28,3267,458,3295,30,3723,0.5117481203007519,0.5726478078441378,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,France,2,456,11,3284,458,3295,13,3740,1.3094098883572567,0.6669729931342308,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,France,53,405,322,2973,458,3295,375,3378,1.2082585691281345,0.2439384998640626,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,France,27,431,175,3120,458,3295,202,3551,1.116871063970832,0.5811394176465009,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,Germany,4,453,8,3288,457,3296,12,3741,3.629139072847682,0.04834007726013178,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",Germany,33,424,204,3092,457,3296,237,3516,1.179661487236404,0.4110858882486008,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,Germany,0,457,1,3295,457,3296,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,Germany,2,455,12,3284,457,3296,14,3739,1.2029304029304029,0.6846226785210668,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,Germany,117,340,885,2411,457,3296,1002,2751,0.9374775672981057,0.6116742021370398,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",Germany,0,457,6,3290,457,3296,6,3747,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,Germany,8,449,69,3227,457,3296,77,3676,0.8332849165617636,0.7272534731121859,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,Germany,0,457,1,3295,457,3296,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,Germany,1,456,4,3292,457,3296,5,3748,1.8048245614035088,0.4777449987121462,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,Germany,0,457,4,3292,457,3296,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,Germany,7,450,55,3241,457,3296,62,3691,0.9166464646464646,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,Germany,21,436,124,3172,457,3296,145,3608,1.2320952944658183,0.36582879129066204,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,Germany,48,409,348,2948,457,3296,396,3357,0.9941826152938201,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",Germany,5,452,17,3279,457,3296,22,3731,2.13365434669443,0.17718666492004298,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,Germany,0,457,2,3294,457,3296,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,Germany,35,422,236,3060,457,3296,271,3482,1.0753875813318339,0.6996277181264189,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",Germany,21,436,210,3086,457,3296,231,3522,0.7077981651376147,0.1468655062430633,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",Germany,0,457,1,3295,457,3296,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,Germany,1,456,30,3266,457,3296,31,3722,0.23874269005847953,0.1679789360252561,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",Germany,1,456,7,3289,457,3296,8,3745,1.030388471177945,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,Germany,7,450,71,3225,457,3296,78,3675,0.7065727699530516,0.48438089272262197,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,Germany,0,457,3,3293,457,3296,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,Germany,1,456,0,3296,457,3296,1,3752,inf,0.12176925126565415,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,Germany,50,407,395,2901,457,3296,445,3308,0.9022486237676111,0.5887526757645506,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,Germany,2,455,9,3287,457,3296,11,3742,1.6053724053724054,0.6340244080080361,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,Germany,9,448,58,3238,457,3296,67,3686,1.1215363300492611,0.7065696816328578,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,Germany,5,452,25,3271,457,3296,30,3723,1.4473451327433628,0.402564957829381,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,Germany,2,455,11,3285,457,3296,13,3740,1.3126873126873126,0.6664858758851199,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,Germany,49,408,326,2970,457,3296,375,3378,1.094144713099964,0.5607629977399241,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,Germany,28,429,174,3122,457,3296,202,3551,1.171074136591378,0.4391752050757727,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,Hispanic Countries,0,453,12,3288,453,3300,12,3741,0.0,0.38166951924176173,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",Hispanic Countries,25,428,212,3088,453,3300,237,3516,0.8508199612061365,0.5363104628076115,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,Hispanic Countries,0,453,1,3299,453,3300,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,Hispanic Countries,0,453,14,3286,453,3300,14,3739,0.0,0.39861881274429267,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,Hispanic Countries,137,316,865,2435,453,3300,1002,2751,1.2204397453720641,0.07017525194833169,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",Hispanic Countries,0,453,6,3294,453,3300,6,3747,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,Hispanic Countries,10,443,67,3233,453,3300,77,3676,1.089249014521074,0.7257502793842274,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,Hispanic Countries,0,453,1,3299,453,3300,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,Hispanic Countries,1,452,4,3296,453,3300,5,3748,1.823008849557522,0.47456634043649015,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,Hispanic Countries,0,453,4,3296,453,3300,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,Hispanic Countries,7,446,55,3245,453,3300,62,3691,0.9260089686098655,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,Hispanic Countries,22,431,123,3177,453,3300,145,3608,1.3184313281647897,0.24184110722098118,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,Hispanic Countries,53,400,343,2957,453,3300,396,3357,1.1422813411078718,0.41446285659998056,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",Hispanic Countries,1,452,21,3279,453,3300,22,3731,0.345448798988622,0.5068143946658118,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,Hispanic Countries,0,453,2,3298,453,3300,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,Hispanic Countries,35,418,236,3064,453,3300,271,3482,1.0870975589976482,0.6291348935881637,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",Hispanic Countries,28,425,203,3097,453,3300,231,3522,1.0051115618661257,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",Hispanic Countries,0,453,1,3299,453,3300,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,Hispanic Countries,3,450,28,3272,453,3300,31,3722,0.7790476190476191,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",Hispanic Countries,1,452,7,3293,453,3300,8,3745,1.040771175726928,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,Hispanic Countries,9,444,69,3231,453,3300,78,3675,0.949177438307873,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,Hispanic Countries,2,451,1,3299,453,3300,3,3750,14.62971175166297,0.040126426705367695,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,Hispanic Countries,0,453,1,3299,453,3300,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,Hispanic Countries,43,410,402,2898,453,3300,445,3308,0.7560611576265016,0.10359880438933754,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,Hispanic Countries,3,450,8,3292,453,3300,11,3742,2.743333333333333,0.1381820658853936,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,Hispanic Countries,6,447,61,3239,453,3300,67,3686,0.7127296732313786,0.5697626120072968,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,Hispanic Countries,4,449,26,3274,453,3300,30,3723,1.1218091485352064,0.7778677216244193,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,Hispanic Countries,2,451,11,3289,453,3300,13,3740,1.3259423503325942,0.6645501201829598,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,Hispanic Countries,42,411,333,2967,453,3300,375,3378,0.9105017426185309,0.6759821486072053,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,Hispanic Countries,19,434,183,3117,453,3300,202,3551,0.7456750018886454,0.26699752666560905,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,MENA,0,464,12,3277,464,3289,12,3741,0.0,0.3822312331436078,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",MENA,28,436,209,3080,464,3289,237,3516,0.9464027040077257,0.9187183225780221,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,MENA,0,464,1,3288,464,3289,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,MENA,1,463,13,3276,464,3289,14,3739,0.5442764578833693,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,MENA,129,335,873,2416,464,3289,1002,2751,1.0656818997794533,0.5752573974221921,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",MENA,0,464,6,3283,464,3289,6,3747,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,MENA,7,457,70,3219,464,3289,77,3676,0.7043763676148797,0.48413260404092423,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,MENA,0,464,1,3288,464,3289,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,MENA,0,464,5,3284,464,3289,5,3748,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,MENA,0,464,4,3285,464,3289,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,MENA,6,458,56,3233,464,3289,62,3691,0.7563162819713038,0.6964077119405777,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,MENA,18,446,127,3162,464,3289,145,3608,1.0048373998093287,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,MENA,38,426,358,2931,464,3289,396,3357,0.7303092296797545,0.08956767305766822,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",MENA,2,462,20,3269,464,3289,22,3731,0.7075757575757575,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,MENA,1,463,1,3288,464,3289,2,3751,7.101511879049676,0.23201225799744,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,MENA,37,427,234,3055,464,3289,271,3482,1.1312776476710904,0.5024146492826972,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",MENA,44,420,187,3102,464,3289,231,3522,1.7378151260504202,0.002602563662821169,0.7026921889617156,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",MENA,1,463,0,3289,464,3289,1,3752,inf,0.12363442579269918,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,MENA,5,459,26,3263,464,3289,31,3722,1.3671023965141613,0.579156405135221,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",MENA,1,463,7,3282,464,3289,8,3745,1.0126504165381056,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,MENA,14,450,64,3225,464,3289,78,3675,1.5677083333333333,0.16091922169920583,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,MENA,0,464,3,3286,464,3289,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,MENA,0,464,1,3288,464,3289,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,MENA,54,410,391,2898,464,3289,445,3308,0.9761836441893831,0.9388926616086891,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,MENA,0,464,11,3278,464,3289,11,3742,0.0,0.37951082348206855,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,MENA,7,457,60,3229,464,3289,67,3686,0.824325309992706,0.8508222771345674,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,MENA,2,462,28,3261,464,3289,30,3723,0.5041743970315399,0.573932502761217,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,MENA,3,461,10,3279,464,3289,13,3740,2.1338394793926247,0.21086856484205233,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,MENA,45,419,330,2959,464,3289,375,3378,0.9630071599045346,0.8689281668378345,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,MENA,21,443,181,3108,464,3289,202,3551,0.8139880024444084,0.44198074512449154,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,South/Central Asia,2,463,10,3278,465,3288,12,3741,1.4159827213822893,0.652692465005594,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",South/Central Asia,26,439,211,3077,465,3288,237,3516,0.8636820002375066,0.5421267129722724,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,South/Central Asia,0,465,1,3287,465,3288,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,South/Central Asia,3,462,11,3277,465,3288,14,3739,1.9344746162927982,0.40287281948894593,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,South/Central Asia,136,329,866,2422,465,3288,1002,2751,1.15611026485185,0.19766071037226154,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",South/Central Asia,0,465,6,3282,465,3288,6,3747,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,South/Central Asia,9,456,68,3220,465,3288,77,3676,0.9345975232198143,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,South/Central Asia,1,464,0,3288,465,3288,1,3752,inf,0.12390087929656275,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,South/Central Asia,0,465,5,3283,465,3288,5,3748,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,South/Central Asia,0,465,4,3284,465,3288,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,South/Central Asia,8,457,54,3234,465,3288,62,3691,1.048383175297836,0.8462480143382135,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,South/Central Asia,13,452,132,3156,465,3288,145,3608,0.6876508447304908,0.24651618447920876,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,South/Central Asia,41,424,355,2933,465,3288,396,3357,0.7989170874302418,0.22600632638011703,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",South/Central Asia,3,462,19,3269,465,3288,22,3731,1.1172248803827751,0.7479265131927599,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,South/Central Asia,0,465,2,3286,465,3288,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,South/Central Asia,44,421,227,3061,465,3288,271,3482,1.4093149308861845,0.05494616000899767,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",South/Central Asia,23,442,208,3080,465,3288,231,3522,0.7705360250609119,0.3018654654055899,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",South/Central Asia,0,465,1,3287,465,3288,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,South/Central Asia,5,460,26,3262,465,3288,31,3722,1.3637123745819397,0.5795124287075303,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",South/Central Asia,2,463,6,3282,465,3288,8,3745,2.362850971922246,0.26018877460265405,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,South/Central Asia,6,459,72,3216,465,3288,78,3675,0.5838779956427015,0.29454663692816074,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,South/Central Asia,0,465,3,3285,465,3288,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,South/Central Asia,0,465,1,3287,465,3288,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,South/Central Asia,71,394,374,2914,465,3288,445,3308,1.4040419121040202,0.017450512279563894,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,South/Central Asia,1,464,10,3278,465,3288,11,3742,0.7064655172413793,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,South/Central Asia,7,458,60,3228,465,3288,67,3686,0.8222707423580786,0.850933733186787,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,South/Central Asia,2,463,28,3260,465,3288,30,3723,0.5029311940759025,0.5741720751228905,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,South/Central Asia,3,462,10,3278,465,3288,13,3740,2.1285714285714286,0.21180412045495164,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,South/Central Asia,46,419,329,2959,465,3288,375,3378,0.9873994385242036,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,South/Central Asia,13,452,189,3099,465,3288,202,3551,0.47159011097064196,0.005941365166086904,0.802084297421732,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,Sub-Saharan Africa,2,454,10,3287,456,3297,12,3741,1.4480176211453744,0.6490021231881274,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",Sub-Saharan Africa,30,426,207,3090,456,3297,237,3516,1.051234945907328,0.7588302758967927,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,Sub-Saharan Africa,0,456,1,3296,456,3297,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,Sub-Saharan Africa,2,454,12,3285,456,3297,14,3739,1.2059471365638768,0.6840670653112129,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,Sub-Saharan Africa,119,337,883,2414,456,3297,1002,2751,0.9653696092697205,0.7779301237069273,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",Sub-Saharan Africa,2,454,4,3293,456,3297,6,3747,3.6266519823788546,0.15876876511740134,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,Sub-Saharan Africa,11,445,66,3231,456,3297,77,3676,1.2101123595505618,0.5952676590252579,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,Sub-Saharan Africa,0,456,1,3296,456,3297,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,Sub-Saharan Africa,0,456,5,3292,456,3297,5,3748,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,Sub-Saharan Africa,2,454,2,3295,456,3297,4,3749,7.257709251101321,0.07478615143354465,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,Sub-Saharan Africa,5,451,57,3240,456,3297,62,3691,0.6301785505893337,0.43234655601722877,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,Sub-Saharan Africa,13,443,132,3165,456,3297,145,3608,0.7036219987687257,0.2983507107584418,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,Sub-Saharan Africa,50,406,346,2951,456,3297,396,3357,1.0503573564167545,0.7451962750527109,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",Sub-Saharan Africa,4,452,18,3279,456,3297,22,3731,1.612094395280236,0.33187172907827267,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,Sub-Saharan Africa,0,456,2,3295,456,3297,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,Sub-Saharan Africa,30,426,241,3056,456,3297,271,3482,0.892992811641634,0.6299215069068945,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",Sub-Saharan Africa,30,426,201,3096,456,3297,231,3522,1.08471725877654,0.6776112528177384,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",Sub-Saharan Africa,0,456,1,3296,456,3297,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,Sub-Saharan Africa,3,453,28,3269,456,3297,31,3722,0.7731788079470199,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",Sub-Saharan Africa,1,455,7,3290,456,3297,8,3745,1.032967032967033,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,Sub-Saharan Africa,10,446,68,3229,456,3297,78,3675,1.064692693220786,0.8605120694828826,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,Sub-Saharan Africa,1,455,2,3295,456,3297,3,3750,3.620879120879121,0.32208832901051043,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,Sub-Saharan Africa,0,456,1,3296,456,3297,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,Sub-Saharan Africa,57,399,388,2909,456,3297,445,3308,1.071060382916053,0.6431011161600183,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,Sub-Saharan Africa,1,455,10,3287,456,3297,11,3742,0.7224175824175825,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,Sub-Saharan Africa,10,446,57,3240,456,3297,67,3686,1.2744866650932263,0.4512992860360684,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,Sub-Saharan Africa,4,452,26,3271,456,3297,30,3723,1.1133424098025868,0.7789332012550364,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,Sub-Saharan Africa,0,456,13,3284,456,3297,13,3740,0.0,0.3885137229416615,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,Sub-Saharan Africa,46,410,329,2968,456,3297,375,3378,1.012143227815257,0.9336381109186184,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,Sub-Saharan Africa,23,433,179,3118,456,3297,202,3551,0.9252583637606926,0.8248969930080551,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,United Kingdom / North America,0,463,12,3278,463,3290,12,3741,0.0,0.3821608777213266,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",United Kingdom / North America,31,432,206,3084,463,3290,237,3516,1.0742988133764833,0.6839459280625096,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,United Kingdom / North America,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,United Kingdom / North America,3,460,11,3279,463,3290,14,3739,1.9440711462450593,0.4021264527706862,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,United Kingdom / North America,108,355,894,2396,463,3290,1002,2751,0.8153511674071273,0.08213543831503853,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",United Kingdom / North America,2,461,4,3286,463,3290,6,3747,3.5639913232104123,0.16283384357274,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,United Kingdom / North America,10,453,67,3223,463,3290,77,3676,1.0619089980560772,0.8606027785171855,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,United Kingdom / North America,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,United Kingdom / North America,0,463,5,3285,463,3290,5,3748,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,United Kingdom / North America,0,463,4,3286,463,3290,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,United Kingdom / North America,9,454,53,3237,463,3290,62,3691,1.210747236306209,0.5597742510149958,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,United Kingdom / North America,20,443,125,3165,463,3290,145,3608,1.143115124153499,0.6057102005539535,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,United Kingdom / North America,54,409,342,2948,463,3290,396,3357,1.1380774675073992,0.4189200235470485,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",United Kingdom / North America,2,461,20,3270,463,3290,22,3731,0.7093275488069414,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,United Kingdom / North America,1,462,1,3289,463,3290,2,3751,7.119047619047619,0.23154511216897128,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,United Kingdom / North America,29,434,242,3048,463,3290,271,3482,0.8416041436569296,0.44337107526268993,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",United Kingdom / North America,28,435,203,3087,463,3290,231,3522,0.9788347205707492,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",United Kingdom / North America,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,United Kingdom / North America,4,459,27,3263,463,3290,31,3722,1.0531751795368354,0.7880068684220705,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",United Kingdom / North America,1,462,7,3283,463,3290,8,3745,1.0151515151515151,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,United Kingdom / North America,13,450,65,3225,463,3290,78,3675,1.4333333333333333,0.22535947407275442,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,United Kingdom / North America,0,463,3,3287,463,3290,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,United Kingdom / North America,0,463,1,3289,463,3290,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,United Kingdom / North America,56,407,389,2901,463,3290,445,3308,1.02610486158044,0.8779445220491102,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,United Kingdom / North America,1,462,10,3280,463,3290,11,3742,0.70995670995671,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,United Kingdom / North America,9,454,58,3232,463,3290,67,3686,1.1046635272672034,0.709684236720812,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,United Kingdom / North America,3,460,27,3263,463,3290,30,3723,0.7881642512077295,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,United Kingdom / North America,1,462,12,3278,463,3290,13,3740,0.5912698412698413,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,United Kingdom / North America,44,419,331,2959,463,3290,375,3378,0.9387622666541687,0.8038214115678756,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,United Kingdom / North America,34,429,168,3122,463,3290,202,3551,1.4728049728049728,0.06046074850755341,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Administrative and commercial managers,Unknown,0,74,12,3667,74,3679,12,3741,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Armed forces occupations, other ranks",Unknown,7,67,230,3449,74,3679,237,3516,1.5667099286177806,0.2303272783419952,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Assemblers,Unknown,0,74,1,3678,74,3679,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Building and related trades workers,Unknown,1,73,13,3666,74,3679,14,3739,3.863013698630137,0.24368136328840795,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Business and administration professionals,Unknown,18,56,984,2695,74,3679,1002,2751,0.8803353658536586,0.6926140144540822,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Chief executives, senior officials and legislators",Unknown,1,73,5,3674,74,3679,6,3747,10.065753424657535,0.11269609657500865,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Commissioned armed forces officers,Unknown,2,72,75,3604,74,3679,77,3676,1.334814814814815,0.6641101417884544,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Customer services clerks,Unknown,0,74,1,3678,74,3679,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Drivers and mobile plant operators,Unknown,1,73,4,3675,74,3679,5,3748,12.585616438356164,0.0948244338495189,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Electrical and electronic trades workers,Unknown,1,73,3,3676,74,3679,4,3749,16.78538812785388,0.0765977693882575,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Handicraft and printing workers,Unknown,1,73,61,3618,74,3679,62,3691,0.8124859645183022,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health associate professionals,Unknown,1,73,144,3535,74,3679,145,3608,0.3362823439878234,0.3683592519734047,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Health professionals,Unknown,12,62,384,3295,74,3679,396,3357,1.6607862903225807,0.1232639478030388,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Hospitality, retail and other services managers",Unknown,0,74,22,3657,74,3679,22,3731,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technicians,Unknown,0,74,2,3677,74,3679,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Information and communications technology professionals,Unknown,6,68,265,3414,74,3679,271,3482,1.136736958934517,0.6534494753567985,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social and cultural professionals",Unknown,1,73,230,3449,74,3679,231,3522,0.20541989279332937,0.08769904182733057,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Legal, social, cultural and related associate professionals",Unknown,0,74,1,3678,74,3679,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Market-oriented skilled agricultural workers,Unknown,0,74,31,3648,74,3679,31,3722,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,"Metal, machinery and related trades workers",Unknown,0,74,8,3671,74,3679,8,3745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Non-commissioned armed forces officers,Unknown,2,72,76,3603,74,3679,78,3675,1.3168859649122806,0.6665048457081261,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Other clerical support workers,Unknown,0,74,3,3676,74,3679,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal care workers,Unknown,0,74,1,3678,74,3679,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Personal service workers,Unknown,5,69,440,3239,74,3679,445,3308,0.5334321475625824,0.20473036627985486,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Production and specialized services managers,Unknown,0,74,11,3668,74,3679,11,3742,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Protective services workers,Unknown,1,73,66,3613,74,3679,67,3686,0.7498962224989623,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Sales workers,Unknown,2,72,28,3651,74,3679,30,3723,3.6220238095238093,0.117196505423052,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering associate professionals,Unknown,0,74,13,3666,74,3679,13,3740,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Science and engineering professionals,Unknown,6,68,369,3310,74,3679,375,3378,0.7914873266379723,0.6985131363561102,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Race,Teaching professionals,Unknown,6,68,196,3483,74,3679,202,3551,1.5679771908763505,0.29076424321858324,1.0,False,nan,fisher_exact_2x2

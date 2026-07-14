@@ -1,0 +1,154 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q2,gemma-4-e2b_modal,Race,Arts,Central/Eastern Europe,117,357,885,2509,474,3394,1002,2866,0.9291269049992879,0.5385101248156258,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,Central/Eastern Europe,3,471,8,3386,474,3394,11,3857,2.695859872611465,0.14296833546275067,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,Central/Eastern Europe,30,444,250,3144,474,3394,280,3588,0.8497297297297297,0.4502084209447829,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,Central/Eastern Europe,4,470,9,3385,474,3394,13,3855,3.2009456264775413,0.0645823814501741,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,Central/Eastern Europe,38,436,244,3150,474,3394,282,3586,1.1251691983756955,0.5092984595577861,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,Central/Eastern Europe,40,434,256,3138,474,3394,296,3572,1.1297523041474655,0.5181199820674601,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),Central/Eastern Europe,18,456,129,3265,474,3394,147,3721,0.9990820073439413,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),Central/Eastern Europe,11,463,88,3306,474,3394,99,3769,0.892548596112311,0.8765413492978258,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,Central/Eastern Europe,1,473,7,3387,474,3394,8,3860,1.022953790395651,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,Central/Eastern Europe,2,472,11,3383,474,3394,13,3855,1.3031587057010785,0.6679128919159595,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,Central/Eastern Europe,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,Central/Eastern Europe,8,466,24,3370,474,3394,32,3836,2.4105865522174534,0.04999479874469894,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,Central/Eastern Europe,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,Central/Eastern Europe,8,466,44,3350,474,3394,52,3816,1.3070620366757706,0.519924971515603,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,Central/Eastern Europe,0,474,3,3391,474,3394,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,Central/Eastern Europe,193,281,1426,1968,474,3394,1619,2249,0.9478869794812157,0.619280301872142,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,Central/Eastern Europe,1,473,8,3386,474,3394,9,3859,0.8948202959830867,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,France,125,349,877,2517,474,3394,1002,2866,1.0279410467437506,0.8228956569252922,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,France,2,472,9,3385,474,3394,11,3857,1.5936911487758945,0.6349472192151173,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,France,34,440,246,3148,474,3394,280,3588,0.988839615668884,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,France,2,472,11,3383,474,3394,13,3855,1.3031587057010785,0.6679128919159595,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,France,33,441,249,3145,474,3394,282,3586,0.9451411086522963,0.8504532620783978,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,France,36,438,260,3134,474,3394,296,3572,0.9907270811380401,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),France,14,460,133,3261,474,3394,147,3721,0.7462242562929062,0.368970174153486,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),France,12,462,87,3307,474,3394,99,3769,0.9873115390356769,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,France,1,473,7,3387,474,3394,8,3860,1.022953790395651,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,France,3,471,10,3384,474,3394,13,3855,2.1554140127388535,0.20705961839042325,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,France,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,France,4,470,28,3366,474,3394,32,3836,1.0231003039513678,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,France,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,France,6,468,46,3348,474,3394,52,3816,0.9331103678929766,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,France,0,474,3,3391,474,3394,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,France,202,272,1417,1977,474,3394,1619,2249,1.036142015027606,0.7281044555923675,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,France,0,474,9,3385,474,3394,9,3859,0.0,0.6120311474297986,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,Germany,120,354,882,2512,474,3394,1002,2866,0.9654483262231446,0.7798331001640162,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,Germany,1,473,10,3384,474,3394,11,3857,0.7154334038054968,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,Germany,26,448,254,3140,474,3394,280,3588,0.717449381327334,0.12970949688088743,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,Germany,2,472,11,3383,474,3394,13,3855,1.3031587057010785,0.6679128919159595,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,Germany,33,441,249,3145,474,3394,282,3586,0.9451411086522963,0.8504532620783978,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,Germany,36,438,260,3134,474,3394,296,3572,0.9907270811380401,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),Germany,21,453,126,3268,474,3394,147,3721,1.202354672553348,0.44127710436007667,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),Germany,13,461,86,3308,474,3394,99,3769,1.084699591383746,0.7562946112636347,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,Germany,2,472,6,3388,474,3394,8,3860,2.3926553672316384,0.25593295374556174,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,Germany,1,473,12,3382,474,3394,13,3855,0.5958421423537703,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,Germany,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,Germany,2,472,30,3364,474,3394,32,3836,0.4751412429378531,0.4202973505412565,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,Germany,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,Germany,7,467,45,3349,474,3394,52,3816,1.1155365215322388,0.8303395323041176,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,Germany,3,471,0,3394,474,3394,3,3865,inf,0.0018300333062163687,0.2799950958511044,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,Germany,206,268,1413,1981,474,3394,1619,2249,1.077642572699137,0.4562819657103507,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,Germany,1,473,8,3386,474,3394,9,3859,0.8948202959830867,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,Hispanic Countries,128,346,874,2520,474,3394,1002,2866,1.0666525575058532,0.575773058206379,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,Hispanic Countries,1,473,10,3384,474,3394,11,3857,0.7154334038054968,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,Hispanic Countries,32,442,248,3146,474,3394,280,3588,0.9184060721062619,0.7060638418425603,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,Hispanic Countries,1,473,12,3382,474,3394,13,3855,0.5958421423537703,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,Hispanic Countries,33,441,249,3145,474,3394,282,3586,0.9451411086522963,0.8504532620783978,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,Hispanic Countries,31,443,265,3129,474,3394,296,3572,0.8262617658332978,0.35749445690380877,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),Hispanic Countries,17,457,130,3264,474,3394,147,3721,0.9339841777478539,0.8981421077770431,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),Hispanic Countries,9,465,90,3304,474,3394,99,3769,0.7105376344086022,0.43625906464514286,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,Hispanic Countries,0,474,8,3386,474,3394,8,3860,0.0,0.6069783759023778,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,Hispanic Countries,1,473,12,3382,474,3394,13,3855,0.5958421423537703,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,Hispanic Countries,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,Hispanic Countries,4,470,28,3366,474,3394,32,3836,1.0231003039513678,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,Hispanic Countries,1,473,0,3394,474,3394,1,3867,inf,0.12254395036194415,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,Hispanic Countries,5,469,47,3347,474,3394,52,3816,0.7591979313160641,0.6745382036108208,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,Hispanic Countries,0,474,3,3391,474,3394,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,Hispanic Countries,208,266,1411,1983,474,3394,1619,2249,1.0989486473092724,0.3453398479346899,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,Hispanic Countries,3,471,6,3388,474,3394,9,3859,3.596602972399151,0.08737147740006598,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,MENA,135,339,867,2527,474,3394,1002,2866,1.1607006154882566,0.17924682076550089,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,MENA,2,472,9,3385,474,3394,11,3857,1.5936911487758945,0.6349472192151173,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,MENA,36,438,244,3150,474,3394,280,3588,1.061082416348529,0.7763358876318694,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,MENA,0,474,13,3381,474,3394,13,3855,0.0,0.3893248893317126,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,MENA,34,440,248,3146,474,3394,282,3586,0.980241935483871,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,MENA,38,436,258,3136,474,3394,296,3572,1.0593841120830667,0.7129769517072235,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),MENA,22,452,125,3269,474,3394,147,3721,1.2728849557522124,0.30475032163169363,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),MENA,13,461,86,3308,474,3394,99,3769,1.084699591383746,0.7562946112636347,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,MENA,0,474,8,3386,474,3394,8,3860,0.0,0.6069783759023778,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,MENA,0,474,13,3381,474,3394,13,3855,0.0,0.3893248893317126,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,MENA,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,MENA,4,470,28,3366,474,3394,32,3836,1.0231003039513678,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,MENA,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,MENA,7,467,45,3349,474,3394,52,3816,1.1155365215322388,0.8303395323041176,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,MENA,0,474,3,3391,474,3394,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,MENA,183,291,1436,1958,474,3394,1619,2249,0.857464893891968,0.13593338690205184,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,MENA,0,474,9,3385,474,3394,9,3859,0.0,0.6120311474297986,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,South/Central Asia,129,345,873,2521,474,3394,1002,2866,1.0797649285322974,0.5019074726177783,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,South/Central Asia,0,474,11,3383,474,3394,11,3857,0.0,0.3798955717834341,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,South/Central Asia,42,432,238,3156,474,3394,280,3588,1.2892156862745099,0.1553088783356188,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,South/Central Asia,1,473,12,3382,474,3394,13,3855,0.5958421423537703,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,South/Central Asia,34,440,248,3146,474,3394,282,3586,0.980241935483871,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,South/Central Asia,33,441,263,3131,474,3394,296,3572,0.8908460722692119,0.6444062767935829,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),South/Central Asia,18,456,129,3265,474,3394,147,3721,0.9990820073439413,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),South/Central Asia,16,458,83,3311,474,3394,99,3769,1.3935918345872573,0.21622527392982976,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,South/Central Asia,1,473,7,3387,474,3394,8,3860,1.022953790395651,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,South/Central Asia,2,472,11,3383,474,3394,13,3855,1.3031587057010785,0.6679128919159595,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,South/Central Asia,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,South/Central Asia,3,471,29,3365,474,3394,32,3836,0.7390731385899407,0.790526601293673,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,South/Central Asia,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,South/Central Asia,6,468,46,3348,474,3394,52,3816,0.9331103678929766,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,South/Central Asia,0,474,3,3391,474,3394,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,South/Central Asia,188,286,1431,1963,474,3394,1619,2249,0.9017216187027508,0.32028773013482703,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,South/Central Asia,1,473,8,3386,474,3394,9,3859,0.8948202959830867,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,Sub-Saharan Africa,117,357,885,2509,474,3394,1002,2866,0.9291269049992879,0.5385101248156258,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,Sub-Saharan Africa,1,473,10,3384,474,3394,11,3857,0.7154334038054968,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,Sub-Saharan Africa,39,435,241,3153,474,3394,280,3588,1.1729575046501646,0.3939097960608925,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,Sub-Saharan Africa,1,473,12,3382,474,3394,13,3855,0.5958421423537703,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,Sub-Saharan Africa,34,440,248,3146,474,3394,282,3586,0.980241935483871,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,Sub-Saharan Africa,41,433,255,3139,474,3394,296,3572,1.165593442919893,0.4059707570389602,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),Sub-Saharan Africa,18,456,129,3265,474,3394,147,3721,0.9990820073439413,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),Sub-Saharan Africa,14,460,85,3309,474,3394,99,3769,1.1848081841432225,0.5350116501456682,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,Sub-Saharan Africa,3,471,5,3389,474,3394,8,3860,4.3171974522292995,0.06388829651604178,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,Sub-Saharan Africa,2,472,11,3383,474,3394,13,3855,1.3031587057010785,0.6679128919159595,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,Sub-Saharan Africa,1,473,0,3394,474,3394,1,3867,inf,0.12254395036194415,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,Sub-Saharan Africa,3,471,29,3365,474,3394,32,3836,0.7390731385899407,0.790526601293673,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,Sub-Saharan Africa,0,474,1,3393,474,3394,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,Sub-Saharan Africa,8,466,44,3350,474,3394,52,3816,1.3070620366757706,0.519924971515603,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,Sub-Saharan Africa,0,474,3,3391,474,3394,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,Sub-Saharan Africa,191,283,1428,1966,474,3394,1619,2249,0.9291851016024785,0.486649840782974,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,Sub-Saharan Africa,1,473,8,3386,474,3394,9,3859,0.8948202959830867,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,United Kingdom / North America,115,358,887,2508,473,3395,1002,2866,0.9082778558067177,0.4329425228515592,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,United Kingdom / North America,1,472,10,3385,473,3395,11,3857,0.7171610169491526,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,United Kingdom / North America,35,438,245,3150,473,3395,280,3588,1.0273972602739727,0.8501169424333415,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,United Kingdom / North America,2,471,11,3384,473,3395,13,3855,1.3063115228720323,0.667438020825064,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,United Kingdom / North America,37,436,245,3150,473,3395,282,3586,1.0910878112712976,0.6368373710396967,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,United Kingdom / North America,35,438,261,3134,473,3395,296,3572,0.9595164366066586,0.9264120530342698,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),United Kingdom / North America,15,458,132,3263,473,3395,147,3721,0.80959706232632,0.5215169536341289,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),United Kingdom / North America,8,465,91,3304,473,3395,99,3769,0.6246484698097602,0.27454228165618416,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,United Kingdom / North America,0,473,8,3387,473,3395,8,3860,0.0,0.6069972204374803,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,United Kingdom / North America,0,473,13,3382,473,3395,13,3855,0.0,0.3891237403807913,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,United Kingdom / North America,0,473,1,3394,473,3395,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,United Kingdom / North America,3,470,29,3366,473,3395,32,3836,0.7408657373440939,0.790567027048487,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,United Kingdom / North America,0,473,1,3394,473,3395,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,United Kingdom / North America,4,469,48,3347,473,3395,52,3816,0.5947050461975835,0.3978085076362309,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,United Kingdom / North America,0,473,3,3392,473,3395,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,United Kingdom / North America,216,257,1403,1992,473,3395,1619,2249,1.1933072820609534,0.07357489332662288,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,United Kingdom / North America,2,471,7,3388,473,3395,9,3859,2.0552016985138004,0.3031789371697061,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Arts,Unknown,16,61,986,2805,77,3791,1002,2866,0.746184284906727,0.3580039919868803,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Biological and related sciences,Unknown,0,77,11,3780,77,3791,11,3857,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Business and administration,Unknown,6,71,274,3517,77,3791,280,3588,1.084712655495014,0.8229436764127488,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Education,Unknown,0,77,13,3778,77,3791,13,3855,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Engineering and engineering trades,Unknown,6,71,276,3515,77,3791,282,3586,1.0762400489895898,0.8237746409661042,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Health,Unknown,6,71,290,3501,77,3791,296,3572,1.0202039825157843,0.8307722049376653,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Humanities (except languages),Unknown,4,73,143,3648,77,3791,147,3721,1.3978350416706582,0.5372682177667099,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Information and Communication Technologies (ICTs),Unknown,3,74,96,3695,77,3791,99,3769,1.5603885135135136,0.44824681361141505,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Journalism and information,Unknown,0,77,8,3783,77,3791,8,3860,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Languages,Unknown,2,75,11,3780,77,3791,13,3855,9.163636363636364,0.02647326438228835,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Manufacturing and processing,Unknown,0,77,1,3790,77,3791,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Mathematics and statistics,Unknown,1,76,31,3760,77,3791,32,3836,1.595925297113752,0.47589678210580805,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal services,Unknown,0,77,1,3790,77,3791,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Personal skills and development,Unknown,1,76,51,3740,77,3791,52,3816,0.9649122807017544,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Physical sciences,Unknown,0,77,3,3788,77,3791,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Social and behavioural sciences,Unknown,32,45,1587,2204,77,3791,1619,2249,0.987579640131625,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-e2b_modal,Race,Welfare,Unknown,0,77,9,3782,77,3791,9,3859,0.0,1.0,1.0,False,nan,fisher_exact_2x2

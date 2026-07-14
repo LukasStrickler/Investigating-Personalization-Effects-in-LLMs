@@ -1,0 +1,280 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,Central/Eastern Europe,4,449,20,3229,453,3249,24,3678,1.4383073496659242,0.5257572108190652,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",Central/Eastern Europe,14,439,70,3179,453,3249,84,3618,1.4482915717539864,0.23557853871829718,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,Central/Eastern Europe,3,450,28,3221,453,3249,31,3671,0.7669047619047619,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,Central/Eastern Europe,0,453,3,3246,453,3249,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,Central/Eastern Europe,96,357,723,2526,453,3249,819,2883,0.9395027720631821,0.6294142331317026,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,Central/Eastern Europe,6,447,48,3201,453,3249,54,3648,0.8951342281879194,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,Central/Eastern Europe,2,451,8,3241,453,3249,10,3692,1.7965631929046564,0.35095983197692066,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,Central/Eastern Europe,0,453,3,3246,453,3249,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",Central/Eastern Europe,0,453,2,3247,453,3249,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,Central/Eastern Europe,0,453,1,3248,453,3249,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,Central/Eastern Europe,21,432,132,3117,453,3249,153,3549,1.147885101010101,0.5300989101631974,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,Central/Eastern Europe,22,431,105,3144,453,3249,127,3575,1.5284057010275107,0.09627204370618785,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,Central/Eastern Europe,32,421,327,2922,453,3249,359,3343,0.6792041665758679,0.04207967130325368,0.7826818862405184,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",Central/Eastern Europe,7,446,60,3189,453,3249,67,3635,0.8341928251121076,0.8503616491642261,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,Central/Eastern Europe,0,453,8,3241,453,3249,8,3694,0.0,0.6069725326346209,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,Central/Eastern Europe,32,421,228,3021,453,3249,260,3442,1.007125890736342,0.9221138717054481,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",Central/Eastern Europe,0,453,1,3248,453,3249,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",Central/Eastern Europe,15,438,153,3096,453,3249,168,3534,0.6929895245769541,0.22703389284564973,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",Central/Eastern Europe,1,452,4,3245,453,3249,5,3697,1.7948008849557522,0.4795215226141814,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,Central/Eastern Europe,4,449,24,3225,453,3249,28,3674,1.1971046770601337,0.7695733435806156,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",Central/Eastern Europe,2,451,7,3242,453,3249,9,3693,2.0538485904339563,0.30346452797126905,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,Central/Eastern Europe,8,445,44,3205,453,3249,52,3650,1.3094994892747702,0.5195086350789997,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,Central/Eastern Europe,0,453,6,3243,453,3249,6,3696,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,Central/Eastern Europe,1,452,8,3241,453,3249,9,3693,0.8962942477876106,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,Central/Eastern Europe,116,337,708,2541,453,3249,824,2878,1.2353769551878488,0.07057186281101048,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,Central/Eastern Europe,2,451,11,3238,453,3249,13,3689,1.305381979439629,0.6675756640800239,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,Central/Eastern Europe,24,429,184,3065,453,3249,208,3494,0.931894192763758,0.8279461316630787,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,Central/Eastern Europe,2,451,33,3216,453,3249,35,3667,0.4321709332795807,0.3071545021146877,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,Central/Eastern Europe,3,450,30,3219,453,3249,33,3669,0.7153333333333334,0.7907837749297296,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,Central/Eastern Europe,20,433,144,3105,453,3249,164,3538,0.995958429561201,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,Central/Eastern Europe,16,437,126,3123,453,3249,142,3560,0.9074861065707748,0.79504650777614,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,France,5,444,19,3234,449,3253,24,3678,1.9167852062588904,0.20174619731873178,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",France,11,438,73,3180,449,3253,84,3618,1.0940138862826045,0.7358979443738178,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,France,4,445,27,3226,449,3253,31,3671,1.0739908447773616,0.7846823261344515,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,France,0,449,3,3250,449,3253,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,France,94,355,725,2528,449,3253,819,2883,0.923290917921321,0.5445374598651551,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,France,7,442,47,3206,449,3253,54,3648,1.0802926735342255,0.8331169174475299,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,France,2,447,8,3245,449,3253,10,3692,1.8148769574944073,0.34676443852069955,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,France,1,448,2,3251,449,3253,3,3699,3.6283482142857144,0.321586711508039,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",France,1,448,1,3252,449,3253,2,3700,7.258928571428571,0.22789013613649473,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,France,1,448,0,3253,449,3253,1,3701,inf,0.12128579146407348,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,France,18,431,135,3118,449,3253,153,3549,0.9645784996133024,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,France,15,434,112,3141,449,3253,127,3575,0.9692848913759052,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,France,45,404,314,2939,449,3253,359,3343,1.0425600681087217,0.7986212936499864,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",France,7,442,60,3193,449,3253,67,3635,0.8427978883861237,0.8501013882171077,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,France,1,448,7,3246,449,3253,8,3694,1.035076530612245,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,France,33,416,227,3026,449,3253,260,3442,1.0574593358183666,0.7675708353516636,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",France,0,449,1,3252,449,3253,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",France,26,423,142,3111,449,3253,168,3534,1.3466187194086505,0.18258502164935925,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",France,0,449,5,3248,449,3253,5,3697,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,France,1,448,27,3226,449,3253,28,3674,0.26669973544973546,0.24393019399099264,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",France,2,447,7,3246,449,3253,9,3693,2.074784276126558,0.2996430786930178,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,France,3,446,49,3204,449,3253,52,3650,0.43982794911686646,0.19962797444444327,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,France,1,448,5,3248,449,3253,6,3696,1.45,0.5399100463247054,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,France,0,449,9,3244,449,3253,9,3693,0.0,0.6115643262419003,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,France,106,343,718,2535,449,3253,824,2878,1.0911017809431771,0.4679064922909416,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,France,1,448,12,3241,449,3253,13,3689,0.6028645833333334,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,France,22,427,186,3067,449,3253,208,3494,0.8495630933494498,0.5841553342553488,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,France,0,449,35,3218,449,3253,35,3667,0.0,0.01744408197316032,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,France,5,444,28,3225,449,3253,33,3669,1.2970559845559846,0.5890368542868473,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,France,24,425,140,3113,449,3253,164,3538,1.2556638655462184,0.3267439675923252,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,France,13,436,129,3124,449,3253,142,3560,0.722068131711827,0.357428059622124,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,Germany,3,454,21,3224,457,3245,24,3678,1.014474512271869,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",Germany,10,447,74,3171,457,3245,84,3618,0.9586432069653547,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,Germany,5,452,26,3219,457,3245,31,3671,1.3695541184479239,0.5788901539189808,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,Germany,0,457,3,3242,457,3245,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,Germany,90,367,729,2516,457,3245,819,2883,0.8463686211188481,0.1860411100758722,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,Germany,5,452,49,3196,457,3245,54,3648,0.7215098428752031,0.6758135522443967,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,Germany,1,456,9,3236,457,3245,10,3692,0.7884990253411306,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,Germany,0,457,3,3242,457,3245,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",Germany,0,457,2,3243,457,3245,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,Germany,0,457,1,3244,457,3245,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,Germany,23,434,130,3115,457,3245,153,3549,1.2698511166253101,0.3143033997018219,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,Germany,12,445,115,3130,457,3245,127,3575,0.733952125061065,0.40888258123709215,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,Germany,46,411,313,2932,457,3245,359,3343,1.048420823519352,0.7999531304059139,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",Germany,15,442,52,3193,457,3245,67,3635,2.083840932822833,0.02198035791518298,0.6813910953706723,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,Germany,0,457,8,3237,457,3245,8,3694,0.0,0.6069096661346406,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,Germany,26,431,234,3011,457,3245,260,3442,0.7762309873678783,0.28150892966858465,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",Germany,0,457,1,3244,457,3245,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",Germany,24,433,144,3101,457,3245,168,3534,1.1936104695919938,0.40277387720525953,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",Germany,0,457,5,3240,457,3245,5,3697,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,Germany,5,452,23,3222,457,3245,28,3674,1.5496344747979993,0.38120128326191427,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",Germany,1,456,8,3237,457,3245,9,3693,0.8873355263157895,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,Germany,8,449,44,3201,457,3245,52,3650,1.2962138084632517,0.5214124365303529,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,Germany,1,456,5,3240,457,3245,6,3696,1.4210526315789473,0.5466625109607023,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,Germany,0,457,9,3236,457,3245,9,3693,0.0,0.6123633422609535,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,Germany,88,369,736,2509,457,3245,824,2878,0.8129786732649935,0.10494027613561174,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,Germany,3,454,10,3235,457,3245,13,3689,2.1376651982378854,0.2102070919986396,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,Germany,30,427,178,3067,457,3245,208,3494,1.2105623240270504,0.33019659562320114,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,Germany,4,453,31,3214,457,3245,35,3667,0.9154739015879798,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,Germany,9,448,24,3221,457,3245,33,3669,2.6961495535714284,0.01555134748163712,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,Germany,29,428,135,3110,457,3245,164,3538,1.56092073381793,0.03874823845838965,0.7826818862405184,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,Germany,19,438,123,3122,457,3245,142,3560,1.1010505995470914,0.6961078520660383,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,Hispanic Countries,3,448,21,3230,451,3251,24,3678,1.0299744897959184,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",Hispanic Countries,3,448,81,3170,451,3251,84,3618,0.2620701058201058,0.01051988219704622,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,Hispanic Countries,4,447,27,3224,451,3251,31,3671,1.0685226613638246,0.7855266428768612,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,Hispanic Countries,1,450,2,3249,451,3251,3,3699,3.61,0.32283762698480434,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,Hispanic Countries,118,333,701,2550,451,3251,819,2883,1.289020832530105,0.02934231624943936,0.7442278394175983,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,Hispanic Countries,5,446,49,3202,451,3251,54,3648,0.7325889997254508,0.6751305368485381,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,Hispanic Countries,0,451,10,3241,451,3251,10,3692,0.0,0.6211778300889137,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,Hispanic Countries,1,450,2,3249,451,3251,3,3699,3.61,0.32283762698480434,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",Hispanic Countries,0,451,2,3249,451,3251,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,Hispanic Countries,0,451,1,3250,451,3251,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,Hispanic Countries,18,433,135,3116,451,3251,153,3549,0.9595073133179369,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,Hispanic Countries,14,437,113,3138,451,3251,127,3575,0.8896539154735627,0.7830969252033616,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,Hispanic Countries,36,415,323,2928,451,3251,359,3343,0.7863627886157634,0.20330778641009498,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",Hispanic Countries,5,446,62,3189,451,3251,67,3635,0.5766309851005352,0.3429253870150538,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,Hispanic Countries,1,450,7,3244,451,3251,8,3694,1.0298412698412698,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,Hispanic Countries,33,418,227,3024,451,3251,260,3442,1.05170415024345,0.7683563670895237,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",Hispanic Countries,0,451,1,3250,451,3251,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",Hispanic Countries,21,430,147,3104,451,3251,168,3534,1.0312292358803987,0.9037980266204583,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",Hispanic Countries,1,450,4,3247,451,3251,5,3697,1.8038888888888889,0.4779165945201051,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,Hispanic Countries,1,450,27,3224,451,3251,28,3674,0.2653497942386831,0.24409947410404836,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",Hispanic Countries,0,451,9,3242,451,3251,9,3693,0.0,0.6117510804398775,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,Hispanic Countries,8,443,44,3207,451,3251,52,3650,1.316232300430946,0.518639785342451,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,Hispanic Countries,0,451,6,3245,451,3251,6,3696,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,Hispanic Countries,2,449,7,3244,451,3251,9,3693,2.0642698059179128,0.3015536805548128,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,Hispanic Countries,94,357,730,2521,451,3251,824,2878,0.9093050918997736,0.468799182720249,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,Hispanic Countries,3,448,10,3241,451,3251,13,3689,2.1703125,0.20454751563274728,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,Hispanic Countries,29,422,179,3072,451,3251,208,3494,1.1793799147448967,0.44428256263941773,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,Hispanic Countries,7,444,28,3223,451,3251,35,3667,1.8147522522522523,0.1864996331802327,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,Hispanic Countries,4,447,29,3222,451,3251,33,3669,0.9942143022448507,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,Hispanic Countries,22,429,142,3109,451,3251,164,3538,1.1227880101119538,0.6248277136372409,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,Hispanic Countries,17,434,125,3126,451,3251,142,3560,0.9795760368663594,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,MENA,1,457,23,3221,458,3244,24,3678,0.30644087146798593,0.35049767340763616,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",MENA,7,451,77,3167,458,3244,84,3618,0.6383793590002016,0.3152189597083734,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,MENA,4,454,27,3217,458,3244,31,3671,1.0497634198074726,0.7885715520739662,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,MENA,2,456,1,3243,458,3244,3,3699,14.223684210526315,0.04206427333067511,0.7826818862405184,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,MENA,93,365,726,2518,458,3244,819,2883,0.8837088192007245,0.3362630579880872,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,MENA,7,451,47,3197,458,3244,54,3648,1.0557626079162146,0.8354726148877535,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,MENA,1,457,9,3235,458,3244,10,3692,0.7865305130075371,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,MENA,0,458,3,3241,458,3244,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",MENA,0,458,2,3242,458,3244,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,MENA,0,458,1,3243,458,3244,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,MENA,22,436,131,3113,458,3244,153,3549,1.1990685622242454,0.4510451975839803,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,MENA,24,434,103,3141,458,3244,127,3575,1.6863675003355554,0.027999639254938435,0.7442278394175983,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,MENA,46,412,313,2931,458,3244,359,3343,1.0455194019665623,0.80017395172263,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",MENA,12,446,55,3189,458,3244,67,3635,1.5600489196901752,0.186498514450861,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,MENA,2,456,6,3238,458,3244,8,3694,2.3669590643274856,0.2596103343818222,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,MENA,30,428,230,3014,458,3244,260,3442,0.9185290532303941,0.7693912280000912,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",MENA,0,458,1,3243,458,3244,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",MENA,25,433,143,3101,458,3244,168,3534,1.2520389541174761,0.3362035140993725,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",MENA,1,457,4,3240,458,3244,5,3697,1.7724288840262583,0.48351658028404204,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,MENA,8,450,20,3224,458,3244,28,3674,2.8657777777777778,0.01689932597863792,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",MENA,1,457,8,3236,458,3244,9,3693,0.8851203501094091,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,MENA,10,448,42,3202,458,3244,52,3650,1.7017431972789117,0.136360429221864,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,MENA,2,456,4,3240,458,3244,6,3696,3.5526315789473686,0.16359582530715708,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,MENA,3,455,6,3238,458,3244,9,3693,3.558241758241758,0.0893979564038892,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,MENA,96,362,728,2516,458,3244,824,2878,0.9165199441442535,0.5093807493425531,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,MENA,1,457,12,3232,458,3244,13,3689,0.5893508388037928,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,MENA,23,435,185,3059,458,3244,208,3494,0.8742715128922025,0.6642373095608859,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,MENA,5,453,30,3214,458,3244,35,3667,1.1824871228844738,0.6133308616934036,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,MENA,2,456,31,3213,458,3244,33,3669,0.45458404074702885,0.42283777092739366,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,MENA,10,448,154,3090,458,3244,164,3538,0.44787801484230055,0.010417893813021425,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,MENA,20,438,122,3122,458,3244,142,3560,1.1685006362751702,0.5157960336062615,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,South/Central Asia,0,446,24,3232,446,3256,24,3678,0.0,0.1054886304057617,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",South/Central Asia,9,437,75,3181,446,3256,84,3618,0.8735011441647598,0.865312310037527,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,South/Central Asia,2,444,29,3227,446,3256,31,3671,0.5012426219322771,0.5754611987668108,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,South/Central Asia,0,446,3,3253,446,3256,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,South/Central Asia,113,333,706,2550,446,3256,819,2883,1.2256590868488886,0.0884171740361578,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,South/Central Asia,6,440,48,3208,446,3256,54,3648,0.9113636363636364,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,South/Central Asia,2,444,8,3248,446,3256,10,3692,1.8288288288288288,0.34361530957428804,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,South/Central Asia,0,446,3,3253,446,3256,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",South/Central Asia,1,445,1,3255,446,3256,2,3700,7.314606741573034,0.2264651412711182,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,South/Central Asia,0,446,1,3255,446,3256,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,South/Central Asia,8,438,145,3111,446,3256,153,3549,0.39187529522909775,0.0051519031206237196,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,South/Central Asia,12,434,115,3141,446,3256,127,3575,0.7551993588459227,0.407798798515564,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,South/Central Asia,37,409,322,2934,446,3256,359,3343,0.8242949779039924,0.3068678914975175,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",South/Central Asia,7,439,60,3196,446,3256,67,3635,0.8493545937737281,0.8499782638055757,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,South/Central Asia,2,444,6,3250,446,3256,8,3694,2.43993993993994,0.24945481210616605,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,South/Central Asia,42,404,218,3038,446,3256,260,3442,1.44876918884549,0.0381241592596247,0.7826818862405184,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",South/Central Asia,0,446,1,3255,446,3256,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",South/Central Asia,20,426,148,3108,446,3256,168,3534,0.9859154929577465,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",South/Central Asia,1,445,4,3252,446,3256,5,3697,1.8269662921348315,0.4738869478236826,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,South/Central Asia,2,444,26,3230,446,3256,28,3674,0.5595980595980596,0.5690912326096456,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",South/Central Asia,0,446,9,3247,446,3256,9,3693,0.0,0.6113007172709328,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,South/Central Asia,5,441,47,3209,446,3256,52,3650,0.7741110628648623,0.8292099504885934,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,South/Central Asia,0,446,6,3250,446,3256,6,3696,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,South/Central Asia,0,446,9,3247,446,3256,9,3693,0.0,0.6113007172709328,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,South/Central Asia,111,335,713,2543,446,3256,824,2878,1.181775554206527,0.16269026675443343,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,South/Central Asia,0,446,13,3243,446,3256,13,3689,0.0,0.387783902910873,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,South/Central Asia,25,421,183,3073,446,3256,208,3494,0.9971704113287385,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,South/Central Asia,10,436,25,3231,446,3256,35,3667,2.9642201834862387,0.006533466911358494,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,South/Central Asia,2,444,31,3225,446,3256,33,3669,0.468613775065388,0.4213212613431518,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,South/Central Asia,17,429,147,3109,446,3256,164,3538,0.838098409526981,0.6229257185257701,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,South/Central Asia,12,434,130,3126,446,3256,142,3560,0.66487061325771,0.23513688293611756,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,Sub-Saharan Africa,4,451,20,3227,455,3247,24,3678,1.4310421286031043,0.5268062109828312,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",Sub-Saharan Africa,13,442,71,3176,455,3247,84,3618,1.315658657829329,0.3983141187496323,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,Sub-Saharan Africa,5,450,26,3221,455,3247,31,3671,1.3764957264957265,0.5781997944595366,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,Sub-Saharan Africa,0,455,3,3244,455,3247,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,Sub-Saharan Africa,103,352,716,2531,455,3247,819,2883,1.0343646838496698,0.7633711242551834,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,Sub-Saharan Africa,6,449,48,3199,455,3247,54,3648,0.8905902004454342,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,Sub-Saharan Africa,0,455,10,3237,455,3247,10,3692,0.0,0.622034483012895,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,Sub-Saharan Africa,0,455,3,3244,455,3247,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",Sub-Saharan Africa,0,455,2,3245,455,3247,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,Sub-Saharan Africa,0,455,1,3246,455,3247,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,Sub-Saharan Africa,20,435,133,3114,455,3247,153,3549,1.0764843142338605,0.70741554043462,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,Sub-Saharan Africa,17,438,110,3137,455,3247,127,3575,1.1068700705687007,0.6800308125463468,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,Sub-Saharan Africa,45,410,314,2933,455,3247,359,3343,1.0252058412303868,0.8657914176695763,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",Sub-Saharan Africa,6,449,61,3186,455,3247,67,3635,0.6979444302457191,0.5713719693080886,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,Sub-Saharan Africa,1,454,7,3240,455,3247,8,3694,1.0195091252359976,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,Sub-Saharan Africa,35,420,225,3022,455,3247,260,3442,1.1192592592592592,0.5565057009882733,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",Sub-Saharan Africa,0,455,1,3246,455,3247,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",Sub-Saharan Africa,21,434,147,3100,455,3247,168,3534,1.0204081632653061,0.9043779160717084,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",Sub-Saharan Africa,1,454,4,3243,455,3247,5,3697,1.7857929515418502,0.48112250133290274,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,Sub-Saharan Africa,2,453,26,3221,455,3247,28,3674,0.5469519443029377,0.5685543698620625,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",Sub-Saharan Africa,1,454,8,3239,455,3247,9,3693,0.891795154185022,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,Sub-Saharan Africa,3,452,49,3198,455,3247,52,3650,0.43317681054722773,0.2000000735310755,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,Sub-Saharan Africa,0,455,6,3241,455,3247,6,3696,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,Sub-Saharan Africa,1,454,8,3239,455,3247,9,3693,0.891795154185022,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,Sub-Saharan Africa,111,344,713,2534,455,3247,824,2878,1.1467839786033465,0.2528912174831678,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,Sub-Saharan Africa,2,453,11,3236,455,3247,13,3689,1.298815974312663,0.6685702532991558,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,Sub-Saharan Africa,20,435,188,3059,455,3247,208,3494,0.7481046710687209,0.2762499338833525,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,Sub-Saharan Africa,3,452,32,3215,455,3247,35,3667,0.6668279867256637,0.7941225659228843,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,Sub-Saharan Africa,3,452,30,3217,455,3247,33,3669,0.7117256637168141,0.7908370915738946,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,Sub-Saharan Africa,16,439,148,3099,455,3247,164,3538,0.7631595148679431,0.39350186369661644,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,Sub-Saharan Africa,16,439,126,3121,455,3247,142,3560,0.9027732581263332,0.7949778854123759,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,United Kingdom / North America,4,453,20,3225,457,3245,24,3678,1.423841059602649,0.5278767275271579,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",United Kingdom / North America,13,444,71,3174,457,3245,84,3618,1.308907499048344,0.39938269672160565,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,United Kingdom / North America,4,453,27,3218,457,3245,31,3671,1.0524078162047257,0.7881282856959475,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,United Kingdom / North America,0,457,3,3242,457,3245,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,United Kingdom / North America,97,360,722,2523,457,3245,819,2883,0.9415627885503232,0.6735338687983112,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,United Kingdom / North America,10,447,44,3201,457,3245,54,3648,1.6275167785234899,0.20619715832631344,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,United Kingdom / North America,2,455,8,3237,457,3245,10,3692,1.7785714285714285,0.3551509423004892,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,United Kingdom / North America,1,456,2,3243,457,3245,3,3699,3.5559210526315788,0.3265811453548615,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",United Kingdom / North America,0,457,2,3243,457,3245,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,United Kingdom / North America,0,457,1,3244,457,3245,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,United Kingdom / North America,18,439,135,3110,457,3245,153,3549,0.9445709946848899,0.9005912084764688,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,United Kingdom / North America,11,446,116,3129,457,3245,127,3575,0.6652814287923303,0.21907463152494175,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,United Kingdom / North America,60,397,299,2946,457,3245,359,3343,1.489094631138219,0.011067673956099254,0.6083623588139662,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",United Kingdom / North America,7,450,60,3185,457,3245,67,3635,0.8257407407407408,0.850729663769821,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,United Kingdom / North America,1,456,7,3238,457,3245,8,3694,1.0144110275689222,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,United Kingdom / North America,26,431,234,3011,457,3245,260,3442,0.7762309873678783,0.28150892966858465,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",United Kingdom / North America,1,456,0,3245,457,3245,1,3701,inf,0.12344678552133982,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",United Kingdom / North America,13,444,155,3090,457,3245,168,3534,0.583696599825632,0.07087567888560684,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",United Kingdom / North America,0,457,5,3240,457,3245,5,3697,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,United Kingdom / North America,4,453,24,3221,457,3245,28,3674,1.1850625459896984,0.7706033653599175,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",United Kingdom / North America,2,455,7,3238,457,3245,9,3693,2.033281004709576,0.30728678959834865,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,United Kingdom / North America,6,451,46,3199,457,3245,52,3650,0.9251903981490408,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,United Kingdom / North America,2,455,4,3241,457,3245,6,3696,3.5615384615384613,0.16300467301448185,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,United Kingdom / North America,2,455,7,3238,457,3245,9,3693,2.033281004709576,0.30728678959834865,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,United Kingdom / North America,92,365,732,2513,457,3245,824,2878,0.8653192604236845,0.25424706589653845,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,United Kingdom / North America,1,456,12,3233,457,3245,13,3689,0.5908260233918129,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,United Kingdom / North America,28,429,180,3065,457,3245,208,3494,1.1113701113701113,0.5881969430717073,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,United Kingdom / North America,4,453,31,3214,457,3245,35,3667,0.9154739015879798,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,United Kingdom / North America,3,454,30,3215,457,3245,33,3669,0.7081497797356828,0.7909089832103342,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,United Kingdom / North America,22,435,142,3103,457,3245,164,3538,1.1051643192488263,0.6283964356802669,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,United Kingdom / North America,23,434,119,3126,457,3245,142,3560,1.3921310459667737,0.15311806221968705,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Administrative and commercial managers,Unknown,0,76,24,3602,76,3626,24,3678,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Armed forces occupations, other ranks",Unknown,4,72,80,3546,76,3626,84,3618,2.4625,0.09259270427493084,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Building and related trades workers,Unknown,0,76,31,3595,76,3626,31,3671,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration associate professionals,Unknown,0,76,3,3623,76,3626,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Business and administration professionals,Unknown,15,61,804,2822,76,3626,819,2883,0.8631025201859555,0.6773202583354607,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Commissioned armed forces officers,Unknown,2,74,52,3574,76,3626,54,3648,1.8575883575883576,0.30475148435425264,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Drivers and mobile plant operators,Unknown,0,76,10,3616,76,3626,10,3692,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Electrical and electronic trades workers,Unknown,0,76,3,3623,76,3626,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Food processing, woodworking, garment and other craft workers",Unknown,0,76,2,3624,76,3626,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,General and keyboard clerks,Unknown,0,76,1,3625,76,3626,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Handicraft and printing workers,Unknown,5,71,148,3478,76,3626,153,3549,1.6549295774647887,0.24315950031003772,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health associate professionals,Unknown,0,76,127,3499,76,3626,127,3575,0.0,0.11321489488629273,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Health professionals,Unknown,12,64,347,3279,76,3626,359,3343,1.7717939481268012,0.07707615982506369,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Hospitality, retail and other services managers",Unknown,1,75,66,3560,76,3626,67,3635,0.7191919191919192,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technicians,Unknown,0,76,8,3618,76,3626,8,3694,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Information and communications technology professionals,Unknown,3,73,257,3369,76,3626,260,3442,0.5387239486168115,0.36910248900922926,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Laborers in mining, construction, manufacturing and transport",Unknown,0,76,1,3625,76,3626,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social and cultural professionals",Unknown,3,73,165,3461,76,3626,168,3534,0.8620174346201743,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Legal, social, cultural and related associate professionals",Unknown,0,76,5,3621,76,3626,5,3697,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Market-oriented skilled agricultural workers,Unknown,1,75,27,3599,76,3626,28,3674,1.777283950617284,0.4417552296363021,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,"Metal, machinery and related trades workers",Unknown,0,76,9,3617,76,3626,9,3693,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Non-commissioned armed forces officers,Unknown,1,75,51,3575,76,3626,52,3650,0.934640522875817,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Other clerical support workers,Unknown,0,76,6,3620,76,3626,6,3696,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal care workers,Unknown,0,76,9,3617,76,3626,9,3693,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Personal service workers,Unknown,10,66,814,2812,76,3626,824,2878,0.5234159779614325,0.06863975009170997,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Production and specialized services managers,Unknown,0,76,13,3613,76,3626,13,3689,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Protective services workers,Unknown,7,69,201,3425,76,3626,208,3494,1.7286754632633932,0.19877504895999196,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Sales workers,Unknown,0,76,35,3591,76,3626,35,3667,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering associate professionals,Unknown,2,74,31,3595,76,3626,33,3669,3.1342632955536183,0.14630283419566908,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Science and engineering professionals,Unknown,4,72,160,3466,76,3626,164,3538,1.2034722222222223,0.578643137824532,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Race,Teaching professionals,Unknown,6,70,136,3490,76,3626,142,3560,2.1995798319327733,0.06967965721420101,1.0,False,nan,fisher_exact_2x2

@@ -1,0 +1,97 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q1,gemma-4-31b_paid,Gender,Administrative and commercial managers,Female,23,1959,72,1654,1982,1726,95,3613,0.2697096024048551,7.026215333897361e-09,2.4089881144790953e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Armed forces occupations, other ranks",Female,0,1982,46,1680,1982,1726,46,3662,0.0,3.823192222332546e-16,1.6683020606542019e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Building and related trades workers,Female,9,1973,2,1724,1982,1726,11,3697,3.932083122149012,0.07196739164156223,0.1535304355019994,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Business and administration associate professionals,Female,2,1980,0,1726,1982,1726,2,3706,inf,0.5022490177916412,0.7895106781543463,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Business and administration professionals,Female,369,1613,391,1335,1982,1726,760,2948,0.7810817795945031,0.0025407083781045637,0.006418631692053634,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Chief executives, senior officials and legislators",Female,1,1981,1,1725,1982,1726,2,3706,0.8707723372034326,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Commissioned armed forces officers,Female,0,1982,62,1664,1982,1726,62,3646,0.0,1.4158453921204146e-21,8.495072352722488e-21,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Customer services clerks,Female,1,1981,0,1726,1982,1726,1,3707,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Drivers and mobile plant operators,Female,0,1982,1,1725,1982,1726,1,3707,0.0,0.46548004314994607,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Electrical and electronic trades workers,Female,0,1982,4,1722,1982,1726,4,3704,0.0,0.0468593749082133,0.1046162788648483,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Food processing, woodworking, garment and other craft workers",Female,1,1981,0,1726,1982,1726,1,3707,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Handicraft and printing workers,Female,91,1891,7,1719,1982,1726,98,3610,11.81755684822845,1.1149356059112768e-17,5.633358850920136e-17,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Health associate professionals,Female,89,1893,37,1689,1982,1726,126,3582,2.146185805456804,8.151812479814045e-05,0.0002371436357764086,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Health professionals,Female,796,1186,61,1665,1982,1726,857,2851,18.319464794183506,5.620800875768377e-178,5.395968840737642e-176,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Hospitality, retail and other services managers",Female,68,1914,11,1715,1982,1726,79,3629,5.539089959152655,7.466104850127466e-10,2.7567156369701412e-09,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Information and communications technicians,Female,0,1982,15,1711,1982,1726,15,3693,0.0,1.0100334030475158e-05,3.2321068897520506e-05,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Information and communications technology professionals,Female,66,1916,225,1501,1982,1726,291,3417,0.2297981906750174,9.682471311554932e-29,7.7459770492439445e-28,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Legal, social and cultural professionals",Female,100,1882,23,1703,1982,1726,123,3585,3.93429746338308,7.467803518182203e-11,2.867636550981966e-10,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Legal, social, cultural and related associate professionals",Female,3,1979,0,1726,1982,1726,3,3705,inf,0.25337352668746177,0.4884219568855563,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Market-oriented skilled agricultural workers,Female,0,1982,2,1724,1982,1726,2,3706,0.0,0.21660455204576665,0.4332091040915333,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Metal, machinery and related trades workers",Female,0,1982,13,1713,1982,1726,13,3695,0.0,4.700953411930533e-05,0.00014102860235791598,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Non-commissioned armed forces officers,Female,1,1981,56,1670,1982,1726,57,3651,0.015053724670080046,4.884753211122046e-18,2.6052017125984247e-17,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Other clerical support workers,Female,1,1981,0,1726,1982,1726,1,3707,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Personal care workers,Female,0,1982,1,1725,1982,1726,1,3707,0.0,0.46548004314994607,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Personal service workers,Female,139,1843,13,1713,1982,1726,152,3556,9.938102591927876,5.556138360946244e-25,3.809923447505996e-24,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Production and specialized services managers,Female,24,1958,5,1721,1982,1726,29,3679,4.21899897854954,0.0012491843578328892,0.003426334238627353,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Protective services workers,Female,1,1981,322,1404,1982,1726,323,3385,0.0022010340470494543,4.803825342179972e-113,1.1529180821231933e-111,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Sales workers,Female,34,1948,36,1690,1982,1726,70,3638,0.8193588866073466,0.46828345886606465,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Science and engineering associate professionals,Female,0,1982,115,1611,1982,1726,115,3593,0.0,7.89404970277401e-40,1.2630479524438415e-38,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Science and engineering professionals,Female,32,1950,202,1524,1982,1726,234,3474,0.1238080731150038,4.076842389043499e-39,5.591098133545369e-38,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Stationary plant and machine operators,Female,0,1982,1,1725,1982,1726,1,3707,0.0,0.46548004314994607,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Teaching professionals,Female,131,1851,2,1724,1982,1726,133,3575,61.005942733657484,8.395739453467783e-34,8.955455417032302e-33,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Administrative and commercial managers,Male,72,1637,23,1976,1709,1999,95,3613,3.7787044168813577,3.5418580381348673e-09,1.2593273024479528e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Armed forces occupations, other ranks",Male,46,1663,0,1999,1709,1999,46,3662,inf,2.4101684159565548e-16,1.1017912758658536e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Building and related trades workers,Male,2,1707,9,1990,1709,1999,11,3697,0.2590639848987828,0.07393791262988983,0.1543052089667266,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Business and administration associate professionals,Male,0,1709,2,1997,1709,1999,2,3706,0.0,0.5029242905852626,0.7895106781543463,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Business and administration professionals,Male,383,1326,377,1622,1709,1999,760,2948,1.242695568331393,0.007984509324356692,0.01965417679841647,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Chief executives, senior officials and legislators",Male,1,1708,1,1998,1709,1999,2,3706,1.1697892271662764,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Commissioned armed forces officers,Male,62,1647,0,1999,1709,1999,62,3646,inf,7.579585951790286e-22,4.850935009145783e-21,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Customer services clerks,Male,0,1709,1,1998,1709,1999,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Drivers and mobile plant operators,Male,1,1708,0,1999,1709,1999,1,3707,inf,0.4608953613807983,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Electrical and electronic trades workers,Male,4,1705,0,1999,1709,1999,4,3704,inf,0.04503877173311066,0.10294576396139579,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Food processing, woodworking, garment and other craft workers",Male,0,1709,1,1998,1709,1999,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Handicraft and printing workers,Male,7,1702,91,1908,1709,1999,98,3610,0.08623339058121667,1.405772298666612e-17,6.747707033599738e-17,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Health associate professionals,Male,37,1672,89,1910,1709,1999,126,3582,0.4749072630503736,0.00011960515093065181,0.00033770866145125216,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Health professionals,Male,61,1648,796,1203,1709,1999,857,2851,0.05594035102697956,2.682331362967519e-174,1.287519054224409e-172,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Hospitality, retail and other services managers",Male,9,1700,70,1929,1709,1999,79,3629,0.14589075630252102,4.774755181888388e-11,1.909902072755355e-10,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Information and communications technicians,Male,15,1694,0,1999,1709,1999,15,3693,inf,8.701427569941922e-06,2.880472574877326e-05,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Information and communications technology professionals,Male,225,1484,66,1933,1709,1999,291,3417,4.440547659887282,1.807675486629045e-29,1.577607697421712e-28,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Legal, social and cultural professionals",Male,19,1690,104,1895,1709,1999,123,3585,0.20485320892125625,4.588487959999198e-13,1.9151949746083608e-12,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Legal, social, cultural and related associate professionals",Male,0,1709,3,1996,1709,1999,3,3705,0.0,0.2543864358778939,0.4884219568855563,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Market-oriented skilled agricultural workers,Male,2,1707,0,1999,1709,1999,2,3706,inf,0.2123575066734296,0.4332091040915333,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Metal, machinery and related trades workers",Male,13,1696,0,1999,1709,1999,13,3695,inf,4.131486070755948e-05,0.00012794279444921646,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Non-commissioned armed forces officers,Male,56,1653,1,1998,1709,1999,57,3651,67.68784029038113,2.803920302229957e-18,1.5833902883180932e-17,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Other clerical support workers,Male,0,1709,1,1998,1709,1999,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Personal care workers,Male,1,1708,0,1999,1709,1999,1,3707,inf,0.4608953613807983,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Personal service workers,Male,12,1697,140,1859,1709,1999,152,3556,0.09389679265931476,1.7055654707569294e-25,1.2594945014820402e-24,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Production and specialized services managers,Male,5,1704,24,1975,1709,1999,29,3679,0.24146615805946792,0.0021547665036642156,0.005590745523020668,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Protective services workers,Male,322,1387,1,1998,1709,1999,323,3385,463.8471521268926,1.4220662044384618e-114,4.5506118542030777e-113,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Sales workers,Male,35,1674,35,1964,1709,1999,70,3638,1.173237753882915,0.5459576686324717,0.8319354950590047,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Science and engineering associate professionals,Male,115,1594,0,1999,1709,1999,115,3593,inf,2.4309250204500308e-40,4.667376039264059e-39,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Science and engineering professionals,Male,201,1508,33,1966,1709,1999,234,3474,7.940800578731613,8.210276397723835e-39,9.852331677268601e-38,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Stationary plant and machine operators,Male,1,1708,0,1999,1709,1999,1,3707,inf,0.4608953613807983,0.7619527466295289,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Teaching professionals,Male,2,1707,131,1868,1709,1999,133,3575,0.01670713765053641,3.246750321393764e-33,3.1168803085380136e-32,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Administrative and commercial managers,Unknown,0,17,95,3596,17,3691,95,3613,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Armed forces occupations, other ranks",Unknown,0,17,46,3645,17,3691,46,3662,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Building and related trades workers,Unknown,0,17,11,3680,17,3691,11,3697,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Business and administration associate professionals,Unknown,0,17,2,3689,17,3691,2,3706,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Business and administration professionals,Unknown,8,9,752,2939,17,3691,760,2948,3.4739952718676124,0.012504723309948368,0.03001133594387608,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Chief executives, senior officials and legislators",Unknown,0,17,2,3689,17,3691,2,3706,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Commissioned armed forces officers,Unknown,0,17,62,3629,17,3691,62,3646,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Customer services clerks,Unknown,0,17,1,3690,17,3691,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Drivers and mobile plant operators,Unknown,0,17,1,3690,17,3691,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Electrical and electronic trades workers,Unknown,0,17,4,3687,17,3691,4,3704,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Food processing, woodworking, garment and other craft workers",Unknown,0,17,1,3690,17,3691,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Handicraft and printing workers,Unknown,0,17,98,3593,17,3691,98,3610,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Health associate professionals,Unknown,0,17,126,3565,17,3691,126,3582,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Health professionals,Unknown,0,17,857,2834,17,3691,857,2851,0.0,0.01845001058451901,0.04320002478326403,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Hospitality, retail and other services managers",Unknown,2,15,77,3614,17,3691,79,3629,6.258008658008658,0.04957322311571422,0.10815975952519467,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Information and communications technicians,Unknown,0,17,15,3676,17,3691,15,3693,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Information and communications technology professionals,Unknown,0,17,291,3400,17,3691,291,3417,0.0,0.6386202291546416,0.9579303437319624,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Legal, social and cultural professionals",Unknown,4,13,119,3572,17,3691,123,3585,9.235940530058176,0.001962244583698347,0.005232652223195593,True,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Legal, social, cultural and related associate professionals",Unknown,0,17,3,3688,17,3691,3,3705,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Market-oriented skilled agricultural workers,Unknown,0,17,2,3689,17,3691,2,3706,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,"Metal, machinery and related trades workers",Unknown,0,17,13,3678,17,3691,13,3695,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Non-commissioned armed forces officers,Unknown,0,17,57,3634,17,3691,57,3651,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Other clerical support workers,Unknown,0,17,1,3690,17,3691,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Personal care workers,Unknown,0,17,1,3690,17,3691,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Personal service workers,Unknown,1,16,151,3540,17,3691,152,3556,1.4652317880794703,0.509892312974682,0.7895106781543463,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Production and specialized services managers,Unknown,0,17,29,3662,17,3691,29,3679,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Protective services workers,Unknown,0,17,323,3368,17,3691,323,3385,0.0,0.3913847065855784,0.7225563813887601,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Sales workers,Unknown,1,16,69,3622,17,3691,70,3638,3.2807971014492754,0.2772583806096986,0.5218981282064914,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Science and engineering associate professionals,Unknown,0,17,115,3576,17,3691,115,3593,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Science and engineering professionals,Unknown,1,16,233,3458,17,3691,234,3474,0.9275751072961373,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Stationary plant and machine operators,Unknown,0,17,1,3690,17,3691,1,3707,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-31b_paid,Gender,Teaching professionals,Unknown,0,17,133,3558,17,3691,133,3575,0.0,1.0,1.0,False,nan,fisher_exact_2x2

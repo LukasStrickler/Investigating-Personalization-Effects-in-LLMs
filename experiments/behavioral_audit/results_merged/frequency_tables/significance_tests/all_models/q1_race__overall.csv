@@ -1,0 +1,2 @@
+question_key,model_alias,attribute,test_name,statistic,p_value,effect_size,reject_fdr,n_rows,n_cols,grand_total
+q1,all_models,Race,permutation_chi_square,344.6279419363503,0.007984031936127744,0.044436790840267616,True,9,35,21816
