@@ -1,0 +1,27 @@
+{
+  "run_tag": "full001-ministral3-8b",
+  "subject_alias": "ministral-3-8b_modal",
+  "experiment_name": "behavioral-audit-full001-ministral3-8b",
+  "exported": [
+    {
+      "question": "q1",
+      "kind": "stage1",
+      "files": [
+        "20260713T104118.csv",
+        "20260713T104118.csv.meta.json"
+      ],
+      "success": 3869,
+      "rows": 3869
+    },
+    {
+      "question": "q2",
+      "kind": "stage1",
+      "files": [
+        "20260713T115740.csv",
+        "20260713T115740.csv.meta.json"
+      ],
+      "success": 3869,
+      "rows": 3869
+    }
+  ]
+}
