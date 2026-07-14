@@ -85,7 +85,7 @@ model's default recommendation distribution, to compare against the personalized
 
 Two differences from the full path above:
 
-- Use `run_behavioral_audit_baseline.py` (not `run_behavioral_audit_modal.py`).
+- Use `run_behavioral_audit_baseline_modal.py` (not `run_behavioral_audit_modal.py`).
 - It runs **Stage 1 and Stage 2 in one process** — the OpenRouter judge alias
   (`gpt-4o-mini_paid`) is already in `config/inference.modal.example.yaml`, so no
   separate `STAGE2_ONLY` step is needed.
@@ -102,7 +102,7 @@ export MODAL_API_KEY="EMPTY"
 # ── Gemma 4 E2B — default deploy (pers-subject-serve, 1× L4) ──
 modal deploy experiments/modal_gpu_poc/modal_serve.py
 export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
-python experiments/behavioral_audit/run_behavioral_audit_baseline.py \
+python experiments/behavioral_audit/run_behavioral_audit_baseline_modal.py \
     --run-tag baseline-e2b --subject-alias gemma-4-e2b_modal
 python experiments/behavioral_audit/export_results.py \
     --run-tag baseline-e2b --subject-alias gemma-4-e2b_modal
@@ -110,7 +110,7 @@ modal app stop pers-subject-serve
 
 # ── Ministral 3 8B — gated (see § Gated models for setup_modal_hf.py + deploy env) ──
 export MODAL_BASE_URL="https://<workspace>--pers-ministral3-8b-serve-serve.modal.run/v1"
-python experiments/behavioral_audit/run_behavioral_audit_baseline.py \
+python experiments/behavioral_audit/run_behavioral_audit_baseline_modal.py \
     --run-tag baseline-ministral3-8b --subject-alias ministral-3-8b_modal
 python experiments/behavioral_audit/export_results.py \
     --run-tag baseline-ministral3-8b --subject-alias ministral-3-8b_modal
@@ -136,7 +136,8 @@ Both baselines were produced on a single L4 (`N_ITERATIONS=50`, judge
 | `modal_utils.py` | shared `.env` loader for setup script |
 | `config/inference.modal.example.yaml` | provider + model aliases |
 | `../behavioral_audit/run_behavioral_audit_modal.py` | Stage 1 matrix runner (personalized runs) |
-| `../behavioral_audit/run_behavioral_audit_baseline.py` | persona-free baseline runner (Stage 1 + Stage 2); `--subject-alias` targets a Modal subject |
+| `../behavioral_audit/run_behavioral_audit_baseline_modal.py` | persona-free baseline runner for Modal subjects (Stage 1 + Stage 2) |
+| `../behavioral_audit/run_behavioral_audit_baseline.py` | persona-free baseline runner for paid-API subjects (edit constants in-file) |
 | `../behavioral_audit/export_results.py` | copy Stage-1 CSVs and Stage-2 judgments from `logs/` → `results_<tag>/` |
 
 ## Bug fixes since the initial Modal PR (#28)

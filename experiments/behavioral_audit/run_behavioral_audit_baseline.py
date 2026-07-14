@@ -26,7 +26,6 @@ Set RUN_TAG below to identify this run.
 
 from __future__ import annotations
 
-import argparse
 import asyncio
 import json
 import sys
@@ -383,40 +382,5 @@ async def main() -> None:
     print("=" * 60)
 
 
-def _parse_args() -> argparse.Namespace:
-    ap = argparse.ArgumentParser(
-        description="Behavioral-audit BASELINE runner (persona-free control).",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
-    ap.add_argument("--run-tag", default=RUN_TAG,
-                    help="names the logs/ and results_ output dirs (behavioral-audit-<tag>)")
-    ap.add_argument("--subject-alias", action="append", default=None, metavar="ALIAS",
-                    help="stage-1 model alias from config/inference.yaml; repeat for several. "
-                         "For Modal subjects pass exactly ONE (all aliases share one MODAL_BASE_URL). "
-                         "Default: the built-in EXPERIMENT_MODELS.")
-    ap.add_argument("--judge", action="append", default=None, metavar="ALIAS",
-                    help="stage-2 judge alias (repeatable). Default: the built-in JUDGE_MODEL.")
-    ap.add_argument("--config", type=Path, default=CONFIG_PATH,
-                    help="inference config (use config/inference.modal.example.yaml for Modal subjects)")
-    ap.add_argument("--n-iterations", type=int, default=N_ITERATIONS,
-                    help="bare-question calls per model per question")
-    ap.add_argument("--stage1-only", action="store_true", help="generate responses, skip judging")
-    ap.add_argument("--stage2-only", action="store_true", help="judge existing stage-1 CSVs only")
-    return ap.parse_args()
-
-
 if __name__ == "__main__":
-    _args = _parse_args()
-    # CLI overrides the module-level constants; anything omitted keeps its default,
-    # so the zero-argument paid-baseline invocation behaves exactly as before.
-    RUN_TAG = _args.run_tag
-    if _args.subject_alias:
-        EXPERIMENT_MODELS = _args.subject_alias
-    if _args.judge:
-        JUDGE_MODEL = _args.judge
-    CONFIG_PATH = _args.config
-    N_ITERATIONS = _args.n_iterations
-    STAGE1_ONLY = _args.stage1_only
-    STAGE2_ONLY = _args.stage2_only
-    EXPERIMENT_NAME = f"behavioral-audit-{RUN_TAG}"
     asyncio.run(main())
