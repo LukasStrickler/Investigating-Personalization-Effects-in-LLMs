@@ -67,6 +67,7 @@ and judge verdicts fit together.
 - **[Provider Configuration](config/inference.example.yaml)** — provider, alias, retry, rate-limit, and output-path config
 - **[Background Generation](src/generate_backgrounds/README.md)** — optional persona conversation-history generation
 - **[vLLM on bwUniCluster / Helix](docs/running-vllm-on-clusters.md)** — cluster batch and local GPU setup
+- **[Subject models on Modal GPUs](experiments/modal_gpu_poc/README.md)** — self-host on rented GPUs; full and persona-free **baseline** run/reproduce steps
 
 ## Examples
 

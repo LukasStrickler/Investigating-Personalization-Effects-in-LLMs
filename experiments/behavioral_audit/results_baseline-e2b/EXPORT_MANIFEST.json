@@ -1,0 +1,35 @@
+{
+  "run_tag": "baseline-e2b",
+  "subject_alias": "gemma-4-e2b_modal",
+  "experiment_name": "behavioral-audit-baseline-e2b",
+  "exported": [
+    {
+      "question": "q1",
+      "kind": "stage1",
+      "files": [
+        "20260714T122009.csv",
+        "20260714T122009.csv.meta.json"
+      ],
+      "success": 50,
+      "rows": 50
+    },
+    {
+      "question": "q2",
+      "kind": "stage1",
+      "files": [
+        "20260714T122425.csv",
+        "20260714T122425.csv.meta.json"
+      ],
+      "success": 50,
+      "rows": 50
+    },
+    {
+      "kind": "stage2",
+      "name": "behavioral-audit-baseline-e2b-q1-stage2.judgments.csv"
+    },
+    {
+      "kind": "stage2",
+      "name": "behavioral-audit-baseline-e2b-q2-stage2.judgments.csv"
+    }
+  ]
+}
