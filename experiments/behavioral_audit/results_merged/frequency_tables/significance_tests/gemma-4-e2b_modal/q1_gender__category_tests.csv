@@ -1,0 +1,55 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q1,gemma-4-e2b_modal,Gender,Administrative and commercial managers,Female,5,1883,92,1519,1888,1611,97,3402,0.043841926620332955,8.810836432355531e-26,7.9297527891199785e-25,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Armed forces occupations, other ranks",Female,0,1888,24,1587,1888,1611,24,3475,0.0,7.502458430832274e-09,1.8415125239315583e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Building and related trades workers,Female,0,1888,17,1594,1888,1611,17,3482,0.0,1.7934746444705988e-06,3.4588439571932975e-06,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Business and administration associate professionals,Female,2,1886,0,1611,1888,1611,2,3497,inf,0.5029915432833787,0.5658654861938011,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Business and administration professionals,Female,710,1178,810,801,1888,1611,1520,1979,0.5960196189398227,4.896470838945835e-14,1.6525589081442193e-13,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Chief executives, senior officials and legislators",Female,1,1887,1,1610,1888,1611,2,3497,0.8532061473237944,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Commissioned armed forces officers,Female,0,1888,22,1589,1888,1611,22,3477,0.0,3.59346700009659e-08,7.463354538662149e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Customer services clerks,Female,1,1887,0,1611,1888,1611,1,3498,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Electrical and electronic trades workers,Female,0,1888,3,1608,1888,1611,3,3496,0.0,0.09750302294822925,0.1253610295048662,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Food processing, woodworking, garment and other craft workers",Female,0,1888,2,1609,1888,1611,2,3497,0.0,0.2119130337165679,0.2600750868339697,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Handicraft and printing workers,Female,33,1855,0,1611,1888,1611,33,3466,inf,1.5223537896543123e-09,4.110355232066643e-09,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Health associate professionals,Female,48,1840,26,1585,1888,1611,74,3425,1.5903010033444815,0.05986509683528449,0.08507145339750954,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Health professionals,Female,352,1536,34,1577,1888,1611,386,3113,10.629289215686274,2.485890502623243e-63,6.711904357082756e-62,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Hospitality, retail and other services managers",Female,36,1852,5,1606,1888,1611,41,3458,6.243628509719223,4.814806720662953e-06,8.666652097193317e-06,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Information and communications technology professionals,Female,97,1791,137,1474,1888,1611,234,3265,0.5827107964803743,7.806424370470558e-05,0.00013173341125169067,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Legal, social and cultural professionals",Female,62,1826,5,1606,1888,1611,67,3432,10.906024096385542,7.250900966610569e-12,2.175270289983171e-11,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Market-oriented skilled agricultural workers,Female,1,1887,27,1584,1888,1611,28,3471,0.031089913442854618,1.119504343675744e-08,2.518884773270424e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Metal, machinery and related trades workers",Female,0,1888,5,1606,1888,1611,5,3494,0.0,0.020620604743251187,0.030930907114876782,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Non-commissioned armed forces officers,Female,3,1885,9,1602,1888,1611,12,3487,0.28328912466843503,0.07734178595768562,0.10441141104287559,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Personal care workers,Female,1,1887,2,1609,1888,1611,3,3496,0.42633810280869106,0.5977173472300839,0.6455347350084906,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Personal service workers,Female,270,1618,99,1512,1888,1611,369,3130,2.548600966400719,1.4793747364027741e-15,5.706159697553557e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Production and specialized services managers,Female,0,1888,1,1610,1888,1611,1,3498,0.0,0.46041726207487854,0.5404898293922488,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Protective services workers,Female,0,1888,47,1564,1888,1611,47,3452,0.0,1.0200818502784726e-16,6.885552489379689e-16,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Sales workers,Female,44,1844,14,1597,1888,1611,58,3441,2.721877905175085,0.0007621051703539588,0.0012104023293856992,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Science and engineering associate professionals,Female,0,1888,46,1565,1888,1611,46,3453,0.0,2.250698165502598e-16,1.2153770093714029e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Science and engineering professionals,Female,78,1810,182,1429,1888,1611,260,3239,0.3383583267561168,6.005127611319024e-16,2.702307425093561e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Teaching professionals,Female,144,1744,1,1610,1888,1611,145,3354,132.93577981651376,1.8478411142210098e-38,2.4945855041983635e-37,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Administrative and commercial managers,Male,92,1519,5,1883,1611,1888,97,3402,22.80921658986175,8.810836432355531e-26,7.9297527891199785e-25,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Armed forces occupations, other ranks",Male,24,1587,0,1888,1611,1888,24,3475,inf,7.502458430832274e-09,1.8415125239315583e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Building and related trades workers,Male,17,1594,0,1888,1611,1888,17,3482,inf,1.7934746444705988e-06,3.4588439571932975e-06,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Business and administration associate professionals,Male,0,1611,2,1886,1611,1888,2,3497,0.0,0.5029915432833787,0.5658654861938011,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Business and administration professionals,Male,810,801,710,1178,1611,1888,1520,1979,1.6777971197974364,4.896470838945835e-14,1.6525589081442193e-13,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Chief executives, senior officials and legislators",Male,1,1610,1,1887,1611,1888,2,3497,1.1720496894409937,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Commissioned armed forces officers,Male,22,1589,0,1888,1611,1888,22,3477,inf,3.59346700009659e-08,7.463354538662149e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Customer services clerks,Male,0,1611,1,1887,1611,1888,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Electrical and electronic trades workers,Male,3,1608,0,1888,1611,1888,3,3496,inf,0.09750302294822925,0.1253610295048662,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Food processing, woodworking, garment and other craft workers",Male,2,1609,0,1888,1611,1888,2,3497,inf,0.2119130337165679,0.2600750868339697,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Handicraft and printing workers,Male,0,1611,33,1855,1611,1888,33,3466,0.0,1.5223537896543123e-09,4.110355232066643e-09,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Health associate professionals,Male,26,1585,48,1840,1611,1888,74,3425,0.6288117770767613,0.05986509683528449,0.08507145339750954,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Health professionals,Male,34,1577,352,1536,1611,1888,386,3113,0.0940796679541131,2.485890502623243e-63,6.711904357082756e-62,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Hospitality, retail and other services managers",Male,5,1606,36,1852,1611,1888,41,3458,0.16016327660163276,4.814806720662953e-06,8.666652097193317e-06,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Information and communications technology professionals,Male,137,1474,97,1791,1611,1888,234,3265,1.7161171648785127,7.806424370470558e-05,0.00013173341125169067,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Legal, social and cultural professionals",Male,5,1606,62,1826,1611,1888,67,3432,0.09169244365885992,7.250900966610569e-12,2.175270289983171e-11,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Market-oriented skilled agricultural workers,Male,27,1584,1,1887,1611,1888,28,3471,32.16477272727273,1.119504343675744e-08,2.518884773270424e-08,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,"Metal, machinery and related trades workers",Male,5,1606,0,1888,1611,1888,5,3494,inf,0.020620604743251187,0.030930907114876782,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Non-commissioned armed forces officers,Male,9,1602,3,1885,1611,1888,12,3487,3.5299625468164795,0.07734178595768562,0.10441141104287559,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Personal care workers,Male,2,1609,1,1887,1611,1888,3,3496,2.3455562461155997,0.5977173472300839,0.6455347350084906,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Personal service workers,Male,99,1512,270,1618,1611,1888,369,3130,0.3923721340388007,1.4793747364027741e-15,5.706159697553557e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Production and specialized services managers,Male,1,1610,0,1888,1611,1888,1,3498,inf,0.46041726207487854,0.5404898293922488,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Protective services workers,Male,47,1564,0,1888,1611,1888,47,3452,inf,1.0200818502784726e-16,6.885552489379689e-16,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Sales workers,Male,14,1597,44,1844,1611,1888,58,3441,0.36739340809472304,0.0007621051703539588,0.0012104023293856992,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Science and engineering associate professionals,Male,46,1565,0,1888,1611,1888,46,3453,inf,2.250698165502598e-16,1.2153770093714029e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Science and engineering professionals,Male,182,1429,78,1810,1611,1888,260,3239,2.955446699323536,6.005127611319024e-16,2.702307425093561e-15,True,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Gender,Teaching professionals,Male,1,1610,144,1744,1611,1888,145,3354,0.007522429261559696,1.8478411142210098e-38,2.4945855041983635e-37,True,nan,fisher_exact_2x2

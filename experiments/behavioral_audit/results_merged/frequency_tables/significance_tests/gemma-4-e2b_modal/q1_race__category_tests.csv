@@ -1,0 +1,244 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,Central/Eastern Europe,10,418,87,2984,428,3071,97,3402,0.8205466644668097,0.6397853169486433,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",Central/Eastern Europe,4,424,20,3051,428,3071,24,3475,1.4391509433962264,0.5256064576277779,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,Central/Eastern Europe,5,423,12,3059,428,3071,17,3482,3.0131993695823485,0.047448877455945046,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,Central/Eastern Europe,1,427,1,3070,428,3071,2,3497,7.1896955503512885,0.22970967282819188,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,Central/Eastern Europe,179,249,1341,1730,428,3071,1520,1979,0.9274083657523458,0.4987310120921511,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",Central/Eastern Europe,0,428,2,3069,428,3071,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,Central/Eastern Europe,4,424,18,3053,428,3071,22,3477,1.600104821802935,0.33483472318681023,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,Central/Eastern Europe,0,428,1,3070,428,3071,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,Central/Eastern Europe,0,428,3,3068,428,3071,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",Central/Eastern Europe,0,428,2,3069,428,3071,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,Central/Eastern Europe,1,427,32,3039,428,3071,33,3466,0.22240925058548008,0.17423261493485662,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,Central/Eastern Europe,8,420,66,3005,428,3071,74,3425,0.8672438672438673,0.8579626366223053,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,Central/Eastern Europe,46,382,340,2731,428,3071,386,3113,0.9672466892516168,0.9343456773857579,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",Central/Eastern Europe,3,425,38,3033,428,3071,41,3458,0.5634055727554179,0.4721391981025382,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,Central/Eastern Europe,29,399,205,2866,428,3071,234,3265,1.016125680053793,0.91781205618291,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",Central/Eastern Europe,5,423,62,3009,428,3071,67,3432,0.5736673530084648,0.34334641896420987,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,Central/Eastern Europe,1,427,27,3044,428,3071,28,3471,0.2640298378003296,0.2441826430646572,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",Central/Eastern Europe,0,428,5,3066,428,3071,5,3494,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,Central/Eastern Europe,1,427,11,3060,428,3071,12,3487,0.6514796678731105,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,Central/Eastern Europe,0,428,3,3068,428,3071,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,Central/Eastern Europe,51,377,318,2753,428,3071,369,3130,1.1711375807016666,0.3143374904957128,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,Central/Eastern Europe,0,428,1,3070,428,3071,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,Central/Eastern Europe,5,423,42,3029,428,3071,47,3452,0.8524710120454801,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,Central/Eastern Europe,15,413,43,3028,428,3071,58,3441,2.5575764401148713,0.0037034271855346636,0.8998431661674707,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,Central/Eastern Europe,5,423,41,3030,428,3071,46,3453,0.8735512887043764,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,Central/Eastern Europe,35,393,225,2846,428,3071,260,3239,1.1264913768730562,0.5546205309999174,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,Central/Eastern Europe,20,408,125,2946,428,3071,145,3354,1.1552941176470588,0.5191424206947212,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,France,13,420,84,2982,433,3066,97,3402,1.098809523809524,0.7539995775575106,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",France,3,430,21,3045,433,3066,24,3475,1.0116279069767442,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,France,2,431,15,3051,433,3066,17,3482,0.9438515081206497,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,France,0,433,2,3064,433,3066,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,France,196,237,1324,1742,433,3066,1520,1979,1.0880976965339657,0.4373158671846865,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",France,0,433,2,3064,433,3066,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,France,2,431,20,3046,433,3066,22,3477,0.7067285382830626,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,France,0,433,1,3065,433,3066,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,France,0,433,3,3063,433,3066,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",France,0,433,2,3064,433,3066,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,France,3,430,30,3036,433,3066,33,3466,0.706046511627907,0.7909039069188899,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,France,12,421,62,3004,433,3066,74,3425,1.3810435981917095,0.28686831654838524,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,France,39,394,347,2719,433,3066,386,3113,0.7756184262496526,0.16374451652042626,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",France,4,429,37,3029,433,3066,41,3458,0.7633087633087633,0.811821070410771,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,France,24,409,210,2856,433,3066,234,3265,0.798044009779951,0.355059722413948,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",France,13,420,54,3012,433,3066,67,3432,1.7264550264550265,0.08970333682269703,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,France,4,429,24,3042,433,3066,28,3471,1.1818181818181819,0.7708612307602897,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",France,0,433,5,3061,433,3066,5,3494,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,France,0,433,12,3054,433,3066,12,3487,0.0,0.3822066868878102,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,France,1,432,2,3064,433,3066,3,3496,3.5462962962962963,0.3272836077133933,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,France,48,385,321,2745,433,3066,369,3130,1.0661488044665615,0.6764884297444396,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,France,1,432,0,3066,433,3066,1,3498,inf,0.12374964275507287,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,France,3,430,44,3022,433,3066,47,3452,0.4791754756871036,0.26745301013792316,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,France,7,426,51,3015,433,3066,58,3441,0.9714167357083678,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,France,10,423,36,3030,433,3066,46,3453,1.9897557131599686,0.0673966791335168,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,France,31,402,229,2837,433,3066,260,3239,0.9553433704838254,0.921994126754129,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,France,17,416,128,2938,433,3066,145,3354,0.93798828125,0.8978645321479168,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,Germany,10,419,87,2983,429,3070,97,3402,0.8183139933613146,0.6397048784031798,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",Germany,3,426,21,3049,429,3070,24,3475,1.022468142186452,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,Germany,1,428,16,3054,429,3070,17,3482,0.4459696261682243,0.7119298353463474,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,Germany,0,429,2,3068,429,3070,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,Germany,195,234,1325,1745,429,3070,1520,1979,1.0974842767295598,0.37704598497290165,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",Germany,0,429,2,3068,429,3070,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,Germany,1,428,21,3049,429,3070,22,3477,0.33923008455718734,0.5084732980821147,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,Germany,0,429,1,3069,429,3070,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,Germany,0,429,3,3067,429,3070,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",Germany,0,429,2,3068,429,3070,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,Germany,5,424,28,3042,429,3070,33,3466,1.28116576819407,0.5915882291274249,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,Germany,9,420,65,3005,429,3070,74,3425,0.9906593406593407,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,Germany,48,381,338,2732,429,3070,386,3113,1.0183105809998603,0.9344069036085548,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",Germany,6,423,35,3035,429,3070,41,3458,1.2299898682877406,0.630067388262156,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,Germany,31,398,203,2867,429,3070,234,3265,1.1000445577641904,0.6066868973239286,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",Germany,9,420,58,3012,429,3070,67,3432,1.112807881773399,0.7079944269522821,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,Germany,5,424,23,3047,429,3070,28,3471,1.5622436423297785,0.3790476775236876,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",Germany,0,429,5,3065,429,3070,5,3494,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,Germany,5,424,7,3063,429,3070,12,3487,5.160040431266847,0.010267058405242339,0.8998431661674707,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,Germany,0,429,3,3067,429,3070,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,Germany,33,396,336,2734,429,3070,369,3130,0.6780753968253969,0.0436026121455505,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,Germany,0,429,1,3069,429,3070,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,Germany,9,420,38,3032,429,3070,47,3452,1.7097744360902256,0.17372657795281382,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,Germany,4,425,54,3016,429,3070,58,3441,0.5256644880174292,0.3094385760126733,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,Germany,6,423,40,3030,429,3070,46,3453,1.074468085106383,0.8210015267552836,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,Germany,32,397,228,2842,429,3070,260,3239,1.0047284457996377,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,Germany,17,412,128,2942,429,3070,145,3354,0.9483844053398058,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,Hispanic Countries,14,415,83,2987,429,3070,97,3402,1.2140513862679634,0.5285976950755169,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",Hispanic Countries,3,426,21,3049,429,3070,24,3475,1.022468142186452,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,Hispanic Countries,2,427,15,3055,429,3070,17,3482,0.9539422326307572,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,Hispanic Countries,0,429,2,3068,429,3070,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,Hispanic Countries,180,249,1340,1730,429,3070,1520,1979,0.9332853803272793,0.5327912739457739,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",Hispanic Countries,0,429,2,3068,429,3070,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,Hispanic Countries,5,424,17,3053,429,3070,22,3477,2.117785793562708,0.17860146363430474,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,Hispanic Countries,0,429,1,3069,429,3070,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,Hispanic Countries,0,429,3,3067,429,3070,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",Hispanic Countries,0,429,2,3068,429,3070,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,Hispanic Countries,3,426,30,3040,429,3070,33,3466,0.7136150234741784,0.7907511853852025,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,Hispanic Countries,6,423,68,3002,429,3070,74,3425,0.6261994159365875,0.3687509578002783,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,Hispanic Countries,54,375,332,2738,429,3070,386,3113,1.187566265060241,0.28454553856087195,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",Hispanic Countries,6,423,35,3035,429,3070,41,3458,1.2299898682877406,0.630067388262156,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,Hispanic Countries,28,401,206,2864,429,3070,234,3265,0.9707769411422899,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",Hispanic Countries,6,423,61,3009,429,3070,67,3432,0.699686083013603,0.5708765129124939,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,Hispanic Countries,5,424,23,3047,429,3070,28,3471,1.5622436423297785,0.3790476775236876,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",Hispanic Countries,1,428,4,3066,429,3070,5,3494,1.7908878504672898,0.4802451366633973,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,Hispanic Countries,0,429,12,3058,429,3070,12,3487,0.0,0.381924311720467,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,Hispanic Countries,0,429,3,3067,429,3070,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,Hispanic Countries,54,375,315,2755,429,3070,369,3130,1.2594285714285713,0.15327333685842812,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,Hispanic Countries,0,429,1,3069,429,3070,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,Hispanic Countries,6,423,41,3029,429,3070,47,3452,1.047915585538834,0.8242883369427719,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,Hispanic Countries,7,422,51,3019,429,3070,58,3441,0.9819254716104451,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,Hispanic Countries,6,423,40,3030,429,3070,46,3453,1.074468085106383,0.8210015267552836,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,Hispanic Countries,27,402,233,2837,429,3070,260,3239,0.8177887387098841,0.37702162285968877,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,Hispanic Countries,16,413,129,2941,429,3070,145,3354,0.8832329147662218,0.7955472689698823,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,MENA,15,416,82,2986,431,3068,97,3402,1.3130276735459663,0.3458584236875254,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",MENA,2,429,22,3046,431,3068,24,3475,0.6454757363848272,0.7598613363562686,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,MENA,2,429,15,3053,431,3068,17,3482,0.9488733488733488,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,MENA,0,431,2,3066,431,3068,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,MENA,191,240,1329,1739,431,3068,1520,1979,1.0413500125407575,0.7165208247075129,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",MENA,1,430,1,3067,431,3068,2,3497,7.132558139534884,0.23121414580429825,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,MENA,3,428,19,3049,431,3068,22,3477,1.1248155435317264,0.74667633372201,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,MENA,0,431,1,3067,431,3068,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,MENA,1,430,2,3066,431,3068,3,3496,3.5651162790697675,0.3259658481658503,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",MENA,1,430,1,3067,431,3068,2,3497,7.132558139534884,0.23121414580429825,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,MENA,5,426,28,3040,431,3068,33,3466,1.2743125419181758,0.5927777584670018,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,MENA,13,418,61,3007,431,3068,74,3425,1.5331006353439485,0.15563533010449537,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,MENA,47,384,339,2729,431,3068,386,3113,0.9853045108161259,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",MENA,3,428,38,3030,431,3068,41,3458,0.558903098868667,0.4724821041478287,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,MENA,34,397,200,2868,431,3068,234,3265,1.228110831234257,0.30245042977457803,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",MENA,4,427,63,3005,431,3068,67,3432,0.4468235381584328,0.13243458348684706,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,MENA,6,425,22,3046,431,3068,28,3471,1.9546524064171122,0.14606089771728922,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",MENA,1,430,4,3064,431,3068,5,3494,1.7813953488372094,0.48193704594838055,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,MENA,1,430,11,3057,431,3068,12,3487,0.6463002114164905,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,MENA,1,430,2,3066,431,3068,3,3496,3.5651162790697675,0.3259658481658503,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,MENA,45,386,324,2744,431,3068,369,3130,0.9873344847438111,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,MENA,0,431,1,3067,431,3068,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,MENA,7,424,40,3028,431,3068,47,3452,1.2497641509433963,0.5084612604660212,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,MENA,7,424,51,3017,431,3068,58,3441,0.9766463189049205,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,MENA,4,427,42,3026,431,3068,46,3453,0.6749191479870637,0.6501564607276854,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,MENA,24,407,236,2832,431,3068,260,3239,0.7076167076167076,0.1404095015446388,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,MENA,13,418,132,2936,431,3068,145,3354,0.6917500362476439,0.245554502024792,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,South/Central Asia,4,428,93,2974,432,3067,97,3402,0.298864435735102,0.01110917489095643,0.8998431661674707,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",South/Central Asia,3,429,21,3046,432,3067,24,3475,1.0143190143190144,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,South/Central Asia,1,431,16,3051,432,3067,17,3482,0.4424303944315545,0.7121444090695465,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,South/Central Asia,0,432,2,3065,432,3067,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,South/Central Asia,184,248,1336,1731,432,3067,1520,1979,0.9612951516322195,0.7169542108447392,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",South/Central Asia,0,432,2,3065,432,3067,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,South/Central Asia,4,428,18,3049,432,3067,22,3477,1.583073727933541,0.3391185689033816,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,South/Central Asia,0,432,1,3066,432,3067,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,South/Central Asia,2,430,1,3066,432,3067,3,3496,14.26046511627907,0.04189604428007597,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",South/Central Asia,0,432,2,3065,432,3067,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,South/Central Asia,7,425,26,3041,432,3067,33,3466,1.9264253393665158,0.17559289007740025,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,South/Central Asia,9,423,65,3002,432,3067,74,3425,0.9826513911620295,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,South/Central Asia,46,386,340,2727,432,3067,386,3113,0.9558213959158793,0.8696735136831227,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",South/Central Asia,6,426,35,3032,432,3067,41,3458,1.2201207243460765,0.6316634609758279,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,South/Central Asia,36,396,198,2869,432,3067,234,3265,1.3172635445362717,0.14956635659017561,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",South/Central Asia,9,423,58,3009,432,3067,67,3432,1.1038151137197358,0.7097291983028101,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,South/Central Asia,1,431,27,3040,432,3067,28,3471,0.26123571367190856,0.24472925480175378,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",South/Central Asia,0,432,5,3062,432,3067,5,3494,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,South/Central Asia,1,431,11,3056,432,3067,12,3487,0.6445897489981016,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,South/Central Asia,1,431,2,3065,432,3067,3,3496,3.5556844547563804,0.32662494283843907,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,South/Central Asia,49,383,320,2747,432,3067,369,3130,1.0982620757180157,0.5583589785564594,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,South/Central Asia,0,432,1,3066,432,3067,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,South/Central Asia,4,428,43,3024,432,3067,47,3452,0.6572484242555966,0.6529300910319207,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,South/Central Asia,6,426,52,3015,432,3067,58,3441,0.8166305525460456,0.8401625163877477,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,South/Central Asia,7,425,39,3028,432,3067,46,3453,1.2787933634992459,0.500475054700421,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,South/Central Asia,34,398,226,2841,432,3067,260,3239,1.0738871347889891,0.6953378969226192,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,South/Central Asia,18,414,127,2940,432,3067,145,3354,1.0065046217048956,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,Sub-Saharan Africa,14,412,83,2990,426,3073,97,3402,1.2241197800912387,0.5272075276676842,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",Sub-Saharan Africa,3,423,21,3052,426,3073,24,3475,1.0307328605200945,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,Sub-Saharan Africa,3,423,14,3059,426,3073,17,3482,1.549645390070922,0.4524898297573299,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,Sub-Saharan Africa,1,425,1,3072,426,3073,2,3497,7.228235294117647,0.2287058738174151,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,Sub-Saharan Africa,177,249,1343,1730,426,3073,1520,1979,0.9156805928105572,0.40465953384891795,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",Sub-Saharan Africa,0,426,2,3071,426,3073,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,Sub-Saharan Africa,1,425,21,3052,426,3073,22,3477,0.3419607843137255,0.5076497695161024,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,Sub-Saharan Africa,1,425,0,3073,426,3073,1,3498,inf,0.12174907116318948,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,Sub-Saharan Africa,0,426,3,3070,426,3073,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",Sub-Saharan Africa,1,425,1,3072,426,3073,2,3497,7.228235294117647,0.2287058738174151,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,Sub-Saharan Africa,5,421,28,3045,426,3073,33,3466,1.2915676959619953,0.5898607722878261,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,Sub-Saharan Africa,9,417,65,3008,426,3073,74,3425,0.9987825124515772,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,Sub-Saharan Africa,49,377,337,2736,426,3073,386,3113,1.055214917079237,0.7413806669589431,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",Sub-Saharan Africa,5,421,36,3037,426,3073,41,3458,1.0019134336236475,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,Sub-Saharan Africa,29,397,205,2868,426,3073,234,3265,1.0219573631504577,0.9175388758606275,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",Sub-Saharan Africa,11,415,56,3017,426,3073,67,3432,1.4280120481927712,0.2606427496173042,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,Sub-Saharan Africa,4,422,24,3049,426,3073,28,3471,1.2041864139020537,0.7689682814437021,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",Sub-Saharan Africa,0,426,5,3068,426,3073,5,3494,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,Sub-Saharan Africa,3,423,9,3064,426,3073,12,3487,2.4144996059889676,0.17172722112313532,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,Sub-Saharan Africa,0,426,3,3070,426,3073,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,Sub-Saharan Africa,41,385,328,2745,426,3073,369,3130,0.8912337662337663,0.556146906371458,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,Sub-Saharan Africa,0,426,1,3072,426,3073,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,Sub-Saharan Africa,7,419,40,3033,426,3073,47,3452,1.2667661097852028,0.5037625582502295,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,Sub-Saharan Africa,4,422,54,3019,426,3073,58,3441,0.5299280322977006,0.30857828561743156,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,Sub-Saharan Africa,3,423,43,3030,426,3073,46,3453,0.4997525977238991,0.36058758744491937,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,Sub-Saharan Africa,34,392,226,2847,426,3073,260,3239,1.0926268737583529,0.6226330430556071,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,Sub-Saharan Africa,21,405,124,2949,426,3073,145,3354,1.2331541218637994,0.36510040333869115,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,United Kingdom / North America,15,412,82,2990,427,3072,97,3402,1.3275515036703764,0.34315864730843093,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",United Kingdom / North America,2,425,22,3050,427,3072,24,3475,0.6524064171122995,0.7600021597887643,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,United Kingdom / North America,0,427,17,3055,427,3072,17,3482,0.0,0.2530249010239464,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,United Kingdom / North America,0,427,2,3070,427,3072,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,United Kingdom / North America,188,239,1332,1740,427,3072,1520,1979,1.027554751404124,0.7947298282683355,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",United Kingdom / North America,1,426,1,3071,427,3072,2,3497,7.208920187793427,0.22920785502547408,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,United Kingdom / North America,2,425,20,3052,427,3072,22,3477,0.7181176470588235,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,United Kingdom / North America,0,427,1,3071,427,3072,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,United Kingdom / North America,0,427,3,3069,427,3072,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",United Kingdom / North America,0,427,2,3070,427,3072,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,United Kingdom / North America,4,423,29,3043,427,3072,33,3466,0.9922556452270319,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,United Kingdom / North America,7,420,67,3005,427,3072,74,3425,0.7475124378109452,0.5906096992158407,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,United Kingdom / North America,51,376,335,2737,427,3072,386,3113,1.1081851381390917,0.5100509838395306,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",United Kingdom / North America,6,421,35,3037,427,3072,41,3458,1.2366474380726162,0.6290491923962184,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,United Kingdom / North America,22,405,212,2860,427,3072,234,3265,0.7328208711856511,0.21390822213457147,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",United Kingdom / North America,10,417,57,3015,427,3072,67,3432,1.2684589170768648,0.452731105904244,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,United Kingdom / North America,1,426,27,3045,427,3072,28,3471,0.26473656755346897,0.24407098513866946,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",United Kingdom / North America,3,424,2,3070,427,3072,5,3494,10.860849056603774,0.014935238094845076,0.9073157142618384,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,United Kingdom / North America,1,426,11,3061,427,3072,12,3487,0.6532223644899702,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,United Kingdom / North America,0,427,3,3069,427,3072,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,United Kingdom / North America,41,386,328,2744,427,3072,369,3130,0.8886010362694301,0.5562080364013621,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,United Kingdom / North America,0,427,1,3071,427,3072,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,United Kingdom / North America,6,421,41,3031,427,3072,47,3452,1.0535890157001333,0.8235730696232256,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,United Kingdom / North America,7,420,51,3021,427,3072,58,3441,0.9872549019607844,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,United Kingdom / North America,5,422,41,3031,427,3072,46,3453,0.8759102993873541,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,United Kingdom / North America,38,389,222,2850,427,3072,260,3239,1.2540818453414855,0.23656163951074446,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,United Kingdom / North America,17,410,128,2944,427,3072,145,3354,0.9536585365853658,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Administrative and commercial managers,Unknown,2,62,95,3340,64,3435,97,3402,1.134125636672326,0.6975208742770267,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Armed forces occupations, other ranks",Unknown,1,63,23,3412,64,3435,24,3475,2.354727398205659,0.358870135436613,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Building and related trades workers,Unknown,1,63,16,3419,64,3435,17,3482,3.3918650793650795,0.2698836543732818,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration associate professionals,Unknown,0,64,2,3433,64,3435,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Business and administration professionals,Unknown,30,34,1490,1945,64,3435,1520,1979,1.1517962889853928,0.6117192860926133,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Chief executives, senior officials and legislators",Unknown,0,64,2,3433,64,3435,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Commissioned armed forces officers,Unknown,0,64,22,3413,64,3435,22,3477,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Customer services clerks,Unknown,0,64,1,3434,64,3435,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Electrical and electronic trades workers,Unknown,0,64,3,3432,64,3435,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Food processing, woodworking, garment and other craft workers",Unknown,0,64,2,3433,64,3435,2,3497,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Handicraft and printing workers,Unknown,0,64,33,3402,64,3435,33,3466,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health associate professionals,Unknown,1,63,73,3362,64,3435,74,3425,0.731028484453142,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Health professionals,Unknown,6,58,380,3055,64,3435,386,3113,0.8316696914700544,0.8407330387228821,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Hospitality, retail and other services managers",Unknown,2,62,39,3396,64,3435,41,3458,2.8089330024813894,0.1719279642690154,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Information and communications technology professionals,Unknown,1,63,233,3202,64,3435,234,3265,0.21813475032359153,0.12591421107150505,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Legal, social and cultural professionals",Unknown,0,64,67,3368,64,3435,67,3432,0.0,0.6348915597627434,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Market-oriented skilled agricultural workers,Unknown,1,63,27,3408,64,3435,28,3471,2.00352733686067,0.4048320035413653,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,"Metal, machinery and related trades workers",Unknown,0,64,5,3430,64,3435,5,3494,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Non-commissioned armed forces officers,Unknown,0,64,12,3423,64,3435,12,3487,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal care workers,Unknown,0,64,3,3432,64,3435,3,3496,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Personal service workers,Unknown,7,57,362,3073,64,3435,369,3130,1.0425026655035379,0.8380185080866264,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Production and specialized services managers,Unknown,0,64,1,3434,64,3435,1,3498,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Protective services workers,Unknown,0,64,47,3388,64,3435,47,3452,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Sales workers,Unknown,1,63,57,3378,64,3435,58,3441,0.9406850459482038,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering associate professionals,Unknown,0,64,46,3389,64,3435,46,3453,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Science and engineering professionals,Unknown,5,59,255,3180,64,3435,260,3239,1.0568295114656032,0.8103029502904162,1.0,False,nan,fisher_exact_2x2
+q1,gemma-4-e2b_modal,Race,Teaching professionals,Unknown,6,58,139,3296,64,3435,145,3354,2.4529893326717938,0.047526007006418604,1.0,False,nan,fisher_exact_2x2

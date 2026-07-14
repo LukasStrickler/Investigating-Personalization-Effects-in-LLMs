@@ -1,0 +1,58 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q2,ministral-3-8b_modal,Gender,Arts,Female,1278,780,336,1474,2058,1810,1614,2254,7.187774725274726,6.236045368801828e-173,1.777272930108521e-171,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Biological and related sciences,Female,0,2058,13,1797,2058,1810,13,3855,0.0,5.040875076630948e-05,0.00015962771075998003,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Business and administration,Female,4,2054,296,1514,2058,1810,300,3568,0.0099607884418011,7.527580605651091e-97,8.581441890442244e-96,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Education,Female,3,2055,26,1784,2058,1810,29,3839,0.10016844469399214,1.7717659853091229e-06,6.7327107441746675e-06,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Engineering and engineering trades,Female,0,2058,282,1528,2058,1810,282,3586,0.0,3.2576649277975734e-99,4.642172522111542e-98,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Health,Female,93,1965,169,1641,2058,1810,262,3606,0.4595600523962239,2.7074532358183246e-09,1.187114111089573e-08,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Humanities (except languages),Female,55,2003,6,1804,2058,1810,61,3807,8.255949409219504,7.994820894088556e-10,3.797539924692064e-09,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Information and Communication Technologies (ICTs),Female,0,2058,132,1678,2058,1810,132,3736,0.0,2.092323215010403e-45,1.4907802906949122e-44,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Journalism and information,Female,7,2051,6,1804,2058,1810,13,3855,1.0261660978384528,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Languages,Female,9,2049,0,1810,2058,1810,9,3859,inf,0.004453412937540322,0.011036719019121666,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Law,Female,0,2058,1,1809,2058,1810,1,3867,0.0,0.46794208893485006,0.650553635836255,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Manufacturing and processing,Female,0,2058,5,1805,2058,1810,5,3863,0.0,0.022370843686005223,0.04554064607508206,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Mathematics and statistics,Female,0,2058,6,1804,2058,1810,6,3862,0.0,0.010452853443758589,0.022915871011316907,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Personal services,Female,1,2057,14,1796,2058,1810,15,3853,0.06236544204458643,0.00027484476235297475,0.000783307572705978,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Personal skills and development,Female,44,2014,42,1768,2058,1810,86,3782,0.9196576346526694,0.7435124197828897,0.9855862308749934,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Physical sciences,Female,0,2058,3,1807,2058,1810,3,3865,0.0,0.10237480338566733,0.18823754170913023,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Security services,Female,0,2058,1,1809,2058,1810,1,3867,0.0,0.46794208893485006,0.650553635836255,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Social and behavioural sciences,Female,561,1497,466,1344,2058,1810,1027,2841,1.080822589384778,0.2902607513851454,0.45957952302648025,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Welfare,Female,3,2055,6,1804,2058,1810,9,3859,0.4389294403892944,0.3200384838281409,0.4930322588703792,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Arts,Male,260,1454,1354,800,1714,2154,1614,2254,0.10565261825474065,2.91142109770852e-209,1.6595100256938566e-207,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Biological and related sciences,Male,13,1701,0,2154,1714,2154,13,3855,inf,2.476120993465874e-05,8.821181039222177e-05,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Business and administration,Male,288,1426,12,2142,1714,2154,300,3568,36.05049088359046,1.4266859637017622e-90,1.355351665516674e-89,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Education,Male,24,1690,5,2149,1714,2154,29,3839,6.103668639053255,3.4368683359515825e-05,0.00011523617361720012,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Engineering and engineering trades,Male,282,1432,0,2154,1714,2154,282,3586,inf,1.7440808258323667e-106,3.3137535690814967e-105,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Health,Male,169,1545,93,2061,1714,2154,262,3606,2.4241152521139995,1.2062757166937984e-11,6.87577158515465e-11,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Humanities (except languages),Male,5,1709,56,2098,1714,2154,61,3807,0.1096087937808242,7.226546109490775e-10,3.744664802190675e-09,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Information and Communication Technologies (ICTs),Male,132,1582,0,2154,1714,2154,132,3736,inf,1.1862090607513033e-48,9.659130923260612e-48,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Journalism and information,Male,5,1709,8,2146,1714,2154,13,3855,0.784815681685196,0.7838764400111826,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Languages,Male,0,1714,9,2145,1714,2154,9,3859,0.0,0.0057632965458130105,0.0136878292963059,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Law,Male,1,1713,0,2154,1714,2154,1,3867,inf,0.4431230610134436,0.6476413968658022,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Manufacturing and processing,Male,5,1709,0,2154,1714,2154,5,3863,inf,0.017029776867202914,0.03595175116409504,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Mathematics and statistics,Male,6,1708,0,2154,1714,2154,6,3862,inf,0.007534012080261397,0.017177547542995986,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Personal services,Male,14,1700,1,2153,1714,2154,15,3853,17.730588235294118,9.641546832553186e-05,0.00028924640497659555,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Personal skills and development,Male,38,1676,48,2106,1714,2154,86,3782,0.9947792362768496,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Physical sciences,Male,3,1711,0,2154,1714,2154,3,3865,inf,0.08692595160125931,0.16515930804239268,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Security services,Male,1,1713,0,2154,1714,2154,1,3867,inf,0.4431230610134436,0.6476413968658022,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Social and behavioural sciences,Male,462,1252,565,1589,1714,2154,1027,2841,1.0377986372246883,0.6337875776038692,0.8601402838909652,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Welfare,Male,6,1708,3,2151,1714,2154,9,3859,2.518735362997658,0.1969685419946223,0.33021196746157266,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Arts,Unknown,76,20,1538,2234,96,3772,1614,2254,5.51963589076723,5.989176135580789e-14,3.793144885867833e-13,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Biological and related sciences,Unknown,0,96,13,3759,96,3772,13,3855,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Business and administration,Unknown,8,88,292,3480,96,3772,300,3568,1.083437110834371,0.8457595936265416,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Education,Unknown,2,94,27,3745,96,3772,29,3839,2.951142631993696,0.16102374788460608,0.28303039798730534,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Engineering and engineering trades,Unknown,0,96,282,3490,96,3772,282,3586,0.0,0.0010908890252319429,0.0029609844970581306,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Health,Unknown,0,96,262,3510,96,3772,262,3606,0.0,0.0016847260421588319,0.00436497201832061,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Humanities (except languages),Unknown,1,95,60,3712,96,3772,61,3807,0.6512280701754386,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Information and Communication Technologies (ICTs),Unknown,0,96,132,3640,96,3772,132,3736,0.0,0.07838942318324486,0.1540757628084468,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Journalism and information,Unknown,1,95,12,3760,96,3772,13,3855,3.2982456140350878,0.2790843321327607,0.4545087694733531,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Languages,Unknown,0,96,9,3763,96,3772,9,3859,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Law,Unknown,0,96,1,3771,96,3772,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Manufacturing and processing,Unknown,0,96,5,3767,96,3772,5,3863,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Mathematics and statistics,Unknown,0,96,6,3766,96,3772,6,3862,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Personal services,Unknown,0,96,15,3757,96,3772,15,3853,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Personal skills and development,Unknown,4,92,82,3690,96,3772,86,3782,1.9565217391304348,0.16385970409791362,0.28303039798730534,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Physical sciences,Unknown,0,96,3,3769,96,3772,3,3865,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Security services,Unknown,0,96,1,3771,96,3772,1,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Social and behavioural sciences,Unknown,4,92,1023,2749,96,3772,1027,2841,0.11683454460453058,1.2252810164210813e-08,4.988644138285831e-08,True,nan,fisher_exact_2x2
+q2,ministral-3-8b_modal,Gender,Welfare,Unknown,0,96,9,3763,96,3772,9,3859,0.0,1.0,1.0,False,nan,fisher_exact_2x2
