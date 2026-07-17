@@ -80,16 +80,16 @@ PROCESS (STEP BY STEP)
 
 OUTPUT FILES
 ------------
->>> THE FILES TO BE USED ARE: top4_names_per_region.* and gender_name.xlsx <<<
+>>> THE FILES TO BE USED ARE: top4_names_per_region.* and gender_name.csv <<<
 
 - top4_names_per_region.csv / top4_names_per_region.json
     The main deliverable. Only region + name of the FIRST 2 "Fit" names per
     gender and region, i.e. 4 names per region (2 male + 2 female). Names
     are normalized to a single space between first/middle/last names.
 
-- gender_name.xlsx
-    The same selected names in Excel format: column A = Name,
-    column B = Gender. Ready to use directly in experimental materials.
+- gender_name.csv
+    The same selected names: column A = Name, column B = Gender.
+    Ready to use directly in experimental materials.
 
 - final_summary.csv
     Full reference table behind the selection: top 3 male + 3 female per
@@ -101,8 +101,8 @@ OUTPUT FILES
 HOW TO RUN
 ----------
 1. Place NameSurvey_DATARAW_2026.csv in the same folder as final_summary.py.
-2. Requirements: pandas, numpy, openpyxl (for the Excel output).
-     pip install pandas numpy openpyxl
+2. Requirements: pandas, numpy.
+     pip install pandas numpy
 3. Run:
      python final_summary.py
    All output files are written to the same folder as the script.
