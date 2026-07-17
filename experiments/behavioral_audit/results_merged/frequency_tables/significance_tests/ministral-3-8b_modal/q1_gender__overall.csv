@@ -1,2 +1,2 @@
 question_key,model_alias,attribute,test_name,statistic,p_value,effect_size,reject_fdr,n_rows,n_cols,grand_total
-q1,ministral-3-8b_modal,Gender,permutation_chi_square,1478.554886493581,0.001996007984031936,0.4438277425763436,True,3,30,3753
+q1,ministral-3-8b_modal,Gender,permutation_chi_square,1310.814326427283,0.001996007984031936,0.5986165768016066,True,2,30,3658

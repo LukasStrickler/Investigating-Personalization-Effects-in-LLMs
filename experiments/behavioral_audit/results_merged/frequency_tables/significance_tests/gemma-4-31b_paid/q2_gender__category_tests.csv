@@ -1,49 +1,33 @@
 question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
-q2,gemma-4-31b_paid,Gender,Arts,Female,771,1287,83,1728,2058,1811,854,3015,12.472154351672424,2.4568497843176113e-151,5.896439482362268e-150,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Biological and related sciences,Female,1,2057,20,1791,2058,1811,21,3848,0.0435342732134176,4.485238675212369e-06,9.785975291372441e-06,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Business and administration,Female,1,2057,233,1578,2058,1811,234,3635,0.003292431788449782,4.229274995425053e-79,3.383419996340042e-78,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Education,Female,1,2057,12,1799,2058,1811,13,3856,0.07288121860314374,0.0010712324833302889,0.0019776599692251486,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Engineering and engineering trades,Female,0,2058,306,1505,2058,1811,306,3563,0.0,4.173180132490548e-108,5.007816158988657e-107,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Health,Female,64,1994,374,1437,2058,1811,438,3431,0.1233218371692618,6.813412159923487e-71,4.672054052518962e-70,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Humanities (except languages),Female,92,1966,1,1810,2058,1811,93,3776,84.6998982706002,1.3939355524199969e-24,4.46059376774399e-24,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Information and Communication Technologies (ICTs),Female,0,2058,152,1659,2058,1811,152,3717,0.0,2.300143360554525e-52,1.104068813066172e-51,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Languages,Female,7,2051,0,1811,2058,1811,7,3862,inf,0.01688358529873385,0.026142325623845962,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Manufacturing and processing,Female,0,2058,2,1809,2058,1811,2,3867,0.0,0.219034149149913,0.2695804912614314,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Mathematics and statistics,Female,0,2058,2,1809,2058,1811,2,3867,0.0,0.219034149149913,0.2695804912614314,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Personal services,Female,0,2058,21,1790,2058,1811,21,3848,0.0,1.1214432412128845e-07,2.8331197672746555e-07,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Personal skills and development,Female,1,2057,36,1775,2058,1811,37,3832,0.023969642953600174,2.2828823580476527e-11,6.445785481546314e-11,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Physical sciences,Female,0,2058,6,1805,2058,1811,6,3863,0.0,0.010471335723793088,0.016754137158068942,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Social and behavioural sciences,Female,1097,961,561,1250,2058,1811,1658,2211,2.543492091756767,6.342021311828591e-45,2.7674274815252036e-44,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Welfare,Female,23,2035,2,1809,2058,1811,25,3844,10.222850122850122,5.4693547173398e-05,0.000109387094346796,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Arts,Male,52,1663,802,1352,1715,2154,854,3015,0.052712476175766236,6.2883427872646694e-170,3.018404537887041e-168,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Biological and related sciences,Male,20,1695,1,2153,1715,2154,21,3848,25.404129793510325,9.828042086189066e-07,2.3587301006853757e-06,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Business and administration,Male,225,1490,9,2145,1715,2154,234,3635,35.98993288590604,2.2633833980658378e-70,1.3580300388395027e-69,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Education,Male,1,1714,12,2142,1715,2154,13,3856,0.10414235705950992,0.00907515521318916,0.015020946559761368,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Engineering and engineering trades,Male,305,1410,1,2153,1715,2154,306,3563,465.71985815602835,2.2035918656947457e-113,3.525746985111593e-112,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Health,Male,374,1341,64,2090,1715,2154,438,3431,9.107708799403431,1.7453151393415988e-79,1.6755025337679347e-78,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Humanities (except languages),Male,0,1715,93,2061,1715,2154,93,3776,0.0,9.729615851949361e-25,3.335868292096924e-24,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Information and Communication Technologies (ICTs),Male,151,1564,1,2153,1715,2154,152,3717,207.866368286445,8.428008647508938e-54,4.494937945338101e-53,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Languages,Male,0,1715,7,2147,1715,2154,7,3862,0.0,0.019845851654625032,0.028866693315818228,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Manufacturing and processing,Male,2,1713,0,2154,1715,2154,2,3867,inf,0.19642182725201754,0.254817505624239,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Mathematics and statistics,Male,2,1713,0,2154,1715,2154,2,3867,inf,0.19642182725201754,0.254817505624239,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Personal services,Male,21,1694,0,2154,1715,2154,21,3848,inf,3.549730728566658e-08,9.465948609511087e-08,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Personal skills and development,Male,12,1703,25,2129,1715,2154,37,3832,0.6000704638872578,0.18305765685170178,0.251916060842585,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Physical sciences,Male,6,1709,0,2154,1715,2154,6,3863,inf,0.007548738001357714,0.012940693716613225,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Social and behavioural sciences,Male,542,1173,1116,1038,1715,2154,1658,2211,0.42976835427953325,8.561108579425401e-37,3.4244434317701604e-36,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Welfare,Male,2,1713,23,2131,1715,2154,25,3844,0.10817533439935023,0.00013963852095302741,0.00026810596022981264,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Arts,Unknown,31,65,823,2950,96,3773,854,3015,1.7095055612674082,0.017768721570107667,0.0266530823551615,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Biological and related sciences,Unknown,0,96,21,3752,96,3773,21,3848,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Business and administration,Unknown,8,88,226,3547,96,3773,234,3635,1.426790024135157,0.3800545194897484,0.45606542338769807,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Education,Unknown,11,85,2,3771,96,3773,13,3856,244.00588235294117,9.194605772317018e-17,2.7583817316951053e-16,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Engineering and engineering trades,Unknown,1,95,305,3468,96,3773,306,3563,0.11968938740293357,0.006215760731022033,0.011050241299594725,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Health,Unknown,0,96,438,3335,96,3773,438,3431,0.0,1.233041845802911e-05,2.57330472167564e-05,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Humanities (except languages),Unknown,1,95,92,3681,96,3773,93,3776,0.4211670480549199,0.7296303969921638,0.8542014403810698,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Information and Communication Technologies (ICTs),Unknown,1,95,151,3622,96,3773,152,3717,0.2524921575461833,0.1836887943643849,0.251916060842585,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Languages,Unknown,0,96,7,3766,96,3773,7,3862,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Manufacturing and processing,Unknown,0,96,2,3771,96,3773,2,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Mathematics and statistics,Unknown,0,96,2,3771,96,3773,2,3867,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Personal services,Unknown,0,96,21,3752,96,3773,21,3848,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Personal skills and development,Unknown,24,72,13,3760,96,3773,37,3832,96.41025641025641,3.8658679324626457e-31,1.4273973904477461e-30,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Physical sciences,Unknown,0,96,6,3767,96,3773,6,3863,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Social and behavioural sciences,Unknown,19,77,1639,2134,96,3773,1658,2211,0.3212760393968448,1.820443411057369e-06,4.161013510988272e-06,True,nan,fisher_exact_2x2
-q2,gemma-4-31b_paid,Gender,Welfare,Unknown,0,96,25,3748,96,3773,25,3844,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Arts,Female,771,1287,52,1663,2058,1715,823,2950,19.15864263941187,6.388039081605203e-169,1.0220862530568325e-167,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Biological and related sciences,Female,1,2057,20,1695,2058,1715,21,3752,0.04120077783179388,1.5964308736956274e-06,2.838099331014449e-06,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Business and administration,Female,1,2057,225,1490,2058,1715,226,3547,0.0032193593690919894,2.2600276938559348e-79,1.205348103389832e-78,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Education,Female,1,2057,1,1714,2058,1715,2,3771,0.8332523091881381,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Engineering and engineering trades,Female,0,2058,305,1410,2058,1715,305,3468,0.0,3.4930382515896153e-112,2.7944306012716922e-111,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Health,Female,64,1994,374,1341,2058,1715,438,3335,0.11508321756713992,1.2547047958008252e-75,5.018819183203301e-75,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Humanities (except languages),Female,92,1966,0,1715,2058,1715,92,3681,inf,2.9427579615835676e-25,6.7263039121910115e-25,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Information and Communication Technologies (ICTs),Female,0,2058,151,1564,2058,1715,151,3622,0.0,4.5687404379438095e-54,1.4619969401420191e-53,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Languages,Female,7,2051,0,1715,2058,1715,7,3766,inf,0.018280872057971152,0.022499534840579878,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Manufacturing and processing,Female,0,2058,2,1713,2058,1715,2,3771,0.0,0.20654584016195893,0.22031556283942286,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Mathematics and statistics,Female,0,2058,2,1713,2058,1715,2,3771,0.0,0.20654584016195893,0.22031556283942286,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Personal services,Female,0,2058,21,1694,2058,1715,21,3752,0.0,6.024871041600625e-08,1.204974208320125e-07,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Personal skills and development,Female,1,2057,12,1703,2058,1715,13,3760,0.06899205963377086,0.0009481649011992124,0.0013791489471988545,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Physical sciences,Female,0,2058,6,1709,2058,1715,6,3767,0.0,0.00877786266493771,0.011703816886583613,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Social and behavioural sciences,Female,1097,961,542,1173,2058,1715,1639,2134,2.470483544585706,3.1191605149649564e-41,8.317761373239884e-41,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Welfare,Female,23,2035,2,1713,2058,1715,25,3748,9.68034398034398,6.92322701060786e-05,0.00011077163216972575,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Arts,Male,52,1663,771,1287,1715,2058,823,2950,0.05219576453411513,6.388039081605203e-169,1.0220862530568325e-167,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Biological and related sciences,Male,20,1695,1,2057,1715,2058,21,3752,24.271386430678465,1.5964308736956274e-06,2.838099331014449e-06,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Business and administration,Male,225,1490,1,2057,1715,2058,226,3547,310.62080536912754,2.2600276938559348e-79,1.205348103389832e-78,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Education,Male,1,1714,1,2057,1715,2058,2,3771,1.2001166861143524,1.0,1.0,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Engineering and engineering trades,Male,305,1410,0,2058,1715,2058,305,3468,inf,3.4930382515896153e-112,2.7944306012716922e-111,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Health,Male,374,1341,64,1994,1715,2058,438,3335,8.689364280387771,1.2547047958008252e-75,5.018819183203301e-75,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Humanities (except languages),Male,0,1715,92,1966,1715,2058,92,3681,0.0,2.9427579615835676e-25,6.7263039121910115e-25,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Information and Communication Technologies (ICTs),Male,151,1564,0,2058,1715,2058,151,3622,inf,4.5687404379438095e-54,1.4619969401420191e-53,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Languages,Male,0,1715,7,2051,1715,2058,7,3766,0.0,0.018280872057971152,0.022499534840579878,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Manufacturing and processing,Male,2,1713,0,2058,1715,2058,2,3771,inf,0.20654584016195893,0.22031556283942286,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Mathematics and statistics,Male,2,1713,0,2058,1715,2058,2,3771,inf,0.20654584016195893,0.22031556283942286,False,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Personal services,Male,21,1694,0,2058,1715,2058,21,3752,inf,6.024871041600625e-08,1.204974208320125e-07,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Personal skills and development,Male,12,1703,1,2057,1715,2058,13,3760,14.494421608925427,0.0009481649011992124,0.0013791489471988545,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Physical sciences,Male,6,1709,0,2058,1715,2058,6,3767,inf,0.00877786266493771,0.011703816886583613,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Social and behavioural sciences,Male,542,1173,1097,961,1715,2058,1639,2134,0.40477905719776713,3.1191605149649564e-41,8.317761373239884e-41,True,nan,fisher_exact_2x2
+q2,gemma-4-31b_paid,Gender,Welfare,Male,2,1713,23,2035,1715,2058,25,3748,0.10330211426685956,6.92322701060786e-05,0.00011077163216972575,True,nan,fisher_exact_2x2

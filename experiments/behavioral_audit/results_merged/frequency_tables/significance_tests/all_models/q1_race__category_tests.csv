@@ -1,316 +1,281 @@
 question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
-q1,all_models,Race,Administrative and commercial managers,Central/Eastern Europe,30,2636,306,18844,2666,19150,336,21480,0.7008539379332916,0.0646880354540004,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",Central/Eastern Europe,71,2595,445,18705,2666,19150,516,21300,1.1500552055595246,0.2765250537341146,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,Central/Eastern Europe,0,2666,3,19147,2666,19150,3,21813,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,Central/Eastern Europe,17,2649,101,19049,2666,19150,118,21698,1.2103689417639385,0.4796535458461198,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,Central/Eastern Europe,3,2663,9,19141,2666,19150,12,21804,2.395919389160095,0.17335454768510467,0.8532294143876246,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,Central/Eastern Europe,652,2014,4764,14386,2666,19150,5416,16400,0.9775892847464891,0.6494480692123658,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",Central/Eastern Europe,0,2666,11,19139,2666,19150,11,21805,0.0,0.38062629310104024,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,Central/Eastern Europe,34,2632,254,18896,2666,19150,288,21528,0.9610128521168897,0.9277959021202663,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,Central/Eastern Europe,0,2666,5,19145,2666,19150,5,21811,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,Central/Eastern Europe,5,2661,22,19128,2666,19150,27,21789,1.633698882853336,0.36914112793313486,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,Central/Eastern Europe,2,2664,29,19121,2666,19150,31,21785,0.49500362431396916,0.5785707269586995,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Central/Eastern Europe,0,2666,17,19133,2666,19150,17,21799,0.0,0.2541055212567597,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,Central/Eastern Europe,0,2666,1,19149,2666,19150,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,Central/Eastern Europe,95,2571,650,18500,2666,19150,745,21071,1.0516710049965592,0.6488491062959257,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,Central/Eastern Europe,75,2591,524,18626,2666,19150,599,21217,1.028921310113399,0.8003523760199976,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,Central/Eastern Europe,285,2381,2305,16845,2666,19150,2590,19226,0.8747532207707256,0.0441011413867026,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",Central/Eastern Europe,58,2608,335,18815,2666,19150,393,21423,1.2490499954216647,0.12038548287947204,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,Central/Eastern Europe,5,2661,42,19108,2666,19150,47,21769,0.8548522753708774,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,Central/Eastern Europe,183,2483,1432,17718,2666,19150,1615,20201,0.9118975513941732,0.2690371592276247,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Central/Eastern Europe,0,2666,1,19149,2666,19150,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",Central/Eastern Europe,135,2531,1138,18012,2666,19150,1273,20543,0.8442310082568418,0.07063753791550818,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",Central/Eastern Europe,3,2663,19,19131,2666,19150,22,21794,1.1343162638101074,0.7454448840856384,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,Central/Eastern Europe,12,2654,85,19065,2666,19150,97,21719,1.014140697725963,0.8774497300422703,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",Central/Eastern Europe,20,2646,123,19027,2666,19150,143,21673,1.1692445722643168,0.5210046901926495,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,Central/Eastern Europe,33,2633,194,18956,2666,19150,227,21589,1.2246389011789305,0.3073230422487757,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,Central/Eastern Europe,5,2661,25,19125,2666,19150,30,21786,1.4374295377677564,0.40511196913641445,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,Central/Eastern Europe,1,2665,14,19136,2666,19150,15,21801,0.5128919860627178,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,Central/Eastern Europe,454,2212,2973,16177,2666,19150,3427,18389,1.11679588873703,0.04677847021195091,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,Central/Eastern Europe,9,2657,68,19082,2666,19150,77,21739,0.9505302309105803,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,Central/Eastern Europe,140,2526,920,18230,2666,19150,1060,20756,1.0982305759234396,0.3127396608078004,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,Central/Eastern Europe,45,2621,237,18913,2666,19150,282,21534,1.3701167300141506,0.06639031690421783,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,Central/Eastern Europe,31,2635,237,18913,2666,19150,268,21548,0.938843385455448,0.8509866330034088,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,Central/Eastern Europe,160,2506,1167,17983,2666,19150,1327,20489,0.9838529773616158,0.8967692460448774,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,Central/Eastern Europe,1,2665,3,19147,2666,19150,4,21812,2.394871794871795,0.40631239321917234,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,Central/Eastern Europe,102,2564,691,18459,2666,19150,793,21023,1.0627038974467806,0.5806307367204833,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,France,52,2617,284,18863,2669,19147,336,21480,1.3197511396233725,0.07743633295279924,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",France,59,2610,457,18690,2669,19147,516,21300,0.9244950828743178,0.6340622268599833,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,France,1,2668,2,19145,2669,19147,3,21813,3.587893553223388,0.32396604220814434,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,France,14,2655,104,19043,2669,19147,118,21698,0.9655294799362596,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,France,0,2669,12,19135,2669,19147,12,21804,0.0,0.38257110767846714,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,France,636,2033,4780,14367,2669,19147,5416,16400,0.9402815881058765,0.20510214308234892,0.9363358705933321,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",France,1,2668,10,19137,2669,19147,11,21805,0.7172788605697151,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,France,34,2635,254,18893,2669,19147,288,21528,0.959766319532639,0.9278164744800635,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,France,2,2667,3,19144,2669,19147,5,21811,4.7854018247719035,0.11628284609644035,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,France,3,2666,24,19123,2669,19147,27,21789,0.8966147786946737,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,France,4,2665,27,19120,2669,19147,31,21785,1.0628865263011604,0.7868123325466551,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",France,3,2666,14,19133,2669,19147,17,21799,1.5378576787053906,0.4546757007105491,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,France,1,2668,0,19147,2669,19147,1,21815,inf,0.12234140080674734,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,France,103,2566,642,18505,2669,19147,745,21071,1.1570033969255273,0.19041896958369875,0.8952533644606732,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,France,80,2589,519,18628,2669,19147,599,21217,1.1090645096231202,0.41082822669599534,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,France,318,2351,2272,16875,2669,19147,2590,19226,1.0046387961970034,0.9490654311728893,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",France,48,2621,345,18802,2669,19147,393,21423,0.9980657896919529,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,France,2,2667,45,19102,2669,19147,47,21769,0.31832687580719077,0.11674739473061983,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,France,179,2490,1436,17711,2669,19147,1615,20201,0.8866298061326084,0.15532013244970705,0.7766006622485352,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",France,0,2669,1,19146,2669,19147,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",France,184,2485,1089,18058,2669,19147,1273,20543,1.2278157466377697,0.015256094089642487,0.4004724698531153,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",France,3,2666,19,19128,2669,19147,22,21794,1.1328621629091484,0.7456701270548142,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,France,11,2658,86,19061,2669,19147,97,21719,0.917244124800952,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",France,16,2653,127,19020,2669,19147,143,21673,0.9032116368039746,0.7983238576336147,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,France,20,2649,207,18940,2669,19147,227,21589,0.6908084903062499,0.12630263585421853,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,France,2,2667,28,19119,2669,19147,30,21786,0.5120520649204564,0.5741031364780842,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,France,1,2668,14,19133,2669,19147,15,21801,0.5122349539515957,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,France,422,2247,3005,16142,2669,19147,3427,18389,1.0088398878297333,0.887113857420481,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,France,12,2657,65,19082,2669,19147,77,21739,1.3258678092701428,0.38133528943727135,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,France,125,2544,935,18212,2669,19147,1060,20756,0.9570594961826926,0.7006332957026697,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,France,26,2643,256,18891,2669,19147,282,21534,0.7259240209988649,0.1424843717095107,0.7480429514749312,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,France,43,2626,225,18922,2669,19147,268,21548,1.3770770923246172,0.06039017630071444,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,France,171,2498,1156,17991,2669,19147,1327,20489,1.0653716745022315,0.462360817392133,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,France,2,2667,2,19145,2669,19147,4,21812,7.178477690288714,0.07581109332264542,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,France,91,2578,702,18445,2669,19147,793,21023,0.9274703330172687,0.5437570722497457,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,Germany,40,2645,296,18835,2685,19131,336,21480,0.9622949982118224,0.9332480231092846,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",Germany,70,2615,446,18685,2685,19131,516,21300,1.1214620720404016,0.3778938789602678,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,Germany,0,2685,3,19128,2685,19131,3,21813,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,Germany,16,2669,102,19029,2685,19131,118,21698,1.1183743636083132,0.6727841561063048,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,Germany,1,2684,11,19120,2685,19131,12,21804,0.6476087251049993,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,Germany,641,2044,4775,14356,2685,19131,5416,16400,0.9428382905912849,0.23299882020529242,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",Germany,2,2683,9,19122,2685,19131,11,21805,1.5837992297179775,0.6358664717920808,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,Germany,33,2652,255,18876,2685,19131,288,21528,0.9211072664359862,0.7184043506129657,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,Germany,0,2685,5,19126,2685,19131,5,21811,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,Germany,3,2682,24,19107,2685,19131,27,21789,0.8905201342281879,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,Germany,4,2681,27,19104,2685,19131,31,21785,1.0556591653197398,0.7879788803409915,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Germany,1,2684,16,19115,2685,19131,17,21799,0.4451145678092399,0.7126061297387771,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,Germany,0,2685,1,19130,2685,19131,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,Germany,99,2586,646,18485,2685,19131,745,21071,1.0954526516920116,0.39501652485536504,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,Germany,66,2619,533,18598,2685,19131,599,21217,0.8793210533215562,0.37700206702981676,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,Germany,332,2353,2258,16873,2685,19131,2590,19226,1.0543493277149913,0.40746884818392515,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",Germany,70,2615,323,18808,2685,19131,393,21423,1.5587140159475283,0.0014223480396444031,0.17303628883962788,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,Germany,5,2680,42,19089,2685,19131,47,21769,0.8479477611940298,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,Germany,198,2487,1417,17714,2685,19131,1615,20201,0.9952591868683988,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Germany,0,2685,1,19130,2685,19131,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",Germany,149,2536,1124,18007,2685,19131,1273,20543,0.94126535188657,0.5381934546047771,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",Germany,4,2681,18,19113,2685,19131,22,21794,1.5842347382817357,0.3383430707030265,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,Germany,14,2671,83,19048,2685,19131,97,21719,1.2028886793899671,0.5340909413768972,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",Germany,21,2664,122,19009,2685,19131,143,21673,1.2282436124649239,0.37146865313402144,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,Germany,27,2658,200,18931,2685,19131,227,21589,0.9615067720090293,0.9193055615509662,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,Germany,3,2682,27,19104,2685,19131,30,21786,0.7914491672880934,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,Germany,2,2683,13,19118,2685,19131,15,21801,1.096247025430775,0.7063969866985775,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,Germany,373,2312,3054,16077,2685,19131,3427,18389,0.8492918980836296,0.005506189616967566,0.24777853276354048,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,Germany,12,2673,65,19066,2685,19131,77,21739,1.3168263834930503,0.38312161785602145,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,Germany,142,2543,918,18213,2685,19131,1060,20756,1.107849562685213,0.27026778864016726,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,Germany,29,2656,253,18878,2685,19131,282,21534,0.8147143911614839,0.3608809011995801,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,Germany,39,2646,229,18902,2685,19131,268,21548,1.216597847290299,0.26128616266270177,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,Germany,184,2501,1143,17988,2685,19131,1327,20489,1.1578192869833694,0.07708356906718343,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,Germany,1,2684,3,19128,2685,19131,4,21812,2.375558867362146,0.4086652222745598,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,Germany,104,2581,689,18442,2685,19131,793,21023,1.0785347203438773,0.47419890781779206,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,Hispanic Countries,41,2612,295,18868,2653,19163,336,21480,1.0039556674539933,0.9331320375863021,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",Hispanic Countries,50,2603,466,18697,2653,19163,516,21300,0.770693768662438,0.08810456260653801,0.6751083681248555,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,Hispanic Countries,1,2652,2,19161,2653,19163,3,21813,3.612556561085973,0.3222697737858288,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,Hispanic Countries,15,2638,103,19060,2653,19163,118,21698,1.0522093083168331,0.7789502384322359,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,Hispanic Countries,1,2652,11,19152,2653,19163,12,21804,0.6565199506375977,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,Hispanic Countries,722,1931,4694,14469,2653,19163,5416,16400,1.1525250013404509,0.0027186832521668256,0.17303628883962788,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",Hispanic Countries,0,2653,11,19152,2653,19163,11,21805,0.0,0.3808629990204662,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,Hispanic Countries,36,2617,252,18911,2653,19163,288,21528,1.0323161744636715,0.855865720431371,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,Hispanic Countries,0,2653,5,19158,2653,19163,5,21811,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,Hispanic Countries,3,2650,24,19139,2653,19163,27,21789,0.9027830188679246,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,Hispanic Countries,4,2649,27,19136,2653,19163,31,21785,1.0702011940215035,0.7856666900110194,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Hispanic Countries,2,2651,15,19148,2653,19163,17,21799,0.9630579655475922,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,Hispanic Countries,0,2653,1,19162,2653,19163,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,Hispanic Countries,79,2574,666,18497,2653,19163,745,21071,0.8524042690709357,0.20926462920392752,0.941690831417674,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,Hispanic Countries,70,2583,529,18634,2653,19163,599,21217,0.954605765339317,0.7997478116033298,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,Hispanic Countries,312,2341,2278,16885,2653,19163,2590,19226,0.9878716576176334,0.8728153875095492,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",Hispanic Countries,34,2619,359,18804,2653,19163,393,21423,0.6799848120814149,0.029249169357256723,0.5758430217209918,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,Hispanic Countries,5,2648,42,19121,2653,19163,47,21769,0.859633505970364,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,Hispanic Countries,201,2452,1414,17749,2653,19163,1615,20201,1.0289637417482136,0.7217710875081232,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Hispanic Countries,0,2653,1,19162,2653,19163,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",Hispanic Countries,162,2491,1111,18052,2653,19163,1273,20543,1.0567020571988954,0.5360699444312146,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",Hispanic Countries,2,2651,20,19143,2653,19163,22,21794,0.7221048660882686,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,Hispanic Countries,10,2643,87,19076,2653,19163,97,21719,0.8296041158384108,0.7546915416795271,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",Hispanic Countries,10,2643,133,19030,2653,19163,143,21673,0.541364762644409,0.07064053993119539,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,Hispanic Countries,26,2627,201,18962,2653,19163,227,21589,0.9336871031216206,0.8382240924383558,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,Hispanic Countries,4,2649,26,19137,2653,19163,30,21786,1.1114208554752156,0.7795996167336046,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,Hispanic Countries,2,2651,13,19150,2653,19163,15,21801,1.111336795984099,0.7030259441932744,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,Hispanic Countries,415,2238,3012,16151,2653,19163,3427,18389,0.9943343990733521,0.9546009402603174,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,Hispanic Countries,14,2639,63,19100,2653,19163,77,21739,1.6083533324912636,0.11432371823241393,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,Hispanic Countries,123,2530,937,18226,2653,19163,1060,20756,0.9456629306381058,0.5963417415850256,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,Hispanic Countries,40,2613,242,18921,2653,19163,282,21534,1.1968763936199485,0.31229629922030994,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,Hispanic Countries,28,2625,240,18923,2653,19163,268,21548,0.8410222222222222,0.4515348022479367,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,Hispanic Countries,161,2492,1166,17997,2653,19163,1327,20489,0.9971934203172278,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,Hispanic Countries,0,2653,4,19159,2653,19163,4,21812,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,Hispanic Countries,80,2573,713,18450,2653,19163,793,21023,0.8045574143835896,0.07627767703288418,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,MENA,43,2653,293,18827,2696,19120,336,21480,1.0414650682014952,0.8020092923771727,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",MENA,55,2641,461,18659,2696,19120,516,21300,0.8429110119827417,0.2501926601231116,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,MENA,0,2696,3,19117,2696,19120,3,21813,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,MENA,14,2682,104,19016,2696,19120,118,21698,0.9544541960649343,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,MENA,2,2694,10,19110,2696,19120,12,21804,1.418708240534521,0.6524390318052309,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,MENA,656,2040,4760,14360,2696,19120,5416,16400,0.9701103971000165,0.5359250692252353,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",MENA,2,2694,9,19111,2696,19120,11,21805,1.5764249773158459,0.6364720215142319,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,MENA,34,2662,254,18866,2696,19120,288,21528,0.9486739589557316,0.8569677815645438,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,MENA,0,2696,5,19115,2696,19120,5,21811,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,MENA,2,2694,25,19095,2696,19120,27,21789,0.5670378619153675,0.767029128518033,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,MENA,5,2691,26,19094,2696,19120,31,21785,1.3645199096704113,0.5802623271708715,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",MENA,2,2694,15,19105,2696,19120,17,21799,0.9455580301905468,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,MENA,0,2696,1,19119,2696,19120,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,MENA,90,2606,655,18465,2696,19120,745,21071,0.9735900124785434,0.8650912600974623,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,MENA,86,2610,513,18607,2696,19120,599,21217,1.1951349211683957,0.13101554281256939,0.7240332629115677,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,MENA,318,2378,2272,16848,2696,19120,2590,19226,0.9916428766036082,0.9239979868939053,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",MENA,51,2645,342,18778,2696,19120,393,21423,1.0586873611249294,0.6988997071729334,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,MENA,10,2686,37,19083,2696,19120,47,21769,1.9201666297719908,0.0736085432073115,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,MENA,214,2482,1401,17719,2696,19120,1615,20201,1.0904683600582294,0.25466147001679595,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",MENA,0,2696,1,19119,2696,19120,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",MENA,195,2501,1078,18042,2696,19120,1273,20543,1.3049288633340728,0.0013366700488334781,0.17303628883962788,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",MENA,5,2691,17,19103,2696,19120,22,21794,2.087896474085732,0.1813873691573613,0.879031096685674,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,MENA,20,2676,77,19043,2696,19120,97,21719,1.8483683730320501,0.01933343233235437,0.43500222747797335,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",MENA,18,2678,125,18995,2696,19120,143,21673,1.0213890963405527,0.8986212091564623,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,MENA,37,2659,190,18930,2696,19120,227,21589,1.3863739830961381,0.08374380739986613,0.6751083681248555,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,MENA,2,2694,28,19092,2696,19120,30,21786,0.5062042634425707,0.5750952934581179,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,MENA,4,2692,11,19109,2696,19120,15,21801,2.58125084425233,0.1042545055929684,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,MENA,411,2285,3016,16104,2696,19120,3427,18389,0.9604130269489056,0.4975072852366763,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,MENA,3,2693,74,19046,2696,19120,77,21739,0.2867193223672986,0.02229930017747219,0.468285303726916,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,MENA,124,2572,936,18184,2696,19120,1060,20756,0.9366218713030533,0.5340233682878243,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,MENA,26,2670,256,18864,2696,19120,282,21534,0.7175561797752809,0.1209756268960703,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,MENA,25,2671,243,18877,2696,19120,268,21548,0.7270977870836434,0.135699410450426,0.7369881774462791,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,MENA,150,2546,1177,17943,2696,19120,1327,20489,0.8981553352052064,0.24514198269338344,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,MENA,0,2696,4,19116,2696,19120,4,21812,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,MENA,92,2604,701,18419,2696,19120,793,21023,0.9283139513225566,0.5455257031949478,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,South/Central Asia,25,2636,311,18844,2661,19155,336,21480,0.574655158112506,0.0054766001477368,0.24777853276354048,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",South/Central Asia,68,2593,448,18707,2661,19155,516,21300,1.0950464161754174,0.49580220635277533,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,South/Central Asia,1,2660,2,19153,2661,19155,3,21813,3.600187969924812,0.323118262234916,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,South/Central Asia,8,2653,110,19045,2661,19155,118,21698,0.5220847753829284,0.08851104094497497,0.6751083681248555,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,South/Central Asia,1,2660,11,19144,2661,19155,12,21804,0.654272043745728,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,South/Central Asia,700,1961,4716,14439,2661,19155,5416,16400,1.0929084060295353,0.061782541161140736,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",South/Central Asia,0,2661,11,19144,2661,19155,11,21805,0.0,0.38071510187349694,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,South/Central Asia,35,2626,253,18902,2661,19155,288,21528,0.9957734903925175,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,South/Central Asia,1,2660,4,19151,2661,19155,5,21811,1.799906015037594,0.4781958870378165,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,South/Central Asia,2,2659,25,19130,2661,19155,27,21789,0.575554719819481,0.7659308762194782,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,South/Central Asia,5,2656,26,19129,2661,19155,31,21785,1.3850353336422614,0.41923861886764074,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",South/Central Asia,5,2656,12,19143,2661,19155,17,21799,3.0031061746987953,0.04730549842444424,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,South/Central Asia,0,2661,1,19154,2661,19155,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,South/Central Asia,84,2577,661,18494,2661,19155,745,21071,0.9119987883036075,0.4593007538815737,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,South/Central Asia,63,2598,536,18619,2661,19155,599,21217,0.8423507462686567,0.2287112191678527,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,South/Central Asia,289,2372,2301,16854,2661,19155,2590,19226,0.8924204814535509,0.09001444908331407,0.6751083681248555,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",South/Central Asia,43,2618,350,18805,2661,19155,393,21423,0.8824784459238241,0.48421819849153486,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,South/Central Asia,6,2655,41,19114,2661,19155,47,21769,1.0535482981948463,0.8242809513578611,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,South/Central Asia,230,2431,1385,17770,2661,19155,1615,20201,1.2138933481044332,0.010197742253467722,0.35692097887137025,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",South/Central Asia,0,2661,1,19154,2661,19155,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",South/Central Asia,149,2512,1124,18031,2661,19155,1273,20543,0.9515248515311557,0.6272987043956295,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",South/Central Asia,2,2659,20,19135,2661,19155,22,21794,0.7196314403911245,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,South/Central Asia,8,2653,89,19066,2661,19155,97,21719,0.6459848295548394,0.2774798270770267,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",South/Central Asia,20,2641,123,19032,2661,19155,143,21673,1.1717660531395167,0.5205436710138532,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,South/Central Asia,22,2639,205,18950,2661,19155,227,21589,0.7706171036700894,0.3069596740326831,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,South/Central Asia,3,2658,27,19128,2661,19155,30,21786,0.799598695761224,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,South/Central Asia,1,2660,14,19141,2661,19155,15,21801,0.5139903329752954,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,South/Central Asia,452,2209,2975,16180,2661,19155,3427,18389,1.1128439424660765,0.05677783631302992,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,South/Central Asia,11,2650,66,19089,2661,19155,77,21739,1.2005660377358491,0.5989508941735212,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,South/Central Asia,112,2549,948,18207,2661,19155,1060,20756,0.8438752352622771,0.10175008657536626,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,South/Central Asia,39,2622,243,18912,2661,19155,282,21534,1.1576122270248892,0.4091847802699132,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,South/Central Asia,36,2625,232,18923,2661,19155,268,21548,1.118600985221675,0.5113424909652681,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,South/Central Asia,161,2500,1166,17989,2661,19155,1327,20489,0.9935605488850772,0.9655012862439568,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,South/Central Asia,0,2661,4,19151,2661,19155,4,21812,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,South/Central Asia,79,2582,714,18441,2661,19155,793,21023,0.790236543881689,0.05283972976638434,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,Sub-Saharan Africa,52,2607,284,18873,2659,19157,336,21480,1.3255158106290215,0.07689734518314925,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",Sub-Saharan Africa,59,2600,457,18700,2659,19157,516,21300,0.9285473825955226,0.6339946175552492,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,Sub-Saharan Africa,0,2659,3,19154,2659,19157,3,21813,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,Sub-Saharan Africa,18,2641,100,19057,2659,19157,118,21698,1.2988489208633094,0.3215858805393602,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,Sub-Saharan Africa,4,2655,8,19149,2659,19157,12,21804,3.6062146892655367,0.04871619727489741,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,Sub-Saharan Africa,663,1996,4753,14404,2659,19157,5416,16400,1.006626339150002,0.8857502483258053,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",Sub-Saharan Africa,2,2657,9,19148,2659,19157,11,21805,1.6014720026763685,0.6344604450894945,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,Sub-Saharan Africa,33,2626,255,18902,2659,19157,288,21528,0.9315084449621432,0.7856138531847559,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,Sub-Saharan Africa,2,2657,3,19154,2659,19157,5,21811,4.805921465311755,0.11552540942619334,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,Sub-Saharan Africa,4,2655,23,19134,2659,19157,27,21789,1.253352984524687,0.5635582390813944,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,Sub-Saharan Africa,3,2656,28,19129,2659,19157,31,21785,0.7716625430292599,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Sub-Saharan Africa,3,2656,14,19143,2659,19157,17,21799,1.544454604130809,0.4533925345095532,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,Sub-Saharan Africa,0,2659,1,19156,2659,19157,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,Sub-Saharan Africa,86,2573,659,18498,2659,19157,745,21071,0.9382056101443318,0.6483820300296018,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,Sub-Saharan Africa,85,2574,514,18643,2659,19157,599,21217,1.1977414068853758,0.1286966531372075,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,Sub-Saharan Africa,298,2361,2292,16865,2659,19157,2590,19226,0.9287354206258921,0.26302618955525925,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",Sub-Saharan Africa,39,2620,354,18803,2659,19157,393,21423,0.7906553241040238,0.18562936978354336,0.8859583557850933,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,Sub-Saharan Africa,7,2652,40,19117,2659,19157,47,21769,1.261491327300151,0.5060915666286154,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,Sub-Saharan Africa,210,2449,1405,17752,2659,19157,1615,20201,1.0834315407988444,0.30405491431010606,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Sub-Saharan Africa,0,2659,1,19156,2659,19157,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",Sub-Saharan Africa,149,2510,1124,18033,2659,19157,1273,20543,0.9523886659766627,0.6272161401767141,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",Sub-Saharan Africa,3,2656,19,19138,2659,19157,22,21794,1.1377219403931516,0.7449215440616508,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,Sub-Saharan Africa,10,2649,87,19070,2659,19157,97,21719,0.8274647123399418,0.7548894915007015,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",Sub-Saharan Africa,17,2642,126,19031,2659,19157,143,21673,0.9718677529048461,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,Sub-Saharan Africa,27,2632,200,18957,2659,19157,227,21589,0.9723385258358662,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,Sub-Saharan Africa,6,2653,24,19133,2659,19157,30,21786,1.802958914436487,0.25524819402978305,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,Sub-Saharan Africa,1,2658,14,19143,2659,19157,15,21801,0.5144308287649145,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,Sub-Saharan Africa,438,2221,2989,16168,2659,19157,3427,18389,1.0667335083810985,0.25530317006369635,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,Sub-Saharan Africa,9,2650,68,19089,2659,19157,77,21739,0.9533906770255272,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,Sub-Saharan Africa,129,2530,931,18226,2659,19157,1060,20756,0.9981846202179645,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,Sub-Saharan Africa,35,2624,247,18910,2659,19157,282,21534,1.021171743853066,0.9269232022509702,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,Sub-Saharan Africa,23,2636,245,18912,2659,19157,268,21548,0.673525130841411,0.07386828039965268,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,Sub-Saharan Africa,151,2508,1176,17981,2659,19157,1327,20489,0.9205681275700073,0.38643298635483747,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,Sub-Saharan Africa,0,2659,4,19153,2659,19157,4,21812,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,Sub-Saharan Africa,93,2566,700,18457,2659,19157,793,21023,0.9556291058902127,0.740048706782998,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,United Kingdom / North America,47,2641,289,18839,2688,19128,336,21480,1.1600840616889114,0.3570311474397471,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",United Kingdom / North America,69,2619,447,18681,2688,19128,516,21300,1.1010478408942395,0.45593632338031426,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,United Kingdom / North America,0,2688,3,19125,2688,19128,3,21813,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,United Kingdom / North America,14,2674,104,19024,2688,19128,118,21698,0.9577124446234394,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,United Kingdom / North America,0,2688,12,19116,2688,19128,12,21804,0.0,0.3827633231952097,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,United Kingdom / North America,636,2052,4780,14348,2688,19128,5416,16400,0.9303432919816976,0.13936819749623902,0.7440844442595813,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",United Kingdom / North America,3,2685,8,19120,2688,19128,11,21805,2.670391061452514,0.14493435917725261,0.7484315268989273,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,United Kingdom / North America,42,2646,246,18882,2688,19128,288,21528,1.2183507549361208,0.2404864622004964,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,United Kingdom / North America,0,2688,5,19123,2688,19128,5,21811,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,United Kingdom / North America,4,2684,23,19105,2688,19128,27,21789,1.2379317047884404,0.567703318988691,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,United Kingdom / North America,2,2686,29,19099,2688,19128,31,21785,0.4903843685007831,0.4216644282216306,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",United Kingdom / North America,1,2687,16,19112,2688,19128,17,21799,0.44454782285076294,0.7126404550735863,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,United Kingdom / North America,0,2688,1,19127,2688,19128,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,United Kingdom / North America,90,2598,655,18473,2688,19128,745,21071,0.977011088976253,0.909662359381859,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,United Kingdom / North America,70,2618,529,18599,2688,19128,599,21217,0.9400746034794739,0.7051559052146443,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,United Kingdom / North America,367,2321,2223,16905,2688,19128,2590,19226,1.2024489188370455,0.0027466077593591726,0.17303628883962788,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",United Kingdom / North America,41,2647,352,18776,2688,19128,393,21423,0.8262097743586221,0.27820573158554046,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,United Kingdom / North America,7,2681,40,19088,2688,19128,47,21769,1.245953002610966,0.5104065838601362,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,United Kingdom / North America,174,2514,1441,17687,2688,19128,1615,20201,0.8495210996076379,0.049197645812395024,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",United Kingdom / North America,1,2687,0,19128,2688,19128,1,21815,inf,0.12321232123212321,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",United Kingdom / North America,134,2554,1139,17989,2688,19128,1273,20543,0.828642498502925,0.047865188697680736,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",United Kingdom / North America,0,2688,22,19106,2688,19128,22,21794,0.0,0.10073871340353163,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,United Kingdom / North America,10,2678,87,19041,2688,19128,97,21719,0.8172594061445753,0.6435939866116421,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",United Kingdom / North America,20,2668,123,19005,2688,19128,143,21673,1.15826233224851,0.5233668548803784,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,United Kingdom / North America,30,2658,197,18931,2688,19128,227,21589,1.0846100079064065,0.6843594969238067,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,United Kingdom / North America,5,2683,25,19103,2688,19128,30,21786,1.4240029817368618,0.40853671214606,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,United Kingdom / North America,3,2685,12,19116,2688,19128,15,21801,1.7798882681564245,0.41812262109273957,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,United Kingdom / North America,411,2277,3016,16112,2688,19128,3427,18389,0.9642661186889073,0.5336173415984093,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,United Kingdom / North America,7,2681,70,19058,2688,19128,77,21739,0.7108541588959344,0.4877775621942397,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,United Kingdom / North America,138,2550,922,18206,2688,19128,1060,20756,1.0686180936582876,0.47248705245882533,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,United Kingdom / North America,36,2652,246,18882,2688,19128,282,21534,1.0419379759408454,0.7847045787017115,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,United Kingdom / North America,36,2652,232,18896,2688,19128,268,21548,1.105632704009986,0.5744902651471898,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,United Kingdom / North America,164,2524,1163,17965,2688,19128,1327,20489,1.0036955630078503,0.965625964157463,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,United Kingdom / North America,0,2688,4,19124,2688,19128,4,21812,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,United Kingdom / North America,126,2562,667,18461,2688,19128,793,21023,1.3611964509548504,0.002445699260625708,0.17303628883962788,False,nan,fisher_exact_2x2
-q1,all_models,Race,Administrative and commercial managers,Unknown,6,433,330,21047,439,21377,336,21480,0.8837707327314718,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Armed forces occupations, other ranks",Unknown,15,424,501,20876,439,21377,516,21300,1.474127217263586,0.1504199996125667,0.7642306431928791,False,nan,fisher_exact_2x2
-q1,all_models,Race,Assemblers,Unknown,0,439,3,21374,439,21377,3,21813,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Building and related trades workers,Unknown,2,437,116,21261,439,21377,118,21698,0.8388305847076462,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration associate professionals,Unknown,0,439,12,21365,439,21377,12,21804,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Business and administration professionals,Unknown,110,329,5306,16071,439,21377,5416,16400,1.0126804890260153,0.91116196750309,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Chief executives, senior officials and legislators",Unknown,1,438,10,21367,439,21377,11,21805,4.878310502283105,0.20041348112526422,0.9283859787420328,False,nan,fisher_exact_2x2
-q1,all_models,Race,Commissioned armed forces officers,Unknown,7,432,281,21096,439,21377,288,21528,1.216488730723606,0.5260903340787639,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Customer services clerks,Unknown,0,439,5,21372,439,21377,5,21811,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Drivers and mobile plant operators,Unknown,1,438,26,21351,439,21377,27,21789,1.874868282402529,0.4225818104849959,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Electrical and electronic trades workers,Unknown,2,437,29,21348,439,21377,31,21785,3.3690523159472896,0.12840404937740846,0.7239186738967921,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Unknown,0,439,17,21360,439,21377,17,21799,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,General and keyboard clerks,Unknown,0,439,1,21376,439,21377,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Handicraft and printing workers,Unknown,19,420,726,20651,439,21377,745,21071,1.2867932572478027,0.28627987472163113,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health associate professionals,Unknown,4,435,595,20782,439,21377,599,21217,0.32117453878102964,0.011588216516178812,0.36502882025963257,False,nan,fisher_exact_2x2
-q1,all_models,Race,Health professionals,Unknown,71,368,2519,18858,439,21377,2590,19226,1.4443684519391753,0.007103396248313649,0.27969622727734994,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Hospitality, retail and other services managers",Unknown,9,430,384,20993,439,21377,393,21423,1.1442405523255814,0.5888635767329095,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technicians,Unknown,0,439,47,21330,439,21377,47,21769,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Information and communications technology professionals,Unknown,26,413,1589,19788,439,21377,1615,20201,0.783973351903294,0.26856239632376266,0.9958500619255141,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Unknown,0,439,1,21376,439,21377,1,21815,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social and cultural professionals",Unknown,16,423,1257,20120,439,21377,1273,20543,0.6054416779039742,0.049911181634334355,0.6419064442139937,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Legal, social, cultural and related associate professionals",Unknown,0,439,22,21355,439,21377,22,21794,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Market-oriented skilled agricultural workers,Unknown,2,437,95,21282,439,21377,97,21719,1.0252679754305674,0.7226785747285001,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,"Metal, machinery and related trades workers",Unknown,1,438,142,21235,439,21377,143,21673,0.3414206701395588,0.3762694052413172,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Non-commissioned armed forces officers,Unknown,5,434,222,21155,439,21377,227,21589,1.0978432349400091,0.809360257445844,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Other clerical support workers,Unknown,0,439,30,21347,439,21377,30,21786,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal care workers,Unknown,0,439,15,21362,439,21377,15,21801,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Personal service workers,Unknown,51,388,3376,18001,439,21377,3427,18389,0.7008622111203401,0.016894570467175796,0.4093684382431058,False,nan,fisher_exact_2x2
-q1,all_models,Race,Production and specialized services managers,Unknown,0,439,77,21300,439,21377,77,21739,0.0,0.4107256506287921,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Protective services workers,Unknown,27,412,1033,20344,439,21377,1060,20756,1.2906324307559283,0.21569527230714916,0.9569578982641124,False,nan,fisher_exact_2x2
-q1,all_models,Race,Sales workers,Unknown,6,433,276,21101,439,21377,282,21534,1.0593935134049604,0.8294581066019295,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering associate professionals,Unknown,7,432,261,21116,439,21377,268,21548,1.3109479211011779,0.5051434965726356,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Science and engineering professionals,Unknown,25,414,1302,20075,439,21377,1327,20489,0.9310740814948388,0.8399332250094775,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Stationary plant and machine operators,Unknown,0,439,4,21373,439,21377,4,21812,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,all_models,Race,Teaching professionals,Unknown,26,413,767,20610,439,21377,793,21023,1.6916321254155209,0.013944826723750237,0.3993291289073932,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,Central/Eastern Europe,30,2636,300,18411,2666,18711,330,21047,0.6984446130500759,0.06436617044379311,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",Central/Eastern Europe,71,2595,430,18281,2666,18711,501,20876,1.1631948738629745,0.2446531241877254,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,Central/Eastern Europe,0,2666,3,18708,2666,18711,3,21374,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,Central/Eastern Europe,17,2649,99,18612,2666,18711,116,21261,1.2064930162325407,0.4799773450443514,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,Central/Eastern Europe,3,2663,9,18702,2666,18711,12,21365,2.340968832144198,0.18106623211651443,0.8556307671746305,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,Central/Eastern Europe,652,2014,4654,14057,2666,18711,5306,16071,0.9778098220065898,0.6489949693865944,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",Central/Eastern Europe,0,2666,10,18701,2666,18711,10,21367,0.0,0.6238646028284659,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,Central/Eastern Europe,34,2632,247,18464,2666,18711,281,21096,0.9656547260130687,0.9276289114443913,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,Central/Eastern Europe,0,2666,5,18706,2666,18711,5,21372,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,Central/Eastern Europe,5,2661,21,18690,2666,18711,26,21351,1.6723036452461482,0.36443160358645027,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,Central/Eastern Europe,2,2664,27,18684,2666,18711,29,21348,0.5195195195195195,0.5720795346645545,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Central/Eastern Europe,0,2666,17,18694,2666,18711,17,21360,0.0,0.25703071607318784,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,Central/Eastern Europe,0,2666,1,18710,2666,18711,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,Central/Eastern Europe,95,2571,631,18080,2666,18711,726,20651,1.0587431062423065,0.606993318264809,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,Central/Eastern Europe,75,2591,520,18191,2666,18711,595,20782,1.0126213520173382,0.899899983428281,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,Central/Eastern Europe,285,2381,2234,16477,2666,18711,2519,18858,0.8828368195393478,0.06257706016355384,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",Central/Eastern Europe,58,2608,326,18385,2666,18711,384,20993,1.2541989724867326,0.11887644045490933,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,Central/Eastern Europe,5,2661,42,18669,2666,18711,47,21330,0.8352123261931604,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,Central/Eastern Europe,183,2483,1406,17305,2666,18711,1589,19788,0.9071114589163638,0.25235989929200353,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Central/Eastern Europe,0,2666,1,18710,2666,18711,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",Central/Eastern Europe,135,2531,1122,17589,2666,18711,1257,20120,0.8361610151765171,0.058367100359634834,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",Central/Eastern Europe,3,2663,19,18692,2666,18711,22,21355,1.108287052592051,0.7496407388748003,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,Central/Eastern Europe,12,2654,83,18628,2666,18711,95,21282,1.0147719741059187,0.8772369294782095,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",Central/Eastern Europe,20,2646,122,18589,2666,18711,142,21235,1.1516920064929432,0.5249032983628016,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,Central/Eastern Europe,33,2633,189,18522,2666,18711,222,21155,1.2282567413596657,0.26247849748888524,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,Central/Eastern Europe,5,2661,25,18686,2666,18711,30,21347,1.404434423149192,0.41379641292692365,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,Central/Eastern Europe,1,2665,14,18697,2666,18711,15,21362,0.501125703564728,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,Central/Eastern Europe,454,2212,2922,15789,2666,18711,3376,18001,1.1090347219385766,0.0649982787975085,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,Central/Eastern Europe,9,2657,68,18643,2666,18711,77,21300,0.9286623569262105,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,Central/Eastern Europe,140,2526,893,17818,2666,18711,1033,20344,1.1058651835025477,0.28812115525574267,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,Central/Eastern Europe,45,2621,231,18480,2666,18711,276,21101,1.3735215566577643,0.06584987893803253,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,Central/Eastern Europe,31,2635,230,18481,2666,18711,261,21116,0.9453196930946292,0.8505528065424266,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,Central/Eastern Europe,160,2506,1142,17569,2666,18711,1302,20075,0.9822450636860327,0.8626359288052012,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,Central/Eastern Europe,1,2665,3,18708,2666,18711,4,21373,2.3399624765478424,0.4130736656135364,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,Central/Eastern Europe,102,2564,665,18046,2666,18711,767,20610,1.079546760817801,0.46954824485536667,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,France,52,2617,278,18430,2669,18708,330,21047,1.3172862550616748,0.07748755319056008,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",France,59,2610,442,18266,2669,18708,501,20876,0.9341845668417676,0.6816090608407677,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,France,1,2668,2,18706,2669,18708,3,21374,3.5056221889055474,0.3297557204020767,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,France,14,2655,102,18606,2669,18708,116,21261,0.9618699457184003,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,France,0,2669,12,18696,2669,18708,12,21365,0.0,0.38323339441808857,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,France,636,2033,4670,14038,2669,18708,5306,16071,0.9403901998186244,0.21297770748893274,0.961834808014535,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",France,1,2668,9,18699,2669,18708,10,21367,0.7787356321839081,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,France,34,2635,247,18461,2669,18708,281,21096,0.9643985895259239,0.92763542480835,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,France,2,2667,3,18705,2669,18708,5,21372,4.675665541807274,0.12046318836515953,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,France,3,2666,23,18685,2669,18708,26,21351,0.9141687595811997,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,France,4,2665,25,18683,2669,18708,29,21348,1.1216810506566604,0.7780346212658409,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",France,3,2666,14,18694,2669,18708,17,21360,1.5025720715893258,0.46185400492105255,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,France,1,2668,0,18708,2669,18708,1,21376,inf,0.12485381484773354,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,France,103,2566,623,18085,2669,18708,726,20651,1.165228340979521,0.17009001347475047,0.8355298907531603,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,France,80,2589,515,18193,2669,18708,595,20782,1.0915786355267056,0.48877521772598875,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,France,318,2351,2201,16507,2669,18708,2519,18858,1.014431203789469,0.822284880399769,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",France,48,2621,336,18372,2669,18708,384,20993,1.0013626205919224,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,France,2,2667,45,18663,2669,18708,47,21330,0.3110111236095488,0.11775874521467286,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,France,179,2490,1410,17298,2669,18708,1589,19788,0.8819225839528326,0.13384199681942527,0.7348188060674329,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",France,0,2669,1,18707,2669,18708,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",France,184,2485,1073,17635,2669,18708,1257,20120,1.216934411689147,0.01967796350801535,0.5008936165676635,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",France,3,2666,19,18689,2669,18708,22,21355,1.1068622418762586,0.7498806776383456,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,France,11,2658,84,18624,2669,18708,95,21282,0.9175534773728905,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",France,16,2653,126,18582,2669,18708,142,21235,0.8894153967655664,0.7985830570726328,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,France,20,2649,202,18506,2669,18708,222,21155,0.6916863826813032,0.1256813037813175,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,France,2,2667,28,18680,2669,18708,30,21347,0.500294606031389,0.5762738545103303,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,France,1,2668,14,18694,2669,18708,15,21362,0.5004819019061898,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,France,422,2247,2954,15754,2669,18708,3376,18001,1.001589420815055,0.977368926427037,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,France,12,2657,65,18643,2669,18708,77,21300,1.2953649286355347,0.3881379733570756,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,France,125,2544,908,17800,2669,18708,1033,20344,0.9632234782367772,0.7356645399573959,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,France,26,2643,250,18458,2669,18708,276,21101,0.7263079833522512,0.1417499064153485,0.7488674301188223,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,France,43,2626,218,18490,2669,18708,261,21116,1.3888461887826045,0.05879079887166551,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,France,171,2498,1131,17577,2669,18708,1302,20075,1.0638632922252922,0.4621257657799762,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,France,2,2667,2,18706,2669,18708,4,21373,7.01387326584177,0.07867281843049567,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,France,91,2578,676,18032,2669,18708,767,20610,0.9415766545324342,0.6561962218528372,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,Germany,40,2645,290,18402,2685,18692,330,21047,0.9596245355583078,0.8672357050069494,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",Germany,70,2615,431,18261,2685,18692,501,20876,1.1341581896341382,0.3393178645709394,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,Germany,0,2685,3,18689,2685,18692,3,21374,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,Germany,16,2669,100,18592,2685,18692,116,21261,1.114544773323342,0.6730857599046943,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,Germany,1,2684,11,18681,2685,18692,12,21365,0.6327394661969923,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,Germany,641,2044,4665,14027,2685,18692,5306,16071,0.9429535219805228,0.23230698347148293,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",Germany,2,2683,8,18684,2685,18692,10,21367,1.7409616101379053,0.3634413286616008,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,Germany,33,2652,248,18444,2685,18692,281,21096,0.9254305940738579,0.7855381751587988,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,Germany,0,2685,5,18687,2685,18692,5,21372,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,Germany,3,2682,23,18669,2685,18692,26,21351,0.9079369711117595,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,Germany,4,2681,25,18667,2685,18692,29,21348,1.1140320775829915,0.7789922390349555,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Germany,1,2684,16,18676,2685,18692,17,21360,0.4348919523099851,0.7133639050680759,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,Germany,0,2685,1,18691,2685,18692,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,Germany,99,2586,627,18065,2685,18692,726,20651,1.103004029796068,0.3623266058207596,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,Germany,66,2619,529,18163,2685,18692,595,20782,0.8652474898065684,0.2867374321868676,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,Germany,332,2353,2187,16505,2685,18692,2519,18858,1.0648364335015996,0.3210872606472633,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",Germany,70,2615,314,18378,2685,18692,384,20993,1.566732837256884,0.0013686732464897758,0.12987303810447243,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,Germany,5,2680,42,18650,2685,18692,47,21330,0.8284470504619759,0.8280331600128377,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,Germany,198,2487,1391,17301,2685,18692,1589,19788,0.9902240753282996,0.9372899132535194,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Germany,0,2685,1,18691,2685,18692,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",Germany,149,2536,1108,17584,2685,18692,1257,20120,0.9324271999453358,0.45599375604110703,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",Germany,4,2681,18,18674,2685,18692,22,21355,1.5478469891002529,0.347953924030523,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,Germany,14,2671,81,18611,2685,18692,95,21282,1.204311512311013,0.5334063897344812,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",Germany,21,2664,121,18571,2685,18692,142,21235,1.2098596530414711,0.44460215241162965,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,Germany,27,2658,195,18497,2685,18692,222,21155,0.9635527001215489,0.9191939378492296,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,Germany,3,2682,27,18665,2685,18692,30,21347,0.7732620763940674,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,Germany,2,2683,13,18679,2685,18692,15,21362,1.0710742853866224,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,Germany,373,2312,3003,15689,2685,18692,3376,18001,0.8428706529917602,0.003559691318479427,0.1661189281957066,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,Germany,12,2673,65,18627,2685,18692,77,21300,1.2865060865060864,0.39054269604228947,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,Germany,142,2543,891,17801,2685,18692,1033,20344,1.1156004489337823,0.24793226349255823,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,Germany,29,2656,247,18445,2685,18692,276,21101,0.8153641895517292,0.35996521341703785,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,Germany,39,2646,222,18470,2685,18692,261,21116,1.2262772977058691,0.2585866577418772,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,Germany,184,2501,1118,17574,2685,18692,1302,20075,1.156466214945149,0.084193696707299,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,Germany,1,2684,3,18689,2685,18692,4,21373,2.32103825136612,0.41545419417197044,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,Germany,104,2581,663,18029,2685,18692,767,20610,1.0957297293190813,0.40504918385237315,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,Hispanic Countries,41,2612,289,18435,2653,18724,330,21047,1.0012810186681644,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",Hispanic Countries,50,2603,451,18273,2653,18724,501,20876,0.7782679545092521,0.09978095461741517,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,Hispanic Countries,1,2652,2,18722,2653,18724,3,21374,3.529788838612368,0.32803447970946525,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,Hispanic Countries,15,2638,101,18623,2653,18724,116,21261,1.048442789692161,0.8873941079407885,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,Hispanic Countries,1,2652,11,18713,2653,18724,12,21365,0.641471273824215,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,Hispanic Countries,722,1931,4584,14140,2653,18724,5306,16071,1.153346293549807,0.0024794599097455357,0.13884975494575,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",Hispanic Countries,0,2653,10,18714,2653,18724,10,21367,0.0,0.6233511947993876,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,Hispanic Countries,36,2617,245,18479,2653,18724,281,21096,1.0375550755265806,0.85530558816416,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,Hispanic Countries,0,2653,5,18719,2653,18724,5,21372,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,Hispanic Countries,3,2650,23,18701,2653,18724,26,21351,0.9204757998359311,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,Hispanic Countries,4,2649,25,18699,2653,18724,29,21348,1.1294224235560588,0.7771011501364704,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Hispanic Countries,2,2651,15,18709,2653,18724,17,21360,0.9409782472023136,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,Hispanic Countries,0,2653,1,18723,2653,18724,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,Hispanic Countries,79,2574,647,18077,2653,18724,726,20651,0.8575128289193205,0.22883405511653826,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,Hispanic Countries,70,2583,525,18199,2653,18724,595,20782,0.9394244418634663,0.6593620898508489,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,Hispanic Countries,312,2341,2207,16517,2653,18724,2519,18858,0.9974290571319132,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",Hispanic Countries,34,2619,350,18374,2653,18724,384,20993,0.6815207549228168,0.03455804848760397,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,Hispanic Countries,5,2648,42,18682,2653,18724,47,21330,0.8398971371025752,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,Hispanic Countries,201,2452,1388,17336,2653,18724,1589,19788,1.0238469096567644,0.7518255719682231,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Hispanic Countries,0,2653,1,18723,2653,18724,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",Hispanic Countries,162,2491,1095,17629,2653,18724,1257,20120,1.0470196818134325,0.5967176640414646,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",Hispanic Countries,2,2651,20,18704,2653,18724,22,21355,0.7055450773293097,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,Hispanic Countries,10,2643,85,18639,2653,18724,95,21282,0.8296721639847766,0.7543144163939913,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",Hispanic Countries,10,2643,132,18592,2653,18724,142,21235,0.5329114069182174,0.05453435795185368,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,Hispanic Countries,26,2627,196,18528,2653,18724,222,21155,0.9355903762342395,0.8379462564367102,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,Hispanic Countries,4,2649,26,18698,2653,18724,30,21347,1.085925022504864,0.7830781600801389,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,Hispanic Countries,2,2651,13,18711,2653,18724,15,21362,1.0858601978933928,0.7087737929897292,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,Hispanic Countries,415,2238,2961,15763,2653,18724,3376,18001,0.9871621215811507,0.8421981572502825,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,Hispanic Countries,14,2639,63,18661,2653,18724,77,21300,1.5713864679381921,0.120894771772072,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,Hispanic Countries,123,2530,910,17814,2653,18724,1033,20344,0.9517100291013334,0.6632663715647488,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,Hispanic Countries,40,2613,236,18488,2653,18724,276,21101,1.1992190287156135,0.31131469498713144,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,Hispanic Countries,28,2625,233,18491,2653,18724,261,21116,0.8465121602288984,0.4505062652577918,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,Hispanic Countries,161,2492,1141,17583,2653,18724,1302,20075,0.9956006459935598,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,Hispanic Countries,0,2653,4,18720,2653,18724,4,21373,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,Hispanic Countries,80,2573,687,18037,2653,18724,767,20610,0.8163149852544422,0.09423227511855432,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,MENA,43,2653,287,18394,2696,18681,330,21047,1.0387845723269036,0.8020661806287505,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",MENA,55,2641,446,18235,2696,18681,501,20876,0.8514618562407568,0.306644193744133,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,MENA,0,2696,3,18678,2696,18681,3,21374,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,MENA,14,2682,102,18579,2696,18681,116,21261,0.9508049304733079,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,MENA,2,2694,10,18671,2696,18681,12,21365,1.3861172976985894,0.6564392114363554,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,MENA,656,2040,4650,14031,2696,18681,5306,16071,0.9703074003795067,0.5353576896775564,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",MENA,2,2694,8,18673,2696,18681,10,21367,1.7328322197475872,0.3654288592198243,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,MENA,34,2662,247,18434,2696,18681,281,21096,0.9532207679228123,0.8567071720887176,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,MENA,0,2696,5,18676,2696,18681,5,21372,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,MENA,2,2694,24,18657,2696,18681,26,21351,0.5771158129175946,0.7650594895761078,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,MENA,5,2691,24,18657,2696,18681,29,21348,1.4443979933110367,0.40340084197405973,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",MENA,2,2694,15,18666,2696,18681,17,21360,0.9238307349665924,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,MENA,0,2696,1,18680,2696,18681,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,MENA,90,2606,636,18045,2696,18681,726,20651,0.9798686630272665,0.9094542135333747,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,MENA,86,2610,509,18172,2696,18681,595,20782,1.1763671536857636,0.16843605836932948,0.8355298907531603,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,MENA,318,2378,2201,16480,2696,18681,2519,18858,1.0012728368365325,0.974518836918768,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",MENA,51,2645,333,18348,2696,18681,384,20993,1.0624022888673172,0.6979458448219421,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,MENA,10,2686,37,18644,2696,18681,47,21330,1.875993640699523,0.0788731355491324,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,MENA,214,2482,1375,17306,2696,18681,1589,19788,1.0851905354919054,0.28894221702961653,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",MENA,0,2696,1,18680,2696,18681,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",MENA,195,2501,1062,17619,2696,18681,1257,20120,1.2935334340839935,0.0018553291157781776,0.12987303810447243,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",MENA,5,2691,17,18664,2696,18681,22,21355,2.0399151856952367,0.1864052742773302,0.8556307671746305,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,MENA,20,2676,75,18606,2696,18681,95,21282,1.8541106128550076,0.01910617973386806,0.5008936165676635,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",MENA,18,2678,124,18557,2696,18681,142,21235,1.0058842660627816,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,MENA,37,2659,185,18496,2696,18681,222,21155,1.391199699135013,0.08298320941013101,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,MENA,2,2694,28,18653,2696,18681,30,21347,0.4945646410011666,0.5776044434497707,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,MENA,4,2692,11,18670,2696,18681,15,21362,2.521950560583547,0.11047184704066797,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,MENA,411,2285,2965,15716,2696,18681,3376,18001,0.9533951535234187,0.41279082117778143,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,MENA,3,2693,74,18607,2696,18681,77,21300,0.28011059704338576,0.015460422747624245,0.4809909299260876,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,MENA,124,2572,909,17772,2696,18681,1033,20344,0.9425906820853158,0.5971200645921136,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,MENA,26,2670,250,18431,2696,18681,276,21101,0.7179116104868913,0.12034504078213058,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,MENA,25,2671,236,18445,2696,18681,261,21116,0.7315310713311208,0.15873742885035114,0.8230829644092281,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,MENA,150,2546,1152,17529,2696,18681,1302,20075,0.8964736351139042,0.22801281764234324,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,MENA,0,2696,4,18677,2696,18681,4,21373,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,MENA,92,2604,675,18006,2696,18681,767,20610,0.9424543437446663,0.6575922852682763,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,South/Central Asia,25,2636,305,18411,2661,18716,330,21047,0.5724955844672753,0.005414893818488034,0.21659575273952134,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",South/Central Asia,68,2593,433,18283,2661,18716,501,20876,1.1073016800428226,0.4509895600612985,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,South/Central Asia,1,2660,2,18714,2661,18716,3,21374,3.517669172932331,0.32889546794048147,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,South/Central Asia,8,2653,108,18608,2661,18716,116,21261,0.5195515907916963,0.08846437616995202,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,South/Central Asia,1,2660,11,18705,2661,18716,12,21365,0.6392686261107313,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,South/Central Asia,700,1961,4606,14110,2661,18716,5306,16071,1.0935119325324063,0.06138839344299337,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",South/Central Asia,0,2661,10,18706,2661,18716,10,21367,0.0,0.6236659638749482,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,South/Central Asia,35,2626,246,18470,2661,18716,281,21096,1.0007027907293544,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,South/Central Asia,1,2660,4,18712,2661,18716,5,21372,1.7586466165413535,0.48559816725138716,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,South/Central Asia,2,2659,24,18692,2661,18716,26,21351,0.5858092014541808,0.7641507033079749,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,South/Central Asia,5,2656,24,18692,2661,18716,29,21348,1.4661772088353413,0.3982363479290668,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",South/Central Asia,5,2656,12,18704,2661,18716,17,21360,2.9342369477911645,0.05099017023989113,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,South/Central Asia,0,2661,1,18715,2661,18716,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,South/Central Asia,84,2577,642,18074,2661,18716,726,20651,0.9176648932505014,0.49282170540875225,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,South/Central Asia,63,2598,532,18184,2661,18716,595,20782,0.8288562051780722,0.18561380114053966,0.8556307671746305,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,South/Central Asia,289,2372,2230,16486,2661,18716,2519,18858,0.9007278488191834,0.11550589569575838,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",South/Central Asia,43,2618,341,18375,2661,18716,384,20993,0.8850581021531513,0.5322569079154248,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,South/Central Asia,6,2655,41,18675,2661,18716,47,21330,1.0293509714758164,0.8274825213415191,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,South/Central Asia,230,2431,1359,17357,2661,18716,1589,19788,1.2083648507489566,0.012784819185342024,0.44746867148697084,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",South/Central Asia,0,2661,1,18715,2661,18716,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",South/Central Asia,149,2512,1108,17608,2661,18716,1257,20120,0.942620547724712,0.5376460258612354,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",South/Central Asia,2,2659,20,18696,2661,18716,22,21355,0.7031214742384355,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,South/Central Asia,8,2653,87,18629,2661,18716,95,21282,0.6456884637213998,0.2767814856273636,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",South/Central Asia,20,2641,122,18594,2661,18716,142,21235,1.154182779746867,0.5242345997379029,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,South/Central Asia,22,2639,200,18516,2661,18716,222,21155,0.7717923455854491,0.30589614310777924,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,South/Central Asia,3,2658,27,18689,2661,18716,30,21347,0.7812473873421955,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,South/Central Asia,1,2660,14,18702,2661,18716,15,21362,0.5022019334049409,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,South/Central Asia,452,2209,2924,15792,2661,18716,3376,18001,1.1051023081177054,0.07349689333263576,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,South/Central Asia,11,2650,66,18650,2661,18716,77,21300,1.1729559748427674,0.6033885398251057,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,South/Central Asia,112,2549,921,17795,2661,18716,1033,20344,0.8489586727715495,0.11104750159927981,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,South/Central Asia,39,2622,237,18479,2661,18716,276,21101,1.1597437457154167,0.40819566414132175,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,South/Central Asia,36,2625,225,18491,2661,18716,261,21116,1.1270704761904762,0.508654186242288,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,South/Central Asia,161,2500,1141,17575,2661,18716,1302,20075,0.9919631901840491,0.9654531039550107,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,South/Central Asia,0,2661,4,18712,2661,18716,4,21373,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,South/Central Asia,79,2582,688,18028,2661,18716,767,20610,0.8017333777673699,0.06616362557011116,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,Sub-Saharan Africa,52,2607,278,18440,2659,18718,330,21047,1.323056629495023,0.07682786754345887,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",Sub-Saharan Africa,59,2600,442,18276,2659,18718,501,20876,0.9382909850330665,0.7318257385786475,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,Sub-Saharan Africa,0,2659,3,18715,2659,18718,3,21374,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,Sub-Saharan Africa,18,2641,98,18620,2659,18718,116,21261,1.2949640287769784,0.3219842870364653,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,Sub-Saharan Africa,4,2655,8,18710,2659,18718,12,21365,3.5235404896421847,0.051948082827359,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,Sub-Saharan Africa,663,1996,4643,14075,2659,18718,5306,16071,1.0069379551694386,0.8855690235275016,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",Sub-Saharan Africa,2,2657,8,18710,2659,18718,10,21367,1.7604441098983816,0.3587387672333376,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,Sub-Saharan Africa,33,2626,248,18470,2659,18718,281,21096,0.9359107436798271,0.7852162496845972,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,Sub-Saharan Africa,2,2657,3,18715,2659,18718,5,21372,4.695772174131226,0.11968106058786507,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,Sub-Saharan Africa,4,2655,22,18696,2659,18718,26,21351,1.2803287108371855,0.5566275600528572,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,Sub-Saharan Africa,3,2656,26,18692,2659,18718,29,21348,0.8120366079703429,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",Sub-Saharan Africa,3,2656,14,18704,2659,18718,17,21360,1.5090361445783131,0.46049878506287,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,Sub-Saharan Africa,0,2659,1,18717,2659,18718,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,Sub-Saharan Africa,86,2573,640,18078,2659,18718,726,20651,0.9441240769529732,0.6886881130480779,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,Sub-Saharan Africa,85,2574,510,18208,2659,18718,595,20782,1.178969178969179,0.16584501527658452,0.8355298907531603,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,Sub-Saharan Africa,298,2361,2221,16497,2659,18718,2519,18858,0.9375116924219375,0.33502774563114496,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",Sub-Saharan Africa,39,2620,345,18373,2659,18718,384,20993,0.792728177895785,0.18485178100855418,0.8556307671746305,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,Sub-Saharan Africa,7,2652,40,18678,2659,18718,47,21330,1.2325226244343892,0.6556279913711865,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,Sub-Saharan Africa,210,2449,1379,17339,2659,18718,1589,19788,1.078177563410322,0.323516394609788,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",Sub-Saharan Africa,0,2659,1,18717,2659,18718,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",Sub-Saharan Africa,149,2510,1108,17610,2659,18718,1257,20120,0.9434787924115811,0.5376549786280315,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",Sub-Saharan Africa,3,2656,19,18699,2659,18718,22,21355,1.1116241280913126,0.749082963014336,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,Sub-Saharan Africa,10,2649,85,18633,2659,18718,95,21282,0.8275264805809074,0.754509485776272,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",Sub-Saharan Africa,17,2642,125,18593,2659,18718,142,21235,0.9570961392884179,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,Sub-Saharan Africa,27,2632,195,18523,2659,18718,222,21155,0.974438859013327,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,Sub-Saharan Africa,6,2653,24,18694,2659,18718,30,21347,1.7615906520919713,0.25925755055533806,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,Sub-Saharan Africa,1,2658,14,18704,2659,18718,15,21362,0.5026335590669676,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,Sub-Saharan Africa,438,2221,2938,15780,2659,18718,3376,18001,1.0592067979117583,0.3063431856256211,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,Sub-Saharan Africa,9,2650,68,18650,2659,18718,77,21300,0.931465038845727,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,Sub-Saharan Africa,129,2530,904,17814,2659,18718,1033,20344,1.0047596977858617,0.9614545896124399,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,Sub-Saharan Africa,35,2624,241,18477,2659,18718,276,21101,1.0226302373241574,0.8546994071441355,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,Sub-Saharan Africa,23,2636,238,18480,2659,18718,261,21116,0.6774970989913416,0.08847253615169698,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,Sub-Saharan Africa,151,2508,1151,17567,2659,18718,1302,20075,0.918907281235234,0.3628899606397185,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,Sub-Saharan Africa,0,2659,4,18714,2659,18718,4,21373,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,Sub-Saharan Africa,93,2566,674,18044,2659,18718,767,20610,0.9702847785813572,0.8237872107358718,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Administrative and commercial managers,United Kingdom / North America,47,2641,283,18406,2688,18689,330,21047,1.157450532042285,0.35713530439903046,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Armed forces occupations, other ranks",United Kingdom / North America,69,2619,432,18257,2688,18689,501,20876,1.1134206227992025,0.413110623279833,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Assemblers,United Kingdom / North America,0,2688,3,18686,2688,18689,3,21374,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Building and related trades workers,United Kingdom / North America,14,2674,102,18587,2688,18689,116,21261,0.9540601580946515,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration associate professionals,United Kingdom / North America,0,2688,12,18677,2688,18689,12,21365,0.0,0.38354871966113346,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Business and administration professionals,United Kingdom / North America,636,2052,4670,14019,2688,18689,5306,16071,0.9304218791089072,0.138805894892693,0.7474163571145007,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Chief executives, senior officials and legislators",United Kingdom / North America,3,2685,7,18682,2688,18689,10,21367,2.9819632881085396,0.12110225522699317,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Commissioned armed forces officers,United Kingdom / North America,42,2646,239,18450,2688,18689,281,21096,1.2253436939629407,0.2383349605596588,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Customer services clerks,United Kingdom / North America,0,2688,5,18684,2688,18689,5,21372,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Drivers and mobile plant operators,United Kingdom / North America,4,2684,22,18667,2688,18689,26,21351,1.2645305514157974,0.5605629810191384,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Electrical and electronic trades workers,United Kingdom / North America,2,2686,27,18662,2688,18689,29,21348,0.5146576211356554,0.5726828816469505,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Food processing, woodworking, garment and other craft workers",United Kingdom / North America,1,2687,16,18673,2688,18689,17,21360,0.43433662076665425,0.7134139866829431,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,General and keyboard clerks,United Kingdom / North America,0,2688,1,18688,2688,18689,1,21376,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Handicraft and printing workers,United Kingdom / North America,90,2598,636,18053,2688,18689,726,20651,0.9833217133644168,0.954573219971162,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health associate professionals,United Kingdom / North America,70,2618,525,18164,2688,18689,595,20782,0.925082760376878,0.5730671848509995,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Health professionals,United Kingdom / North America,367,2321,2152,16537,2688,18689,2519,18858,1.215081428816255,0.0015339551784999135,0.12987303810447243,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Hospitality, retail and other services managers",United Kingdom / North America,41,2647,343,18346,2688,18689,384,20993,0.8284707590197825,0.2774229623731938,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technicians,United Kingdom / North America,7,2681,40,18649,2688,18689,47,21330,1.2172976501305484,0.6572435186050175,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Information and communications technology professionals,United Kingdom / North America,174,2514,1415,17274,2688,18689,1589,19788,0.8449294551219882,0.044813667959014196,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Laborers in mining, construction, manufacturing and transport",United Kingdom / North America,1,2687,0,18689,2688,18689,1,21376,inf,0.1257426205735136,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social and cultural professionals",United Kingdom / North America,134,2554,1123,17566,2688,18689,1257,20120,0.8206860050862196,0.03525567788548018,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Legal, social, cultural and related associate professionals",United Kingdom / North America,0,2688,22,18667,2688,18689,22,21355,0.0,0.10135695058158063,0.7041586752116761,False,nan,fisher_exact_2x2
+q1,all_models,Race,Market-oriented skilled agricultural workers,United Kingdom / North America,10,2678,85,18604,2688,18689,95,21282,0.8172912182049817,0.6431048131378703,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,"Metal, machinery and related trades workers",United Kingdom / North America,20,2668,122,18567,2688,18689,142,21235,1.1408435126698946,0.6106025984261505,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Non-commissioned armed forces officers,United Kingdom / North America,30,2658,192,18497,2688,18689,222,21155,1.0873424567343868,0.6835878216777684,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Other clerical support workers,United Kingdom / North America,5,2683,25,18664,2688,18689,30,21347,1.3912784196794632,0.41751553752073517,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal care workers,United Kingdom / North America,3,2685,12,18677,2688,18689,15,21362,1.7390130353817506,0.42307918879947504,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Personal service workers,United Kingdom / North America,411,2277,2965,15724,2688,18689,3376,18001,0.9572318240695687,0.4621168841754283,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Production and specialized services managers,United Kingdom / North America,7,2681,70,18619,2688,18689,77,21300,0.6944796717642671,0.4892185220653297,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Protective services workers,United Kingdom / North America,138,2550,895,17794,2688,18689,1033,20344,1.0759434768320737,0.44144078266093695,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Sales workers,United Kingdom / North America,36,2652,240,18449,2688,18689,276,21101,1.0434954751131222,0.7841853794565411,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering associate professionals,United Kingdom / North America,36,2652,225,18464,2688,18689,261,21116,1.1139668174962292,0.5725370976252789,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Science and engineering professionals,United Kingdom / North America,164,2524,1138,17551,2688,18689,1302,20075,1.002107013444222,0.965612978042596,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Stationary plant and machine operators,United Kingdom / North America,0,2688,4,18685,2688,18689,4,21373,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,all_models,Race,Teaching professionals,United Kingdom / North America,126,2562,641,18048,2688,18689,767,20610,1.3847216183729316,0.001538396775818385,0.12987303810447243,False,nan,fisher_exact_2x2
