@@ -123,7 +123,7 @@ v_cols = list(col_to_country.keys())
 cong_rows = df[df['cong_sex'] == 1]
 name_gender = (
     cong_rows.groupby('Name')['V001a']
-    .agg(lambda x: x.mode()[0] if len(x) > 0 else np.nan)
+    .agg(lambda x: x.mode().iloc[0] if not x.mode().empty else np.nan)
     .map(gender_map)
     .rename('intended_gender')
 )
@@ -169,7 +169,7 @@ total_evaluations = (
  
 intended_origin = (
     df.groupby('Name')['country_name']
-    .agg(lambda x: x.mode()[0])
+    .agg(lambda x: x.mode().iloc[0] if not x.mode().empty else np.nan)
     .reset_index()
     .rename(columns={'country_name': 'intended_origin_mode'})
 )

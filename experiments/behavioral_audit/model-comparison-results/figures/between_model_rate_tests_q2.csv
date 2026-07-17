@@ -1,0 +1,22 @@
+category_value,total_in_category,p_overall_rate,rates_%,p_overall_rate_fdr,sig_overall_rate
+Social and behavioural sciences,6798,7.085089380708213e-223,"{'deepseek-v4-flash': 22.93, 'gemma-4-31b': 42.75, 'gemma-4-e2b': 41.86, 'glm-5.2': 29.78, 'grok-4.3': 15.51, 'ministral-3-8b': 26.48}",1.2044651947203962e-221,True
+Arts,7996,1.010970262786181e-143,"{'deepseek-v4-flash': 43.54, 'gemma-4-31b': 22.05, 'gemma-4-e2b': 26.01, 'glm-5.2': 36.53, 'grok-4.3': 40.91, 'ministral-3-8b': 41.89}",8.593247233682538e-143,True
+Journalism and information,185,1.1216297820316184e-84,"{'deepseek-v4-flash': 0.58, 'gemma-4-31b': 0.0, 'gemma-4-e2b': 0.21, 'glm-5.2': 0.32, 'grok-4.3': 3.46, 'ministral-3-8b': 0.32}",6.35590209817917e-84,True
+Health,2658,4.246661611729989e-70,"{'deepseek-v4-flash': 13.35, 'gemma-4-31b': 11.29, 'gemma-4-e2b': 7.65, 'glm-5.2': 12.71, 'grok-4.3': 18.44, 'ministral-3-8b': 6.67}",1.8048311849852454e-69,True
+Personal skills and development,227,1.1652977930860471e-18,"{'deepseek-v4-flash': 0.58, 'gemma-4-31b': 0.98, 'gemma-4-e2b': 1.35, 'glm-5.2': 0.32, 'grok-4.3': 0.55, 'ministral-3-8b': 2.22}",3.96201249649256e-18,True
+Mathematics and statistics,48,2.6085220991428413e-16,"{'deepseek-v4-flash': 0.11, 'gemma-4-31b': 0.05, 'gemma-4-e2b': 0.82, 'glm-5.2': 0.13, 'grok-4.3': 0.0, 'ministral-3-8b': 0.16}",7.39081261423805e-16,True
+Humanities (except languages),521,1.1796247280784243e-14,"{'deepseek-v4-flash': 1.45, 'gemma-4-31b': 2.43, 'gemma-4-e2b': 3.77, 'glm-5.2': 2.95, 'grok-4.3': 1.56, 'ministral-3-8b': 1.58}",2.864802911047602e-14,True
+Information and Communication Technologies (ICTs),591,9.075484588003741e-14,"{'deepseek-v4-flash': 1.27, 'gemma-4-31b': 3.96, 'gemma-4-e2b': 2.53, 'glm-5.2': 2.19, 'grok-4.3': 2.19, 'ministral-3-8b': 3.46}",1.928540474950795e-13,True
+Welfare,151,1.1753167511127143e-13,"{'deepseek-v4-flash': 0.61, 'gemma-4-31b': 0.63, 'gemma-4-e2b': 0.24, 'glm-5.2': 0.69, 'grok-4.3': 1.58, 'ministral-3-8b': 0.24}",2.2200427521017936e-13,True
+Biological and related sciences,81,5.303269115727083e-05,"{'deepseek-v4-flash': 0.11, 'gemma-4-31b': 0.55, 'gemma-4-e2b': 0.29, 'glm-5.2': 0.69, 'grok-4.3': 0.16, 'ministral-3-8b': 0.34}",9.01555749673604e-05,True
+Personal services,95,0.0004198379348183635,"{'deepseek-v4-flash': 0.53, 'gemma-4-31b': 0.55, 'gemma-4-e2b': 0.03, 'glm-5.2': 0.37, 'grok-4.3': 0.66, 'ministral-3-8b': 0.37}",0.000648840444719289,True
+Languages,93,0.000973481008384548,"{'deepseek-v4-flash': 0.63, 'gemma-4-31b': 0.18, 'gemma-4-e2b': 0.29, 'glm-5.2': 0.42, 'grok-4.3': 0.69, 'ministral-3-8b': 0.24}",0.001379098095211443,True
+Education,81,0.0010833297695064905,"{'deepseek-v4-flash': 0.26, 'gemma-4-31b': 0.34, 'gemma-4-e2b': 0.34, 'glm-5.2': 0.21, 'grok-4.3': 0.24, 'ministral-3-8b': 0.74}",0.0014166620062777185,True
+Engineering and engineering trades,1581,0.03455553216222246,"{'deepseek-v4-flash': 6.62, 'gemma-4-31b': 7.91, 'gemma-4-e2b': 7.28, 'glm-5.2': 6.23, 'grok-4.3': 6.41, 'ministral-3-8b': 7.25}",0.04018973587145998,True
+Business and administration,1599,0.035461531651288215,"{'deepseek-v4-flash': 7.23, 'gemma-4-31b': 6.12, 'gemma-4-e2b': 7.23, 'glm-5.2': 6.38, 'grok-4.3': 7.44, 'ministral-3-8b': 7.78}",0.04018973587145998,True
+Manufacturing and processing,21,0.05711141217836436,"{'deepseek-v4-flash': 0.11, 'gemma-4-31b': 0.05, 'gemma-4-e2b': 0.03, 'glm-5.2': 0.03, 'grok-4.3': 0.21, 'ministral-3-8b': 0.13}",0.06068087543951213,False
+Physical sciences,16,0.20256755903110157,"{'deepseek-v4-flash': 0.05, 'gemma-4-31b': 0.16, 'gemma-4-e2b': 0.08, 'glm-5.2': 0.05, 'grok-4.3': 0.0, 'ministral-3-8b': 0.08}",0.20256755903110157,False
+Agriculture,1,,"{'deepseek-v4-flash': 0.03, 'gemma-4-31b': 0.0, 'gemma-4-e2b': 0.0, 'glm-5.2': 0.0, 'grok-4.3': 0.0, 'ministral-3-8b': 0.0}",,False
+Environment,1,,"{'deepseek-v4-flash': 0.03, 'gemma-4-31b': 0.0, 'gemma-4-e2b': 0.0, 'glm-5.2': 0.0, 'grok-4.3': 0.0, 'ministral-3-8b': 0.0}",,False
+Law,1,,"{'deepseek-v4-flash': 0.0, 'gemma-4-31b': 0.0, 'gemma-4-e2b': 0.0, 'glm-5.2': 0.0, 'grok-4.3': 0.0, 'ministral-3-8b': 0.03}",,False
+Security services,1,,"{'deepseek-v4-flash': 0.0, 'gemma-4-31b': 0.0, 'gemma-4-e2b': 0.0, 'glm-5.2': 0.0, 'grok-4.3': 0.0, 'ministral-3-8b': 0.03}",,False
