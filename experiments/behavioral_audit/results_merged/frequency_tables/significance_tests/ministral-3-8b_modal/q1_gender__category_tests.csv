@@ -1,91 +1,61 @@
 question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
-q1,ministral-3-8b_modal,Gender,Administrative and commercial managers,Female,8,1970,4,1771,1978,1775,12,3741,1.797969543147208,0.3953885017779344,0.6031350027121033,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Armed forces occupations, other ranks",Female,0,1978,237,1538,1978,1775,237,3516,0.0,1.1755906402203564e-81,5.2901578809916034e-80,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Assemblers,Female,1,1977,0,1775,1978,1775,1,3752,inf,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Building and related trades workers,Female,0,1978,14,1761,1978,1775,14,3739,0.0,2.7270826808976415e-05,9.090275602992138e-05,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Business and administration professionals,Female,532,1446,470,1305,1978,1775,1002,2751,1.0215414496336188,0.7959061307242276,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Chief executives, senior officials and legislators",Female,2,1976,4,1771,1978,1775,6,3747,0.4481275303643725,0.43099244829865196,0.6157034975695028,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Commissioned armed forces officers,Female,0,1978,77,1698,1978,1775,77,3676,0.0,3.763721799336032e-26,3.3873496194024285e-25,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Customer services clerks,Female,0,1978,1,1774,1978,1775,1,3752,0.0,0.47295496935784703,0.6449385945788824,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Drivers and mobile plant operators,Female,0,1978,5,1770,1978,1775,5,3748,0.0,0.023594339315308764,0.05308726345944472,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Electrical and electronic trades workers,Female,0,1978,4,1771,1978,1775,4,3749,0.0,0.049946458550588685,0.09989291710117737,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Handicraft and printing workers,Female,62,1916,0,1775,1978,1775,62,3691,inf,3.87216306411407e-18,2.0499686810015667e-17,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Health associate professionals,Female,91,1887,54,1721,1978,1775,145,3608,1.5369388996839977,0.013857287552283866,0.03370691566771751,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Health professionals,Female,346,1632,50,1725,1978,1775,396,3357,7.314338235294118,6.487504276968988e-54,1.9462512830906965e-52,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Hospitality, retail and other services managers",Female,19,1959,3,1772,1978,1775,22,3731,5.728773183597073,0.001909264138424244,0.005727792415272732,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Information and communications technicians,Female,0,1978,2,1773,1978,1775,2,3751,0.0,0.2236199668552294,0.39462347092099304,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Information and communications technology professionals,Female,88,1890,183,1592,1978,1775,271,3482,0.4050539219938127,4.890494530246007e-12,2.0959262272482886e-11,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Legal, social and cultural professionals",Female,203,1775,28,1747,1978,1775,231,3522,7.135633802816901,1.2081713134756928e-31,1.3591927276601544e-30,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Legal, social, cultural and related associate professionals",Female,0,1978,1,1774,1978,1775,1,3752,0.0,0.47295496935784703,0.6449385945788824,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Market-oriented skilled agricultural workers,Female,1,1977,30,1745,1978,1775,31,3722,0.02942168268420165,4.7428000602304505e-09,1.7785500225864188e-08,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Metal, machinery and related trades workers",Female,0,1978,8,1767,1978,1775,8,3745,0.0,0.0024827908284338405,0.007208102405130505,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Non-commissioned armed forces officers,Female,4,1974,74,1701,1978,1775,78,3675,0.046578493387004025,5.466970284386373e-20,3.075170784967335e-19,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Other clerical support workers,Female,3,1975,0,1775,1978,1775,3,3750,inf,0.251994992492147,0.41350282618260387,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Personal care workers,Female,1,1977,0,1775,1978,1775,1,3752,inf,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Personal service workers,Female,300,1678,145,1630,1978,1775,445,3308,2.0097817598947842,2.6458629399239506e-11,1.0823984754234344e-10,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Production and specialized services managers,Female,3,1975,8,1767,1978,1775,11,3742,0.33550632911392403,0.12960770887786197,0.23805497548995053,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Protective services workers,Female,0,1978,67,1708,1978,1775,67,3686,0.0,8.364674298588875e-23,5.722357541885885e-22,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Sales workers,Female,16,1962,14,1761,1978,1775,30,3723,1.0257754477937964,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Science and engineering associate professionals,Female,2,1976,11,1764,1978,1775,13,3740,0.16231137283768862,0.009606092337926695,0.02401523084481674,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Science and engineering professionals,Female,108,1870,267,1508,1978,1775,375,3378,0.3261911914919185,8.901445065155822e-23,5.722357541885885e-22,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Teaching professionals,Female,188,1790,14,1761,1978,1775,202,3551,13.21101356743815,5.704322000175825e-38,7.334128285940347e-37,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Administrative and commercial managers,Male,4,1676,8,2065,1680,2073,12,3741,0.6160501193317423,0.5648997807565891,0.7588206010163138,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Armed forces occupations, other ranks",Male,237,1443,0,2073,1680,2073,237,3516,inf,9.598277368753198e-88,8.638449631877878e-86,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Assemblers,Male,0,1680,1,2072,1680,2073,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Building and related trades workers,Male,14,1666,0,2073,1680,2073,14,3739,inf,1.2588836603161456e-05,4.3576742087866584e-05,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Business and administration professionals,Male,423,1257,579,1494,1680,2073,1002,2751,0.8683146400880458,0.05857409446759557,0.11216315961880002,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Chief executives, senior officials and legislators",Male,4,1676,2,2071,1680,2073,6,3747,2.471360381861575,0.4175024241395549,0.6060519060090314,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Commissioned armed forces officers,Male,77,1603,0,2073,1680,2073,77,3676,inf,4.948097133362276e-28,4.948097133362276e-27,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Customer services clerks,Male,0,1680,1,2072,1680,2073,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Drivers and mobile plant operators,Male,5,1675,0,2073,1680,2073,5,3748,inf,0.017915290091865103,0.04243095021757524,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Electrical and electronic trades workers,Male,4,1676,0,2073,1680,2073,4,3749,inf,0.04007423780095601,0.08197003186559183,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Handicraft and printing workers,Male,0,1680,62,2011,1680,2073,62,3691,0.0,7.87577185492973e-17,3.9378859274648644e-16,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Health associate professionals,Male,54,1626,91,1982,1680,2073,145,3608,0.7233283321844207,0.07338249277935503,0.13759217396129067,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Health professionals,Male,49,1631,347,1726,1680,2073,396,3357,0.14943538113319563,4.730882105404465e-48,1.0644484737160047e-46,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Hospitality, retail and other services managers",Male,3,1677,19,2054,1680,2073,22,3731,0.193390452876377,0.004007117275300039,0.011189717564665119,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Information and communications technicians,Male,2,1678,0,2073,1680,2073,2,3751,inf,0.20031735805385542,0.3605712444969397,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Information and communications technology professionals,Male,178,1502,93,1980,1680,2073,271,3482,2.5230874962415704,9.562530225699944e-13,4.529619580594711e-12,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Legal, social and cultural professionals",Male,15,1665,216,1857,1680,2073,231,3522,0.07745245245245246,3.792020963500972e-40,6.82563773430175e-39,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Legal, social, cultural and related associate professionals",Male,0,1680,1,2072,1680,2073,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Market-oriented skilled agricultural workers,Male,30,1650,1,2072,1680,2073,31,3722,37.67272727272727,5.168381681800149e-10,2.022410223313102e-09,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Metal, machinery and related trades workers",Male,8,1672,0,2073,1680,2073,8,3745,inf,0.001597493142228066,0.004957737337949171,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Non-commissioned armed forces officers,Male,74,1606,4,2069,1680,2073,78,3675,23.83343711083437,8.916061857850168e-22,5.3496371147101005e-21,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Other clerical support workers,Male,0,1680,3,2070,1680,2073,3,3750,0.0,0.2580264146891442,0.41350282618260387,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Personal care workers,Male,0,1680,1,2072,1680,2073,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Personal service workers,Male,130,1550,315,1758,1680,2073,445,3308,0.46807987711213517,1.166926973988163e-12,5.2511713829467336e-12,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Production and specialized services managers,Male,7,1673,4,2069,1680,2073,11,3742,2.164225941422594,0.2362819766819177,0.408949575026396,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Protective services workers,Male,67,1613,0,2073,1680,2073,67,3686,inf,1.952006298077729e-24,1.4640047235582967e-23,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Sales workers,Male,11,1669,19,2054,1680,2073,30,3723,0.7124972407051181,0.4619004544066488,0.6449385945788824,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Science and engineering associate professionals,Male,11,1669,2,2071,1680,2073,13,3740,6.824745356500899,0.004321633836348867,0.011439618978570529,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Science and engineering professionals,Male,264,1416,111,1962,1680,2073,375,3378,3.2954649564819056,4.9479369690052434e-26,4.0483120655497446e-25,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Teaching professionals,Male,9,1671,193,1880,1680,2073,202,3551,0.05246462823601641,4.677056022700043e-40,7.015584034050064e-39,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Administrative and commercial managers,Unknown,0,95,12,3646,95,3658,12,3741,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Armed forces occupations, other ranks",Unknown,0,95,237,3421,95,3658,237,3516,0.0,0.00410289644037721,0.011189717564665119,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Assemblers,Unknown,0,95,1,3657,95,3658,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Building and related trades workers,Unknown,0,95,14,3644,95,3658,14,3739,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Business and administration professionals,Unknown,47,48,955,2703,95,3658,1002,2751,2.7714005235602093,1.6345115597183996e-06,5.8842416149862385e-06,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Chief executives, senior officials and legislators",Unknown,0,95,6,3652,95,3658,6,3747,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Commissioned armed forces officers,Unknown,0,95,77,3581,95,3658,77,3676,0.0,0.2654986178624631,0.41350282618260387,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Customer services clerks,Unknown,1,94,0,3658,95,3658,1,3752,inf,0.0253130828670397,0.05424232042937079,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Drivers and mobile plant operators,Unknown,0,95,5,3653,95,3658,5,3748,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Electrical and electronic trades workers,Unknown,0,95,4,3654,95,3658,4,3749,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Handicraft and printing workers,Unknown,0,95,62,3596,95,3658,62,3691,0.0,0.4076559554314399,0.6060519060090314,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Health associate professionals,Unknown,0,95,145,3513,95,3658,145,3608,0.0,0.051676602581578336,0.10110639635526197,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Health professionals,Unknown,1,94,395,3263,95,3658,396,3357,0.08788042014543496,0.0005231029792801225,0.0016814024334003937,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Hospitality, retail and other services managers",Unknown,0,95,22,3636,95,3658,22,3731,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Information and communications technicians,Unknown,0,95,2,3656,95,3658,2,3751,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Information and communications technology professionals,Unknown,5,90,266,3392,95,3658,271,3482,0.70843776106934,0.6856661579972426,0.9074993267610564,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Legal, social and cultural professionals",Unknown,13,82,218,3440,95,3658,231,3522,2.5016782277914524,0.007115151685099753,0.018296104333113652,True,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Legal, social, cultural and related associate professionals",Unknown,1,94,0,3658,95,3658,1,3752,inf,0.0253130828670397,0.05424232042937079,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Market-oriented skilled agricultural workers,Unknown,0,95,31,3627,95,3658,31,3722,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,"Metal, machinery and related trades workers",Unknown,0,95,8,3650,95,3658,8,3745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Non-commissioned armed forces officers,Unknown,0,95,78,3580,95,3658,78,3675,0.0,0.2664795990954558,0.41350282618260387,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Other clerical support workers,Unknown,0,95,3,3655,95,3658,3,3750,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Personal care workers,Unknown,0,95,1,3657,95,3658,1,3752,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Personal service workers,Unknown,15,80,430,3228,95,3658,445,3308,1.4075581395348837,0.25784311712478064,0.41350282618260387,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Production and specialized services managers,Unknown,1,94,10,3648,95,3658,11,3742,3.880851063829787,0.24603549560657936,0.41350282618260387,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Protective services workers,Unknown,0,95,67,3591,95,3658,67,3686,0.0,0.4165625229306155,0.6060519060090314,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Sales workers,Unknown,3,92,27,3631,95,3658,30,3723,4.3852657004830915,0.03894241516048871,0.08150738056846474,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Science and engineering associate professionals,Unknown,0,95,13,3645,95,3658,13,3740,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Science and engineering professionals,Unknown,3,92,372,3286,95,3658,375,3378,0.28804347826086957,0.022536195026003132,0.052006603906161075,False,nan,fisher_exact_2x2
-q1,ministral-3-8b_modal,Gender,Teaching professionals,Unknown,5,90,197,3461,95,3658,202,3551,0.976029328821207,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Administrative and commercial managers,Female,8,1970,4,1676,1978,1680,12,3646,1.7015228426395939,0.5638520986249962,0.6766225183499954,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Armed forces occupations, other ranks",Female,0,1978,237,1443,1978,1680,237,3421,0.0,5.1163336254664767e-85,1.534900087639943e-83,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Assemblers,Female,1,1977,0,1680,1978,1680,1,3657,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Building and related trades workers,Female,0,1978,14,1666,1978,1680,14,3644,0.0,1.803631574803455e-05,4.162226711084895e-05,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Business and administration professionals,Female,532,1446,423,1257,1978,1680,955,2703,1.0932972347292114,0.24187213492647577,0.32982563853610336,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Chief executives, senior officials and legislators",Female,2,1976,4,1676,1978,1680,6,3652,0.4240890688259109,0.4228171484612746,0.5285214355765933,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Commissioned armed forces officers,Female,0,1978,77,1603,1978,1680,77,3581,0.0,3.636964863455489e-27,2.1821789180732934e-26,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Customer services clerks,Female,0,1978,0,1680,1978,1680,0,3658,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Drivers and mobile plant operators,Female,0,1978,5,1675,1978,1680,5,3653,0.0,0.020367055104330907,0.03594186194881925,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Electrical and electronic trades workers,Female,0,1978,4,1676,1978,1680,4,3654,0.0,0.04440406882531332,0.07011168761891577,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Handicraft and printing workers,Female,62,1916,0,1680,1978,1680,62,3596,inf,1.957008821229436e-17,6.523362737431453e-17,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Health associate professionals,Female,91,1887,54,1626,1978,1680,145,3513,1.452099157981511,0.03358434677457184,0.05597391129095307,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Health professionals,Female,346,1632,49,1631,1978,1680,395,3263,7.0568977591036415,4.33859413405385e-51,6.507891201080776e-50,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Hospitality, retail and other services managers",Female,19,1959,3,1677,1978,1680,22,3636,5.421643695763144,0.0020707897885764506,0.004141579577152901,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Information and communications technicians,Female,0,1978,2,1678,1978,1680,2,3656,0.0,0.21085859888381114,0.3012265698340159,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Information and communications technology professionals,Female,88,1890,178,1502,1978,1680,266,3392,0.3928898400808513,1.0590895509026508e-12,3.177268652707952e-12,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Legal, social and cultural professionals",Female,203,1775,15,1665,1978,1680,218,3440,12.694647887323944,8.19347981853021e-39,6.145109863897658e-38,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Legal, social, cultural and related associate professionals",Female,0,1978,0,1680,1978,1680,0,3658,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Market-oriented skilled agricultural workers,Female,1,1977,30,1650,1978,1680,31,3627,0.0278199291856348,1.096703767275353e-09,2.741759418188383e-09,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Metal, machinery and related trades workers",Female,0,1978,8,1672,1978,1680,8,3650,0.0,0.0019615625905324407,0.004141579577152901,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Non-commissioned armed forces officers,Female,4,1974,74,1606,1978,1680,78,3580,0.04397710780689504,6.317387356183417e-21,2.3690202585687813e-20,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Other clerical support workers,Female,3,1975,0,1680,1978,1680,3,3655,inf,0.2547737190133798,0.33231354653919104,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Personal care workers,Female,1,1977,0,1680,1978,1680,1,3657,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Personal service workers,Female,300,1678,130,1550,1978,1680,430,3228,2.1316585678921793,2.4596143389358898e-12,6.708039106188789e-12,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Production and specialized services managers,Female,3,1975,7,1673,1978,1680,10,3648,0.3630379746835443,0.20219146354113238,0.3012265698340159,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Protective services workers,Female,0,1978,67,1613,1978,1680,67,3591,0.0,1.1046948672439598e-23,4.734406573902685e-23,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Sales workers,Female,16,1962,11,1669,1978,1680,27,3631,1.2373274024650172,0.6994701783409246,0.8070809750087592,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Science and engineering associate professionals,Female,2,1976,11,1669,1978,1680,13,3645,0.1535701140964299,0.008986190420190911,0.01684910703785796,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Science and engineering professionals,Female,108,1870,264,1416,1978,1680,372,3286,0.30977151191054936,1.2336659927169313e-24,6.168329963584656e-24,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Teaching professionals,Female,188,1790,9,1671,1978,1680,197,3461,19.50018621973929,2.5239991708306785e-40,2.5239991708306784e-39,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Administrative and commercial managers,Male,4,1676,8,1970,1680,1978,12,3646,0.587708830548926,0.5638520986249962,0.6766225183499954,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Armed forces occupations, other ranks",Male,237,1443,0,1978,1680,1978,237,3421,inf,5.1163336254664767e-85,1.534900087639943e-83,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Assemblers,Male,0,1680,1,1977,1680,1978,1,3657,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Building and related trades workers,Male,14,1666,0,1978,1680,1978,14,3644,inf,1.803631574803455e-05,4.162226711084895e-05,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Business and administration professionals,Male,423,1257,532,1446,1680,1978,955,2703,0.9146643458287724,0.24187213492647577,0.32982563853610336,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Chief executives, senior officials and legislators",Male,4,1676,2,1976,1680,1978,6,3652,2.3579952267303104,0.4228171484612746,0.5285214355765933,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Commissioned armed forces officers,Male,77,1603,0,1978,1680,1978,77,3581,inf,3.636964863455489e-27,2.1821789180732934e-26,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Customer services clerks,Male,0,1680,0,1978,1680,1978,0,3658,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Drivers and mobile plant operators,Male,5,1675,0,1978,1680,1978,5,3653,inf,0.020367055104330907,0.03594186194881925,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Electrical and electronic trades workers,Male,4,1676,0,1978,1680,1978,4,3654,inf,0.04440406882531332,0.07011168761891577,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Handicraft and printing workers,Male,0,1680,62,1916,1680,1978,62,3596,0.0,1.957008821229436e-17,6.523362737431453e-17,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Health associate professionals,Male,54,1626,91,1887,1680,1978,145,3513,0.6886582052633713,0.03358434677457184,0.05597391129095307,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Health professionals,Male,49,1631,346,1632,1680,1978,395,3263,0.141705326353916,4.33859413405385e-51,6.507891201080776e-50,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Hospitality, retail and other services managers",Male,3,1677,19,1959,1680,1978,22,3636,0.18444590904811223,0.0020707897885764506,0.004141579577152901,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Information and communications technicians,Male,2,1678,0,1978,1680,1978,2,3656,inf,0.21085859888381114,0.3012265698340159,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Information and communications technology professionals,Male,178,1502,88,1890,1680,1978,266,3392,2.545242706694105,1.0590895509026508e-12,3.177268652707952e-12,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Legal, social and cultural professionals",Male,15,1665,203,1775,1680,1978,218,3440,0.0787733546354236,8.19347981853021e-39,6.145109863897658e-38,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Legal, social, cultural and related associate professionals",Male,0,1680,0,1978,1680,1978,0,3658,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Market-oriented skilled agricultural workers,Male,30,1650,1,1977,1680,1978,31,3627,35.945454545454545,1.096703767275353e-09,2.741759418188383e-09,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,"Metal, machinery and related trades workers",Male,8,1672,0,1978,1680,1978,8,3650,inf,0.0019615625905324407,0.004141579577152901,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Non-commissioned armed forces officers,Male,74,1606,4,1974,1680,1978,78,3580,22.739103362391035,6.317387356183417e-21,2.3690202585687813e-20,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Other clerical support workers,Male,0,1680,3,1975,1680,1978,3,3655,0.0,0.2547737190133798,0.33231354653919104,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Personal care workers,Male,0,1680,1,1977,1680,1978,1,3657,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Personal service workers,Male,130,1550,300,1678,1680,1978,430,3228,0.4691182795698925,2.4596143389358898e-12,6.708039106188789e-12,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Production and specialized services managers,Male,7,1673,3,1975,1680,1978,10,3648,2.7545327754532773,0.20219146354113238,0.3012265698340159,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Protective services workers,Male,67,1613,0,1978,1680,1978,67,3591,inf,1.1046948672439598e-23,4.734406573902685e-23,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Sales workers,Male,11,1669,16,1962,1680,1978,27,3631,0.808193529059317,0.6994701783409246,0.8070809750087592,False,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Science and engineering associate professionals,Male,11,1669,2,1976,1680,1978,13,3645,6.51168364289994,0.008986190420190911,0.01684910703785796,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Science and engineering professionals,Male,264,1416,108,1870,1680,1978,372,3286,3.2281858129315757,1.2336659927169313e-24,6.168329963584656e-24,True,nan,fisher_exact_2x2
+q1,ministral-3-8b_modal,Gender,Teaching professionals,Male,9,1671,188,1790,1680,1978,197,3461,0.051281561556973145,2.5239991708306785e-40,2.5239991708306784e-39,True,nan,fisher_exact_2x2

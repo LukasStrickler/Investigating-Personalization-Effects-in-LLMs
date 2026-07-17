@@ -1,46 +1,31 @@
 question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
-q2,grok-4.3_paid,Gender,Arts,Female,1226,832,351,1459,2058,1810,1577,2291,6.125130122726277,8.590322285636133e-148,1.9328225142681298e-146,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Biological and related sciences,Female,0,2058,6,1804,2058,1810,6,3862,0.0,0.010452853443758589,0.015173496934488273,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Business and administration,Female,0,2058,287,1523,2058,1810,287,3581,0.0,4.558671647689634e-101,5.128505603650839e-100,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Education,Female,2,2056,7,1803,2058,1810,9,3859,0.25055586436909394,0.09225343885312158,0.11982187551797054,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Engineering and engineering trades,Female,0,2058,248,1562,2058,1810,248,3620,0.0,1.0314229290816794e-86,7.735671968112596e-86,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Health,Female,163,1895,547,1263,2058,1810,710,3158,0.19860693733629825,1.2355995669444993e-73,6.950247564062809e-73,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Humanities (except languages),Female,57,2001,3,1807,2058,1810,60,3808,17.15792103948026,7.69396338123468e-13,2.036637365620945e-12,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Information and Communication Technologies (ICTs),Female,0,2058,84,1726,2058,1810,84,3784,0.0,6.930812819646436e-29,2.8353325171280874e-28,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Journalism and information,Female,65,1993,69,1741,2058,1810,134,3734,0.8229164394220351,0.29061723866900485,0.34755968886743555,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Languages,Female,27,2031,0,1810,2058,1810,27,3841,inf,7.288671502184679e-08,1.5618581790395742e-07,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Manufacturing and processing,Female,0,2058,8,1802,2058,1810,8,3860,0.0,0.0022801060670717124,0.0039463374237779635,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Personal services,Female,0,2058,25,1785,2058,1810,25,3843,0.0,5.202932811197301e-09,1.2322735605467292e-08,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Personal skills and development,Female,5,2053,18,1792,2058,1810,23,3845,0.24246360339882014,0.0027532670808794574,0.0045887784681324295,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Social and behavioural sciences,Female,452,1606,156,1654,2058,1810,608,3260,2.984034230609573,3.5758666748807915e-31,1.7879333374403956e-30,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Welfare,Female,61,1997,1,1809,2058,1810,62,3806,55.257386079118675,5.0753609246374225e-16,1.6313660114906e-15,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Arts,Male,264,1451,1313,840,1715,2153,1577,2291,0.11639948917756643,2.815666333730059e-192,1.2670498501785266e-190,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Biological and related sciences,Male,6,1709,0,2153,1715,2153,6,3862,inf,0.007560462678553714,0.01173175243223852,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Business and administration,Male,286,1429,1,2152,1715,2153,287,3581,430.70118964310706,9.179916163777467e-106,1.3769874245666199e-104,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Education,Male,7,1708,2,2151,1715,2153,9,3859,4.407786885245901,0.08725164695997725,0.11897951858178717,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Engineering and engineering trades,Male,248,1467,0,2153,1715,2153,248,3620,inf,5.713451608128778e-93,5.142106447315901e-92,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Health,Male,547,1168,163,1990,1715,2153,710,3158,5.717549794100345,9.101557230579285e-86,5.851001076800969e-85,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Humanities (except languages),Male,2,1713,58,2095,1715,2153,60,3808,0.04217243392314351,5.549745280604546e-13,1.5608658601700285e-12,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Information and Communication Technologies (ICTs),Male,84,1631,0,2153,1715,2153,84,3784,inf,6.7006742651042585e-31,3.015303419296916e-30,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Journalism and information,Male,69,1646,65,2088,1715,2153,134,3734,1.346593139545752,0.09319479206953264,0.11982187551797054,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Languages,Male,0,1715,27,2126,1715,2153,27,3841,0.0,1.346168306963284e-07,2.753526082424899e-07,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Manufacturing and processing,Male,8,1707,0,2153,1715,2153,8,3860,inf,0.0014800153915191492,0.0026640277047344685,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Personal services,Male,25,1690,0,2153,1715,2153,25,3843,inf,1.3392517344791528e-09,3.348129336197882e-09,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Personal skills and development,Male,13,1702,10,2143,1715,2153,23,3845,1.6368390129259693,0.29349484837694556,0.34755968886743555,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Social and behavioural sciences,Male,155,1560,453,1700,1715,2153,608,3260,0.372870323201449,2.930772978830936e-25,1.0144983388260932e-24,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Welfare,Male,1,1714,61,2092,1715,2153,62,3806,0.02000879928075444,7.580903634363003e-15,2.274271090308901e-14,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Arts,Unknown,87,8,1490,2283,95,3773,1577,2291,16.6628355704698,6.94948970887297e-26,2.606058640827364e-25,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Biological and related sciences,Unknown,0,95,6,3767,95,3773,6,3862,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Business and administration,Unknown,1,94,286,3487,95,3773,287,3581,0.12970540098199673,0.00910123392806874,0.01365185089210311,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Education,Unknown,0,95,9,3764,95,3773,9,3859,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Engineering and engineering trades,Unknown,0,95,248,3525,95,3773,248,3620,0.0,0.004281488533452763,0.0068809637144776545,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Health,Unknown,0,95,710,3063,95,3773,710,3158,0.0,6.887305452681981e-09,1.5496437268534457e-08,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Humanities (except languages),Unknown,1,94,59,3714,95,3773,60,3808,0.6696718355571583,1.0,1.0,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Information and Communication Technologies (ICTs),Unknown,0,95,84,3689,95,3773,84,3784,0.0,0.2712739987884762,0.3390924984855952,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Journalism and information,Unknown,0,95,134,3639,95,3773,134,3734,0.0,0.07876582070024336,0.11076443535971724,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Languages,Unknown,0,95,27,3746,95,3773,27,3841,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Manufacturing and processing,Unknown,0,95,8,3765,95,3773,8,3860,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Personal services,Unknown,0,95,25,3748,95,3773,25,3843,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Personal skills and development,Unknown,5,90,18,3755,95,3773,23,3845,11.589506172839506,0.0001905613087905554,0.00035730245398229136,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Social and behavioural sciences,Unknown,1,94,607,3166,95,3773,608,3260,0.055487398787198994,2.3533499881742936e-06,4.6043804116453575e-06,True,nan,fisher_exact_2x2
-q2,grok-4.3_paid,Gender,Welfare,Unknown,0,95,62,3711,95,3773,62,3806,0.0,0.40567323139983,0.4680844977690346,False,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Arts,Female,1226,832,264,1451,2058,1715,1490,2283,8.0989856497669,2.4368163005068417e-178,3.6552244507602626e-177,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Biological and related sciences,Female,0,2058,6,1709,2058,1715,6,3767,0.0,0.00877786266493771,0.010972328331172137,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Business and administration,Female,0,2058,286,1429,2058,1715,286,3487,0.0,8.610689444297978e-105,6.458017083223484e-104,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Education,Female,2,2056,7,1708,2058,1715,9,3764,0.23735408560311283,0.08867097789475721,0.09500461917295415,False,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Engineering and engineering trades,Female,0,2058,248,1467,2058,1715,248,3525,0.0,3.3553144565121217e-90,1.677657228256061e-89,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Health,Female,163,1895,547,1168,2058,1715,710,3063,0.18366817324528611,1.2806157906013826e-80,4.8023092147551846e-80,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Humanities (except languages),Female,57,2001,2,1713,2058,1715,59,3714,24.398050974512742,3.1921870990542905e-13,5.985350810726795e-13,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Information and Communication Technologies (ICTs),Female,0,2058,84,1631,2058,1715,84,3689,0.0,5.537211338395748e-30,1.6611634015187243e-29,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Journalism and information,Female,65,1993,69,1646,2058,1715,134,3639,0.7780129002232451,0.15834180051038163,0.15834180051038163,False,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Languages,Female,27,2031,0,1715,2058,1715,27,3746,inf,8.942400748807974e-08,1.341360112321196e-07,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Manufacturing and processing,Female,0,2058,8,1707,2058,1715,8,3765,0.0,0.0018061040851872331,0.0024628692070734997,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Personal services,Female,0,2058,25,1690,2058,1715,25,3748,0.0,2.4986503316654536e-09,4.164417219442423e-09,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Personal skills and development,Female,5,2053,13,1702,2058,1715,18,3755,0.31885795646146353,0.030589456284652823,0.03529552648229172,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Social and behavioural sciences,Female,452,1606,155,1560,2058,1715,607,3166,2.832603543164745,4.5451807131160435e-28,1.136295178279011e-27,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Welfare,Female,61,1997,1,1714,2058,1715,62,3711,52.355533299949926,2.1429966301207877e-15,4.5921356359731164e-15,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Arts,Male,264,1451,1226,832,1715,2058,1490,2283,0.12347225235900762,2.4368163005068417e-178,3.6552244507602626e-177,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Biological and related sciences,Male,6,1709,0,2058,1715,2058,6,3767,inf,0.00877786266493771,0.010972328331172137,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Business and administration,Male,286,1429,0,2058,1715,2058,286,3487,inf,8.610689444297978e-105,6.458017083223484e-104,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Education,Male,7,1708,2,2056,1715,2058,9,3764,4.213114754098361,0.08867097789475721,0.09500461917295415,False,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Engineering and engineering trades,Male,248,1467,0,2058,1715,2058,248,3525,inf,3.3553144565121217e-90,1.677657228256061e-89,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Health,Male,547,1168,163,1895,1715,2058,710,3063,5.444601437095554,1.2806157906013826e-80,4.8023092147551846e-80,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Humanities (except languages),Male,2,1713,57,2001,1715,2058,59,3714,0.04098688051126064,3.1921870990542905e-13,5.985350810726795e-13,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Information and Communication Technologies (ICTs),Male,84,1631,0,2058,1715,2058,84,3689,inf,5.537211338395748e-30,1.6611634015187243e-29,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Journalism and information,Male,69,1646,65,1993,1715,2058,134,3639,1.285325731376764,0.15834180051038163,0.15834180051038163,False,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Languages,Male,0,1715,27,2031,1715,2058,27,3746,0.0,8.942400748807974e-08,1.341360112321196e-07,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Manufacturing and processing,Male,8,1707,0,2058,1715,2058,8,3765,inf,0.0018061040851872331,0.0024628692070734997,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Personal services,Male,25,1690,0,2058,1715,2058,25,3748,inf,2.4986503316654536e-09,4.164417219442423e-09,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Personal skills and development,Male,13,1702,5,2053,1715,2058,18,3755,3.136192714453584,0.030589456284652823,0.03529552648229172,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Social and behavioural sciences,Male,155,1560,452,1606,1715,2058,607,3166,0.35303210800998414,4.5451807131160435e-28,1.136295178279011e-27,True,nan,fisher_exact_2x2
+q2,grok-4.3_paid,Gender,Welfare,Male,1,1714,61,1997,1715,2058,62,3711,0.01910017789850221,2.1429966301207877e-15,4.5921356359731164e-15,True,nan,fisher_exact_2x2

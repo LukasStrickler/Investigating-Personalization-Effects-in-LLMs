@@ -1,190 +1,169 @@
 question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
-q2,all_models,Race,Agriculture,Central/Eastern Europe,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,Central/Eastern Europe,962,1881,7165,13200,2843,20365,8127,15081,0.9422019808768257,0.15978778595413998,0.8668584017396168,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,Central/Eastern Europe,14,2829,69,20296,2843,20365,83,23125,1.4556482804903663,0.23720632444965722,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,Central/Eastern Europe,210,2633,1414,18951,2843,20365,1624,21584,1.068934656473623,0.3879238568920799,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,Central/Eastern Europe,10,2833,72,20293,2843,20365,82,23126,0.9948719457191042,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,Central/Eastern Europe,200,2643,1417,18948,2843,20365,1617,21591,1.011873816963946,0.8750335634813298,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,Central/Eastern Europe,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,Central/Eastern Europe,358,2485,2356,18009,2843,20365,2714,20494,1.1012120259758893,0.11216819392607572,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),Central/Eastern Europe,62,2781,472,19893,2843,20365,534,22674,0.9396129303567184,0.688999295160447,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),Central/Eastern Europe,85,2758,516,19849,2843,20365,601,22607,1.1855328543883614,0.16511588604564129,0.8668584017396168,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,Central/Eastern Europe,18,2825,172,20193,2843,20365,190,23018,0.7480428071619675,0.2675872070449575,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,Central/Eastern Europe,10,2833,87,20278,2843,20365,97,23111,0.8227337090367629,0.643766146602051,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,Central/Eastern Europe,1,2842,0,20365,2843,20365,1,23207,inf,0.12250086177180283,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,Central/Eastern Europe,2,2841,19,20346,2843,20365,21,23187,0.7538487189462568,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,Central/Eastern Europe,13,2830,36,20329,2843,20365,49,23159,2.5940027483313703,0.0066641289764159985,0.13994670850473598,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,Central/Eastern Europe,11,2832,86,20279,2843,20365,97,23111,0.9158988634870582,0.8776630607988726,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,Central/Eastern Europe,29,2814,203,20162,2843,20365,232,22976,1.0235556909330896,0.9197324190830772,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,Central/Eastern Europe,4,2839,13,20352,2843,20365,17,23191,2.205760424851654,0.14608740871755801,0.8366824317460141,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,Central/Eastern Europe,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,Central/Eastern Europe,837,2006,6128,14237,2843,20365,6965,16243,0.9693804519860784,0.484645273485366,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,Central/Eastern Europe,17,2826,137,20228,2843,20365,154,23054,0.8881966721940686,0.712826768117326,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,France,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,France,1019,1825,7108,13256,2844,20364,8127,15081,1.0413012542302327,0.3345000051290566,0.9872367142761496,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,France,13,2831,70,20294,2844,20364,83,23125,1.331291315537165,0.3162044777905898,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,France,194,2650,1430,18934,2844,20364,1624,21584,0.9693088797994458,0.7240333289736114,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,France,10,2834,72,20292,2844,20364,82,23126,0.9944718889673018,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,France,198,2646,1419,18945,2844,20364,1617,21591,0.9990507831039392,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,France,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,France,324,2520,2390,17974,2844,20364,2714,20494,0.9669216975493126,0.618233591386451,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),France,68,2776,466,19898,2844,20364,534,22674,1.0459549047012406,0.7384012413331748,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),France,64,2780,537,19827,2844,20364,601,22607,0.8499979904344681,0.25624972079451935,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,France,28,2816,162,20202,2844,20364,190,23018,1.2399515993265993,0.31619039423181733,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,France,11,2833,86,20278,2844,20364,97,23111,0.9155304180792816,0.877657460852424,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,France,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,France,4,2840,17,20347,2844,20364,21,23187,1.6857497928748963,0.315717612542999,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,France,6,2838,43,20321,2844,20364,49,23159,0.9991150007374994,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,France,12,2832,85,20279,2844,20364,97,23111,1.0109172482552342,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,France,30,2814,202,20162,2844,20364,232,22976,1.0640925499799447,0.7624471525473858,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,France,1,2843,16,20348,2844,20364,17,23191,0.44732676749912065,0.7124877956198024,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,France,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,France,841,2003,6124,14240,2844,20364,6965,16243,0.976314757126231,0.600186828415014,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,France,21,2823,133,20231,2844,20364,154,23054,1.1315509815985234,0.6210606084700999,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,Germany,0,2842,1,20365,2842,20366,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,Germany,958,1884,7169,13197,2842,20366,8127,15081,0.9360547402874905,0.12040194942527348,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,Germany,9,2833,74,20292,2842,20366,83,23125,0.8711422329495044,0.8665812132328499,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,Germany,162,2680,1462,18904,2842,20366,1624,21584,0.7816036098576883,0.0036474765287591243,0.09634971082827612,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,Germany,12,2830,70,20296,2842,20366,82,23126,1.229439676930843,0.4986534492651839,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,Germany,211,2631,1406,18960,2842,20366,1617,21591,1.0814703559107328,0.3065779056063249,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,Germany,0,2842,1,20365,2842,20366,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,Germany,349,2493,2365,18001,2842,20366,2714,20494,1.0655372463616943,0.3038404846161217,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),Germany,70,2772,464,19902,2842,20366,534,22674,1.083137408568443,0.5475803080694773,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),Germany,76,2766,525,19841,2842,20366,601,22607,1.0384023689012842,0.7526036481765489,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,Germany,21,2821,169,20197,2842,20366,190,23018,0.8896442362752728,0.7384617323240219,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,Germany,26,2816,71,20295,2842,20366,97,23111,2.639194542253521,0.00012091477179973877,0.011426445935075314,True,nan,fisher_exact_2x2
-q2,all_models,Race,Law,Germany,0,2842,1,20365,2842,20366,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,Germany,1,2841,20,20346,2842,20366,21,23187,0.35807814149947204,0.5039963110811974,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,Germany,6,2836,43,20323,2842,20366,49,23159,0.9999179978351429,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,Germany,11,2831,86,20280,2842,20366,97,23111,0.9162675691883055,0.8776688679908466,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,Germany,33,2809,199,20167,2842,20366,232,22976,1.1905576297292801,0.36426259332658406,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,Germany,3,2839,14,20352,2842,20366,17,23191,1.5361545815931164,0.4550087636939025,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,Germany,0,2842,1,20365,2842,20366,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,Germany,876,1966,6089,14277,2842,20366,6965,16243,1.0447480714601836,0.3149801552732933,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,Germany,18,2824,136,20230,2842,20366,154,23054,0.9481232294617564,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,Hispanic Countries,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,Hispanic Countries,1084,1759,7043,13322,2843,20365,8127,15081,1.1656688302353198,0.00022081865936483529,0.013911575539984622,True,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,Hispanic Countries,13,2830,70,20295,2843,20365,83,23125,1.3318273599192327,0.3160489241240871,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,Hispanic Countries,194,2649,1430,18935,2843,20365,1624,21584,0.9697260082311044,0.7240314885953147,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,Hispanic Countries,9,2834,73,20292,2843,20365,82,23126,0.8827640877408378,0.866282939202565,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,Hispanic Countries,190,2653,1427,18938,2843,20365,1617,21591,0.950443905182244,0.5553090244767466,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,Hispanic Countries,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,Hispanic Countries,326,2517,2388,17977,2843,20365,2714,20494,0.9750284331204426,0.7085714604989066,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),Hispanic Countries,49,2794,485,19880,2843,20365,534,22674,0.7188600019186917,0.02743424533176894,0.3240670229815206,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),Hispanic Countries,54,2789,547,19818,2843,20365,601,22607,0.7014839572805938,0.01166164664921872,0.16954240128479522,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,Hispanic Countries,23,2820,167,20198,2843,20365,190,23018,0.9864398861850766,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,Hispanic Countries,8,2835,89,20276,2843,20365,97,23111,0.6428789410062818,0.27755405862983124,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,Hispanic Countries,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,Hispanic Countries,1,2842,20,20345,2843,20365,21,23187,0.35793455313159744,0.504016830861842,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,Hispanic Countries,5,2838,44,20321,2843,20365,49,23159,0.8136732013581908,0.8283960159789233,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,Hispanic Countries,10,2833,87,20278,2843,20365,97,23111,0.8227337090367629,0.643766146602051,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,Hispanic Countries,23,2820,209,20156,2843,20365,232,22976,0.7865689368488921,0.3142839695273013,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,Hispanic Countries,3,2840,14,20351,2843,20365,17,23191,1.5355382293762576,0.4551300167809928,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,Hispanic Countries,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,Hispanic Countries,827,2016,6138,14227,2843,20365,6965,16243,0.9508268327152736,0.25608561272104624,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,Hispanic Countries,24,2819,130,20235,2843,20365,154,23054,1.3251835075176686,0.2162560545074655,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,MENA,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,MENA,970,1874,7157,13207,2844,20364,8127,15081,0.9551581997847037,0.28458314524277584,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,MENA,7,2837,76,20288,2844,20364,83,23125,0.6586646383318183,0.3995939853356462,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,MENA,194,2650,1430,18934,2844,20364,1624,21584,0.9693088797994458,0.7240333289736114,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,MENA,4,2840,78,20286,2844,20364,82,23126,0.36630552546045503,0.041451517346177115,0.39683559151429926,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,MENA,191,2653,1426,18938,2844,20364,1617,21591,0.9561162599275002,0.6092589324009763,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,MENA,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,MENA,284,2560,2430,17934,2844,20364,2714,20494,0.8187461419753086,0.0022598920495280686,0.08542391947216099,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),MENA,85,2759,449,19915,2844,20364,534,22674,1.366473440636879,0.011074550215695228,0.16954240128479522,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),MENA,81,2763,520,19844,2844,20364,601,22607,1.118742169882235,0.3447493287948459,0.9872367142761496,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,MENA,19,2825,171,20193,2844,20364,190,23018,0.7942182890855457,0.3758931029694831,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,MENA,9,2835,88,20276,2844,20364,97,23111,0.7314574314574315,0.43964618953805956,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,MENA,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,MENA,1,2843,20,20344,2844,20364,21,23187,0.35779106577558917,0.5040375037001529,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,MENA,5,2839,44,20320,2844,20364,49,23159,0.813346568894297,0.8283963188311232,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,MENA,7,2837,90,20274,2844,20364,97,23111,0.5558218775702033,0.1609646162455036,0.8668584017396168,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,MENA,26,2818,206,20158,2844,20364,232,22976,0.902843716193403,0.6879504425053679,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,MENA,2,2842,15,20349,2844,20364,17,23191,0.954679802955665,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,MENA,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,MENA,947,1897,6018,14346,2844,20364,6965,16243,1.1900392654403684,5.3019246773847994e-05,0.010020637640257271,True,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,MENA,12,2832,142,20222,2844,20364,154,23054,0.6034256385772261,0.10761151439639399,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,South/Central Asia,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,South/Central Asia,1050,1793,7077,13288,2843,20365,8127,15081,1.0995612677722961,0.023412807914683142,0.2950013797250076,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,South/Central Asia,4,2839,79,20286,2843,20365,83,23125,0.3617961396640821,0.04199318428722743,0.39683559151429926,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,South/Central Asia,214,2629,1410,18955,2843,20365,1624,21584,1.094278492213149,0.23907314558464182,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,South/Central Asia,8,2835,74,20291,2843,20365,82,23126,0.7737642404309071,0.6129387043389203,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,South/Central Asia,204,2639,1413,18952,2843,20365,1617,21591,1.0368207091246846,0.6370719714149473,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,South/Central Asia,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,South/Central Asia,313,2530,2401,17964,2843,20365,2714,20494,0.9256242046709786,0.2364717844066967,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),South/Central Asia,60,2783,474,19891,2843,20365,534,22674,0.9047244345188008,0.5046156126653477,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),South/Central Asia,81,2762,520,19845,2843,20365,601,22607,1.1192036149947084,0.3445999408090661,0.9872367142761496,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,South/Central Asia,21,2822,169,20196,2843,20365,190,23018,0.8892849504526984,0.7384910257396395,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,South/Central Asia,12,2831,85,20280,2843,20365,97,23111,1.0113242047083757,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,South/Central Asia,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,South/Central Asia,3,2840,18,20347,2843,20365,21,23187,1.1940727699530516,0.7367822237231585,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,South/Central Asia,4,2839,45,20320,2843,20365,49,23159,0.6362177605573167,0.5136792338645958,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,South/Central Asia,18,2825,79,20286,2843,20365,97,23111,1.6361510025764534,0.06263331201761202,0.5380770896058487,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,South/Central Asia,32,2811,200,20165,2843,20365,232,22976,1.1477765919601566,0.480500732915348,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,South/Central Asia,0,2843,17,20348,2843,20365,17,23191,0.0,0.2544397775733534,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,South/Central Asia,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,South/Central Asia,805,2038,6160,14205,2843,20365,6965,16243,0.9108612498884825,0.03599147404833689,0.37791047750753737,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,South/Central Asia,14,2829,140,20225,2843,20365,154,23054,0.7149169317780134,0.26730005563713904,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,Sub-Saharan Africa,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,Sub-Saharan Africa,1019,1825,7108,13256,2844,20364,8127,15081,1.0413012542302327,0.3345000051290566,0.9872367142761496,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,Sub-Saharan Africa,11,2833,72,20292,2844,20364,83,23125,1.0943052123779269,0.7375735173734145,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,Sub-Saharan Africa,229,2615,1395,18969,2844,20364,1624,21584,1.190786817163182,0.020561789150165127,0.2775841535272292,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,Sub-Saharan Africa,18,2826,64,20300,2844,20364,82,23126,2.020302547770701,0.011150760487289116,0.16954240128479522,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,Sub-Saharan Africa,187,2657,1430,18934,2844,20364,1617,21591,0.9318722677397875,0.4089533778220233,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,Sub-Saharan Africa,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,Sub-Saharan Africa,352,2492,2362,18002,2844,20364,2714,20494,1.0765531835659037,0.22457247979738318,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),Sub-Saharan Africa,67,2777,467,19897,2844,20364,534,22674,1.0279444411458762,0.8411825135997093,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),Sub-Saharan Africa,80,2764,521,19843,2844,20364,601,22607,1.1023552058131556,0.41282573282319995,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,Sub-Saharan Africa,23,2821,167,20197,2844,20364,190,23018,0.9860413876253166,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,Sub-Saharan Africa,6,2838,91,20273,2844,20364,97,23111,0.47099412215691283,0.0853970699341451,0.7017411398936271,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,Sub-Saharan Africa,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,Sub-Saharan Africa,6,2838,15,20349,2844,20364,21,23187,2.8680761099365752,0.03587778569342051,0.37791047750753737,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,Sub-Saharan Africa,4,2840,45,20319,2844,20364,49,23159,0.635962441314554,0.5136882438738015,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,Sub-Saharan Africa,9,2835,88,20276,2844,20364,97,23111,0.7314574314574315,0.43964618953805956,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,Sub-Saharan Africa,22,2822,210,20154,2844,20364,232,22976,0.7481826465525969,0.2267941263577914,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,Sub-Saharan Africa,2,2842,15,20349,2844,20364,17,23191,0.954679802955665,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,Sub-Saharan Africa,0,2844,1,20363,2844,20364,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,Sub-Saharan Africa,785,2059,6180,14184,2844,20364,6965,16243,0.8750312386538851,0.0027662375822324996,0.08713648384032374,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,Sub-Saharan Africa,24,2820,130,20234,2844,20364,154,23054,1.3246481178396072,0.21636057378155887,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,United Kingdom / North America,1,2842,0,20365,2843,20365,1,23207,inf,0.12250086177180283,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,United Kingdom / North America,934,1909,7193,13172,2843,20365,8127,15081,0.8959475982011206,0.009840424207506297,0.16954240128479522,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,United Kingdom / North America,10,2833,73,20292,2843,20365,83,23125,0.9811952091059867,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,United Kingdom / North America,202,2641,1422,18943,2843,20365,1624,21584,1.0189013346284996,0.8138434039381917,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,United Kingdom / North America,10,2833,72,20293,2843,20365,82,23126,0.9948719457191042,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,United Kingdom / North America,200,2643,1417,18948,2843,20365,1617,21591,1.011873816963946,0.8750335634813298,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,United Kingdom / North America,1,2842,0,20365,2843,20365,1,23207,inf,0.12250086177180283,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,United Kingdom / North America,352,2491,2362,18003,2843,20365,2714,20494,1.0770451865496482,0.22442268407420066,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),United Kingdom / North America,60,2783,474,19891,2843,20365,534,22674,0.9047244345188008,0.5046156126653477,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),United Kingdom / North America,70,2773,531,19834,2843,20365,601,22607,0.9428963580069584,0.7052514521927438,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,United Kingdom / North America,32,2811,158,20207,2843,20365,190,23018,1.4559078484615142,0.05848032334621528,0.5263229101159376,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,United Kingdom / North America,11,2832,86,20279,2843,20365,97,23111,0.9158988634870582,0.8776630607988726,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,United Kingdom / North America,0,2843,1,20364,2843,20365,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,United Kingdom / North America,3,2840,18,20347,2843,20365,21,23187,1.1940727699530516,0.7367822237231585,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,United Kingdom / North America,5,2838,44,20321,2843,20365,49,23159,0.8136732013581908,0.8283960159789233,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,United Kingdom / North America,17,2826,80,20285,2843,20365,97,23111,1.5253228945506017,0.1195940071831032,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,United Kingdom / North America,32,2811,200,20165,2843,20365,232,22976,1.1477765919601566,0.480500732915348,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,United Kingdom / North America,1,2842,16,20349,2843,20365,17,23191,0.44750615763546797,0.7124782078060774,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,United Kingdom / North America,1,2842,0,20365,2843,20365,1,23207,inf,0.12250086177180283,0.7468600927377657,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,United Kingdom / North America,880,1963,6085,14280,2843,20365,6965,16243,1.0520345370454476,0.24700173466899555,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,United Kingdom / North America,21,2822,133,20232,2843,20365,154,23054,1.1320079077921594,0.6210040366633105,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Agriculture,Unknown,0,462,1,22745,462,22746,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Arts,Unknown,131,331,7996,14750,462,22746,8127,15081,0.7300666949789094,0.002239774667776738,0.08542391947216099,False,nan,fisher_exact_2x2
-q2,all_models,Race,Biological and related sciences,Unknown,2,460,81,22665,462,22746,83,23125,1.2165861513687601,0.6821117743071714,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Business and administration,Unknown,25,437,1599,21147,462,22746,1624,21584,0.7565869973081002,0.19701919642249519,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Education,Unknown,1,461,81,22665,462,22746,82,23126,0.6069735679280148,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Engineering and engineering trades,Unknown,36,426,1581,21165,462,22746,1617,21591,1.1313039527487505,0.4603433251421313,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Environment,Unknown,0,462,1,22745,462,22746,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Health,Unknown,56,406,2658,20088,462,22746,2714,20494,1.0424223554137153,0.7698098240160998,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Humanities (except languages),Unknown,13,449,521,22225,462,22746,534,22674,1.2350969738681394,0.4313724134042203,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Information and Communication Technologies (ICTs),Unknown,10,452,591,22155,462,22746,601,22607,0.8293652576254436,0.6582890898334471,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Journalism and information,Unknown,5,457,185,22561,462,22746,190,23018,1.3342598616121593,0.43362227549786375,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Languages,Unknown,4,458,93,22653,462,22746,97,23111,2.127341879137907,0.12835888250025168,0.7581196497671114,False,nan,fisher_exact_2x2
-q2,all_models,Race,Law,Unknown,0,462,1,22745,462,22746,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Manufacturing and processing,Unknown,0,462,21,22725,462,22746,21,23187,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Mathematics and statistics,Unknown,1,461,48,22698,462,22746,49,23159,1.025759219088937,0.6270496501754045,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal services,Unknown,2,460,95,22651,462,22746,97,23111,1.036659038901602,0.7197789283143109,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Personal skills and development,Unknown,5,457,227,22519,462,22746,232,22976,1.0853680872188858,0.8107106518817154,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Physical sciences,Unknown,1,461,16,22730,462,22746,17,23191,3.0816160520607374,0.2896167600315949,0.963913650039056,False,nan,fisher_exact_2x2
-q2,all_models,Race,Security services,Unknown,0,462,1,22745,462,22746,1,23207,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q2,all_models,Race,Social and behavioural sciences,Unknown,167,295,6798,15948,462,22746,6965,16243,1.3280655825990695,0.00407829463823391,0.09634971082827612,False,nan,fisher_exact_2x2
-q2,all_models,Race,Welfare,Unknown,3,459,151,22595,462,22746,154,23054,0.9780115136562352,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,Central/Eastern Europe,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,Central/Eastern Europe,962,1881,7034,12869,2843,19903,7996,14750,0.9356829447067838,0.1202333400067123,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,Central/Eastern Europe,14,2829,67,19836,2843,19903,81,22665,1.465124008800114,0.1804048952931046,0.8914124238012228,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,Central/Eastern Europe,210,2633,1389,18514,2843,19903,1599,21147,1.0630812277137085,0.43280406030250074,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,Central/Eastern Europe,10,2833,71,19832,2843,19903,81,22665,0.9859652088315278,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,Central/Eastern Europe,200,2643,1381,18522,2843,19903,1581,21165,1.0149088365617045,0.8437694850008874,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,Central/Eastern Europe,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,Central/Eastern Europe,358,2485,2300,17603,2843,19903,2658,20088,1.1025936488496195,0.11144229056871528,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),Central/Eastern Europe,62,2781,459,19444,2843,19903,521,22225,0.9444166335678065,0.7375445193611847,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),Central/Eastern Europe,85,2758,506,19397,2843,19903,591,22155,1.1814319536124878,0.16539977213038728,0.8420352035728808,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,Central/Eastern Europe,18,2825,167,19736,2843,19903,185,22561,0.7530030205076572,0.3140297175640892,0.9733922767234844,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,Central/Eastern Europe,10,2833,83,19820,2843,19903,93,22653,0.8429056855732141,0.7531527425295435,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,Central/Eastern Europe,1,2842,0,19903,2843,19903,1,22745,inf,0.12498900905653741,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,Central/Eastern Europe,2,2841,19,19884,2843,19903,21,22725,0.7367309509253599,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,Central/Eastern Europe,13,2830,35,19868,2843,19903,48,22698,2.6076123170116103,0.006563523798032368,0.13783399975867974,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,Central/Eastern Europe,11,2832,84,19819,2843,19903,95,22651,0.9164354654291095,0.8774942390328884,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,Central/Eastern Europe,29,2814,198,19705,2843,19903,227,22519,1.025616865169104,0.9195501535835361,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,Central/Eastern Europe,4,2839,12,19891,2843,19903,16,22730,2.3354467535517203,0.130056469639691,0.7048221580473577,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,Central/Eastern Europe,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,Central/Eastern Europe,837,2006,5961,13942,2843,19903,6798,15948,0.9758891418346872,0.5841195675921387,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,Central/Eastern Europe,17,2826,134,19769,2843,19903,151,22595,0.8874761014460606,0.7124260914738427,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,France,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,France,1019,1825,6977,12925,2844,19902,7996,14750,1.0343633975430033,0.42502981290681435,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,France,13,2831,68,19834,2844,19902,81,22665,1.339383298356432,0.3136249415932239,0.9733922767234844,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,France,194,2650,1405,18497,2844,19902,1599,21147,0.9637864768683274,0.6663483220856241,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,France,10,2834,71,19831,2844,19902,81,22665,0.9855676046398362,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,France,198,2646,1383,18519,2844,19902,1581,21165,1.0020068765033128,0.9685686182005853,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,France,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,France,324,2520,2334,17568,2844,19902,2658,20088,0.9677561513037092,0.6177235868275722,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),France,68,2776,453,19449,2844,19902,521,22225,1.0516918907571045,0.6877377481958633,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),France,64,2780,527,19375,2844,19902,591,22155,0.8463817181548878,0.23115661389474568,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,France,28,2816,157,19745,2844,19902,185,22561,1.2504976114649682,0.26511790664079565,0.9524543412208711,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,France,11,2833,82,19820,2844,19902,93,22653,0.9385035255223714,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,France,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,France,4,2840,17,19885,2844,19902,21,22725,1.6474730737365368,0.3239572053423569,0.9733922767234844,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,France,6,2838,42,19860,2844,19902,48,22698,0.9996979764421625,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,France,12,2832,83,19819,2844,19902,95,22651,1.011792934449663,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,France,30,2814,197,19705,2844,19902,227,22519,1.0663686642927495,0.7619134723452504,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,France,1,2843,15,19887,2844,19902,16,22730,0.46633837495603236,0.7107544169788004,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,France,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,France,841,2003,5957,13945,2844,19902,6798,15948,0.9828923728726199,0.709725928801073,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,France,21,2823,130,19772,2844,19902,151,22595,1.1313986757132346,0.6206607698155396,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,Germany,0,2842,1,19903,2842,19904,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,Germany,958,1884,7038,12866,2842,19904,7996,14750,0.9295631419126622,0.0851094640800063,0.6499268166109572,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,Germany,9,2833,72,19832,2842,19904,81,22665,0.8750441228379809,0.8662633540456803,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,Germany,162,2680,1437,18467,2842,19904,1599,21147,0.7768189324774873,0.002847969375261211,0.0956917710087767,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,Germany,12,2830,69,19835,2842,19904,81,22665,1.2189276386541712,0.5007871500061002,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,Germany,211,2631,1370,18534,2842,19904,1581,21165,1.0849511856111995,0.2871573242293935,0.9701159047288822,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,Germany,0,2842,1,19903,2842,19904,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,Germany,349,2493,2309,17595,2842,19904,2658,20088,1.066764332942981,0.28872497164550065,0.9701159047288822,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),Germany,70,2772,451,19453,2842,19904,521,22225,1.0892181235861946,0.5027431224238408,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),Germany,76,2766,515,19389,2842,19904,591,22155,1.034450224290799,0.753006951812758,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,Germany,21,2821,164,19740,2842,19904,185,22561,0.8960237245052352,0.7376037871307567,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,Germany,26,2816,67,19837,2842,19904,93,22653,2.7336435719131615,5.330042186957836e-05,0.004477235437044582,True,nan,fisher_exact_2x2
+q2,all_models,Race,Law,Germany,0,2842,1,19903,2842,19904,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,Germany,1,2841,20,19884,2842,19904,21,22725,0.34994720168954596,0.5054243651916471,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,Germany,6,2836,42,19862,2842,19904,48,22698,1.0005037275841224,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,Germany,11,2831,84,19820,2842,19904,95,22651,0.9168054364098165,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,Germany,33,2809,194,19710,2842,19904,227,22519,1.1935678030483754,0.36308793265967926,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,Germany,3,2839,13,19891,2842,19904,16,22730,1.6168477524588831,0.440751108820847,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,Germany,0,2842,1,19903,2842,19904,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,Germany,876,1966,5922,13982,2842,19904,6798,15948,1.0520139226011394,0.24572776763422743,0.9260842676388917,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,Germany,18,2824,133,19771,2842,19904,151,22595,0.9475121940829411,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,Hispanic Countries,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,Hispanic Countries,1084,1759,6912,12991,2843,19903,7996,14750,1.1582499657844314,0.0004183211976137857,0.023425987066372,True,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,Hispanic Countries,13,2830,68,19835,2843,19903,81,22665,1.3399241321970485,0.31347720533868034,0.9733922767234844,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,Hispanic Countries,194,2649,1405,18498,2843,19903,1599,21147,0.9642024318583928,0.6663566262163947,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,Hispanic Countries,9,2834,72,19831,2843,19903,81,22665,0.8746912491178547,0.8662700256951728,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,Hispanic Countries,190,2653,1391,18512,2843,19903,1581,21165,0.953108982601252,0.581011325868816,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,Hispanic Countries,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,Hispanic Countries,326,2517,2332,17571,2843,19903,2658,20088,0.9758932568993963,0.7313840011718561,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),Hispanic Countries,49,2794,472,19431,2843,19903,521,22225,0.7219761171032357,0.03172096005806851,0.4076227487489115,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),Hispanic Countries,54,2789,537,19366,2843,19903,591,22155,0.6982499083590562,0.011564300707073299,0.1942802518788314,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,Hispanic Countries,23,2820,162,19741,2843,19903,185,22561,0.9938775063479556,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,Hispanic Countries,8,2835,85,19818,2843,19903,93,22653,0.6579271708683473,0.34388315812246534,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,Hispanic Countries,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,Hispanic Countries,1,2842,20,19883,2843,19903,21,22725,0.34980647431386347,0.5054541413884144,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,Hispanic Countries,5,2838,43,19860,2843,19903,48,22698,0.8137076552436207,0.8281477990456971,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,Hispanic Countries,10,2833,85,19818,2843,19903,95,22651,0.8229895558647038,0.6432997220215533,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,Hispanic Countries,23,2820,204,19699,2843,19903,227,22519,0.787576484494507,0.3135208487228886,0.9733922767234844,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,Hispanic Countries,3,2840,13,19890,2843,19903,16,22730,1.6161971830985915,0.44085962421764735,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,Hispanic Countries,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,Hispanic Countries,827,2016,5971,13932,2843,19903,6798,15948,0.9571530253367466,0.32446409224116146,0.9733922767234844,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,Hispanic Countries,24,2819,127,19776,2843,19903,151,22595,1.3257172225589573,0.21576933352065258,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,MENA,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,MENA,970,1874,7026,12876,2844,19902,7996,14750,0.9485821985787809,0.21551471656956606,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,MENA,7,2837,74,19828,2844,19902,81,22665,0.6611285236593661,0.3982504740381038,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,MENA,194,2650,1405,18497,2844,19902,1599,21147,0.9637864768683274,0.6663483220856241,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,MENA,4,2840,77,19825,2844,19902,81,22665,0.3626303274190598,0.04148236353600184,0.40994335729695935,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,MENA,191,2653,1390,18512,2844,19902,1581,21165,0.9588146444774072,0.6362016746717183,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,MENA,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,MENA,284,2560,2374,17528,2844,19902,2658,20088,0.8190869839932603,0.0024588065022447436,0.0956917710087767,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),MENA,85,2759,436,19466,2844,19902,521,22225,1.3754900558971306,0.010696250368045952,0.1942802518788314,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),MENA,81,2763,510,19392,2844,19902,591,22155,1.114696301973558,0.3774481984286332,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,MENA,19,2825,166,19736,2844,19902,185,22561,0.799624693464122,0.43395209690946707,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,MENA,9,2835,84,19818,2844,19902,93,22653,0.7489795918367347,0.5288555056557418,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,MENA,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,MENA,1,2843,20,19882,2844,19902,21,22725,0.3496658459373901,0.5054840704942728,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,MENA,5,2839,43,19859,2844,19902,48,22698,0.813380079785709,0.8281478903193474,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,MENA,7,2837,88,19814,2844,19902,95,22651,0.5555564456692409,0.1603077499635351,0.8416156873085593,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,MENA,26,2818,201,19701,2844,19902,227,22519,0.904325074415008,0.6875367146175758,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,MENA,2,2842,14,19888,2844,19902,16,22730,0.999698401528099,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,MENA,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,MENA,947,1897,5851,14051,2844,19902,6798,15948,1.1988360216146048,2.6001391914513467e-05,0.004368233841638263,True,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,MENA,12,2832,139,19763,2844,19902,151,22595,0.602457017436898,0.10716026855381705,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,South/Central Asia,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,South/Central Asia,1050,1793,6946,12957,2843,19903,7996,14750,1.0923924485421679,0.03396856239574263,0.4076227487489115,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,South/Central Asia,4,2839,77,19826,2843,19903,81,22665,0.3627763571405699,0.04146990300998225,0.40994335729695935,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,South/Central Asia,214,2629,1385,18518,2843,19903,1599,21147,1.0883472734687936,0.27212981177739176,0.9524543412208711,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,South/Central Asia,8,2835,73,19830,2843,19903,81,22665,0.7665434514749583,0.612997073941238,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,South/Central Asia,204,2639,1377,18526,2843,19903,1581,21165,1.0400123503571779,0.608384143516961,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,South/Central Asia,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,South/Central Asia,313,2530,2345,17558,2843,19903,2658,20088,0.9263092780029833,0.23579468682283247,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),South/Central Asia,60,2783,461,19442,2843,19903,521,22225,0.9092390037748556,0.5463047920597095,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),South/Central Asia,81,2762,510,19393,2843,19903,591,22155,1.1151573880819525,0.3773529382408971,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,South/Central Asia,21,2822,164,19739,2843,19903,185,22561,0.8956608355948903,0.7376175960437167,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,South/Central Asia,12,2831,81,19822,2843,19903,93,22653,1.0372986904247943,0.8750955649772965,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,South/Central Asia,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,South/Central Asia,3,2840,18,19885,2843,19903,21,22725,1.1669600938967135,0.7403758276970437,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,South/Central Asia,4,2839,44,19859,2843,19903,48,22698,0.6359153351051907,0.5130547701359187,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,South/Central Asia,18,2825,77,19826,2843,19903,95,22651,1.6405838409378233,0.06209202372146471,0.5215729992603035,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,South/Central Asia,32,2811,195,19708,2843,19903,227,22519,1.1505276888414562,0.47945096510554813,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,South/Central Asia,0,2843,16,19887,2843,19903,16,22730,0.0,0.24805828597470314,0.9260842676388917,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,South/Central Asia,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,South/Central Asia,805,2038,5993,13910,2843,19903,6798,15948,0.9167998910079423,0.05128378175590231,0.47864862972175487,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,South/Central Asia,14,2829,137,19766,2843,19903,151,22595,0.7139919447433128,0.2666402568866345,0.9524543412208711,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,Sub-Saharan Africa,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,Sub-Saharan Africa,1019,1825,6977,12925,2844,19902,7996,14750,1.0343633975430033,0.42502981290681435,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,Sub-Saharan Africa,11,2833,70,19832,2844,19902,81,22665,1.1000554687106046,0.7363600217974778,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,Sub-Saharan Africa,229,2615,1370,18532,2844,19902,1599,21147,1.1845830483873219,0.025344056428107435,0.35481678999350413,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,Sub-Saharan Africa,18,2826,63,19839,2844,19902,81,22665,2.005762814680012,0.016657103348327984,0.2543993965926456,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,Sub-Saharan Africa,187,2657,1394,18508,2844,19902,1581,21165,0.934429991646548,0.4304552417395052,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,Sub-Saharan Africa,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,Sub-Saharan Africa,352,2492,2306,17596,2844,19902,2658,20088,1.07782753901818,0.22362713181900143,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),Sub-Saharan Africa,67,2777,454,19448,2844,19902,521,22225,1.033517931276264,0.7887305288342155,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),Sub-Saharan Africa,80,2764,511,19391,2844,19902,591,22155,1.0983259747211138,0.4493409541501844,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,Sub-Saharan Africa,23,2821,162,19740,2844,19902,185,22561,0.9934748644426064,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,Sub-Saharan Africa,6,2838,87,19815,2844,19902,93,22653,0.48151928264197713,0.08345153513064969,0.6499268166109572,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,Sub-Saharan Africa,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,Sub-Saharan Africa,6,2838,15,19887,2844,19902,21,22725,2.8029598308668078,0.03911886414077619,0.40994335729695935,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,Sub-Saharan Africa,4,2840,44,19858,2844,19902,48,22698,0.6356594110115237,0.5130632532092317,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,Sub-Saharan Africa,9,2835,86,19816,2844,19902,95,22651,0.7314876338132152,0.43898608126086425,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,Sub-Saharan Africa,22,2822,205,19697,2844,19902,227,22519,0.7490518746434807,0.22600383769654542,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,Sub-Saharan Africa,2,2842,14,19888,2844,19902,16,22730,0.999698401528099,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,Sub-Saharan Africa,0,2844,1,19901,2844,19902,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,Sub-Saharan Africa,785,2059,6013,13889,2844,19902,6798,15948,0.8806292049595958,0.004414291266647035,0.12360015546611698,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,Sub-Saharan Africa,24,2820,127,19775,2844,19902,151,22595,1.3251800971687049,0.2158754564364459,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Agriculture,United Kingdom / North America,1,2842,0,19903,2843,19903,1,22745,inf,0.12498900905653741,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Arts,United Kingdom / North America,934,1909,7062,12841,2843,19903,7996,14750,0.8896354506719575,0.005948657557788361,0.13783399975867974,False,nan,fisher_exact_2x2
+q2,all_models,Race,Biological and related sciences,United Kingdom / North America,10,2833,71,19832,2843,19903,81,22665,0.9859652088315278,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Business and administration,United Kingdom / North America,202,2641,1397,18506,2843,19903,1599,21147,1.0132091892699155,0.8753429894210107,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Education,United Kingdom / North America,10,2833,71,19832,2843,19903,81,22665,0.9859652088315278,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Engineering and engineering trades,United Kingdom / North America,200,2643,1381,18522,2843,19903,1581,21165,1.0149088365617045,0.8437694850008874,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Environment,United Kingdom / North America,1,2842,0,19903,2843,19903,1,22745,inf,0.12498900905653741,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Health,United Kingdom / North America,352,2491,2306,17597,2843,19903,2658,20088,1.0783215064257345,0.22352914656521444,0.9212443578194385,False,nan,fisher_exact_2x2
+q2,all_models,Race,Humanities (except languages),United Kingdom / North America,60,2783,461,19442,2843,19903,521,22225,0.9092390037748556,0.5463047920597095,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Information and Communication Technologies (ICTs),United Kingdom / North America,70,2773,521,19382,2843,19903,591,22155,0.9390939363882461,0.6594981650301984,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Journalism and information,United Kingdom / North America,32,2811,153,19750,2843,19903,185,22561,1.4694837973135417,0.056794031204186315,0.5021788022264895,False,nan,fisher_exact_2x2
+q2,all_models,Race,Languages,United Kingdom / North America,11,2832,82,19821,2843,19903,93,22653,0.9388822860686235,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Law,United Kingdom / North America,0,2843,1,19902,2843,19903,1,22745,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Manufacturing and processing,United Kingdom / North America,3,2840,18,19885,2843,19903,21,22725,1.1669600938967135,0.7403758276970437,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Mathematics and statistics,United Kingdom / North America,5,2838,43,19860,2843,19903,48,22698,0.8137076552436207,0.8281477990456971,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal services,United Kingdom / North America,17,2826,78,19825,2843,19903,95,22651,1.5289573012502948,0.118871390929417,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Personal skills and development,United Kingdom / North America,32,2811,195,19708,2843,19903,227,22519,1.1505276888414562,0.47945096510554813,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Physical sciences,United Kingdom / North America,1,2842,15,19888,2843,19903,16,22730,0.46652592071311283,0.7107543658431015,1.0,False,nan,fisher_exact_2x2
+q2,all_models,Race,Security services,United Kingdom / North America,1,2842,0,19903,2843,19903,1,22745,inf,0.12498900905653741,0.6999384507166095,False,nan,fisher_exact_2x2
+q2,all_models,Race,Social and behavioural sciences,United Kingdom / North America,880,1963,5918,13985,2843,19903,6798,15948,1.0593753965082653,0.1888431239827578,0.9064469951172374,False,nan,fisher_exact_2x2
+q2,all_models,Race,Welfare,United Kingdom / North America,21,2822,130,19773,2843,19903,151,22595,1.1318568391211907,0.6206028401157692,1.0,False,nan,fisher_exact_2x2
