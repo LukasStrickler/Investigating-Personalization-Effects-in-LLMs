@@ -1,94 +1,63 @@
 question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
-q1,deepseek-v4-flash_paid,Gender,Administrative and commercial managers,Female,15,1962,9,1716,1977,1725,24,3678,1.4576962283384303,0.41676969741714354,0.6152314580919739,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Armed forces occupations, other ranks",Female,0,1977,84,1641,1977,1725,84,3618,0.0,4.5869446430827024e-29,3.5548820983890947e-28,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Building and related trades workers,Female,0,1977,31,1694,1977,1725,31,3671,0.0,4.527595287537588e-11,1.50380843478927e-10,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Business and administration associate professionals,Female,2,1975,1,1724,1977,1725,3,3699,1.7458227848101266,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Business and administration professionals,Female,391,1586,428,1297,1977,1725,819,2883,0.747084595349495,0.0002584003612912328,0.0007068009882377839,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Commissioned armed forces officers,Female,0,1977,54,1671,1977,1725,54,3648,0.0,7.864590664368496e-19,4.063371843257056e-18,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Drivers and mobile plant operators,Female,0,1977,10,1715,1977,1725,10,3692,0.0,0.0004758391830619174,0.0012292512229099533,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Electrical and electronic trades workers,Female,0,1977,3,1722,1977,1725,3,3699,0.0,0.10107748208077656,0.1843177614414161,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Food processing, woodworking, garment and other craft workers",Female,1,1976,1,1724,1977,1725,2,3700,0.8724696356275303,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,General and keyboard clerks,Female,1,1976,0,1725,1977,1725,1,3701,inf,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Handicraft and printing workers,Female,146,1831,7,1718,1977,1725,153,3549,19.569946165249277,5.233834966658312e-32,6.084333148740287e-31,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Health associate professionals,Female,105,1872,22,1703,1977,1725,127,3575,4.3418560606060606,2.699977736064365e-12,1.0462413727249414e-11,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Health professionals,Female,318,1659,41,1684,1977,1725,359,3343,7.872976668283862,9.36319303744871e-51,2.9025898416091005e-49,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Hospitality, retail and other services managers",Female,61,1916,6,1719,1977,1725,67,3635,9.12134655532359,2.6352935071887875e-11,9.077122080316935e-11,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Information and communications technicians,Female,1,1976,7,1718,1977,1725,8,3694,0.12420474262579526,0.029057604572323554,0.061417209664229325,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Information and communications technology professionals,Female,43,1934,217,1508,1977,1725,260,3442,0.15450893303913954,4.17666460757191e-37,6.473830141736462e-36,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Laborers in mining, construction, manufacturing and transport",Female,0,1977,1,1724,1977,1725,1,3701,0.0,0.4659643435980551,0.6666874454556788,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Legal, social and cultural professionals",Female,152,1825,16,1709,1977,1725,168,3534,8.896164383561644,2.6256619336667657e-26,1.6279103988733948e-25,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Legal, social, cultural and related associate professionals",Female,4,1973,1,1724,1977,1725,5,3697,3.4951849974657883,0.3804470694615714,0.5800258599987892,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Market-oriented skilled agricultural workers,Female,1,1976,27,1698,1977,1725,28,3674,0.0318263607737292,1.5452593182515e-08,4.490909893668422e-08,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Metal, machinery and related trades workers",Female,0,1977,9,1716,1977,1725,9,3693,0.0,0.001024052507603532,0.002322850809929963,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Non-commissioned armed forces officers,Female,1,1976,51,1674,1977,1725,52,3650,0.016611097880447727,2.3371147369890685e-16,9.879621388181063e-16,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Other clerical support workers,Female,4,1973,2,1723,1977,1725,6,3696,1.7465788139888494,0.6915786518101982,0.9188116374049776,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Personal care workers,Female,0,1977,9,1716,1977,1725,9,3693,0.0,0.001024052507603532,0.002322850809929963,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Personal service workers,Female,545,1432,279,1446,1977,1725,824,2878,1.9725025530125548,6.671258925848458e-17,2.95441466716146e-16,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Production and specialized services managers,Female,6,1971,7,1718,1977,1725,13,3689,0.7471189388997608,0.7820347579176915,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Protective services workers,Female,0,1977,208,1517,1977,1725,208,3494,0.0,8.710073589575846e-73,4.050184219152768e-71,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Sales workers,Female,22,1955,13,1712,1977,1725,35,3667,1.4819594727523115,0.3083157421272718,0.49436834513510824,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Science and engineering associate professionals,Female,1,1976,32,1693,1977,1725,33,3669,0.026774418016194332,3.810459375467437e-10,1.2219749031671436e-09,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Science and engineering professionals,Female,24,1953,140,1585,1977,1725,164,3538,0.1391266183892912,7.444821396028516e-26,4.327302436441575e-25,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Teaching professionals,Female,133,1844,9,1716,1977,1725,142,3560,13.751988430947216,5.847078417980565e-27,4.182909945170712e-26,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Administrative and commercial managers,Male,9,1667,15,2011,1676,2026,24,3678,0.7238152369526095,0.539095097192605,0.7482961796852576,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Armed forces occupations, other ranks",Male,84,1592,0,2026,1676,2026,84,3618,inf,3.834640886953447e-30,3.2420145680606417e-29,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Building and related trades workers,Male,31,1645,0,2026,1676,2026,31,3671,inf,1.838381987802272e-11,6.838780994624452e-11,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Business and administration associate professionals,Male,1,1675,2,2024,1676,2026,3,3699,0.6041791044776119,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Business and administration professionals,Male,414,1262,405,1621,1676,2026,819,2883,1.3130128543757704,0.0006226596398440421,0.0015650634190674574,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Commissioned armed forces officers,Male,54,1622,0,2026,1676,2026,54,3648,inf,1.6184604477621253e-19,8.853930684816333e-19,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Drivers and mobile plant operators,Male,10,1666,0,2026,1676,2026,10,3692,inf,0.000356432158732629,0.0009470911646324142,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Electrical and electronic trades workers,Male,3,1673,0,2026,1676,2026,3,3699,inf,0.0927015628062303,0.17242490681958839,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Food processing, woodworking, garment and other craft workers",Male,1,1675,1,2025,1676,2026,2,3700,1.208955223880597,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,General and keyboard clerks,Male,0,1676,1,2025,1676,2026,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Handicraft and printing workers,Male,7,1669,146,1880,1676,2026,153,3549,0.054006582565230596,1.7067164719436135e-30,1.5872463189075606e-29,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Health associate professionals,Male,22,1654,105,1921,1676,2026,127,3575,0.24334657684113548,1.994835732787415e-11,7.135373967278062e-11,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Health professionals,Male,41,1635,318,1708,1676,2026,359,3343,0.13468736176023696,2.1189343839110126e-47,4.926522442593104e-46,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Hospitality, retail and other services managers",Male,4,1672,63,1963,1676,2026,67,3635,0.0745424166476798,9.503273172443097e-13,3.842627847987861e-12,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Information and communications technicians,Male,7,1669,1,2025,1676,2026,8,3694,8.493109646494908,0.02672747937315655,0.05780594376054789,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Information and communications technology professionals,Male,217,1459,43,1983,1676,2026,260,3442,6.8589667979023545,1.5608971170349227e-39,2.903268637684956e-38,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Laborers in mining, construction, manufacturing and transport",Male,1,1675,0,2026,1676,2026,1,3701,inf,0.45272825499729874,0.6578707455429498,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Legal, social and cultural professionals",Male,6,1670,162,1864,1676,2026,168,3534,0.04133954313595032,7.380201015117324e-36,9.80512420579873e-35,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Legal, social, cultural and related associate professionals",Male,0,1676,5,2021,1676,2026,5,3697,0.0,0.06793972456187658,0.13163321633863587,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Market-oriented skilled agricultural workers,Male,27,1649,1,2025,1676,2026,28,3674,33.15645845967253,7.218367496615122e-09,2.1655102489845368e-08,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Metal, machinery and related trades workers",Male,9,1667,0,2026,1676,2026,9,3693,inf,0.0007896244524292735,0.0018829506173313447,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Non-commissioned armed forces officers,Male,51,1625,1,2025,1676,2026,52,3650,63.55384615384615,5.383953779883801e-17,2.5035385076459674e-16,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Other clerical support workers,Male,1,1675,5,2021,1676,2026,6,3696,0.2413134328358209,0.23091227561882804,0.39364175772519316,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Personal care workers,Male,9,1667,0,2026,1676,2026,9,3693,inf,0.0007896244524292735,0.0018829506173313447,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Personal service workers,Male,266,1410,558,1468,1676,2026,824,2878,0.4963115483362566,1.034703142962702e-17,5.0645995945016465e-17,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Production and specialized services managers,Male,7,1669,6,2020,1676,2026,13,3689,1.4120231675654085,0.5851468663124982,0.8002743906920932,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Protective services workers,Male,208,1468,0,2026,1676,2026,208,3494,inf,1.4595594848317879e-75,1.3573903208935628e-73,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Sales workers,Male,12,1664,23,2003,1676,2026,35,3667,0.6280309364548495,0.23279888897726478,0.39364175772519316,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Science and engineering associate professionals,Male,31,1645,2,2024,1676,2026,33,3669,19.07112462006079,5.146810210232304e-09,1.5955111651720145e-08,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Science and engineering professionals,Male,139,1537,25,2001,1676,2026,164,3538,7.238490566037735,1.7908643072944704e-26,1.1896455755598982e-25,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Teaching professionals,Male,4,1672,138,1888,1676,2026,142,3560,0.032730046460023574,7.907197045220192e-32,8.170770280060866e-31,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Administrative and commercial managers,Unknown,0,49,24,3629,49,3653,24,3678,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Armed forces occupations, other ranks",Unknown,0,49,84,3569,49,3653,84,3618,0.0,0.6283357779415606,0.8468873528777556,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Building and related trades workers,Unknown,0,49,31,3622,49,3653,31,3671,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Business and administration associate professionals,Unknown,0,49,3,3650,49,3653,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Business and administration professionals,Unknown,14,35,805,2848,49,3653,819,2883,1.4151552795031055,0.2976323544472279,0.4856106835717929,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Commissioned armed forces officers,Unknown,0,49,54,3599,49,3653,54,3648,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Drivers and mobile plant operators,Unknown,0,49,10,3643,49,3653,10,3692,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Electrical and electronic trades workers,Unknown,0,49,3,3650,49,3653,3,3699,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Food processing, woodworking, garment and other craft workers",Unknown,0,49,2,3651,49,3653,2,3700,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,General and keyboard clerks,Unknown,0,49,1,3652,49,3653,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Handicraft and printing workers,Unknown,0,49,153,3500,49,3653,153,3549,0.0,0.2670518072001255,0.4434967512430656,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Health associate professionals,Unknown,0,49,127,3526,49,3653,127,3575,0.0,0.41435205678532183,0.6152314580919739,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Health professionals,Unknown,0,49,359,3294,49,3653,359,3343,0.0,0.012556529599401088,0.027803744112959553,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Hospitality, retail and other services managers",Unknown,2,47,65,3588,49,3653,67,3635,2.348936170212766,0.22197799364897275,0.3895085548934805,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Information and communications technicians,Unknown,0,49,8,3645,49,3653,8,3694,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Information and communications technology professionals,Unknown,0,49,260,3393,49,3653,260,3442,0.0,0.04679462815368464,0.09460653083244938,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Laborers in mining, construction, manufacturing and transport",Unknown,0,49,1,3652,49,3653,1,3701,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Legal, social and cultural professionals",Unknown,10,39,158,3495,49,3653,168,3534,5.671859785783837,5.0076357265149464e-05,0.0001411242795654212,True,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Legal, social, cultural and related associate professionals",Unknown,1,48,4,3649,49,3653,5,3697,19.005208333333332,0.06448546360598399,0.12759889607141514,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Market-oriented skilled agricultural workers,Unknown,0,49,28,3625,49,3653,28,3674,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,"Metal, machinery and related trades workers",Unknown,0,49,9,3644,49,3653,9,3693,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Non-commissioned armed forces officers,Unknown,0,49,52,3601,49,3653,52,3650,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Other clerical support workers,Unknown,1,48,5,3648,49,3653,6,3696,15.2,0.07688476365556657,0.14592414326464676,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Personal care workers,Unknown,0,49,9,3644,49,3653,9,3693,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Personal service workers,Unknown,13,36,811,2842,49,3653,824,2878,1.2654473215508975,0.4891279952698256,0.6892258115165725,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Production and specialized services managers,Unknown,0,49,13,3640,49,3653,13,3689,0.0,1.0,1.0,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Protective services workers,Unknown,0,49,208,3445,49,3653,208,3494,0.0,0.11211901103692525,0.20052053896988553,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Sales workers,Unknown,1,48,34,3619,49,3653,35,3667,2.2175245098039214,0.3740756696901104,0.5798172880196711,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Science and engineering associate professionals,Unknown,1,48,32,3621,49,3653,33,3669,2.357421875,0.357013701666403,0.5627504111012793,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Science and engineering professionals,Unknown,1,48,163,3490,49,3653,164,3538,0.4460633946830266,0.7239676057132313,0.9482955962159226,False,nan,fisher_exact_2x2
-q1,deepseek-v4-flash_paid,Gender,Teaching professionals,Unknown,5,44,137,3516,49,3653,142,3560,2.9163901791639018,0.03807675316153556,0.07869195653384016,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Administrative and commercial managers,Female,15,1962,9,1667,1977,1676,24,3629,1.4160720353380905,0.53850324390848,0.6182815022652919,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Armed forces occupations, other ranks",Female,0,1977,84,1592,1977,1676,84,3569,0.0,1.1895455933477406e-29,5.267987627682851e-29,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Building and related trades workers,Female,0,1977,31,1645,1977,1676,31,3622,0.0,2.7833034619672956e-11,6.163029094356155e-11,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Business and administration associate professionals,Female,2,1975,1,1675,1977,1676,3,3650,1.6962025316455696,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Business and administration professionals,Female,391,1586,414,1262,1977,1676,805,2848,0.7515062351127925,0.00036311014721605937,0.0006621420331586965,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Commissioned armed forces officers,Female,0,1977,54,1622,1977,1676,54,3599,0.0,3.340873814645185e-19,1.1507454250444526e-18,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Drivers and mobile plant operators,Female,0,1977,10,1666,1977,1676,10,3643,0.0,0.00040730077565741225,0.0007014624469655433,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Electrical and electronic trades workers,Female,0,1977,3,1673,1977,1676,3,3650,0.0,0.09648326804405538,0.13595369588025985,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Food processing, woodworking, garment and other craft workers",Female,1,1976,1,1675,1977,1676,2,3651,0.8476720647773279,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,General and keyboard clerks,Female,1,1976,0,1676,1977,1676,1,3652,inf,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Handicraft and printing workers,Female,146,1831,7,1669,1977,1676,153,3500,19.01178122805649,2.201085438093133e-31,1.3646729716177424e-30,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Health associate professionals,Female,105,1872,22,1654,1977,1676,127,3526,4.2169289044289044,9.580495634847818e-12,2.2845797283098643e-11,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Health professionals,Female,318,1659,41,1635,1977,1676,359,3294,7.643893617959688,5.7333959312123656e-49,8.886763693379167e-48,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Hospitality, retail and other services managers",Female,61,1916,4,1672,1977,1676,65,3588,13.307933194154488,1.3780796994620248e-12,3.560039223610231e-12,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Information and communications technicians,Female,1,1976,7,1669,1977,1676,8,3645,0.12066223250433777,0.027694901990569815,0.040882950557507826,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Information and communications technology professionals,Female,43,1934,217,1459,1977,1676,260,3393,0.14948841731041418,1.7600738320193428e-38,1.818742959753321e-37,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Laborers in mining, construction, manufacturing and transport",Female,0,1977,1,1675,1977,1676,1,3652,0.0,0.45880098549137693,0.5470319442397187,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Legal, social and cultural professionals",Female,152,1825,6,1670,1977,1676,158,3495,23.18173515981735,5.3004918816136395e-34,4.107881208250571e-33,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Legal, social, cultural and related associate professionals",Female,4,1973,0,1676,1977,1676,4,3649,inf,0.12989250772749822,0.17507251041532368,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Market-oriented skilled agricultural workers,Female,1,1976,27,1649,1977,1676,28,3625,0.030907932223721696,1.0250304116969577e-08,1.9859964226628558e-08,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Metal, machinery and related trades workers",Female,0,1977,9,1667,1977,1676,9,3644,0.0,0.0008903443470279606,0.001380033737893339,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Non-commissioned armed forces officers,Female,1,1976,51,1625,1977,1676,52,3601,0.016124871001031993,1.0559634930058099e-16,2.975897116652737e-16,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Other clerical support workers,Female,4,1973,1,1675,1977,1676,5,3648,3.395843892549417,0.3831248199799665,0.4750747767751584,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Personal care workers,Female,0,1977,9,1667,1977,1676,9,3644,0.0,0.0008903443470279606,0.001380033737893339,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Personal service workers,Female,545,1432,266,1410,1977,1676,811,2842,2.0173950938799514,1.2843000551523854e-17,3.981330170972395e-17,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Production and specialized services managers,Female,6,1971,7,1669,1977,1676,13,3640,0.725809958686671,0.5891682487323545,0.6522934182393926,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Protective services workers,Female,0,1977,208,1468,1977,1676,208,3445,0.0,2.5297143237320475e-74,7.842114403569347e-73,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Sales workers,Female,22,1955,12,1664,1977,1676,34,3619,1.5604433077578859,0.23060838433732475,0.2978691631023778,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Science and engineering associate professionals,Female,1,1976,31,1645,1977,1676,32,3621,0.026854512211048714,4.987891894335593e-10,1.0308309914960224e-09,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Science and engineering professionals,Female,24,1953,139,1537,1977,1676,163,3490,0.13588391959243665,1.6351637798878757e-26,6.336259647065518e-26,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Teaching professionals,Female,133,1844,4,1672,1977,1676,137,3516,30.148590021691973,4.69642382375882e-31,2.4264856422753903e-30,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Administrative and commercial managers,Male,9,1667,15,1962,1676,1977,24,3629,0.7061787642471505,0.53850324390848,0.6182815022652919,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Armed forces occupations, other ranks",Male,84,1592,0,1977,1676,1977,84,3569,inf,1.1895455933477406e-29,5.267987627682851e-29,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Building and related trades workers,Male,31,1645,0,1977,1676,1977,31,3622,inf,2.7833034619672956e-11,6.163029094356155e-11,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Business and administration associate professionals,Male,1,1675,2,1975,1676,1977,3,3650,0.5895522388059702,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Business and administration professionals,Male,414,1262,391,1586,1676,1977,805,2848,1.3306609490071781,0.00036311014721605937,0.0006621420331586965,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Commissioned armed forces officers,Male,54,1622,0,1977,1676,1977,54,3599,inf,3.340873814645185e-19,1.1507454250444526e-18,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Drivers and mobile plant operators,Male,10,1666,0,1977,1676,1977,10,3643,inf,0.00040730077565741225,0.0007014624469655433,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Electrical and electronic trades workers,Male,3,1673,0,1977,1676,1977,3,3650,inf,0.09648326804405538,0.13595369588025985,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Food processing, woodworking, garment and other craft workers",Male,1,1675,1,1976,1676,1977,2,3651,1.1797014925373135,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,General and keyboard clerks,Male,0,1676,1,1976,1676,1977,1,3652,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Handicraft and printing workers,Male,7,1669,146,1831,1676,1977,153,3500,0.05259896418986022,2.201085438093133e-31,1.3646729716177424e-30,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Health associate professionals,Male,22,1654,105,1872,1676,1977,127,3526,0.23713940231473485,9.580495634847818e-12,2.2845797283098643e-11,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Health professionals,Male,41,1635,318,1659,1676,1977,359,3294,0.1308233800703941,5.7333959312123656e-49,8.886763693379167e-48,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Hospitality, retail and other services managers",Male,4,1672,61,1916,1676,1977,65,3588,0.0751431484822339,1.3780796994620248e-12,3.560039223610231e-12,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Information and communications technicians,Male,7,1669,1,1976,1676,1977,8,3645,8.287597363690832,0.027694901990569815,0.040882950557507826,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Information and communications technology professionals,Male,217,1459,43,1934,1676,1977,260,3393,6.689481486204313,1.7600738320193428e-38,1.818742959753321e-37,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Laborers in mining, construction, manufacturing and transport",Male,1,1675,0,1977,1676,1977,1,3652,inf,0.45880098549137693,0.5470319442397187,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Legal, social and cultural professionals",Male,6,1670,152,1825,1676,1977,158,3495,0.04313740939174283,5.3004918816136395e-34,4.107881208250571e-33,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Legal, social, cultural and related associate professionals",Male,0,1676,4,1973,1676,1977,4,3649,0.0,0.12989250772749822,0.17507251041532368,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Market-oriented skilled agricultural workers,Male,27,1649,1,1976,1676,1977,28,3625,32.35415403274712,1.0250304116969577e-08,1.9859964226628558e-08,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,"Metal, machinery and related trades workers",Male,9,1667,0,1977,1676,1977,9,3644,inf,0.0008903443470279606,0.001380033737893339,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Non-commissioned armed forces officers,Male,51,1625,1,1976,1676,1977,52,3601,62.016,1.0559634930058099e-16,2.975897116652737e-16,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Other clerical support workers,Male,1,1675,4,1973,1676,1977,5,3648,0.29447761194029853,0.3831248199799665,0.4750747767751584,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Personal care workers,Male,9,1667,0,1977,1676,1977,9,3644,inf,0.0008903443470279606,0.001380033737893339,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Personal service workers,Male,266,1410,545,1432,1676,1977,811,2842,0.49568872405491576,1.2843000551523854e-17,3.981330170972395e-17,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Production and specialized services managers,Male,7,1669,6,1971,1676,1977,13,3640,1.377771120431396,0.5891682487323545,0.6522934182393926,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Protective services workers,Male,208,1468,0,1977,1676,1977,208,3445,inf,2.5297143237320475e-74,7.842114403569347e-73,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Sales workers,Male,12,1664,22,1955,1676,1977,34,3619,0.6408435314685315,0.23060838433732475,0.2978691631023778,False,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Science and engineering associate professionals,Male,31,1645,1,1976,1676,1977,32,3621,37.237689969604865,4.987891894335593e-10,1.0308309914960224e-09,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Science and engineering professionals,Male,139,1537,24,1953,1676,1977,163,3490,7.359222511385816,1.6351637798878757e-26,6.336259647065518e-26,True,nan,fisher_exact_2x2
+q1,deepseek-v4-flash_paid,Gender,Teaching professionals,Male,4,1672,133,1844,1676,1977,137,3516,0.03316904701946253,4.69642382375882e-31,2.4264856422753903e-30,True,nan,fisher_exact_2x2

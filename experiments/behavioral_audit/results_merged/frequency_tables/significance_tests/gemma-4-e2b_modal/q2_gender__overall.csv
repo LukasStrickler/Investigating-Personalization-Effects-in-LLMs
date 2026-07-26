@@ -1,2 +1,2 @@
 question_key,model_alias,attribute,test_name,statistic,p_value,effect_size,reject_fdr,n_rows,n_cols,grand_total
-q2,gemma-4-e2b_modal,Gender,permutation_chi_square,2442.9409492548057,0.001996007984031936,0.5619507486477263,True,3,17,3868
+q2,gemma-4-e2b_modal,Gender,permutation_chi_square,1524.3752757029574,0.001996007984031936,0.6357115559102707,True,2,17,3772

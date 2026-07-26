@@ -32,11 +32,6 @@ class ContingencyResult:
     p_value: float
     effect_size: float
 
-
-def _normalize_label(value: str) -> str:
-    return value.strip()
-
-
 def _read_frequency_table(csv_path: Path) -> tuple[list[str], list[str], list[list[int]]]:
     with csv_path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.reader(handle)
@@ -53,12 +48,9 @@ def _read_frequency_table(csv_path: Path) -> tuple[list[str], list[str], list[li
             if not row:
                 continue
             row_label = row[0]
-            if row_label == "Total":
+            if row_label == "Total" or row_label.strip().lower() == "unknown":
                 continue
             values = [int(value) for value in row[1 : 1 + len(col_labels)]]
-
-            if not values:   # <-- ADD THIS
-                continue
 
             row_labels.append(row_label)
             rows.append(values)
@@ -117,7 +109,6 @@ def _shuffle_p_value(table: list[list[int]], permutations: int, seed: int) -> fl
 
     observed = _chi_square_statistic(table)
     hits = 0
-    total = len(row_labels)
 
     for _ in range(permutations):
         shuffled = row_labels[:]
@@ -436,12 +427,6 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    #Testing if very small p-values work
-    from mpmath import mp, mpf, binomial as mpcomb
-    mp.dps = 300
-    test = _fisher_exact_two_sided([[2, 3997], [729, 2627]])
-    print(f"[DEBUG] Protective services test p = {test[1]:.4e}  (erwartet: ~4.49e-265)")
-
     args = parse_args()
     outputs = analyze_frequency_tables(
         input_dir=args.input_dir,

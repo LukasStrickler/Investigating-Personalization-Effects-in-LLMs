@@ -138,6 +138,7 @@ Both baselines were produced on a single L4 (`N_ITERATIONS=50`, judge
 | `../behavioral_audit/run_behavioral_audit_modal.py` | Stage 1 matrix runner (personalized runs) |
 | `../behavioral_audit/run_behavioral_audit_baseline_modal.py` | persona-free baseline runner for Modal subjects (Stage 1 + Stage 2) |
 | `../behavioral_audit/run_behavioral_audit_baseline.py` | persona-free baseline runner for paid-API subjects (edit constants in-file) |
+| `../run_direct_probing_modal.py` | direct-probing two-stage runner for Modal subjects (Stage 1 + Stage 2 + export) |
 | `../behavioral_audit/export_results.py` | copy Stage-1 CSVs and Stage-2 judgments from `logs/` → `results_<tag>/` |
 
 ## Bug fixes since the initial Modal PR (#28)

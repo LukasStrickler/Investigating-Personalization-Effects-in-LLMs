@@ -1,2 +1,2 @@
 question_key,model_alias,attribute,test_name,statistic,p_value,effect_size,reject_fdr,n_rows,n_cols,grand_total
-q1,gemma-4-31b_paid,Race,permutation_chi_square,232.17541703640987,0.7085828343313373,0.08846943646932177,False,9,32,3708
+q1,gemma-4-31b_paid,Race,permutation_chi_square,221.16093975164176,0.38323353293413176,0.09326791610866715,False,8,32,3632
