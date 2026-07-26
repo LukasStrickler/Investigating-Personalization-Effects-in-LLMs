@@ -32,22 +32,19 @@ _SUMMARY_WIDTHS = {
     "padj": "0.20\\linewidth",
 }
 _APPENDIX_WIDTHS = {
-    "category": "0.18\\linewidth",
-    "class": "0.11\\linewidth",
-    "a": "0.035\\linewidth",
-    "b": "0.035\\linewidth",
-    "c": "0.035\\linewidth",
-    "d": "0.035\\linewidth",
-    "ngroup": "0.045\\linewidth",
-    "nother": "0.045\\linewidth",
-    "ncat": "0.045\\linewidth",
-    "or": "0.06\\linewidth",
-    "p": "0.055\\linewidth",
-    "padj": "0.055\\linewidth",
-    "sig": "0.04\\linewidth",
+    "category": "0.35\\linewidth",
+    "class": "0.1\\linewidth",
+    "a": "0.05\\linewidth",
+    "b": "0.05\\linewidth",
+    "c": "0.05\\linewidth",
+    "d": "0.05\\linewidth",
+    "ngroup": "0.05\\linewidth",
+    "nother": "0.05\\linewidth",
+    "ncat": "0.05\\linewidth",
+    "or": "0.05\\linewidth",
+    "p": "0.05\\linewidth",
+    "padj": "0.06\\linewidth",
 }
-
-
 @dataclass(frozen=True)
 class DetailedRow:
     question_key: str
@@ -275,8 +272,16 @@ def _appendix_columns() -> str:
             _pcol(_APPENDIX_WIDTHS["or"]),
             _pcol(_APPENDIX_WIDTHS["p"]),
             _pcol(_APPENDIX_WIDTHS["padj"]),
-            _pcol(_APPENDIX_WIDTHS["sig"]),
         ]
+    )
+
+
+def _appendix_header_row() -> str:
+    return (
+        r"\textbf{Category} & \textbf{class} & \textbf{group in category} & "
+        r"\textbf{group out of category} & \textbf{other in category} & "
+        r"\textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & "
+        rf"\textbf{{$n_{{cat}}$}} & \textbf{{OR}} & \textbf{{$p$}} & \textbf{{$p_{{adj}}$}} \\\\" 
     )
 
 
@@ -324,26 +329,21 @@ def _build_summary_table(rows: list[DetailedRow], question_key: str, attribute: 
 
 
 def _build_appendix_table(rows: list[DetailedRow], title: str, label: str, output_path: Path) -> None:
+    header_row = _appendix_header_row()
     lines = [
-        rf"\begin{{longtable}}{{{_appendix_columns()}}}",
-        rf"\caption{{{title}}}\\",
-        rf"\label{{{label}}}\\",
+        r"\clearpage",
+        r"\begin{landscape}",
+        r"\begin{table}[p]",
+        r"\centering",
+        rf"\caption{{{title}}}",
+        rf"\label{{{label}}}",
         r"\scriptsize",
+        r"\renewcommand{\arraystretch}{0.92}",
         r"\setlength{\tabcolsep}{2pt}",
-        r"% //",
+        rf"\begin{{tabular}}{{{_appendix_columns()}}}",
         r"\toprule",
-        r"\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\",
+        header_row,
         r"\midrule",
-        r"\endfirsthead",
-        r"% //",
-        r"\toprule",
-        r"\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\",
-        r"\midrule",
-        r"\endhead",
-        r"\midrule",
-        r"\endfoot",
-        r"\bottomrule",
-        r"\endlastfoot",
     ]
     for row in rows:
         lines.append(
@@ -360,13 +360,17 @@ def _build_appendix_table(rows: list[DetailedRow], title: str, label: str, outpu
                     str(row.category_total),
                     _format_float(row.odds_ratio, digits=3),
                     _format_p(row.p_value),
-                    _format_p(row.corrected_p_value),
-                    "yes" if row.reject_fdr else "no",
+                    _format_p_with_stars(row.corrected_p_value),
                 ]
             )
             + r" \\",
         )
-    lines.append(r"\end{longtable}")
+    lines.extend([
+        r"\bottomrule",
+        r"\end{tabular}",
+        r"\end{table}",
+        r"\end{landscape}",
+    ])
     _write_lines(output_path, lines)
 
 
@@ -376,6 +380,22 @@ def _collect_rows(input_dir: Path, model_alias: str, question_key: str, attribut
         return []
     rows = _read_rows(csv_path)
     return [row for row in rows if _is_overrepresented(row)]
+
+
+def _appendix_output_paths(output_dir: Path, question_key: str, model_alias: str, attribute_name: str) -> list[Path]:
+    appendix_dir = output_dir / "appendix"
+    return [
+        appendix_dir / f"{model_alias}_{attribute_name}.tex",
+        appendix_dir / question_key / f"{model_alias}_{attribute_name}.tex",
+    ]
+
+
+def _significant_appendix_output_paths(output_dir: Path, question_key: str, model_alias: str, attribute_name: str) -> list[Path]:
+    significant_dir = output_dir / "appendix_significant"
+    return [
+        significant_dir / f"{model_alias}_{attribute_name}.tex",
+        significant_dir / question_key / f"{model_alias}_{attribute_name}.tex",
+    ]
 
 
 def build_latex_tables(input_dir: Path, output_dir: Path) -> list[Path]:
@@ -389,7 +409,6 @@ def build_latex_tables(input_dir: Path, output_dir: Path) -> list[Path]:
             _build_summary_table(rows, question_key, attribute, summary_path)
             outputs.append(summary_path)
 
-    appendix_dir = output_dir / "appendix"
     for question_key in ("q1", "q2"):
         for model_alias in _MODEL_ORDER:
             for attribute in ("Gender", "Race"):
@@ -397,14 +416,29 @@ def build_latex_tables(input_dir: Path, output_dir: Path) -> list[Path]:
                 if not rows:
                     continue
                 attribute_name = _attr_name(attribute)
-                appendix_path = appendix_dir / question_key / f"{model_alias}_{attribute_name}.tex"
-                _build_appendix_table(
-                    rows=sorted(rows, key=lambda row: (row.corrected_p_value, -_effect_strength(row.odds_ratio), -row.category_total, row.category_value, row.group_value)),
-                    title=f"{model_alias} {attribute_name} significance results for {question_key.upper()}.",
-                    label=f"tab:appendix-{question_key}-{model_alias}-{attribute_name}",
-                    output_path=appendix_path,
+                sorted_rows = sorted(
+                    rows,
+                    key=lambda row: (row.corrected_p_value, -_effect_strength(row.odds_ratio), -row.category_total, row.category_value, row.group_value),
                 )
-                outputs.append(appendix_path)
+                for appendix_path in _appendix_output_paths(output_dir, question_key, model_alias, attribute_name):
+                    _build_appendix_table(
+                        rows=sorted_rows,
+                        title=f"{model_alias} {attribute_name} significance results for {question_key.upper()}.",
+                        label=f"tab:appendix-{question_key}-{model_alias}-{attribute_name}",
+                        output_path=appendix_path,
+                    )
+                    outputs.append(appendix_path)
+
+                significant_rows = [row for row in sorted_rows if row.reject_fdr]
+                if model_alias == "all_models" or significant_rows:
+                    for appendix_path in _significant_appendix_output_paths(output_dir, question_key, model_alias, attribute_name):
+                        _build_appendix_table(
+                            rows=significant_rows,
+                            title=f"{model_alias} {attribute_name} significant results for {question_key.upper()}",
+                            label=f"tab:appendix-significant-{question_key}-{model_alias}-{attribute_name}",
+                            output_path=appendix_path,
+                        )
+                        outputs.append(appendix_path)
 
     return outputs
 

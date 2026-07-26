@@ -1,39 +1,36 @@
-\begin{longtable}{p{0.18\linewidth}p{0.11\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.045\linewidth}p{0.045\linewidth}p{0.045\linewidth}p{0.06\linewidth}p{0.055\linewidth}p{0.055\linewidth}p{0.04\linewidth}}
-\caption{ministral-3-8b_modal gender significance results for Q2.}\\
-\label{tab:appendix-q2-ministral-3-8b_modal-gender}\\
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{ministral-3-8b_modal gender significance results for Q2.}
+\label{tab:appendix-q2-ministral-3-8b_modal-gender}
 \scriptsize
+\renewcommand{\arraystretch}{0.92}
 \setlength{\tabcolsep}{2pt}
-% //
+\begin{tabular}{p{0.35\linewidth}p{0.1\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.06\linewidth}}
 \toprule
-\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\
+\textbf{Category} & \textbf{class} & \textbf{group in category} & \textbf{group out of category} & \textbf{other in category} & \textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} \\\\
 \midrule
-\endfirsthead
-% //
-\toprule
-\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\
-\midrule
-\endhead
-\midrule
-\endfoot
+Arts & Female & 1278 & 780 & 260 & 1454 & 2058 & 1714 & 1538 & 9.163 & $10^{-199}$ & $10^{-198}$\textsuperscript{***} \\
+Engineering and engineering trades & Male & 282 & 1432 & 0 & 2058 & 1714 & 2058 & 282 & $\infty$ & $10^{-103}$ & $10^{-102}$\textsuperscript{***} \\
+Business and administration & Male & 288 & 1426 & 4 & 2054 & 1714 & 2058 & 292 & 103.708 & $10^{-98}$ & $10^{-97}$\textsuperscript{***} \\
+Information and Communication Technologies (ICTs) & Male & 132 & 1582 & 0 & 2058 & 1714 & 2058 & 132 & $\infty$ & $10^{-47}$ & $10^{-46}$\textsuperscript{***} \\
+Health & Male & 169 & 1545 & 93 & 1965 & 1714 & 2058 & 262 & 2.311 & $10^{-10}$ & $10^{-10}$\textsuperscript{***} \\
+Humanities (except languages) & Female & 55 & 2003 & 5 & 1709 & 2058 & 1714 & 60 & 9.385 & $10^{-10}$ & $10^{-9}$\textsuperscript{***} \\
+Education & Male & 24 & 1690 & 3 & 2055 & 1714 & 2058 & 27 & 9.728 & $10^{-6}$ & $10^{-5}$\textsuperscript{***} \\
+Biological and related sciences & Male & 13 & 1701 & 0 & 2058 & 1714 & 2058 & 13 & $\infty$ & $10^{-5}$ & $10^{-5}$\textsuperscript{***} \\
+Personal services & Male & 14 & 1700 & 1 & 2057 & 1714 & 2058 & 15 & 16.940 & 0.0002 & 0.0005\textsuperscript{***} \\
+Languages & Female & 9 & 2049 & 0 & 1714 & 2058 & 1714 & 9 & $\infty$ & 0.0051 & 0.0096\textsuperscript{**} \\
+Mathematics and statistics & Male & 6 & 1708 & 0 & 2058 & 1714 & 2058 & 6 & $\infty$ & 0.0088 & 0.0151\textsuperscript{*} \\
+Manufacturing and processing & Male & 5 & 1709 & 0 & 2058 & 1714 & 2058 & 5 & $\infty$ & 0.0193 & 0.0306\textsuperscript{*} \\
+Physical sciences & Male & 3 & 1711 & 0 & 2058 & 1714 & 2058 & 3 & $\infty$ & 0.0937 & 0.1370 \\
+Welfare & Male & 6 & 1708 & 3 & 2055 & 1714 & 2058 & 9 & 2.406 & 0.3155 & 0.4282 \\
+Law & Male & 1 & 1713 & 0 & 2058 & 1714 & 2058 & 1 & $\infty$ & 0.4544 & 0.5396 \\
+Security services & Male & 1 & 1713 & 0 & 2058 & 1714 & 2058 & 1 & $\infty$ & 0.4544 & 0.5396 \\
+Social and behavioural sciences & Female & 561 & 1497 & 462 & 1252 & 2058 & 1714 & 1023 & 1.016 & 0.8541 & 0.9546 \\
+Personal skills and development & Male & 38 & 1676 & 44 & 2014 & 1714 & 2058 & 82 & 1.038 & 0.9109 & 0.9615 \\
+Journalism and information & Female & 7 & 2051 & 5 & 1709 & 2058 & 1714 & 12 & 1.167 & 1.0000 & 1.0000 \\
 \bottomrule
-\endlastfoot
-Arts & Female & 1278 & 780 & 260 & 1454 & 2058 & 1714 & 1538 & 9.163 & $10^{-199}$ & $10^{-198}$ & yes \\
-Engineering and engineering trades & Male & 282 & 1432 & 0 & 2058 & 1714 & 2058 & 282 & $\infty$ & $10^{-103}$ & $10^{-102}$ & yes \\
-Business and administration & Male & 288 & 1426 & 4 & 2054 & 1714 & 2058 & 292 & 103.708 & $10^{-98}$ & $10^{-97}$ & yes \\
-Information and Communication Technologies (ICTs) & Male & 132 & 1582 & 0 & 2058 & 1714 & 2058 & 132 & $\infty$ & $10^{-47}$ & $10^{-46}$ & yes \\
-Health & Male & 169 & 1545 & 93 & 1965 & 1714 & 2058 & 262 & 2.311 & $10^{-10}$ & $10^{-10}$ & yes \\
-Humanities (except languages) & Female & 55 & 2003 & 5 & 1709 & 2058 & 1714 & 60 & 9.385 & $10^{-10}$ & $10^{-9}$ & yes \\
-Education & Male & 24 & 1690 & 3 & 2055 & 1714 & 2058 & 27 & 9.728 & $10^{-6}$ & $10^{-5}$ & yes \\
-Biological and related sciences & Male & 13 & 1701 & 0 & 2058 & 1714 & 2058 & 13 & $\infty$ & $10^{-5}$ & $10^{-5}$ & yes \\
-Personal services & Male & 14 & 1700 & 1 & 2057 & 1714 & 2058 & 15 & 16.940 & 0.0002 & 0.0005 & yes \\
-Languages & Female & 9 & 2049 & 0 & 1714 & 2058 & 1714 & 9 & $\infty$ & 0.0051 & 0.0096 & yes \\
-Mathematics and statistics & Male & 6 & 1708 & 0 & 2058 & 1714 & 2058 & 6 & $\infty$ & 0.0088 & 0.0151 & yes \\
-Manufacturing and processing & Male & 5 & 1709 & 0 & 2058 & 1714 & 2058 & 5 & $\infty$ & 0.0193 & 0.0306 & yes \\
-Physical sciences & Male & 3 & 1711 & 0 & 2058 & 1714 & 2058 & 3 & $\infty$ & 0.0937 & 0.1370 & no \\
-Welfare & Male & 6 & 1708 & 3 & 2055 & 1714 & 2058 & 9 & 2.406 & 0.3155 & 0.4282 & no \\
-Law & Male & 1 & 1713 & 0 & 2058 & 1714 & 2058 & 1 & $\infty$ & 0.4544 & 0.5396 & no \\
-Security services & Male & 1 & 1713 & 0 & 2058 & 1714 & 2058 & 1 & $\infty$ & 0.4544 & 0.5396 & no \\
-Social and behavioural sciences & Female & 561 & 1497 & 462 & 1252 & 2058 & 1714 & 1023 & 1.016 & 0.8541 & 0.9546 & no \\
-Personal skills and development & Male & 38 & 1676 & 44 & 2014 & 1714 & 2058 & 82 & 1.038 & 0.9109 & 0.9615 & no \\
-Journalism and information & Female & 7 & 2051 & 5 & 1709 & 2058 & 1714 & 12 & 1.167 & 1.0000 & 1.0000 & no \\
-\end{longtable}
+\end{tabular}
+\end{table}
+\end{landscape}

@@ -1,166 +1,36 @@
-\begin{longtable}{lllrcccccccccll}
-\caption{deepseek-v4-flash_paid gender significance results.}\\
-\label{tab:appendix-deepseek-v4-flash_paid-gender}\\
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{deepseek-v4-flash_paid gender significance results for Q2.}
+\label{tab:appendix-q2-deepseek-v4-flash_paid-gender}
+\scriptsize
+\renewcommand{\arraystretch}{0.92}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{p{0.35\linewidth}p{0.1\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.06\linewidth}}
 \toprule
-Question & Category & Group & $a$ & $b$ & $c$ & $d$ & $n_{group}$ & $n_{other}$ & $n_{cat}$ & OR & $p$ & $p_{adj}$ & Sig \\
+\textbf{Category} & \textbf{class} & \textbf{group in category} & \textbf{group out of category} & \textbf{other in category} & \textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} \\\\
 \midrule
-\endfirsthead
-\toprule
-Question & Category & Group & $a$ & $b$ & $c$ & $d$ & $n_{group}$ & $n_{other}$ & $n_{cat}$ & OR & $p$ & $p_{adj}$ & Sig \\
-\midrule
-\endhead
-\midrule
-\endfoot
+Arts & Female & 1237 & 820 & 349 & 1365 & 2057 & 1714 & 1586 & 5.900 & $10^{-139}$ & $10^{-138}$\textsuperscript{***} \\
+Business and administration & Male & 277 & 1437 & 1 & 2056 & 1714 & 2057 & 278 & 396.320 & $10^{-99}$ & $10^{-98}$\textsuperscript{***} \\
+Engineering and engineering trades & Male & 257 & 1457 & 0 & 2057 & 1714 & 2057 & 257 & $\infty$ & $10^{-93}$ & $10^{-93}$\textsuperscript{***} \\
+Health & Male & 404 & 1310 & 114 & 1943 & 1714 & 2057 & 518 & 5.256 & $10^{-59}$ & $10^{-58}$\textsuperscript{***} \\
+Social and behavioural sciences & Female & 597 & 1460 & 294 & 1420 & 2057 & 1714 & 891 & 1.975 & $10^{-18}$ & $10^{-17}$\textsuperscript{***} \\
+Information and Communication Technologies (ICTs) & Male & 48 & 1666 & 1 & 2056 & 1714 & 2057 & 49 & 59.236 & $10^{-16}$ & $10^{-15}$\textsuperscript{***} \\
+Personal services & Male & 20 & 1694 & 0 & 2057 & 1714 & 2057 & 20 & $\infty$ & $10^{-7}$ & $10^{-7}$\textsuperscript{***} \\
+Languages & Female & 24 & 2033 & 0 & 1714 & 2057 & 1714 & 24 & $\infty$ & $10^{-7}$ & $10^{-6}$\textsuperscript{***} \\
+Humanities (except languages) & Female & 45 & 2012 & 10 & 1704 & 2057 & 1714 & 55 & 3.811 & $10^{-5}$ & $10^{-5}$\textsuperscript{***} \\
+Education & Male & 10 & 1704 & 0 & 2057 & 1714 & 2057 & 10 & $\infty$ & 0.0004 & 0.0007\textsuperscript{***} \\
+Welfare & Female & 19 & 2038 & 4 & 1710 & 2057 & 1714 & 23 & 3.986 & 0.0061 & 0.0105\textsuperscript{*} \\
+Personal skills and development & Male & 15 & 1699 & 6 & 2051 & 1714 & 2057 & 21 & 3.018 & 0.0256 & 0.0405\textsuperscript{*} \\
+Biological and related sciences & Male & 4 & 1710 & 0 & 2057 & 1714 & 2057 & 4 & $\infty$ & 0.0426 & 0.0540 \\
+Manufacturing and processing & Male & 4 & 1710 & 0 & 2057 & 1714 & 2057 & 4 & $\infty$ & 0.0426 & 0.0540 \\
+Mathematics and statistics & Male & 4 & 1710 & 0 & 2057 & 1714 & 2057 & 4 & $\infty$ & 0.0426 & 0.0540 \\
+Physical sciences & Male & 2 & 1712 & 0 & 2057 & 1714 & 2057 & 2 & $\infty$ & 0.2065 & 0.2452 \\
+Agriculture & Male & 1 & 1713 & 0 & 2057 & 1714 & 2057 & 1 & $\infty$ & 0.4545 & 0.4798 \\
+Environment & Male & 1 & 1713 & 0 & 2057 & 1714 & 2057 & 1 & $\infty$ & 0.4545 & 0.4798 \\
+Journalism and information & Female & 13 & 2044 & 10 & 1704 & 2057 & 1714 & 23 & 1.084 & 1.0000 & 1.0000 \\
 \bottomrule
-\endlastfoot
-Q1 & Protective services workers & Male & 208 & 1468 & 0 & 2026 & 1676 & 2026 & 208 & $\infty$ & $10^{-75}$ & $10^{-73}$ & yes \\
-Q1 & Protective services workers & Female & 0 & 1977 & 208 & 1517 & 1977 & 1725 & 208 & 0.000 & $10^{-73}$ & $10^{-71}$ & yes \\
-Q1 & Health professionals & Female & 318 & 1659 & 41 & 1684 & 1977 & 1725 & 359 & 7.873 & $10^{-51}$ & $10^{-49}$ & yes \\
-Q1 & Health professionals & Male & 41 & 1635 & 318 & 1708 & 1676 & 2026 & 359 & 0.135 & $10^{-47}$ & $10^{-46}$ & yes \\
-Q1 & Information and communications technology professionals & Male & 217 & 1459 & 43 & 1983 & 1676 & 2026 & 260 & 6.859 & $10^{-39}$ & $10^{-38}$ & yes \\
-Q1 & Information and communications technology professionals & Female & 43 & 1934 & 217 & 1508 & 1977 & 1725 & 260 & 0.155 & $10^{-37}$ & $10^{-36}$ & yes \\
-Q1 & Legal, social and cultural professionals & Male & 6 & 1670 & 162 & 1864 & 1676 & 2026 & 168 & 0.041 & $10^{-36}$ & $10^{-35}$ & yes \\
-Q1 & Handicraft and printing workers & Female & 146 & 1831 & 7 & 1718 & 1977 & 1725 & 153 & 19.570 & $10^{-32}$ & $10^{-31}$ & yes \\
-Q1 & Teaching professionals & Male & 4 & 1672 & 138 & 1888 & 1676 & 2026 & 142 & 0.033 & $10^{-32}$ & $10^{-31}$ & yes \\
-Q1 & Handicraft and printing workers & Male & 7 & 1669 & 146 & 1880 & 1676 & 2026 & 153 & 0.054 & $10^{-30}$ & $10^{-29}$ & yes \\
-Q1 & Armed forces occupations, other ranks & Male & 84 & 1592 & 0 & 2026 & 1676 & 2026 & 84 & $\infty$ & $10^{-30}$ & $10^{-29}$ & yes \\
-Q1 & Armed forces occupations, other ranks & Female & 0 & 1977 & 84 & 1641 & 1977 & 1725 & 84 & 0.000 & $10^{-29}$ & $10^{-28}$ & yes \\
-Q1 & Teaching professionals & Female & 133 & 1844 & 9 & 1716 & 1977 & 1725 & 142 & 13.752 & $10^{-27}$ & $10^{-26}$ & yes \\
-Q1 & Science and engineering professionals & Male & 139 & 1537 & 25 & 2001 & 1676 & 2026 & 164 & 7.238 & $10^{-26}$ & $10^{-25}$ & yes \\
-Q1 & Legal, social and cultural professionals & Female & 152 & 1825 & 16 & 1709 & 1977 & 1725 & 168 & 8.896 & $10^{-26}$ & $10^{-25}$ & yes \\
-Q1 & Science and engineering professionals & Female & 24 & 1953 & 140 & 1585 & 1977 & 1725 & 164 & 0.139 & $10^{-26}$ & $10^{-25}$ & yes \\
-Q1 & Commissioned armed forces officers & Male & 54 & 1622 & 0 & 2026 & 1676 & 2026 & 54 & $\infty$ & $10^{-19}$ & $10^{-19}$ & yes \\
-Q1 & Commissioned armed forces officers & Female & 0 & 1977 & 54 & 1671 & 1977 & 1725 & 54 & 0.000 & $10^{-19}$ & $10^{-18}$ & yes \\
-Q1 & Personal service workers & Male & 266 & 1410 & 558 & 1468 & 1676 & 2026 & 824 & 0.496 & $10^{-17}$ & $10^{-17}$ & yes \\
-Q1 & Non-commissioned armed forces officers & Male & 51 & 1625 & 1 & 2025 & 1676 & 2026 & 52 & 63.554 & $10^{-17}$ & $10^{-16}$ & yes \\
-Q1 & Personal service workers & Female & 545 & 1432 & 279 & 1446 & 1977 & 1725 & 824 & 1.973 & $10^{-17}$ & $10^{-16}$ & yes \\
-Q1 & Non-commissioned armed forces officers & Female & 1 & 1976 & 51 & 1674 & 1977 & 1725 & 52 & 0.017 & $10^{-16}$ & $10^{-16}$ & yes \\
-Q1 & Hospitality, retail and other services managers & Male & 4 & 1672 & 63 & 1963 & 1676 & 2026 & 67 & 0.075 & $10^{-13}$ & $10^{-12}$ & yes \\
-Q1 & Health associate professionals & Female & 105 & 1872 & 22 & 1703 & 1977 & 1725 & 127 & 4.342 & $10^{-12}$ & $10^{-11}$ & yes \\
-Q1 & Building and related trades workers & Male & 31 & 1645 & 0 & 2026 & 1676 & 2026 & 31 & $\infty$ & $10^{-11}$ & $10^{-11}$ & yes \\
-Q1 & Health associate professionals & Male & 22 & 1654 & 105 & 1921 & 1676 & 2026 & 127 & 0.243 & $10^{-11}$ & $10^{-11}$ & yes \\
-Q1 & Hospitality, retail and other services managers & Female & 61 & 1916 & 6 & 1719 & 1977 & 1725 & 67 & 9.121 & $10^{-11}$ & $10^{-11}$ & yes \\
-Q1 & Building and related trades workers & Female & 0 & 1977 & 31 & 1694 & 1977 & 1725 & 31 & 0.000 & $10^{-11}$ & $10^{-10}$ & yes \\
-Q1 & Science and engineering associate professionals & Female & 1 & 1976 & 32 & 1693 & 1977 & 1725 & 33 & 0.027 & $10^{-10}$ & $10^{-9}$ & yes \\
-Q1 & Science and engineering associate professionals & Male & 31 & 1645 & 2 & 2024 & 1676 & 2026 & 33 & 19.071 & $10^{-9}$ & $10^{-8}$ & yes \\
-Q1 & Market-oriented skilled agricultural workers & Male & 27 & 1649 & 1 & 2025 & 1676 & 2026 & 28 & 33.156 & $10^{-9}$ & $10^{-8}$ & yes \\
-Q1 & Market-oriented skilled agricultural workers & Female & 1 & 1976 & 27 & 1698 & 1977 & 1725 & 28 & 0.032 & $10^{-8}$ & $10^{-8}$ & yes \\
-Q1 & Legal, social and cultural professionals & Unknown & 10 & 39 & 158 & 3495 & 49 & 3653 & 168 & 5.672 & $10^{-5}$ & 0.0001 & yes \\
-Q1 & Business and administration professionals & Female & 391 & 1586 & 428 & 1297 & 1977 & 1725 & 819 & 0.747 & 0.0003 & 0.0007 & yes \\
-Q1 & Drivers and mobile plant operators & Male & 10 & 1666 & 0 & 2026 & 1676 & 2026 & 10 & $\infty$ & 0.0004 & 0.0009 & yes \\
-Q1 & Drivers and mobile plant operators & Female & 0 & 1977 & 10 & 1715 & 1977 & 1725 & 10 & 0.000 & 0.0005 & 0.0012 & yes \\
-Q1 & Business and administration professionals & Male & 414 & 1262 & 405 & 1621 & 1676 & 2026 & 819 & 1.313 & 0.0006 & 0.0016 & yes \\
-Q1 & Metal, machinery and related trades workers & Male & 9 & 1667 & 0 & 2026 & 1676 & 2026 & 9 & $\infty$ & 0.0008 & 0.0019 & yes \\
-Q1 & Personal care workers & Male & 9 & 1667 & 0 & 2026 & 1676 & 2026 & 9 & $\infty$ & 0.0008 & 0.0019 & yes \\
-Q1 & Metal, machinery and related trades workers & Female & 0 & 1977 & 9 & 1716 & 1977 & 1725 & 9 & 0.000 & 0.0010 & 0.0023 & yes \\
-Q1 & Personal care workers & Female & 0 & 1977 & 9 & 1716 & 1977 & 1725 & 9 & 0.000 & 0.0010 & 0.0023 & yes \\
-Q1 & Health professionals & Unknown & 0 & 49 & 359 & 3294 & 49 & 3653 & 359 & 0.000 & 0.0126 & 0.0278 & yes \\
-Q1 & Information and communications technicians & Male & 7 & 1669 & 1 & 2025 & 1676 & 2026 & 8 & 8.493 & 0.0267 & 0.0578 & no \\
-Q1 & Information and communications technicians & Female & 1 & 1976 & 7 & 1718 & 1977 & 1725 & 8 & 0.124 & 0.0291 & 0.0614 & no \\
-Q1 & Teaching professionals & Unknown & 5 & 44 & 137 & 3516 & 49 & 3653 & 142 & 2.916 & 0.0381 & 0.0787 & no \\
-Q1 & Information and communications technology professionals & Unknown & 0 & 49 & 260 & 3393 & 49 & 3653 & 260 & 0.000 & 0.0468 & 0.0946 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Unknown & 1 & 48 & 4 & 3649 & 49 & 3653 & 5 & 19.005 & 0.0645 & 0.1276 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Male & 0 & 1676 & 5 & 2021 & 1676 & 2026 & 5 & 0.000 & 0.0679 & 0.1316 & no \\
-Q1 & Other clerical support workers & Unknown & 1 & 48 & 5 & 3648 & 49 & 3653 & 6 & 15.200 & 0.0769 & 0.1459 & no \\
-Q1 & Electrical and electronic trades workers & Male & 3 & 1673 & 0 & 2026 & 1676 & 2026 & 3 & $\infty$ & 0.0927 & 0.1724 & no \\
-Q1 & Electrical and electronic trades workers & Female & 0 & 1977 & 3 & 1722 & 1977 & 1725 & 3 & 0.000 & 0.1011 & 0.1843 & no \\
-Q1 & Protective services workers & Unknown & 0 & 49 & 208 & 3445 & 49 & 3653 & 208 & 0.000 & 0.1121 & 0.2005 & no \\
-Q1 & Hospitality, retail and other services managers & Unknown & 2 & 47 & 65 & 3588 & 49 & 3653 & 67 & 2.349 & 0.2220 & 0.3895 & no \\
-Q1 & Other clerical support workers & Male & 1 & 1675 & 5 & 2021 & 1676 & 2026 & 6 & 0.241 & 0.2309 & 0.3936 & no \\
-Q1 & Sales workers & Male & 12 & 1664 & 23 & 2003 & 1676 & 2026 & 35 & 0.628 & 0.2328 & 0.3936 & no \\
-Q1 & Handicraft and printing workers & Unknown & 0 & 49 & 153 & 3500 & 49 & 3653 & 153 & 0.000 & 0.2671 & 0.4435 & no \\
-Q1 & Business and administration professionals & Unknown & 14 & 35 & 805 & 2848 & 49 & 3653 & 819 & 1.415 & 0.2976 & 0.4856 & no \\
-Q1 & Sales workers & Female & 22 & 1955 & 13 & 1712 & 1977 & 1725 & 35 & 1.482 & 0.3083 & 0.4944 & no \\
-Q1 & Science and engineering associate professionals & Unknown & 1 & 48 & 32 & 3621 & 49 & 3653 & 33 & 2.357 & 0.3570 & 0.5628 & no \\
-Q1 & Sales workers & Unknown & 1 & 48 & 34 & 3619 & 49 & 3653 & 35 & 2.218 & 0.3741 & 0.5798 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Female & 4 & 1973 & 1 & 1724 & 1977 & 1725 & 5 & 3.495 & 0.3804 & 0.5800 & no \\
-Q1 & Administrative and commercial managers & Female & 15 & 1962 & 9 & 1716 & 1977 & 1725 & 24 & 1.458 & 0.4168 & 0.6152 & no \\
-Q1 & Health associate professionals & Unknown & 0 & 49 & 127 & 3526 & 49 & 3653 & 127 & 0.000 & 0.4144 & 0.6152 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Male & 1 & 1675 & 0 & 2026 & 1676 & 2026 & 1 & $\infty$ & 0.4527 & 0.6579 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Female & 0 & 1977 & 1 & 1724 & 1977 & 1725 & 1 & 0.000 & 0.4660 & 0.6667 & no \\
-Q1 & Personal service workers & Unknown & 13 & 36 & 811 & 2842 & 49 & 3653 & 824 & 1.265 & 0.4891 & 0.6892 & no \\
-Q1 & Administrative and commercial managers & Male & 9 & 1667 & 15 & 2011 & 1676 & 2026 & 24 & 0.724 & 0.5391 & 0.7483 & no \\
-Q1 & Production and specialized services managers & Male & 7 & 1669 & 6 & 2020 & 1676 & 2026 & 13 & 1.412 & 0.5851 & 0.8003 & no \\
-Q1 & Armed forces occupations, other ranks & Unknown & 0 & 49 & 84 & 3569 & 49 & 3653 & 84 & 0.000 & 0.6283 & 0.8469 & no \\
-Q1 & Other clerical support workers & Female & 4 & 1973 & 2 & 1723 & 1977 & 1725 & 6 & 1.747 & 0.6916 & 0.9188 & no \\
-Q1 & Science and engineering professionals & Unknown & 1 & 48 & 163 & 3490 & 49 & 3653 & 164 & 0.446 & 0.7240 & 0.9483 & no \\
-Q1 & Administrative and commercial managers & Unknown & 0 & 49 & 24 & 3629 & 49 & 3653 & 24 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Building and related trades workers & Unknown & 0 & 49 & 31 & 3622 & 49 & 3653 & 31 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Female & 2 & 1975 & 1 & 1724 & 1977 & 1725 & 3 & 1.746 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Male & 1 & 1675 & 2 & 2024 & 1676 & 2026 & 3 & 0.604 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Unknown & 0 & 49 & 3 & 3650 & 49 & 3653 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & Unknown & 0 & 49 & 54 & 3599 & 49 & 3653 & 54 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & Unknown & 0 & 49 & 10 & 3643 & 49 & 3653 & 10 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & Unknown & 0 & 49 & 3 & 3650 & 49 & 3653 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Female & 1 & 1976 & 1 & 1724 & 1977 & 1725 & 2 & 0.872 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Male & 1 & 1675 & 1 & 2025 & 1676 & 2026 & 2 & 1.209 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Unknown & 0 & 49 & 2 & 3651 & 49 & 3653 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Female & 1 & 1976 & 0 & 1725 & 1977 & 1725 & 1 & $\infty$ & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Male & 0 & 1676 & 1 & 2025 & 1676 & 2026 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Unknown & 0 & 49 & 1 & 3652 & 49 & 3653 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technicians & Unknown & 0 & 49 & 8 & 3645 & 49 & 3653 & 8 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Unknown & 0 & 49 & 1 & 3652 & 49 & 3653 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & Unknown & 0 & 49 & 28 & 3625 & 49 & 3653 & 28 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & Unknown & 0 & 49 & 9 & 3644 & 49 & 3653 & 9 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & Unknown & 0 & 49 & 52 & 3601 & 49 & 3653 & 52 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Personal care workers & Unknown & 0 & 49 & 9 & 3644 & 49 & 3653 & 9 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Female & 6 & 1971 & 7 & 1718 & 1977 & 1725 & 13 & 0.747 & 0.7820 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Unknown & 0 & 49 & 13 & 3640 & 49 & 3653 & 13 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Arts & Male & 349 & 1365 & 1326 & 827 & 1714 & 2153 & 1675 & 0.159 & $10^{-152}$ & $10^{-150}$ & yes \\
-Q2 & Arts & Female & 1237 & 820 & 438 & 1372 & 2057 & 1810 & 1675 & 4.725 & $10^{-115}$ & $10^{-114}$ & yes \\
-Q2 & Business and administration & Male & 277 & 1437 & 1 & 2152 & 1714 & 2153 & 278 & 414.825 & $10^{-102}$ & $10^{-101}$ & yes \\
-Q2 & Engineering and engineering trades & Male & 257 & 1457 & 0 & 2153 & 1714 & 2153 & 257 & $\infty$ & $10^{-96}$ & $10^{-95}$ & yes \\
-Q2 & Business and administration & Female & 1 & 2056 & 277 & 1533 & 2057 & 1810 & 278 & 0.003 & $10^{-95}$ & $10^{-94}$ & yes \\
-Q2 & Engineering and engineering trades & Female & 0 & 2057 & 257 & 1553 & 2057 & 1810 & 257 & 0.000 & $10^{-90}$ & $10^{-89}$ & yes \\
-Q2 & Health & Male & 404 & 1310 & 114 & 2039 & 1714 & 2153 & 518 & 5.516 & $10^{-63}$ & $10^{-62}$ & yes \\
-Q2 & Health & Female & 114 & 1943 & 404 & 1406 & 2057 & 1810 & 518 & 0.204 & $10^{-54}$ & $10^{-54}$ & yes \\
-Q2 & Arts & Unknown & 89 & 7 & 1586 & 2185 & 96 & 3771 & 1675 & 17.516 & $10^{-25}$ & $10^{-24}$ & yes \\
-Q2 & Social and behavioural sciences & Female & 597 & 1460 & 297 & 1513 & 2057 & 1810 & 894 & 2.083 & $10^{-20}$ & $10^{-20}$ & yes \\
-Q2 & Information and Communication Technologies (ICTs) & Male & 48 & 1666 & 1 & 2152 & 1714 & 2153 & 49 & 62.002 & $10^{-16}$ & $10^{-15}$ & yes \\
-Q2 & Information and Communication Technologies (ICTs) & Female & 1 & 2056 & 48 & 1762 & 2057 & 1810 & 49 & 0.018 & $10^{-15}$ & $10^{-14}$ & yes \\
-Q2 & Social and behavioural sciences & Male & 294 & 1420 & 600 & 1553 & 1714 & 2153 & 894 & 0.536 & $10^{-15}$ & $10^{-14}$ & yes \\
-Q2 & Social and behavioural sciences & Unknown & 3 & 93 & 891 & 2880 & 96 & 3771 & 894 & 0.104 & $10^{-8}$ & $10^{-7}$ & yes \\
-Q2 & Personal services & Male & 20 & 1694 & 0 & 2153 & 1714 & 2153 & 20 & $\infty$ & $10^{-8}$ & $10^{-7}$ & yes \\
-Q2 & Personal services & Female & 0 & 2057 & 20 & 1790 & 2057 & 1810 & 20 & 0.000 & $10^{-7}$ & $10^{-7}$ & yes \\
-Q2 & Languages & Male & 0 & 1714 & 25 & 2128 & 1714 & 2153 & 25 & 0.000 & $10^{-7}$ & $10^{-6}$ & yes \\
-Q2 & Health & Unknown & 0 & 96 & 518 & 3253 & 96 & 3771 & 518 & 0.000 & $10^{-6}$ & $10^{-6}$ & yes \\
-Q2 & Languages & Female & 24 & 2033 & 1 & 1809 & 2057 & 1810 & 25 & 21.356 & $10^{-6}$ & $10^{-5}$ & yes \\
-Q2 & Humanities (except languages) & Male & 10 & 1704 & 47 & 2106 & 1714 & 2153 & 57 & 0.263 & $10^{-5}$ & $10^{-5}$ & yes \\
-Q2 & Humanities (except languages) & Female & 45 & 2012 & 12 & 1798 & 2057 & 1810 & 57 & 3.351 & $10^{-5}$ & 0.0002 & yes \\
-Q2 & Education & Male & 10 & 1704 & 0 & 2153 & 1714 & 2153 & 10 & $\infty$ & 0.0003 & 0.0007 & yes \\
-Q2 & Education & Female & 0 & 2057 & 10 & 1800 & 2057 & 1810 & 10 & 0.000 & 0.0005 & 0.0012 & yes \\
-Q2 & Business and administration & Unknown & 0 & 96 & 278 & 3493 & 96 & 3771 & 278 & 0.000 & 0.0011 & 0.0026 & yes \\
-Q2 & Engineering and engineering trades & Unknown & 0 & 96 & 257 & 3514 & 96 & 3771 & 257 & 0.000 & 0.0027 & 0.0061 & yes \\
-Q2 & Welfare & Female & 19 & 2038 & 4 & 1806 & 2057 & 1810 & 23 & 4.209 & 0.0053 & 0.0117 & yes \\
-Q2 & Welfare & Male & 4 & 1710 & 19 & 2134 & 1714 & 2153 & 23 & 0.263 & 0.0103 & 0.0217 & yes \\
-Q2 & Personal skills and development & Female & 6 & 2051 & 16 & 1794 & 2057 & 1810 & 22 & 0.328 & 0.0175 & 0.0357 & yes \\
-Q2 & Personal skills and development & Male & 15 & 1699 & 7 & 2146 & 1714 & 2153 & 22 & 2.707 & 0.0302 & 0.0594 & no \\
-Q2 & Biological and related sciences & Male & 4 & 1710 & 0 & 2153 & 1714 & 2153 & 4 & $\infty$ & 0.0385 & 0.0686 & no \\
-Q2 & Manufacturing and processing & Male & 4 & 1710 & 0 & 2153 & 1714 & 2153 & 4 & $\infty$ & 0.0385 & 0.0686 & no \\
-Q2 & Mathematics and statistics & Male & 4 & 1710 & 0 & 2153 & 1714 & 2153 & 4 & $\infty$ & 0.0385 & 0.0686 & no \\
-Q2 & Biological and related sciences & Female & 0 & 2057 & 4 & 1806 & 2057 & 1810 & 4 & 0.000 & 0.0479 & 0.0780 & no \\
-Q2 & Manufacturing and processing & Female & 0 & 2057 & 4 & 1806 & 2057 & 1810 & 4 & 0.000 & 0.0479 & 0.0780 & no \\
-Q2 & Mathematics and statistics & Female & 0 & 2057 & 4 & 1806 & 2057 & 1810 & 4 & 0.000 & 0.0479 & 0.0780 & no \\
-Q2 & Physical sciences & Male & 2 & 1712 & 0 & 2153 & 1714 & 2153 & 2 & $\infty$ & 0.1964 & 0.3110 & no \\
-Q2 & Physical sciences & Female & 0 & 2057 & 2 & 1808 & 2057 & 1810 & 2 & 0.000 & 0.2190 & 0.3374 & no \\
-Q2 & Agriculture & Female & 0 & 2057 & 1 & 1809 & 2057 & 1810 & 1 & 0.000 & 0.4681 & 0.6205 & no \\
-Q2 & Agriculture & Male & 1 & 1713 & 0 & 2153 & 1714 & 2153 & 1 & $\infty$ & 0.4432 & 0.6205 & no \\
-Q2 & Environment & Female & 0 & 2057 & 1 & 1809 & 2057 & 1810 & 1 & 0.000 & 0.4681 & 0.6205 & no \\
-Q2 & Environment & Male & 1 & 1713 & 0 & 2153 & 1714 & 2153 & 1 & $\infty$ & 0.4432 & 0.6205 & no \\
-Q2 & Languages & Unknown & 1 & 95 & 24 & 3747 & 96 & 3771 & 25 & 1.643 & 0.4676 & 0.6205 & no \\
-Q2 & Personal skills and development & Unknown & 1 & 95 & 21 & 3750 & 96 & 3771 & 22 & 1.880 & 0.4257 & 0.6205 & no \\
-Q2 & Information and Communication Technologies (ICTs) & Unknown & 0 & 96 & 49 & 3722 & 96 & 3771 & 49 & 0.000 & 0.6342 & 0.8216 & no \\
-Q2 & Humanities (except languages) & Unknown & 2 & 94 & 55 & 3716 & 96 & 3771 & 57 & 1.438 & 0.6522 & 0.8262 & no \\
-Q2 & Agriculture & Unknown & 0 & 96 & 1 & 3770 & 96 & 3771 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Biological and related sciences & Unknown & 0 & 96 & 4 & 3767 & 96 & 3771 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Education & Unknown & 0 & 96 & 10 & 3761 & 96 & 3771 & 10 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & Unknown & 0 & 96 & 1 & 3770 & 96 & 3771 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Journalism and information & Female & 13 & 2044 & 10 & 1800 & 2057 & 1810 & 23 & 1.145 & 0.8356 & 1.0000 & no \\
-Q2 & Journalism and information & Male & 10 & 1704 & 13 & 2140 & 1714 & 2153 & 23 & 0.966 & 1.0000 & 1.0000 & no \\
-Q2 & Journalism and information & Unknown & 0 & 96 & 23 & 3748 & 96 & 3771 & 23 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Manufacturing and processing & Unknown & 0 & 96 & 4 & 3767 & 96 & 3771 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Mathematics and statistics & Unknown & 0 & 96 & 4 & 3767 & 96 & 3771 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Personal services & Unknown & 0 & 96 & 20 & 3751 & 96 & 3771 & 20 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & Unknown & 0 & 96 & 2 & 3769 & 96 & 3771 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Welfare & Unknown & 0 & 96 & 23 & 3748 & 96 & 3771 & 23 & 0.000 & 1.0000 & 1.0000 & no \\
-\end{longtable}
+\end{tabular}
+\end{table}
+\end{landscape}

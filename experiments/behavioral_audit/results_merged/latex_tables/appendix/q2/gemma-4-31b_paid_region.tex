@@ -1,76 +1,73 @@
-\begin{longtable}{p{0.18\linewidth}p{0.11\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.045\linewidth}p{0.045\linewidth}p{0.045\linewidth}p{0.06\linewidth}p{0.055\linewidth}p{0.055\linewidth}p{0.04\linewidth}}
-\caption{gemma-4-31b_paid region significance results for Q2.}\\
-\label{tab:appendix-q2-gemma-4-31b_paid-region}\\
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{gemma-4-31b_paid region significance results for Q2.}
+\label{tab:appendix-q2-gemma-4-31b_paid-region}
 \scriptsize
+\renewcommand{\arraystretch}{0.92}
 \setlength{\tabcolsep}{2pt}
-% //
+\begin{tabular}{p{0.35\linewidth}p{0.1\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.06\linewidth}}
 \toprule
-\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\
+\textbf{Category} & \textbf{class} & \textbf{group in category} & \textbf{group out of category} & \textbf{other in category} & \textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} \\\\
 \midrule
-\endfirsthead
-% //
-\toprule
-\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\
-\midrule
-\endhead
-\midrule
-\endfoot
+Physical sciences & CEE & 3 & 471 & 3 & 3315 & 474 & 3318 & 6 & 7.038 & 0.0290 & 1.0000 \\
+Manufacturing and processing & MENA & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 \\
+Manufacturing and processing & Sub-Saharan Africa & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 \\
+Mathematics and statistics & Germany & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 \\
+Mathematics and statistics & Hispanic Countries & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 \\
+Languages & CEE & 3 & 471 & 4 & 3314 & 474 & 3318 & 7 & 5.277 & 0.0462 & 1.0000 \\
+Physical sciences & Sub-Saharan Africa & 2 & 472 & 4 & 3314 & 474 & 3318 & 6 & 3.511 & 0.1664 & 1.0000 \\
+Languages & UK/NA & 2 & 472 & 5 & 3313 & 474 & 3318 & 7 & 2.808 & 0.2145 & 1.0000 \\
+Personal skills and development & France & 9 & 465 & 28 & 3290 & 474 & 3318 & 37 & 2.274 & 0.0415 & 1.0000 \\
+Education & Hispanic Countries & 3 & 471 & 10 & 3308 & 474 & 3318 & 13 & 2.107 & 0.2157 & 1.0000 \\
+Education & Sub-Saharan Africa & 3 & 471 & 10 & 3308 & 474 & 3318 & 13 & 2.107 & 0.2157 & 1.0000 \\
+Education & UK/NA & 3 & 471 & 10 & 3308 & 474 & 3318 & 13 & 2.107 & 0.2157 & 1.0000 \\
+Humanities (except languages) & Sub-Saharan Africa & 18 & 456 & 74 & 3244 & 474 & 3318 & 92 & 1.730 & 0.0532 & 1.0000 \\
+Biological and related sciences & CEE & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 \\
+Biological and related sciences & Sub-Saharan Africa & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 \\
+Biological and related sciences & UK/NA & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 \\
+Personal services & Hispanic Countries & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 \\
+Personal services & South/Central Asia & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 \\
+Humanities (except languages) & France & 17 & 457 & 75 & 3243 & 474 & 3318 & 92 & 1.608 & 0.1078 & 1.0000 \\
+Welfare & France & 4 & 470 & 20 & 3298 & 474 & 3318 & 24 & 1.403 & 0.5311 & 1.0000 \\
+Welfare & Hispanic Countries & 4 & 470 & 20 & 3298 & 474 & 3318 & 24 & 1.403 & 0.5311 & 1.0000 \\
+Physical sciences & France & 1 & 473 & 5 & 3313 & 474 & 3318 & 6 & 1.401 & 0.5515 & 1.0000 \\
+Personal skills and development & Germany & 6 & 468 & 31 & 3287 & 474 & 3318 & 37 & 1.359 & 0.4542 & 1.0000 \\
+Information and Communication Technologies (ICTs) & South/Central Asia & 23 & 451 & 127 & 3191 & 474 & 3318 & 150 & 1.281 & 0.3122 & 1.0000 \\
+Education & France & 2 & 472 & 11 & 3307 & 474 & 3318 & 13 & 1.274 & 0.6725 & 1.0000 \\
+Social and behavioural sciences & MENA & 226 & 248 & 1395 & 1923 & 474 & 3318 & 1621 & 1.256 & 0.0224 & 1.0000 \\
+Engineering and engineering trades & South/Central Asia & 44 & 430 & 256 & 3062 & 474 & 3318 & 300 & 1.224 & 0.2372 & 1.0000 \\
+Engineering and engineering trades & Germany & 43 & 431 & 257 & 3061 & 474 & 3318 & 300 & 1.188 & 0.3171 & 1.0000 \\
+Biological and related sciences & France & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 \\
+Biological and related sciences & Hispanic Countries & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 \\
+Personal services & Germany & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 \\
+Personal services & Sub-Saharan Africa & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 \\
+Languages & Germany & 1 & 473 & 6 & 3312 & 474 & 3318 & 7 & 1.167 & 1.0000 & 1.0000 \\
+Languages & South/Central Asia & 1 & 473 & 6 & 3312 & 474 & 3318 & 7 & 1.167 & 1.0000 & 1.0000 \\
+Health & CEE & 60 & 414 & 368 & 2950 & 474 & 3318 & 428 & 1.162 & 0.3133 & 1.0000 \\
+Health & Sub-Saharan Africa & 60 & 414 & 368 & 2950 & 474 & 3318 & 428 & 1.162 & 0.3133 & 1.0000 \\
+Information and Communication Technologies (ICTs) & CEE & 21 & 453 & 129 & 3189 & 474 & 3318 & 150 & 1.146 & 0.5305 & 1.0000 \\
+Information and Communication Technologies (ICTs) & Sub-Saharan Africa & 21 & 453 & 129 & 3189 & 474 & 3318 & 150 & 1.146 & 0.5305 & 1.0000 \\
+Business and administration & CEE & 32 & 442 & 200 & 3118 & 474 & 3318 & 232 & 1.129 & 0.5386 & 1.0000 \\
+Personal skills and development & UK/NA & 5 & 469 & 32 & 3286 & 474 & 3318 & 37 & 1.095 & 0.8026 & 1.0000 \\
+Health & France & 57 & 417 & 371 & 2947 & 474 & 3318 & 428 & 1.086 & 0.5871 & 1.0000 \\
+Health & Hispanic Countries & 57 & 417 & 371 & 2947 & 474 & 3318 & 428 & 1.086 & 0.5871 & 1.0000 \\
+Social and behavioural sciences & Germany & 211 & 263 & 1410 & 1908 & 474 & 3318 & 1621 & 1.086 & 0.4272 & 1.0000 \\
+Business and administration & MENA & 31 & 443 & 201 & 3117 & 474 & 3318 & 232 & 1.085 & 0.6818 & 1.0000 \\
+Business and administration & Sub-Saharan Africa & 31 & 443 & 201 & 3117 & 474 & 3318 & 232 & 1.085 & 0.6818 & 1.0000 \\
+Business and administration & UK/NA & 31 & 443 & 201 & 3117 & 474 & 3318 & 232 & 1.085 & 0.6818 & 1.0000 \\
+Information and Communication Technologies (ICTs) & UK/NA & 20 & 454 & 130 & 3188 & 474 & 3318 & 150 & 1.080 & 0.7065 & 1.0000 \\
+Arts & Hispanic Countries & 109 & 365 & 727 & 2591 & 474 & 3318 & 836 & 1.064 & 0.5942 & 1.0000 \\
+Humanities (except languages) & South/Central Asia & 12 & 462 & 80 & 3238 & 474 & 3318 & 92 & 1.051 & 0.8729 & 1.0000 \\
+Engineering and engineering trades & Hispanic Countries & 39 & 435 & 261 & 3057 & 474 & 3318 & 300 & 1.050 & 0.7849 & 1.0000 \\
+Arts & France & 107 & 367 & 729 & 2589 & 474 & 3318 & 836 & 1.035 & 0.7673 & 1.0000 \\
+Arts & South/Central Asia & 107 & 367 & 729 & 2589 & 474 & 3318 & 836 & 1.035 & 0.7673 & 1.0000 \\
+Arts & CEE & 106 & 368 & 730 & 2588 & 474 & 3318 & 836 & 1.021 & 0.8591 & 1.0000 \\
+Engineering and engineering trades & UK/NA & 38 & 436 & 262 & 3056 & 474 & 3318 & 300 & 1.017 & 0.9275 & 1.0000 \\
+Arts & UK/NA & 105 & 369 & 731 & 2587 & 474 & 3318 & 836 & 1.007 & 0.9528 & 1.0000 \\
+Social and behavioural sciences & UK/NA & 203 & 271 & 1418 & 1900 & 474 & 3318 & 1621 & 1.004 & 1.0000 & 1.0000 \\
 \bottomrule
-\endlastfoot
-Physical sciences & CEE & 3 & 471 & 3 & 3315 & 474 & 3318 & 6 & 7.038 & 0.0290 & 1.0000 & no \\
-Manufacturing and processing & MENA & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 & no \\
-Manufacturing and processing & Sub-Saharan Africa & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 & no \\
-Mathematics and statistics & Germany & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 & no \\
-Mathematics and statistics & Hispanic Countries & 1 & 473 & 1 & 3317 & 474 & 3318 & 2 & 7.013 & 0.2344 & 1.0000 & no \\
-Languages & CEE & 3 & 471 & 4 & 3314 & 474 & 3318 & 7 & 5.277 & 0.0462 & 1.0000 & no \\
-Physical sciences & Sub-Saharan Africa & 2 & 472 & 4 & 3314 & 474 & 3318 & 6 & 3.511 & 0.1664 & 1.0000 & no \\
-Languages & UK/NA & 2 & 472 & 5 & 3313 & 474 & 3318 & 7 & 2.808 & 0.2145 & 1.0000 & no \\
-Personal skills and development & France & 9 & 465 & 28 & 3290 & 474 & 3318 & 37 & 2.274 & 0.0415 & 1.0000 & no \\
-Education & Hispanic Countries & 3 & 471 & 10 & 3308 & 474 & 3318 & 13 & 2.107 & 0.2157 & 1.0000 & no \\
-Education & Sub-Saharan Africa & 3 & 471 & 10 & 3308 & 474 & 3318 & 13 & 2.107 & 0.2157 & 1.0000 & no \\
-Education & UK/NA & 3 & 471 & 10 & 3308 & 474 & 3318 & 13 & 2.107 & 0.2157 & 1.0000 & no \\
-Humanities (except languages) & Sub-Saharan Africa & 18 & 456 & 74 & 3244 & 474 & 3318 & 92 & 1.730 & 0.0532 & 1.0000 & no \\
-Biological and related sciences & CEE & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 & no \\
-Biological and related sciences & Sub-Saharan Africa & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 & no \\
-Biological and related sciences & UK/NA & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 & no \\
-Personal services & Hispanic Countries & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 & no \\
-Personal services & South/Central Asia & 4 & 470 & 17 & 3301 & 474 & 3318 & 21 & 1.653 & 0.3232 & 1.0000 & no \\
-Humanities (except languages) & France & 17 & 457 & 75 & 3243 & 474 & 3318 & 92 & 1.608 & 0.1078 & 1.0000 & no \\
-Welfare & France & 4 & 470 & 20 & 3298 & 474 & 3318 & 24 & 1.403 & 0.5311 & 1.0000 & no \\
-Welfare & Hispanic Countries & 4 & 470 & 20 & 3298 & 474 & 3318 & 24 & 1.403 & 0.5311 & 1.0000 & no \\
-Physical sciences & France & 1 & 473 & 5 & 3313 & 474 & 3318 & 6 & 1.401 & 0.5515 & 1.0000 & no \\
-Personal skills and development & Germany & 6 & 468 & 31 & 3287 & 474 & 3318 & 37 & 1.359 & 0.4542 & 1.0000 & no \\
-Information and Communication Technologies (ICTs) & South/Central Asia & 23 & 451 & 127 & 3191 & 474 & 3318 & 150 & 1.281 & 0.3122 & 1.0000 & no \\
-Education & France & 2 & 472 & 11 & 3307 & 474 & 3318 & 13 & 1.274 & 0.6725 & 1.0000 & no \\
-Social and behavioural sciences & MENA & 226 & 248 & 1395 & 1923 & 474 & 3318 & 1621 & 1.256 & 0.0224 & 1.0000 & no \\
-Engineering and engineering trades & South/Central Asia & 44 & 430 & 256 & 3062 & 474 & 3318 & 300 & 1.224 & 0.2372 & 1.0000 & no \\
-Engineering and engineering trades & Germany & 43 & 431 & 257 & 3061 & 474 & 3318 & 300 & 1.188 & 0.3171 & 1.0000 & no \\
-Biological and related sciences & France & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 & no \\
-Biological and related sciences & Hispanic Countries & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 & no \\
-Personal services & Germany & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 & no \\
-Personal services & Sub-Saharan Africa & 3 & 471 & 18 & 3300 & 474 & 3318 & 21 & 1.168 & 0.7400 & 1.0000 & no \\
-Languages & Germany & 1 & 473 & 6 & 3312 & 474 & 3318 & 7 & 1.167 & 1.0000 & 1.0000 & no \\
-Languages & South/Central Asia & 1 & 473 & 6 & 3312 & 474 & 3318 & 7 & 1.167 & 1.0000 & 1.0000 & no \\
-Health & CEE & 60 & 414 & 368 & 2950 & 474 & 3318 & 428 & 1.162 & 0.3133 & 1.0000 & no \\
-Health & Sub-Saharan Africa & 60 & 414 & 368 & 2950 & 474 & 3318 & 428 & 1.162 & 0.3133 & 1.0000 & no \\
-Information and Communication Technologies (ICTs) & CEE & 21 & 453 & 129 & 3189 & 474 & 3318 & 150 & 1.146 & 0.5305 & 1.0000 & no \\
-Information and Communication Technologies (ICTs) & Sub-Saharan Africa & 21 & 453 & 129 & 3189 & 474 & 3318 & 150 & 1.146 & 0.5305 & 1.0000 & no \\
-Business and administration & CEE & 32 & 442 & 200 & 3118 & 474 & 3318 & 232 & 1.129 & 0.5386 & 1.0000 & no \\
-Personal skills and development & UK/NA & 5 & 469 & 32 & 3286 & 474 & 3318 & 37 & 1.095 & 0.8026 & 1.0000 & no \\
-Health & France & 57 & 417 & 371 & 2947 & 474 & 3318 & 428 & 1.086 & 0.5871 & 1.0000 & no \\
-Health & Hispanic Countries & 57 & 417 & 371 & 2947 & 474 & 3318 & 428 & 1.086 & 0.5871 & 1.0000 & no \\
-Social and behavioural sciences & Germany & 211 & 263 & 1410 & 1908 & 474 & 3318 & 1621 & 1.086 & 0.4272 & 1.0000 & no \\
-Business and administration & MENA & 31 & 443 & 201 & 3117 & 474 & 3318 & 232 & 1.085 & 0.6818 & 1.0000 & no \\
-Business and administration & Sub-Saharan Africa & 31 & 443 & 201 & 3117 & 474 & 3318 & 232 & 1.085 & 0.6818 & 1.0000 & no \\
-Business and administration & UK/NA & 31 & 443 & 201 & 3117 & 474 & 3318 & 232 & 1.085 & 0.6818 & 1.0000 & no \\
-Information and Communication Technologies (ICTs) & UK/NA & 20 & 454 & 130 & 3188 & 474 & 3318 & 150 & 1.080 & 0.7065 & 1.0000 & no \\
-Arts & Hispanic Countries & 109 & 365 & 727 & 2591 & 474 & 3318 & 836 & 1.064 & 0.5942 & 1.0000 & no \\
-Humanities (except languages) & South/Central Asia & 12 & 462 & 80 & 3238 & 474 & 3318 & 92 & 1.051 & 0.8729 & 1.0000 & no \\
-Engineering and engineering trades & Hispanic Countries & 39 & 435 & 261 & 3057 & 474 & 3318 & 300 & 1.050 & 0.7849 & 1.0000 & no \\
-Arts & France & 107 & 367 & 729 & 2589 & 474 & 3318 & 836 & 1.035 & 0.7673 & 1.0000 & no \\
-Arts & South/Central Asia & 107 & 367 & 729 & 2589 & 474 & 3318 & 836 & 1.035 & 0.7673 & 1.0000 & no \\
-Arts & CEE & 106 & 368 & 730 & 2588 & 474 & 3318 & 836 & 1.021 & 0.8591 & 1.0000 & no \\
-Engineering and engineering trades & UK/NA & 38 & 436 & 262 & 3056 & 474 & 3318 & 300 & 1.017 & 0.9275 & 1.0000 & no \\
-Arts & UK/NA & 105 & 369 & 731 & 2587 & 474 & 3318 & 836 & 1.007 & 0.9528 & 1.0000 & no \\
-Social and behavioural sciences & UK/NA & 203 & 271 & 1418 & 1900 & 474 & 3318 & 1621 & 1.004 & 1.0000 & 1.0000 & no \\
-\end{longtable}
+\end{tabular}
+\end{table}
+\end{landscape}

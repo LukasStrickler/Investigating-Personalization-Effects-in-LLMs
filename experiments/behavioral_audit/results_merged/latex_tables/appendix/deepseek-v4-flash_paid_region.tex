@@ -1,466 +1,84 @@
-\begin{longtable}{lllrcccccccccll}
-\caption{deepseek-v4-flash_paid region significance results.}\\
-\label{tab:appendix-deepseek-v4-flash_paid-region}\\
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{deepseek-v4-flash_paid region significance results for Q2.}
+\label{tab:appendix-q2-deepseek-v4-flash_paid-region}
+\scriptsize
+\renewcommand{\arraystretch}{0.92}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{p{0.35\linewidth}p{0.1\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.06\linewidth}}
 \toprule
-Question & Category & Group & $a$ & $b$ & $c$ & $d$ & $n_{group}$ & $n_{other}$ & $n_{cat}$ & OR & $p$ & $p_{adj}$ & Sig \\
+\textbf{Category} & \textbf{class} & \textbf{group in category} & \textbf{group out of category} & \textbf{other in category} & \textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} \\\\
 \midrule
-\endfirsthead
-\toprule
-Question & Category & Group & $a$ & $b$ & $c$ & $d$ & $n_{group}$ & $n_{other}$ & $n_{cat}$ & OR & $p$ & $p_{adj}$ & Sig \\
-\midrule
-\endhead
-\midrule
-\endfoot
+Physical sciences & MENA & 2 & 472 & 0 & 3316 & 474 & 3316 & 2 & $\infty$ & 0.0156 & 0.7910 \\
+Languages & Germany & 8 & 465 & 16 & 3301 & 473 & 3317 & 24 & 3.549 & 0.0066 & 0.7910 \\
+Agriculture & UK/NA & 1 & 473 & 0 & 3316 & 474 & 3316 & 1 & $\infty$ & 0.1251 & 0.9763 \\
+Environment & UK/NA & 1 & 473 & 0 & 3316 & 474 & 3316 & 1 & $\infty$ & 0.1251 & 0.9763 \\
+Manufacturing and processing & France & 2 & 472 & 2 & 3314 & 474 & 3316 & 4 & 7.021 & 0.0788 & 0.9763 \\
+Education & Germany & 3 & 470 & 7 & 3310 & 473 & 3317 & 10 & 3.018 & 0.1188 & 0.9763 \\
+Education & CEE & 3 & 471 & 7 & 3309 & 474 & 3316 & 10 & 3.011 & 0.1194 & 0.9763 \\
+Information and Communication Technologies (ICTs) & France & 10 & 464 & 38 & 3278 & 474 & 3316 & 48 & 1.859 & 0.1188 & 0.9763 \\
+Health & Germany & 74 & 399 & 432 & 2885 & 473 & 3317 & 506 & 1.239 & 0.1288 & 0.9763 \\
+Arts & South/Central Asia & 226 & 248 & 1424 & 1892 & 474 & 3316 & 1650 & 1.211 & 0.0535 & 0.9763 \\
+Social and behavioural sciences & MENA & 123 & 351 & 746 & 2570 & 474 & 3316 & 869 & 1.207 & 0.1018 & 0.9763 \\
+Arts & Hispanic Countries & 225 & 248 & 1425 & 1892 & 473 & 3317 & 1650 & 1.205 & 0.0598 & 0.9763 \\
+Social and behavioural sciences & France & 122 & 352 & 747 & 2569 & 474 & 3316 & 869 & 1.192 & 0.1287 & 0.9763 \\
+Biological and related sciences & Hispanic Countries & 1 & 472 & 3 & 3314 & 473 & 3317 & 4 & 2.340 & 0.4134 & 1.0000 \\
+Mathematics and statistics & Germany & 1 & 472 & 3 & 3314 & 473 & 3317 & 4 & 2.340 & 0.4134 & 1.0000 \\
+Biological and related sciences & France & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Biological and related sciences & MENA & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Biological and related sciences & Sub-Saharan Africa & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Manufacturing and processing & CEE & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Manufacturing and processing & South/Central Asia & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Mathematics and statistics & CEE & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Mathematics and statistics & MENA & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Mathematics and statistics & UK/NA & 1 & 473 & 3 & 3313 & 474 & 3316 & 4 & 2.335 & 0.4141 & 1.0000 \\
+Journalism and information & UK/NA & 5 & 469 & 17 & 3299 & 474 & 3316 & 22 & 2.069 & 0.1834 & 1.0000 \\
+Personal skills and development & South/Central Asia & 5 & 469 & 17 & 3299 & 474 & 3316 & 22 & 2.069 & 0.1834 & 1.0000 \\
+Personal skills and development & UK/NA & 5 & 469 & 17 & 3299 & 474 & 3316 & 22 & 2.069 & 0.1834 & 1.0000 \\
+Welfare & UK/NA & 5 & 469 & 18 & 3298 & 474 & 3316 & 23 & 1.953 & 0.1970 & 1.0000 \\
+Personal services & UK/NA & 4 & 470 & 16 & 3300 & 474 & 3316 & 20 & 1.755 & 0.3032 & 1.0000 \\
+Education & MENA & 2 & 472 & 8 & 3308 & 474 & 3316 & 10 & 1.752 & 0.3614 & 1.0000 \\
+Information and Communication Technologies (ICTs) & CEE & 9 & 465 & 39 & 3277 & 474 & 3316 & 48 & 1.626 & 0.1872 & 1.0000 \\
+Humanities (except languages) & France & 10 & 464 & 45 & 3271 & 474 & 3316 & 55 & 1.567 & 0.2147 & 1.0000 \\
+Humanities (except languages) & UK/NA & 10 & 464 & 45 & 3271 & 474 & 3316 & 55 & 1.567 & 0.2147 & 1.0000 \\
+Journalism and information & Hispanic Countries & 4 & 469 & 18 & 3299 & 473 & 3317 & 22 & 1.563 & 0.3443 & 1.0000 \\
+Journalism and information & MENA & 4 & 470 & 18 & 3298 & 474 & 3316 & 22 & 1.559 & 0.3453 & 1.0000 \\
+Welfare & France & 4 & 470 & 19 & 3297 & 474 & 3316 & 23 & 1.477 & 0.5203 & 1.0000 \\
+Welfare & MENA & 4 & 470 & 19 & 3297 & 474 & 3316 & 23 & 1.477 & 0.5203 & 1.0000 \\
+Information and Communication Technologies (ICTs) & Germany & 8 & 465 & 40 & 3277 & 473 & 3317 & 48 & 1.409 & 0.3769 & 1.0000 \\
+Languages & Hispanic Countries & 4 & 469 & 20 & 3297 & 473 & 3317 & 24 & 1.406 & 0.5307 & 1.0000 \\
+Languages & South/Central Asia & 4 & 470 & 20 & 3296 & 474 & 3316 & 24 & 1.403 & 0.5312 & 1.0000 \\
+Humanities (except languages) & MENA & 9 & 465 & 46 & 3270 & 474 & 3316 & 55 & 1.376 & 0.4082 & 1.0000 \\
+Business and administration & Sub-Saharan Africa & 41 & 433 & 233 & 3083 & 474 & 3316 & 274 & 1.253 & 0.2171 & 1.0000 \\
+Personal services & France & 3 & 471 & 17 & 3299 & 474 & 3316 & 20 & 1.236 & 0.7312 & 1.0000 \\
+Personal services & MENA & 3 & 471 & 17 & 3299 & 474 & 3316 & 20 & 1.236 & 0.7312 & 1.0000 \\
+Personal services & South/Central Asia & 3 & 471 & 17 & 3299 & 474 & 3316 & 20 & 1.236 & 0.7312 & 1.0000 \\
+Personal services & Sub-Saharan Africa & 3 & 471 & 17 & 3299 & 474 & 3316 & 20 & 1.236 & 0.7312 & 1.0000 \\
+Information and Communication Technologies (ICTs) & Sub-Saharan Africa & 7 & 467 & 41 & 3275 & 474 & 3316 & 48 & 1.197 & 0.6589 & 1.0000 \\
+Humanities (except languages) & CEE & 8 & 466 & 47 & 3269 & 474 & 3316 & 55 & 1.194 & 0.6795 & 1.0000 \\
+Health & CEE & 72 & 402 & 434 & 2882 & 474 & 3316 & 506 & 1.189 & 0.2195 & 1.0000 \\
+Business and administration & South/Central Asia & 39 & 435 & 235 & 3081 & 474 & 3316 & 274 & 1.175 & 0.3929 & 1.0000 \\
+Business and administration & CEE & 38 & 436 & 236 & 3080 & 474 & 3316 & 274 & 1.137 & 0.5065 & 1.0000 \\
+Arts & Sub-Saharan Africa & 218 & 256 & 1432 & 1884 & 474 & 3316 & 1650 & 1.120 & 0.2549 & 1.0000 \\
+Social and behavioural sciences & UK/NA & 117 & 357 & 752 & 2564 & 474 & 3316 & 869 & 1.117 & 0.3500 & 1.0000 \\
+Journalism and information & Germany & 3 & 470 & 19 & 3298 & 473 & 3317 & 22 & 1.108 & 0.7495 & 1.0000 \\
+Personal skills and development & CEE & 3 & 471 & 19 & 3297 & 474 & 3316 & 22 & 1.105 & 0.7499 & 1.0000 \\
+Personal skills and development & MENA & 3 & 471 & 19 & 3297 & 474 & 3316 & 22 & 1.105 & 0.7499 & 1.0000 \\
+Personal skills and development & Sub-Saharan Africa & 3 & 471 & 19 & 3297 & 474 & 3316 & 22 & 1.105 & 0.7499 & 1.0000 \\
+Engineering and engineering trades & Sub-Saharan Africa & 34 & 440 & 217 & 3099 & 474 & 3316 & 251 & 1.104 & 0.6212 & 1.0000 \\
+Health & UK/NA & 68 & 406 & 438 & 2878 & 474 & 3316 & 506 & 1.101 & 0.5157 & 1.0000 \\
+Engineering and engineering trades & Germany & 33 & 440 & 218 & 3099 & 473 & 3317 & 251 & 1.066 & 0.7666 & 1.0000 \\
+Engineering and engineering trades & UK/NA & 33 & 441 & 218 & 3098 & 474 & 3316 & 251 & 1.063 & 0.7669 & 1.0000 \\
+Welfare & Hispanic Countries & 3 & 470 & 20 & 3297 & 473 & 3317 & 23 & 1.052 & 1.0000 & 1.0000 \\
+Welfare & South/Central Asia & 3 & 471 & 20 & 3296 & 474 & 3316 & 23 & 1.050 & 1.0000 & 1.0000 \\
+Social and behavioural sciences & Germany & 112 & 361 & 757 & 2560 & 473 & 3317 & 869 & 1.049 & 0.6825 & 1.0000 \\
+Health & Hispanic Countries & 65 & 408 & 441 & 2876 & 473 & 3317 & 506 & 1.039 & 0.7728 & 1.0000 \\
+Health & Sub-Saharan Africa & 65 & 409 & 441 & 2875 & 474 & 3316 & 506 & 1.036 & 0.8285 & 1.0000 \\
+Humanities (except languages) & Germany & 7 & 466 & 48 & 3269 & 473 & 3317 & 55 & 1.023 & 1.0000 & 1.0000 \\
+Arts & MENA & 207 & 267 & 1443 & 1873 & 474 & 3316 & 1650 & 1.006 & 0.9605 & 1.0000 \\
 \bottomrule
-\endlastfoot
-Q1 & Armed forces occupations, other ranks & Hispanic Countries & 3 & 448 & 81 & 3170 & 451 & 3251 & 84 & 0.262 & 0.0105 & 0.6084 & no \\
-Q1 & Handicraft and printing workers & South/Central Asia & 8 & 438 & 145 & 3111 & 446 & 3256 & 153 & 0.392 & 0.0052 & 0.6084 & no \\
-Q1 & Health professionals & United Kingdom / North America & 60 & 397 & 299 & 2946 & 457 & 3245 & 359 & 1.489 & 0.0111 & 0.6084 & no \\
-Q1 & Market-oriented skilled agricultural workers & MENA & 8 & 450 & 20 & 3224 & 458 & 3244 & 28 & 2.866 & 0.0169 & 0.6084 & no \\
-Q1 & Sales workers & France & 0 & 449 & 35 & 3218 & 449 & 3253 & 35 & 0.000 & 0.0174 & 0.6084 & no \\
-Q1 & Sales workers & South/Central Asia & 10 & 436 & 25 & 3231 & 446 & 3256 & 35 & 2.964 & 0.0065 & 0.6084 & no \\
-Q1 & Science and engineering associate professionals & Germany & 9 & 448 & 24 & 3221 & 457 & 3245 & 33 & 2.696 & 0.0156 & 0.6084 & no \\
-Q1 & Science and engineering professionals & MENA & 10 & 448 & 154 & 3090 & 458 & 3244 & 164 & 0.448 & 0.0104 & 0.6084 & no \\
-Q1 & Hospitality, retail and other services managers & Germany & 15 & 442 & 52 & 3193 & 457 & 3245 & 67 & 2.084 & 0.0220 & 0.6814 & no \\
-Q1 & Business and administration professionals & Hispanic Countries & 118 & 333 & 701 & 2550 & 451 & 3251 & 819 & 1.289 & 0.0293 & 0.7442 & no \\
-Q1 & Health associate professionals & MENA & 24 & 434 & 103 & 3141 & 458 & 3244 & 127 & 1.686 & 0.0280 & 0.7442 & no \\
-Q1 & Business and administration associate professionals & MENA & 2 & 456 & 1 & 3243 & 458 & 3244 & 3 & 14.224 & 0.0421 & 0.7827 & no \\
-Q1 & Health professionals & Central/Eastern Europe & 32 & 421 & 327 & 2922 & 453 & 3249 & 359 & 0.679 & 0.0421 & 0.7827 & no \\
-Q1 & Information and communications technology professionals & South/Central Asia & 42 & 404 & 218 & 3038 & 446 & 3256 & 260 & 1.449 & 0.0381 & 0.7827 & no \\
-Q1 & Science and engineering professionals & Germany & 29 & 428 & 135 & 3110 & 457 & 3245 & 164 & 1.561 & 0.0387 & 0.7827 & no \\
-Q1 & Administrative and commercial managers & Central/Eastern Europe & 4 & 449 & 20 & 3229 & 453 & 3249 & 24 & 1.438 & 0.5258 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & France & 5 & 444 & 19 & 3234 & 449 & 3253 & 24 & 1.917 & 0.2017 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & Germany & 3 & 454 & 21 & 3224 & 457 & 3245 & 24 & 1.014 & 1.0000 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & Hispanic Countries & 3 & 448 & 21 & 3230 & 451 & 3251 & 24 & 1.030 & 1.0000 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & MENA & 1 & 457 & 23 & 3221 & 458 & 3244 & 24 & 0.306 & 0.3505 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & South/Central Asia & 0 & 446 & 24 & 3232 & 446 & 3256 & 24 & 0.000 & 0.1055 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & Sub-Saharan Africa & 4 & 451 & 20 & 3227 & 455 & 3247 & 24 & 1.431 & 0.5268 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & United Kingdom / North America & 4 & 453 & 20 & 3225 & 457 & 3245 & 24 & 1.424 & 0.5279 & 1.0000 & no \\
-Q1 & Administrative and commercial managers & Unknown & 0 & 76 & 24 & 3602 & 76 & 3626 & 24 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & Central/Eastern Europe & 14 & 439 & 70 & 3179 & 453 & 3249 & 84 & 1.448 & 0.2356 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & France & 11 & 438 & 73 & 3180 & 449 & 3253 & 84 & 1.094 & 0.7359 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & Germany & 10 & 447 & 74 & 3171 & 457 & 3245 & 84 & 0.959 & 1.0000 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & MENA & 7 & 451 & 77 & 3167 & 458 & 3244 & 84 & 0.638 & 0.3152 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & South/Central Asia & 9 & 437 & 75 & 3181 & 446 & 3256 & 84 & 0.874 & 0.8653 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & Sub-Saharan Africa & 13 & 442 & 71 & 3176 & 455 & 3247 & 84 & 1.316 & 0.3983 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & United Kingdom / North America & 13 & 444 & 71 & 3174 & 457 & 3245 & 84 & 1.309 & 0.3994 & 1.0000 & no \\
-Q1 & Armed forces occupations, other ranks & Unknown & 4 & 72 & 80 & 3546 & 76 & 3626 & 84 & 2.462 & 0.0926 & 1.0000 & no \\
-Q1 & Building and related trades workers & Central/Eastern Europe & 3 & 450 & 28 & 3221 & 453 & 3249 & 31 & 0.767 & 1.0000 & 1.0000 & no \\
-Q1 & Building and related trades workers & France & 4 & 445 & 27 & 3226 & 449 & 3253 & 31 & 1.074 & 0.7847 & 1.0000 & no \\
-Q1 & Building and related trades workers & Germany & 5 & 452 & 26 & 3219 & 457 & 3245 & 31 & 1.370 & 0.5789 & 1.0000 & no \\
-Q1 & Building and related trades workers & Hispanic Countries & 4 & 447 & 27 & 3224 & 451 & 3251 & 31 & 1.069 & 0.7855 & 1.0000 & no \\
-Q1 & Building and related trades workers & MENA & 4 & 454 & 27 & 3217 & 458 & 3244 & 31 & 1.050 & 0.7886 & 1.0000 & no \\
-Q1 & Building and related trades workers & South/Central Asia & 2 & 444 & 29 & 3227 & 446 & 3256 & 31 & 0.501 & 0.5755 & 1.0000 & no \\
-Q1 & Building and related trades workers & Sub-Saharan Africa & 5 & 450 & 26 & 3221 & 455 & 3247 & 31 & 1.376 & 0.5782 & 1.0000 & no \\
-Q1 & Building and related trades workers & United Kingdom / North America & 4 & 453 & 27 & 3218 & 457 & 3245 & 31 & 1.052 & 0.7881 & 1.0000 & no \\
-Q1 & Building and related trades workers & Unknown & 0 & 76 & 31 & 3595 & 76 & 3626 & 31 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Central/Eastern Europe & 0 & 453 & 3 & 3246 & 453 & 3249 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & France & 0 & 449 & 3 & 3250 & 449 & 3253 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Germany & 0 & 457 & 3 & 3242 & 457 & 3245 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Hispanic Countries & 1 & 450 & 2 & 3249 & 451 & 3251 & 3 & 3.610 & 0.3228 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & South/Central Asia & 0 & 446 & 3 & 3253 & 446 & 3256 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Sub-Saharan Africa & 0 & 455 & 3 & 3244 & 455 & 3247 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & United Kingdom / North America & 0 & 457 & 3 & 3242 & 457 & 3245 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration associate professionals & Unknown & 0 & 76 & 3 & 3623 & 76 & 3626 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Business and administration professionals & Central/Eastern Europe & 96 & 357 & 723 & 2526 & 453 & 3249 & 819 & 0.940 & 0.6294 & 1.0000 & no \\
-Q1 & Business and administration professionals & France & 94 & 355 & 725 & 2528 & 449 & 3253 & 819 & 0.923 & 0.5445 & 1.0000 & no \\
-Q1 & Business and administration professionals & Germany & 90 & 367 & 729 & 2516 & 457 & 3245 & 819 & 0.846 & 0.1860 & 1.0000 & no \\
-Q1 & Business and administration professionals & MENA & 93 & 365 & 726 & 2518 & 458 & 3244 & 819 & 0.884 & 0.3363 & 1.0000 & no \\
-Q1 & Business and administration professionals & South/Central Asia & 113 & 333 & 706 & 2550 & 446 & 3256 & 819 & 1.226 & 0.0884 & 1.0000 & no \\
-Q1 & Business and administration professionals & Sub-Saharan Africa & 103 & 352 & 716 & 2531 & 455 & 3247 & 819 & 1.034 & 0.7634 & 1.0000 & no \\
-Q1 & Business and administration professionals & United Kingdom / North America & 97 & 360 & 722 & 2523 & 457 & 3245 & 819 & 0.942 & 0.6735 & 1.0000 & no \\
-Q1 & Business and administration professionals & Unknown & 15 & 61 & 804 & 2822 & 76 & 3626 & 819 & 0.863 & 0.6773 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & Central/Eastern Europe & 6 & 447 & 48 & 3201 & 453 & 3249 & 54 & 0.895 & 1.0000 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & France & 7 & 442 & 47 & 3206 & 449 & 3253 & 54 & 1.080 & 0.8331 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & Germany & 5 & 452 & 49 & 3196 & 457 & 3245 & 54 & 0.722 & 0.6758 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & Hispanic Countries & 5 & 446 & 49 & 3202 & 451 & 3251 & 54 & 0.733 & 0.6751 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & MENA & 7 & 451 & 47 & 3197 & 458 & 3244 & 54 & 1.056 & 0.8355 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & South/Central Asia & 6 & 440 & 48 & 3208 & 446 & 3256 & 54 & 0.911 & 1.0000 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & Sub-Saharan Africa & 6 & 449 & 48 & 3199 & 455 & 3247 & 54 & 0.891 & 1.0000 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & United Kingdom / North America & 10 & 447 & 44 & 3201 & 457 & 3245 & 54 & 1.628 & 0.2062 & 1.0000 & no \\
-Q1 & Commissioned armed forces officers & Unknown & 2 & 74 & 52 & 3574 & 76 & 3626 & 54 & 1.858 & 0.3048 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & Central/Eastern Europe & 2 & 451 & 8 & 3241 & 453 & 3249 & 10 & 1.797 & 0.3510 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & France & 2 & 447 & 8 & 3245 & 449 & 3253 & 10 & 1.815 & 0.3468 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & Germany & 1 & 456 & 9 & 3236 & 457 & 3245 & 10 & 0.788 & 1.0000 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & Hispanic Countries & 0 & 451 & 10 & 3241 & 451 & 3251 & 10 & 0.000 & 0.6212 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & MENA & 1 & 457 & 9 & 3235 & 458 & 3244 & 10 & 0.787 & 1.0000 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & South/Central Asia & 2 & 444 & 8 & 3248 & 446 & 3256 & 10 & 1.829 & 0.3436 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & Sub-Saharan Africa & 0 & 455 & 10 & 3237 & 455 & 3247 & 10 & 0.000 & 0.6220 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & United Kingdom / North America & 2 & 455 & 8 & 3237 & 457 & 3245 & 10 & 1.779 & 0.3552 & 1.0000 & no \\
-Q1 & Drivers and mobile plant operators & Unknown & 0 & 76 & 10 & 3616 & 76 & 3626 & 10 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & Central/Eastern Europe & 0 & 453 & 3 & 3246 & 453 & 3249 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & France & 1 & 448 & 2 & 3251 & 449 & 3253 & 3 & 3.628 & 0.3216 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & Germany & 0 & 457 & 3 & 3242 & 457 & 3245 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & Hispanic Countries & 1 & 450 & 2 & 3249 & 451 & 3251 & 3 & 3.610 & 0.3228 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & MENA & 0 & 458 & 3 & 3241 & 458 & 3244 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & South/Central Asia & 0 & 446 & 3 & 3253 & 446 & 3256 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & Sub-Saharan Africa & 0 & 455 & 3 & 3244 & 455 & 3247 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & United Kingdom / North America & 1 & 456 & 2 & 3243 & 457 & 3245 & 3 & 3.556 & 0.3266 & 1.0000 & no \\
-Q1 & Electrical and electronic trades workers & Unknown & 0 & 76 & 3 & 3623 & 76 & 3626 & 3 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Central/Eastern Europe & 0 & 453 & 2 & 3247 & 453 & 3249 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & France & 1 & 448 & 1 & 3252 & 449 & 3253 & 2 & 7.259 & 0.2279 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Germany & 0 & 457 & 2 & 3243 & 457 & 3245 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Hispanic Countries & 0 & 451 & 2 & 3249 & 451 & 3251 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & MENA & 0 & 458 & 2 & 3242 & 458 & 3244 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & South/Central Asia & 1 & 445 & 1 & 3255 & 446 & 3256 & 2 & 7.315 & 0.2265 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Sub-Saharan Africa & 0 & 455 & 2 & 3245 & 455 & 3247 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & United Kingdom / North America & 0 & 457 & 2 & 3243 & 457 & 3245 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Food processing, woodworking, garment and other craft workers & Unknown & 0 & 76 & 2 & 3624 & 76 & 3626 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Central/Eastern Europe & 0 & 453 & 1 & 3248 & 453 & 3249 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & France & 1 & 448 & 0 & 3253 & 449 & 3253 & 1 & $\infty$ & 0.1213 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Germany & 0 & 457 & 1 & 3244 & 457 & 3245 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Hispanic Countries & 0 & 451 & 1 & 3250 & 451 & 3251 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & MENA & 0 & 458 & 1 & 3243 & 458 & 3244 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & South/Central Asia & 0 & 446 & 1 & 3255 & 446 & 3256 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Sub-Saharan Africa & 0 & 455 & 1 & 3246 & 455 & 3247 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & United Kingdom / North America & 0 & 457 & 1 & 3244 & 457 & 3245 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & General and keyboard clerks & Unknown & 0 & 76 & 1 & 3625 & 76 & 3626 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & Central/Eastern Europe & 21 & 432 & 132 & 3117 & 453 & 3249 & 153 & 1.148 & 0.5301 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & France & 18 & 431 & 135 & 3118 & 449 & 3253 & 153 & 0.965 & 1.0000 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & Germany & 23 & 434 & 130 & 3115 & 457 & 3245 & 153 & 1.270 & 0.3143 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & Hispanic Countries & 18 & 433 & 135 & 3116 & 451 & 3251 & 153 & 0.960 & 1.0000 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & MENA & 22 & 436 & 131 & 3113 & 458 & 3244 & 153 & 1.199 & 0.4510 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & Sub-Saharan Africa & 20 & 435 & 133 & 3114 & 455 & 3247 & 153 & 1.076 & 0.7074 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & United Kingdom / North America & 18 & 439 & 135 & 3110 & 457 & 3245 & 153 & 0.945 & 0.9006 & 1.0000 & no \\
-Q1 & Handicraft and printing workers & Unknown & 5 & 71 & 148 & 3478 & 76 & 3626 & 153 & 1.655 & 0.2432 & 1.0000 & no \\
-Q1 & Health associate professionals & Central/Eastern Europe & 22 & 431 & 105 & 3144 & 453 & 3249 & 127 & 1.528 & 0.0963 & 1.0000 & no \\
-Q1 & Health associate professionals & France & 15 & 434 & 112 & 3141 & 449 & 3253 & 127 & 0.969 & 1.0000 & 1.0000 & no \\
-Q1 & Health associate professionals & Germany & 12 & 445 & 115 & 3130 & 457 & 3245 & 127 & 0.734 & 0.4089 & 1.0000 & no \\
-Q1 & Health associate professionals & Hispanic Countries & 14 & 437 & 113 & 3138 & 451 & 3251 & 127 & 0.890 & 0.7831 & 1.0000 & no \\
-Q1 & Health associate professionals & South/Central Asia & 12 & 434 & 115 & 3141 & 446 & 3256 & 127 & 0.755 & 0.4078 & 1.0000 & no \\
-Q1 & Health associate professionals & Sub-Saharan Africa & 17 & 438 & 110 & 3137 & 455 & 3247 & 127 & 1.107 & 0.6800 & 1.0000 & no \\
-Q1 & Health associate professionals & United Kingdom / North America & 11 & 446 & 116 & 3129 & 457 & 3245 & 127 & 0.665 & 0.2191 & 1.0000 & no \\
-Q1 & Health associate professionals & Unknown & 0 & 76 & 127 & 3499 & 76 & 3626 & 127 & 0.000 & 0.1132 & 1.0000 & no \\
-Q1 & Health professionals & France & 45 & 404 & 314 & 2939 & 449 & 3253 & 359 & 1.043 & 0.7986 & 1.0000 & no \\
-Q1 & Health professionals & Germany & 46 & 411 & 313 & 2932 & 457 & 3245 & 359 & 1.048 & 0.8000 & 1.0000 & no \\
-Q1 & Health professionals & Hispanic Countries & 36 & 415 & 323 & 2928 & 451 & 3251 & 359 & 0.786 & 0.2033 & 1.0000 & no \\
-Q1 & Health professionals & MENA & 46 & 412 & 313 & 2931 & 458 & 3244 & 359 & 1.046 & 0.8002 & 1.0000 & no \\
-Q1 & Health professionals & South/Central Asia & 37 & 409 & 322 & 2934 & 446 & 3256 & 359 & 0.824 & 0.3069 & 1.0000 & no \\
-Q1 & Health professionals & Sub-Saharan Africa & 45 & 410 & 314 & 2933 & 455 & 3247 & 359 & 1.025 & 0.8658 & 1.0000 & no \\
-Q1 & Health professionals & Unknown & 12 & 64 & 347 & 3279 & 76 & 3626 & 359 & 1.772 & 0.0771 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & Central/Eastern Europe & 7 & 446 & 60 & 3189 & 453 & 3249 & 67 & 0.834 & 0.8504 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & France & 7 & 442 & 60 & 3193 & 449 & 3253 & 67 & 0.843 & 0.8501 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & Hispanic Countries & 5 & 446 & 62 & 3189 & 451 & 3251 & 67 & 0.577 & 0.3429 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & MENA & 12 & 446 & 55 & 3189 & 458 & 3244 & 67 & 1.560 & 0.1865 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & South/Central Asia & 7 & 439 & 60 & 3196 & 446 & 3256 & 67 & 0.849 & 0.8500 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & Sub-Saharan Africa & 6 & 449 & 61 & 3186 & 455 & 3247 & 67 & 0.698 & 0.5714 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & United Kingdom / North America & 7 & 450 & 60 & 3185 & 457 & 3245 & 67 & 0.826 & 0.8507 & 1.0000 & no \\
-Q1 & Hospitality, retail and other services managers & Unknown & 1 & 75 & 66 & 3560 & 76 & 3626 & 67 & 0.719 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technicians & Central/Eastern Europe & 0 & 453 & 8 & 3241 & 453 & 3249 & 8 & 0.000 & 0.6070 & 1.0000 & no \\
-Q1 & Information and communications technicians & France & 1 & 448 & 7 & 3246 & 449 & 3253 & 8 & 1.035 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technicians & Germany & 0 & 457 & 8 & 3237 & 457 & 3245 & 8 & 0.000 & 0.6069 & 1.0000 & no \\
-Q1 & Information and communications technicians & Hispanic Countries & 1 & 450 & 7 & 3244 & 451 & 3251 & 8 & 1.030 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technicians & MENA & 2 & 456 & 6 & 3238 & 458 & 3244 & 8 & 2.367 & 0.2596 & 1.0000 & no \\
-Q1 & Information and communications technicians & South/Central Asia & 2 & 444 & 6 & 3250 & 446 & 3256 & 8 & 2.440 & 0.2495 & 1.0000 & no \\
-Q1 & Information and communications technicians & Sub-Saharan Africa & 1 & 454 & 7 & 3240 & 455 & 3247 & 8 & 1.020 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technicians & United Kingdom / North America & 1 & 456 & 7 & 3238 & 457 & 3245 & 8 & 1.014 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technicians & Unknown & 0 & 76 & 8 & 3618 & 76 & 3626 & 8 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & Central/Eastern Europe & 32 & 421 & 228 & 3021 & 453 & 3249 & 260 & 1.007 & 0.9221 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & France & 33 & 416 & 227 & 3026 & 449 & 3253 & 260 & 1.057 & 0.7676 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & Germany & 26 & 431 & 234 & 3011 & 457 & 3245 & 260 & 0.776 & 0.2815 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & Hispanic Countries & 33 & 418 & 227 & 3024 & 451 & 3251 & 260 & 1.052 & 0.7684 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & MENA & 30 & 428 & 230 & 3014 & 458 & 3244 & 260 & 0.919 & 0.7694 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & Sub-Saharan Africa & 35 & 420 & 225 & 3022 & 455 & 3247 & 260 & 1.119 & 0.5565 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & United Kingdom / North America & 26 & 431 & 234 & 3011 & 457 & 3245 & 260 & 0.776 & 0.2815 & 1.0000 & no \\
-Q1 & Information and communications technology professionals & Unknown & 3 & 73 & 257 & 3369 & 76 & 3626 & 260 & 0.539 & 0.3691 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Central/Eastern Europe & 0 & 453 & 1 & 3248 & 453 & 3249 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & France & 0 & 449 & 1 & 3252 & 449 & 3253 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Germany & 0 & 457 & 1 & 3244 & 457 & 3245 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Hispanic Countries & 0 & 451 & 1 & 3250 & 451 & 3251 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & MENA & 0 & 458 & 1 & 3243 & 458 & 3244 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & South/Central Asia & 0 & 446 & 1 & 3255 & 446 & 3256 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Sub-Saharan Africa & 0 & 455 & 1 & 3246 & 455 & 3247 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & United Kingdom / North America & 1 & 456 & 0 & 3245 & 457 & 3245 & 1 & $\infty$ & 0.1234 & 1.0000 & no \\
-Q1 & Laborers in mining, construction, manufacturing and transport & Unknown & 0 & 76 & 1 & 3625 & 76 & 3626 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & Central/Eastern Europe & 15 & 438 & 153 & 3096 & 453 & 3249 & 168 & 0.693 & 0.2270 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & France & 26 & 423 & 142 & 3111 & 449 & 3253 & 168 & 1.347 & 0.1826 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & Germany & 24 & 433 & 144 & 3101 & 457 & 3245 & 168 & 1.194 & 0.4028 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & Hispanic Countries & 21 & 430 & 147 & 3104 & 451 & 3251 & 168 & 1.031 & 0.9038 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & MENA & 25 & 433 & 143 & 3101 & 458 & 3244 & 168 & 1.252 & 0.3362 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & South/Central Asia & 20 & 426 & 148 & 3108 & 446 & 3256 & 168 & 0.986 & 1.0000 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & Sub-Saharan Africa & 21 & 434 & 147 & 3100 & 455 & 3247 & 168 & 1.020 & 0.9044 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & United Kingdom / North America & 13 & 444 & 155 & 3090 & 457 & 3245 & 168 & 0.584 & 0.0709 & 1.0000 & no \\
-Q1 & Legal, social and cultural professionals & Unknown & 3 & 73 & 165 & 3461 & 76 & 3626 & 168 & 0.862 & 1.0000 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Central/Eastern Europe & 1 & 452 & 4 & 3245 & 453 & 3249 & 5 & 1.795 & 0.4795 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & France & 0 & 449 & 5 & 3248 & 449 & 3253 & 5 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Germany & 0 & 457 & 5 & 3240 & 457 & 3245 & 5 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Hispanic Countries & 1 & 450 & 4 & 3247 & 451 & 3251 & 5 & 1.804 & 0.4779 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & MENA & 1 & 457 & 4 & 3240 & 458 & 3244 & 5 & 1.772 & 0.4835 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & South/Central Asia & 1 & 445 & 4 & 3252 & 446 & 3256 & 5 & 1.827 & 0.4739 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Sub-Saharan Africa & 1 & 454 & 4 & 3243 & 455 & 3247 & 5 & 1.786 & 0.4811 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & United Kingdom / North America & 0 & 457 & 5 & 3240 & 457 & 3245 & 5 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Legal, social, cultural and related associate professionals & Unknown & 0 & 76 & 5 & 3621 & 76 & 3626 & 5 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & Central/Eastern Europe & 4 & 449 & 24 & 3225 & 453 & 3249 & 28 & 1.197 & 0.7696 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & France & 1 & 448 & 27 & 3226 & 449 & 3253 & 28 & 0.267 & 0.2439 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & Germany & 5 & 452 & 23 & 3222 & 457 & 3245 & 28 & 1.550 & 0.3812 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & Hispanic Countries & 1 & 450 & 27 & 3224 & 451 & 3251 & 28 & 0.265 & 0.2441 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & South/Central Asia & 2 & 444 & 26 & 3230 & 446 & 3256 & 28 & 0.560 & 0.5691 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & Sub-Saharan Africa & 2 & 453 & 26 & 3221 & 455 & 3247 & 28 & 0.547 & 0.5686 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & United Kingdom / North America & 4 & 453 & 24 & 3221 & 457 & 3245 & 28 & 1.185 & 0.7706 & 1.0000 & no \\
-Q1 & Market-oriented skilled agricultural workers & Unknown & 1 & 75 & 27 & 3599 & 76 & 3626 & 28 & 1.777 & 0.4418 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & Central/Eastern Europe & 2 & 451 & 7 & 3242 & 453 & 3249 & 9 & 2.054 & 0.3035 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & France & 2 & 447 & 7 & 3246 & 449 & 3253 & 9 & 2.075 & 0.2996 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & Germany & 1 & 456 & 8 & 3237 & 457 & 3245 & 9 & 0.887 & 1.0000 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & Hispanic Countries & 0 & 451 & 9 & 3242 & 451 & 3251 & 9 & 0.000 & 0.6118 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & MENA & 1 & 457 & 8 & 3236 & 458 & 3244 & 9 & 0.885 & 1.0000 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & South/Central Asia & 0 & 446 & 9 & 3247 & 446 & 3256 & 9 & 0.000 & 0.6113 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & Sub-Saharan Africa & 1 & 454 & 8 & 3239 & 455 & 3247 & 9 & 0.892 & 1.0000 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & United Kingdom / North America & 2 & 455 & 7 & 3238 & 457 & 3245 & 9 & 2.033 & 0.3073 & 1.0000 & no \\
-Q1 & Metal, machinery and related trades workers & Unknown & 0 & 76 & 9 & 3617 & 76 & 3626 & 9 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & Central/Eastern Europe & 8 & 445 & 44 & 3205 & 453 & 3249 & 52 & 1.309 & 0.5195 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & France & 3 & 446 & 49 & 3204 & 449 & 3253 & 52 & 0.440 & 0.1996 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & Germany & 8 & 449 & 44 & 3201 & 457 & 3245 & 52 & 1.296 & 0.5214 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & Hispanic Countries & 8 & 443 & 44 & 3207 & 451 & 3251 & 52 & 1.316 & 0.5186 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & MENA & 10 & 448 & 42 & 3202 & 458 & 3244 & 52 & 1.702 & 0.1364 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & South/Central Asia & 5 & 441 & 47 & 3209 & 446 & 3256 & 52 & 0.774 & 0.8292 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & Sub-Saharan Africa & 3 & 452 & 49 & 3198 & 455 & 3247 & 52 & 0.433 & 0.2000 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & United Kingdom / North America & 6 & 451 & 46 & 3199 & 457 & 3245 & 52 & 0.925 & 1.0000 & 1.0000 & no \\
-Q1 & Non-commissioned armed forces officers & Unknown & 1 & 75 & 51 & 3575 & 76 & 3626 & 52 & 0.935 & 1.0000 & 1.0000 & no \\
-Q1 & Other clerical support workers & Central/Eastern Europe & 0 & 453 & 6 & 3243 & 453 & 3249 & 6 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Other clerical support workers & France & 1 & 448 & 5 & 3248 & 449 & 3253 & 6 & 1.450 & 0.5399 & 1.0000 & no \\
-Q1 & Other clerical support workers & Germany & 1 & 456 & 5 & 3240 & 457 & 3245 & 6 & 1.421 & 0.5467 & 1.0000 & no \\
-Q1 & Other clerical support workers & Hispanic Countries & 0 & 451 & 6 & 3245 & 451 & 3251 & 6 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Other clerical support workers & MENA & 2 & 456 & 4 & 3240 & 458 & 3244 & 6 & 3.553 & 0.1636 & 1.0000 & no \\
-Q1 & Other clerical support workers & South/Central Asia & 0 & 446 & 6 & 3250 & 446 & 3256 & 6 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Other clerical support workers & Sub-Saharan Africa & 0 & 455 & 6 & 3241 & 455 & 3247 & 6 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Other clerical support workers & United Kingdom / North America & 2 & 455 & 4 & 3241 & 457 & 3245 & 6 & 3.562 & 0.1630 & 1.0000 & no \\
-Q1 & Other clerical support workers & Unknown & 0 & 76 & 6 & 3620 & 76 & 3626 & 6 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Personal care workers & Central/Eastern Europe & 1 & 452 & 8 & 3241 & 453 & 3249 & 9 & 0.896 & 1.0000 & 1.0000 & no \\
-Q1 & Personal care workers & France & 0 & 449 & 9 & 3244 & 449 & 3253 & 9 & 0.000 & 0.6116 & 1.0000 & no \\
-Q1 & Personal care workers & Germany & 0 & 457 & 9 & 3236 & 457 & 3245 & 9 & 0.000 & 0.6124 & 1.0000 & no \\
-Q1 & Personal care workers & Hispanic Countries & 2 & 449 & 7 & 3244 & 451 & 3251 & 9 & 2.064 & 0.3016 & 1.0000 & no \\
-Q1 & Personal care workers & MENA & 3 & 455 & 6 & 3238 & 458 & 3244 & 9 & 3.558 & 0.0894 & 1.0000 & no \\
-Q1 & Personal care workers & South/Central Asia & 0 & 446 & 9 & 3247 & 446 & 3256 & 9 & 0.000 & 0.6113 & 1.0000 & no \\
-Q1 & Personal care workers & Sub-Saharan Africa & 1 & 454 & 8 & 3239 & 455 & 3247 & 9 & 0.892 & 1.0000 & 1.0000 & no \\
-Q1 & Personal care workers & United Kingdom / North America & 2 & 455 & 7 & 3238 & 457 & 3245 & 9 & 2.033 & 0.3073 & 1.0000 & no \\
-Q1 & Personal care workers & Unknown & 0 & 76 & 9 & 3617 & 76 & 3626 & 9 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Personal service workers & Central/Eastern Europe & 116 & 337 & 708 & 2541 & 453 & 3249 & 824 & 1.235 & 0.0706 & 1.0000 & no \\
-Q1 & Personal service workers & France & 106 & 343 & 718 & 2535 & 449 & 3253 & 824 & 1.091 & 0.4679 & 1.0000 & no \\
-Q1 & Personal service workers & Germany & 88 & 369 & 736 & 2509 & 457 & 3245 & 824 & 0.813 & 0.1049 & 1.0000 & no \\
-Q1 & Personal service workers & Hispanic Countries & 94 & 357 & 730 & 2521 & 451 & 3251 & 824 & 0.909 & 0.4688 & 1.0000 & no \\
-Q1 & Personal service workers & MENA & 96 & 362 & 728 & 2516 & 458 & 3244 & 824 & 0.917 & 0.5094 & 1.0000 & no \\
-Q1 & Personal service workers & South/Central Asia & 111 & 335 & 713 & 2543 & 446 & 3256 & 824 & 1.182 & 0.1627 & 1.0000 & no \\
-Q1 & Personal service workers & Sub-Saharan Africa & 111 & 344 & 713 & 2534 & 455 & 3247 & 824 & 1.147 & 0.2529 & 1.0000 & no \\
-Q1 & Personal service workers & United Kingdom / North America & 92 & 365 & 732 & 2513 & 457 & 3245 & 824 & 0.865 & 0.2542 & 1.0000 & no \\
-Q1 & Personal service workers & Unknown & 10 & 66 & 814 & 2812 & 76 & 3626 & 824 & 0.523 & 0.0686 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Central/Eastern Europe & 2 & 451 & 11 & 3238 & 453 & 3249 & 13 & 1.305 & 0.6676 & 1.0000 & no \\
-Q1 & Production and specialized services managers & France & 1 & 448 & 12 & 3241 & 449 & 3253 & 13 & 0.603 & 1.0000 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Germany & 3 & 454 & 10 & 3235 & 457 & 3245 & 13 & 2.138 & 0.2102 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Hispanic Countries & 3 & 448 & 10 & 3241 & 451 & 3251 & 13 & 2.170 & 0.2045 & 1.0000 & no \\
-Q1 & Production and specialized services managers & MENA & 1 & 457 & 12 & 3232 & 458 & 3244 & 13 & 0.589 & 1.0000 & 1.0000 & no \\
-Q1 & Production and specialized services managers & South/Central Asia & 0 & 446 & 13 & 3243 & 446 & 3256 & 13 & 0.000 & 0.3878 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Sub-Saharan Africa & 2 & 453 & 11 & 3236 & 455 & 3247 & 13 & 1.299 & 0.6686 & 1.0000 & no \\
-Q1 & Production and specialized services managers & United Kingdom / North America & 1 & 456 & 12 & 3233 & 457 & 3245 & 13 & 0.591 & 1.0000 & 1.0000 & no \\
-Q1 & Production and specialized services managers & Unknown & 0 & 76 & 13 & 3613 & 76 & 3626 & 13 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Protective services workers & Central/Eastern Europe & 24 & 429 & 184 & 3065 & 453 & 3249 & 208 & 0.932 & 0.8279 & 1.0000 & no \\
-Q1 & Protective services workers & France & 22 & 427 & 186 & 3067 & 449 & 3253 & 208 & 0.850 & 0.5842 & 1.0000 & no \\
-Q1 & Protective services workers & Germany & 30 & 427 & 178 & 3067 & 457 & 3245 & 208 & 1.211 & 0.3302 & 1.0000 & no \\
-Q1 & Protective services workers & Hispanic Countries & 29 & 422 & 179 & 3072 & 451 & 3251 & 208 & 1.179 & 0.4443 & 1.0000 & no \\
-Q1 & Protective services workers & MENA & 23 & 435 & 185 & 3059 & 458 & 3244 & 208 & 0.874 & 0.6642 & 1.0000 & no \\
-Q1 & Protective services workers & South/Central Asia & 25 & 421 & 183 & 3073 & 446 & 3256 & 208 & 0.997 & 1.0000 & 1.0000 & no \\
-Q1 & Protective services workers & Sub-Saharan Africa & 20 & 435 & 188 & 3059 & 455 & 3247 & 208 & 0.748 & 0.2762 & 1.0000 & no \\
-Q1 & Protective services workers & United Kingdom / North America & 28 & 429 & 180 & 3065 & 457 & 3245 & 208 & 1.111 & 0.5882 & 1.0000 & no \\
-Q1 & Protective services workers & Unknown & 7 & 69 & 201 & 3425 & 76 & 3626 & 208 & 1.729 & 0.1988 & 1.0000 & no \\
-Q1 & Sales workers & Central/Eastern Europe & 2 & 451 & 33 & 3216 & 453 & 3249 & 35 & 0.432 & 0.3072 & 1.0000 & no \\
-Q1 & Sales workers & Germany & 4 & 453 & 31 & 3214 & 457 & 3245 & 35 & 0.915 & 1.0000 & 1.0000 & no \\
-Q1 & Sales workers & Hispanic Countries & 7 & 444 & 28 & 3223 & 451 & 3251 & 35 & 1.815 & 0.1865 & 1.0000 & no \\
-Q1 & Sales workers & MENA & 5 & 453 & 30 & 3214 & 458 & 3244 & 35 & 1.182 & 0.6133 & 1.0000 & no \\
-Q1 & Sales workers & Sub-Saharan Africa & 3 & 452 & 32 & 3215 & 455 & 3247 & 35 & 0.667 & 0.7941 & 1.0000 & no \\
-Q1 & Sales workers & United Kingdom / North America & 4 & 453 & 31 & 3214 & 457 & 3245 & 35 & 0.915 & 1.0000 & 1.0000 & no \\
-Q1 & Sales workers & Unknown & 0 & 76 & 35 & 3591 & 76 & 3626 & 35 & 0.000 & 1.0000 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & Central/Eastern Europe & 3 & 450 & 30 & 3219 & 453 & 3249 & 33 & 0.715 & 0.7908 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & France & 5 & 444 & 28 & 3225 & 449 & 3253 & 33 & 1.297 & 0.5890 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & Hispanic Countries & 4 & 447 & 29 & 3222 & 451 & 3251 & 33 & 0.994 & 1.0000 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & MENA & 2 & 456 & 31 & 3213 & 458 & 3244 & 33 & 0.455 & 0.4228 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & South/Central Asia & 2 & 444 & 31 & 3225 & 446 & 3256 & 33 & 0.469 & 0.4213 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & Sub-Saharan Africa & 3 & 452 & 30 & 3217 & 455 & 3247 & 33 & 0.712 & 0.7908 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & United Kingdom / North America & 3 & 454 & 30 & 3215 & 457 & 3245 & 33 & 0.708 & 0.7909 & 1.0000 & no \\
-Q1 & Science and engineering associate professionals & Unknown & 2 & 74 & 31 & 3595 & 76 & 3626 & 33 & 3.134 & 0.1463 & 1.0000 & no \\
-Q1 & Science and engineering professionals & Central/Eastern Europe & 20 & 433 & 144 & 3105 & 453 & 3249 & 164 & 0.996 & 1.0000 & 1.0000 & no \\
-Q1 & Science and engineering professionals & France & 24 & 425 & 140 & 3113 & 449 & 3253 & 164 & 1.256 & 0.3267 & 1.0000 & no \\
-Q1 & Science and engineering professionals & Hispanic Countries & 22 & 429 & 142 & 3109 & 451 & 3251 & 164 & 1.123 & 0.6248 & 1.0000 & no \\
-Q1 & Science and engineering professionals & South/Central Asia & 17 & 429 & 147 & 3109 & 446 & 3256 & 164 & 0.838 & 0.6229 & 1.0000 & no \\
-Q1 & Science and engineering professionals & Sub-Saharan Africa & 16 & 439 & 148 & 3099 & 455 & 3247 & 164 & 0.763 & 0.3935 & 1.0000 & no \\
-Q1 & Science and engineering professionals & United Kingdom / North America & 22 & 435 & 142 & 3103 & 457 & 3245 & 164 & 1.105 & 0.6284 & 1.0000 & no \\
-Q1 & Science and engineering professionals & Unknown & 4 & 72 & 160 & 3466 & 76 & 3626 & 164 & 1.203 & 0.5786 & 1.0000 & no \\
-Q1 & Teaching professionals & Central/Eastern Europe & 16 & 437 & 126 & 3123 & 453 & 3249 & 142 & 0.907 & 0.7950 & 1.0000 & no \\
-Q1 & Teaching professionals & France & 13 & 436 & 129 & 3124 & 449 & 3253 & 142 & 0.722 & 0.3574 & 1.0000 & no \\
-Q1 & Teaching professionals & Germany & 19 & 438 & 123 & 3122 & 457 & 3245 & 142 & 1.101 & 0.6961 & 1.0000 & no \\
-Q1 & Teaching professionals & Hispanic Countries & 17 & 434 & 125 & 3126 & 451 & 3251 & 142 & 0.980 & 1.0000 & 1.0000 & no \\
-Q1 & Teaching professionals & MENA & 20 & 438 & 122 & 3122 & 458 & 3244 & 142 & 1.169 & 0.5158 & 1.0000 & no \\
-Q1 & Teaching professionals & South/Central Asia & 12 & 434 & 130 & 3126 & 446 & 3256 & 142 & 0.665 & 0.2351 & 1.0000 & no \\
-Q1 & Teaching professionals & Sub-Saharan Africa & 16 & 439 & 126 & 3121 & 455 & 3247 & 142 & 0.903 & 0.7950 & 1.0000 & no \\
-Q1 & Teaching professionals & United Kingdom / North America & 23 & 434 & 119 & 3126 & 457 & 3245 & 142 & 1.392 & 0.1531 & 1.0000 & no \\
-Q1 & Teaching professionals & Unknown & 6 & 70 & 136 & 3490 & 76 & 3626 & 142 & 2.200 & 0.0697 & 1.0000 & no \\
-Q2 & Health & MENA & 46 & 428 & 472 & 2921 & 474 & 3393 & 518 & 0.665 & 0.0116 & 0.8548 & no \\
-Q2 & Languages & Germany & 8 & 465 & 17 & 3377 & 473 & 3394 & 25 & 3.418 & 0.0077 & 0.8548 & no \\
-Q2 & Physical sciences & MENA & 2 & 472 & 0 & 3393 & 474 & 3393 & 2 & $\infty$ & 0.0150 & 0.8548 & no \\
-Q2 & Arts & Hispanic Countries & 225 & 248 & 1450 & 1944 & 473 & 3394 & 1675 & 1.216 & 0.0477 & 0.9974 & no \\
-Q2 & Arts & South/Central Asia & 226 & 248 & 1449 & 1944 & 474 & 3393 & 1675 & 1.223 & 0.0425 & 0.9974 & no \\
-Q2 & Arts & United Kingdom / North America & 184 & 290 & 1491 & 1902 & 474 & 3393 & 1675 & 0.809 & 0.0376 & 0.9974 & no \\
-Q2 & Arts & Unknown & 25 & 52 & 1650 & 2140 & 77 & 3790 & 1675 & 0.624 & 0.0625 & 0.9974 & no \\
-Q2 & Information and Communication Technologies (ICTs) & South/Central Asia & 1 & 473 & 48 & 3345 & 474 & 3393 & 49 & 0.147 & 0.0255 & 0.9974 & no \\
-Q2 & Languages & Central/Eastern Europe & 0 & 474 & 25 & 3368 & 474 & 3393 & 25 & 0.000 & 0.0642 & 0.9974 & no \\
-Q2 & Social and behavioural sciences & Sub-Saharan Africa & 92 & 382 & 802 & 2591 & 474 & 3393 & 894 & 0.778 & 0.0418 & 0.9974 & no \\
-Q2 & Social and behavioural sciences & Unknown & 25 & 52 & 869 & 2921 & 77 & 3790 & 894 & 1.616 & 0.0558 & 0.9974 & no \\
-Q2 & Agriculture & Central/Eastern Europe & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & France & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & Germany & 0 & 473 & 1 & 3393 & 473 & 3394 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & Hispanic Countries & 0 & 473 & 1 & 3393 & 473 & 3394 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & MENA & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & South/Central Asia & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & Sub-Saharan Africa & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Agriculture & United Kingdom / North America & 1 & 473 & 0 & 3393 & 474 & 3393 & 1 & $\infty$ & 0.1226 & 1.0000 & no \\
-Q2 & Agriculture & Unknown & 0 & 77 & 1 & 3789 & 77 & 3790 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Arts & Central/Eastern Europe & 200 & 274 & 1475 & 1918 & 474 & 3393 & 1675 & 0.949 & 0.6209 & 1.0000 & no \\
-Q2 & Arts & France & 200 & 274 & 1475 & 1918 & 474 & 3393 & 1675 & 0.949 & 0.6209 & 1.0000 & no \\
-Q2 & Arts & Germany & 190 & 283 & 1485 & 1909 & 473 & 3394 & 1675 & 0.863 & 0.1509 & 1.0000 & no \\
-Q2 & Arts & MENA & 207 & 267 & 1468 & 1925 & 474 & 3393 & 1675 & 1.017 & 0.8821 & 1.0000 & no \\
-Q2 & Arts & Sub-Saharan Africa & 218 & 256 & 1457 & 1936 & 474 & 3393 & 1675 & 1.132 & 0.2162 & 1.0000 & no \\
-Q2 & Biological and related sciences & Central/Eastern Europe & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Biological and related sciences & France & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Biological and related sciences & Germany & 0 & 473 & 4 & 3390 & 473 & 3394 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Biological and related sciences & Hispanic Countries & 1 & 472 & 3 & 3391 & 473 & 3394 & 4 & 2.395 & 0.4067 & 1.0000 & no \\
-Q2 & Biological and related sciences & MENA & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Biological and related sciences & South/Central Asia & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Biological and related sciences & Sub-Saharan Africa & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Biological and related sciences & United Kingdom / North America & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Biological and related sciences & Unknown & 0 & 77 & 4 & 3786 & 77 & 3790 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Business and administration & Central/Eastern Europe & 38 & 436 & 240 & 3153 & 474 & 3393 & 278 & 1.145 & 0.4479 & 1.0000 & no \\
-Q2 & Business and administration & France & 33 & 441 & 245 & 3148 & 474 & 3393 & 278 & 0.961 & 0.9244 & 1.0000 & no \\
-Q2 & Business and administration & Germany & 29 & 444 & 249 & 3145 & 473 & 3394 & 278 & 0.825 & 0.3924 & 1.0000 & no \\
-Q2 & Business and administration & Hispanic Countries & 32 & 441 & 246 & 3148 & 473 & 3394 & 278 & 0.929 & 0.7758 & 1.0000 & no \\
-Q2 & Business and administration & MENA & 30 & 444 & 248 & 3145 & 474 & 3393 & 278 & 0.857 & 0.5063 & 1.0000 & no \\
-Q2 & Business and administration & South/Central Asia & 39 & 435 & 239 & 3154 & 474 & 3393 & 278 & 1.183 & 0.3429 & 1.0000 & no \\
-Q2 & Business and administration & Sub-Saharan Africa & 41 & 433 & 237 & 3156 & 474 & 3393 & 278 & 1.261 & 0.1846 & 1.0000 & no \\
-Q2 & Business and administration & United Kingdom / North America & 32 & 442 & 246 & 3147 & 474 & 3393 & 278 & 0.926 & 0.7759 & 1.0000 & no \\
-Q2 & Business and administration & Unknown & 4 & 73 & 274 & 3516 & 77 & 3790 & 278 & 0.703 & 0.6566 & 1.0000 & no \\
-Q2 & Education & Central/Eastern Europe & 3 & 471 & 7 & 3386 & 474 & 3393 & 10 & 3.081 & 0.1139 & 1.0000 & no \\
-Q2 & Education & France & 0 & 474 & 10 & 3383 & 474 & 3393 & 10 & 0.000 & 0.6218 & 1.0000 & no \\
-Q2 & Education & Germany & 3 & 470 & 7 & 3387 & 473 & 3394 & 10 & 3.088 & 0.1134 & 1.0000 & no \\
-Q2 & Education & Hispanic Countries & 0 & 473 & 10 & 3384 & 473 & 3394 & 10 & 0.000 & 0.6216 & 1.0000 & no \\
-Q2 & Education & MENA & 2 & 472 & 8 & 3385 & 474 & 3393 & 10 & 1.793 & 0.3518 & 1.0000 & no \\
-Q2 & Education & South/Central Asia & 0 & 474 & 10 & 3383 & 474 & 3393 & 10 & 0.000 & 0.6218 & 1.0000 & no \\
-Q2 & Education & Sub-Saharan Africa & 1 & 473 & 9 & 3384 & 474 & 3393 & 10 & 0.795 & 1.0000 & 1.0000 & no \\
-Q2 & Education & United Kingdom / North America & 1 & 473 & 9 & 3384 & 474 & 3393 & 10 & 0.795 & 1.0000 & 1.0000 & no \\
-Q2 & Education & Unknown & 0 & 77 & 10 & 3780 & 77 & 3790 & 10 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & Central/Eastern Europe & 30 & 444 & 227 & 3166 & 474 & 3393 & 257 & 0.942 & 0.8441 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & France & 31 & 443 & 226 & 3167 & 474 & 3393 & 257 & 0.981 & 1.0000 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & Germany & 33 & 440 & 224 & 3170 & 473 & 3394 & 257 & 1.061 & 0.7674 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & Hispanic Countries & 30 & 443 & 227 & 3167 & 473 & 3394 & 257 & 0.945 & 0.8441 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & MENA & 30 & 444 & 227 & 3166 & 474 & 3393 & 257 & 0.942 & 0.8441 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & South/Central Asia & 30 & 444 & 227 & 3166 & 474 & 3393 & 257 & 0.942 & 0.8441 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & Sub-Saharan Africa & 34 & 440 & 223 & 3170 & 474 & 3393 & 257 & 1.098 & 0.6225 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & United Kingdom / North America & 33 & 441 & 224 & 3169 & 474 & 3393 & 257 & 1.059 & 0.7677 & 1.0000 & no \\
-Q2 & Engineering and engineering trades & Unknown & 6 & 71 & 251 & 3539 & 77 & 3790 & 257 & 1.192 & 0.6418 & 1.0000 & no \\
-Q2 & Environment & Central/Eastern Europe & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & France & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & Germany & 0 & 473 & 1 & 3393 & 473 & 3394 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & Hispanic Countries & 0 & 473 & 1 & 3393 & 473 & 3394 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & MENA & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & South/Central Asia & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & Sub-Saharan Africa & 0 & 474 & 1 & 3392 & 474 & 3393 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Environment & United Kingdom / North America & 1 & 473 & 0 & 3393 & 474 & 3393 & 1 & $\infty$ & 0.1226 & 1.0000 & no \\
-Q2 & Environment & Unknown & 0 & 77 & 1 & 3789 & 77 & 3790 & 1 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Health & Central/Eastern Europe & 72 & 402 & 446 & 2947 & 474 & 3393 & 518 & 1.183 & 0.2213 & 1.0000 & no \\
-Q2 & Health & France & 54 & 420 & 464 & 2929 & 474 & 3393 & 518 & 0.812 & 0.1948 & 1.0000 & no \\
-Q2 & Health & Germany & 74 & 399 & 444 & 2950 & 473 & 3394 & 518 & 1.232 & 0.1302 & 1.0000 & no \\
-Q2 & Health & Hispanic Countries & 65 & 408 & 453 & 2941 & 473 & 3394 & 518 & 1.034 & 0.8288 & 1.0000 & no \\
-Q2 & Health & South/Central Asia & 62 & 412 & 456 & 2937 & 474 & 3393 & 518 & 0.969 & 0.8856 & 1.0000 & no \\
-Q2 & Health & Sub-Saharan Africa & 65 & 409 & 453 & 2940 & 474 & 3393 & 518 & 1.031 & 0.8291 & 1.0000 & no \\
-Q2 & Health & United Kingdom / North America & 68 & 406 & 450 & 2943 & 474 & 3393 & 518 & 1.095 & 0.5172 & 1.0000 & no \\
-Q2 & Health & Unknown & 12 & 65 & 506 & 3284 & 77 & 3790 & 518 & 1.198 & 0.6108 & 1.0000 & no \\
-Q2 & Humanities (except languages) & Central/Eastern Europe & 8 & 466 & 49 & 3344 & 474 & 3393 & 57 & 1.172 & 0.6826 & 1.0000 & no \\
-Q2 & Humanities (except languages) & France & 10 & 464 & 47 & 3346 & 474 & 3393 & 57 & 1.534 & 0.2209 & 1.0000 & no \\
-Q2 & Humanities (except languages) & Germany & 7 & 466 & 50 & 3344 & 473 & 3394 & 57 & 1.005 & 1.0000 & 1.0000 & no \\
-Q2 & Humanities (except languages) & Hispanic Countries & 3 & 470 & 54 & 3340 & 473 & 3394 & 57 & 0.395 & 0.1499 & 1.0000 & no \\
-Q2 & Humanities (except languages) & MENA & 9 & 465 & 48 & 3345 & 474 & 3393 & 57 & 1.349 & 0.4136 & 1.0000 & no \\
-Q2 & Humanities (except languages) & South/Central Asia & 3 & 471 & 54 & 3339 & 474 & 3393 & 57 & 0.394 & 0.1501 & 1.0000 & no \\
-Q2 & Humanities (except languages) & Sub-Saharan Africa & 5 & 469 & 52 & 3341 & 474 & 3393 & 57 & 0.685 & 0.5428 & 1.0000 & no \\
-Q2 & Humanities (except languages) & United Kingdom / North America & 10 & 464 & 47 & 3346 & 474 & 3393 & 57 & 1.534 & 0.2209 & 1.0000 & no \\
-Q2 & Humanities (except languages) & Unknown & 2 & 75 & 55 & 3735 & 77 & 3790 & 57 & 1.811 & 0.3146 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & Central/Eastern Europe & 9 & 465 & 40 & 3353 & 474 & 3393 & 49 & 1.622 & 0.1879 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & France & 10 & 464 & 39 & 3354 & 474 & 3393 & 49 & 1.853 & 0.1194 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & Germany & 8 & 465 & 41 & 3353 & 473 & 3394 & 49 & 1.407 & 0.3777 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & Hispanic Countries & 3 & 470 & 46 & 3348 & 473 & 3394 & 49 & 0.465 & 0.2700 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & MENA & 6 & 468 & 43 & 3350 & 474 & 3393 & 49 & 0.999 & 1.0000 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & Sub-Saharan Africa & 7 & 467 & 42 & 3351 & 474 & 3393 & 49 & 1.196 & 0.6594 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & United Kingdom / North America & 4 & 470 & 45 & 3348 & 474 & 3393 & 49 & 0.633 & 0.5114 & 1.0000 & no \\
-Q2 & Information and Communication Technologies (ICTs) & Unknown & 1 & 76 & 48 & 3742 & 77 & 3790 & 49 & 1.026 & 1.0000 & 1.0000 & no \\
-Q2 & Journalism and information & Central/Eastern Europe & 2 & 472 & 21 & 3372 & 474 & 3393 & 23 & 0.680 & 1.0000 & 1.0000 & no \\
-Q2 & Journalism and information & France & 2 & 472 & 21 & 3372 & 474 & 3393 & 23 & 0.680 & 1.0000 & 1.0000 & no \\
-Q2 & Journalism and information & Germany & 3 & 470 & 20 & 3374 & 473 & 3394 & 23 & 1.077 & 0.7552 & 1.0000 & no \\
-Q2 & Journalism and information & Hispanic Countries & 4 & 469 & 19 & 3375 & 473 & 3394 & 23 & 1.515 & 0.5160 & 1.0000 & no \\
-Q2 & Journalism and information & MENA & 4 & 470 & 19 & 3374 & 474 & 3393 & 23 & 1.511 & 0.5164 & 1.0000 & no \\
-Q2 & Journalism and information & South/Central Asia & 1 & 473 & 22 & 3371 & 474 & 3393 & 23 & 0.324 & 0.3493 & 1.0000 & no \\
-Q2 & Journalism and information & Sub-Saharan Africa & 1 & 473 & 22 & 3371 & 474 & 3393 & 23 & 0.324 & 0.3493 & 1.0000 & no \\
-Q2 & Journalism and information & United Kingdom / North America & 5 & 469 & 18 & 3375 & 474 & 3393 & 23 & 1.999 & 0.1910 & 1.0000 & no \\
-Q2 & Journalism and information & Unknown & 1 & 76 & 22 & 3768 & 77 & 3790 & 23 & 2.254 & 0.3712 & 1.0000 & no \\
-Q2 & Languages & France & 1 & 473 & 24 & 3369 & 474 & 3393 & 25 & 0.297 & 0.3540 & 1.0000 & no \\
-Q2 & Languages & Hispanic Countries & 4 & 469 & 21 & 3373 & 473 & 3394 & 25 & 1.370 & 0.5372 & 1.0000 & no \\
-Q2 & Languages & MENA & 3 & 471 & 22 & 3371 & 474 & 3393 & 25 & 0.976 & 1.0000 & 1.0000 & no \\
-Q2 & Languages & South/Central Asia & 4 & 470 & 21 & 3372 & 474 & 3393 & 25 & 1.367 & 0.5378 & 1.0000 & no \\
-Q2 & Languages & Sub-Saharan Africa & 1 & 473 & 24 & 3369 & 474 & 3393 & 25 & 0.297 & 0.3540 & 1.0000 & no \\
-Q2 & Languages & United Kingdom / North America & 3 & 471 & 22 & 3371 & 474 & 3393 & 25 & 0.976 & 1.0000 & 1.0000 & no \\
-Q2 & Languages & Unknown & 1 & 76 & 24 & 3766 & 77 & 3790 & 25 & 2.065 & 0.3961 & 1.0000 & no \\
-Q2 & Manufacturing and processing & Central/Eastern Europe & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Manufacturing and processing & France & 2 & 472 & 2 & 3391 & 474 & 3393 & 4 & 7.184 & 0.0760 & 1.0000 & no \\
-Q2 & Manufacturing and processing & Germany & 0 & 473 & 4 & 3390 & 473 & 3394 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Manufacturing and processing & Hispanic Countries & 0 & 473 & 4 & 3390 & 473 & 3394 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Manufacturing and processing & MENA & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Manufacturing and processing & South/Central Asia & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Manufacturing and processing & Sub-Saharan Africa & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Manufacturing and processing & United Kingdom / North America & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Manufacturing and processing & Unknown & 0 & 77 & 4 & 3786 & 77 & 3790 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Mathematics and statistics & Central/Eastern Europe & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Mathematics and statistics & France & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Mathematics and statistics & Germany & 1 & 472 & 3 & 3391 & 473 & 3394 & 4 & 2.395 & 0.4067 & 1.0000 & no \\
-Q2 & Mathematics and statistics & Hispanic Countries & 0 & 473 & 4 & 3390 & 473 & 3394 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Mathematics and statistics & MENA & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Mathematics and statistics & South/Central Asia & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Mathematics and statistics & Sub-Saharan Africa & 0 & 474 & 4 & 3389 & 474 & 3393 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Mathematics and statistics & United Kingdom / North America & 1 & 473 & 3 & 3390 & 474 & 3393 & 4 & 2.389 & 0.4074 & 1.0000 & no \\
-Q2 & Mathematics and statistics & Unknown & 0 & 77 & 4 & 3786 & 77 & 3790 & 4 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Personal services & Central/Eastern Europe & 1 & 473 & 19 & 3374 & 474 & 3393 & 20 & 0.375 & 0.5003 & 1.0000 & no \\
-Q2 & Personal services & France & 3 & 471 & 17 & 3376 & 474 & 3393 & 20 & 1.265 & 0.7282 & 1.0000 & no \\
-Q2 & Personal services & Germany & 2 & 471 & 18 & 3376 & 473 & 3394 & 20 & 0.796 & 1.0000 & 1.0000 & no \\
-Q2 & Personal services & Hispanic Countries & 1 & 472 & 19 & 3375 & 473 & 3394 & 20 & 0.376 & 0.5003 & 1.0000 & no \\
-Q2 & Personal services & MENA & 3 & 471 & 17 & 3376 & 474 & 3393 & 20 & 1.265 & 0.7282 & 1.0000 & no \\
-Q2 & Personal services & South/Central Asia & 3 & 471 & 17 & 3376 & 474 & 3393 & 20 & 1.265 & 0.7282 & 1.0000 & no \\
-Q2 & Personal services & Sub-Saharan Africa & 3 & 471 & 17 & 3376 & 474 & 3393 & 20 & 1.265 & 0.7282 & 1.0000 & no \\
-Q2 & Personal services & United Kingdom / North America & 4 & 470 & 16 & 3377 & 474 & 3393 & 20 & 1.796 & 0.2962 & 1.0000 & no \\
-Q2 & Personal services & Unknown & 0 & 77 & 20 & 3770 & 77 & 3790 & 20 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Personal skills and development & Central/Eastern Europe & 3 & 471 & 19 & 3374 & 474 & 3393 & 22 & 1.131 & 0.7457 & 1.0000 & no \\
-Q2 & Personal skills and development & France & 1 & 473 & 21 & 3372 & 474 & 3393 & 22 & 0.339 & 0.5086 & 1.0000 & no \\
-Q2 & Personal skills and development & Germany & 2 & 471 & 20 & 3374 & 473 & 3394 & 22 & 0.716 & 1.0000 & 1.0000 & no \\
-Q2 & Personal skills and development & Hispanic Countries & 0 & 473 & 22 & 3372 & 473 & 3394 & 22 & 0.000 & 0.0998 & 1.0000 & no \\
-Q2 & Personal skills and development & MENA & 3 & 471 & 19 & 3374 & 474 & 3393 & 22 & 1.131 & 0.7457 & 1.0000 & no \\
-Q2 & Personal skills and development & South/Central Asia & 5 & 469 & 17 & 3376 & 474 & 3393 & 22 & 2.117 & 0.1787 & 1.0000 & no \\
-Q2 & Personal skills and development & Sub-Saharan Africa & 3 & 471 & 19 & 3374 & 474 & 3393 & 22 & 1.131 & 0.7457 & 1.0000 & no \\
-Q2 & Personal skills and development & United Kingdom / North America & 5 & 469 & 17 & 3376 & 474 & 3393 & 22 & 2.117 & 0.1787 & 1.0000 & no \\
-Q2 & Personal skills and development & Unknown & 0 & 77 & 22 & 3768 & 77 & 3790 & 22 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & Central/Eastern Europe & 0 & 474 & 2 & 3391 & 474 & 3393 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & France & 0 & 474 & 2 & 3391 & 474 & 3393 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & Germany & 0 & 473 & 2 & 3392 & 473 & 3394 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & Hispanic Countries & 0 & 473 & 2 & 3392 & 473 & 3394 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & South/Central Asia & 0 & 474 & 2 & 3391 & 474 & 3393 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & Sub-Saharan Africa & 0 & 474 & 2 & 3391 & 474 & 3393 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & United Kingdom / North America & 0 & 474 & 2 & 3391 & 474 & 3393 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Physical sciences & Unknown & 0 & 77 & 2 & 3788 & 77 & 3790 & 2 & 0.000 & 1.0000 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & Central/Eastern Europe & 105 & 369 & 789 & 2604 & 474 & 3393 & 894 & 0.939 & 0.6418 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & France & 122 & 352 & 772 & 2621 & 474 & 3393 & 894 & 1.177 & 0.1626 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & Germany & 112 & 361 & 782 & 2612 & 473 & 3394 & 894 & 1.036 & 0.7711 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & Hispanic Countries & 102 & 371 & 792 & 2602 & 473 & 3394 & 894 & 0.903 & 0.4154 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & MENA & 123 & 351 & 771 & 2622 & 474 & 3393 & 894 & 1.192 & 0.1303 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & South/Central Asia & 96 & 378 & 798 & 2595 & 474 & 3393 & 894 & 0.826 & 0.1167 & 1.0000 & no \\
-Q2 & Social and behavioural sciences & United Kingdom / North America & 117 & 357 & 777 & 2616 & 474 & 3393 & 894 & 1.103 & 0.3836 & 1.0000 & no \\
-Q2 & Welfare & Central/Eastern Europe & 1 & 473 & 22 & 3371 & 474 & 3393 & 23 & 0.324 & 0.3493 & 1.0000 & no \\
-Q2 & Welfare & France & 4 & 470 & 19 & 3374 & 474 & 3393 & 23 & 1.511 & 0.5164 & 1.0000 & no \\
-Q2 & Welfare & Germany & 1 & 472 & 22 & 3372 & 473 & 3394 & 23 & 0.325 & 0.3494 & 1.0000 & no \\
-Q2 & Welfare & Hispanic Countries & 3 & 470 & 20 & 3374 & 473 & 3394 & 23 & 1.077 & 0.7552 & 1.0000 & no \\
-Q2 & Welfare & MENA & 4 & 470 & 19 & 3374 & 474 & 3393 & 23 & 1.511 & 0.5164 & 1.0000 & no \\
-Q2 & Welfare & South/Central Asia & 3 & 471 & 20 & 3373 & 474 & 3393 & 23 & 1.074 & 0.7557 & 1.0000 & no \\
-Q2 & Welfare & Sub-Saharan Africa & 2 & 472 & 21 & 3372 & 474 & 3393 & 23 & 0.680 & 1.0000 & 1.0000 & no \\
-Q2 & Welfare & United Kingdom / North America & 5 & 469 & 18 & 3375 & 474 & 3393 & 23 & 1.999 & 0.1910 & 1.0000 & no \\
-Q2 & Welfare & Unknown & 0 & 77 & 23 & 3767 & 77 & 3790 & 23 & 0.000 & 1.0000 & 1.0000 & no \\
-\end{longtable}
+\end{tabular}
+\end{table}
+\end{landscape}
