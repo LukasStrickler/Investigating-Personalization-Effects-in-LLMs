@@ -1,37 +1,34 @@
-\begin{longtable}{p{0.18\linewidth}p{0.11\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.035\linewidth}p{0.045\linewidth}p{0.045\linewidth}p{0.045\linewidth}p{0.06\linewidth}p{0.055\linewidth}p{0.055\linewidth}p{0.04\linewidth}}
-\caption{glm-5.2_paid gender significance results for Q2.}\\
-\label{tab:appendix-q2-glm-5.2_paid-gender}\\
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{glm-5.2_paid gender significance results for Q2.}
+\label{tab:appendix-q2-glm-5.2_paid-gender}
 \scriptsize
+\renewcommand{\arraystretch}{0.92}
 \setlength{\tabcolsep}{2pt}
-% //
+\begin{tabular}{p{0.35\linewidth}p{0.1\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.06\linewidth}}
 \toprule
-\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\
+\textbf{Category} & \textbf{class} & \textbf{group in category} & \textbf{group out of category} & \textbf{other in category} & \textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} \\\\
 \midrule
-\endfirsthead
-% //
-\toprule
-\textbf{Category} & \textbf{class} & \textbf{$a$} & \textbf{$b$} & \textbf{$c$} & \textbf{$d$} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} & \textbf{Sig} \\
-\midrule
-\endhead
-\midrule
-\endfoot
+Arts & Female & 1064 & 994 & 263 & 1451 & 2058 & 1714 & 1327 & 5.906 & $10^{-126}$ & $10^{-125}$\textsuperscript{***} \\
+Engineering and engineering trades & Male & 242 & 1472 & 0 & 2058 & 1714 & 2058 & 242 & $\infty$ & $10^{-88}$ & $10^{-87}$\textsuperscript{***} \\
+Business and administration & Male & 241 & 1473 & 2 & 2056 & 1714 & 2058 & 243 & 168.193 & $10^{-83}$ & $10^{-83}$\textsuperscript{***} \\
+Information and Communication Technologies (ICTs) & Male & 85 & 1629 & 0 & 2058 & 1714 & 2058 & 85 & $\infty$ & $10^{-30}$ & $10^{-30}$\textsuperscript{***} \\
+Health & Male & 340 & 1374 & 150 & 1908 & 1714 & 2058 & 490 & 3.148 & $10^{-30}$ & $10^{-30}$\textsuperscript{***} \\
+Humanities (except languages) & Female & 114 & 1944 & 1 & 1713 & 2058 & 1714 & 115 & 100.454 & $10^{-29}$ & $10^{-29}$\textsuperscript{***} \\
+Biological and related sciences & Male & 28 & 1686 & 0 & 2058 & 1714 & 2058 & 28 & $\infty$ & $10^{-10}$ & $10^{-10}$\textsuperscript{***} \\
+Personal services & Male & 15 & 1699 & 0 & 2058 & 1714 & 2058 & 15 & $\infty$ & $10^{-6}$ & $10^{-5}$\textsuperscript{***} \\
+Welfare & Female & 24 & 2034 & 2 & 1712 & 2058 & 1714 & 26 & 10.100 & $10^{-5}$ & $10^{-5}$\textsuperscript{***} \\
+Social and behavioural sciences & Female & 680 & 1378 & 467 & 1247 & 2058 & 1714 & 1147 & 1.318 & 0.0001 & 0.0002\textsuperscript{***} \\
+Languages & Female & 13 & 2045 & 0 & 1714 & 2058 & 1714 & 13 & $\infty$ & 0.0004 & 0.0006\textsuperscript{***} \\
+Mathematics and statistics & Male & 5 & 1709 & 0 & 2058 & 1714 & 2058 & 5 & $\infty$ & 0.0193 & 0.0274\textsuperscript{*} \\
+Education & Male & 7 & 1707 & 1 & 2057 & 1714 & 2058 & 8 & 8.435 & 0.0270 & 0.0353\textsuperscript{*} \\
+Physical sciences & Male & 3 & 1711 & 0 & 2058 & 1714 & 2058 & 3 & $\infty$ & 0.0937 & 0.1138 \\
+Personal skills and development & Male & 8 & 1706 & 4 & 2054 & 1714 & 2058 & 12 & 2.408 & 0.1567 & 0.1776 \\
+Manufacturing and processing & Male & 1 & 1713 & 0 & 2058 & 1714 & 2058 & 1 & $\infty$ & 0.4544 & 0.4828 \\
+Journalism and information & Male & 6 & 1708 & 6 & 2052 & 1714 & 2058 & 12 & 1.201 & 0.7789 & 0.7789 \\
 \bottomrule
-\endlastfoot
-Arts & Female & 1064 & 994 & 263 & 1451 & 2058 & 1714 & 1327 & 5.906 & $10^{-126}$ & $10^{-125}$ & yes \\
-Engineering and engineering trades & Male & 242 & 1472 & 0 & 2058 & 1714 & 2058 & 242 & $\infty$ & $10^{-88}$ & $10^{-87}$ & yes \\
-Business and administration & Male & 241 & 1473 & 2 & 2056 & 1714 & 2058 & 243 & 168.193 & $10^{-83}$ & $10^{-83}$ & yes \\
-Information and Communication Technologies (ICTs) & Male & 85 & 1629 & 0 & 2058 & 1714 & 2058 & 85 & $\infty$ & $10^{-30}$ & $10^{-30}$ & yes \\
-Health & Male & 340 & 1374 & 150 & 1908 & 1714 & 2058 & 490 & 3.148 & $10^{-30}$ & $10^{-30}$ & yes \\
-Humanities (except languages) & Female & 114 & 1944 & 1 & 1713 & 2058 & 1714 & 115 & 100.454 & $10^{-29}$ & $10^{-29}$ & yes \\
-Biological and related sciences & Male & 28 & 1686 & 0 & 2058 & 1714 & 2058 & 28 & $\infty$ & $10^{-10}$ & $10^{-10}$ & yes \\
-Personal services & Male & 15 & 1699 & 0 & 2058 & 1714 & 2058 & 15 & $\infty$ & $10^{-6}$ & $10^{-5}$ & yes \\
-Welfare & Female & 24 & 2034 & 2 & 1712 & 2058 & 1714 & 26 & 10.100 & $10^{-5}$ & $10^{-5}$ & yes \\
-Social and behavioural sciences & Female & 680 & 1378 & 467 & 1247 & 2058 & 1714 & 1147 & 1.318 & 0.0001 & 0.0002 & yes \\
-Languages & Female & 13 & 2045 & 0 & 1714 & 2058 & 1714 & 13 & $\infty$ & 0.0004 & 0.0006 & yes \\
-Mathematics and statistics & Male & 5 & 1709 & 0 & 2058 & 1714 & 2058 & 5 & $\infty$ & 0.0193 & 0.0274 & yes \\
-Education & Male & 7 & 1707 & 1 & 2057 & 1714 & 2058 & 8 & 8.435 & 0.0270 & 0.0353 & yes \\
-Physical sciences & Male & 3 & 1711 & 0 & 2058 & 1714 & 2058 & 3 & $\infty$ & 0.0937 & 0.1138 & no \\
-Personal skills and development & Male & 8 & 1706 & 4 & 2054 & 1714 & 2058 & 12 & 2.408 & 0.1567 & 0.1776 & no \\
-Manufacturing and processing & Male & 1 & 1713 & 0 & 2058 & 1714 & 2058 & 1 & $\infty$ & 0.4544 & 0.4828 & no \\
-Journalism and information & Male & 6 & 1708 & 6 & 2052 & 1714 & 2058 & 12 & 1.201 & 0.7789 & 0.7789 & no \\
-\end{longtable}
+\end{tabular}
+\end{table}
+\end{landscape}
