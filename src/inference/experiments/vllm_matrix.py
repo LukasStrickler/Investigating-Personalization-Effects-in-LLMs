@@ -162,19 +162,19 @@ def load_direct_probing_stage1(
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for persona in all_personas:
         gender = persona["persona"].get("Gender")
-        race = persona["persona"].get("Race")
-        if gender and race:
-            grouped[(gender, race)].append(persona)
+        region = persona["persona"].get("Region")
+        if gender and region:
+            grouped[(gender, region)].append(persona)
 
-    all_races = sorted({race for (_, race) in grouped})
+    all_regions = sorted({region for (_, region) in grouped})
     random.seed(seed)
     sampled: list[dict] = []
-    for race in all_races:
+    for region in all_regions:
         for gender in ["Male", "Female"]:
-            pool = list(grouped[(gender, race)])
+            pool = list(grouped[(gender, region)])
             if len(pool) < sample_per_group:
                 print(
-                    f"WARNING: only {len(pool)} personas for ({gender}, {race}), using all",
+                    f"WARNING: only {len(pool)} personas for ({gender}, {region}), using all",
                     file=sys.stderr,
                 )
                 sampled.extend(pool)
@@ -182,7 +182,7 @@ def load_direct_probing_stage1(
                 sampled.extend(random.sample(pool, sample_per_group))
 
     gender_options = ["Male", "Female"]
-    combined_classes = [f"{g} - {r}" for g in gender_options for r in all_races]
+    combined_classes = [f"{g} - {r}" for g in gender_options for r in all_regions]
     prompts: list[PromptSpec] = [
         {
             "messages": list(persona["messages"])
@@ -190,7 +190,7 @@ def load_direct_probing_stage1(
             "metadata": {
                 "history_id": persona["history_id"],
                 "true_gender": persona["persona"]["Gender"],
-                "true_race": persona["persona"]["Race"],
+                "true_region": persona["persona"]["Region"],
             },
         }
         for persona in sampled

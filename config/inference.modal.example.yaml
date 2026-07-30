@@ -4,10 +4,10 @@
 # (run separately via run_behavioral_audit.py STAGE2_ONLY=True).
 # =============================================================================
 # The `modal` provider targets a DEPLOYED vLLM OpenAI-compatible server on Modal
-# (see experiments/modal_gpu_poc/modal_serve.py). Its URL changes per deploy, so
+# (see scripts/modal/modal_serve.py). Its URL changes per deploy, so
 # set it from the environment:
 #
-#   modal deploy experiments/modal_gpu_poc/modal_serve.py     # prints the *.modal.run URL
+#   modal deploy scripts/modal/modal_serve.py     # prints the *.modal.run URL
 #   export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
 #   export MODAL_API_KEY="EMPTY"        # or the bearer token the server enforces
 #
@@ -17,7 +17,7 @@
 #
 # Throughput: keep provider `max_concurrency` ≈ MODAL_SERVE_MAX_INPUTS × MODAL_SERVE_MAX_CONTAINERS
 # on the deployed server (default deploy: 100 × 1 = 100). For Ministral 3 on multiple L4s use
-# 30 × 6 = 180 — see experiments/modal_gpu_poc/README.md § Throughput.
+# 30 × 6 = 180 — see scripts/modal/README.md § Throughput.
 #
 # `model:` on each modal alias must equal the server's --served-model-name.
 # -----------------------------------------------------------------------------

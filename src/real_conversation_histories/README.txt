@@ -36,14 +36,15 @@ WORKFLOW
 4. IMPORTANT — copy the refreshed personas file to where the experiments
    read it. The file at experiments/behavioral_audit/wildchat_personas.jsonl
    is a duplicate of the one produced here, consumed by:
-     - experiments/run_direct_probing_wildchat.py
+     - experiments/direct_probing/run_direct_probing_wildchat.py
      - experiments/behavioral_audit/run_behavioral_audit_wildchat.py
    It does NOT update automatically: after every rebuild, re-copy it or
    the experiments will silently keep using stale data. From this folder:
 
-     copy wildchat_personas.jsonl ..\experiments\behavioral_audit\wildchat_personas.jsonl
+     cp wildchat_personas.jsonl ../../experiments/behavioral_audit/wildchat_personas.jsonl
 
-   (PowerShell/Windows; on Linux/macOS use `cp` with forward slashes.)
+   (From repo root: cp src/real_conversation_histories/wildchat_personas.jsonl \
+    experiments/behavioral_audit/wildchat_personas.jsonl)
 
 
 SCRIPTS

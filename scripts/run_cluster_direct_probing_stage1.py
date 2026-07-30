@@ -63,7 +63,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--sample-per-group",
         type=int,
         default=10_000,
-        help="direct-probing: personas per (Gender, Race) group.",
+        help="direct-probing: personas per (Gender, Region) group.",
     )
     parser.add_argument(
         "--circuit-breaker-threshold",

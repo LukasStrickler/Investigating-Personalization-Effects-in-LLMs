@@ -18,13 +18,13 @@ Dimension value  ──► indicator combos  ──► LLM call  ──► Backg
 
 ## Current quick run
 
-Only for Gender and Race dimensions including partial personas.
+Only for Gender and Region dimensions including partial personas.
 
 ```
 uv run python -m generate_backgrounds \
   --config config/inference.yaml \
   --model-alias gemma-4-31b \
-  --dimensions Gender Race \
+  --dimensions Gender Region \
   --include-partial \
   --assemble
 ```
@@ -57,7 +57,7 @@ src/generate_backgrounds/
 │
 │ # Dummy data for testing (delete when real data is ready)
 ├── dimension_value_mapping_test/
-│ ├── race.csv
+│ ├── region.csv
 │ ├── age.csv
 │ ├── gender.csv
 │ └── social_status.csv
@@ -68,7 +68,7 @@ src/generate_backgrounds/
 │ ├── Social_Status/
 │ │ └── <timestamp>.jsonl One BackgroundRecord per indicator combo
 │ ├── Age/...
-│ ├── Race/...
+│ ├── Region/...
 │ └── Gender/...
 └── personas/
 └── <timestamp>.jsonl One ConversationHistory per persona × indicator cross
@@ -192,7 +192,7 @@ uv run python -m generate_backgrounds \
 | --------------------- | -------------------------- | ----------------------------------------------------------------------- |
 | `--config`            | required                   | Path to `inference.yaml`                                                |
 | `--model-alias`       | required                   | Model alias from the inference config                                   |
-| `--dimensions`        | all                        | Restrict to specific dimensions (e.g. `--dimensions Gender Race`)       |
+| `--dimensions`        | all                        | Restrict to specific dimensions (e.g. `--dimensions Gender Region`)       |
 | `--mapping-dir`       | `dimension_value_mapping/` | Override data directory (use for test data)                             |
 | `--output-dir`        | `data/backgrounds/`        | Override background output path                                         |
 | `--personas-dir`      | `data/personas/`           | Override persona output path                                            |

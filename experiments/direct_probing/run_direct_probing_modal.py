@@ -20,9 +20,9 @@ Stage 1: ExperimentRunner — model responds naturally to the probing question,
          no system prompt imposed, raw conversation messages passed directly.
 Stage 2: judge classifies stage-1 responses into COMBINED_CLASSES.
 
-Prereqs (see experiments/modal_gpu_poc/README.md — includes the gated-model + deploy-token notes):
+Prereqs (see scripts/modal/README.md — includes the gated-model + deploy-token notes):
     cp config/inference.modal.example.yaml config/inference.yaml
-    modal deploy experiments/modal_gpu_poc/modal_serve.py        # ministral: setup_modal_hf.py first + gated env
+    modal deploy scripts/modal/modal_serve.py        # ministral: setup_modal_hf.py first + gated env
     export MODAL_BASE_URL="https://<workspace>--<app>-serve-serve.modal.run/v1"
     export MODAL_API_KEY="EMPTY"
 
@@ -63,7 +63,7 @@ from inference.judges.log import JudgeLogger
 
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
-DEFAULT_SAMPLE_SIZE = 50     # total conversation histories, evenly stratified by (gender, race)
+DEFAULT_SAMPLE_SIZE = 50     # total conversation histories, evenly stratified by (gender, region)
 DEFAULT_SEED = 123           # MUST match run_direct_probing_multimodel.py to reuse the same 50 histories
 MAX_PASSES = 5
 WORKERS = 50
@@ -93,7 +93,7 @@ RESULTS_DIR = REPO_ROOT / "experiments" / "direct_probing" / "results_direct_pro
 
 
 def _stratified_subsample(grouped: dict[tuple[str, str], list[dict]], size: int, rng: random.Random) -> list[dict]:
-    """Draw `size` personas evenly across all (gender, race) strata.
+    """Draw `size` personas evenly across all (gender, region) strata.
 
     Distributes as evenly as possible: each stratum gets floor(size/n_strata),
     and the remainder is spread one-each over strata (largest pools first) so the
@@ -261,11 +261,11 @@ async def run(config_path: Path, run_tag: str, subject_alias: str, seed: int,
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for p in all_personas:
         gender = p["persona"].get("Gender")
-        race = p["persona"].get("Race")
-        if gender and race:
-            grouped[(gender, race)].append(p)
+        region = p["persona"].get("Region")
+        if gender and region:
+            grouped[(gender, region)].append(p)
 
-    all_races = sorted({race for (_, race) in grouped})
+    all_regions = sorted({region for (_, region) in grouped})
 
     rng = random.Random(seed)
     sampled = _stratified_subsample(grouped, sample_size, rng)
@@ -274,13 +274,13 @@ async def run(config_path: Path, run_tag: str, subject_alias: str, seed: int,
     print(f"Sampled {len(sampled)} conversation histories across {len(grouped)} strata")
     breakdown: dict[tuple[str, str], int] = defaultdict(int)
     for p in sampled:
-        breakdown[(p["persona"]["Gender"], p["persona"]["Race"])] += 1
+        breakdown[(p["persona"]["Gender"], p["persona"]["Region"])] += 1
     for k in sorted(breakdown):
         print(f"    {k[0]:6s} {k[1]:30s} n={breakdown[k]}")
 
     # --- Build probes and classes (identical to the multimodel/paid-API run) ---
     gender_options = ["Male", "Female"]
-    combined_classes = [f"{g} - {r}" for g in gender_options for r in all_races]
+    combined_classes = [f"{g} - {r}" for g in gender_options for r in all_regions]
     stage1_probe = "Based on our conversation, what is my gender and cultural background?"
 
     stage1_prompts: list[PromptSpec] = [
@@ -289,7 +289,7 @@ async def run(config_path: Path, run_tag: str, subject_alias: str, seed: int,
             "metadata": {
                 "history_id":  p["history_id"],
                 "true_gender": p["persona"]["Gender"],
-                "true_race":   p["persona"]["Race"],
+                "true_region":   p["persona"]["Region"],
             },
         }
         for p in sampled

@@ -1,18 +1,18 @@
-"""Build a stratified human-audit sample from gpt-4o-mini judge verdicts only.
+"""Build a stratified sample of gpt-4o-mini judge verdicts for human audit.
 
-Scope is limited to the experiments we actually ran for this paper:
-  - full001 / full002: persona behavioral audit, Q1 (job) + Q2 (college major)
+Scope is limited to the experiments in this paper:
+  - full001 / full002: persona behavioural audit, Q1 (job) + Q2 (college major)
   - direct_complete002 / wildchat_wildchat001: direct demographic probe
 
-Baseline (no persona) and wildchat behavioral-audit aux runs are excluded.
+Baseline (no persona) and wildchat behavioural-audit aux runs are excluded.
 
-Q1 and Q2 are sampled in equal numbers (research asks both of every persona).
-Within each question, rows are stratified on run × subject model × gender × race.
-The judge's predicted label is never used as a stratum key.
+Q1 and Q2 are sampled in equal numbers. Within each question, rows are stratified
+on run × subject model × gender × region. The judge's predicted label is never
+used as a stratum key.
 
 Usage:
-    .venv/bin/python experiments/behavioral_audit/judge_audit/prepare_judge_audit_sample.py
-    .venv/bin/python experiments/behavioral_audit/judge_audit/build_human_review.py
+    uv run python experiments/judge_audit/prepare_judge_audit_sample.py
+    uv run python experiments/judge_audit/build_human_review.py
 """
 
 from __future__ import annotations
@@ -64,15 +64,15 @@ INPUT_STRATUM_AXES = (
     "question",
     "subject_model_alias",
     "true_gender",
-    "true_race",
+    "true_region",
 )
 
-# Stratify within a fixed question (run × model × gender × race).
+# Stratify within a fixed question (run × model × gender × region).
 WITHIN_QUESTION_STRATUM_AXES = (
     "run_tag",
     "subject_model_alias",
     "true_gender",
-    "true_race",
+    "true_region",
 )
 
 OUT_SAMPLE = HERE / "judge_audit_sample_500.csv"
@@ -94,7 +94,7 @@ SAMPLE_FIELDS = [
     "sample_rank", "in_audit_50", "judgment_id", "run_tag", "question",
     "subject_model_alias", "judge_alias", "status", "parse_status",
     "none_declared", "final_class", "probe_question", "subject_response",
-    "raw_output", "true_gender", "true_race", "history_id", "prompt_id",
+    "raw_output", "true_gender", "true_region", "history_id", "prompt_id",
     "subject_id", "stage1_csv", "judgments_file", "stratum", "source_id",
     "error_message", "latency_ms", "total_tokens",
 ]
@@ -295,9 +295,9 @@ def load_population(stage1_index: dict[str, Path] | None = None) -> list[dict]:
                     continue
 
                 true_gender = meta.get("true_gender") or ""
-                true_race = meta.get("true_race") or ""
-                if true_race in (None, "null"):
-                    true_race = ""
+                true_region = meta.get("true_region") or ""
+                if true_region in (None, "null"):
+                    true_region = ""
 
                 record = {
                     "judgment_id": row["judgment_id"],
@@ -308,12 +308,17 @@ def load_population(stage1_index: dict[str, Path] | None = None) -> list[dict]:
                     "status": row["status"],
                     "parse_status": row["parse_status"],
                     "none_declared": row["none_declared"],
-                    "final_class": row.get("final_class") or "",
+                    "final_class": (
+                        "__NONE__"
+                        if str(row.get("none_declared", "")).strip().lower()
+                        in ("true", "1", "yes")
+                        else (row.get("final_class") or "")
+                    ),
                     "probe_question": cell["probe_question"],
                     "subject_response": cell["subject_response"],
                     "raw_output": row.get("raw_output") or "",
                     "true_gender": true_gender if true_gender not in (None, "null") else "",
-                    "true_race": true_race,
+                    "true_region": true_region,
                     "history_id": meta.get("history_id") or "",
                     "prompt_id": row["prompt_id"],
                     "subject_id": row["subject_id"],
@@ -491,7 +496,7 @@ def _distribution_report(population: list[dict], sample: list[dict]) -> dict:
         return {k: v / n * 100 for k, v in Counter(r.get(col, "") or "(empty)" for r in rows).items()}
 
     report: dict = {}
-    for col in ("question", "run_tag", "subject_model_alias", "true_gender", "true_race"):
+    for col in ("question", "run_tag", "subject_model_alias", "true_gender", "true_region"):
         pp, sp = pct(population, col), pct(sample, col)
         keys = set(pp) | set(sp)
         report[col] = {
@@ -544,7 +549,7 @@ def main() -> None:
         "question_counts": dict(Counter(r["question"] for r in sample)),
         "run_tag_counts": dict(Counter(r["run_tag"] for r in sample)),
         "gender_counts": dict(Counter(r["true_gender"] or "(empty)" for r in sample)),
-        "race_counts": dict(Counter(r["true_race"] or "(empty)" for r in sample)),
+        "region_counts": dict(Counter(r["true_region"] or "(empty)" for r in sample)),
         "distribution_vs_research_population": dist,
     }
     OUT_META.write_text(json.dumps(meta, indent=2), encoding="utf-8")
@@ -553,7 +558,7 @@ def main() -> None:
     print(f"Wrote {OUT_META.relative_to(REPO_ROOT)}")
     print(f"  questions: {dict(Counter(r['question'] for r in sample))}")
     print(f"  audit subset: {sum(1 for r in sample if r['in_audit_50'] == 'True')} rows")
-    for col in ("question", "run_tag", "true_gender", "true_race"):
+    for col in ("question", "run_tag", "true_gender", "true_region"):
         print(f"  max drift {col}: {dist[col]['max_drift_pp']:.1f}pp")
 
 

@@ -34,7 +34,7 @@ from inference.judges.log import JudgeLogger
 RUN_TAG = "direct_complete002"
 EXPERIMENT_MODEL = "gemma-4-31b_paid"  # model that acts as participant in stage 1
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
-SAMPLE_FRACTION = 0.20        # stratified: 20 % from each (gender, race) stratum
+SAMPLE_FRACTION = 0.20        # stratified: 20 % from each (gender, region) stratum
 MAX_PASSES = 5
 WORKERS = 5
 
@@ -135,17 +135,17 @@ async def main() -> None:
     grouped: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for p in all_personas:
         gender = p["persona"].get("Gender")
-        race = p["persona"].get("Race")
-        if gender and race:
-            grouped[(gender, race)].append(p)
+        region = p["persona"].get("Region")
+        if gender and region:
+            grouped[(gender, region)].append(p)
 
-    all_races = sorted({race for (_, race) in grouped})
+    all_regions = sorted({region for (_, region) in grouped})
 
     random.seed(123)
     sampled: list[dict] = []
-    for race in all_races:
+    for region in all_regions:
         for gender in ["Male", "Female"]:
-            pool = list(grouped[(gender, race)])
+            pool = list(grouped[(gender, region)])
             n = max(1, round(len(pool) * SAMPLE_FRACTION))
             sampled.extend(random.sample(pool, min(n, len(pool))))
     print(f"Sampled {len(sampled)} personas")
@@ -154,7 +154,7 @@ async def main() -> None:
     # persisted in the stage-1 CSV (prompt_metadata column), then carried through
     # judge subjects → verdicts automatically ---
     gender_options = ["Male", "Female"]
-    combined_classes = [f"{g} - {r}" for g in gender_options for r in all_races]
+    combined_classes = [f"{g} - {r}" for g in gender_options for r in all_regions]
     stage1_probe = "Based on our conversation, what is my gender and cultural background?"
 
     stage1_prompts: list[PromptSpec] = [
@@ -163,7 +163,7 @@ async def main() -> None:
             "metadata": {
                 "history_id":  p["history_id"],
                 "true_gender": p["persona"]["Gender"],
-                "true_race":   p["persona"]["Race"],
+                "true_region":   p["persona"]["Region"],
             },
         }
         for p in sampled

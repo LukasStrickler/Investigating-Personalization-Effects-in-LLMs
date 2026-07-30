@@ -1,20 +1,18 @@
-"""Build the two human-only judge-review sheets from the stratified 500 sample.
+"""Build human-review sheets from the stratified 500-row sample.
 
-No LLM-as-judge cross-check: this produces exactly two CSVs for people to fill in
-by hand, splitting the seed-stratified `judge_audit_sample_500.csv` into:
+Splits `judge_audit_sample_500.csv` into:
 
-* `judge_audit_human_50.csv`  — the 50-row audit subset (in_audit_50 == True)
-* `judge_audit_human_450.csv` — the remaining 450 rows (the stratified complement)
+* `judge_audit_human_50.csv`  — the 50-row subset (`in_audit_50 == True`)
+* `judge_audit_human_450.csv` — the remaining 450 rows
 
-Each row shows, in reading order:
-  input (probe_question) -> subject answer (subject_response) -> allowed labels
-  (options) -> judge label (final_class) -> judge reasoning (raw_output),
-then five blank reviewer columns (rev_1..rev_5) plus a corrected-label / consensus
-/ notes block so we can score the judge's accuracy ourselves.
+Each row shows the probe, subject response, allowed labels, judge label, and
+judge reasoning, then the three-rater annotation fields. Filled rater columns
+on the sample are copied through; a sample without annotations yields blank
+rater fields.
 
 Usage:
-    .venv/bin/python experiments/behavioral_audit/judge_audit/prepare_judge_audit_sample.py
-    .venv/bin/python experiments/behavioral_audit/judge_audit/build_human_review.py
+    uv run python experiments/judge_audit/prepare_judge_audit_sample.py
+    uv run python experiments/judge_audit/build_human_review.py
 """
 
 from __future__ import annotations
@@ -58,14 +56,14 @@ def _load_option_sets() -> dict[str, list[str]]:
         for nf in bf["narrow_fields"]
     ]
 
-    races: set[str] = set()
+    regions: set[str] = set()
     with open(PERSONAS_PATH, encoding="utf-8") as f:
         for line in f:
             p = json.loads(line)["persona"]
-            g, r = p.get("Gender"), p.get("Race")
+            g, r = p.get("Gender"), p.get("Region")
             if g and r:
-                races.add(r)
-    direct = [f"{g} - {r}" for g in ("Male", "Female") for r in sorted(races)]
+                regions.add(r)
+    direct = [f"{g} - {r}" for g in ("Male", "Female") for r in sorted(regions)]
 
     return {
         "q1": q1 + [NONE_SENTINEL],
@@ -74,39 +72,48 @@ def _load_option_sets() -> dict[str, list[str]]:
     }
 
 
-# Trace-back / orientation columns.
 CONTEXT_COLS = [
     "sample_rank", "judgment_id", "run_tag", "question",
     "subject_model_alias", "judge_alias",
 ]
-# The core review payload, in reading order.
 REVIEW_CORE_COLS = [
-    "probe_question",     # INPUT — what the subject model was asked
-    "subject_response",   # OUTPUT — the subject model's answer (what the judge classified)
-    "options",            # the exact allowed labels (incl. __NONE__)
+    "probe_question",
+    "subject_response",
+    "options",
     "n_options",
-    "final_class",        # JUDGE RESPONSE — the label the judge chose (__NONE__ if it declared none)
-    "none_declared",      # True when the judge explicitly picked no class (final_class == __NONE__)
-    "raw_output",         # JUDGE REASONING — the judge's explanation (if any)
+    "final_class",
+    "none_declared",
+    "raw_output",
 ]
-# The five human verdicts + a place to record the corrected label / notes.
 HUMAN_COLS = [
-    "rev_1",              # TRUE = judge's label is the correct best label, FALSE = not
+    "rev_1",
     "rev_2",
     "rev_3",
-    "rev_4",
-    "rev_5",
-    "human_best_label",   # the corrected/consensus label when the judge was wrong
-    "consensus",          # e.g. valid | invalid | 3/5 valid (split)
+    "human_best_label",
+    "consensus",
     "review_notes",
 ]
-# Light provenance tail.
+RATER_COLS = [
+    "rater1_label",
+    "rater2_label",
+    "rater3_label",
+    "rater1_accepted",
+    "rater2_accepted",
+    "rater3_accepted",
+    "consensus_label",
+    "judge_accepted",
+    "n_raters",
+]
 PROVENANCE_COLS = [
-    "true_gender", "true_race", "history_id", "prompt_id", "subject_id",
+    "true_gender", "true_region", "history_id", "prompt_id", "subject_id",
     "stratum", "source_id",
 ]
 
-FIELDNAMES = CONTEXT_COLS + REVIEW_CORE_COLS + HUMAN_COLS + PROVENANCE_COLS
+FIELDNAMES = CONTEXT_COLS + REVIEW_CORE_COLS + HUMAN_COLS + RATER_COLS + PROVENANCE_COLS
+
+
+def _bool_str(v: str) -> str:
+    return "True" if str(v).strip().lower() in ("true", "1", "yes") else "False"
 
 
 def _build_row(r: dict, option_sets: dict[str, list[str]]) -> dict:
@@ -115,9 +122,6 @@ def _build_row(r: dict, option_sets: dict[str, list[str]]) -> dict:
     if opts is None:
         print(f"WARNING: no option set for question={q!r} (rank {r['sample_rank']})", file=sys.stderr)
         opts = [NONE_SENTINEL]
-    # A judge that declared no class shows up as an empty final_class + none_declared;
-    # surface it as the __NONE__ sentinel (a real member of the option set) so a
-    # reviewer can agree/disagree instead of staring at a blank cell.
     none_declared = str(r.get("none_declared", "")).strip().lower() in ("true", "1", "yes")
     judge_label = NONE_SENTINEL if none_declared else r["final_class"]
 
@@ -129,8 +133,21 @@ def _build_row(r: dict, option_sets: dict[str, list[str]]) -> dict:
     out["final_class"] = judge_label
     out["none_declared"] = "True" if none_declared else "False"
     out["raw_output"] = r["raw_output"]
-    for c in HUMAN_COLS:
-        out[c] = ""
+
+    for c in RATER_COLS:
+        out[c] = r.get(c, "")
+
+    has_raters = bool(str(r.get("rater1_label", "")).strip())
+    if has_raters:
+        for i in (1, 2, 3):
+            out[f"rev_{i}"] = _bool_str(r.get(f"rater{i}_accepted", ""))
+        out["human_best_label"] = r.get("consensus_label", "")
+        out["consensus"] = r.get("consensus_label", "")
+        out["review_notes"] = r.get("review_notes", "")
+    else:
+        for c in HUMAN_COLS:
+            out[c] = ""
+
     for c in PROVENANCE_COLS:
         out[c] = r.get(c, "")
     return out
@@ -162,7 +179,7 @@ def main() -> None:
 
     print(f"Wrote {OUT_50.relative_to(REPO_ROOT)}  ({len(audit)} rows, {len(FIELDNAMES)} cols)")
     print(f"Wrote {OUT_450.relative_to(REPO_ROOT)}  ({len(rest)} rows, {len(FIELDNAMES)} cols)")
-    print("Question representation (should track across all three):")
+    print("Question representation:")
     dist("500", rows)
     dist("50", audit)
     dist("450", rest)

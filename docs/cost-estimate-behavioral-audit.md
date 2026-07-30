@@ -20,7 +20,7 @@ in **hours**, not days — provided we make two decisions up front.
 All figures below are grounded: input tokens were counted exactly over the persona
 corpus with `tiktoken`; output lengths were measured from a live 20-samples-per-model
 OpenRouter calibration; every price was read from OpenRouter's `/api/v1/models`
-endpoint. Numbers are reproducible via `python experiments/estimate_cost.py
+endpoint. Numbers are reproducible via `python scripts/estimate_cost.py
 --report-only` (machine-readable output in `logs/cost-calibration/estimate.json`).
 
 ---
@@ -34,7 +34,7 @@ Two-stage protocol:
 2. **Judging (Stage 2).** The Nemotron judge classifies **every** Stage-1 response
    into a fixed label set — one judge call per response.
 
-**Sample:** 1,600 personas (8 races × 2 genders × 100 per group, seed 42).
+**Sample:** 1,600 personas (8 regions × 2 genders × 100 per group, seed 42).
 
 **The two questions** (asked of every persona):
 
@@ -176,7 +176,7 @@ paid too; it costs $1.48.)
   to recover a $2 line item is a bad trade: the compute, setup, and maintenance dwarf
   the saving, and a single extra open model adds little to the audit. **Exclude it for
   now**; if a hosted (paid) endpoint appears later, add it back with
-  `python experiments/estimate_cost.py --models olmo-3-32b-think` and re-price.
+  `python scripts/estimate_cost.py --models olmo-3-32b-think` and re-price.
 - **Treat open-source breadth as a separate workstream, not a rider on this run.** If
   we later want broader open-source coverage, source models that already have hosted
   endpoints (e.g. other Nemotron / Qwen variants) rather than operating our own
@@ -195,7 +195,7 @@ paid too; it costs $1.48.)
 - Output figures come from 20 samples/model; means are stable but treat them as ±10%.
 - Prices are spot values read from OpenRouter on the estimation date and can move.
 - The estimate assumes one judge pass per response; retries add to the count.
-- Re-measure any time with `python experiments/estimate_cost.py --per-question N`
+- Re-measure any time with `python scripts/estimate_cost.py --per-question N`
   (samples the live API, hard cap 50/model) or recompute from the stored sample with
   `--report-only`. The script emits numbers only; this document is maintained by hand.
 

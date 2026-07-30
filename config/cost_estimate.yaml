@@ -1,5 +1,5 @@
 # =============================================================================
-# Cost-Estimation Config (standalone — used ONLY by experiments/estimate_cost.py)
+# Cost-Estimation Config (standalone — used ONLY by scripts/estimate_cost.py)
 # =============================================================================
 # This file is intentionally separate from config/inference.yaml so the estimation
 # never touches the production config or the behavioral_audit notebook.

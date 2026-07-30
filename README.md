@@ -1,160 +1,190 @@
-# Investigating-Personalization-Effects-in-LLMs
+# Investigating Personalization Effects in LLMs
 
-A team research project at the University of Mannheim examining whether LLMs infer user identity from conversation history and whether those inferences alter downstream advice, recommendation, and other high-impact responses.
+Do LLMs infer user identity from multi-turn conversation history, and does that
+change job and college-major advice?
 
-## Prerequisites
+This repo holds the study's data, experiment code, committed model outputs, and
+notebooks that reproduce the paper's main Results figures. Start with the
+research questions below; setup and re-runs come later.
 
-- Python 3.10+
-- [uv](https://docs.astral.sh/uv/) — see [docs/uv.md](docs/uv.md) for a short overview.
+University of Mannheim research project. License: [MIT](LICENSE).
 
-## Quick Start
+## Research questions
 
-### uv
+| RQ | Question | What we measure |
+| --- | --- | --- |
+| **RQ1** | Can models infer gender and region from conversation history? | Direct probing (ask the model outright) and linear probes on hidden-state activations |
+| **RQ2** | Do those inferences change recommendations? | Behavioral audit of job recommendations and college-major recommendations |
+
+### Data and pipeline (brief)
+
+We build about 3,869 synthetic multi-turn conversation histories from **26
+personas** (16 full gender × region cells, plus gender-only and region-only
+partials; see [`docs/combination_analysis.md`](docs/combination_analysis.md)).
+Identity cues include names, music, hobbies, and movies. We also keep 50
+[WildChat](https://huggingface.co/datasets/allenai/WildChat-1M) histories as a
+real-world check.
+
+Each **subject model** (the LLM under study) answers in free text. A separate
+**LLM judge** (GPT-4o-mini via OpenRouter) maps answers
+onto standard taxonomies: [ISCO-08](https://www.ilo.org/publications/international-standard-classification-occupations-2008-isco-08) job groups and
+[ISCED-F 2013](https://uis.unesco.org/sites/default/files/documents/isced-fields-of-education-and-training-2013-en.pdf)
+fields of study. Refusals and unclear answers get a reserved None-style label
+(`__NONE__` in direct-probing CSVs).
+
+Experiment runners write two CSV stages:
+
+1. **Stage 1** - the subject model's free-text answer
+2. **Stage 2** - the judge's structured label
+
+Eval notebooks and [`finalresults.ipynb`](finalresults.ipynb) only read those
+outputs (or committed `results_*`). Live runs go to gitignored `logs/`.
+
+### Headline pattern
+
+Gender and region are both easy to recover under direct probing. Gender shifts
+job and major recommendations across models. Region mostly does not, even when
+region is still easy to infer.
+
+## Repository map
+
+Click a name to open its README (or best guide). `run_*.py` writes CSVs;
+`eval_*.ipynb` / [`finalresults.ipynb`](finalresults.ipynb) only read them.
+
+- [`finalresults.ipynb`](finalresults.ipynb) - main Results figures
+- [`experiments/`](experiments/README.md)
+  - [`direct_probing/`](experiments/direct_probing/README.md) - RQ1 ask gender / region
+  - [`internal_representation/`](experiments/internal_representation/README.md) - RQ1 hidden-state probes
+  - [`behavioral_audit/`](experiments/behavioral_audit/README.md) - RQ2 job / major audit
+  - [`judge_audit/`](experiments/judge_audit/README.md) — human-rater validation of the stage-2 judge
+- `src/`
+  - [`generate_backgrounds/`](src/generate_backgrounds/README.md) - synthetic personas
+  - [`real_conversation_histories/`](src/real_conversation_histories/README.txt) - WildChat extraction
+  - [`inference/`](docs/architecture.md) - shared client
+- [`scripts/`](scripts/README.md)
+  - [`slurm/`](docs/running-vllm-on-clusters.md) - cluster launchers
+  - [`modal/`](scripts/modal/README.md) - Modal setup + deploy
+  - [`estimate_cost.py`](scripts/estimate_cost.py)
+- [`config/`](config/README.md) · [`docs/`](docs/README.md) · [`examples/`](examples/README.md) · [`tests/`](tests/)
+
+## Methods by research question
+
+### RQ1: identity inference
+
+**Direct probing** asks the subject model to state the user's gender and region
+from the history; the judge maps the free-text guess. Committed judgments for
+analysis:
+[`stage2/postprocessed/`](experiments/direct_probing/results_direct_probing/stage2/postprocessed/).
+How refusals become `__NONE__`, plus per-run notebooks:
+[`experiments/direct_probing/README.md`](experiments/direct_probing/README.md).
+
+**Internal probes** train simple linear classifiers on the model's hidden
+states (no fine-tuning). Report layer-sweep figures use
+[`results_modal_gemma4_31b_sweep_v4/`](experiments/internal_representation/results_modal_gemma4_31b_sweep_v4/).
+Other committed Modal runs (Gemma 4 31B / E2B, Ministral 3 8B, ablation):
+[`experiments/internal_representation/README.md`](experiments/internal_representation/README.md).
+
+### RQ2: behavioral audit
+
+The same histories end with a job or college-major question. Stage 1 is subject
+advice; stage 2 is the judge mapping into the taxonomies under
+`indicator_hierarchy/`. Canonical committed tree (prefer this over any top-level
+partial copies):
+[`results_behavioral_audit/`](experiments/behavioral_audit/results_behavioral_audit/).
+
+Subjects in the committed runs: Gemma 4 31B, DeepSeek V4 Flash, Grok 4.3, and
+GLM-5.2 (via OpenRouter); Gemma 4 E2B and Ministral 3 8B (via Modal); plus
+no-persona baselines. Layout, WildChat, and eval notebooks:
+[`experiments/behavioral_audit/README.md`](experiments/behavioral_audit/README.md).
+
+[`finalresults.ipynb`](finalresults.ipynb) is the entry point for the main Results
+plots across RQ1 and RQ2. Appendix / baseline / ablation plots stay in the
+per-experiment `eval_*.ipynb` notebooks.
+
+## Getting started
+
+### Main path: rebuild Results figures
+
+No API key and no GPU. This is enough to inspect the study outputs:
 
 ```bash
 uv sync
-cp .env.example .env
-# Edit .env and add your API keys
+uv run jupyter lab finalresults.ipynb
 ```
 
-`uv sync` installs the core inference stack **and the evaluation-notebook
-dependencies** (matplotlib, mpmath, ipykernel). Some subsystems need extra
-dependency groups — install the one(s) you need (or `--all-extras` for everything):
+[`finalresults.ipynb`](finalresults.ipynb) reads the committed CSVs linked under
+[Methods](#methods-by-research-question) and regenerates the main Results plots
+for direct probing, internal probing, the behavioral audit, and WildChat. It
+does not call models. Appendix, baseline, and ablation plots live in the
+per-experiment `eval_*.ipynb` notebooks.
+
+Merged significance tables live in
+[`experiments/behavioral_audit/README.md`](experiments/behavioral_audit/README.md).
+
+### Setup (when you need more than figures)
+
+- Python 3.10+
+- [uv](https://docs.astral.sh/uv/) ([project notes](docs/uv.md))
 
 ```bash
-uv sync                        # core + eval notebooks (behavioral-audit, direct-probing, finalresults)
-uv sync --extra internal-rep   # internal_representation_personas/ (torch, transformers, sklearn)
-uv sync --extra dev            # tests + linting (pytest, ruff, mypy)
-uv sync --all-extras           # everything above (large — pulls torch/transformers)
+uv sync                        # finalresults + runners + eval notebooks
+uv sync --extra internal-rep   # activation probes (torch / transformers)
+uv sync --extra modal          # Modal deploy SDK
+uv sync --extra vllm           # local/cluster vLLM server package
+uv sync --extra dev            # pytest, ruff, mypy
 ```
 
-| Extra            | Covers                                                                                                     | Key packages                                                          |
-| ---------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| _(core)_         | `src/inference`, `src/generate_backgrounds`, `experiments/*` runners, eval notebooks + significance tables | pandas, litellm, pydantic, numpy, tqdm, matplotlib, mpmath, ipykernel |
-| `internal-rep`   | `internal_representation_personas/` activation probing                                                     | torch, transformers, scikit-learn, huggingface-hub, joblib            |
-| `dev`            | test suite + linters                                                                                       | pytest, ruff, mypy                                                    |
-| `vllm` / `modal` | optional cluster / Modal serving                                                                           | vllm, modal                                                           |
+| Extra | Needed for |
+| --- | --- |
+| (core) | `finalresults.ipynb`, OpenRouter runners, eval notebooks |
+| `internal-rep` | Re-running activation probes |
+| `modal` / `vllm` | Optional GPU serving |
+| `dev` | Tests and linting |
 
-### Final results
+### Optional: re-run inference
 
-[`finalresults.ipynb`](finalresults.ipynb) (repo root) collects the figures and tables used in the report
-for each Results subsection into one notebook: **Direct Probing**, **Internal Probing**,
-**Behavioral Audit** (general + per-model gender/region), and **Real Conversation
-Histories (WildChat)**. It reads the computed result data CSVs. `uv sync` is all that is needed to open and run it.
-
-## Architecture
-
-The project has three inference layers. Start with the runtime layer when you
-need direct model calls, use the experiments layer for prompt x model matrices,
-and use the judge layer to evaluate responses.
-
-```mermaid
-flowchart TD
-    Runtime[Runtime inference layer]
-    Experiments[Experiment layer]
-    Judges[Judge layer]
-    Artifacts[CSV / JSONL outputs]
-
-    Runtime --> Experiments
-    Runtime --> Judges
-    Experiments --> Judges
-    Experiments --> Artifacts
-    Judges --> Artifacts
-```
-
-| Layer                               | Use it for                                       | Main inputs                                                | Main outputs                                       |
-| ----------------------------------- | ------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------- |
-| Runtime `inference`                 | One-off calls, custom scripts, resumable batches | `config/inference.yaml`, model aliases, `InferenceRequest` | `InferenceResult`, runtime logs, batch checkpoints |
-| Experiments `inference.experiments` | Prompt x model matrices                          | Prompt specs, model aliases, `ExperimentConfig`            | Experiment CSV, raw dataframe, analysis dataframe  |
-| Judges `inference.judges`           | LLM-based evaluation and classification          | Judge subjects, judge aliases, `JudgeConfig`               | Judgment CSV, verdict dataframe                    |
-
-Typical data flow:
-
-1. Configure providers and model aliases in `config/inference.yaml`.
-2. Use runtime calls directly, or let the experiment and judge layers call the
-   runtime for you.
-3. Run experiments to create durable prompt x model CSV matrices.
-4. Convert successful experiment cells into judge subjects when you need
-   evaluation.
-5. Analyze experiment and judgment dataframes in notebooks or scripts.
-
-Optional persona/background generation lives upstream of experiments. It creates
-conversation histories that can be passed into experiment prompt specs as
-multi-turn context.
-
-Read **[Architecture Overview](docs/architecture.md)** for the full code and
-data-flow map, including how model aliases, experiment cells, resume behavior,
-and judge verdicts fit together.
-
-## Repository structure
-
-Links point to each directory's own README.
-
-- **`src/`**
-    - [`inference/`](src/inference/) — core runtime: model calls, batching, judges (the inference layer)
-    - [`generate_backgrounds/`](src/generate_backgrounds/README.md) — persona conversation-history generation
-    - [`real_conversation_histories/`](src/real_conversation_histories/README.txt) — WildChat real-conversation extraction
-- [**`experiments/`**](experiments/README.md) — experiment harnesses
-    - [`behavioral_audit/`](experiments/behavioral_audit/README.md) — does persona gender/region shift the advice?
-    - [`direct_probing/`](experiments/direct_probing/README.md) — can a model infer gender/region from the chat?
-    - [`judge_audit/`](experiments/judge_audit/) — human validation of the LLM judge
-    - [`modal_gpu_poc/`](experiments/modal_gpu_poc/README.md) — serve subject models on Modal GPUs
-- [**`internal_representation_personas/`**](internal_representation_personas/README.md) — probing classifiers over model activations
-- [`finalresults.ipynb`](finalresults.ipynb) — collected figures/tables for the write-up
-- [**`config/`**](config/README.md) — provider / alias / rate-limit config
-- [**`docs/`**](docs/README.md) — reference docs
-- [**`examples/`**](examples/README.md) — runnable example notebooks per layer
-- [**`scripts/`**](scripts/README.md) — standalone helper scripts
-- [**`slurm/`**](slurm/README.md) — cluster batch job scripts
-- **`tests/`** — pytest suite
-- **`logs/`** — gitignored run artifacts
-- **`pyproject.toml`** — dependencies + tooling config
-
-## Documentation
-
-- **[Architecture Overview](docs/architecture.md)** — how runtime, experiments, judges, and artifacts connect
-- **[Experiments Usage Guide](docs/experiments-usage.md)** — matrices, resume, `prompt_metadata` tracking
-- **[Behavioral audit cost estimate](docs/cost-estimate-behavioral-audit.md)** — scope and pricing; calibrate with `experiments/estimate_cost.py`
-- **[Provider Configuration](config/inference.example.yaml)** — provider, alias, retry, rate-limit, and output-path config
-- **[Background Generation](src/generate_backgrounds/README.md)** — optional persona conversation-history generation
-- **[Combination Analysis](docs/combination_analysis.md)** — the persona indicator-combination space
-- **[vLLM on bwUniCluster / Helix](docs/running-vllm-on-clusters.md)** — cluster batch and local GPU setup
-- **[Subject models on Modal GPUs](experiments/modal_gpu_poc/README.md)** — self-host on rented GPUs; full and persona-free **baseline** run/reproduce steps
-
-## Examples
-
-See [`examples/`](examples/):
-
-**Example Notebooks (Start Here)**
-
-- [`inference_example.ipynb`](examples/inference_example.ipynb) — runtime layer: single completion, batch processing, error handling
-- [`experiments_example.ipynb`](examples/experiments_example.ipynb) — experiments layer: prompt x model matrices, resume/extend
-- [`llm_judge_example.ipynb`](examples/llm_judge_example.ipynb) — judge layer: subjects, configs, verdict dataframes
-
-**Research runs:** [`behavioral_audit.ipynb`](experiments/behavioral_audit.ipynb), [`direct_probing.ipynb`](experiments/direct_probing.ipynb)
-
-Recommended onboarding order:
-
-1. Read [Architecture Overview](docs/architecture.md).
-2. Run [`examples/inference_example.ipynb`](examples/inference_example.ipynb).
-3. Run [`examples/experiments_example.ipynb`](examples/experiments_example.ipynb).
-4. Run [`examples/llm_judge_example.ipynb`](examples/llm_judge_example.ipynb) when you need evaluation.
-
-Default output locations:
-
-- Runtime logs: `logs/inference.jsonl`
-- Batch checkpoints: `checkpoints/batch.jsonl`
-- Experiment matrices: `logs/<experiment_name>/<timestamp>.csv`
-- Judge verdicts: `logs/judges/<experiment_name>.judgments.csv`
+Only if you want **new** model outputs. Costly; Modal/Slurm need GPUs. Not
+required for `finalresults.ipynb`.
 
 ```bash
-jupyter lab
+cp .env.example .env                                    # set OPENROUTER_API_KEY
+cp config/inference.example.yaml config/inference.yaml  # or .modal. / .vllm. examples
 ```
+
+Config aliases: [`config/README.md`](config/README.md). Then pick a runner:
+
+| Experiment | Start here |
+| --- | --- |
+| RQ1 direct probing | [`experiments/direct_probing/README.md`](experiments/direct_probing/README.md) |
+| RQ1 internal probes | [`experiments/internal_representation/README.md`](experiments/internal_representation/README.md) |
+| RQ2 behavioral audit | [`experiments/behavioral_audit/README.md`](experiments/behavioral_audit/README.md) |
+
+Compute backends:
+
+- OpenRouter (API): copy `inference.example.yaml`, set the key, run the OpenRouter
+  `run_*.py` scripts in the experiment folder
+- Modal (GPU): [`scripts/modal/README.md`](scripts/modal/README.md)
+- Cluster vLLM: [`docs/running-vllm-on-clusters.md`](docs/running-vllm-on-clusters.md)
+- Cost ballpark: [`scripts/estimate_cost.py`](scripts/estimate_cost.py)
+
+Persona / WildChat regeneration is also optional; see the `src/` READMEs in the
+map above.
 
 ## Development
 
 ```bash
-pytest tests -q
-mypy src --ignore-missing-imports
-ruff check .
+uv sync --extra dev
+uv run pytest tests -q
+uv run mypy src --ignore-missing-imports
+uv run ruff check .
 ```
+
+## Further reading
+
+| Doc | Covers |
+| --- | --- |
+| [`docs/combination_analysis.md`](docs/combination_analysis.md) | Persona combination space (full vs partial) |
+| [`docs/experiments-usage.md`](docs/experiments-usage.md) | Inference harness API (matrices, resume) |
+| [`docs/uv.md`](docs/uv.md) | `uv` workflow and extras |
+| [`examples/`](examples/README.md) | Small library notebooks |
+| [`docs/README.md`](docs/README.md) | Full documentation index |

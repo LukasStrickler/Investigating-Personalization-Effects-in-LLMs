@@ -1,15 +1,13 @@
-"""Audit the generated human-review CSVs and report their distribution.
+"""Audit the judge-audit CSVs and report their distribution.
 
-Runs a set of hard integrity checks (schema, counts, disjointness, no empty
-required fields, option-set consistency, human columns still blank) and a set of
-soft warnings (judge labels outside the option set, none-declared rate), then
-prints a distribution table for the 50 / 450 / 500 splits across every axis we
-stratified on so we can eyeball representativeness.
+Hard checks cover schema, counts, disjointness, required fields, option-set
+consistency, and complete three-rater annotations. Soft warnings cover labels
+outside the option set and short responses.
 
-Exit code is non-zero iff a hard check fails, so it doubles as a CI gate.
+Exit code is non-zero iff a hard check fails.
 
 Usage:
-    .venv/bin/python experiments/behavioral_audit/judge_audit/audit_human_review.py
+    uv run python experiments/judge_audit/audit_human_review.py
 """
 
 from __future__ import annotations
@@ -26,6 +24,7 @@ from build_human_review import (  # keep the schema in one place
     HUMAN_COLS,
     NONE_SENTINEL,
     PROVENANCE_COLS,
+    RATER_COLS,
     REVIEW_CORE_COLS,
 )
 from prepare_judge_audit_sample import (
@@ -45,14 +44,17 @@ CSV_50 = HERE / "judge_audit_human_50.csv"
 CSV_450 = HERE / "judge_audit_human_450.csv"
 POOL = HERE / "judge_audit_sample_500.csv"
 
-# Fields a reviewer must be able to read on every row.
 REQUIRED_NONEMPTY = [
     "judgment_id", "question", "probe_question", "subject_response",
     "options", "n_options", "final_class", "raw_output",
 ]
-# Input axes the sample was stratified on (not judge outcomes).
+RATER_REQUIRED = [
+    "rater1_label", "rater2_label", "rater3_label",
+    "rater1_accepted", "rater2_accepted", "rater3_accepted",
+    "consensus_label", "judge_accepted", "n_raters",
+]
 DIST_AXES = [
-    "question", "run_tag", "subject_model_alias", "true_gender", "true_race",
+    "question", "run_tag", "subject_model_alias", "true_gender", "true_region",
 ]
 
 _COLOR = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
@@ -101,14 +103,12 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     warns: list[str] = []
     print(_c("Integrity checks", "1"))
 
-    # 1. schema
     for name, hdr in (("50", header_a), ("450", header_b)):
         if hdr == FIELDNAMES:
             ok(f"{name}: header matches expected {len(FIELDNAMES)}-column schema")
         else:
             fail(f"{name}: header mismatch (got {len(hdr)} cols) — {set(hdr) ^ set(FIELDNAMES)}", fails)
 
-    # 2. counts / identity
     if len(a) == 50:
         ok("50-file has exactly 50 rows")
     else:
@@ -190,7 +190,6 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     else:
         fail(f"{len(bad_q)} row(s) with wrong question for run: {bad_q[:3]}", fails)
 
-    # 3. required fields non-empty
     empties = {c: sum(1 for r in rows if not (r.get(c, "") or "").strip()) for c in REQUIRED_NONEMPTY}
     bad = {c: n for c, n in empties.items() if n}
     if not bad:
@@ -198,7 +197,6 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     else:
         fail(f"empty required fields: {bad}", fails)
 
-    # 4. n_options consistency + option set stable per question
     bad_n = sum(1 for r in rows if str(len(_opts(r))) != r["n_options"])
     if bad_n == 0:
         ok("n_options matches the option list on every row")
@@ -212,21 +210,36 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
         else:
             fail(f"question={q}: {len(distinct)} different option strings", fails)
 
-    # 5. human-review columns still blank (ready to fill)
-    dirty = {c: sum(1 for r in rows if (r.get(c, "") or "").strip()) for c in HUMAN_COLS}
-    filled = {c: n for c, n in dirty.items() if n}
-    if not filled:
-        ok(f"all {len(HUMAN_COLS)} human-review columns blank and ready")
+    # Rater annotations must be complete on every review-sheet row.
+    missing_rater = {
+        c: sum(1 for r in rows if not (r.get(c, "") or "").strip())
+        for c in RATER_REQUIRED
+    }
+    missing = {c: n for c, n in missing_rater.items() if n}
+    if not missing:
+        ok(f"all {len(RATER_REQUIRED)} rater annotation fields filled on {len(rows)} rows")
     else:
-        fail(f"human-review columns already contain data: {filled}", fails)
+        fail(f"incomplete rater annotations: {missing}", fails)
 
-    # --- soft checks ---
+    # rev_i should mirror rater{i}_accepted when annotations are present.
+    rev_mismatch = 0
+    for r in rows:
+        for i in (1, 2, 3):
+            rev = (r.get(f"rev_{i}", "") or "").strip().upper()
+            acc = (r.get(f"rater{i}_accepted", "") or "").strip().lower()
+            expected = "TRUE" if acc in ("true", "1", "yes") else "FALSE"
+            if rev and rev != expected:
+                rev_mismatch += 1
+    if rev_mismatch == 0:
+        ok("rev_1..rev_3 match rater*_accepted")
+    else:
+        fail(f"{rev_mismatch} rev_* / rater*_accepted mismatches", fails)
+
     print(_c("\nSoft checks", "1"))
     outside = [(r["judgment_id"], r["question"], r["final_class"]) for r in rows
                if r["final_class"].strip() and r["final_class"].strip() not in _opts(r)]
     if outside:
-        warn(f"{len(outside)} judge label(s) outside the allowed option set "
-             f"(faithful judge output — reviewers should mark these): {outside[:5]}", warns)
+        warn(f"{len(outside)} judge label(s) outside the allowed option set: {outside[:5]}", warns)
     else:
         ok("every judge label is a member of its option set")
 
@@ -246,8 +259,40 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     return fails, warns
 
 
+def check_sample_500() -> list[str]:
+    """Hard checks on the canonical analysis CSV."""
+    fails: list[str] = []
+    print(_c("\nSample-500 checks", "1"))
+    if not POOL.exists():
+        fail(f"missing {POOL.name}", fails)
+        return fails
+    rows = _load(POOL)
+    if len(rows) == 500:
+        ok("sample has exactly 500 rows")
+    else:
+        fail(f"sample has {len(rows)} rows, expected 500", fails)
+
+    missing = {
+        c: sum(1 for r in rows if not (r.get(c, "") or "").strip())
+        for c in RATER_REQUIRED
+    }
+    bad = {c: n for c, n in missing.items() if n}
+    if not bad:
+        ok("all rater annotation fields filled on the 500-row sample")
+    else:
+        fail(f"sample incomplete rater annotations: {bad}", fails)
+
+    header = list(rows[0].keys()) if rows else []
+    absent = [c for c in RATER_REQUIRED if c not in header]
+    if not absent:
+        ok(f"sample schema includes all {len(RATER_REQUIRED)} rater columns")
+    else:
+        fail(f"sample missing rater columns: {absent}", fails)
+
+    return fails
+
+
 def report_population_drift(sample: list[dict]) -> None:
-    """Compare the 500-row sample against the research-scope population."""
     research, _ = filter_research_population(load_population())
     print(_c("\nSample vs research population  (500 sample / research pop, %)", "1"))
     print(_c("  Note: q1/q2 are intentionally 50/50 in the sample (research design);", "90"))
@@ -290,7 +335,6 @@ def report_distribution(a: list[dict], b: list[dict]) -> None:
         flag = _c("  <- drift>5pp on a level", "33") if max(d50, d450) > 5 else ""
         print(f"    {'max |drift vs 500|':<34} {d50:5.1f}  {d450:5.1f}   {'-':>4}{flag}")
 
-    # Outcome axis — informational only; not used for stratification.
     print(f"\n  {_c('final_class (outcome — not stratified)', '36')}")
     for name, rows in (("50", a), ("450", b), ("500", full)):
         cc = Counter(r["final_class"] for r in rows)
@@ -299,12 +343,24 @@ def report_distribution(a: list[dict], b: list[dict]) -> None:
     none_n = sum(1 for r in full if r["none_declared"] == "True")
     print(f"    none_declared: {none_n}/{len(full)} ({none_n / len(full) * 100:.1f}%)")
 
-    # direct_probe demographic balance (small stratum, worth eyeballing).
+    # Legacy accept flags — not the headline audit KPI (exact Cohen's κ).
+    accepted = sum(1 for r in full if str(r.get("judge_accepted", "")).lower() in ("true", "1", "yes"))
+    scored = [r for r in full if r["none_declared"] != "True"]
+    print(f"    judge_accepted flags (legacy, not κ): {accepted}/{len(full)} "
+          f"({accepted / len(full) * 100:.1f}%)")
+    if scored:
+        acc_scored = sum(
+            1 for r in scored
+            if str(r.get("judge_accepted", "")).lower() in ("true", "1", "yes")
+        )
+        print(f"    judge_accepted flags excl. abstentions: {acc_scored}/{len(scored)} "
+              f"({acc_scored / len(scored) * 100:.1f}%)")
+
     dp = [r for r in full if r["question"] == "direct_probe"]
     if dp:
         print(f"\n  {_c('direct_probe demographics', '36')} ({len(dp)} rows)")
         print(f"    true_gender: {dict(Counter(r['true_gender'] for r in dp))}")
-        print(f"    true_race  : {dict(Counter(r['true_race'] for r in dp))}")
+        print(f"    true_region  : {dict(Counter(r['true_region'] for r in dp))}")
 
 
 def main() -> int:
@@ -321,13 +377,15 @@ def main() -> int:
 
     print(_c(f"Auditing {CSV_50.name} ({len(a)}) + {CSV_450.name} ({len(b)})\n", "1"))
     fails, warns = check_integrity(a, b, header_a, header_b)
+    fails.extend(check_sample_500())
     report_population_drift(a + b)
     report_distribution(a, b)
 
     print(_c("\nSummary", "1"))
     print(f"  columns: {len(FIELDNAMES)}  "
           f"(context {len(CONTEXT_COLS)} · review {len(REVIEW_CORE_COLS)} · "
-          f"human {len(HUMAN_COLS)} · provenance {len(PROVENANCE_COLS)})")
+          f"human {len(HUMAN_COLS)} · raters {len(RATER_COLS)} · "
+          f"provenance {len(PROVENANCE_COLS)})")
     if fails:
         print(f"  {_c('RESULT: FAIL', '31;1')} — {len(fails)} hard issue(s), {len(warns)} warning(s)")
         return 1

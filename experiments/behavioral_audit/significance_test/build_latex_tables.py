@@ -122,11 +122,11 @@ def _is_overrepresented(row: DetailedRow) -> bool:
 
 
 def _attr_name(attribute: str) -> str:
-    return "region" if attribute == "Race" else "gender"
+    return "region" if attribute == "Region" else "gender"
 
 
 def _format_class_label(value: str, attribute: str) -> str:
-    if attribute == "Race":
+    if attribute == "Region":
         normalized = value.strip()
         if normalized == "Central/Eastern Europe":
             return "CEE"
@@ -139,7 +139,7 @@ def _format_class_label(value: str, attribute: str) -> str:
 
 
 def _format_category_label(value: str, attribute: str) -> str:
-    if attribute == "Race":
+    if attribute == "Region":
         normalized = value.strip()
         if normalized == "Central/Eastern Europe":
             return "CEE"
@@ -402,7 +402,7 @@ def build_latex_tables(input_dir: Path, output_dir: Path) -> list[Path]:
     outputs: list[Path] = []
 
     for question_key in ("q1", "q2"):
-        for attribute in ("Gender", "Race"):
+        for attribute in ("Gender", "Region"):
             rows = _collect_rows(input_dir, "all_models", question_key, attribute)
             attribute_name = _attr_name(attribute)
             summary_path = output_dir / f"summary_{question_key}_{attribute_name}.tex"
@@ -411,7 +411,7 @@ def build_latex_tables(input_dir: Path, output_dir: Path) -> list[Path]:
 
     for question_key in ("q1", "q2"):
         for model_alias in _MODEL_ORDER:
-            for attribute in ("Gender", "Race"):
+            for attribute in ("Gender", "Region"):
                 rows = _collect_rows(input_dir, model_alias, question_key, attribute)
                 if not rows:
                     continue

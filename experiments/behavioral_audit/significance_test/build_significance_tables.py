@@ -215,8 +215,8 @@ def _table_metadata_from_path(path: Path) -> tuple[str, str | None, str]:
 
     if "gender" in stem:
         attribute = "Gender"
-    elif "race" in stem:
-        attribute = "Race"
+    elif "region" in stem:
+        attribute = "Region"
     else:
         attribute = "Unknown"
 

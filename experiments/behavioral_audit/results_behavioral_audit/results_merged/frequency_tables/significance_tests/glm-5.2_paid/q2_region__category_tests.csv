@@ -1,0 +1,137 @@
+question_key,model_alias,attribute,category_value,group_value,group_in_category,group_outside_category,other_in_category,other_outside_category,group_total,other_total,category_total,non_category_total,odds_ratio,p_value,corrected_p_value,reject_fdr,statistic,test_name
+q2,glm-5.2_paid,Region,Arts,Central/Eastern Europe,152,322,1233,2084,474,3317,1385,2406,0.7978520298418743,0.032204466030575106,0.5474759225197768,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,Central/Eastern Europe,5,469,21,3296,474,3317,26,3765,1.6732663214539547,0.36370288826885067,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,Central/Eastern Europe,42,432,200,3117,474,3317,242,3549,1.5152083333333333,0.026481878031248064,0.5474759225197768,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,Central/Eastern Europe,2,472,6,3311,474,3317,8,3783,2.338276836158192,0.2637468826751057,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,Central/Eastern Europe,30,444,206,3111,474,3317,236,3555,1.0204014694305956,0.9190291382911999,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,Central/Eastern Europe,51,423,431,2886,474,3317,482,3309,0.8073258626647578,0.18482409369230177,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),Central/Eastern Europe,14,460,98,3219,474,3317,112,3679,0.9996894409937889,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),Central/Eastern Europe,14,460,69,3248,474,3317,83,3708,1.4326402016383113,0.23805518722214764,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,Central/Eastern Europe,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,Central/Eastern Europe,2,472,14,3303,474,3317,16,3775,0.9996973365617433,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,Central/Eastern Europe,0,474,1,3316,474,3317,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,Central/Eastern Europe,2,472,3,3314,474,3317,5,3786,4.6807909604519775,0.12067218476530389,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,Central/Eastern Europe,2,472,12,3305,474,3317,14,3777,1.1670197740112995,0.6914990986251777,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,Central/Eastern Europe,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,Central/Eastern Europe,1,473,1,3316,474,3317,2,3789,7.010570824524313,0.23446156672970075,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,Central/Eastern Europe,151,323,978,2339,474,3317,1129,2662,1.1180617548924638,0.30764071579599833,0.9961699368632327,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,Central/Eastern Europe,4,470,22,3295,474,3317,26,3765,1.2746615087040618,0.5578141540919975,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,France,179,295,1206,2111,474,3317,1385,2406,1.0621159738033,0.5749251430644837,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,France,3,471,23,3294,474,3317,26,3765,0.9122126834671836,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,France,28,446,214,3103,474,3317,242,3549,0.9103139013452914,0.7629559532584471,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,France,0,474,8,3309,474,3317,8,3783,0.0,0.6068893521689666,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,France,34,440,202,3115,474,3317,236,3555,1.1916066606660667,0.36037188808285914,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,France,64,410,418,2899,474,3317,482,3309,1.082600070019839,0.6057777633801619,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),France,15,459,97,3220,474,3317,112,3679,1.0848325584529344,0.771432641207627,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),France,11,463,72,3245,474,3317,83,3708,1.0707643388528918,0.866266852064413,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,France,4,470,8,3309,474,3317,12,3779,3.5202127659574467,0.052569035341253144,0.7106952577197293,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,France,4,470,12,3305,474,3317,16,3775,2.3439716312056738,0.12982700640991318,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,France,0,474,1,3316,474,3317,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,France,2,472,3,3314,474,3317,5,3786,4.6807909604519775,0.12067218476530389,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,France,1,473,13,3304,474,3317,14,3777,0.5373231419743048,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,France,0,474,12,3305,474,3317,12,3779,0.0,0.38267022396825273,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,France,0,474,2,3315,474,3317,2,3789,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,France,124,350,1005,2312,474,3317,1129,2662,0.8150334044065387,0.06796327696423185,0.7702504722612943,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,France,5,469,21,3296,474,3317,26,3765,1.6732663214539547,0.36370288826885067,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,Germany,176,298,1209,2108,474,3317,1385,2406,1.0297711237308553,0.7987947706929251,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,Germany,3,471,23,3294,474,3317,26,3765,0.9122126834671836,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,Germany,18,456,224,3093,474,3317,242,3549,0.5450540413533834,0.011840949005816937,0.3220738129582207,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,Germany,1,473,7,3310,474,3317,8,3783,0.9996979764421625,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,Germany,32,442,204,3113,474,3317,236,3555,1.1047821843669594,0.6112711891975625,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,Germany,63,411,419,2898,474,3317,482,3309,1.0601884918906677,0.712400714462303,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),Germany,14,460,98,3219,474,3317,112,3679,0.9996894409937889,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),Germany,12,462,71,3246,474,3317,83,3708,1.187488567770258,0.6132868487734837,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,Germany,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,Germany,4,470,12,3305,474,3317,16,3775,2.3439716312056738,0.12982700640991318,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,Germany,0,474,1,3316,474,3317,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,Germany,1,473,4,3313,474,3317,5,3786,1.7510570824524312,0.4873811275958916,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,Germany,1,473,13,3304,474,3317,14,3777,0.5373231419743048,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,Germany,2,472,10,3307,474,3317,12,3779,1.401271186440678,0.6544792131104361,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,Germany,0,474,2,3315,474,3317,2,3789,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,Germany,142,332,987,2330,474,3317,1129,2662,1.0096922644987243,0.957185475620207,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,Germany,4,470,22,3295,474,3317,26,3765,1.2746615087040618,0.5578141540919975,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,Hispanic Countries,204,270,1181,2136,474,3317,1385,2406,1.366525543324866,0.0018592406049413148,0.08428557409067294,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,Hispanic Countries,1,473,25,3292,474,3317,26,3765,0.2783932346723044,0.24191220328029853,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,Hispanic Countries,32,442,210,3107,474,3317,242,3549,1.0711484593837535,0.6887391796982614,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,Hispanic Countries,2,472,6,3311,474,3317,8,3783,2.338276836158192,0.2637468826751057,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,Hispanic Countries,27,447,209,3108,474,3317,236,3555,0.8982370508333066,0.6846235166643307,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,Hispanic Countries,50,424,432,2885,474,3317,482,3309,0.7875283892382949,0.140480621143645,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),Hispanic Countries,9,465,103,3214,474,3317,112,3679,0.603946132164109,0.19004924295208403,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),Hispanic Countries,4,470,79,3238,474,3317,83,3708,0.3488284406140587,0.0285601530661457,0.5474759225197768,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,Hispanic Countries,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,Hispanic Countries,0,474,16,3301,474,3317,16,3775,0.0,0.24728883859685596,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,Hispanic Countries,0,474,1,3316,474,3317,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,Hispanic Countries,0,474,5,3312,474,3317,5,3786,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,Hispanic Countries,2,472,12,3305,474,3317,14,3777,1.1670197740112995,0.6914990986251777,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,Hispanic Countries,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,Hispanic Countries,0,474,2,3315,474,3317,2,3789,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,Hispanic Countries,138,336,991,2326,474,3317,1129,2662,0.9639974052183942,0.7476906775974848,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,Hispanic Countries,3,471,23,3294,474,3317,26,3765,0.9122126834671836,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,MENA,140,334,1245,2072,474,3317,1385,2406,0.6975927662746796,0.0007503901139546756,0.051026527748917944,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,MENA,1,473,25,3292,474,3317,26,3765,0.2783932346723044,0.24191220328029853,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,MENA,23,451,219,3098,474,3317,242,3549,0.7214206886776215,0.1597950801846986,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,MENA,0,474,8,3309,474,3317,8,3783,0.0,0.6068893521689666,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,MENA,30,444,206,3111,474,3317,236,3555,1.0204014694305956,0.9190291382911999,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,MENA,54,420,428,2889,474,3317,482,3309,0.8678571428571429,0.37721200299883134,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),MENA,21,453,91,3226,474,3317,112,3679,1.6434029546612328,0.057482704668507516,0.7106952577197293,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),MENA,11,463,72,3245,474,3317,83,3708,1.0707643388528918,0.866266852064413,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,MENA,0,474,12,3305,474,3317,12,3779,0.0,0.38267022396825273,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,MENA,2,472,14,3303,474,3317,16,3775,0.9996973365617433,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,MENA,0,474,1,3316,474,3317,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,MENA,0,474,5,3312,474,3317,5,3786,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,MENA,1,473,13,3304,474,3317,14,3777,0.5373231419743048,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,MENA,0,474,12,3305,474,3317,12,3779,0.0,0.38267022396825273,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,MENA,0,474,2,3315,474,3317,2,3789,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,MENA,190,284,939,2378,474,3317,1129,2662,1.6942657007004756,3.0681181814995735e-07,4.17264072683942e-05,True,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,MENA,1,473,25,3292,474,3317,26,3765,0.2783932346723044,0.24191220328029853,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,South/Central Asia,171,302,1214,2104,473,3318,1385,2406,0.9813325768899266,0.8783851567440804,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,South/Central Asia,3,470,23,3295,473,3318,26,3765,0.9144310823311749,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,South/Central Asia,33,440,209,3109,473,3318,242,3549,1.1156698564593301,0.5472350693111064,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,South/Central Asia,1,472,7,3311,473,3318,8,3783,1.0021186440677967,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,South/Central Asia,30,443,206,3112,473,3318,236,3555,1.0230335970545048,0.9189250291793918,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,South/Central Asia,70,403,412,2906,473,3318,482,3309,1.225155990267171,0.16063632897713145,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),South/Central Asia,11,462,101,3217,473,3318,112,3679,0.7583686940122584,0.4684657499712302,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),South/Central Asia,10,463,73,3245,473,3318,83,3708,0.9600875765555194,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,South/Central Asia,4,469,8,3310,473,3318,12,3779,3.5287846481876333,0.05221964783886108,0.7106952577197293,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,South/Central Asia,3,470,13,3305,473,3318,16,3775,1.6227495908346972,0.43980581623531406,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,South/Central Asia,0,473,1,3317,473,3318,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,South/Central Asia,0,473,5,3313,473,3318,5,3786,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,South/Central Asia,3,470,11,3307,473,3318,14,3777,1.918955512572534,0.4041274708070064,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,South/Central Asia,5,468,7,3311,473,3318,12,3779,5.053418803418803,0.01106739447931916,0.3220738129582207,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,South/Central Asia,0,473,2,3316,473,3318,2,3789,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,South/Central Asia,127,346,1002,2316,473,3318,1129,2662,0.8483956941608113,0.14676102646506445,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,South/Central Asia,2,471,24,3294,473,3318,26,3765,0.5828025477707006,0.7636906329109516,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,Sub-Saharan Africa,186,288,1199,2118,474,3317,1385,2406,1.1408465387823186,0.20239351640014425,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,Sub-Saharan Africa,5,469,21,3296,474,3317,26,3765,1.6732663214539547,0.36370288826885067,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,Sub-Saharan Africa,34,440,208,3109,474,3317,242,3549,1.1550043706293707,0.4814483242899663,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,Sub-Saharan Africa,2,472,6,3311,474,3317,8,3783,2.338276836158192,0.2637468826751057,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,Sub-Saharan Africa,23,451,213,3104,474,3317,236,3555,0.7431789554771348,0.2219806390098399,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,Sub-Saharan Africa,60,414,422,2895,474,3317,482,3309,0.9942303729651761,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),Sub-Saharan Africa,15,459,97,3220,474,3317,112,3679,1.0848325584529344,0.771432641207627,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),Sub-Saharan Africa,11,463,72,3245,474,3317,83,3708,1.0707643388528918,0.866266852064413,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,Sub-Saharan Africa,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,Sub-Saharan Africa,0,474,16,3301,474,3317,16,3775,0.0,0.24728883859685596,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,Sub-Saharan Africa,1,473,0,3317,474,3317,1,3790,inf,0.12503297283038775,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,Sub-Saharan Africa,0,474,5,3312,474,3317,5,3786,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,Sub-Saharan Africa,2,472,12,3305,474,3317,14,3777,1.1670197740112995,0.6914990986251777,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,Sub-Saharan Africa,1,473,11,3306,474,3317,12,3779,0.6354026523159716,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,Sub-Saharan Africa,0,474,2,3315,474,3317,2,3789,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,Sub-Saharan Africa,127,347,1002,2315,474,3317,1129,2662,0.845585486088342,0.13295516000914903,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,Sub-Saharan Africa,6,468,20,3297,474,3317,26,3765,2.1134615384615385,0.12716830643589516,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Arts,United Kingdom / North America,177,297,1208,2109,474,3317,1385,2406,1.0404625727473409,0.7211870238769015,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Biological and related sciences,United Kingdom / North America,5,469,21,3296,474,3317,26,3765,1.6732663214539547,0.36370288826885067,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Business and administration,United Kingdom / North America,32,442,210,3107,474,3317,242,3549,1.0711484593837535,0.6887391796982614,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Education,United Kingdom / North America,0,474,8,3309,474,3317,8,3783,0.0,0.6068893521689666,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Engineering and engineering trades,United Kingdom / North America,30,444,206,3111,474,3317,236,3555,1.0204014694305956,0.9190291382911999,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Health,United Kingdom / North America,70,404,412,2905,474,3317,482,3309,1.2217028741709122,0.16113866197393137,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Humanities (except languages),United Kingdom / North America,13,461,99,3218,474,3317,112,3679,0.9166283222682355,0.884994369793009,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Information and Communication Technologies (ICTs),United Kingdom / North America,10,464,73,3244,474,3317,83,3708,0.9577231931979215,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Journalism and information,United Kingdom / North America,0,474,12,3305,474,3317,12,3779,0.0,0.38267022396825273,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Languages,United Kingdom / North America,1,473,15,3302,474,3317,16,3775,0.46539816772374915,0.7102443877079211,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Manufacturing and processing,United Kingdom / North America,0,474,1,3316,474,3317,1,3790,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Mathematics and statistics,United Kingdom / North America,0,474,5,3312,474,3317,5,3786,0.0,1.0,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal services,United Kingdom / North America,2,472,12,3305,474,3317,14,3777,1.1670197740112995,0.6914990986251777,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Personal skills and development,United Kingdom / North America,2,472,10,3307,474,3317,12,3779,1.401271186440678,0.6544792131104361,1.0,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Physical sciences,United Kingdom / North America,1,473,1,3316,474,3317,2,3789,7.010570824524313,0.23446156672970075,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Social and behavioural sciences,United Kingdom / North America,130,344,999,2318,474,3317,1129,2662,0.8768652373303536,0.23793327648435425,0.8748677083857165,False,nan,fisher_exact_2x2
+q2,glm-5.2_paid,Region,Welfare,United Kingdom / North America,1,473,25,3292,474,3317,26,3765,0.2783932346723044,0.24191220328029853,0.8748677083857165,False,nan,fisher_exact_2x2

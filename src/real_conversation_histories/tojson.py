@@ -177,7 +177,7 @@ def main():
         generated_at = _now_iso()
         record = {
             "history_id": history_id,
-            "persona": {"Race": None, "Gender": gender},
+            "persona": {"Region": None, "Gender": gender},
             "combination_ids": {"Gender": combination_id(gender)},
             "messages": messages,
             "generated_at": generated_at,

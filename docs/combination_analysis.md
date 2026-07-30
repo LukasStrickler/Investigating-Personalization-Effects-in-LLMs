@@ -1,11 +1,11 @@
 # Combination Analysis
 
-## Current Status (Gender + Race, including partial personas)
+## Current Status (Gender + Region, including partial personas)
 
 |                                   | Count                     |
 | --------------------------------- | ------------------------- |
 | **Gender backgrounds**            | 77 (Male: 35, Female: 42) |
-| **Race backgrounds**              | 96 (8 regions × 12 each)  |
+| **Region backgrounds**              | 96 (8 regions × 12 each)  |
 | **Total backgrounds (LLM calls)** | 173                       |
 | **Personas (full + partial)**     | 26                        |
 | **Conversation histories**        | 3,869                     |
@@ -15,18 +15,18 @@
 - Male: 7 Hobbies × 5 Movies = 35 combos
 - Female: 7 Hobbies × 6 Movies = 42 combos
 
-### Race dimension breakdown
+### Region dimension breakdown
 
 - 8 regions × (4 Names × 3 Artists) = 96 combos
 - After gender filtering: 2 Names × 3 Artists = 6 combos per persona
 
 ### Histories per persona
 
-- Male × Race persona: 35 × 6 = 210 histories
-- Female × Race persona: 42 × 6 = 252 histories
+- Male × Region persona: 35 × 6 = 210 histories
+- Female × Region persona: 42 × 6 = 252 histories
 - Full personas: 8 × 210 + 8 × 252 = 1,680 + 2,016 = 3,696
 - Gender-only partials (Male + Female): 35 + 42 = 77 histories
-- Race-only partials (8 regions): 8 × 12 = 96 histories
+- Region-only partials (8 regions): 8 × 12 = 96 histories
 - Total: 3,696 + 77 + 96 = **3,869**
 
 ---
@@ -55,7 +55,7 @@ Adding a new indicator name introduces a multiplicative factor of K on top of ex
 | New indicator (K values) on Male         | Male combos: 35 → 35×K   | +8 × 35×(K−1) × 6 = +1,680×(K−1) |
 | New indicator (K values) on Female       | Female combos: 42 → 42×K | +8 × 42×(K−1) × 6 = +2,016×(K−1) |
 | New indicator (K values) on both         | Both multiply by K       | +3,696×(K−1)                     |
-| New indicator (K values) per Race region | Region combos: 12 → 12×K | (K−1) × current total            |
+| New indicator (K values) per Region region | Region combos: 12 → 12×K | (K−1) × current total            |
 
 Example: adding a new indicator with 3 values to both genders → +3,696 × 2 = +7,392 → **11,088** total.
 
