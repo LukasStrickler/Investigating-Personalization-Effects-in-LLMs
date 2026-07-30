@@ -15,6 +15,24 @@ cp .env.example .env
 # Edit .env and add your API keys
 ```
 
+`uv sync` installs the core inference stack **and the evaluation-notebook
+dependencies** (matplotlib, mpmath, ipykernel). Some subsystems need extra
+dependency groups — install the one(s) you need (or `--all-extras` for everything):
+
+```bash
+uv sync                        # core + eval notebooks (behavioral-audit, direct-probing, finalresults)
+uv sync --extra internal-rep   # internal_representation_personas/ (torch, transformers, sklearn)
+uv sync --extra dev            # tests + linting (pytest, ruff, mypy)
+uv sync --all-extras           # everything above (large — pulls torch/transformers)
+```
+
+| Extra | Covers | Key packages |
+|-------|--------|--------------|
+| _(core)_ | `src/inference`, `src/generate_backgrounds`, `experiments/*` runners, eval notebooks + significance tables | pandas, litellm, pydantic, numpy, tqdm, matplotlib, mpmath, ipykernel |
+| `internal-rep` | `internal_representation_personas/` activation probing | torch, transformers, scikit-learn, huggingface-hub, joblib |
+| `dev` | test suite + linters | pytest, ruff, mypy |
+| `vllm` / `modal` | optional cluster / Modal serving | vllm, modal |
+
 ## Architecture
 
 The project has three inference layers. Start with the runtime layer when you

@@ -160,13 +160,17 @@ gender-coded names, and stored replies cannot confound the Gender probe. See
 
 ## Installation and model download
 
+Dependencies for this subsystem live in the repo's `pyproject.toml` under the
+`internal-rep` extra (torch, transformers, scikit-learn, huggingface-hub, joblib).
+From the repo root:
+
 ```bash
-cd internal_representation_personas
-python3 -m venv .venv
-source .venv/bin/activate                 # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-python download_model.py
+uv sync --extra internal-rep
+uv run python internal_representation_personas/download_model.py
 ```
+
+(The legacy `requirements.txt` in this folder is superseded by the `internal-rep`
+extra and kept only for reference.)
 
 The model is downloaded to `models/SmolLM2-360M-Instruct`. Models and generated
 artifacts are ignored by Git.
