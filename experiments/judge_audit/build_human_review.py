@@ -37,8 +37,8 @@ OUT_450 = HERE / "judge_audit_human_450.csv"
 
 NONE_SENTINEL = "__NONE__"
 
-JOBS_JSON = EXPERIMENTS_DIR / "jobs_classification.json"
-COLLEGE_JSON = EXPERIMENTS_DIR / "college_classification.json"
+JOBS_JSON = EXPERIMENTS_DIR / "indicator_hierarchy" / "jobs_classification.json"
+COLLEGE_JSON = EXPERIMENTS_DIR / "indicator_hierarchy" / "college_classification.json"
 PERSONAS_PATH = REPO_ROOT / "src" / "generate_backgrounds" / "data" / "personas" / "personas.jsonl"
 
 

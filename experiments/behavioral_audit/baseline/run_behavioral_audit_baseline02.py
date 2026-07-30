@@ -47,11 +47,11 @@ from inference.judges.log import JudgeLogger
 # Configuration — edit these to match your run
 # ---------------------------------------------------------------------------
 
-RUN_TAG = "baseline002"
+RUN_TAG = "baseline003"
 
 EXPERIMENT_MODELS = [
-    "gemma-4-31b_paid",
-    "deepseek-v4-flash_paid"
+    "grok-4.3_paid",
+    "glm-5.2_paid",
 ]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
@@ -70,9 +70,9 @@ STAGE1_ONLY = False
 # Questions & classes (loaded from JSON classification files)
 # ---------------------------------------------------------------------------
 
-_EXPERIMENTS_DIR = Path(__file__).resolve().parent
-_JOBS_JSON = _EXPERIMENTS_DIR / "jobs_classification.json"
-_COLLEGE_JSON = _EXPERIMENTS_DIR / "college_classification.json"
+_EXPERIMENTS_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in baseline/)
+_JOBS_JSON = _EXPERIMENTS_DIR / "indicator_hierarchy" / "jobs_classification.json"
+_COLLEGE_JSON = _EXPERIMENTS_DIR / "indicator_hierarchy" / "college_classification.json"
 
 with open(_JOBS_JSON, encoding="utf-8") as _f:
     _jobs_data = json.load(_f)
