@@ -48,11 +48,24 @@ def load_model_and_tokenizer(
 
     print(f"[Model] Loading {config.model_name} (dtype={config.torch_dtype}) ...")
 
-    tokenizer = AutoTokenizer.from_pretrained(
-        config.model_name,
-        token=config.hf_token,
-        trust_remote_code=True,
-    )
+    # Tokenizer load with a fallback: some repos (notably Mistral/Ministral) ship
+    # a mistral-format tokenizer that the fast AutoTokenizer can't parse. Retry
+    # with the slow tokenizer, which reads the underlying sentencepiece/tekken
+    # model directly.
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(
+            config.model_name,
+            token=config.hf_token,
+            trust_remote_code=True,
+        )
+    except Exception as tok_exc:  # noqa: BLE001
+        print(f"[Model] Fast tokenizer failed ({tok_exc}); retrying with use_fast=False ...")
+        tokenizer = AutoTokenizer.from_pretrained(
+            config.model_name,
+            token=config.hf_token,
+            trust_remote_code=True,
+            use_fast=False,
+        )
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 

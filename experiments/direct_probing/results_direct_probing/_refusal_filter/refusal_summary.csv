@@ -1,0 +1,7 @@
+model,rows,masked_gender,masked_background
+gemma-4-31b_paid,736,152,118
+deepseek-v4-flash_paid,50,5,4
+glm-5.2_paid,50,0,0
+grok-4.3_paid,50,0,5
+ministral-3-8b_modal,50,8,2
+gemma-4-e2b_modal,50,45,44

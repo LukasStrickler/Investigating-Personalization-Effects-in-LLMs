@@ -100,7 +100,7 @@ OUTPUT_DIR = REPO_ROOT / "logs" / "judges" / "behavioral-audit"
 
 EXPERIMENT_NAME = f"behavioral-audit-{RUN_TAG}"
 
-_RESULTS_DIR = _EXPERIMENTS_DIR / f"results_{RUN_TAG}"
+_RESULTS_DIR = _EXPERIMENTS_DIR / "results_behavioral_audit" / f"results_{RUN_TAG}"
 
 
 # ---------------------------------------------------------------------------

@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import random
 import re
+import warnings
 from collections import Counter, defaultdict
 from copy import deepcopy
 from pathlib import Path
@@ -44,40 +46,79 @@ def user_text(messages: list[dict]) -> str:
 
 
 def ablate_phrase(messages: list[dict], phrase: str, replacement: str = "") -> list[dict]:
-    """Replace or remove a phrase in all user turns.
+    """Replace or remove a phrase across ALL turns (user and assistant).
 
-    For Gender indicators, pass replacement=<IndicatorName> to restore the
-    neutral template placeholder (e.g. 'action' -> '<Movie>'). For control
-    words that have no placeholder, pass replacement="" to delete them.
+    For indicators, pass replacement=<IndicatorName> to restore the neutral
+    template placeholder (e.g. 'action' -> '<Movie>'). For control words that
+    have no placeholder, pass replacement="" to delete them.
+
+    Assistant turns often echo the indicator verbatim (e.g. the user says
+    "I am Pavel" and the reply opens "Hello Pavel!"), so scrubbing only the
+    user turn would leak the indicator into the probe's context. We therefore
+    replace every occurrence in every turn. This does NOT catch forms the model
+    *invents* (inflections, translations, pronouns) — only verbatim occurrences
+    of the configured phrase — but that is the defensible, string-exact bound.
     """
     result = deepcopy(messages)
     pattern = phrase_pattern(phrase)
     for message in result:
-        if message.get("role") == "user":
-            if replacement:
-                message["content"] = pattern.sub(replacement, message["content"])
-            else:
-                message["content"] = re.sub(r"\s+([,.!?])", r"\1", pattern.sub("", message["content"]))
+        content = message.get("content")
+        if not isinstance(content, str):
+            continue
+        if replacement:
+            message["content"] = pattern.sub(replacement, content)
+        else:
+            message["content"] = re.sub(r"\s+([,.!?])", r"\1", pattern.sub("", content))
     return result
 
 
-def load_targets(mapping_path: Path, controls: list[str]) -> list[dict[str, str]]:
-    targets = []
-    with mapping_path.open(encoding="utf-8-sig", newline="") as handle:
-        for row in csv.DictReader(handle):
-            targets.append({
-                "phrase": row["Indicator_value"].strip(),
-                "target_type": "Gender indicator",
-                "configured_gender": row["Dimension_value"].strip(),
-                "indicator_name": row["Indicator_name"].strip(),
-            })
-    indicator_phrases = {row["phrase"].casefold() for row in targets}
+def _dimension_from_path(mapping_path: Path) -> str:
+    """Infer the dimension tag ('Gender', 'Race', ...) from the CSV filename."""
+    return mapping_path.stem.replace("_", " ").title()
+
+
+def load_targets(mapping_paths: list[Path], controls: list[str]) -> list[dict[str, str]]:
+    """Load indicator phrases from one or more dimension-value mapping CSVs.
+
+    Handles the two header schemas in the repo: ``gender.csv`` uses
+    ``Dimension_value`` (underscore) while ``race.csv`` uses ``Dimension value``
+    (space, BOM-prefixed — stripped by ``utf-8-sig``). Gender rows keep their
+    Male/Female direction in ``configured_gender``; rows from any other
+    dimension get ``configured_gender="<Dimension>"`` (e.g. ``"Race"``) so the
+    effect plots render them as their own group rather than mis-slotting them
+    as Male/Female. Phrases seen in an earlier CSV are not added twice.
+    """
+    targets: list[dict[str, str]] = []
+    seen_phrases: set[str] = set()
+    for mapping_path in mapping_paths:
+        dimension = _dimension_from_path(mapping_path)
+        with mapping_path.open(encoding="utf-8-sig", newline="") as handle:
+            for row in csv.DictReader(handle):
+                # Normalize the dimension-value column across schemas.
+                dimension_value = (row.get("Dimension_value") or row.get("Dimension value") or "").strip()
+                phrase = row["Indicator_value"].strip()
+                if phrase.casefold() in seen_phrases:
+                    continue  # de-dup across CSVs; keep the first occurrence
+                seen_phrases.add(phrase.casefold())
+                # Gender keeps its Male/Female direction; other dimensions
+                # (Race) have no gender direction, so group them by dimension.
+                configured_gender = dimension_value if dimension == "Gender" else dimension
+                targets.append({
+                    "phrase": phrase,
+                    "target_type": f"{dimension} indicator",
+                    "dimension": dimension,
+                    "dimension_value": dimension_value,
+                    "configured_gender": configured_gender,
+                    "indicator_name": row["Indicator_name"].strip(),
+                })
     for word in controls:
-        if word.casefold() in indicator_phrases:
-            raise ValueError(f"Control word is also a Gender indicator: {word}")
+        if word.casefold() in seen_phrases:
+            raise ValueError(f"Control word is also an indicator: {word}")
         targets.append({
             "phrase": word,
             "target_type": "Neutral template control",
+            "dimension": "Control",
+            "dimension_value": "Control",
             "configured_gender": "Control",
             "indicator_name": "Fixed template word",
         })
@@ -115,6 +156,8 @@ def save_presence_table(path: Path, targets: list[dict], row_targets: list[set[s
             "male_document_frequency": counts["Male"] / totals["Male"],
         })
     with path.open("w", newline="", encoding="utf-8") as handle:
+        if not rows:
+            raise ValueError(f"No presence rows to write to {path} — the selected histories matched no targets.")
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
@@ -122,18 +165,23 @@ def save_presence_table(path: Path, targets: list[dict], row_targets: list[set[s
 
 
 def plot_presence(rows: list[dict], path: Path) -> None:
-    ordered = sorted(rows, key=lambda row: (row["target_type"] != "Gender indicator", row["configured_gender"], row["indicator_name"], row["phrase"]))
+    # Only plot targets that actually occur in the selected histories — absent
+    # targets have an empty ("") conditional-probability field.
+    present = [row for row in rows if row["histories_containing"]]
+    if not present:
+        return
+    ordered = sorted(present, key=lambda row: (row["dimension"] == "Control", row["dimension"], row["configured_gender"], row["indicator_name"], row["phrase"]))
     y = np.arange(len(ordered))
     female = [float(row["p_female_given_present"]) for row in ordered]
     male = [float(row["p_male_given_present"]) for row in ordered]
-    fig, ax = plt.subplots(figsize=(12, 13))
+    fig, ax = plt.subplots(figsize=(12, max(6, 0.32 * len(ordered))))
     ax.barh(y, male, label="Male", color="#d97706")
     ax.barh(y, female, left=male, label="Female", color="#2878b5")
     ax.set_yticks(y, [row["phrase"] for row in ordered])
     ax.invert_yaxis()
     ax.set_xlim(0, 1)
     ax.set_xlabel("P(true Gender label | phrase is present)")
-    ax.set_title("Gender-label prevalence for 25 indicators and 10 neutral controls")
+    ax.set_title(f"Gender-label prevalence for {len(ordered)} present indicators/controls")
     ax.legend(loc="lower right")
     fig.tight_layout()
     fig.savefig(path, dpi=160)
@@ -147,9 +195,10 @@ def plot_ablation_scatter(detail_rows: list[dict], path: Path, artifact_layer: i
     with the neutral placeholder dropped the probe's confidence in Male.
     Points above the diagonal mean the indicator suppressed P(Male).
     """
-    color_map = {"Male": "#d97706", "Female": "#2878b5", "Control": "#999999"}
+    color_map = {"Male": "#d97706", "Female": "#2878b5", "Race": "#59a14f", "Control": "#999999"}
     label_map = {"Male": "Male indicator → ↑P(Male) when present",
                  "Female": "Female indicator → ↓P(Male) when present",
+                 "Race": "Race/region indicator → expect ≈ no change",
                  "Control": "Neutral control"}
 
     fig, ax = plt.subplots(figsize=(7, 7))
@@ -184,18 +233,19 @@ def plot_effect_by_gender_group(detail_rows: list[dict], path: Path, artifact_la
     If the probe reads the indicators, Male indicators should cluster positive
     and Female indicators should cluster negative.
     """
-    groups: dict[str, list[float]] = {"Male": [], "Female": [], "Control": []}
+    groups: dict[str, list[float]] = {"Male": [], "Female": [], "Race": [], "Control": []}
     for row in detail_rows:
         key = row.get("configured_gender", "Control")
         if key in groups:
             groups[key].append(row["effect_of_phrase_presence_on_p_male"])
 
-    order = [g for g in ("Male", "Female", "Control") if groups[g]]
+    order = [g for g in ("Male", "Female", "Race", "Control") if groups[g]]
     data = [groups[g] for g in order]
-    color_map = {"Male": "#d97706", "Female": "#2878b5", "Control": "#999999"}
+    color_map = {"Male": "#d97706", "Female": "#2878b5", "Race": "#59a14f", "Control": "#999999"}
     xlabels = {
         "Male": "Male indicators\n(expect: positive)",
         "Female": "Female indicators\n(expect: negative)",
+        "Race": "Race/region indicators\n(expect: ≈ 0 if probe is\ngender-pure)",
         "Control": "Neutral controls\n(expect: ≈ 0)",
     }
 
@@ -222,68 +272,124 @@ def plot_effect_by_gender_group(detail_rows: list[dict], path: Path, artifact_la
     plt.close(fig)
 
 
-def main() -> None:
-    here = Path(__file__).resolve().parent
-    repo = here.parent
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset", default=str(here / "data" / "dataset_personas.json"))
-    parser.add_argument("--run-dir", default=str(here / "results" / "smollm2_gender_200"))
-    parser.add_argument("--plot-dir", default=str(here / "plots" / "smollm2_gender_200"))
-    parser.add_argument("--model", default=str(here / "models" / "SmolLM2-360M-Instruct"))
-    parser.add_argument("--mapping", default=str(repo / "src/generate_backgrounds/dimension_value_mapping/gender.csv"))
-    parser.add_argument("--control-words", nargs="+", default=DEFAULT_CONTROL_WORDS)
-    parser.add_argument("--device-map", default="mps")
-    parser.add_argument("--dtype", default="float16")
-    parser.add_argument("--batch-size", type=int, default=4)
-    args = parser.parse_args()
+def _balanced_keep_indices(labels: list, subset_per_class: int, seed: int) -> list[int]:
+    """Balanced (equal Female/Male) ascending index list into the dataset.
 
-    run_dir, plot_dir = Path(args.run_dir), Path(args.plot_dir)
+    Drops null-label rows, downsamples the larger class to match the smaller,
+    then applies the optional per-class cap. Deterministic given ``seed`` so
+    reruns pick the same histories. Returns indices in ascending order so
+    dataset lists, npz rows, and baseline probabilities stay aligned.
+    """
+    by_label: dict[str, list[int]] = defaultdict(list)
+    for index, label in enumerate(labels):
+        if label is not None:
+            by_label[label].append(index)
+    if set(by_label) < {"Female", "Male"}:
+        raise ValueError(f"Ablation needs both Female and Male histories; got {dict(Counter(labels))}")
+
+    per_class = min(len(by_label["Female"]), len(by_label["Male"]))
+    if subset_per_class > 0:
+        per_class = min(per_class, subset_per_class)
+
+    rng = random.Random(seed)
+    keep: list[int] = []
+    for label in ("Female", "Male"):
+        indices = by_label[label]
+        keep.extend(sorted(rng.sample(indices, per_class)) if len(indices) > per_class else indices)
+    return sorted(keep)
+
+
+def run_ablation(
+    dataset_path: str | Path,
+    run_dir: str | Path,
+    plot_dir: str | Path,
+    model_name: str,
+    device_map: str,
+    dtype: str,
+    mapping_paths: list[str | Path],
+    control_words: list[str],
+    subset_per_class: int = 0,
+    batch_size: int = 4,
+    seed: int = 42,
+) -> dict:
+    """Ablate gender + race indicator phrases against the Gender probe.
+
+    Loads the probe, hidden states and normalized dataset from ``run_dir`` /
+    ``dataset_path``, balances the histories to equal Female/Male counts
+    (downsampling the larger class; optionally capped at ``subset_per_class``
+    each), then for every indicator phrase replaces it with its neutral
+    placeholder and re-runs the model to measure the shift in P(Male). Gender
+    indicators are expected to move P(Male); race/region indicators test whether
+    the Gender probe also leans on race cues. Returns the metadata dict.
+    """
+    run_dir, plot_dir = Path(run_dir), Path(plot_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
     plot_dir.mkdir(parents=True, exist_ok=True)
-    with open(args.dataset, encoding="utf-8") as handle:
+    with open(dataset_path, encoding="utf-8") as handle:
         dataset = json.load(handle)
-    labels = dataset["labels"]["Gender"]
-    histories = dataset["conversations_chat"]
-    if Counter(labels) != Counter({"Female": 100, "Male": 100}):
-        raise ValueError(f"Final analysis requires 100 Female and 100 Male histories; got {Counter(labels)}")
+    if "Gender" not in dataset["labels"]:
+        raise ValueError(
+            f"Ablation requires the 'Gender' attribute; dataset has labels for: {sorted(dataset['labels'])}"
+        )
 
-    targets = load_targets(Path(args.mapping), args.control_words)
-    indicators = [row for row in targets if row["target_type"] == "Gender indicator"]
+    all_labels = dataset["labels"]["Gender"]
+    keep_indices = _balanced_keep_indices(all_labels, subset_per_class, seed)
+
+    # Subset every parallel structure with the SAME ascending index list so
+    # dataset row j <-> npz row j <-> baseline_probabilities row j.
+    histories = [dataset["conversations_chat"][i] for i in keep_indices]
+    labels = [all_labels[i] for i in keep_indices]
+    history_ids = [dataset["history_ids"][i] for i in keep_indices]
+
+    targets = load_targets([Path(p) for p in mapping_paths], control_words)
+    indicators = [row for row in targets if row["target_type"].endswith("indicator")]
     row_targets: list[set[str]] = []
     for messages in histories:
         text = user_text(messages)
         values = matched_indicators(text, indicators)
-        values.update(row["phrase"] for row in targets if row["target_type"] != "Gender indicator" and phrase_pattern(row["phrase"]).search(text))
+        values.update(
+            row["phrase"] for row in targets
+            if not row["target_type"].endswith("indicator") and phrase_pattern(row["phrase"]).search(text)
+        )
         row_targets.append(values)
 
     missing = [row["phrase"] for row in targets if not any(row["phrase"] in values for values in row_targets)]
     if missing:
-        raise ValueError(f"Targets absent from selected 200 histories: {missing}")
+        warnings.warn(
+            f"{len(missing)} target(s) absent from the {len(histories)} selected histories "
+            f"(they will report 0 ablations): {missing}",
+            stacklevel=2,
+        )
     presence_rows = save_presence_table(run_dir / "gender_indicator_presence.csv", targets, row_targets, labels)
     plot_presence(presence_rows, plot_dir / "gender_indicator_label_prevalence.png")
 
     artifact = joblib.load(run_dir / "best_probe_gender.joblib")
-    hidden = np.load(run_dir / "hidden_states_personas.npz")[str(artifact.layer)]
+    hidden = np.load(run_dir / "hidden_states_personas.npz")[str(artifact.layer)][keep_indices]
     baseline_probabilities = artifact.classifier.predict_proba(artifact.scaler.transform(hidden))
     male_class = int(np.where(artifact.label_encoder.classes_ == "Male")[0][0])
 
+    # Build ablated variants. history_index below is the LOCAL position within
+    # the subset, so it indexes histories/labels/history_ids/baseline directly.
     variants: list[str] = []
     variant_meta: list[tuple[dict, int]] = []
     for target in targets:
-        if target["target_type"] == "Gender indicator":
+        if target["target_type"].endswith("indicator"):
             replacement = f"<{target['indicator_name']}>"
         else:
             replacement = ""  # remove control words (no placeholder to restore)
-        for index, messages in enumerate(histories):
-            if target["phrase"] in row_targets[index]:
+        for history_index, messages in enumerate(histories):
+            if target["phrase"] in row_targets[history_index]:
                 variants.append(_format_messages(ablate_phrase(messages, target["phrase"], replacement)))
-                variant_meta.append((target, index))
+                variant_meta.append((target, history_index))
 
-    model_config = ModelConfig(model_name=args.model, device_map=args.device_map, torch_dtype=args.dtype)
+    if not variants:
+        raise ValueError("No indicator or control phrase matched any selected history — nothing to ablate.")
+
+    model_config = ModelConfig(model_name=str(model_name), device_map=device_map, torch_dtype=dtype)
     probe_config = ProbeConfig(layers=[artifact.layer], token_position="last")
     model, tokenizer = load_model_and_tokenizer(model_config)
     ablated_hidden = extract_hidden_states(
-        model, tokenizer, variants, model_config, probe_config, batch_size=args.batch_size
+        model, tokenizer, variants, model_config, probe_config, batch_size=batch_size
     )[artifact.layer]
     ablated_probabilities = artifact.classifier.predict_proba(artifact.scaler.transform(ablated_hidden))
 
@@ -295,8 +401,8 @@ def main() -> None:
         effect = baseline - ablated  # positive: phrase presence increases P(Male)
         effects[target["phrase"]].append(effect)
         detail_rows.append({
-            "dataset_index": history_index,
-            "history_id": dataset["history_ids"][history_index],
+            "dataset_index": keep_indices[history_index],
+            "history_id": history_ids[history_index],
             "true_label": labels[history_index],
             **target,
             "baseline_p_male": baseline,
@@ -308,9 +414,13 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(detail_rows)
 
+    # Only summarize targets that actually got ablated (skip absent ones to
+    # avoid np.mean([]) -> NaN warnings).
     summary_rows = []
     for target in targets:
         values = effects[target["phrase"]]
+        if not values:
+            continue
         summary_rows.append({
             **target,
             "histories_ablated": len(values),
@@ -324,16 +434,21 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(summary_rows)
 
-    fig, ax = plt.subplots(figsize=(12, 13))
+    def _bar_color(row: dict) -> str:
+        if row["target_type"].startswith("Neutral"):
+            return "#999999"
+        return {"Male": "#d97706", "Female": "#2878b5"}.get(row["configured_gender"], "#59a14f")
+
+    fig, ax = plt.subplots(figsize=(12, max(6, 0.32 * len(summary_rows))))
     y = np.arange(len(summary_rows))
     values = [row["mean_effect_on_p_male"] for row in summary_rows]
     errors = [row["std_effect_on_p_male"] / np.sqrt(row["histories_ablated"]) for row in summary_rows]
-    colors = ["#999999" if row["target_type"].startswith("Neutral") else ("#d97706" if row["configured_gender"] == "Male" else "#2878b5") for row in summary_rows]
+    colors = [_bar_color(row) for row in summary_rows]
     ax.barh(y, values, xerr=errors, color=colors, alpha=0.9, capsize=2)
     ax.set_yticks(y, [row["phrase"] for row in summary_rows])
     ax.axvline(0, color="black", linewidth=0.9)
     ax.set_xlabel("Mean effect of indicator presence on probe P(Male) (± SE)\n[indicator replaced with placeholder, e.g. 'action'→'<Movie>']")
-    ax.set_title(f"Phrase ablation across 200 histories at layer {artifact.layer}")
+    ax.set_title(f"Phrase ablation across {len(histories)} histories at layer {artifact.layer}")
     fig.tight_layout()
     fig.savefig(plot_dir / "gender_phrase_ablation_effect.png", dpi=160)
     plt.close(fig)
@@ -341,20 +456,60 @@ def main() -> None:
     plot_ablation_scatter(detail_rows, plot_dir / "ablation_scatter.png", artifact.layer)
     plot_effect_by_gender_group(detail_rows, plot_dir / "effect_by_gender_group.png", artifact.layer)
 
+    per_dimension = Counter(row["dimension"] for row in targets)
     metadata = {
         "histories": len(histories),
         "label_counts": Counter(labels),
+        "subset_per_class": subset_per_class,
+        "total_available_before_balance": dict(Counter(l for l in all_labels if l is not None)),
         "probe_layer": int(artifact.layer),
         "indicator_count": len(indicators),
-        "control_count": len(args.control_words),
+        "control_count": len(control_words),
+        "targets_per_dimension": dict(per_dimension),
         "interventions": len(variants),
-        "indicator_mapping": str(Path(args.mapping).resolve()),
-        "control_words": args.control_words,
-        "effect_definition": "baseline P(Male) minus P(Male) after replacing Gender indicator with its placeholder (e.g. 'action' -> '<Movie>') or removing control words",
+        "indicator_mappings": [str(Path(p).resolve()) for p in mapping_paths],
+        "control_words": list(control_words),
+        "effect_definition": "baseline P(Male) minus P(Male) after replacing an indicator with its placeholder (e.g. 'action' -> '<Movie>') or removing control words",
     }
     with (run_dir / "gender_phrase_ablation_metadata.json").open("w", encoding="utf-8") as handle:
         json.dump(metadata, handle, indent=2, default=dict)
     print(json.dumps(metadata, indent=2, default=dict))
+    return metadata
+
+
+def main() -> None:
+    here = Path(__file__).resolve().parent
+    repo = here.parent
+    mapping_dir = repo / "src/generate_backgrounds/dimension_value_mapping"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset", default=str(here / "data" / "dataset_personas.json"))
+    parser.add_argument("--run-dir", default=str(here / "results" / "smollm2_gender_200"))
+    parser.add_argument("--plot-dir", default=str(here / "plots" / "smollm2_gender_200"))
+    parser.add_argument("--model", default=str(here / "models" / "SmolLM2-360M-Instruct"))
+    parser.add_argument(
+        "--mappings", nargs="+",
+        default=[str(mapping_dir / "gender.csv"), str(mapping_dir / "race.csv")],
+        help="Indicator mapping CSVs (gender.csv + race.csv by default)",
+    )
+    parser.add_argument("--control-words", nargs="+", default=DEFAULT_CONTROL_WORDS)
+    parser.add_argument("--ablation-subset", type=int, default=0, help="Per-class cap (0 = all, still balanced)")
+    parser.add_argument("--device-map", default="mps")
+    parser.add_argument("--dtype", default="float16")
+    parser.add_argument("--batch-size", type=int, default=4)
+    args = parser.parse_args()
+
+    run_ablation(
+        dataset_path=args.dataset,
+        run_dir=args.run_dir,
+        plot_dir=args.plot_dir,
+        model_name=args.model,
+        device_map=args.device_map,
+        dtype=args.dtype,
+        mapping_paths=args.mappings,
+        control_words=args.control_words,
+        subset_per_class=args.ablation_subset,
+        batch_size=args.batch_size,
+    )
 
 
 if __name__ == "__main__":

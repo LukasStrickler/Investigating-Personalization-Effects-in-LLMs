@@ -1,0 +1,17 @@
+{
+  "histories": 3773,
+  "label_counts": {
+    "Male": 1715,
+    "Female": 2058
+  },
+  "conditions": [
+    "FULL",
+    "NEUTRAL",
+    "ONLY_MOVIE",
+    "ONLY_HOBBY",
+    "ONLY_NAME",
+    "ONLY_ARTIST"
+  ],
+  "reused_full_hidden": true,
+  "metric": "5-fold stratified CV accuracy (cv_mean) per layer"
+}

@@ -1,0 +1,702 @@
+[
+  {
+    "attribute": "Gender",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.5457,
+    "f1_macro": 0.353,
+    "cv_mean": 0.5454,
+    "cv_std": 0.0006,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 0,
+    "classifier": "logistic",
+    "accuracy": 0.5497,
+    "f1_macro": 0.3547,
+    "cv_mean": 0.5444,
+    "cv_std": 0.0004,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 1,
+    "classifier": "logistic",
+    "accuracy": 0.4861,
+    "f1_macro": 0.4804,
+    "cv_mean": 0.5116,
+    "cv_std": 0.0239,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 2,
+    "classifier": "logistic",
+    "accuracy": 0.4927,
+    "f1_macro": 0.4893,
+    "cv_mean": 0.4868,
+    "cv_std": 0.0185,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 3,
+    "classifier": "logistic",
+    "accuracy": 0.5033,
+    "f1_macro": 0.4965,
+    "cv_mean": 0.4987,
+    "cv_std": 0.0132,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 4,
+    "classifier": "logistic",
+    "accuracy": 0.4887,
+    "f1_macro": 0.4809,
+    "cv_mean": 0.4904,
+    "cv_std": 0.0217,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 5,
+    "classifier": "logistic",
+    "accuracy": 0.4993,
+    "f1_macro": 0.492,
+    "cv_mean": 0.5083,
+    "cv_std": 0.0079,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 6,
+    "classifier": "logistic",
+    "accuracy": 0.4821,
+    "f1_macro": 0.4762,
+    "cv_mean": 0.5066,
+    "cv_std": 0.0143,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 7,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 7,
+    "classifier": "logistic",
+    "accuracy": 0.5086,
+    "f1_macro": 0.5036,
+    "cv_mean": 0.499,
+    "cv_std": 0.0246,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 8,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 8,
+    "classifier": "logistic",
+    "accuracy": 0.5046,
+    "f1_macro": 0.4977,
+    "cv_mean": 0.493,
+    "cv_std": 0.0127,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 9,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 9,
+    "classifier": "logistic",
+    "accuracy": 0.5179,
+    "f1_macro": 0.5114,
+    "cv_mean": 0.5116,
+    "cv_std": 0.0253,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 10,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 10,
+    "classifier": "logistic",
+    "accuracy": 0.5073,
+    "f1_macro": 0.5015,
+    "cv_mean": 0.499,
+    "cv_std": 0.0183,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 11,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 11,
+    "classifier": "logistic",
+    "accuracy": 0.4993,
+    "f1_macro": 0.4929,
+    "cv_mean": 0.5063,
+    "cv_std": 0.0211,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 12,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 12,
+    "classifier": "logistic",
+    "accuracy": 0.5192,
+    "f1_macro": 0.5103,
+    "cv_mean": 0.505,
+    "cv_std": 0.0263,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 13,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 13,
+    "classifier": "logistic",
+    "accuracy": 0.5285,
+    "f1_macro": 0.5221,
+    "cv_mean": 0.5176,
+    "cv_std": 0.0128,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 14,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 14,
+    "classifier": "logistic",
+    "accuracy": 0.5033,
+    "f1_macro": 0.4962,
+    "cv_mean": 0.5099,
+    "cv_std": 0.0138,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 15,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 15,
+    "classifier": "logistic",
+    "accuracy": 0.4914,
+    "f1_macro": 0.4871,
+    "cv_mean": 0.5066,
+    "cv_std": 0.0249,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 16,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 16,
+    "classifier": "logistic",
+    "accuracy": 0.4901,
+    "f1_macro": 0.4843,
+    "cv_mean": 0.4997,
+    "cv_std": 0.021,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 17,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 17,
+    "classifier": "logistic",
+    "accuracy": 0.5113,
+    "f1_macro": 0.5051,
+    "cv_mean": 0.5073,
+    "cv_std": 0.0185,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 18,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 18,
+    "classifier": "logistic",
+    "accuracy": 0.502,
+    "f1_macro": 0.4962,
+    "cv_mean": 0.5103,
+    "cv_std": 0.0206,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 19,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 19,
+    "classifier": "logistic",
+    "accuracy": 0.506,
+    "f1_macro": 0.5004,
+    "cv_mean": 0.4973,
+    "cv_std": 0.0111,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 20,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 20,
+    "classifier": "logistic",
+    "accuracy": 0.4901,
+    "f1_macro": 0.4837,
+    "cv_mean": 0.4983,
+    "cv_std": 0.0158,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 21,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 21,
+    "classifier": "logistic",
+    "accuracy": 0.5179,
+    "f1_macro": 0.512,
+    "cv_mean": 0.4993,
+    "cv_std": 0.0151,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 22,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 22,
+    "classifier": "logistic",
+    "accuracy": 0.506,
+    "f1_macro": 0.5009,
+    "cv_mean": 0.5106,
+    "cv_std": 0.0067,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 23,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 23,
+    "classifier": "logistic",
+    "accuracy": 0.506,
+    "f1_macro": 0.5004,
+    "cv_mean": 0.5152,
+    "cv_std": 0.0164,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 24,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 24,
+    "classifier": "logistic",
+    "accuracy": 0.4887,
+    "f1_macro": 0.4809,
+    "cv_mean": 0.5109,
+    "cv_std": 0.0235,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 25,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 25,
+    "classifier": "logistic",
+    "accuracy": 0.4993,
+    "f1_macro": 0.4951,
+    "cv_mean": 0.5139,
+    "cv_std": 0.0144,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 26,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 26,
+    "classifier": "logistic",
+    "accuracy": 0.5033,
+    "f1_macro": 0.4985,
+    "cv_mean": 0.5146,
+    "cv_std": 0.0173,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 27,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 27,
+    "classifier": "logistic",
+    "accuracy": 0.494,
+    "f1_macro": 0.4887,
+    "cv_mean": 0.5195,
+    "cv_std": 0.0112,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 28,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 28,
+    "classifier": "logistic",
+    "accuracy": 0.4967,
+    "f1_macro": 0.4908,
+    "cv_mean": 0.5146,
+    "cv_std": 0.0165,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 29,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 29,
+    "classifier": "logistic",
+    "accuracy": 0.4781,
+    "f1_macro": 0.4749,
+    "cv_mean": 0.5219,
+    "cv_std": 0.0145,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 30,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 30,
+    "classifier": "logistic",
+    "accuracy": 0.4834,
+    "f1_macro": 0.48,
+    "cv_mean": 0.5172,
+    "cv_std": 0.0132,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 31,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 31,
+    "classifier": "logistic",
+    "accuracy": 0.4927,
+    "f1_macro": 0.4883,
+    "cv_mean": 0.5063,
+    "cv_std": 0.0165,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 32,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 32,
+    "classifier": "logistic",
+    "accuracy": 0.4848,
+    "f1_macro": 0.4808,
+    "cv_mean": 0.5,
+    "cv_std": 0.0072,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 33,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 33,
+    "classifier": "logistic",
+    "accuracy": 0.494,
+    "f1_macro": 0.4859,
+    "cv_mean": 0.497,
+    "cv_std": 0.0121,
+    "is_control": true
+  },
+  {
+    "attribute": "Gender",
+    "layer": 34,
+    "classifier": "logistic",
+    "accuracy": 1.0,
+    "f1_macro": 1.0,
+    "cv_mean": 1.0,
+    "cv_std": 0.0,
+    "is_control": false
+  },
+  {
+    "attribute": "Gender",
+    "layer": 34,
+    "classifier": "logistic",
+    "accuracy": 0.4954,
+    "f1_macro": 0.4902,
+    "cv_mean": 0.492,
+    "cv_std": 0.0117,
+    "is_control": true
+  }
+]
