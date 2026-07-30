@@ -1,0 +1,16 @@
+{
+  "Gender": {
+    "samples": 3773,
+    "classes": [
+      "Female",
+      "Male"
+    ],
+    "best_layer": 1,
+    "real_accuracy": 1.0,
+    "control_accuracy": 0.5536,
+    "selectivity_gap": 0.4464,
+    "verdict": "ENCODED",
+    "probe_artifact": "/tmp/ir_out/results/best_probe_gender.joblib",
+    "test_predictions": "/tmp/ir_out/results/test_predictions_gender.csv"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "histories": 3773,
+  "label_counts": {
+    "Male": 1715,
+    "Female": 2058
+  },
+  "conditions": [
+    "NEUTRAL_GENERATED"
+  ],
+  "reused_full_hidden": true,
+  "metric": "5-fold stratified CV accuracy (cv_mean) per layer"
+}

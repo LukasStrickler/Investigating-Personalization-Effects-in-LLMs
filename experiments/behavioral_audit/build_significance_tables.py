@@ -395,7 +395,7 @@ def analyze_frequency_tables(
 
 
 def parse_args() -> argparse.Namespace:
-    default_root = Path("experiments/behavioral_audit/results_merged/frequency_tables")
+    default_root = Path("experiments/behavioral_audit/results_behavioral_audit/results_merged/frequency_tables")
     parser = argparse.ArgumentParser(
         description="Test significance from frequency tables built by the behavioral audit pipeline."
     )

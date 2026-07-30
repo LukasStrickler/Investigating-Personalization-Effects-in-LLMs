@@ -91,15 +91,19 @@ def _export_test_predictions(path, artifact, states, labels, source_indices, dat
             writer.writerow(item)
 
 
-def main() -> None:
-    args = parse_args()
-    # Import heavyweight ML dependencies only after argument parsing so that
-    # `python main.py --help` also works before requirements are installed.
+def run_pipeline(config: PipelineConfig, skip_extraction: bool = False) -> dict:
+    """Execute the full probing pipeline for a prepared config.
+
+    Shared by the local CLI (`main`) and the Modal batch runner (`modal_run.py`)
+    so there is a single source of truth. Returns the summary dict and also
+    writes it to ``summary_personas.json`` alongside the other artifacts.
+    """
+    # Import heavyweight ML dependencies lazily so that `python main.py --help`
+    # works before requirements are installed.
     from extraction import extract_hidden_states, load_hidden_states, load_model_and_tokenizer, save_hidden_states
     from probing import train_probes
     from visualization import plot_layer_accuracy, plot_selectivity_gap
 
-    config = build_config(args)
     os.makedirs(config.results_dir, exist_ok=True)
     os.makedirs(config.plots_dir, exist_ok=True)
 
@@ -121,7 +125,7 @@ def main() -> None:
         print(f"  {attribute}: {dict(Counter(value for value in labels if value is not None))}")
 
     hidden_path = os.path.join(config.results_dir, "hidden_states_personas.npz")
-    if args.skip_extraction:
+    if skip_extraction:
         if not os.path.exists(hidden_path):
             raise FileNotFoundError(f"No cached hidden states found at {hidden_path}")
         print("\n▸ STEP 2: Loading cached hidden states ...")
@@ -203,6 +207,14 @@ def main() -> None:
     print(f"  Pipeline complete in {time.time() - started:.1f}s")
     print(f"  Results: {config.results_dir}")
     print(f"  Plots:   {config.plots_dir}")
+
+    return summary
+
+
+def main() -> None:
+    args = parse_args()
+    config = build_config(args)
+    run_pipeline(config, skip_extraction=args.skip_extraction)
 
 
 if __name__ == "__main__":

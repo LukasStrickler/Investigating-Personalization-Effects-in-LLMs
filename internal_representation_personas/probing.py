@@ -34,6 +34,7 @@ class ProbeResult:
     f1_macro: float
     cv_mean: float
     cv_std: float
+    mean_margin: float = 0.0  # mean(max_prob - second_max_prob) on test set
     is_control: bool = False
     report: str = ""
 
@@ -81,6 +82,7 @@ class ProbeResults:
                 "f1_macro": round(r.f1_macro, 4),
                 "cv_mean": round(r.cv_mean, 4),
                 "cv_std": round(r.cv_std, 4),
+                "mean_margin": round(r.mean_margin, 4),
                 "is_control": r.is_control,
             }
             for r in self.results
@@ -103,11 +105,14 @@ def _train_and_eval_probe(
     X_test: np.ndarray,
     y_test: np.ndarray,
     config: ProbeConfig,
-) -> Tuple[float, float, float, float, str, StandardScaler, LogisticRegression]:
+) -> Tuple[float, float, float, float, float, str, StandardScaler, LogisticRegression]:
     """
     Train a single linear probe and return metrics.
 
-    Returns (accuracy, f1_macro, cv_mean, cv_std, classification_report_str, fitted_clf).
+    Returns (accuracy, f1_macro, cv_mean, cv_std, mean_margin,
+             classification_report_str, scaler, fitted_clf).
+    mean_margin = mean(top_prob - second_prob) over test samples — stays
+    informative even when accuracy saturates at 1.0.
     """
     scaler = StandardScaler()
     X_train_s = scaler.fit_transform(X_train)
@@ -129,12 +134,15 @@ def _train_and_eval_probe(
 
     clf.fit(X_train_s, y_train)
     y_pred = clf.predict(X_test_s)
+    proba = clf.predict_proba(X_test_s)  # (n_test, n_classes)
+    sorted_proba = np.sort(proba, axis=1)
+    mean_margin = float(np.mean(sorted_proba[:, -1] - sorted_proba[:, -2]))
 
     acc = float(accuracy_score(y_test, y_pred))
     f1 = float(f1_score(y_test, y_pred, average="macro", zero_division=0))
     report = classification_report(y_test, y_pred, zero_division=0, output_dict=False)
 
-    return acc, f1, float(cv_scores.mean()), float(cv_scores.std()), str(report), scaler, clf
+    return acc, f1, float(cv_scores.mean()), float(cv_scores.std()), mean_margin, str(report), scaler, clf
 
 
 def train_probes(
@@ -183,13 +191,13 @@ def train_probes(
         y_train, y_test = y_encoded[train_indices], y_encoded[test_indices]
 
         # ── Real probe ────────────────────────────────────────────────
-        acc, f1, cv_m, cv_s, report, scaler, clf = _train_and_eval_probe(
+        acc, f1, cv_m, cv_s, margin, report, scaler, clf = _train_and_eval_probe(
             X_train, y_train, X_test, y_test, config
         )
         results.add(ProbeResult(
             attribute=attribute_name, layer=layer_idx, classifier="logistic",
             accuracy=acc, f1_macro=f1, cv_mean=cv_m, cv_std=cv_s,
-            is_control=False, report=report,
+            mean_margin=margin, is_control=False, report=report,
         ))
         artifacts[layer_idx] = ProbeArtifact(
             scaler=scaler,
@@ -206,13 +214,13 @@ def train_probes(
         y_train_ctrl = y_shuffled[train_indices]
         y_test_ctrl = y_shuffled[test_indices]
 
-        acc_c, f1_c, cv_m_c, cv_s_c, report_c, _, _ = _train_and_eval_probe(
+        acc_c, f1_c, cv_m_c, cv_s_c, margin_c, report_c, _, _ = _train_and_eval_probe(
             X_train, y_train_ctrl, X_test, y_test_ctrl, config
         )
         results.add(ProbeResult(
             attribute=attribute_name, layer=layer_idx, classifier="logistic",
             accuracy=acc_c, f1_macro=f1_c, cv_mean=cv_m_c, cv_std=cv_s_c,
-            is_control=True, report=report_c,
+            mean_margin=margin_c, is_control=True, report=report_c,
         ))
 
     # Print summary for this attribute

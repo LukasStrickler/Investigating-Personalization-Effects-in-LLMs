@@ -1,0 +1,1 @@
+judgment_id,subject_id,source_id,prompt_id,subject_model_alias,judge_alias,judge_config_hash,status,raw_output,final_class,none_declared,parse_status,error_message,prompt_tokens,completion_tokens,total_tokens,latency_ms,retry_count,started_at,completed_at,metadata

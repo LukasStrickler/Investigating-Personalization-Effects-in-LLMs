@@ -207,6 +207,65 @@ For CPU execution:
 Omit `--samples` to use every history with a Gender label. Reuse matching cached
 hidden states with `--skip-extraction`.
 
+## Running on Modal (cloud GPU)
+
+Large open-weights models do not fit in laptop memory — `google/gemma-4-31B-it`
+is ~61 GB in bf16, and the `gemma-4-26B-A4B` MoE keeps all ~25 B params resident
+(~50 GB) despite its ~3.8 B active. `modal_run.py` runs the **same** pipeline
+(`run_pipeline` in `main.py`) on a Modal GPU container and downloads the
+`results/` + `plots/` artifacts back to your machine. Model weights are cached in
+the shared `pers-hf-cache` Modal volume across runs.
+
+Gated Gemma repos need the `huggingface-token` Modal secret. Sync it once with the
+existing helper (accept the model licence on Hugging Face first):
+
+```bash
+.venv/bin/python experiments/modal_gpu_poc/setup_modal_hf.py \
+  --model-id google/gemma-4-31B-it
+```
+
+**Smoke test first** — cheap model on a cheap GPU to confirm the wiring:
+
+```bash
+MODAL_IR_GPU=L4 modal run internal_representation_personas/modal_run.py \
+  --model google/gemma-4-E2B-it --samples 8
+```
+
+**Full run** — the 31 B dense model needs an 80 GB GPU. `--samples 0` (the
+default) uses every labelled history (~3773); pass a positive number for a
+per-group subsample. Use `--out` to keep runs separated by model. Use
+`--detach` so a multi-minute run survives a laptop sleep / network blip:
+
+```bash
+MODAL_IR_GPU=A100-80GB modal run --detach internal_representation_personas/modal_run.py \
+  --model google/gemma-4-31B-it --samples 0 --dtype bfloat16 \
+  --out results_modal_gemma4_31b
+```
+
+Artifacts land in `internal_representation_personas/results_modal/{results,plots}`
+(override with `--out`), so local `results/` runs are never clobbered. The large
+`hidden_states_personas.npz` intermediate is not downloaded by default; set
+`MODAL_IR_KEEP_HIDDEN=1` to include it.
+
+Results are **also** persisted to the Modal volume `pers-ir-results` under
+`<out>/`, so a `--detach` run keeps its output even if the local client
+disconnects before the download. Fetch them any time with:
+
+```bash
+modal volume get pers-ir-results results_modal_gemma4_31b/ \
+  internal_representation_personas/results_modal_gemma4_31b
+```
+
+GPU picking (env `MODAL_IR_GPU`) by model size (bf16 weights + room for per-layer
+hidden-state extraction):
+
+| Model | Weights | GPU |
+|---|---|---|
+| `gemma-4-E2B-it` / `gemma-4-E4B-it` | ~10–16 GB | `L4`, `A10G` |
+| `gemma-4-12B-it` | ~24 GB | `L40S`, `A10G`, `A100-80GB` |
+| `gemma-4-26B-A4B-it` (MoE) | ~50 GB | `A100-80GB` |
+| `gemma-4-31B-it` (dense) | ~61 GB | `A100-80GB`, `H100` |
+
 ## Outputs
 
 - `data/dataset_personas.json`: normalized histories used by the run

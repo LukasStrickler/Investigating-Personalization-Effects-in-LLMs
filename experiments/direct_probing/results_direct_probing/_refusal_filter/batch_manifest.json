@@ -1,0 +1,21 @@
+[
+ "deepseek-v4-flash_paid__00.json",
+ "gemma-4-31b_paid__00.json",
+ "gemma-4-31b_paid__01.json",
+ "gemma-4-31b_paid__02.json",
+ "gemma-4-31b_paid__03.json",
+ "gemma-4-31b_paid__04.json",
+ "gemma-4-31b_paid__05.json",
+ "gemma-4-31b_paid__06.json",
+ "gemma-4-31b_paid__07.json",
+ "gemma-4-31b_paid__08.json",
+ "gemma-4-31b_paid__09.json",
+ "gemma-4-31b_paid__10.json",
+ "gemma-4-31b_paid__11.json",
+ "gemma-4-31b_paid__12.json",
+ "gemma-4-31b_paid__13.json",
+ "gemma-4-31b_paid__14.json",
+ "glm-5.2_paid__00.json",
+ "grok-4.3_paid__00.json",
+ "ministral-3-8b_modal__00.json"
+]

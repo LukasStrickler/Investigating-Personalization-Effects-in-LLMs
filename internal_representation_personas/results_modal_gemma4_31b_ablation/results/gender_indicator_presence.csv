@@ -1,0 +1,92 @@
+phrase,target_type,dimension,dimension_value,configured_gender,indicator_name,histories_containing,female_count,male_count,p_female_given_present,p_male_given_present,female_document_frequency,male_document_frequency
+football,Gender indicator,Gender,Male,Male,Hobby,30,0,30,0.0,1.0,0.0,0.15
+gaming,Gender indicator,Gender,Male,Male,Hobby,21,0,21,0.0,1.0,0.0,0.105
+weight lifting,Gender indicator,Gender,Male,Male,Hobby,31,0,31,0.0,1.0,0.0,0.155
+cars,Gender indicator,Gender,Male,Male,Hobby,34,0,34,0.0,1.0,0.0,0.17
+investing,Gender indicator,Gender,Male,Male,Hobby,23,0,23,0.0,1.0,0.0,0.115
+competitive sports,Gender indicator,Gender,Male,Male,Hobby,37,0,37,0.0,1.0,0.0,0.185
+physical activities,Gender indicator,Gender,Male,Male,Hobby,24,0,24,0.0,1.0,0.0,0.12
+action,Gender indicator,Gender,Male,Male,Movie,39,0,39,0.0,1.0,0.0,0.195
+science fiction,Gender indicator,Gender,Male,Male,Movie,48,0,48,0.0,1.0,0.0,0.24
+horror,Gender indicator,Gender,Male,Male,Movie,41,0,41,0.0,1.0,0.0,0.205
+war,Gender indicator,Gender,Male,Male,Movie,36,0,36,0.0,1.0,0.0,0.18
+thriller,Gender indicator,Gender,Male,Male,Movie,36,0,36,0.0,1.0,0.0,0.18
+yoga,Gender indicator,Gender,Female,Female,Hobby,34,34,0,1.0,0.0,0.17,0.0
+reading,Gender indicator,Gender,Female,Female,Hobby,28,28,0,1.0,0.0,0.14,0.0
+crafting,Gender indicator,Gender,Female,Female,Hobby,25,25,0,1.0,0.0,0.125,0.0
+dance,Gender indicator,Gender,Female,Female,Hobby,23,23,0,1.0,0.0,0.115,0.0
+wellness,Gender indicator,Gender,Female,Female,Hobby,36,36,0,1.0,0.0,0.18,0.0
+volunteering,Gender indicator,Gender,Female,Female,Hobby,25,25,0,1.0,0.0,0.125,0.0
+social activities,Gender indicator,Gender,Female,Female,Hobby,29,29,0,1.0,0.0,0.145,0.0
+romantic comedy,Gender indicator,Gender,Female,Female,Movie,27,27,0,1.0,0.0,0.135,0.0
+romantic drama,Gender indicator,Gender,Female,Female,Movie,34,34,0,1.0,0.0,0.17,0.0
+drama,Gender indicator,Gender,Female,Female,Movie,39,39,0,1.0,0.0,0.195,0.0
+family,Gender indicator,Gender,Female,Female,Movie,32,32,0,1.0,0.0,0.16,0.0
+animation,Gender indicator,Gender,Female,Female,Movie,37,37,0,1.0,0.0,0.185,0.0
+comedy,Gender indicator,Gender,Female,Female,Movie,31,31,0,1.0,0.0,0.155,0.0
+Eva Svobodová,Race indicator,Race,Central/Eastern Europe,Race,Name,12,12,0,1.0,0.0,0.06,0.0
+Mészáros Adrienn,Race indicator,Race,Central/Eastern Europe,Race,Name,16,16,0,1.0,0.0,0.08,0.0
+Pavel Novotný,Race indicator,Race,Central/Eastern Europe,Race,Name,8,0,8,0.0,1.0,0.0,0.04
+Kiss Gergő,Race indicator,Race,Central/Eastern Europe,Race,Name,19,0,19,0.0,1.0,0.0,0.095
+Vanessa Dubois,Race indicator,Race,France,Race,Name,16,16,0,1.0,0.0,0.08,0.0
+Valérie Favre,Race indicator,Race,France,Race,Name,12,12,0,1.0,0.0,0.06,0.0
+Etienne Perrin,Race indicator,Race,France,Race,Name,18,0,18,0.0,1.0,0.0,0.09
+Kevin Fournier,Race indicator,Race,France,Race,Name,9,0,9,0.0,1.0,0.0,0.045
+Laura Wagner,Race indicator,Race,Germany,Race,Name,13,13,0,1.0,0.0,0.065,0.0
+Katharina Meyer,Race indicator,Race,Germany,Race,Name,8,8,0,1.0,0.0,0.04,0.0
+Sebastian Schmidt,Race indicator,Race,Germany,Race,Name,15,0,15,0.0,1.0,0.0,0.075
+Patrick Schulz,Race indicator,Race,Germany,Race,Name,13,0,13,0.0,1.0,0.0,0.065
+Andrea Fernández Ortiz,Race indicator,Race,Hispanic Countries,Race,Name,15,15,0,1.0,0.0,0.075,0.0
+Paula Morales Marín,Race indicator,Race,Hispanic Countries,Race,Name,18,18,0,1.0,0.0,0.09,0.0
+Javier Nuñez Delgado,Race indicator,Race,Hispanic Countries,Race,Name,7,0,7,0.0,1.0,0.0,0.035
+Xavier Martí Roca,Race indicator,Race,Hispanic Countries,Race,Name,13,0,13,0.0,1.0,0.0,0.065
+Rachida El Moussaoui,Race indicator,Race,MENA,Race,Name,10,10,0,1.0,0.0,0.05,0.0
+Fatma Yilmaz,Race indicator,Race,MENA,Race,Name,11,11,0,1.0,0.0,0.055,0.0
+Bilal Öztürk,Race indicator,Race,MENA,Race,Name,10,0,10,0.0,1.0,0.0,0.05
+Muhammad Ahmed,Race indicator,Race,MENA,Race,Name,8,0,8,0.0,1.0,0.0,0.04
+Ayesha Khan,Race indicator,Race,South/Central Asia,Race,Name,10,10,0,1.0,0.0,0.05,0.0
+Aisha Raja,Race indicator,Race,South/Central Asia,Race,Name,9,9,0,1.0,0.0,0.045,0.0
+Ahmad Iqbal,Race indicator,Race,South/Central Asia,Race,Name,11,0,11,0.0,1.0,0.0,0.055
+Zahid Rashid,Race indicator,Race,South/Central Asia,Race,Name,16,0,16,0.0,1.0,0.0,0.08
+Anne Mwamba,Race indicator,Race,Sub-Saharan Africa,Race,Name,15,15,0,1.0,0.0,0.075,0.0
+Tabara Ndiaye,Race indicator,Race,Sub-Saharan Africa,Race,Name,8,8,0,1.0,0.0,0.04,0.0
+Michael Mbombo,Race indicator,Race,Sub-Saharan Africa,Race,Name,15,0,15,0.0,1.0,0.0,0.075
+Tambwe Umba,Race indicator,Race,Sub-Saharan Africa,Race,Name,9,0,9,0.0,1.0,0.0,0.045
+Patricia Wilson,Race indicator,Race,United Kingdom / North America,Race,Name,11,11,0,1.0,0.0,0.055,0.0
+Elizabeth Wright,Race indicator,Race,United Kingdom / North America,Race,Name,12,12,0,1.0,0.0,0.06,0.0
+Robert Taylor,Race indicator,Race,United Kingdom / North America,Race,Name,18,0,18,0.0,1.0,0.0,0.09
+Michael Johnson,Race indicator,Race,United Kingdom / North America,Race,Name,7,0,7,0.0,1.0,0.0,0.035
+Timati,Race indicator,Race,Central/Eastern Europe,Race,Artist,15,7,8,0.4666666666666667,0.5333333333333333,0.035,0.04
+Klava Koka,Race indicator,Race,Central/Eastern Europe,Race,Artist,18,7,11,0.3888888888888889,0.6111111111111112,0.035,0.055
+Dani Mocanu,Race indicator,Race,Central/Eastern Europe,Race,Artist,22,14,8,0.6363636363636364,0.36363636363636365,0.07,0.04
+Tiakola,Race indicator,Race,France,Race,Artist,14,6,8,0.42857142857142855,0.5714285714285714,0.03,0.04
+Dadju,Race indicator,Race,France,Race,Artist,27,16,11,0.5925925925925926,0.4074074074074074,0.08,0.055
+Indila,Race indicator,Race,France,Race,Artist,14,6,8,0.42857142857142855,0.5714285714285714,0.03,0.04
+Helene Fischer,Race indicator,Race,Germany,Race,Artist,14,5,9,0.35714285714285715,0.6428571428571429,0.025,0.045
+AnnenMayKantereit,Race indicator,Race,Germany,Race,Artist,22,11,11,0.5,0.5,0.055,0.055
+Rammstein,Race indicator,Race,Germany,Race,Artist,13,5,8,0.38461538461538464,0.6153846153846154,0.025,0.04
+Peso Pluma,Race indicator,Race,Hispanic Countries,Race,Artist,16,9,7,0.5625,0.4375,0.045,0.035
+ROSALÍA,Race indicator,Race,Hispanic Countries,Race,Artist,17,12,5,0.7058823529411765,0.29411764705882354,0.06,0.025
+Milo j,Race indicator,Race,Hispanic Countries,Race,Artist,20,12,8,0.6,0.4,0.06,0.04
+Saad Lamjarred,Race indicator,Race,MENA,Race,Artist,18,10,8,0.5555555555555556,0.4444444444444444,0.05,0.04
+Ahmet Kaya,Race indicator,Race,MENA,Race,Artist,10,6,4,0.6,0.4,0.03,0.02
+Didine Canon 16,Race indicator,Race,MENA,Race,Artist,11,5,6,0.45454545454545453,0.5454545454545454,0.025,0.03
+Dhanda Nyoliwala,Race indicator,Race,South/Central Asia,Race,Artist,18,5,13,0.2777777777777778,0.7222222222222222,0.025,0.065
+Guru Randhawa,Race indicator,Race,South/Central Asia,Race,Artist,14,5,9,0.35714285714285715,0.6428571428571429,0.025,0.045
+Kishore Kumar,Race indicator,Race,South/Central Asia,Race,Artist,14,9,5,0.6428571428571429,0.35714285714285715,0.045,0.025
+Adekunle Gold,Race indicator,Race,Sub-Saharan Africa,Race,Artist,15,7,8,0.4666666666666667,0.5333333333333333,0.035,0.04
+Diamond Platnumz,Race indicator,Race,Sub-Saharan Africa,Race,Artist,16,7,9,0.4375,0.5625,0.035,0.045
+Dunsin Oyekan,Race indicator,Race,Sub-Saharan Africa,Race,Artist,16,9,7,0.5625,0.4375,0.045,0.035
+Dua Lipa,Race indicator,Race,United Kingdom / North America,Race,Artist,16,8,8,0.5,0.5,0.04,0.04
+Linkin Park,Race indicator,Race,United Kingdom / North America,Race,Artist,18,8,10,0.4444444444444444,0.5555555555555556,0.04,0.05
+Imagine Dragons,Race indicator,Race,United Kingdom / North America,Race,Artist,14,7,7,0.5,0.5,0.035,0.035
+really,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+enjoy,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+watching,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+movies,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+outside,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+spend,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+time,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+someone,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+background,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
+structure,Neutral template control,Control,Control,Control,Fixed template word,400,200,200,0.5,0.5,1.0,1.0
