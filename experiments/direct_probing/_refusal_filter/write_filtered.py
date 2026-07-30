@@ -13,7 +13,7 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parents[3]
+REPO = HERE.parents[2]
 
 BY_MODEL = json.loads((HERE / "verdicts_by_model.json").read_text())
 

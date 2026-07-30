@@ -21,7 +21,7 @@ from pathlib import Path
 csv.field_size_limit(10 ** 7)
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parents[3]
+REPO = HERE.parents[2]
 SENTINEL = "REFUSED"
 
 BY_MODEL = json.loads((HERE / "verdicts_by_model.json").read_text())
