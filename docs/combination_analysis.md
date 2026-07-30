@@ -55,7 +55,7 @@ Adding a new indicator name introduces a multiplicative factor of K on top of ex
 | New indicator (K values) on Male         | Male combos: 35 → 35×K   | +8 × 35×(K−1) × 6 = +1,680×(K−1) |
 | New indicator (K values) on Female       | Female combos: 42 → 42×K | +8 × 42×(K−1) × 6 = +2,016×(K−1) |
 | New indicator (K values) on both         | Both multiply by K       | +3,696×(K−1)                     |
-| New indicator (K values) per Region region | Region combos: 12 → 12×K | (K−1) × current total            |
+| New indicator (K values) per region | Region combos: 12 → 12×K | (K−1) × current total            |
 
 Example: adding a new indicator with 3 values to both genders → +3,696 × 2 = +7,392 → **11,088** total.
 

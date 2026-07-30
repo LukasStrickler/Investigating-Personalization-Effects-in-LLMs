@@ -10,9 +10,20 @@ readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
 authors = [
-    {name = "University of Mannheim Research Team"}
+    {name = "Nick Birkholz"},
+    {name = "Julian Ilting"},
+    {name = "Javier Miranda"},
+    {name = "Jannis Peters"},
+    {name = "Lukas Strickler"},
 ]
-keywords = ["llm", "inference", "openai", "anthropic", "openrouter", "research"]
+keywords = [
+    "llm",
+    "personalization",
+    "demographic inference",
+    "behavioral auditing",
+    "openrouter",
+    "research",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -58,6 +69,7 @@ dev = [
 internal-rep = [
     "torch>=2.0.0",
     "transformers>=4.40.0",
+    "accelerate>=0.27.0",  # transformers device_map='auto' model loading
     "scikit-learn>=1.3.0",
     "huggingface-hub>=0.20.0",
     "joblib>=1.3.0",
@@ -81,8 +93,8 @@ typecheck = "mypy src --ignore-missing-imports"
 test = "pytest tests -q"
 
 [project.urls]
-Homepage = "https://github.com/university-mannheim/Investigating-Personalization-Effects-in-LLMs"
-Repository = "https://github.com/university-mannheim/Investigating-Personalization-Effects-in-LLMs"
+Homepage = "https://github.com/LukasStrickler/Investigating-Personalization-Effects-in-LLMs"
+Repository = "https://github.com/LukasStrickler/Investigating-Personalization-Effects-in-LLMs"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -113,6 +125,8 @@ markers = [
 target-version = "py310"
 line-length = 100
 src = ["src", "tests", "scripts"]
+# WIP results notebook; remove once finalized so it goes through the same gates.
+extend-exclude = ["finalresults.ipynb"]
 
 [tool.ruff.lint]
 select = [
@@ -138,6 +152,9 @@ ignore = [
 "tests/test_config.py" = ["I001"]
 "tests/test_public_api.py" = ["B009", "F401", "SIM118"]
 "examples/*.ipynb" = ["I001", "SIM115"]  # generated/demo: import order and open() without context manager
+# Analysis notebooks: exploratory plotting code; style nits (single-letter vars,
+# unused loop vars, dict() literals, mid-cell imports) are not held to library standards.
+"*.ipynb" = ["E741", "B007", "C408", "C416", "SIM108", "E712", "ARG001", "E402"]
 
 [tool.ruff.format]
 quote-style = "double"

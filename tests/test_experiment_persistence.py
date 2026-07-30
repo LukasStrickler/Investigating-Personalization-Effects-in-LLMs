@@ -364,8 +364,5 @@ def test_writer_handles_duplicate_content_when_metadata_distinguishes(tmp_path: 
 
     df = build_dataframe_from_csv(csv_path)
     assert len(df) == n
-    responses = sorted(
-        json.loads(row["alias-a"])["response"]
-        for row in _read_rows(csv_path)
-    )
+    responses = sorted(json.loads(row["alias-a"])["response"] for row in _read_rows(csv_path))
     assert responses == [f"r{i}" for i in range(n)]

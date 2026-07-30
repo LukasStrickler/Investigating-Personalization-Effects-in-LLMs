@@ -1,0 +1,60 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the preferred citation below."
+title: "Investigating Personalization Effects in LLMs"
+type: software
+authors:
+  - family-names: Birkholz
+    given-names: Nick
+    affiliation: "University of Mannheim"
+  - family-names: Ilting
+    given-names: Julian
+    affiliation: "University of Mannheim"
+  - family-names: Miranda
+    given-names: Javier
+    affiliation: "University of Mannheim"
+  - family-names: Peters
+    given-names: Jannis
+    affiliation: "University of Mannheim"
+  - family-names: Strickler
+    given-names: Lukas
+    affiliation: "University of Mannheim"
+repository-code: "https://github.com/LukasStrickler/Investigating-Personalization-Effects-in-LLMs"
+url: "https://github.com/LukasStrickler/Investigating-Personalization-Effects-in-LLMs"
+license: MIT
+date-released: "2026-07-30"
+keywords:
+  - large language models
+  - personalization
+  - demographic inference
+  - behavioral auditing
+abstract: >-
+  Code and data for a study of whether LLMs infer user gender and region from
+  multi-turn conversation history, and whether those inferences alter job and
+  college-major recommendations.
+preferred-citation:
+  type: report
+  title: "What do LLMs Know About Their Users? Investigating Personalization Effects in Large Language Models"
+  authors:
+    - family-names: Birkholz
+      given-names: Nick
+      affiliation: "University of Mannheim"
+    - family-names: Ilting
+      given-names: Julian
+      affiliation: "University of Mannheim"
+    - family-names: Miranda
+      given-names: Javier
+      affiliation: "University of Mannheim"
+    - family-names: Peters
+      given-names: Jannis
+      affiliation: "University of Mannheim"
+    - family-names: Strickler
+      given-names: Lukas
+      affiliation: "University of Mannheim"
+  year: 2026
+  month: 7
+  institution:
+    name: "University of Mannheim"
+    city: Mannheim
+    country: DE
+  url: "https://github.com/LukasStrickler/Investigating-Personalization-Effects-in-LLMs"
+  notes: "FSS26 Team Project. Supervisor: Dr. Indira Sen."

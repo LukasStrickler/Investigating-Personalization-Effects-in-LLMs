@@ -11,7 +11,7 @@ start at the [repo root README](../README.md) and [`../finalresults.ipynb`](../f
 | [uv.md](uv.md) | `uv` package manager used for setup |
 | [FREE_AI_API_PROVIDERS.md](FREE_AI_API_PROVIDERS.md) | Free/low-cost API providers via LiteLLM |
 | [combination_analysis.md](combination_analysis.md) | Persona indicator-combination space |
-| [cost-estimate-behavioral-audit.md](cost-estimate-behavioral-audit.md) | Cost and token estimate for the behavioral audit |
+| [cost-estimate-behavioral-audit.md](cost-estimate-behavioral-audit.md) | Pre-study cost planning estimate for the behavioral audit (historical) |
 
 Modal setup/deploy: [`../scripts/modal/README.md`](../scripts/modal/README.md).
 Scripts index: [`../scripts/README.md`](../scripts/README.md).

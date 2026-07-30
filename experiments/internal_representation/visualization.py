@@ -4,13 +4,13 @@ Visualization utilities for the Linear Probing Pipeline.
 Generates layer-wise accuracy plots and selectivity gap charts.
 """
 
-from probing import ProbeResult, ProbeResults
-import numpy as np
-import matplotlib.pyplot as plt
 import os
-from typing import List
 
 import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+from probing import ProbeResults
+
 matplotlib.use("Agg")  # Non-interactive backend for server/headless environments
 
 
@@ -26,11 +26,13 @@ def plot_layer_accuracy(
     Returns the path to the saved figure.
     """
     real = [
-        r for r in results.results
+        r
+        for r in results.results
         if r.attribute == attribute and r.classifier == classifier and not r.is_control
     ]
     ctrl = [
-        r for r in results.results
+        r
+        for r in results.results
         if r.attribute == attribute and r.classifier == classifier and r.is_control
     ]
 
@@ -91,7 +93,7 @@ def plot_selectivity_gap(
         if r.attribute == attribute and r.classifier == classifier and r.is_control
     }
     layers = sorted(real.keys())
-    gaps = [real[l] - ctrl.get(l, 0) for l in layers]
+    gaps = [real[layer] - ctrl.get(layer, 0) for layer in layers]
 
     fig, ax = plt.subplots(figsize=(10, 4))
     colors = ["forestgreen" if g > 0 else "red" for g in gaps]

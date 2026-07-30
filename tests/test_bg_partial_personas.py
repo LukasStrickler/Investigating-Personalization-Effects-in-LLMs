@@ -93,8 +93,6 @@ async def test_full_run_produces_partial_combinations(
 
     assert len(histories) == result.assembly.total_histories
 
-    persona_keys = {tuple(sorted(h["persona"].items())) for h in histories}
-
     # Every history must list both dimensions in persona
     for h in histories:
         assert set(h["persona"].keys()) == {"DimA", "DimB"}, (
@@ -103,26 +101,22 @@ async def test_full_run_produces_partial_combinations(
 
     # Full combinations (both non-null) must exist
     assert any(
-        h["persona"]["DimA"] is not None and h["persona"]["DimB"] is not None
-        for h in histories
+        h["persona"]["DimA"] is not None and h["persona"]["DimB"] is not None for h in histories
     ), "Expected at least one full (both dims non-null) history"
 
     # Partial: DimA active, DimB excluded
     assert any(
-        h["persona"]["DimA"] is not None and h["persona"]["DimB"] is None
-        for h in histories
+        h["persona"]["DimA"] is not None and h["persona"]["DimB"] is None for h in histories
     ), "Expected histories where DimA is set and DimB is null"
 
     # Partial: DimB active, DimA excluded
     assert any(
-        h["persona"]["DimA"] is None and h["persona"]["DimB"] is not None
-        for h in histories
+        h["persona"]["DimA"] is None and h["persona"]["DimB"] is not None for h in histories
     ), "Expected histories where DimB is set and DimA is null"
 
     # No all-null persona
     assert not any(
-        h["persona"]["DimA"] is None and h["persona"]["DimB"] is None
-        for h in histories
+        h["persona"]["DimA"] is None and h["persona"]["DimB"] is None for h in histories
     ), "All-null persona should be excluded"
 
     # combination_ids must only reference included (non-null) dimensions

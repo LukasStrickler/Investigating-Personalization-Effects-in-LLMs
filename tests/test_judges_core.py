@@ -106,6 +106,11 @@ class TestConfig:
         h2 = judge_config_hash(_cfg(thinking_budget_tokens=2048))
         assert h1 != h2
 
+    def test_hash_changes_on_max_tokens(self) -> None:
+        h1 = judge_config_hash(_cfg(max_tokens=512))
+        h2 = judge_config_hash(_cfg(max_tokens=1024))
+        assert h1 != h2
+
     def test_hash_ignores_output_dir_and_resume(self) -> None:
         h1 = judge_config_hash(_cfg(output_dir=None, resume=True))
         h2 = judge_config_hash(_cfg(output_dir=Path("/tmp/a"), resume=False))

@@ -63,8 +63,8 @@ from inference.judges.log import JudgeLogger
 
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
-DEFAULT_SAMPLE_SIZE = 50     # total conversation histories, evenly stratified by (gender, region)
-DEFAULT_SEED = 123           # MUST match run_direct_probing_multimodel.py to reuse the same 50 histories
+DEFAULT_SAMPLE_SIZE = 50  # total conversation histories, evenly stratified by (gender, region)
+DEFAULT_SEED = 123  # MUST match run_direct_probing_multimodel.py to reuse the same 50 histories
 MAX_PASSES = 5
 WORKERS = 50
 
@@ -92,7 +92,9 @@ RESULTS_DIR = REPO_ROOT / "experiments" / "direct_probing" / "results_direct_pro
 # ---------------------------------------------------------------------------
 
 
-def _stratified_subsample(grouped: dict[tuple[str, str], list[dict]], size: int, rng: random.Random) -> list[dict]:
+def _stratified_subsample(
+    grouped: dict[tuple[str, str], list[dict]], size: int, rng: random.Random
+) -> list[dict]:
     """Draw `size` personas evenly across all (gender, region) strata.
 
     Distributes as evenly as possible: each stratum gets floor(size/n_strata),
@@ -105,7 +107,7 @@ def _stratified_subsample(grouped: dict[tuple[str, str], list[dict]], size: int,
 
     # give the +1 remainder slots to the largest pools first for stability
     order = sorted(strata, key=lambda k: (-len(grouped[k]), k))
-    quota = {k: base for k in strata}
+    quota = dict.fromkeys(strata, base)
     for k in order[:remainder]:
         quota[k] += 1
 
@@ -158,8 +160,12 @@ async def _run_stage2_with_retries(
 
         logger = JudgeLogger(verbosity="normal", write_fn=bar.write)
         result = await run_judges(
-            client, subjects, config,
-            execution=execution, on_verdict=on_verdict, log=logger,
+            client,
+            subjects,
+            config,
+            execution=execution,
+            on_verdict=on_verdict,
+            log=logger,
         )
         bar.close()
 
@@ -243,13 +249,22 @@ def _export(stage1_csv: Path, stage2_csv: Path | None, experiment_name: str) -> 
 # ---------------------------------------------------------------------------
 
 
-async def run(config_path: Path, run_tag: str, subject_alias: str, seed: int,
-              sample_size: int, limit: int | None, do_export: bool) -> None:
+async def run(
+    config_path: Path,
+    run_tag: str,
+    subject_alias: str,
+    seed: int,
+    sample_size: int,
+    limit: int | None,
+    do_export: bool,
+) -> None:
     experiment_name = f"direct-probing-combined-{run_tag}" if run_tag else "direct-probing-combined"
     print(f"Experiment : {experiment_name}")
     print(f"Subject    : {subject_alias}  (config {config_path.name})")
-    print(f"Seed       : {seed}   Sample size: {sample_size}"
-          + (f"   Limit: {limit}" if limit else ""))
+    print(
+        f"Seed       : {seed}   Sample size: {sample_size}"
+        + (f"   Limit: {limit}" if limit else "")
+    )
 
     # --- Load personas ---
     all_personas: list[dict] = []
@@ -287,9 +302,9 @@ async def run(config_path: Path, run_tag: str, subject_alias: str, seed: int,
         {
             "messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}],
             "metadata": {
-                "history_id":  p["history_id"],
+                "history_id": p["history_id"],
                 "true_gender": p["persona"]["Gender"],
-                "true_region":   p["persona"]["Region"],
+                "true_region": p["persona"]["Region"],
             },
         }
         for p in sampled
@@ -310,8 +325,11 @@ async def run(config_path: Path, run_tag: str, subject_alias: str, seed: int,
     )
     result1 = await runner.run(exp_stage1)
     df1 = to_analysis_dataframe(result1.dataframe)
-    n_ok = int(df1[subject_alias].apply(lambda x: isinstance(x, str) and '"success"' in x).sum()) \
-        if subject_alias in df1.columns else 0
+    n_ok = (
+        int(df1[subject_alias].apply(lambda x: isinstance(x, str) and '"success"' in x).sum())
+        if subject_alias in df1.columns
+        else 0
+    )
     print(f"\nStage 1 CSV: {result1.csv_path}  ({n_ok}/{len(df1)} success)")
 
     # ── Stage 2: judge classifies stage-1 responses ───────────────────────────
@@ -346,27 +364,51 @@ def main() -> None:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
-    ap.add_argument("--run-tag", required=True,
-                    help="names the logs/ + results dirs, e.g. 'e2b' or 'ministral3-8b'")
-    ap.add_argument("--subject-alias", required=True,
-                    help="single Modal subject alias, e.g. gemma-4-e2b_modal / ministral-3-8b_modal")
+    ap.add_argument(
+        "--run-tag",
+        required=True,
+        help="names the logs/ + results dirs, e.g. 'e2b' or 'ministral3-8b'",
+    )
+    ap.add_argument(
+        "--subject-alias",
+        required=True,
+        help="single Modal subject alias, e.g. gemma-4-e2b_modal / ministral-3-8b_modal",
+    )
     ap.add_argument("--config", type=Path, default=REPO_ROOT / "config" / "inference.yaml")
-    ap.add_argument("--seed", type=int, default=DEFAULT_SEED,
-                    help="MUST stay 123 to reuse the multimodel run's 50 histories")
+    ap.add_argument(
+        "--seed",
+        type=int,
+        default=DEFAULT_SEED,
+        help="MUST stay 123 to reuse the multimodel run's 50 histories",
+    )
     ap.add_argument("--sample-size", type=int, default=DEFAULT_SAMPLE_SIZE)
-    ap.add_argument("--limit", type=int, default=None, help="cap total histories (cheap smoke test)")
-    ap.add_argument("--no-export", action="store_true",
-                    help="skip copying artifacts from logs/ into results_direct_probing/")
+    ap.add_argument(
+        "--limit", type=int, default=None, help="cap total histories (cheap smoke test)"
+    )
+    ap.add_argument(
+        "--no-export",
+        action="store_true",
+        help="skip copying artifacts from logs/ into results_direct_probing/",
+    )
     args = ap.parse_args()
 
     if not args.config.exists():
-        raise SystemExit(f"config not found: {args.config}\n"
-                         f"  cp config/inference.modal.example.yaml config/inference.yaml")
+        raise SystemExit(
+            f"config not found: {args.config}\n"
+            f"  cp config/inference.modal.example.yaml config/inference.yaml"
+        )
 
-    asyncio.run(run(
-        args.config, args.run_tag, args.subject_alias,
-        args.seed, args.sample_size, args.limit, not args.no_export,
-    ))
+    asyncio.run(
+        run(
+            args.config,
+            args.run_tag,
+            args.subject_alias,
+            args.seed,
+            args.sample_size,
+            args.limit,
+            not args.no_export,
+        )
+    )
 
 
 if __name__ == "__main__":

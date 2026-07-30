@@ -14,7 +14,8 @@ class TemplateRenderError(Exception):
 def load_templates(templates_path: Path) -> dict[str, str]:
     """Load dimension_templates.json and return {dimension_key: template_string}."""
     with open(templates_path, encoding="utf-8") as f:
-        return json.load(f)
+        templates: dict[str, str] = json.load(f)
+    return templates
 
 
 def render_template(template: str, indicators: dict[str, str]) -> str:

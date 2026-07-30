@@ -5,9 +5,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
-import pytest
-
-from generate_backgrounds.combination import IndicatorCombo, load_combinations
+from generate_backgrounds.combination import load_combinations
 
 
 def _write_csv(path: Path, rows: list[tuple[str, str, str]]) -> None:

@@ -9,24 +9,23 @@ verify that probe accuracy is not an artifact.
 import json
 import os
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
+from config import ProbeConfig
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-from config import ProbeConfig
-
-
 # ---------------------------------------------------------------------------
 # Data class for probe results
 # ---------------------------------------------------------------------------
 
+
 @dataclass
 class ProbeResult:
     """Holds evaluation metrics for a single probe."""
+
     attribute: str
     layer: int
     classifier: str  # "logistic" or "svm"
@@ -49,30 +48,32 @@ class ProbeArtifact:
     train_indices: np.ndarray
     test_indices: np.ndarray
     layer: int
-    source_indices: Optional[np.ndarray] = None
+    source_indices: np.ndarray | None = None
 
 
 @dataclass
 class ProbeResults:
     """Container for all probe results across layers and attributes."""
-    results: List[ProbeResult] = field(default_factory=list)
+
+    results: list[ProbeResult] = field(default_factory=list)
 
     def add(self, result: ProbeResult):
         self.results.append(result)
 
-    def best_layer(self, attribute: str, classifier: str = "logistic", control: bool = False) -> Optional[ProbeResult]:
+    def best_layer(
+        self, attribute: str, classifier: str = "logistic", control: bool = False
+    ) -> ProbeResult | None:
         """Return the result with the highest accuracy for a given attribute."""
         candidates = [
-            r for r in self.results
-            if r.attribute == attribute
-            and r.classifier == classifier
-            and r.is_control == control
+            r
+            for r in self.results
+            if r.attribute == attribute and r.classifier == classifier and r.is_control == control
         ]
         if not candidates:
             return None
         return max(candidates, key=lambda r: r.accuracy)
 
-    def to_dict(self) -> List[dict]:
+    def to_dict(self) -> list[dict]:
         return [
             {
                 "attribute": r.attribute,
@@ -99,13 +100,14 @@ class ProbeResults:
 # Core probing logic
 # ---------------------------------------------------------------------------
 
+
 def _train_and_eval_probe(
     X_train: np.ndarray,
     y_train: np.ndarray,
     X_test: np.ndarray,
     y_test: np.ndarray,
     config: ProbeConfig,
-) -> Tuple[float, float, float, float, float, str, StandardScaler, LogisticRegression]:
+) -> tuple[float, float, float, float, float, str, StandardScaler, LogisticRegression]:
     """
     Train a single linear probe and return metrics.
 
@@ -142,17 +144,26 @@ def _train_and_eval_probe(
     f1 = float(f1_score(y_test, y_pred, average="macro", zero_division=0))
     report = classification_report(y_test, y_pred, zero_division=0, output_dict=False)
 
-    return acc, f1, float(cv_scores.mean()), float(cv_scores.std()), mean_margin, str(report), scaler, clf
+    return (
+        acc,
+        f1,
+        float(cv_scores.mean()),
+        float(cv_scores.std()),
+        mean_margin,
+        str(report),
+        scaler,
+        clf,
+    )
 
 
 def train_probes(
-    hidden_states: Dict[int, np.ndarray],
-    labels: List[str],
+    hidden_states: dict[int, np.ndarray],
+    labels: list[str],
     attribute_name: str,
     config: ProbeConfig,
     test_size: float = 0.2,
     seed: int = 42,
-) -> Tuple[ProbeResults, Dict[int, ProbeArtifact]]:
+) -> tuple[ProbeResults, dict[int, ProbeArtifact]]:
     """
     Train linear probes for a single attribute across all requested layers.
 
@@ -173,19 +184,24 @@ def train_probes(
     from sklearn.model_selection import train_test_split
 
     results = ProbeResults()
-    artifacts: Dict[int, ProbeArtifact] = {}
+    artifacts: dict[int, ProbeArtifact] = {}
 
     le = LabelEncoder()
     y_encoded = le.fit_transform(labels)
 
     layers = sorted(hidden_states.keys())
-    print(f"\n[Probing] Attribute: {attribute_name} | Classes: {list(le.classes_)} | Layers: {len(layers)}")
+    print(
+        f"\n[Probing] Attribute: {attribute_name} | Classes: {list(le.classes_)} | Layers: {len(layers)}"
+    )
 
     for layer_idx in layers:
         X = hidden_states[layer_idx]
         all_indices = np.arange(len(y_encoded))
         train_indices, test_indices = train_test_split(
-            all_indices, test_size=test_size, stratify=y_encoded, random_state=seed,
+            all_indices,
+            test_size=test_size,
+            stratify=y_encoded,
+            random_state=seed,
         )
         X_train, X_test = X[train_indices], X[test_indices]
         y_train, y_test = y_encoded[train_indices], y_encoded[test_indices]
@@ -194,11 +210,20 @@ def train_probes(
         acc, f1, cv_m, cv_s, margin, report, scaler, clf = _train_and_eval_probe(
             X_train, y_train, X_test, y_test, config
         )
-        results.add(ProbeResult(
-            attribute=attribute_name, layer=layer_idx, classifier="logistic",
-            accuracy=acc, f1_macro=f1, cv_mean=cv_m, cv_std=cv_s,
-            mean_margin=margin, is_control=False, report=report,
-        ))
+        results.add(
+            ProbeResult(
+                attribute=attribute_name,
+                layer=layer_idx,
+                classifier="logistic",
+                accuracy=acc,
+                f1_macro=f1,
+                cv_mean=cv_m,
+                cv_std=cv_s,
+                mean_margin=margin,
+                is_control=False,
+                report=report,
+            )
+        )
         artifacts[layer_idx] = ProbeArtifact(
             scaler=scaler,
             classifier=clf,
@@ -217,11 +242,20 @@ def train_probes(
         acc_c, f1_c, cv_m_c, cv_s_c, margin_c, report_c, _, _ = _train_and_eval_probe(
             X_train, y_train_ctrl, X_test, y_test_ctrl, config
         )
-        results.add(ProbeResult(
-            attribute=attribute_name, layer=layer_idx, classifier="logistic",
-            accuracy=acc_c, f1_macro=f1_c, cv_mean=cv_m_c, cv_std=cv_s_c,
-            mean_margin=margin_c, is_control=True, report=report_c,
-        ))
+        results.add(
+            ProbeResult(
+                attribute=attribute_name,
+                layer=layer_idx,
+                classifier="logistic",
+                accuracy=acc_c,
+                f1_macro=f1_c,
+                cv_mean=cv_m_c,
+                cv_std=cv_s_c,
+                mean_margin=margin_c,
+                is_control=True,
+                report=report_c,
+            )
+        )
 
     # Print summary for this attribute
     best_real = results.best_layer(attribute_name, "logistic", control=False)

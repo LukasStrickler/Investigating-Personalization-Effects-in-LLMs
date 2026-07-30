@@ -597,6 +597,10 @@ model_list:
       api_key: os.environ/NVIDIA_NIM_API_KEY
   
   - model_name: cerebras
+    litellm_params:
+      model: cerebras/llama3.1-8b
+      api_key: os.environ/CEREBRAS_API_KEY
+  
   # High variety
   - model_name: openrouter-free
     litellm_params:

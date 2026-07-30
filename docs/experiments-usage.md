@@ -192,7 +192,7 @@ Legacy CSVs without the column still load; it is added on the next write.
 
 Stage 2: read `prompt_metadata` from `to_analysis_dataframe`, or use
 `ExperimentDataFrameAdapter` (see `examples/llm_judge_example.ipynb`,
-`experiments/behavioral_audit.ipynb`).
+`experiments/behavioral_audit/behavioral_audit.ipynb`).
 
 ## Send Experiment Results to Judges
 
@@ -322,7 +322,7 @@ Each provider entry in `config/inference.yaml` supports:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `name` | `openai \| anthropic \| openrouter \| mock` | Provider identifier |
+| `name` | `openai \| anthropic \| openrouter \| vllm \| modal \| mock` | Provider identifier |
 | `api_key_env` | `str` | API key environment variable |
 | `rate_limit` | object | Optional RPM/TPM limits |
 | `retry` | object | Optional retry override |

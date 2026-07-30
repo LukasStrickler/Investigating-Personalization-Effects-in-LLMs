@@ -18,7 +18,7 @@ Run inside tmux so the process survives lid-close / screen-off:
 
     tmux new -s baseline
     cd <repo-root>
-    python experiments/behavioral_audit/run_behavioral_audit_baseline.py
+    python experiments/behavioral_audit/baseline/run_behavioral_audit_baseline.py
     # detach with Ctrl-B D, reattach later with: tmux attach -t baseline
 
 Set RUN_TAG below to identify this run.
@@ -49,13 +49,10 @@ from inference.judges.log import JudgeLogger
 
 RUN_TAG = "baseline002"
 
-EXPERIMENT_MODELS = [
-    "gemma-4-31b_paid",
-    "deepseek-v4-flash_paid"
-]
+EXPERIMENT_MODELS = ["gemma-4-31b_paid", "deepseek-v4-flash_paid"]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
-N_ITERATIONS = 50   # number of bare-question calls per model per question
+N_ITERATIONS = 50  # number of bare-question calls per model per question
 MAX_PASSES = 10
 WORKERS = 50
 
@@ -70,7 +67,9 @@ STAGE1_ONLY = False
 # Questions & classes (loaded from JSON classification files)
 # ---------------------------------------------------------------------------
 
-_EXPERIMENTS_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in baseline/)
+_EXPERIMENTS_DIR = (
+    Path(__file__).resolve().parent.parent
+)  # experiments/behavioral_audit (this file lives in baseline/)
 _JOBS_JSON = _EXPERIMENTS_DIR / "indicator_hierarchy" / "jobs_classification.json"
 _COLLEGE_JSON = _EXPERIMENTS_DIR / "indicator_hierarchy" / "college_classification.json"
 
@@ -148,6 +147,7 @@ EXPERIMENT_NAME = f"behavioral-audit-{RUN_TAG}"
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 async def _run_stage2_with_retries(
     client,
     subjects: list,
@@ -161,8 +161,13 @@ async def _run_stage2_with_retries(
     result = None
 
     for pass_num in range(1, MAX_PASSES + 1):
-        bar = tqdm(total=total, initial=n_success_prev,
-                   desc=f"{label} pass {pass_num}/{MAX_PASSES}", unit="subject", file=sys.stdout)
+        bar = tqdm(
+            total=total,
+            initial=n_success_prev,
+            desc=f"{label} pass {pass_num}/{MAX_PASSES}",
+            unit="subject",
+            file=sys.stdout,
+        )
         counts = {"ok": 0, "err": 0, "resumed": 0}
 
         def on_verdict(v, _bar=bar, _counts=counts):
@@ -180,8 +185,13 @@ async def _run_stage2_with_retries(
 
         logger = JudgeLogger(verbosity="silent")
         result = await run_judges(
-            client, subjects, config,
-            execution=execution, on_verdict=on_verdict, on_resume=on_resume, log=logger,
+            client,
+            subjects,
+            config,
+            execution=execution,
+            on_verdict=on_verdict,
+            on_resume=on_resume,
+            log=logger,
         )
         bar.close()
 
@@ -215,20 +225,23 @@ def _build_stage2_subjects(exp_df, model_aliases, q_tag, stage1_csv_path):
             response = row.get(model)
             if response:
                 iteration = meta.get("iteration", row.get("prompt_id", "unknown"))
-                subjects.append(JudgeSubject(
-                    subject_id=f"audit-{q_tag}-iter{iteration}",
-                    subject_content=str(response),
-                    subject_model_alias=model,
-                    source_id=str(stage1_csv_path),
-                    prompt_id=row["prompt_id"],
-                    metadata=dict(meta),
-                ))
+                subjects.append(
+                    JudgeSubject(
+                        subject_id=f"audit-{q_tag}-iter{iteration}",
+                        subject_content=str(response),
+                        subject_model_alias=model,
+                        source_id=str(stage1_csv_path),
+                        prompt_id=row["prompt_id"],
+                        metadata=dict(meta),
+                    )
+                )
     return subjects
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 async def main() -> None:
     print(f"Experiment: {EXPERIMENT_NAME}")
@@ -252,18 +265,14 @@ async def main() -> None:
     # recommendation instead of asking for context.
     q1_prompts: list[PromptSpec] = [
         {
-            "messages": list(BASELINE_FRAMING_MESSAGES) + [
-                {"role": "user", "content": Q1_PROBE}
-            ],
+            "messages": list(BASELINE_FRAMING_MESSAGES) + [{"role": "user", "content": Q1_PROBE}],
             "metadata": {"iteration": i, "question": "q1"},
         }
         for i in range(N_ITERATIONS)
     ]
     q2_prompts: list[PromptSpec] = [
         {
-            "messages": list(BASELINE_FRAMING_MESSAGES) + [
-                {"role": "user", "content": Q2_PROBE}
-            ],
+            "messages": list(BASELINE_FRAMING_MESSAGES) + [{"role": "user", "content": Q2_PROBE}],
             "metadata": {"iteration": i, "question": "q2"},
         }
         for i in range(N_ITERATIONS)
@@ -313,6 +322,7 @@ async def main() -> None:
     else:
         # Load existing stage-1 CSVs
         from inference.experiments import build_dataframe_from_csv
+
         print("STAGE2_ONLY=True — loading existing stage-1 CSVs...")
 
         def _latest_csv(subdir: Path) -> Path:

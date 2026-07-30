@@ -12,11 +12,9 @@ from pathlib import Path
 
 import joblib
 import matplotlib
-import numpy as np
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
 from config import ModelConfig, ProbeConfig
 from dataset import _format_messages
 from extraction import extract_hidden_states, load_model_and_tokenizer
@@ -69,7 +67,11 @@ def main() -> None:
     artifact = joblib.load(args.probe)
     if args.dataset_index is None:
         local_index = int(artifact.test_indices[0])
-        index = int(artifact.source_indices[local_index]) if artifact.source_indices is not None else local_index
+        index = (
+            int(artifact.source_indices[local_index])
+            if artifact.source_indices is not None
+            else local_index
+        )
     else:
         index = args.dataset_index
 
@@ -78,10 +80,14 @@ def main() -> None:
     variants = [messages] + [_without_word(messages, word) for word in words]
     texts = [_format_messages(item) for item in variants]
 
-    model_config = ModelConfig(model_name=args.model, device_map=args.device_map, torch_dtype=args.dtype)
+    model_config = ModelConfig(
+        model_name=args.model, device_map=args.device_map, torch_dtype=args.dtype
+    )
     probe_config = ProbeConfig(layers=[artifact.layer], token_position="last")
     model, tokenizer = load_model_and_tokenizer(model_config)
-    states = extract_hidden_states(model, tokenizer, texts, model_config, probe_config)[artifact.layer]
+    states = extract_hidden_states(model, tokenizer, texts, model_config, probe_config)[
+        artifact.layer
+    ]
     probabilities = artifact.classifier.predict_proba(artifact.scaler.transform(states))
     baseline_class = int(probabilities[0].argmax())
     baseline_score = float(probabilities[0, baseline_class])

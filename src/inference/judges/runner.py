@@ -224,7 +224,9 @@ class JudgeRunner:
                         try:
                             on_verdict(_cb_verdict)
                         except Exception:
-                            logging.getLogger(__name__).debug("on_verdict callback raised", exc_info=True)
+                            logging.getLogger(__name__).debug(
+                                "on_verdict callback raised", exc_info=True
+                            )
 
             tasks = [asyncio.create_task(worker()) for _ in range(workers)]
             await queue.join()
@@ -315,22 +317,43 @@ class JudgeRunner:
         # Free-form mode (no classes): always success.
         if config.classes is None:
             return self._success_verdict(
-                jid, subject, judge_alias, config_hash, raw_output,
-                None, False, ParseStatus.FREE_FORM,
-                judge_res, started_at,
+                jid,
+                subject,
+                judge_alias,
+                config_hash,
+                raw_output,
+                None,
+                False,
+                ParseStatus.FREE_FORM,
+                judge_res,
+                started_at,
             )
 
         if outcome.parse_status is ParseStatus.MATCHED:
             return self._success_verdict(
-                jid, subject, judge_alias, config_hash, raw_output,
-                outcome.final_class, False, ParseStatus.MATCHED,
-                judge_res, started_at,
+                jid,
+                subject,
+                judge_alias,
+                config_hash,
+                raw_output,
+                outcome.final_class,
+                False,
+                ParseStatus.MATCHED,
+                judge_res,
+                started_at,
             )
         if outcome.parse_status is ParseStatus.NONE_DECLARED:
             return self._success_verdict(
-                jid, subject, judge_alias, config_hash, raw_output,
-                None, True, ParseStatus.NONE_DECLARED,
-                judge_res, started_at,
+                jid,
+                subject,
+                judge_alias,
+                config_hash,
+                raw_output,
+                None,
+                True,
+                ParseStatus.NONE_DECLARED,
+                judge_res,
+                started_at,
             )
 
         # No valid sentinel — one-call flow, no extraction fallback.
@@ -479,7 +502,9 @@ async def run_judges(
     on_resume: Callable[[int], None] | None = None,
     log: JudgeLogger | None = None,
 ) -> JudgeResult:
-    return await JudgeRunner(client, log=log).run(subjects, config, execution, on_verdict=on_verdict, on_resume=on_resume)
+    return await JudgeRunner(client, log=log).run(
+        subjects, config, execution, on_verdict=on_verdict, on_resume=on_resume
+    )
 
 
 __all__ = ["JudgeRunner", "run_judges"]

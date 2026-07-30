@@ -92,6 +92,7 @@ Thumbs.db
 # Project-specific: inference outputs
 logs/
 checkpoints/
+*.csv.lock
 *.jsonl
 !tests/fixtures/*.jsonl
 !src/generate_backgrounds/data/**/*.jsonl
@@ -100,20 +101,10 @@ checkpoints/
 # Local inference config (copy from config/inference.example.yaml)
 config/inference.yaml
 
-# Miscellaneous
+# Miscellaneous (agent/tool scratch dirs; the rest is covered above)
 .ada/
 .sisyphus/
 .omo/
-.vscode/
-.idea/
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-.dmypy.json
-dmypy.json
-.python-version
-.env.local
-.env.*.local
 
 # Local, machine-specific scratch notes (never committed)
 *.local.md

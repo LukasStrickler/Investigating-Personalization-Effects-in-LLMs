@@ -12,6 +12,10 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from generate_backgrounds.combination import IndicatorCombo
 
 _HERE = Path(__file__).parent
 _logger = logging.getLogger(__name__)
@@ -20,18 +24,10 @@ _logger = logging.getLogger(__name__)
 @dataclass(frozen=True)
 class GenerationConfig:
     model_alias: str
-    templates_path: Path = field(
-        default_factory=lambda: _HERE / "dimension_templates.json"
-    )
-    mapping_dir: Path = field(
-        default_factory=lambda: _HERE / "dimension_value_mapping"
-    )
-    output_dir: Path = field(
-        default_factory=lambda: _HERE / "data" / "backgrounds"
-    )
-    personas_dir: Path = field(
-        default_factory=lambda: _HERE / "data" / "personas"
-    )
+    templates_path: Path = field(default_factory=lambda: _HERE / "dimension_templates.json")
+    mapping_dir: Path = field(default_factory=lambda: _HERE / "dimension_value_mapping")
+    output_dir: Path = field(default_factory=lambda: _HERE / "data" / "backgrounds")
+    personas_dir: Path = field(default_factory=lambda: _HERE / "data" / "personas")
     concurrency: int = 8
     system_prompt: str | None = None
     verbose: bool = False
@@ -137,9 +133,9 @@ def _filter_by_gender(
     if not gender_value or not name_to_gender:
         return records
     return [
-        r for r in records
-        if "Name" not in r.indicators
-        or name_to_gender.get(r.indicators["Name"]) == gender_value
+        r
+        for r in records
+        if "Name" not in r.indicators or name_to_gender.get(r.indicators["Name"]) == gender_value
     ]
 
 
@@ -235,16 +231,15 @@ class _JsonlWriter:
 
     def append(self, obj: dict) -> None:
         line = json.dumps(obj, ensure_ascii=False) + "\n"
-        with self._lock:
-            with open(self._path, "a", encoding="utf-8") as f:
-                f.write(line)
+        with self._lock, open(self._path, "a", encoding="utf-8") as f:
+            f.write(line)
 
 
 class BackgroundPipeline:
     def __init__(
         self,
         *,
-        client,  # UnifiedInferenceClient — typed loosely to avoid circular import
+        client: Any,  # UnifiedInferenceClient — typed loosely to avoid circular import
         config: GenerationConfig,
     ) -> None:
         self._client = client
@@ -328,13 +323,16 @@ class BackgroundPipeline:
                 if not pending:
                     break
                 if pass_num > 1:
-                    _logger.info("Retry pass %d/%d for %d failed %s combo(s)",
-                                 pass_num, max_passes, len(pending), dimension)
+                    _logger.info(
+                        "Retry pass %d/%d for %d failed %s combo(s)",
+                        pass_num,
+                        max_passes,
+                        len(pending),
+                        dimension,
+                    )
 
                 tasks = [
-                    asyncio.create_task(
-                        self._generate_one(combo, template, semaphore, writer)
-                    )
+                    asyncio.create_task(self._generate_one(combo, template, semaphore, writer))
                     for combo in pending
                 ]
 
@@ -374,7 +372,7 @@ class BackgroundPipeline:
 
     async def _generate_one(
         self,
-        combo,
+        combo: IndicatorCombo,
         template: str,
         semaphore: asyncio.Semaphore,
         writer: _JsonlWriter,
@@ -390,7 +388,12 @@ class BackgroundPipeline:
 
         async with semaphore:
             if self._config.verbose:
-                _logger.debug("starting %s/%s %s…", combo.dimension, combo.dimension_value, combo.combination_id[:12])
+                _logger.debug(
+                    "starting %s/%s %s…",
+                    combo.dimension,
+                    combo.dimension_value,
+                    combo.combination_id[:12],
+                )
             try:
                 request = InferenceRequest(
                     model_alias=self._config.model_alias,
@@ -400,11 +403,18 @@ class BackgroundPipeline:
                 result = await self._client.complete(request)
             except Exception as e:
                 root = e.__cause__ or e
-                _logger.warning("LLM call failed for %s: %s: %s", combo.combination_id, type(root).__name__, root)
+                _logger.warning(
+                    "LLM call failed for %s: %s: %s",
+                    combo.combination_id,
+                    type(root).__name__,
+                    root,
+                )
                 return None
 
         if self._config.verbose:
-            _logger.debug("done %s/%s %s…", combo.dimension, combo.dimension_value, combo.combination_id[:12])
+            _logger.debug(
+                "done %s/%s %s…", combo.dimension, combo.dimension_value, combo.combination_id[:12]
+            )
 
         record = BackgroundRecord(
             schema_version=1,
@@ -478,22 +488,24 @@ class BackgroundPipeline:
         ]
         if include_partial:
             personas = [
-                p for p in itertools.product(*dim_value_sets_with_none)
+                p
+                for p in itertools.product(*dim_value_sets_with_none)
                 if any(v is not None for v in p)
             ]
         else:
             personas = [
-                p for p in itertools.product(*dim_value_sets_with_none)
+                p
+                for p in itertools.product(*dim_value_sets_with_none)
                 if all(v is not None for v in p)
             ]
 
         # Apply persona filter if provided
         if persona_filter:
             personas = [
-                p for p in personas
+                p
+                for p in personas
                 if all(
-                    dict(zip(dim_order, p)).get(dim) == val
-                    for dim, val in persona_filter.items()
+                    dict(zip(dim_order, p)).get(dim) == val for dim, val in persona_filter.items()
                 )
             ]
 
@@ -508,11 +520,14 @@ class BackgroundPipeline:
             persona_tmp: dict[str, str | None] = dict(zip(dim_order, persona_tuple))
             included = [d for d in dim_order if persona_tmp[d] is not None]
             gender_val = persona_tmp.get("Gender")
-            counts = [
-                len(_filter_by_gender(grouped[d][persona_tmp[d]], gender_val, name_to_gender)
-                    if d != "Gender" else grouped[d][persona_tmp[d]])
-                for d in included
-            ]
+            counts = []
+            for d in included:
+                value = persona_tmp[d]
+                assert value is not None  # `included` keeps only non-None dimensions
+                records = grouped[d][value]
+                if d != "Gender":
+                    records = _filter_by_gender(records, gender_val, name_to_gender)
+                counts.append(len(records))
             product = 1
             for c in counts:
                 product *= c
@@ -537,11 +552,14 @@ class BackgroundPipeline:
             # Only collect records for included (non-None) dimensions
             included_dims = [d for d in dim_order if persona[d] is not None]
             gender_value = persona.get("Gender")
-            per_dim_records: list[list[BackgroundRecord]] = [
-                _filter_by_gender(grouped[d][persona[d]], gender_value, name_to_gender)
-                if d != "Gender" else grouped[d][persona[d]]
-                for d in included_dims
-            ]
+            per_dim_records: list[list[BackgroundRecord]] = []
+            for d in included_dims:
+                value = persona[d]
+                assert value is not None  # `included_dims` keeps only non-None dimensions
+                records = grouped[d][value]
+                if d != "Gender":
+                    records = _filter_by_gender(records, gender_value, name_to_gender)
+                per_dim_records.append(records)
 
             for combo_tuple in itertools.product(*per_dim_records):
                 total_histories += 1

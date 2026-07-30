@@ -8747,6 +8747,6 @@
     "I really enjoy watching horror movies, and outside of that I spend a lot of time on physical activities. As someone with my background, how should I structure my daily routine?",
     "I really enjoy watching science fiction movies, and outside of that I spend a lot of time on cars. As someone with my background, how should I structure my daily routine?"
   ],
-  "source": "C:\\Users\\Julian\\Documents\\Uni\\Mannheim\\Semester2\\TeamProject\\Investigating-Personalization-Effects-in-LLMs\\src\\generate_backgrounds\\data\\personas\\personas.jsonl",
+  "source": "src\\generate_backgrounds\\data\\personas\\personas.jsonl",
   "context_mode": "full"
 }

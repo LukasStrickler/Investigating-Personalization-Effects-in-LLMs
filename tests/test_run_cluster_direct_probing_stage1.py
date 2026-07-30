@@ -21,9 +21,7 @@ from inference.experiments.vllm_matrix import (
 from inference.providers import ProviderRequest, ProviderResponse
 
 _CONFIG_PATH = Path(__file__).parent.parent / "config" / "inference.vllm.example.yaml"
-_SCRIPT_PATH = (
-    Path(__file__).parent.parent / "scripts" / "run_cluster_direct_probing_stage1.py"
-)
+_SCRIPT_PATH = Path(__file__).parent.parent / "scripts" / "run_cluster_direct_probing_stage1.py"
 
 
 def _load_cli():  # type: ignore[no-untyped-def]

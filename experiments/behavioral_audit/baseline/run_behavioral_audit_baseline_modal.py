@@ -16,10 +16,10 @@ Prerequisites
     cp config/inference.modal.example.yaml config/inference.yaml
 
 Usage
-    python experiments/behavioral_audit/run_behavioral_audit_baseline_modal.py \
+    python experiments/behavioral_audit/baseline/run_behavioral_audit_baseline_modal.py \
         --run-tag baseline-e2b --subject-alias gemma-4-e2b_modal
 
-    python experiments/behavioral_audit/run_behavioral_audit_baseline_modal.py \
+    python experiments/behavioral_audit/baseline/run_behavioral_audit_baseline_modal.py \
         --run-tag baseline-ministral3-8b --subject-alias ministral-3-8b_modal
 
 Export committable results with ``export_results.py`` once the run finishes.
@@ -39,16 +39,36 @@ def _parse_args() -> argparse.Namespace:
         description=__doc__,
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    ap.add_argument("--run-tag", default="baseline-e2b",
-                    help="names the logs/ and results_ output dirs (behavioral-audit-<tag>)")
-    ap.add_argument("--subject-alias", required=True, metavar="ALIAS",
-                    help="stage-1 model alias from config/inference.yaml (exactly one Modal subject)")
-    ap.add_argument("--judge", action="append", default=None, metavar="ALIAS",
-                    help="stage-2 judge alias (repeatable). Default: gpt-4o-mini_paid")
-    ap.add_argument("--config", type=Path, default=baseline.CONFIG_PATH,
-                    help="inference config (use config/inference.modal.example.yaml for Modal subjects)")
-    ap.add_argument("--n-iterations", type=int, default=baseline.N_ITERATIONS,
-                    help="bare-question calls per model per question")
+    ap.add_argument(
+        "--run-tag",
+        default="baseline-e2b",
+        help="names the logs/ and results_ output dirs (behavioral-audit-<tag>)",
+    )
+    ap.add_argument(
+        "--subject-alias",
+        required=True,
+        metavar="ALIAS",
+        help="stage-1 model alias from config/inference.yaml (exactly one Modal subject)",
+    )
+    ap.add_argument(
+        "--judge",
+        action="append",
+        default=None,
+        metavar="ALIAS",
+        help="stage-2 judge alias (repeatable). Default: gpt-4o-mini_paid",
+    )
+    ap.add_argument(
+        "--config",
+        type=Path,
+        default=baseline.CONFIG_PATH,
+        help="inference config (use config/inference.modal.example.yaml for Modal subjects)",
+    )
+    ap.add_argument(
+        "--n-iterations",
+        type=int,
+        default=baseline.N_ITERATIONS,
+        help="bare-question calls per model per question",
+    )
     ap.add_argument("--stage1-only", action="store_true", help="generate responses, skip judging")
     ap.add_argument("--stage2-only", action="store_true", help="judge existing stage-1 CSVs only")
     return ap.parse_args()

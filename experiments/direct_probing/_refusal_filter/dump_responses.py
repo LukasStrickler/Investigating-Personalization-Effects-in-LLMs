@@ -6,6 +6,7 @@ classifier needs to judge whether the model refused to predict gender/background
 
 Originals are only read, never modified.
 """
+
 import csv
 import glob
 import json
@@ -15,30 +16,59 @@ REPO = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).resolve().parent
 OUT.mkdir(parents=True, exist_ok=True)
 
-MM_S1 = REPO / "experiments/direct_probing/results_direct_probing/direct-probing-combined-direct_multimodel001-stage1/20260714T175340.csv"
+MM_S1 = (
+    REPO
+    / "experiments/direct_probing/results_direct_probing/stage1/direct-probing-combined-direct_multimodel001-stage1/20260714T175340.csv"
+)
 
 # model -> (stage2 csv, stage1 csv, response-column alias or None=first alias col)
 MODELS = {
     "gemma-4-31b_paid": (
-        REPO / "logs/judges/direct-probing/direct-probing-combined-direct_complete002-stage2.judgments.csv",
-        next(iter(glob.glob(str(REPO / "experiments/direct_probing/results_direct_probing/direct-probing-combined-direct_complete002-stage1/*.csv")))),
+        REPO
+        / "experiments/direct_probing/results_direct_probing/stage2/direct-probing-combined-direct_complete002-stage2.judgments.csv",
+        next(
+            iter(
+                glob.glob(
+                    str(
+                        REPO
+                        / "experiments/direct_probing/results_direct_probing/stage1/direct-probing-combined-direct_complete002-stage1/*.csv"
+                    )
+                )
+            )
+        ),
         None,
     ),
     "deepseek-v4-flash_paid": (
-        REPO / "logs/judges/direct-probing/direct-probing-combined-direct_multimodel001-deepseek-v4-flash_paid-stage2.judgments.csv",
-        MM_S1, "deepseek-v4-flash_paid",
+        REPO
+        / "experiments/direct_probing/results_direct_probing/stage2/direct-probing-combined-direct_multimodel001-deepseek-v4-flash_paid-stage2.judgments.csv",
+        MM_S1,
+        "deepseek-v4-flash_paid",
     ),
     "glm-5.2_paid": (
-        REPO / "logs/judges/direct-probing/direct-probing-combined-direct_multimodel001-glm-5.2_paid-stage2.judgments.csv",
-        MM_S1, "glm-5.2_paid",
+        REPO
+        / "experiments/direct_probing/results_direct_probing/stage2/direct-probing-combined-direct_multimodel001-glm-5.2_paid-stage2.judgments.csv",
+        MM_S1,
+        "glm-5.2_paid",
     ),
     "grok-4.3_paid": (
-        REPO / "logs/judges/direct-probing/direct-probing-combined-direct_multimodel001-grok-4.3_paid-stage2.judgments.csv",
-        MM_S1, "grok-4.3_paid",
+        REPO
+        / "experiments/direct_probing/results_direct_probing/stage2/direct-probing-combined-direct_multimodel001-grok-4.3_paid-stage2.judgments.csv",
+        MM_S1,
+        "grok-4.3_paid",
     ),
     "ministral-3-8b_modal": (
-        REPO / "experiments/direct_probing/results_direct_probing/direct-probing-combined-ministral3-8b-ministral-3-8b_modal-stage2.judgments.csv",
-        next(iter(glob.glob(str(REPO / "experiments/direct_probing/results_direct_probing/direct-probing-combined-ministral3-8b-stage1/*.csv")))),
+        REPO
+        / "experiments/direct_probing/results_direct_probing/stage2/direct-probing-combined-ministral3-8b-ministral-3-8b_modal-stage2.judgments.csv",
+        next(
+            iter(
+                glob.glob(
+                    str(
+                        REPO
+                        / "experiments/direct_probing/results_direct_probing/stage1/direct-probing-combined-ministral3-8b-stage1/*.csv"
+                    )
+                )
+            )
+        ),
         "ministral-3-8b_modal",
     ),
 }
@@ -68,13 +98,15 @@ for name, (s2, s1, alias) in MODELS.items():
     items = []
     for r in rows:
         meta = json.loads(r["metadata"]) if r.get("metadata", "").strip() else {}
-        items.append({
-            "prompt_id": r["prompt_id"],
-            "response": rmap.get(r["prompt_id"], ""),
-            "final_class": r["final_class"],
-            "true_gender": meta.get("true_gender"),
-            "true_region": meta.get("true_region"),
-        })
+        items.append(
+            {
+                "prompt_id": r["prompt_id"],
+                "response": rmap.get(r["prompt_id"], ""),
+                "final_class": r["final_class"],
+                "true_gender": meta.get("true_gender"),
+                "true_region": meta.get("true_region"),
+            }
+        )
     outfile = OUT / f"{name}.responses.json"
     outfile.write_text(json.dumps(items, ensure_ascii=False, indent=1))
     print(f"{name:24s} wrote {len(items):4d} -> {outfile.name}")

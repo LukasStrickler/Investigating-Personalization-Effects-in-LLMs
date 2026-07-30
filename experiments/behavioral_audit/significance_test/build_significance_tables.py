@@ -13,16 +13,18 @@ multiple-testing correction.
 """
 
 from __future__ import annotations
-from mpmath import mp, mpf, binomial as mpcomb
 
 import argparse
 import csv
 import math
 import random
 import sys
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
+
+from mpmath import binomial as mpcomb
+from mpmath import mp, mpf
 
 
 @dataclass(frozen=True)
@@ -31,6 +33,7 @@ class ContingencyResult:
     statistic: float
     p_value: float
     effect_size: float
+
 
 def _read_frequency_table(csv_path: Path) -> tuple[list[str], list[str], list[list[int]]]:
     with csv_path.open("r", encoding="utf-8", newline="") as handle:
@@ -60,7 +63,10 @@ def _read_frequency_table(csv_path: Path) -> tuple[list[str], list[str], list[li
 
 def _expected_counts(table: list[list[int]]) -> list[list[float]]:
     row_totals = [sum(row) for row in table]
-    col_totals = [sum(table[row_idx][col_idx] for row_idx in range(len(table))) for col_idx in range(len(table[0]))]
+    col_totals = [
+        sum(table[row_idx][col_idx] for row_idx in range(len(table)))
+        for col_idx in range(len(table[0]))
+    ]
     grand_total = sum(row_totals)
 
     expected: list[list[float]] = []
@@ -126,17 +132,14 @@ def _shuffle_p_value(table: list[list[int]], permutations: int, seed: int) -> fl
 
 def _fisher_exact_two_sided(table: list[list[int]], precision: int = 300) -> tuple[float, float]:
     """Return odds ratio and two-sided Fisher exact p-value for a 2x2 table.
-    
+
     Uses mpmath for arbitrary-precision arithmetic to avoid floating-point
     underflow for very extreme p-values (e.g. p < 10^-300).
     """
     a, b = table[0]
     c, d = table[1]
 
-    if b * c == 0:
-        odds_ratio = float("inf") if a * d > 0 else 0.0
-    else:
-        odds_ratio = (a * d) / (b * c)
+    odds_ratio = (float("inf") if a * d > 0 else 0.0) if b * c == 0 else (a * d) / (b * c)
 
     row_total = a + b
     col_total = a + c
@@ -309,7 +312,9 @@ def analyze_frequency_tables(
         row_labels, col_labels, table = _read_frequency_table(table_path)
 
         if len(table) < 2 or len(col_labels) < 2:
-            print(f"[SKIP] {table_path} — degenerate table ({len(table)} rows, {len(col_labels)} cols)")
+            print(
+                f"[SKIP] {table_path} — degenerate table ({len(table)} rows, {len(col_labels)} cols)"
+            )
             continue
 
         table_slug = table_path.stem.replace("_frequency", "")
@@ -395,7 +400,8 @@ def analyze_frequency_tables(
 
 
 def parse_args() -> argparse.Namespace:
-    default_root = Path("experiments/behavioral_audit/results_behavioral_audit/results_merged/frequency_tables")
+    _audit_dir = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit
+    default_root = _audit_dir / "results_behavioral_audit" / "results_merged" / "frequency_tables"
     parser = argparse.ArgumentParser(
         description="Test significance from frequency tables built by the behavioral audit pipeline."
     )

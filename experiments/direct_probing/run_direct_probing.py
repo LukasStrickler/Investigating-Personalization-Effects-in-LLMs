@@ -34,7 +34,7 @@ from inference.judges.log import JudgeLogger
 RUN_TAG = "direct_complete002"
 EXPERIMENT_MODEL = "gemma-4-31b_paid"  # model that acts as participant in stage 1
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
-SAMPLE_FRACTION = 0.20        # stratified: 20 % from each (gender, region) stratum
+SAMPLE_FRACTION = 0.20  # stratified: 20 % from each (gender, region) stratum
 MAX_PASSES = 5
 WORKERS = 5
 
@@ -62,6 +62,7 @@ EXPERIMENT_NAME = f"direct-probing-combined-{RUN_TAG}" if RUN_TAG else "direct-p
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 async def _run_stage2_with_retries(
     client,
     subjects: list,
@@ -87,8 +88,12 @@ async def _run_stage2_with_retries(
 
         logger = JudgeLogger(verbosity="normal", write_fn=bar.write)
         result = await run_judges(
-            client, subjects, config,
-            execution=execution, on_verdict=on_verdict, log=logger,
+            client,
+            subjects,
+            config,
+            execution=execution,
+            on_verdict=on_verdict,
+            log=logger,
         )
         bar.close()
 
@@ -120,6 +125,7 @@ async def _run_stage2_with_retries(
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 async def main() -> None:
     print(f"Experiment: {EXPERIMENT_NAME}")
@@ -161,9 +167,9 @@ async def main() -> None:
         {
             "messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}],
             "metadata": {
-                "history_id":  p["history_id"],
+                "history_id": p["history_id"],
                 "true_gender": p["persona"]["Gender"],
-                "true_region":   p["persona"]["Region"],
+                "true_region": p["persona"]["Region"],
             },
         }
         for p in sampled

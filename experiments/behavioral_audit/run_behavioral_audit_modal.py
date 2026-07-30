@@ -130,11 +130,15 @@ async def _run_stage1(
 ) -> None:
     experiment_name = f"behavioral-audit-{run_tag}" if run_tag else "behavioral-audit"
     sampled = sample_personas(sample_per_group, seed, limit)
-    n_unknown = sum(1 for p in sampled if not (p["persona"].get("Gender") and p["persona"].get("Region")))
+    n_unknown = sum(
+        1 for p in sampled if not (p["persona"].get("Gender") and p["persona"].get("Region"))
+    )
     print(f"Experiment : {experiment_name}")
     print(f"Subject    : {subject_alias}  (config {config_path.name})")
-    print(f"Personas   : {len(sampled)} ({n_unknown} missing gender/region) → "
-          f"{2 * len(sampled)} requests (Q1+Q2)\n")
+    print(
+        f"Personas   : {len(sampled)} ({n_unknown} missing gender/region) → "
+        f"{2 * len(sampled)} requests (Q1+Q2)\n"
+    )
 
     client = create_client(config_path)
     runner = ExperimentRunner(client)
@@ -154,18 +158,29 @@ async def _run_stage1(
         answered = int(df[subject_alias].notna().sum()) if subject_alias in df.columns else 0
         print(f"[{q_tag}] {answered}/{len(df)} answered → {result.csv_path}\n")
 
-    print("Stage 1 done. Export with export_results.py, then run stage 2 via "
-          "run_behavioral_audit.py (STAGE2_ONLY=True).")
+    print(
+        "Stage 1 done. Export with export_results.py, then run stage 2 via "
+        "run_behavioral_audit.py (STAGE2_ONLY=True)."
+    )
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     ap.add_argument("--run-tag", default="full001-e2b", help="names the logs/ output dirs")
-    ap.add_argument("--subject-alias", default="gemma-4-e2b_modal",
-                    help="model alias (config/inference.yaml) served on Modal; also the CSV column")
+    ap.add_argument(
+        "--subject-alias",
+        default="gemma-4-e2b_modal",
+        help="model alias (config/inference.yaml) served on Modal; also the CSV column",
+    )
     ap.add_argument("--config", type=Path, default=REPO_ROOT / "config" / "inference.yaml")
-    ap.add_argument("--sample-per-group", type=int, default=10000,
-                    help="personas per (gender × region) group (10000 = all)")
+    ap.add_argument(
+        "--sample-per-group",
+        type=int,
+        default=10000,
+        help="personas per (gender × region) group (10000 = all)",
+    )
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, default=None, help="cap total personas (cheap smoke test)")
     args = ap.parse_args()
@@ -175,10 +190,16 @@ def main() -> None:
             f"config not found: {args.config}\n"
             "cp config/inference.modal.example.yaml config/inference.yaml"
         )
-    asyncio.run(_run_stage1(
-        args.config, args.run_tag, args.subject_alias,
-        args.sample_per_group, args.seed, args.limit,
-    ))
+    asyncio.run(
+        _run_stage1(
+            args.config,
+            args.run_tag,
+            args.subject_alias,
+            args.sample_per_group,
+            args.seed,
+            args.limit,
+        )
+    )
 
 
 if __name__ == "__main__":

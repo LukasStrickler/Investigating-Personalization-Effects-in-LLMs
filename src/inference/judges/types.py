@@ -72,7 +72,9 @@ class JudgeConfig:
                 if c in seen:
                     raise ValueError(f"duplicate class label: {c!r}")
                 if c == NONE_SENTINEL:
-                    raise ValueError(f"class label cannot be the reserved sentinel {NONE_SENTINEL!r}")
+                    raise ValueError(
+                        f"class label cannot be the reserved sentinel {NONE_SENTINEL!r}"
+                    )
                 seen.add(c)
 
 
@@ -105,9 +107,7 @@ class JudgeSubject:
             if not isinstance(self.messages, list) or len(self.messages) == 0:
                 raise ValueError("messages must be a non-empty list when set")
         elif self.subject_content is None:
-            raise ValueError(
-                "JudgeSubject needs either subject_content or messages (non-empty)"
-            )
+            raise ValueError("JudgeSubject needs either subject_content or messages (non-empty)")
         elif not self.subject_content.strip():
             raise ValueError("subject_content must be non-empty when set")
 
@@ -152,13 +152,16 @@ def _canonical_json(obj: Any) -> str:
 def judge_config_hash(config: JudgeConfig) -> str:
     """Stable hash of *semantic* JudgeConfig fields.
 
-    Excludes output paths, resume flag, concurrency. Includes prompt-template version
-    constant so bumping it invalidates prior rows on resume.
+    Excludes output paths, resume flag, concurrency, and log verbosity. Includes
+    generation knobs (temperature, max_tokens, thinking_budget_tokens) and the
+    prompt-template version so bumping it invalidates prior rows on resume.
     """
     payload = {
         "judge_prompt": config.judge_prompt,
         "classes": config.classes,
         "temperature": config.temperature,
+        "max_tokens": config.max_tokens,
+        "thinking_budget_tokens": config.thinking_budget_tokens,
         "include_metadata_in_prompt": config.include_metadata_in_prompt,
         "judge_prompt_version": JUDGE_PROMPT_VERSION,
     }

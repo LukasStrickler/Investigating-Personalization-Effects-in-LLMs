@@ -42,11 +42,9 @@ from pathlib import Path
 
 import joblib  # noqa: F401 — kept for parity with other stages / optional artifact dumps
 import matplotlib
-import numpy as np
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
 from aggregate_word_analysis import ablate_phrase, load_targets
 from config import ModelConfig, ProbeConfig
 from dataset import _format_messages
@@ -61,18 +59,48 @@ _HERE = Path(__file__).resolve().parent
 ONLY_TYPES = ["Movie", "Hobby", "Name", "Artist"]
 
 _CONDITION_STYLE = {
-    "FULL":                {"label": "FULL (all 4 indicators)",      "color": "#000000", "ls": "-",  "marker": "o"},
-    "NEUTRAL":             {"label": "NEUTRAL (neutral words)",      "color": "#9467bd", "ls": "--", "marker": "v"},
-    "NEUTRAL_GENERATED":   {"label": "NEUTRAL (regenerated convs)",  "color": "#e377c2", "ls": "--", "marker": "*"},
-    "USER_ONLY":           {"label": "USER_ONLY (no asst turns)",    "color": "#2ca02c", "ls": "--", "marker": "P"},
-    "NEUTRAL_USER_ONLY":   {"label": "NEUTRAL + no asst",           "color": "#8c564b", "ls": "--", "marker": "X"},
-    "TEMPLATE_ONLY":       {"label": "TEMPLATE_ONLY (chance anchor)","color": "#aaaaaa", "ls": ":",  "marker": ""},
-    "ONLY_MOVIE":          {"label": "ONLY_MOVIE",                   "color": "#d62728", "ls": "--", "marker": "s"},
-    "ONLY_HOBBY":          {"label": "ONLY_HOBBY",                   "color": "#4C72B0", "ls": "--", "marker": ">"},
-    "ONLY_NAME":           {"label": "ONLY_NAME",                    "color": "#17a2a2", "ls": "--", "marker": "D"},
-    "ONLY_ARTIST":         {"label": "ONLY_ARTIST",                  "color": "#e6a817", "ls": "--", "marker": "+"},
-    "ONLY_MOVIE_USER_ONLY":{"label": "ONLY_MOVIE + no asst",        "color": "#d62728", "ls": ":",  "marker": "s"},
-    "ONLY_HOBBY_USER_ONLY":{"label": "ONLY_HOBBY + no asst",        "color": "#4C72B0", "ls": ":",  "marker": ">"},
+    "FULL": {"label": "FULL (all 4 indicators)", "color": "#000000", "ls": "-", "marker": "o"},
+    "NEUTRAL": {"label": "NEUTRAL (neutral words)", "color": "#9467bd", "ls": "--", "marker": "v"},
+    "NEUTRAL_GENERATED": {
+        "label": "NEUTRAL (regenerated convs)",
+        "color": "#e377c2",
+        "ls": "--",
+        "marker": "*",
+    },
+    "USER_ONLY": {
+        "label": "USER_ONLY (no asst turns)",
+        "color": "#2ca02c",
+        "ls": "--",
+        "marker": "P",
+    },
+    "NEUTRAL_USER_ONLY": {
+        "label": "NEUTRAL + no asst",
+        "color": "#8c564b",
+        "ls": "--",
+        "marker": "X",
+    },
+    "TEMPLATE_ONLY": {
+        "label": "TEMPLATE_ONLY (chance anchor)",
+        "color": "#aaaaaa",
+        "ls": ":",
+        "marker": "",
+    },
+    "ONLY_MOVIE": {"label": "ONLY_MOVIE", "color": "#d62728", "ls": "--", "marker": "s"},
+    "ONLY_HOBBY": {"label": "ONLY_HOBBY", "color": "#4C72B0", "ls": "--", "marker": ">"},
+    "ONLY_NAME": {"label": "ONLY_NAME", "color": "#17a2a2", "ls": "--", "marker": "D"},
+    "ONLY_ARTIST": {"label": "ONLY_ARTIST", "color": "#e6a817", "ls": "--", "marker": "+"},
+    "ONLY_MOVIE_USER_ONLY": {
+        "label": "ONLY_MOVIE + no asst",
+        "color": "#d62728",
+        "ls": ":",
+        "marker": "s",
+    },
+    "ONLY_HOBBY_USER_ONLY": {
+        "label": "ONLY_HOBBY + no asst",
+        "color": "#4C72B0",
+        "ls": ":",
+        "marker": ">",
+    },
 }
 
 
@@ -185,7 +213,8 @@ def build_condition_histories(
             current = user_only
             for target in ordered:
                 current = ablate_phrase(
-                    current, target["phrase"],
+                    current,
+                    target["phrase"],
                     _neutral_replacement(target, neutral_words, hist_idx),
                 )
             for token, placeholder in partial_passes:
@@ -194,7 +223,7 @@ def build_condition_histories(
         return out
 
     if condition in ("ONLY_MOVIE_USER_ONLY", "ONLY_HOBBY_USER_ONLY"):
-        keep_type = condition[len("ONLY_"):].split("_USER_ONLY")[0].title()
+        keep_type = condition[len("ONLY_") :].split("_USER_ONLY")[0].title()
         to_replace = [t for t in indicators if t["indicator_name"].title() != keep_type]
         ordered = sorted(to_replace, key=lambda t: len(t["phrase"]), reverse=True)
         partial_passes = _build_partial_passes(ordered)
@@ -213,7 +242,7 @@ def build_condition_histories(
         to_replace = indicators
         neutral_words = _load_neutral_words(neutral_path)
     elif condition.startswith("ONLY_"):
-        keep_type = condition[len("ONLY_"):].title()
+        keep_type = condition[len("ONLY_") :].title()
         to_replace = [t for t in indicators if t["indicator_name"].title() != keep_type]
         neutral_words = {}
     else:
@@ -267,10 +296,7 @@ def _build_partial_passes(ordered: list[dict]) -> list[tuple[str, str]]:
 
 def _cv_curve(results, control: bool) -> tuple[list[int], list[float], list[float], list[float]]:
     """Extract (layers, cv_mean, cv_std, mean_margin) for the real or control probe."""
-    rows = [
-        r for r in results.results
-        if r.classifier == "logistic" and r.is_control == control
-    ]
+    rows = [r for r in results.results if r.classifier == "logistic" and r.is_control == control]
     rows.sort(key=lambda r: r.layer)
     return (
         [r.layer for r in rows],
@@ -328,7 +354,9 @@ def run_condition_sweep(
     with open(dataset_path, encoding="utf-8") as handle:
         dataset = json.load(handle)
     if "Gender" not in dataset["labels"]:
-        raise ValueError(f"Sweep requires 'Gender' labels; dataset has: {sorted(dataset['labels'])}")
+        raise ValueError(
+            f"Sweep requires 'Gender' labels; dataset has: {sorted(dataset['labels'])}"
+        )
 
     labels_all = dataset["labels"]["Gender"]
     keep = [i for i, lbl in enumerate(labels_all) if lbl is not None]
@@ -339,8 +367,10 @@ def run_condition_sweep(
     targets = load_targets([Path(p) for p in mapping_paths], control_words)
 
     model_config = ModelConfig(
-        model_name=str(model_name), device_map=device_map,
-        torch_dtype=dtype, max_seq_length=max_seq_length,
+        model_name=str(model_name),
+        device_map=device_map,
+        torch_dtype=dtype,
+        max_seq_length=max_seq_length,
     )
     probe_config = ProbeConfig(layers=None, token_position="last")  # all layers
 
@@ -361,9 +391,7 @@ def run_condition_sweep(
         # other condition shares the primary dataset's histories/labels.
         cond_labels = labels
         reuse_full = (
-            condition == "FULL"
-            and full_hidden_path is not None
-            and Path(full_hidden_path).exists()
+            condition == "FULL" and full_hidden_path is not None and Path(full_hidden_path).exists()
         )
         if reuse_full:
             print(f"[sweep] FULL reuses cached hidden states: {full_hidden_path}")
@@ -382,7 +410,9 @@ def run_condition_sweep(
             nkeep = [i for i, lbl in enumerate(nlabels_all) if lbl is not None]
             nhistories = [ndataset["conversations_chat"][i] for i in nkeep]
             cond_labels = [nlabels_all[i] for i in nkeep]
-            print(f"[sweep] NEUTRAL_GENERATED: {len(nhistories)} regenerated histories | {dict(Counter(cond_labels))}")
+            print(
+                f"[sweep] NEUTRAL_GENERATED: {len(nhistories)} regenerated histories | {dict(Counter(cond_labels))}"
+            )
             texts = [_format_messages(messages) for messages in nhistories]
             if model is None:
                 model, tokenizer = load_model_and_tokenizer(model_config)
@@ -391,7 +421,9 @@ def run_condition_sweep(
             )
         else:
             texts = build_condition_histories(
-                histories, targets, condition,
+                histories,
+                targets,
+                condition,
                 neutral_path=Path(neutral_path) if neutral_path else None,
             )
             if model is None:
@@ -401,15 +433,22 @@ def run_condition_sweep(
             )
 
         results, _ = train_probes(
-            hidden, cond_labels, "Gender", probe_config,
-            test_size=0.2, seed=seed,
+            hidden,
+            cond_labels,
+            "Gender",
+            probe_config,
+            test_size=0.2,
+            seed=seed,
         )
         r_layers, r_mean, r_std, r_margin = _cv_curve(results, control=False)
         c_layers, c_mean, c_std, c_margin = _cv_curve(results, control=True)
         curve = {
-            "layers": r_layers, "cv_mean": r_mean, "cv_std": r_std,
+            "layers": r_layers,
+            "cv_mean": r_mean,
+            "cv_std": r_std,
             "mean_margin": r_margin,
-            "control_cv_mean": c_mean, "control_cv_std": c_std,
+            "control_cv_mean": c_mean,
+            "control_cv_std": c_std,
             "control_mean_margin": c_margin,
         }
         curves[condition] = curve
@@ -427,9 +466,7 @@ def run_condition_sweep(
         "histories": len(histories),
         "label_counts": Counter(labels),
         "conditions": conditions,
-        "reused_full_hidden": bool(
-            full_hidden_path and Path(full_hidden_path).exists()
-        ),
+        "reused_full_hidden": bool(full_hidden_path and Path(full_hidden_path).exists()),
         "metric": "5-fold stratified CV accuracy (cv_mean) per layer",
     }
     with (out_dir / "condition_layer_accuracy_metadata.json").open("w", encoding="utf-8") as handle:
@@ -441,18 +478,29 @@ def run_condition_sweep(
 def _write_csv(path: Path, curves: dict) -> None:
     rows = []
     for condition, data in curves.items():
-        for i, (layer, m, s, mg, cm, cs, cmg) in enumerate(zip(
-            data["layers"], data["cv_mean"], data["cv_std"],
-            data.get("mean_margin", [0.0] * len(data["layers"])),
-            data["control_cv_mean"], data["control_cv_std"],
-            data.get("control_mean_margin", [0.0] * len(data["layers"])),
-        )):
-            rows.append({
-                "condition": condition, "layer": layer,
-                "cv_mean": m, "cv_std": s, "mean_margin": mg,
-                "control_cv_mean": cm, "control_cv_std": cs,
-                "control_mean_margin": cmg,
-            })
+        for _i, (layer, m, s, mg, cm, cs, cmg) in enumerate(
+            zip(
+                data["layers"],
+                data["cv_mean"],
+                data["cv_std"],
+                data.get("mean_margin", [0.0] * len(data["layers"])),
+                data["control_cv_mean"],
+                data["control_cv_std"],
+                data.get("control_mean_margin", [0.0] * len(data["layers"])),
+            )
+        ):
+            rows.append(
+                {
+                    "condition": condition,
+                    "layer": layer,
+                    "cv_mean": m,
+                    "cv_std": s,
+                    "mean_margin": mg,
+                    "control_cv_mean": cm,
+                    "control_cv_std": cs,
+                    "control_mean_margin": cmg,
+                }
+            )
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
@@ -467,26 +515,39 @@ def _plot(path: Path, curves: dict, conditions: list[str]) -> None:
     for condition in conditions:
         if condition not in curves:
             continue
-        style = _CONDITION_STYLE.get(condition, {"label": condition, "color": None, "ls": "--", "marker": "."})
+        style = _CONDITION_STYLE.get(
+            condition, {"label": condition, "color": None, "ls": "--", "marker": "."}
+        )
         data = curves[condition]
-        kwargs = dict(label=style["label"], color=style["color"],
-                      linestyle=style["ls"], marker=style["marker"],
-                      markersize=4, linewidth=1.2)
+        kwargs = {
+            "label": style["label"],
+            "color": style["color"],
+            "linestyle": style["ls"],
+            "marker": style["marker"],
+            "markersize": 4,
+            "linewidth": 1.2,
+        }
         ax_acc.plot(data["layers"], data["cv_mean"], **kwargs)
         if "mean_margin" in data:
             ax_margin.plot(data["layers"], data["mean_margin"], **kwargs)
 
     # Shuffled-label control curves
     ctrl = curves[ctrl_src]
-    ctrl_kwargs = dict(label="Shuffled-label control", color="#888888",
-                       linestyle=":", linewidth=1.0)
+    ctrl_kwargs = {
+        "label": "Shuffled-label control",
+        "color": "#888888",
+        "linestyle": ":",
+        "linewidth": 1.0,
+    }
     ax_acc.plot(ctrl["layers"], ctrl["control_cv_mean"], **ctrl_kwargs)
     if "control_mean_margin" in ctrl:
         ax_margin.plot(ctrl["layers"], ctrl["control_mean_margin"], **ctrl_kwargs)
 
     ax_acc.axhline(0.5, color="#cccccc", linewidth=0.8, linestyle=":")
     ax_acc.set_ylabel("5-fold CV accuracy")
-    ax_acc.set_title("Linear probe accuracy — all conditions\n(fresh probe retrained per condition; probe target = Gender)")
+    ax_acc.set_title(
+        "Linear probe accuracy — all conditions\n(fresh probe retrained per condition; probe target = Gender)"
+    )
     ax_acc.legend(loc="center right", fontsize=9)
 
     ax_margin.axhline(0.0, color="#cccccc", linewidth=0.8, linestyle=":")

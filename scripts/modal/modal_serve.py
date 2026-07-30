@@ -174,15 +174,25 @@ def _gpu_monitor_loop() -> None:
 
 def _vllm_cmd(model_id: str, served_name: str, **opts: object) -> list[str]:
     cmd = [
-        "vllm", "serve", model_id,
-        "--served-model-name", served_name,
-        "--host", "0.0.0.0",
-        "--port", str(SERVE_PORT),
-        "--max-model-len", str(opts["max_model_len"]),
-        "--gpu-memory-utilization", str(opts["gpu_mem_util"]),
-        "--tensor-parallel-size", str(opts["tensor_parallel"]),
-        "--max-num-seqs", str(opts["max_num_seqs"]),
-        "--max-num-batched-tokens", str(opts["max_batched"]),
+        "vllm",
+        "serve",
+        model_id,
+        "--served-model-name",
+        served_name,
+        "--host",
+        "0.0.0.0",
+        "--port",
+        str(SERVE_PORT),
+        "--max-model-len",
+        str(opts["max_model_len"]),
+        "--gpu-memory-utilization",
+        str(opts["gpu_mem_util"]),
+        "--tensor-parallel-size",
+        str(opts["tensor_parallel"]),
+        "--max-num-seqs",
+        str(opts["max_num_seqs"]),
+        "--max-num-batched-tokens",
+        str(opts["max_batched"]),
         "--enable-prefix-caching",
     ]
     if opts.get("attention_backend"):
@@ -191,10 +201,14 @@ def _vllm_cmd(model_id: str, served_name: str, **opts: object) -> list[str]:
         cmd.append("--enforce-eager")
     if _needs_mistral_vllm_format(model_id):
         cmd += [
-            "--tokenizer-mode", "mistral",
-            "--config-format", "mistral",
-            "--load-format", "mistral",
-            "--tool-call-parser", "mistral",
+            "--tokenizer-mode",
+            "mistral",
+            "--config-format",
+            "mistral",
+            "--load-format",
+            "mistral",
+            "--tool-call-parser",
+            "mistral",
             "--enable-auto-tool-choice",
         ]
     return cmd
@@ -241,8 +255,11 @@ def serve():
         tensor_parallel=int(_read_runtime_env("MODAL_SERVE_TENSOR_PARALLEL", str(TENSOR_PARALLEL))),
         attention_backend=_read_runtime_env("MODAL_SERVE_ATTENTION_BACKEND", ATTENTION_BACKEND),
         max_num_seqs=_read_runtime_env("MODAL_SERVE_MAX_NUM_SEQS", str(MAX_NUM_SEQS)),
-        max_batched=_read_runtime_env("MODAL_SERVE_MAX_NUM_BATCHED_TOKENS", str(MAX_NUM_BATCHED_TOKENS)),
-        enforce_eager=_read_runtime_env("MODAL_SERVE_ENFORCE_EAGER", "1" if ENFORCE_EAGER else "0") == "1",
+        max_batched=_read_runtime_env(
+            "MODAL_SERVE_MAX_NUM_BATCHED_TOKENS", str(MAX_NUM_BATCHED_TOKENS)
+        ),
+        enforce_eager=_read_runtime_env("MODAL_SERVE_ENFORCE_EAGER", "1" if ENFORCE_EAGER else "0")
+        == "1",
     )
     gpu_log = _read_runtime_env("MODAL_SERVE_GPU_LOG", "1" if GPU_LOG else "0") == "1"
 
@@ -299,9 +316,7 @@ def serve():
         )
         up_resp = await client.send(up_req, stream=True)
         resp_headers = {
-            k.decode(): v.decode()
-            for k, v in up_resp.headers.raw
-            if k.decode().lower() not in hop
+            k.decode(): v.decode() for k, v in up_resp.headers.raw if k.decode().lower() not in hop
         }
         return StreamingResponse(
             up_resp.aiter_raw(),

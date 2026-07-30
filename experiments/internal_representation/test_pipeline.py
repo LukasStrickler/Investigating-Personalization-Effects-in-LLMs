@@ -5,7 +5,6 @@ import unittest
 from collections import Counter
 
 import numpy as np
-
 from config import DataConfig, ProbeConfig
 from dataset import prepare_dataset
 from probing import train_probes

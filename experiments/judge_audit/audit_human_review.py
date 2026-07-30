@@ -45,16 +45,32 @@ CSV_450 = HERE / "judge_audit_human_450.csv"
 POOL = HERE / "judge_audit_sample_500.csv"
 
 REQUIRED_NONEMPTY = [
-    "judgment_id", "question", "probe_question", "subject_response",
-    "options", "n_options", "final_class", "raw_output",
+    "judgment_id",
+    "question",
+    "probe_question",
+    "subject_response",
+    "options",
+    "n_options",
+    "final_class",
+    "raw_output",
 ]
 RATER_REQUIRED = [
-    "rater1_label", "rater2_label", "rater3_label",
-    "rater1_accepted", "rater2_accepted", "rater3_accepted",
-    "consensus_label", "judge_accepted", "n_raters",
+    "rater1_label",
+    "rater2_label",
+    "rater3_label",
+    "rater1_accepted",
+    "rater2_accepted",
+    "rater3_accepted",
+    "consensus_label",
+    "judge_accepted",
+    "n_raters",
 ]
 DIST_AXES = [
-    "question", "run_tag", "subject_model_alias", "true_gender", "true_region",
+    "question",
+    "run_tag",
+    "subject_model_alias",
+    "true_gender",
+    "true_region",
 ]
 
 _COLOR = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
@@ -98,7 +114,9 @@ def _max_drift(a: list[dict], b: list[dict], col: str) -> float:
     return max((abs(pa.get(k, 0.0) - pb.get(k, 0.0)) for k in keys), default=0.0)
 
 
-def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b: list[str]) -> tuple[list[str], list[str]]:
+def check_integrity(
+    a: list[dict], b: list[dict], header_a: list[str], header_b: list[str]
+) -> tuple[list[str], list[str]]:
     fails: list[str] = []
     warns: list[str] = []
     print(_c("Integrity checks", "1"))
@@ -107,7 +125,10 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
         if hdr == FIELDNAMES:
             ok(f"{name}: header matches expected {len(FIELDNAMES)}-column schema")
         else:
-            fail(f"{name}: header mismatch (got {len(hdr)} cols) — {set(hdr) ^ set(FIELDNAMES)}", fails)
+            fail(
+                f"{name}: header mismatch (got {len(hdr)} cols) — {set(hdr) ^ set(FIELDNAMES)}",
+                fails,
+            )
 
     if len(a) == 50:
         ok("50-file has exactly 50 rows")
@@ -135,7 +156,10 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
         if set(allids) == pool_ids:
             ok("50 ∪ 450 == the 500-row source pool exactly")
         else:
-            fail(f"union != pool (missing {len(pool_ids - set(allids))}, extra {len(set(allids) - pool_ids)})", fails)
+            fail(
+                f"union != pool (missing {len(pool_ids - set(allids))}, extra {len(set(allids) - pool_ids)})",
+                fails,
+            )
 
     rows = a + b
 
@@ -143,10 +167,14 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     if judges == {JUDGE_ALIAS: len(rows)}:
         ok(f"every row uses production judge {JUDGE_ALIAS}")
     else:
-        fail(f"unexpected judge_alias mix: {dict(judges)} — rebuild with prepare_judge_audit_sample.py", fails)
+        fail(
+            f"unexpected judge_alias mix: {dict(judges)} — rebuild with prepare_judge_audit_sample.py",
+            fails,
+        )
 
     bad_strata = [
-        r["judgment_id"] for r in rows
+        r["judgment_id"]
+        for r in rows
         if len((r.get("stratum") or "").split("|")) != len(INPUT_STRATUM_AXES)
     ]
     if not bad_strata:
@@ -190,7 +218,9 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
     else:
         fail(f"{len(bad_q)} row(s) with wrong question for run: {bad_q[:3]}", fails)
 
-    empties = {c: sum(1 for r in rows if not (r.get(c, "") or "").strip()) for c in REQUIRED_NONEMPTY}
+    empties = {
+        c: sum(1 for r in rows if not (r.get(c, "") or "").strip()) for c in REQUIRED_NONEMPTY
+    }
     bad = {c: n for c, n in empties.items() if n}
     if not bad:
         ok(f"no empty values in required fields ({', '.join(REQUIRED_NONEMPTY)})")
@@ -212,8 +242,7 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
 
     # Rater annotations must be complete on every review-sheet row.
     missing_rater = {
-        c: sum(1 for r in rows if not (r.get(c, "") or "").strip())
-        for c in RATER_REQUIRED
+        c: sum(1 for r in rows if not (r.get(c, "") or "").strip()) for c in RATER_REQUIRED
     }
     missing = {c: n for c, n in missing_rater.items() if n}
     if not missing:
@@ -236,8 +265,11 @@ def check_integrity(a: list[dict], b: list[dict], header_a: list[str], header_b:
         fail(f"{rev_mismatch} rev_* / rater*_accepted mismatches", fails)
 
     print(_c("\nSoft checks", "1"))
-    outside = [(r["judgment_id"], r["question"], r["final_class"]) for r in rows
-               if r["final_class"].strip() and r["final_class"].strip() not in _opts(r)]
+    outside = [
+        (r["judgment_id"], r["question"], r["final_class"])
+        for r in rows
+        if r["final_class"].strip() and r["final_class"].strip() not in _opts(r)
+    ]
     if outside:
         warn(f"{len(outside)} judge label(s) outside the allowed option set: {outside[:5]}", warns)
     else:
@@ -272,10 +304,7 @@ def check_sample_500() -> list[str]:
     else:
         fail(f"sample has {len(rows)} rows, expected 500", fails)
 
-    missing = {
-        c: sum(1 for r in rows if not (r.get(c, "") or "").strip())
-        for c in RATER_REQUIRED
-    }
+    missing = {c: sum(1 for r in rows if not (r.get(c, "") or "").strip()) for c in RATER_REQUIRED}
     bad = {c: n for c, n in missing.items() if n}
     if not bad:
         ok("all rater annotation fields filled on the 500-row sample")
@@ -307,7 +336,7 @@ def report_population_drift(sample: list[dict]) -> None:
             label = k if k != "" else "(empty)"
             d = ps.get(k, 0) - pr.get(k, 0)
             max_d = max(max_d, abs(d))
-            print(f"    {label:<34} {ps.get(k,0):5.1f}  {pr.get(k,0):5.1f}  {d:+5.1f}pp")
+            print(f"    {label:<34} {ps.get(k, 0):5.1f}  {pr.get(k, 0):5.1f}  {d:+5.1f}pp")
         flag = _c("  <- drift>3pp", "33") if max_d > 3 else ""
         print(f"    {'max |drift|':<34} {'-':>5}  {'-':>5}  {max_d:5.1f}{flag}")
 
@@ -329,7 +358,7 @@ def report_distribution(a: list[dict], b: list[dict]) -> None:
         pa, pb, pf = _pct(a, axis), _pct(b, axis), _pct(full, axis)
         for k in keys:
             label = k if k != "" else "(empty)"
-            print(f"    {label:<34} {pa.get(k,0):5.1f}  {pb.get(k,0):5.1f}  {pf.get(k,0):5.1f}")
+            print(f"    {label:<34} {pa.get(k, 0):5.1f}  {pb.get(k, 0):5.1f}  {pf.get(k, 0):5.1f}")
         d50 = _max_drift(a, full, axis)
         d450 = _max_drift(b, full, axis)
         flag = _c("  <- drift>5pp on a level", "33") if max(d50, d450) > 5 else ""
@@ -338,23 +367,30 @@ def report_distribution(a: list[dict], b: list[dict]) -> None:
     print(f"\n  {_c('final_class (outcome — not stratified)', '36')}")
     for name, rows in (("50", a), ("450", b), ("500", full)):
         cc = Counter(r["final_class"] for r in rows)
-        print(f"    {name:>4}: {len(cc)} distinct labels over {len(rows)} rows "
-              f"(top: {', '.join(f'{k}×{v}' for k, v in cc.most_common(3))})")
+        print(
+            f"    {name:>4}: {len(cc)} distinct labels over {len(rows)} rows "
+            f"(top: {', '.join(f'{k}×{v}' for k, v in cc.most_common(3))})"
+        )
     none_n = sum(1 for r in full if r["none_declared"] == "True")
     print(f"    none_declared: {none_n}/{len(full)} ({none_n / len(full) * 100:.1f}%)")
 
     # Legacy accept flags — not the headline audit KPI (exact Cohen's κ).
-    accepted = sum(1 for r in full if str(r.get("judge_accepted", "")).lower() in ("true", "1", "yes"))
+    accepted = sum(
+        1 for r in full if str(r.get("judge_accepted", "")).lower() in ("true", "1", "yes")
+    )
     scored = [r for r in full if r["none_declared"] != "True"]
-    print(f"    judge_accepted flags (legacy, not κ): {accepted}/{len(full)} "
-          f"({accepted / len(full) * 100:.1f}%)")
+    print(
+        f"    judge_accepted flags (legacy, not κ): {accepted}/{len(full)} "
+        f"({accepted / len(full) * 100:.1f}%)"
+    )
     if scored:
         acc_scored = sum(
-            1 for r in scored
-            if str(r.get("judge_accepted", "")).lower() in ("true", "1", "yes")
+            1 for r in scored if str(r.get("judge_accepted", "")).lower() in ("true", "1", "yes")
         )
-        print(f"    judge_accepted flags excl. abstentions: {acc_scored}/{len(scored)} "
-              f"({acc_scored / len(scored) * 100:.1f}%)")
+        print(
+            f"    judge_accepted flags excl. abstentions: {acc_scored}/{len(scored)} "
+            f"({acc_scored / len(scored) * 100:.1f}%)"
+        )
 
     dp = [r for r in full if r["question"] == "direct_probe"]
     if dp:
@@ -382,15 +418,21 @@ def main() -> int:
     report_distribution(a, b)
 
     print(_c("\nSummary", "1"))
-    print(f"  columns: {len(FIELDNAMES)}  "
-          f"(context {len(CONTEXT_COLS)} · review {len(REVIEW_CORE_COLS)} · "
-          f"human {len(HUMAN_COLS)} · raters {len(RATER_COLS)} · "
-          f"provenance {len(PROVENANCE_COLS)})")
+    print(
+        f"  columns: {len(FIELDNAMES)}  "
+        f"(context {len(CONTEXT_COLS)} · review {len(REVIEW_CORE_COLS)} · "
+        f"human {len(HUMAN_COLS)} · raters {len(RATER_COLS)} · "
+        f"provenance {len(PROVENANCE_COLS)})"
+    )
     if fails:
-        print(f"  {_c('RESULT: FAIL', '31;1')} — {len(fails)} hard issue(s), {len(warns)} warning(s)")
+        print(
+            f"  {_c('RESULT: FAIL', '31;1')} — {len(fails)} hard issue(s), {len(warns)} warning(s)"
+        )
         return 1
-    print(f"  {_c('RESULT: PASS', '32;1')} — 0 hard issues, {len(warns)} warning(s) "
-          f"(expected & benign)")
+    print(
+        f"  {_c('RESULT: PASS', '32;1')} — 0 hard issues, {len(warns)} warning(s) "
+        f"(expected & benign)"
+    )
     return 0
 
 

@@ -9,7 +9,7 @@ Run inside tmux so the process survives lid-close / screen-off:
 
     tmux new -s audit
     cd <repo-root>
-    python experiments/run_behavioral_audit.py
+    python experiments/behavioral_audit/run_behavioral_audit.py
     # detach with Ctrl-B D, reattach later with: tmux attach -t audit
 
 Set RUN_TAG below to match the experiment you want to run or resume.
@@ -47,7 +47,7 @@ EXPERIMENT_MODELS = [
 ]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
-SAMPLE_PER_GROUP = 10000   # personas per (gender × region) group
+SAMPLE_PER_GROUP = 10000  # personas per (gender × region) group
 MAX_PASSES = 10
 WORKERS = 50
 
@@ -122,6 +122,7 @@ EXPERIMENT_NAME = f"behavioral-audit-{RUN_TAG}" if RUN_TAG else "behavioral-audi
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 async def _run_stage2_with_retries(
     client,
     subjects: list,
@@ -135,8 +136,13 @@ async def _run_stage2_with_retries(
     result = None
 
     for pass_num in range(1, MAX_PASSES + 1):
-        bar = tqdm(total=total, initial=n_success_prev,
-                   desc=f"{label} pass {pass_num}/{MAX_PASSES}", unit="subject", file=sys.stdout)
+        bar = tqdm(
+            total=total,
+            initial=n_success_prev,
+            desc=f"{label} pass {pass_num}/{MAX_PASSES}",
+            unit="subject",
+            file=sys.stdout,
+        )
         counts = {"ok": 0, "err": 0, "resumed": 0}
 
         def on_verdict(v, _bar=bar, _counts=counts):
@@ -154,8 +160,13 @@ async def _run_stage2_with_retries(
 
         logger = JudgeLogger(verbosity="silent")
         result = await run_judges(
-            client, subjects, config,
-            execution=execution, on_verdict=on_verdict, on_resume=on_resume, log=logger,
+            client,
+            subjects,
+            config,
+            execution=execution,
+            on_verdict=on_verdict,
+            on_resume=on_resume,
+            log=logger,
         )
         bar.close()
 
@@ -190,14 +201,16 @@ def _build_stage2_subjects(exp_df, model_aliases, q_tag, stage1_csv_path):
         for model in model_aliases:
             response = row.get(model)
             if response:
-                subjects.append(JudgeSubject(
-                    subject_id=f"audit-{q_tag}-{meta['history_id']}",
-                    subject_content=str(response),
-                    subject_model_alias=model,
-                    source_id=str(stage1_csv_path),
-                    prompt_id=row["prompt_id"],
-                    metadata=dict(meta),
-                ))
+                subjects.append(
+                    JudgeSubject(
+                        subject_id=f"audit-{q_tag}-{meta['history_id']}",
+                        subject_content=str(response),
+                        subject_model_alias=model,
+                        source_id=str(stage1_csv_path),
+                        prompt_id=row["prompt_id"],
+                        metadata=dict(meta),
+                    )
+                )
     if skipped:
         print(
             f"WARNING: {q_tag}: skipped {skipped} rows without prompt_metadata "
@@ -209,6 +222,7 @@ def _build_stage2_subjects(exp_df, model_aliases, q_tag, stage1_csv_path):
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 async def main() -> None:
     print(f"Experiment: {EXPERIMENT_NAME}")
@@ -263,10 +277,10 @@ async def main() -> None:
         return {
             "messages": list(p["messages"]) + [{"role": "user", "content": probe}],
             "metadata": {
-                "history_id":  p["history_id"],
+                "history_id": p["history_id"],
                 "true_gender": p["persona"].get("Gender"),
-                "true_region":   p["persona"].get("Region"),
-                "question":    q_tag,
+                "true_region": p["persona"].get("Region"),
+                "question": q_tag,
             },
         }
 
@@ -317,6 +331,7 @@ async def main() -> None:
     else:
         # Load existing stage-1 CSVs
         from inference.experiments import build_dataframe_from_csv
+
         print("STAGE2_ONLY=True — loading existing stage-1 CSVs...")
 
         def _latest_csv(subdir: Path) -> Path:

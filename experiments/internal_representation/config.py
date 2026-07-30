@@ -2,8 +2,6 @@
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import List, Optional
-
 
 _HERE = Path(__file__).resolve().parent
 _REPO_ROOT = _HERE.parent.parent
@@ -18,7 +16,7 @@ class ModelConfig:
     torch_dtype: str = "float16"
     max_seq_length: int = 2048
     use_flash_attention: bool = False
-    hf_token: Optional[str] = None
+    hf_token: str | None = None
 
 
 @dataclass
@@ -29,10 +27,10 @@ class DataConfig:
         _REPO_ROOT / "src" / "generate_backgrounds" / "data" / "personas" / "personas.jsonl"
     )
     data_dir: str = str(_HERE / "data")
-    attributes: List[str] = field(default_factory=lambda: ["Gender"])
+    attributes: list[str] = field(default_factory=lambda: ["Gender"])
     include_partial: bool = False
     # Optional cap per joint persona group (e.g. Female + Germany). None uses all.
-    samples_per_group: Optional[int] = None
+    samples_per_group: int | None = None
     test_size: float = 0.2
     seed: int = 42
     # "full" retains every message; "gender-turn-only" removes other
@@ -44,7 +42,7 @@ class DataConfig:
 class ProbeConfig:
     """Configuration for the linear probing classifiers."""
 
-    layers: Optional[List[int]] = None
+    layers: list[int] | None = None
     token_position: str = "last"
     logistic_C: float = 1.0
     max_iter: int = 1000

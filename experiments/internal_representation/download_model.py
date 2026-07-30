@@ -13,7 +13,11 @@ def main() -> None:
 
     from huggingface_hub import snapshot_download
 
-    target = Path(args.output or Path(__file__).parent / "models" / args.model.rsplit("/", 1)[-1]).expanduser().resolve()
+    target = (
+        Path(args.output or Path(__file__).parent / "models" / args.model.rsplit("/", 1)[-1])
+        .expanduser()
+        .resolve()
+    )
     snapshot_download(repo_id=args.model, local_dir=target)
     print(f"Model downloaded to {target}")
     print(f"Run: python main.py --model {target} --attributes Gender")

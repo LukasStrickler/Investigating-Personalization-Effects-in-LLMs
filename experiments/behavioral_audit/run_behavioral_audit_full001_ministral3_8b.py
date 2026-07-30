@@ -1,7 +1,7 @@
 """Stage 2 runner for the behavioral-audit full001-ministral3-8b experiment (ministral-3-8b_modal).
 
 Stage 1 CSVs were produced on Modal and exported to:
-  experiments/behavioral_audit/results_full001-ministral3-8b/
+  experiments/behavioral_audit/results_behavioral_audit/results_full001-ministral3-8b/
 
 This script only runs Stage 2 (judging). Set STAGE2_ONLY = True (default).
 
@@ -175,9 +175,7 @@ async def _run_stage2_with_retries(
             tqdm.write(f"{label}: {n_failed} failed — retrying in 5s...")
             await asyncio.sleep(5)
     else:
-        tqdm.write(
-            f"WARNING: {n_failed} {label} subjects still failed after {MAX_PASSES} passes"
-        )
+        tqdm.write(f"WARNING: {n_failed} {label} subjects still failed after {MAX_PASSES} passes")
 
     df = pd.read_csv(result.csv_path)
     return result, df

@@ -1,5 +1,13 @@
 # Behavioral Audit — Cost & Token Estimate
 
+> **Status: historical pre-study planning estimate**, written before the final
+> study design. The shipped audit used subjects Gemma 4 31B, Gemma 4 E2B,
+> DeepSeek V4 Flash, Grok 4.3, GLM-5.2, and Ministral 3 8B with judge
+> GPT-4o-mini over 3,869 histories — see
+> [experiments/behavioral_audit/README.md](../experiments/behavioral_audit/README.md).
+> Model lists, prices, and totals below reflect the planning-time scope, not the
+> final runs.
+
 ## Executive summary
 
 Running the full behavioral audit over our six target models is **cheap relative to
@@ -21,7 +29,10 @@ All figures below are grounded: input tokens were counted exactly over the perso
 corpus with `tiktoken`; output lengths were measured from a live 20-samples-per-model
 OpenRouter calibration; every price was read from OpenRouter's `/api/v1/models`
 endpoint. Numbers are reproducible via `python scripts/estimate_cost.py
---report-only` (machine-readable output in `logs/cost-calibration/estimate.json`).
+--report-only` (machine-readable output in `logs/cost-calibration/estimate.json`)
+— note that this mode replays the local, gitignored calibration log
+(`logs/cost-calibration/inference.jsonl`); on a fresh clone it prints a
+zeros-based estimate until a live calibration run repopulates the log.
 
 ---
 

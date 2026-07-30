@@ -7,16 +7,13 @@ at the selected token position (last user token by default).
 """
 
 import os
-from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
-from tqdm import tqdm
 import transformers.tokenization_utils_base as _tub
-from transformers import AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
-
 from config import ModelConfig, ProbeConfig
-
+from tqdm import tqdm
+from transformers import AutoModelForCausalLM, AutoModelForImageTextToText, AutoTokenizer
 
 # Monkey-patch: transformers assumes extra_special_tokens is a dict, but some models
 # (e.g. Gemma 4) store it as a list in their tokenizer_config.json. This fixes the
@@ -36,7 +33,7 @@ _tub.PreTrainedTokenizerBase._set_model_specific_special_tokens = _patched_set_s
 
 def load_model_and_tokenizer(
     config: ModelConfig,
-) -> Tuple[AutoModelForCausalLM, AutoTokenizer]:
+) -> tuple[AutoModelForCausalLM, AutoTokenizer]:
     """Load a frozen HuggingFace causal LM and its tokenizer."""
 
     dtype_map = {
@@ -103,7 +100,7 @@ def load_model_and_tokenizer(
 def _find_last_user_token_idx(
     input_ids: torch.Tensor,
     tokenizer: AutoTokenizer,
-    attention_mask: Optional[torch.Tensor] = None,
+    attention_mask: torch.Tensor | None = None,
 ) -> int:
     """
     Find the index of the last token that belongs to the **user's** final turn.
@@ -113,7 +110,6 @@ def _find_last_user_token_idx(
     to the very last non-pad token if it can't find a "User:" marker.
     """
     ids = input_ids.squeeze().tolist()
-    tokens = tokenizer.convert_ids_to_tokens(ids)
 
     # Build the decoded text to find the character offset of the last "User:"
     decoded = tokenizer.decode(ids, skip_special_tokens=False)
@@ -125,11 +121,8 @@ def _find_last_user_token_idx(
         # Find the token index closest to the last "User:" segment end
         # We want the last token *before* the next "Assistant:" reply.
         next_assistant_pos = decoded.find("Assistant:", last_user_pos)
-        if next_assistant_pos == -1:
-            # The user turn is the very last segment
-            target_char = len(decoded) - 1
-        else:
-            target_char = next_assistant_pos - 1
+        # If there is no following "Assistant:", the user turn is the very last segment
+        target_char = len(decoded) - 1 if next_assistant_pos == -1 else next_assistant_pos - 1
 
         # Map character offset back to a token index (approximate)
         char_count = 0
@@ -155,11 +148,11 @@ def _find_last_user_token_idx(
 def extract_hidden_states(
     model: AutoModelForCausalLM,
     tokenizer: AutoTokenizer,
-    conversations: List[str],
+    conversations: list[str],
     model_config: ModelConfig,
     probe_config: ProbeConfig,
     batch_size: int = 1,
-) -> Dict[int, np.ndarray]:
+) -> dict[int, np.ndarray]:
     """
     Run the forward pass on every conversation and collect hidden states.
 
@@ -186,7 +179,7 @@ def extract_hidden_states(
     )  # +1 because HF returns embedding layer (index 0) + N transformer layers
 
     # Pre-allocate collection lists
-    collected: Dict[int, List[np.ndarray]] = {l: [] for l in layers_to_extract}
+    collected: dict[int, list[np.ndarray]] = {layer: [] for layer in layers_to_extract}
 
     device = next(model.parameters()).device
 
@@ -196,7 +189,7 @@ def extract_hidden_states(
     tokenizer.padding_side = "right"
 
     for start in tqdm(range(0, len(conversations), batch_size), desc="Extracting hidden states"):
-        batch = conversations[start:start + batch_size]
+        batch = conversations[start : start + batch_size]
         token_positions = []
         if probe_config.token_position == "last":
             for conv in batch:
@@ -208,7 +201,9 @@ def extract_hidden_states(
                     padding=False,
                 )
                 token_positions.append(
-                    _find_last_user_token_idx(single["input_ids"], tokenizer, single.get("attention_mask"))
+                    _find_last_user_token_idx(
+                        single["input_ids"], tokenizer, single.get("attention_mask")
+                    )
                 )
 
         inputs = tokenizer(
@@ -229,9 +224,11 @@ def extract_hidden_states(
             # Convert to float32 early to avoid float16 overflow/inf
             h = all_hidden[layer_idx].float()  # (1, seq_len, hidden_dim)
             if probe_config.token_position == "last":
-                vec = torch.stack(
-                    [h[row, token_positions[row], :] for row in range(len(batch))]
-                ).cpu().numpy()
+                vec = (
+                    torch.stack([h[row, token_positions[row], :] for row in range(len(batch))])
+                    .cpu()
+                    .numpy()
+                )
             else:
                 # Mean pool over non-padding tokens
                 mask = inputs["attention_mask"].unsqueeze(-1).float()
@@ -240,14 +237,14 @@ def extract_hidden_states(
 
     tokenizer.padding_side = original_padding_side
 
-    hidden_states = {l: np.stack(vecs) for l, vecs in collected.items()}
+    hidden_states = {layer: np.stack(vecs) for layer, vecs in collected.items()}
 
     # Sanitize: replace any residual inf/NaN with 0
     n_bad = 0
-    for l in hidden_states:
-        bad_mask = ~np.isfinite(hidden_states[l])
+    for layer in hidden_states:
+        bad_mask = ~np.isfinite(hidden_states[layer])
         n_bad += bad_mask.sum()
-        hidden_states[l] = np.nan_to_num(hidden_states[l], nan=0.0, posinf=0.0, neginf=0.0)
+        hidden_states[layer] = np.nan_to_num(hidden_states[layer], nan=0.0, posinf=0.0, neginf=0.0)
     if n_bad > 0:
         print(f"  [WARN] Replaced {n_bad} inf/NaN values in hidden states with 0")
 
@@ -258,14 +255,14 @@ def extract_hidden_states(
     return hidden_states
 
 
-def save_hidden_states(hidden_states: Dict[int, np.ndarray], path: str) -> None:
+def save_hidden_states(hidden_states: dict[int, np.ndarray], path: str) -> None:
     """Save extracted hidden states to a compressed .npz file."""
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     np.savez_compressed(path, **{str(k): v for k, v in hidden_states.items()})
     print(f"[Extraction] Saved hidden states to {path}")
 
 
-def load_hidden_states(path: str) -> Dict[int, np.ndarray]:
+def load_hidden_states(path: str) -> dict[int, np.ndarray]:
     """Load hidden states from a .npz file."""
     data = np.load(path)
     return {int(k): data[k] for k in data.files}

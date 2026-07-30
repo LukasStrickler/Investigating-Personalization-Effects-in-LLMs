@@ -28,7 +28,7 @@ def _format_messages(messages: list[dict[str, str]]) -> str:
         default=-1,
     )
     lines: list[str] = []
-    for message in messages[:last_user + 1]:
+    for message in messages[: last_user + 1]:
         role = message.get("role")
         content = message.get("content")
         if role not in {"system", "user", "assistant"} or not isinstance(content, str):
@@ -50,7 +50,8 @@ def _select_context(messages: list[dict[str, str]], mode: str) -> list[dict[str,
     if mode != "gender-turn-only":
         raise ValueError(f"Unknown context mode: {mode}")
     matches = [
-        message for message in messages
+        message
+        for message in messages
         if message.get("role") == "user"
         and "I really enjoy watching " in str(message.get("content", ""))
         and "how should I structure my daily routine?" in str(message.get("content", ""))
@@ -76,7 +77,9 @@ def _load_rows(path: Path) -> list[dict[str, Any]]:
                 row = json.loads(line)
             except json.JSONDecodeError as exc:
                 raise ValueError(f"Invalid JSON on line {line_number} of {path}: {exc}") from exc
-            if not isinstance(row.get("persona"), dict) or not isinstance(row.get("messages"), list):
+            if not isinstance(row.get("persona"), dict) or not isinstance(
+                row.get("messages"), list
+            ):
                 raise ValueError(f"Line {line_number} must contain persona and messages fields")
             rows.append(row)
     return rows
@@ -98,7 +101,11 @@ def _sample_groups(rows: list[dict[str, Any]], config: DataConfig) -> list[dict[
     sampled: list[dict[str, Any]] = []
     for key in sorted(groups, key=lambda values: tuple(str(value) for value in values)):
         group = groups[key]
-        sampled.extend(group if len(group) <= config.samples_per_group else rng.sample(group, config.samples_per_group))
+        sampled.extend(
+            group
+            if len(group) <= config.samples_per_group
+            else rng.sample(group, config.samples_per_group)
+        )
     return sampled
 
 
@@ -116,7 +123,8 @@ def prepare_dataset(config: DataConfig) -> dict[str, Any]:
 
     if not config.include_partial:
         rows = [
-            row for row in rows
+            row
+            for row in rows
             if all(row["persona"].get(attribute) is not None for attribute in config.attributes)
         ]
     rows = _sample_groups(rows, config)
