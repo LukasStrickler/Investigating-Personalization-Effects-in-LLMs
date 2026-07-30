@@ -4,7 +4,7 @@ This is the Modal sibling of ``run_behavioral_audit.py``: it generates the
 free-form subject responses (Q1 job / Q2 college-major, over each persona's
 replayed history) and writes them to the SAME matrix-CSV format the rest of the
 pipeline reads. The only difference is *where* the subject model runs — a vLLM
-OpenAI server deployed on Modal (see ``experiments/modal_gpu_poc/modal_serve.py``
+OpenAI server deployed on Modal (see ``scripts/modal/modal_serve.py``
 and the ``modal`` provider) instead of the university cluster's vLLM.
 
 Stage 2 (judging) is deliberately NOT run here — use ``run_behavioral_audit.py``
@@ -13,7 +13,7 @@ classification stay separable and independently resumable.
 
 Prerequisites
     # 1. deploy the subject server and point the client at it
-    modal deploy experiments/modal_gpu_poc/modal_serve.py
+    modal deploy scripts/modal/modal_serve.py
     export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
     export MODAL_API_KEY="EMPTY"          # or the server's bearer token
     # 2. use the modal config
@@ -65,7 +65,7 @@ PERSONAS_PATH = REPO_ROOT / "src" / "generate_backgrounds" / "data" / "personas"
 
 
 def sample_personas(sample_per_group: int, seed: int, limit: int | None) -> list[dict]:
-    """Replicate run_behavioral_audit.py's sampler exactly (seed=42, race×gender
+    """Replicate run_behavioral_audit.py's sampler exactly (seed=42, region×gender
     loop, unknown cohort appended last) so prompt_ids match the cluster runs and
     resume is stable. ``limit`` (if set) truncates for a cheap smoke test."""
     all_personas: list[dict] = []
@@ -77,23 +77,23 @@ def sample_personas(sample_per_group: int, seed: int, limit: int | None) -> list
     unknown: list[dict] = []
     for p in all_personas:
         gender = p["persona"].get("Gender")
-        race = p["persona"].get("Race")
-        if gender and race:
-            grouped[(gender, race)].append(p)
+        region = p["persona"].get("Region")
+        if gender and region:
+            grouped[(gender, region)].append(p)
         else:
             unknown.append(p)
 
-    all_races = sorted({race for (_, race) in grouped})
+    all_regions = sorted({region for (_, region) in grouped})
     random.seed(seed)
     sampled: list[dict] = []
-    for race in all_races:
+    for region in all_regions:
         for gender in ["Male", "Female"]:
-            pool = list(grouped[(gender, race)])
+            pool = list(grouped[(gender, region)])
             if len(pool) < sample_per_group:
                 sampled.extend(pool)
             else:
                 sampled.extend(random.sample(pool, sample_per_group))
-    # Missing-gender/race personas appended AFTER the main loop (RNG state / order
+    # Missing-gender/region personas appended AFTER the main loop (RNG state / order
     # of known personas untouched, so their prompt_ids stay identical on resume).
     if len(unknown) < sample_per_group:
         sampled.extend(unknown)
@@ -107,14 +107,14 @@ def sample_personas(sample_per_group: int, seed: int, limit: int | None) -> list
 
 def make_spec(persona: dict, probe: str, q_tag: str) -> dict:
     """Persona history + probe, plus the tracking metadata every downstream stage
-    keys off (history_id / true_gender / true_race / question). Mirrors
+    keys off (history_id / true_gender / true_region / question). Mirrors
     run_behavioral_audit.py:_make_spec."""
     return {
         "messages": list(persona["messages"]) + [{"role": "user", "content": probe}],
         "metadata": {
             "history_id": persona["history_id"],
             "true_gender": persona["persona"].get("Gender"),
-            "true_race": persona["persona"].get("Race"),
+            "true_region": persona["persona"].get("Region"),
             "question": q_tag,
         },
     }
@@ -130,10 +130,10 @@ async def _run_stage1(
 ) -> None:
     experiment_name = f"behavioral-audit-{run_tag}" if run_tag else "behavioral-audit"
     sampled = sample_personas(sample_per_group, seed, limit)
-    n_unknown = sum(1 for p in sampled if not (p["persona"].get("Gender") and p["persona"].get("Race")))
+    n_unknown = sum(1 for p in sampled if not (p["persona"].get("Gender") and p["persona"].get("Region")))
     print(f"Experiment : {experiment_name}")
     print(f"Subject    : {subject_alias}  (config {config_path.name})")
-    print(f"Personas   : {len(sampled)} ({n_unknown} missing gender/race) → "
+    print(f"Personas   : {len(sampled)} ({n_unknown} missing gender/region) → "
           f"{2 * len(sampled)} requests (Q1+Q2)\n")
 
     client = create_client(config_path)
@@ -165,7 +165,7 @@ def main() -> None:
                     help="model alias (config/inference.yaml) served on Modal; also the CSV column")
     ap.add_argument("--config", type=Path, default=REPO_ROOT / "config" / "inference.yaml")
     ap.add_argument("--sample-per-group", type=int, default=10000,
-                    help="personas per (gender × race) group (10000 = all)")
+                    help="personas per (gender × region) group (10000 = all)")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, default=None, help="cap total personas (cheap smoke test)")
     args = ap.parse_args()

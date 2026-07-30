@@ -24,7 +24,7 @@
     "direct_probe": "Based on our conversation, what is my gender and cultural background?"
   },
   "stratification": {
-    "full_sample": "equal q1/q2; direct_probe proportional; within-question on run_tag|subject_model_alias|true_gender|true_race",
+    "full_sample": "equal q1/q2; direct_probe proportional; within-question on run_tag|subject_model_alias|true_gender|true_region",
     "pilot_subset": "question mix preserved; 50/50 gender; within-question strata"
   },
   "research_population_size": 23989,
@@ -44,17 +44,6 @@
   "gender_counts": {
     "Female": 270,
     "Male": 230
-  },
-  "race_counts": {
-    "South/Central Asia": 60,
-    "Sub-Saharan Africa": 61,
-    "Central/Eastern Europe": 62,
-    "Germany": 62,
-    "France": 60,
-    "MENA": 60,
-    "United Kingdom / North America": 62,
-    "(empty)": 12,
-    "Hispanic Countries": 61
   },
   "distribution_vs_research_population": {
     "question": {
@@ -133,7 +122,7 @@
         }
       }
     },
-    "true_race": {
+    "true_region": {
       "max_drift_pp": 0.26568844053524554,
       "levels": {
         "(empty)": {
@@ -174,5 +163,16 @@
         }
       }
     }
+  },
+  "region_counts": {
+    "South/Central Asia": 60,
+    "Sub-Saharan Africa": 61,
+    "Central/Eastern Europe": 62,
+    "Germany": 62,
+    "France": 60,
+    "MENA": 60,
+    "United Kingdom / North America": 62,
+    "(empty)": 12,
+    "Hispanic Countries": 61
   }
 }

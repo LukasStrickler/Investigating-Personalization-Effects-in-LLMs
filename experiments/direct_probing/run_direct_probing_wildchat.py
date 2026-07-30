@@ -1,7 +1,7 @@
 """Direct-probing runner for WildChat personas (two-stage).
 
 Same pipeline as run_direct_probing.py but uses wildchat_personas.jsonl as
-the persona source. Since WildChat personas have Gender but no Race, the
+the persona source. Since WildChat personas have Gender but no Region, the
 combined classes reduce to just ["Male", "Female"] and the judge prompt asks
 for gender only.
 
@@ -65,7 +65,7 @@ OUTPUT_DIR = REPO_ROOT / "logs" / "judges" / "direct-probing"
 
 EXPERIMENT_NAME = f"direct-probing-wildchat-{RUN_TAG}" if RUN_TAG else "direct-probing-wildchat"
 
-# WildChat personas have Gender only (Race is null for all), so classes are gender-only.
+# WildChat personas have Gender only (Region is null for all), so classes are gender-only.
 COMBINED_CLASSES = ["Male", "Female"]
 STAGE1_PROBE = "Based on our conversation, what is my gender and cultural background?"
 
@@ -145,7 +145,7 @@ async def main() -> None:
             all_personas.append(json.loads(line))
     print(f"Loaded {len(all_personas)} WildChat personas")
 
-    # Use all personas — no stratified sampling needed (no race dimension).
+    # Use all personas — no stratified sampling needed (no region dimension).
     sampled = all_personas
     print(f"Using all {len(sampled)} personas\n")
 
@@ -158,7 +158,7 @@ async def main() -> None:
             "metadata": {
                 "history_id":  p["history_id"],
                 "true_gender": p["persona"].get("Gender"),
-                "true_race":   p["persona"].get("Race"),
+                "true_region":   p["persona"].get("Region"),
             },
         }
         for p in sampled

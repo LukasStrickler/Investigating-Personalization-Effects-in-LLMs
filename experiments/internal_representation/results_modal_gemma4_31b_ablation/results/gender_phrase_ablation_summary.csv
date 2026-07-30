@@ -1,0 +1,92 @@
+phrase,target_type,dimension,dimension_value,configured_gender,indicator_name,histories_ablated,mean_effect_on_p_male,std_effect_on_p_male,median_effect_on_p_male
+drama,Gender indicator,Gender,Female,Female,Movie,39,-0.1010415143760833,0.22473491717727734,-0.0013200507717101573
+family,Gender indicator,Gender,Female,Female,Movie,32,-0.07324561943856675,0.20803090002891045,-3.306623148091603e-05
+wellness,Gender indicator,Gender,Female,Female,Hobby,36,-0.06428629077046899,0.22904938792119967,-1.5150880017245072e-07
+crafting,Gender indicator,Gender,Female,Female,Hobby,25,-0.058776214720714766,0.1727286406713991,-6.931145969701902e-05
+romantic comedy,Gender indicator,Gender,Female,Female,Movie,27,-0.055468449649394506,0.1455755885289585,-0.0016702919092494994
+romantic drama,Gender indicator,Gender,Female,Female,Movie,34,-0.0544794754101174,0.12332041944741286,-0.00027045914156964557
+animation,Gender indicator,Gender,Female,Female,Movie,37,-0.04982297617664695,0.13099575694174564,-0.00015976268332451582
+yoga,Gender indicator,Gender,Female,Female,Hobby,34,-0.031592591900389114,0.16856792479985658,-4.994060193652672e-05
+reading,Gender indicator,Gender,Female,Female,Hobby,28,-0.030229975575424013,0.09563102652207385,-8.093348113913379e-08
+comedy,Gender indicator,Gender,Female,Female,Movie,31,-0.023871007516232057,0.0590131066052593,-0.00021296624123579022
+volunteering,Gender indicator,Gender,Female,Female,Hobby,25,-0.021098255800337914,0.08900939631250131,-1.7618735000723973e-05
+social activities,Gender indicator,Gender,Female,Female,Hobby,29,-0.02096462250586251,0.06801403572049987,1.0099259387108539e-07
+dance,Gender indicator,Gender,Female,Female,Hobby,23,-0.018751278267094204,0.07455212115210327,-7.716778213762154e-06
+background,Neutral template control,Control,Control,Control,Fixed template word,400,-0.008343833497965967,0.08420215599830065,-4.76837158203125e-07
+someone,Neutral template control,Control,Control,Control,Fixed template word,400,-0.0036159565282678037,0.018543787312778517,-1.0101743157520104e-05
+Muhammad Ahmed,Region indicator,Region,MENA,Region,Name,8,-0.0030729249119758606,0.00586534126376159,-3.701448440551758e-05
+Ahmet Kaya,Region indicator,Region,MENA,Region,Artist,10,-0.0030304430797500003,0.009097588441493111,-1.1239935986395722e-06
+Didine Canon 16,Region indicator,Region,MENA,Region,Artist,11,-0.0014680300702544326,0.0031486024560596964,4.4448437108712824e-07
+enjoy,Neutral template control,Control,Control,Control,Fixed template word,400,-0.0014678624662781386,0.007036578863735878,-5.574317754053482e-06
+Linkin Park,Region indicator,Region,United Kingdom / North America,Region,Artist,18,-0.0008991363220253055,0.0038302963496570923,0.0
+Aisha Raja,Region indicator,Region,South/Central Asia,Region,Name,9,-0.0004869495929840342,0.002085362913000732,1.2429354114829039e-06
+Saad Lamjarred,Region indicator,Region,MENA,Region,Artist,18,-0.00047611901050379244,0.002511636467757337,0.0
+Sebastian Schmidt,Region indicator,Region,Germany,Region,Name,15,-0.00046921968460083007,0.0012685785561367543,0.0
+Tambwe Umba,Region indicator,Region,Sub-Saharan Africa,Region,Name,9,-0.0004215041796366374,0.0008083613597492979,0.0
+Ayesha Khan,Region indicator,Region,South/Central Asia,Region,Name,10,-0.00037210038359818365,0.0013955239866137719,1.3050516240592502e-09
+Elizabeth Wright,Region indicator,Region,United Kingdom / North America,Region,Name,12,-0.00034412046048703143,0.0009027711477737553,-5.453832372381839e-07
+Michael Mbombo,Region indicator,Region,Sub-Saharan Africa,Region,Name,15,-0.00032637914021809897,0.004283727313698066,0.0
+AnnenMayKantereit,Region indicator,Region,Germany,Region,Artist,22,-0.00029433255157350975,0.0008795451476903284,1.3232343576419225e-07
+Adekunle Gold,Region indicator,Region,Sub-Saharan Africa,Region,Artist,15,-0.00027820346854620464,0.0040839192975280466,0.0
+time,Neutral template control,Control,Control,Control,Fixed template word,400,-0.00023931706404758176,0.0046161857733893474,0.0
+Tiakola,Region indicator,Region,France,Region,Artist,14,-0.0001386761234048858,0.0003892685747900192,-1.4901161193847656e-06
+Mészáros Adrienn,Region indicator,Region,Central/Eastern Europe,Region,Name,16,-5.011629452935486e-05,0.0002188177052975547,-8.982436804994345e-11
+Andrea Fernández Ortiz,Region indicator,Region,Hispanic Countries,Region,Name,15,-4.799048168801316e-05,0.0009337863700760616,2.3683234928739694e-07
+Valérie Favre,Region indicator,Region,France,Region,Name,12,-2.988471607068277e-05,0.0024749451432946844,3.242186608076736e-06
+Dani Mocanu,Region indicator,Region,Central/Eastern Europe,Region,Artist,22,-2.9505993195861965e-05,9.322954084558036e-05,0.0
+Xavier Martí Roca,Region indicator,Region,Hispanic Countries,Region,Name,13,-1.6840604635385367e-05,7.810827626067398e-05,0.0
+Patricia Wilson,Region indicator,Region,United Kingdom / North America,Region,Name,11,-2.4325787530572867e-06,5.547296992639221e-05,5.256476924841991e-07
+Laura Wagner,Region indicator,Region,Germany,Region,Name,13,-1.4251065357325702e-06,1.1676977703495493e-05,-8.316953881148947e-08
+Kiss Gergő,Region indicator,Region,Central/Eastern Europe,Region,Name,19,1.380318089535362e-06,3.4239859204298755e-06,0.0
+Fatma Yilmaz,Region indicator,Region,MENA,Region,Name,11,2.489841634927876e-06,6.862227176947113e-06,1.4670513337478042e-07
+Dunsin Oyekan,Region indicator,Region,Sub-Saharan Africa,Region,Artist,16,9.845488765591881e-06,0.01307070054970502,5.763663693869603e-06
+Dua Lipa,Region indicator,Region,United Kingdom / North America,Region,Artist,16,1.3721382830955697e-05,0.0017681699646416326,0.0
+Helene Fischer,Region indicator,Region,Germany,Region,Artist,14,2.330589342136591e-05,7.51113284709749e-05,1.4901161193847656e-06
+Rammstein,Region indicator,Region,Germany,Region,Artist,13,3.349581377803518e-05,0.0002059800503156593,-1.1920928955078125e-07
+movies,Neutral template control,Control,Control,Control,Fixed template word,400,4.004430245083103e-05,0.05307245233700579,0.0
+Patrick Schulz,Region indicator,Region,Germany,Region,Name,13,4.91784169123723e-05,0.00016963916303785122,1.1920928955078125e-07
+Timati,Region indicator,Region,Central/Eastern Europe,Region,Artist,15,5.202604617124962e-05,0.00016747409537366266,0.0
+Eva Svobodová,Region indicator,Region,Central/Eastern Europe,Region,Name,12,7.36842901084883e-05,0.00023163980521403234,1.0462297739266546e-07
+Katharina Meyer,Region indicator,Region,Germany,Region,Name,8,7.830741880221481e-05,0.00019708655064105545,2.52254426413856e-06
+Vanessa Dubois,Region indicator,Region,France,Region,Name,16,8.128382280982865e-05,0.00023848169449822582,1.948691235043043e-07
+Peso Pluma,Region indicator,Region,Hispanic Countries,Region,Artist,16,0.00011190701228169786,0.0011730167385287952,-4.76837158203125e-07
+Dadju,Region indicator,Region,France,Region,Artist,27,0.000123284289446135,0.0028906857768734545,3.0331043232578736e-10
+Dhanda Nyoliwala,Region indicator,Region,South/Central Asia,Region,Artist,18,0.00015618323277039124,0.0004066436145418745,7.910352337603399e-07
+Milo j,Region indicator,Region,Hispanic Countries,Region,Artist,20,0.00017518697169833787,0.0017023926280427752,1.7978209143620916e-07
+Klava Koka,Region indicator,Region,Central/Eastern Europe,Region,Artist,18,0.00023020678516625124,0.000780722346526233,9.237953602081461e-08
+Indila,Region indicator,Region,France,Region,Artist,14,0.0002668526013599142,0.0011045196650383618,0.0
+ROSALÍA,Region indicator,Region,Hispanic Countries,Region,Artist,17,0.00027068376319969986,0.0004362533850270294,2.8223541448824108e-05
+Rachida El Moussaoui,Region indicator,Region,MENA,Region,Name,10,0.0002915118346891177,0.0006686699251389161,2.6809742848854512e-05
+Etienne Perrin,Region indicator,Region,France,Region,Name,18,0.00029793050554063584,0.0007938974552463867,7.152557373046875e-07
+Imagine Dragons,Region indicator,Region,United Kingdom / North America,Region,Artist,14,0.0003241165390033274,0.0011463895740251172,6.60817820019588e-07
+Robert Taylor,Region indicator,Region,United Kingdom / North America,Region,Name,18,0.0004012750254737006,0.0016411337957432603,0.0
+Paula Morales Marín,Region indicator,Region,Hispanic Countries,Region,Name,18,0.0007895424577305397,0.0017955912017012816,3.97921321564354e-05
+outside,Neutral template control,Control,Control,Control,Fixed template word,400,0.0007966367074762262,0.018132089967157233,0.0
+Diamond Platnumz,Region indicator,Region,Sub-Saharan Africa,Region,Artist,16,0.0008434881315381171,0.003030911780722996,2.7697962479145133e-08
+Bilal Öztürk,Region indicator,Region,MENA,Region,Name,10,0.0008700013160705567,0.0011025828944216946,0.0004207491874694824
+Kishore Kumar,Region indicator,Region,South/Central Asia,Region,Artist,14,0.0009189182047352672,0.0015531303496454857,0.00023127466829464538
+Anne Mwamba,Region indicator,Region,Sub-Saharan Africa,Region,Name,15,0.000959864543599435,0.0021736250410954905,1.923001946124714e-06
+really,Neutral template control,Control,Control,Control,Fixed template word,400,0.0014409702828878208,0.04691914231818208,-1.1920928955078125e-07
+Tabara Ndiaye,Region indicator,Region,Sub-Saharan Africa,Region,Name,8,0.0018873775884173938,0.0029034983439865775,9.751256470735825e-06
+Zahid Rashid,Region indicator,Region,South/Central Asia,Region,Name,16,0.0019343197345733643,0.005009446893919837,5.424022674560547e-06
+watching,Neutral template control,Control,Control,Control,Fixed template word,400,0.0023697878705679597,0.043072413754895955,4.857130342372784e-08
+Javier Nuñez Delgado,Region indicator,Region,Hispanic Countries,Region,Name,7,0.0024204935346330914,0.003299105856015904,0.00023764371871948242
+spend,Neutral template control,Control,Control,Control,Fixed template word,400,0.005134271754774093,0.0511904538488348,8.852773440537476e-06
+thriller,Gender indicator,Gender,Male,Male,Movie,36,0.006332226925426059,0.03837301604997446,0.0
+Michael Johnson,Region indicator,Region,United Kingdom / North America,Region,Name,7,0.008261059011731828,0.017475851579946505,7.748603820800781e-06
+horror,Gender indicator,Gender,Male,Male,Movie,41,0.010456040138151587,0.061679541896746196,1.1920928955078125e-07
+Guru Randhawa,Region indicator,Region,South/Central Asia,Region,Artist,14,0.013578521613161294,0.026714652791431828,4.877359583588259e-05
+war,Gender indicator,Gender,Male,Male,Movie,36,0.01598268747329712,0.05994644345995971,0.0
+science fiction,Gender indicator,Gender,Male,Male,Movie,48,0.01732144628961881,0.08486483081936051,1.1920928955078125e-07
+action,Gender indicator,Gender,Male,Male,Movie,39,0.01734879230841612,0.0677493843519163,0.0
+Ahmad Iqbal,Region indicator,Region,South/Central Asia,Region,Name,11,0.01814379475333474,0.03363419831490246,1.6927719116210938e-05
+Kevin Fournier,Region indicator,Region,France,Region,Name,9,0.02621732817755805,0.07302353852243818,3.337860107421875e-06
+cars,Gender indicator,Gender,Male,Male,Hobby,34,0.1958075998529025,0.305802901787736,0.04733070731163025
+Pavel Novotný,Region indicator,Region,Central/Eastern Europe,Region,Name,8,0.22009845264256,0.2815647369420772,0.09149891138076782
+weight lifting,Gender indicator,Gender,Male,Male,Hobby,31,0.2271749178969091,0.32906521629112007,0.014077961444854736
+structure,Neutral template control,Control,Control,Control,Fixed template word,400,0.26175717965965234,0.41247891989344176,0.00070426008640255
+gaming,Gender indicator,Gender,Male,Male,Hobby,21,0.27129424307800254,0.3872195039278144,0.0694771409034729
+competitive sports,Gender indicator,Gender,Male,Male,Hobby,37,0.30734955114186613,0.40973603883901083,0.04651224613189697
+investing,Gender indicator,Gender,Male,Male,Hobby,23,0.35617590805549815,0.420327276283955,0.08658623695373535
+football,Gender indicator,Gender,Male,Male,Hobby,30,0.36132748595943365,0.4347063950784905,0.06878098845481873
+physical activities,Gender indicator,Gender,Male,Male,Hobby,24,0.39932303438399686,0.4156459077663854,0.1393814980983734

@@ -3,7 +3,7 @@
 Same pipeline as run_behavioral_audit.py (full001 config) but uses
 wildchat_personas.jsonl as the persona source.
 
-All 50 WildChat personas have Gender but no Race, so they are treated as a
+All 50 WildChat personas have Gender but no Region, so they are treated as a
 single cohort. Stage-1 CSVs land in logs/behavioral-audit-wildchat001-q{1,2}-stage1/
 and stage-2 judge CSVs in logs/judges/behavioral-audit/.
 
@@ -223,8 +223,8 @@ async def main() -> None:
             all_personas.append(json.loads(line))
     print(f"Loaded {len(all_personas)} WildChat personas")
 
-    # WildChat personas have Gender but no Race — use all of them directly.
-    # true_race will be null in metadata, which is expected.
+    # WildChat personas have Gender but no Region — use all of them directly.
+    # true_region will be null in metadata, which is expected.
     sampled = all_personas
     print(f"Using all {len(sampled)} personas\n")
 
@@ -237,7 +237,7 @@ async def main() -> None:
             "metadata": {
                 "history_id":  p["history_id"],
                 "true_gender": p["persona"].get("Gender"),
-                "true_race":   p["persona"].get("Race"),
+                "true_region":   p["persona"].get("Region"),
                 "question":    q_tag,
             },
         }

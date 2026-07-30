@@ -10,7 +10,7 @@ runner executes **Stage 1 and Stage 2 in one process** — the OpenRouter judge
 alias (``gpt-4o-mini_paid``) is already in ``config/inference.modal.example.yaml``.
 
 Prerequisites
-    modal deploy experiments/modal_gpu_poc/modal_serve.py
+    modal deploy scripts/modal/modal_serve.py
     export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
     export MODAL_API_KEY="EMPTY"
     cp config/inference.modal.example.yaml config/inference.yaml

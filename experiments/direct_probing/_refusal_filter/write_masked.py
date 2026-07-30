@@ -5,7 +5,7 @@ verdicts_by_model.json: {model: {prompt_id: {verdict, refused_gender, refused_ba
 
 Instead of dropping refusal rows, every success row is kept but the REFUSED axis of
 `final_class` is replaced with the sentinel "REFUSED":
-    refused_gender      -> "REFUSED - <race>"
+    refused_gender      -> "REFUSED - <region>"
     refused_background  -> "<gender> - REFUSED"
     both                -> "REFUSED - REFUSED"
 This lets the eval keep a committed axis toward its accuracy while excluding the
@@ -46,12 +46,12 @@ MASKED_OUT.mkdir(parents=True, exist_ok=True)
 def mask_final_class(final_class, refuse_g, refuse_b):
     parts = final_class.split(" - ", 1)
     gender = parts[0] if len(parts) == 2 else final_class
-    race = parts[1] if len(parts) == 2 else ""
+    region = parts[1] if len(parts) == 2 else ""
     if refuse_g:
         gender = SENTINEL
     if refuse_b:
-        race = SENTINEL
-    return f"{gender} - {race}"
+        region = SENTINEL
+    return f"{gender} - {region}"
 
 
 summary = []

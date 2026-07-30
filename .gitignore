@@ -118,5 +118,8 @@ dmypy.json
 # Local, machine-specific scratch notes (never committed)
 *.local.md
 
+# Paper manuscript (kept local; not part of this repo)
+main.tex
+
 # Large activation dump — too big for GitHub (2.2G), keep local only
-internal_representation_personas/results_modal_gemma4_31b_ablation/results/hidden_states_personas.npz
+experiments/internal_representation/results_modal_gemma4_31b_ablation/results/hidden_states_personas.npz

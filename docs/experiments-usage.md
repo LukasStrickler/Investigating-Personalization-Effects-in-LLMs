@@ -342,7 +342,7 @@ Where results are written:
 - experiment schema sidecar: `logs/<experiment_name>/<timestamp>.csv.meta.json`
 - runtime structured logs: `logs/inference.jsonl`
 - batch checkpoint default: `checkpoints/batch.jsonl`
-- cost calibration: `experiments/estimate_cost.py` → `logs/cost-calibration/estimate.json`
+- cost calibration: `scripts/estimate_cost.py` → `logs/cost-calibration/estimate.json`
 
 Experiment cell statuses:
 

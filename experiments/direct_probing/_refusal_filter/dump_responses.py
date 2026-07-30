@@ -1,7 +1,7 @@
 """Extract (prompt_id, model response) pairs for the 5 kept direct-probing models.
 
 Writes one JSON per model into ./ (alongside this script). Each JSON is a list of
-{"prompt_id", "response", "final_class", "true_gender", "true_race"} — everything a
+{"prompt_id", "response", "final_class", "true_gender", "true_region"} — everything a
 classifier needs to judge whether the model refused to predict gender/background.
 
 Originals are only read, never modified.
@@ -73,7 +73,7 @@ for name, (s2, s1, alias) in MODELS.items():
             "response": rmap.get(r["prompt_id"], ""),
             "final_class": r["final_class"],
             "true_gender": meta.get("true_gender"),
-            "true_race": meta.get("true_race"),
+            "true_region": meta.get("true_region"),
         })
     outfile = OUT / f"{name}.responses.json"
     outfile.write_text(json.dumps(items, ensure_ascii=False, indent=1))

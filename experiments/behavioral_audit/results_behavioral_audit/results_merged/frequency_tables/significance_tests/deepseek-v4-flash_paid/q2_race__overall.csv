@@ -1,2 +1,0 @@
-question_key,model_alias,attribute,test_name,statistic,p_value,effect_size,reject_fdr,n_rows,n_cols,grand_total
-q2,deepseek-v4-flash_paid,Race,permutation_chi_square,141.02763271493308,0.12974051896207583,0.07290939306595465,False,8,19,3790

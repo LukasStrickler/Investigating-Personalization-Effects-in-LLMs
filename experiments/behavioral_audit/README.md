@@ -42,6 +42,23 @@ Runs are tagged by condition. `run_behavioral_audit*.py` produce stage-1 + stage
   FDR-significance, and LaTeX tables under `results_*/`.
 - `export_results.py` — export merged results.
 
+Rebuild from committed stage-2 CSVs (no model calls). Use the **nested**
+`results_behavioral_audit/` paths; script defaults still point at older top-level
+folders that are empty or partial in this repo:
+
+```bash
+uv run python experiments/behavioral_audit/significance_test/build_behavioral_audit_tables.py \
+  --output-root experiments/behavioral_audit/results_behavioral_audit/results_merged \
+  --source-dir experiments/behavioral_audit/results_behavioral_audit/results_full001 \
+  --source-dir experiments/behavioral_audit/results_behavioral_audit/results_full002 \
+  --source-dir experiments/behavioral_audit/results_behavioral_audit/results_full001-e2b \
+  --source-dir experiments/behavioral_audit/results_behavioral_audit/results_full001-ministral3-8b
+
+uv run python experiments/behavioral_audit/significance_test/build_latex_tables.py \
+  --input-dir experiments/behavioral_audit/results_behavioral_audit/results_merged/frequency_tables/significance_tests \
+  --output-dir experiments/behavioral_audit/results_behavioral_audit/results_merged/latex_tables
+```
+
 ## Directories
 
 - `baseline/` — no-persona baseline runners + its eval notebook.
@@ -50,6 +67,9 @@ Runs are tagged by condition. `run_behavioral_audit*.py` produce stage-1 + stage
 - `significance_test/` — the table-builder pipeline (merge → frequency → significance
   → LaTeX).
 - `results_behavioral_audit/` — per-run stage-1/stage-2 CSVs (`results_baseline*`,
-  `results_full001*`, …) plus `results_merged/` (frequency tables + significance tests).
-- `results_merged/`, `results_wildchat/` — merged and WildChat outputs.
+  `results_full001*`, ...) plus nested `results_merged/` (frequency tables,
+  significance tests, LaTeX). Prefer this nested tree; it is what
+  [`finalresults.ipynb`](../../finalresults.ipynb) reads.
+- `results_merged/`, `results_wildchat/` — partial top-level copies (LaTeX / WildChat
+  figures). Prefer `results_behavioral_audit/results_merged/` for full tables.
 - `model-comparison-results/` — cross-model comparison figures.

@@ -47,7 +47,7 @@ EXPERIMENT_MODELS = [
 ]
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
-SAMPLE_PER_GROUP = 10000   # personas per (gender × race) group
+SAMPLE_PER_GROUP = 10000   # personas per (gender × region) group
 MAX_PASSES = 10
 WORKERS = 50
 
@@ -214,7 +214,7 @@ async def main() -> None:
     print(f"Experiment: {EXPERIMENT_NAME}")
     print(f"Models    : {EXPERIMENT_MODELS}")
     print(f"Judge     : {JUDGE_MODEL}")
-    print(f"Sample    : {SAMPLE_PER_GROUP} per (gender × race) group")
+    print(f"Sample    : {SAMPLE_PER_GROUP} per (gender × region) group")
     print()
 
     # --- Load personas ---
@@ -228,35 +228,35 @@ async def main() -> None:
     unknown: list[dict] = []
     for p in all_personas:
         gender = p["persona"].get("Gender")
-        race = p["persona"].get("Race")
-        if gender and race:
-            grouped[(gender, race)].append(p)
+        region = p["persona"].get("Region")
+        if gender and region:
+            grouped[(gender, region)].append(p)
         else:
             unknown.append(p)
 
-    all_races = sorted({race for (_, race) in grouped})
+    all_regions = sorted({region for (_, region) in grouped})
 
     random.seed(42)
     sampled: list[dict] = []
-    for race in all_races:
+    for region in all_regions:
         for gender in ["Male", "Female"]:
-            pool = list(grouped[(gender, race)])
+            pool = list(grouped[(gender, region)])
             if len(pool) < SAMPLE_PER_GROUP:
-                print(f"  WARNING: only {len(pool)} available for ({gender}, {race}), using all")
+                print(f"  WARNING: only {len(pool)} available for ({gender}, {region}), using all")
                 sampled.extend(pool)
             else:
                 sampled.extend(random.sample(pool, SAMPLE_PER_GROUP))
 
-    # Personas missing Gender and/or Race were previously dropped by the `if gender and race`
+    # Personas missing Gender and/or Region were previously dropped by the `if gender and region`
     # filter, so they never showed up in results. Include them as an explicit cohort whose
-    # true_gender/true_race come through as null. Appended AFTER the main loop, so the existing
-    # (gender × race) sample order and RNG state are untouched: prompt_ids of already-answered
+    # true_gender/true_region come through as null. Appended AFTER the main loop, so the existing
+    # (gender × region) sample order and RNG state are untouched: prompt_ids of already-answered
     # personas stay identical and resume reuses them — only these new personas get generated.
     if len(unknown) < SAMPLE_PER_GROUP:
         sampled.extend(unknown)
     else:
         sampled.extend(random.sample(unknown, SAMPLE_PER_GROUP))
-    print(f"Sampled {len(sampled)} personas ({len(unknown)} with missing gender/race)\n")
+    print(f"Sampled {len(sampled)} personas ({len(unknown)} with missing gender/region)\n")
 
     # --- Build prompts ---
     def _make_spec(p, probe, q_tag):
@@ -265,7 +265,7 @@ async def main() -> None:
             "metadata": {
                 "history_id":  p["history_id"],
                 "true_gender": p["persona"].get("Gender"),
-                "true_race":   p["persona"].get("Race"),
+                "true_region":   p["persona"].get("Region"),
                 "question":    q_tag,
             },
         }

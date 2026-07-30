@@ -39,6 +39,7 @@ dependencies = [
     "scipy>=1.10.0",
     "statsmodels>=0.14.0",
     "ipykernel>=6.0.0",
+    "jupyterlab>=4.0.0",  # finalresults.ipynb and eval notebooks (`uv run jupyter lab`)
     # Real-conversation-history extraction (src/real_conversation_histories/): WildChat.
     "datasets>=2.14.0",
 ]
@@ -52,7 +53,7 @@ dev = [
     "mypy>=1.0.0",
     "types-pyyaml>=6.0.0",
 ]
-# Internal-representation experiments (internal_representation_personas/): probing
+# Internal-representation experiments (experiments/internal_representation/): probing
 # classifiers over model activations. Heavy ML stack — install only when needed.
 internal-rep = [
     "torch>=2.0.0",
@@ -63,14 +64,14 @@ internal-rep = [
 ]
 # Optional vLLM server install (cluster RUNTIME=venv only; client uses HTTP, not this package).
 vllm = [
-    "vllm==0.8.5",  # match slurm/vllm_constants.sh
+    "vllm==0.8.5",  # match scripts/slurm/vllm_constants.sh
 ]
-# Optional Modal SDK — the deploy/serve tooling (experiments/modal_gpu_poc) and the
-# internal-representation Modal runners (internal_representation_personas/modal_run.py).
+# Optional Modal SDK — deploy/serve tooling (scripts/modal) and
+# internal-representation Modal runners (experiments/internal_representation/modal_run.py).
 # The inference client reaches the deployed endpoint over HTTP, so it needs no new dep.
 modal = [
     "modal>=1.0",
-    "starlette>=0.37.0",  # modal_gpu_poc/modal_serve.py request handling
+    "starlette>=0.37.0",  # scripts/modal/modal_serve.py request handling
 ]
 
 [tool.repo_quality]

@@ -3,9 +3,9 @@
 
 Creates four tables:
 1) q1 x Gender x profession-class frequency
-2) q1 x Race x profession-class frequency
+2) q1 x Region x profession-class frequency
 3) q2 x Gender x profession-class frequency
-4) q2 x Race x profession-class frequency
+4) q2 x Region x profession-class frequency
 
 Each table is written as CSV with row/column totals.
 """
@@ -44,7 +44,7 @@ def _load_count_table(
 ) -> dict[str, dict[str, int]]:
     """Load one stage2 judgments CSV into a frequency table.
 
-    Rows are values of attribute_key (e.g., true_gender or true_race).
+    Rows are values of attribute_key (e.g., true_gender or true_region).
     Columns are the model output classes from final_class.
     """
     table: dict[str, dict[str, int]] = {}
@@ -129,9 +129,9 @@ def build_frequency_tables(q1_csv: Path, q2_csv: Path, output_dir: Path) -> list
     outputs: list[Path] = []
     specs = [
         ("q1", q1_csv, "true_gender", "q1_gender_frequency.csv"),
-        ("q1", q1_csv, "true_race", "q1_race_frequency.csv"),
+        ("q1", q1_csv, "true_region", "q1_region_frequency.csv"),
         ("q2", q2_csv, "true_gender", "q2_gender_frequency.csv"),
-        ("q2", q2_csv, "true_race", "q2_race_frequency.csv"),
+        ("q2", q2_csv, "true_region", "q2_region_frequency.csv"),
     ]
 
     # Overall (all models combined)
@@ -159,7 +159,7 @@ def build_frequency_tables(q1_csv: Path, q2_csv: Path, output_dir: Path) -> list
 def parse_args() -> argparse.Namespace:
     default_root = Path("experiments/behavioral_audit/results_merged")
     parser = argparse.ArgumentParser(
-        description="Create q1/q2 gender/race frequency tables mapped to final_class values from merged stage2 judgments."
+        description="Create q1/q2 gender/region frequency tables mapped to final_class values from merged stage2 judgments."
     )
     parser.add_argument(
         "--q1-csv",

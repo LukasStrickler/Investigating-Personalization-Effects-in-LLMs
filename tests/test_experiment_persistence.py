@@ -177,7 +177,7 @@ def test_to_analysis_dataframe(tmp_path: Path) -> None:
 def test_prompt_metadata_round_trips_to_analysis_dataframe(tmp_path: Path) -> None:
     csv_path = tmp_path / "metadata_test.csv"
     writer = MatrixCSVWriter(csv_path=csv_path, model_aliases=["m1"])
-    metadata = {"history_id": "h1", "true_gender": "Female", "true_race": "Asian"}
+    metadata = {"history_id": "h1", "true_gender": "Female", "true_region": "Asian"}
     spec = {"messages": [{"role": "user", "content": "What is 2+2?"}], "metadata": metadata}
     writer.initialize(prompts=[spec])
     pid = compute_prompt_id(canonical_prompt_spec(spec))
