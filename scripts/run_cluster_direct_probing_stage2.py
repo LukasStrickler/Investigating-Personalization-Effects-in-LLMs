@@ -46,10 +46,7 @@ def _validate_stage2_config(config_path: Path, judge_aliases: list[str]) -> str 
         if provider is None:
             return f"provider {alias_cfg.provider!r} missing from config"
         if provider.name == "vllm":
-            return (
-                f"judge alias {alias!r} uses vllm; Stage 2 needs an online provider "
-                "(OpenRouter)"
-            )
+            return f"judge alias {alias!r} uses vllm; Stage 2 needs an online provider (OpenRouter)"
         try:
             resolve_api_key(provider)
         except ValueError as error:

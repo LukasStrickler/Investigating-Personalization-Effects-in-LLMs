@@ -1,7 +1,7 @@
 # vLLM config — cp to config/inference.yaml for local GPU or cluster Stage 1.
 # Docs: docs/running-vllm-on-clusters.md
 #
-#   vllm serve google/gemma-3-27b-it --served-model-name gemma-4-31b --port 8000
+#   vllm serve google/gemma-4-31b-it --served-model-name gemma-4-31b --port 8000
 #
 # SERVED / --served-model-name must match each alias's model: field below.
 # HF weights (first arg to vllm serve / MODEL=) can differ from the alias name.

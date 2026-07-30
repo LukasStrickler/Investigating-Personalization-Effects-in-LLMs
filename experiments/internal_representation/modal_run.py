@@ -64,11 +64,13 @@ HF_TOKEN_SECRET = os.getenv("MODAL_IR_HF_TOKEN_SECRET", "huggingface-token")
 # Repo-relative paths (this file lives in experiments/internal_representation/).
 _HERE = Path(__file__).resolve().parent
 _REPO_ROOT = _HERE.parent.parent
-_PERSONAS_LOCAL = _REPO_ROOT / "src" / "generate_backgrounds" / "data" / "personas" / "personas.jsonl"
+_PERSONAS_LOCAL = (
+    _REPO_ROOT / "src" / "generate_backgrounds" / "data" / "personas" / "personas.jsonl"
+)
 _MAPPING_DIR_LOCAL = _REPO_ROOT / "src" / "generate_backgrounds" / "dimension_value_mapping"
 
 # Container paths.
-_PIPELINE_DIR = "/app/pipeline"          # the bundled internal_representation modules
+_PIPELINE_DIR = "/app/pipeline"  # the bundled internal_representation modules
 _PERSONAS_REMOTE = "/app/personas.jsonl"  # bundled dataset (no repo checkout needed in-container)
 # Indicator mapping CSVs bundled for the ablation stage (gender + region).
 _GENDER_CSV_REMOTE = "/app/mappings/gender.csv"
@@ -104,10 +106,23 @@ image = (
     .add_local_dir(
         str(_HERE),
         _PIPELINE_DIR,
-        ignore=["models", ".venv", "results", "results/*", "plots", "plots/*",
-                "results_modal*", "run_results*", "final_run_200*",
-                "neutral_backgrounds*", "neutral_personas*",
-                "__pycache__", "**/__pycache__", "*.pyc", "*.npz"],
+        ignore=[
+            "models",
+            ".venv",
+            "results",
+            "results/*",
+            "plots",
+            "plots/*",
+            "results_modal*",
+            "run_results*",
+            "final_run_200*",
+            "neutral_backgrounds*",
+            "neutral_personas*",
+            "__pycache__",
+            "**/__pycache__",
+            "*.pyc",
+            "*.npz",
+        ],
     )
     .add_local_file(str(_PERSONAS_LOCAL), _PERSONAS_REMOTE)
     # Indicator mappings for the ablation stage (Gender + Region).
@@ -220,7 +235,7 @@ def run_probe(
         config.data.context_mode = context_mode
 
         config.model.model_name = model_id
-        config.model.device_map = "cuda"          # single-GPU container
+        config.model.device_map = "cuda"  # single-GPU container
         config.model.torch_dtype = dtype
         config.model.max_seq_length = max_seq_length
         # HF_TOKEN comes from the huggingface-token secret; needed for gated repos.
@@ -235,7 +250,9 @@ def run_probe(
     if ablation or ablation_only:
         from aggregate_word_analysis import DEFAULT_CONTROL_WORDS, run_ablation
 
-        print(f"[modal-run] Running indicator ablation (subset_per_class={ablation_subset or 'all'}) ...")
+        print(
+            f"[modal-run] Running indicator ablation (subset_per_class={ablation_subset or 'all'}) ..."
+        )
         run_ablation(
             dataset_path=str(data_dir / "dataset_personas.json"),
             run_dir=str(results_dir),
@@ -267,7 +284,8 @@ def run_probe(
 
     # Download set = volume set minus the big .npz (unless kept).
     download_blobs = {
-        rel: data for rel, data in volume_blobs.items()
+        rel: data
+        for rel, data in volume_blobs.items()
         if keep_hidden or Path(rel).name != "hidden_states_personas.npz"
     }
 
@@ -282,8 +300,10 @@ def run_probe(
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(data)
     output_vol.commit()  # flush to the volume so `modal volume get` sees it
-    print(f"[modal-run] Persisted {len(volume_blobs)} file(s) to volume "
-          f"'{OUTPUT_VOLUME}' under '{run_name}/'")
+    print(
+        f"[modal-run] Persisted {len(volume_blobs)} file(s) to volume "
+        f"'{OUTPUT_VOLUME}' under '{run_name}/'"
+    )
 
     print(f"[modal-run] Returning {len(download_blobs)} artifact file(s): {sorted(download_blobs)}")
     return download_blobs
@@ -331,7 +351,9 @@ def run_sweep(
             f"'{from_run}' must persist data/ (produced after the ablation feature was added)."
         )
     if not full_hidden.exists():
-        print(f"[modal-run] WARN: no cached FULL hidden states at {full_hidden}; FULL will be re-extracted.")
+        print(
+            f"[modal-run] WARN: no cached FULL hidden states at {full_hidden}; FULL will be re-extracted."
+        )
         full_hidden = None
 
     # Regenerated-neutral dataset bundled into the image (built via prepare_dataset
@@ -374,7 +396,9 @@ def run_sweep(
             blobs[f"sweep/{path.relative_to(out_dir).as_posix()}"] = path.read_bytes()
 
     output_vol.commit()
-    print(f"[modal-run] Persisted {len(blobs)} sweep file(s) to '{OUTPUT_VOLUME}' under '{run_name}/sweep/'")
+    print(
+        f"[modal-run] Persisted {len(blobs)} sweep file(s) to '{OUTPUT_VOLUME}' under '{run_name}/sweep/'"
+    )
     return blobs
 
 
@@ -483,9 +507,15 @@ def main(
 
     print(f"[modal-run] model={model} gpu={GPU} attributes={attr_list}")
     if ablation_only:
-        print(f"[modal-run] MODE: ablation-only (reusing '{from_run}/' from volume '{OUTPUT_VOLUME}'; probing skipped)")
+        print(
+            f"[modal-run] MODE: ablation-only (reusing '{from_run}/' from volume '{OUTPUT_VOLUME}'; probing skipped)"
+        )
     else:
-        scope = "ALL labelled histories" if samples_arg is None else f"SUBSAMPLE — {samples_arg} per (gender, region) group"
+        scope = (
+            "ALL labelled histories"
+            if samples_arg is None
+            else f"SUBSAMPLE — {samples_arg} per (gender, region) group"
+        )
         print(f"[modal-run] sample scope: {scope}")
     if ablation or ablation_only:
         # ~25 gender + ~56 region indicators + 10 controls ≈ 91 phrases; ablation

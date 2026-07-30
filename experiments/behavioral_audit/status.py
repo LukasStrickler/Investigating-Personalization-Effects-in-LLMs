@@ -26,15 +26,19 @@ def _repo_root() -> Path:
 
 # Directory holding exported stage-1 results for runs where stage 1 was produced
 # elsewhere (e.g. Modal) and only stage 2 is run locally. Layout mirrors logs/:
-#   experiments/behavioral_audit/results_<run_id>/behavioral-audit-<run_id>-q{n}-stage1/
+#   experiments/behavioral_audit/results_behavioral_audit/results_<run_id>/behavioral-audit-<run_id>-q{n}-stage1/
 _AUDIT_DIR = Path(__file__).resolve().parent
+_RESULTS_ROOT = _AUDIT_DIR / "results_behavioral_audit"
 
 
 def _stage1_dir(root: Path, run_id: str, q: str) -> Path | None:
     """Locate a run's stage1 dir, preferring logs/ then the exported results_<run_id>/."""
+    stage1_name = f"behavioral-audit-{run_id}-{q}-stage1"
     candidates = [
-        root / "logs" / f"behavioral-audit-{run_id}-{q}-stage1",
-        _AUDIT_DIR / f"results_{run_id}" / f"behavioral-audit-{run_id}-{q}-stage1",
+        root / "logs" / stage1_name,
+        _RESULTS_ROOT / f"results_{run_id}" / stage1_name,
+        # legacy flat layout (pre results_behavioral_audit/ nesting)
+        _AUDIT_DIR / f"results_{run_id}" / stage1_name,
     ]
     for d in candidates:
         if d.exists() and any(d.glob("*.csv")):
@@ -48,6 +52,7 @@ def _find_run_ids(root: Path) -> list[str]:
     # stage1 dirs live under logs/ (local runs) or results_<run_id>/ (exported stage 1).
     search_globs = [
         (root / "logs").glob("behavioral-audit-*-stage1"),
+        _RESULTS_ROOT.glob("results_*/behavioral-audit-*-stage1"),
         _AUDIT_DIR.glob("results_*/behavioral-audit-*-stage1"),
     ]
     for it in search_globs:
@@ -193,7 +198,9 @@ def _report(root: Path, run_id: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Show behavioral-audit experiment progress.")
-    parser.add_argument("run_id", nargs="?", help="Run ID to inspect (e.g. full002). Defaults to latest.")
+    parser.add_argument(
+        "run_id", nargs="?", help="Run ID to inspect (e.g. full002). Defaults to latest."
+    )
     parser.add_argument("--watch", action="store_true", help="Refresh every 10 seconds.")
     args = parser.parse_args()
 

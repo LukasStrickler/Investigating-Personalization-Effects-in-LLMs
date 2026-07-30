@@ -8,8 +8,8 @@ and wraps completion calls to suppress its "Provider List" print() in notebooks.
 from __future__ import annotations
 
 import contextlib
-import io
 import importlib
+import io
 import logging
 import sys
 from dataclasses import dataclass
@@ -141,13 +141,16 @@ class LiteLLMProviderAdapter:
             kwargs["tools"] = request.tools
         if request.tool_choice is not None:
             kwargs["tool_choice"] = request.tool_choice
-        if request.thinking_budget_tokens is not None and request.thinking_budget_tokens > 0:
-            if request.provider == "anthropic":
-                # Anthropic-native thinking shape.
-                kwargs["thinking"] = {
-                    "type": "enabled",
-                    "budget_tokens": int(request.thinking_budget_tokens),
-                }
+        if (
+            request.thinking_budget_tokens is not None
+            and request.thinking_budget_tokens > 0
+            and request.provider == "anthropic"
+        ):
+            # Anthropic-native thinking shape.
+            kwargs["thinking"] = {
+                "type": "enabled",
+                "budget_tokens": int(request.thinking_budget_tokens),
+            }
         with _suppress_litellm_provider_list_print():
             response = await completion_fn(**kwargs)
         return _to_provider_response(response, metadata=fold_metadata)

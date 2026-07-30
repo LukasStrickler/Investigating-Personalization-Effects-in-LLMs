@@ -13,14 +13,19 @@ import importlib
 import sys
 from pathlib import Path
 
-_AUDIT_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in significance_test/)
-_DEFAULT_OUTPUT_ROOT = _AUDIT_DIR / "results_merged"
+_AUDIT_DIR = (
+    Path(__file__).resolve().parent.parent
+)  # experiments/behavioral_audit (this file lives in significance_test/)
+_RESULTS_ROOT = _AUDIT_DIR / "results_behavioral_audit"
+_DEFAULT_OUTPUT_ROOT = _RESULTS_ROOT / "results_merged"
 
 if str(_AUDIT_DIR) not in sys.path:
     sys.path.insert(0, str(_AUDIT_DIR))
 
 build_frequency_tables = importlib.import_module("build_frequency_tables").build_frequency_tables
-analyze_frequency_tables = importlib.import_module("build_significance_tables").analyze_frequency_tables
+analyze_frequency_tables = importlib.import_module(
+    "build_significance_tables"
+).analyze_frequency_tables
 merge_stage2_judgments = importlib.import_module("merge_stage2_judgments").merge_stage2_judgments
 
 
@@ -66,7 +71,9 @@ def main() -> None:
 
     frequency_dir = args.output_root / "frequency_tables"
     print("[2/3] Building frequency tables...", flush=True)
-    frequency_outputs = build_frequency_tables(q1_csv=q1_csv, q2_csv=q2_csv, output_dir=frequency_dir)
+    frequency_outputs = build_frequency_tables(
+        q1_csv=q1_csv, q2_csv=q2_csv, output_dir=frequency_dir
+    )
 
     print("[3/3] Building significance tables...", flush=True)
     significance_outputs = analyze_frequency_tables(

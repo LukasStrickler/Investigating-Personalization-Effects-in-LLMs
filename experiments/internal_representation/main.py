@@ -22,7 +22,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Linear probing pipeline for persona attributes")
     parser.add_argument("--personas-file", help="Path to personas.jsonl")
     parser.add_argument("--attributes", nargs="+", help="Persona fields to probe (default: Gender)")
-    parser.add_argument("--include-partial", action="store_true", help="Include rows with missing persona fields")
+    parser.add_argument(
+        "--include-partial", action="store_true", help="Include rows with missing persona fields"
+    )
     parser.add_argument("--samples", type=int, help="Maximum histories per joint persona group")
     parser.add_argument("--model", help="Hugging Face model name/path")
     parser.add_argument("--skip-extraction", action="store_true", help="Reuse cached hidden states")
@@ -34,7 +36,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--plots-dir")
     parser.add_argument("--data-dir", help="Directory for the normalized dataset JSON")
     parser.add_argument(
-        "--context-mode", default="full", choices=["full", "gender-turn-only"],
+        "--context-mode",
+        default="full",
+        choices=["full", "gender-turn-only"],
         help="Use full histories or isolate the generated Gender user turn",
     )
     return parser.parse_args()
@@ -73,7 +77,14 @@ def _export_test_predictions(path, artifact, states, labels, source_indices, dat
     predictions = artifact.label_encoder.inverse_transform(probabilities.argmax(axis=1))
     classes = list(artifact.label_encoder.classes_)
     with open(path, "w", newline="", encoding="utf-8") as handle:
-        fields = ["dataset_index", "history_id", "question", "true_label", "predicted_label", "confidence"]
+        fields = [
+            "dataset_index",
+            "history_id",
+            "question",
+            "true_label",
+            "predicted_label",
+            "confidence",
+        ]
         fields += [f"probability_{label}" for label in classes]
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
@@ -87,7 +98,12 @@ def _export_test_predictions(path, artifact, states, labels, source_indices, dat
                 "predicted_label": predictions[row],
                 "confidence": float(probabilities[row].max()),
             }
-            item.update({f"probability_{label}": float(probabilities[row, i]) for i, label in enumerate(classes)})
+            item.update(
+                {
+                    f"probability_{label}": float(probabilities[row, i])
+                    for i, label in enumerate(classes)
+                }
+            )
             writer.writerow(item)
 
 
@@ -100,7 +116,12 @@ def run_pipeline(config: PipelineConfig, skip_extraction: bool = False) -> dict:
     """
     # Import heavyweight ML dependencies lazily so that `python main.py --help`
     # works before requirements are installed.
-    from extraction import extract_hidden_states, load_hidden_states, load_model_and_tokenizer, save_hidden_states
+    from extraction import (
+        extract_hidden_states,
+        load_hidden_states,
+        load_model_and_tokenizer,
+        save_hidden_states,
+    )
     from probing import train_probes
     from visualization import plot_layer_accuracy, plot_selectivity_gap
 
@@ -139,7 +160,9 @@ def run_pipeline(config: PipelineConfig, skip_extraction: bool = False) -> dict:
     else:
         print("\n▸ STEP 2: Extracting hidden states ...")
         model, tokenizer = load_model_and_tokenizer(config.model)
-        hidden_states = extract_hidden_states(model, tokenizer, conversations, config.model, config.probe)
+        hidden_states = extract_hidden_states(
+            model, tokenizer, conversations, config.model, config.probe
+        )
         save_hidden_states(hidden_states, hidden_path)
 
     print("\n▸ STEP 3: Training persona probes + shuffled-label controls ...")

@@ -33,9 +33,7 @@ class CooldownDefaults:
 
 # OpenRouter embeds its JSON error body (incl. rate limit headers) in the
 # exception message raised by LiteLLM, so all parsing is regex-on-string.
-_RESET_HEADER_RE = re.compile(
-    r"X-RateLimit-Reset[\"']?\s*[:=]\s*[\"']?(\d{10,16})", re.IGNORECASE
-)
+_RESET_HEADER_RE = re.compile(r"X-RateLimit-Reset[\"']?\s*[:=]\s*[\"']?(\d{10,16})", re.IGNORECASE)
 _PER_DAY_RE = re.compile(r"free-models-per-day|per[-\s]day|daily", re.IGNORECASE)
 _PER_HOUR_RE = re.compile(r"per[-\s]hour|hourly", re.IGNORECASE)
 _PER_MINUTE_RE = re.compile(r"per[-\s]min(?:ute)?", re.IGNORECASE)
@@ -43,9 +41,7 @@ _PER_MINUTE_RE = re.compile(r"per[-\s]min(?:ute)?", re.IGNORECASE)
 
 def _seconds_to_utc_midnight(now_wall: float) -> float:
     now = datetime.fromtimestamp(now_wall, tz=timezone.utc)
-    next_midnight = (now + timedelta(days=1)).replace(
-        hour=0, minute=0, second=0, microsecond=0
-    )
+    next_midnight = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
     return max(1.0, (next_midnight - now).total_seconds())
 
 

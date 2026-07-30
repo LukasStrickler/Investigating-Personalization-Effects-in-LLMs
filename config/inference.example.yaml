@@ -83,6 +83,37 @@ model_aliases:
     provider: openrouter
     model: stepfun/step-3.5-flash:free
 
+  # ---------------------------------------------------------------------------
+  # Paper-run aliases (paid OpenRouter) — the aliases the committed run_*.py
+  # experiment scripts require (EXPERIMENT_MODELS / JUDGE_MODEL). Paid tier:
+  # verify each model id against your OpenRouter account before large runs.
+  # ---------------------------------------------------------------------------
+  gemma-4-31b_paid:
+    alias: gemma-4-31b_paid
+    provider: openrouter
+    model: google/gemma-4-31b-it
+
+  deepseek-v4-flash_paid:
+    alias: deepseek-v4-flash_paid
+    provider: openrouter
+    model: deepseek/deepseek-v4-flash
+
+  grok-4.3_paid:
+    alias: grok-4.3_paid
+    provider: openrouter
+    model: x-ai/grok-4.3
+
+  glm-5.2_paid:
+    alias: glm-5.2_paid
+    provider: openrouter
+    model: z-ai/glm-5.2
+
+  # Judge — Stage 2 of direct probing and the behavioral audit
+  gpt-4o-mini_paid:
+    alias: gpt-4o-mini_paid
+    provider: openrouter
+    model: openai/gpt-4o-mini
+
   # Mock (no API key required)
   mock-test:
     alias: mock-test

@@ -2,11 +2,14 @@
 
 YAML configs for the inference layer. Research code uses model aliases from these files.
 
-- `inference.example.yaml` — OpenRouter + mock (notebooks, free-tier demos). Does **not**
-  define the paper subject aliases (`gemma-4-31b_paid`, `deepseek-v4-flash_paid`, …).
+- `inference.example.yaml` — OpenRouter + mock (notebooks, free-tier demos), plus the
+  paid paper aliases (`gemma-4-31b_paid`, `deepseek-v4-flash_paid`, …) and the
+  `gpt-4o-mini_paid` judge.
 - `inference.vllm.example.yaml` — vLLM provider (Stage 1 on cluster or local GPU). See [docs/running-vllm-on-clusters.md](../docs/running-vllm-on-clusters.md).
 - `inference.modal.example.yaml` — Modal subjects + `gpt-4o-mini_paid` judge. See [scripts/modal/README.md](../scripts/modal/README.md).
 - `judge_smoke.yaml` — small config for `examples/llm_judge_example.ipynb`
+- `cost_estimate.yaml` — inputs for `scripts/estimate_cost.py` only (pre-study cost
+  planning); not read by the inference layer.
 
 ```bash
 cp config/inference.example.yaml config/inference.yaml

@@ -79,7 +79,8 @@ def _find_stage1_csv(root: Path, run_tag: str | None) -> Path | None:
     candidates = [
         p
         for p in root.glob("logs/**/*.csv")
-        if "stage1" in str(p) and "direct-probing" in str(p)
+        if "stage1" in str(p)
+        and "direct-probing" in str(p)
         and (run_tag is None or run_tag in str(p))
     ]
     if not candidates:
@@ -99,7 +100,8 @@ def _find_stage2_csvs(root: Path, run_tag: str | None) -> list[Path]:
     candidates = [
         p
         for p in root.glob("logs/**/*.csv")
-        if "stage2" in str(p) and "direct-probing" in str(p)
+        if "stage2" in str(p)
+        and "direct-probing" in str(p)
         and (run_tag is None or run_tag in str(p))
         and "orphan" not in p.name
     ]
@@ -122,9 +124,11 @@ def _derive_tag(s1: Path) -> str | None:
     to the same run (path looks like logs/direct-probing-<tag>-stage1/<ts>.csv)."""
     for part in s1.parts:
         if "direct-probing" in part and "stage1" in part:
-            return part.removeprefix("direct-probing-combined-").removeprefix(
-                "direct-probing-"
-            ).removesuffix("-stage1")
+            return (
+                part.removeprefix("direct-probing-combined-")
+                .removeprefix("direct-probing-")
+                .removesuffix("-stage1")
+            )
     return None
 
 

@@ -1,5 +1,5 @@
 """
-WildChat Dataset Explicit Gender Evidence Analysis 
+WildChat Dataset Explicit Gender Evidence Analysis
 =======================================================
 
 Dataset reference:
@@ -13,6 +13,8 @@ Requirements:
 
 import re
 from pathlib import Path
+from typing import Any
+
 import pandas as pd
 from datasets import load_dataset
 
@@ -51,20 +53,21 @@ AGE_PATTERN = r"(?:1[8-9]|[2-9][0-9])"
 # with non-Latin scripts or less than 85% ASCII characters.
 
 _NON_LATIN_RE = re.compile(
-    r'['
-    r'\u0600-\u06FF'   # Arabic
-    r'\u0400-\u04FF'   # Cyrillic
-    r'\u4E00-\u9FFF'   # CJK Unified Ideographs
-    r'\uF900-\uFAFF'   # CJK Compatibility Ideographs
-    r'\u3040-\u30FF'   # Hiragana / Katakana
-    r'\uAC00-\uD7AF'   # Korean Hangul Syllables
-    r'\u1100-\u11FF'   # Korean Jamo
-    r'\u3130-\u318F'   # Korean Compatibility Jamo
-    r'\u0900-\u097F'   # Devanagari (Hindi)
-    r'\u0E00-\u0E7F'   # Thai
-    r'\u0600-\u06FF'   # Arabic (duplicate guard)
-    r']'
+    r"["
+    r"\u0600-\u06FF"  # Arabic
+    r"\u0400-\u04FF"  # Cyrillic
+    r"\u4E00-\u9FFF"  # CJK Unified Ideographs
+    r"\uF900-\uFAFF"  # CJK Compatibility Ideographs
+    r"\u3040-\u30FF"  # Hiragana / Katakana
+    r"\uAC00-\uD7AF"  # Korean Hangul Syllables
+    r"\u1100-\u11FF"  # Korean Jamo
+    r"\u3130-\u318F"  # Korean Compatibility Jamo
+    r"\u0900-\u097F"  # Devanagari (Hindi)
+    r"\u0E00-\u0E7F"  # Thai
+    r"\u0600-\u06FF"  # Arabic (duplicate guard)
+    r"]"
 )
+
 
 def is_likely_english(text: str, min_ascii_ratio: float = 0.85) -> bool:
     """Returns False if the text is clearly not English. Short texts always pass."""
@@ -85,21 +88,16 @@ MALE_SELF_PATTERNS = [
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?(?:man|male|guy|boy)\b",
     r"\bi\s+identify\s+as\s+(?:a\s+)?(?:man|male)\b",
     r"\bi,\s*(?:a\s+)?(?:man|male|guy|boy)\b",
-
     # "As a man, I..." with nearby first-person word
     r"(?:^|[.!?]\s*)as\s+(?:a\s+)?(?:man|male|guy|boy)\b(?=[^.!?]{0,200}\b(?:i|me|my|mine|myself)\b)",
-
     # First-person perspective/body/identity
     r"\bfrom\s+my\s+(?:male|man's|man|masculine)\s+perspective\b",
     r"\bmy\s+(?:male|masculine)\s+(?:body|identity|experience|perspective|health)\b",
-
     # Age + gender written out, e.g. "I'm a 25-year-old man"
     r"\b(?:i\s+am|i'm|im)\s+(?:an?\s+)?\d{1,2}[-\s]?(?:years?[-\s]?old)?\s+(?:man|male|guy|boy)\b",
-
     # "I am a [descriptor] man/male/guy" — blocklist excludes third-party or
     # fictional subjects (e.g. "I am looking for a guy", "I'm creating a male character")
     r"\b(?:i\s+am|i'm|im)\s+(?:an?\s+)?(?:(?!(?:not|never|told|said|think|want|need|writing|asking|looking|seeking|searching|creating|drawing|painting|sketching|making|designing|developing|building|playing|roleplaying|portraying|voicing|controlling|generating|rendering|animating|modeling|modelling|describing|imagining|picturing|for|about|with|into)\b)\w+\s+){1,3}(?:man|male|guy)\b",
-
     # Pronouns
     r"\bmy\s+pronouns\s+are\s+(?:he/him|he\s*/\s*him)\b",
     r"\bi\s+use\s+(?:he/him|he\s*/\s*him)\s+pronouns\b",
@@ -111,21 +109,16 @@ FEMALE_SELF_PATTERNS = [
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?(?:woman|female|girl|lady)\b",
     r"\bi\s+identify\s+as\s+(?:a\s+)?(?:woman|female)\b",
     r"\bi,\s*(?:a\s+)?(?:woman|female|girl|lady)\b",
-
     # "As a woman, I..." with nearby first-person word
     r"(?:^|[.!?]\s*)as\s+(?:a\s+)?(?:woman|female|girl|lady)\b(?=[^.!?]{0,200}\b(?:i|me|my|mine|myself)\b)",
-
     # First-person perspective/body/identity
     r"\bfrom\s+my\s+(?:female|woman's|woman|feminine)\s+perspective\b",
     r"\bmy\s+(?:female|feminine)\s+(?:body|identity|experience|perspective|health)\b",
-
     # Age + gender written out, e.g. "I'm a 30-year-old woman"
     r"\b(?:i\s+am|i'm|im)\s+(?:an?\s+)?\d{1,2}[-\s]?(?:years?[-\s]?old)?\s+(?:woman|female|girl|lady)\b",
-
     # "I am a [descriptor] woman/girl/female" — blocklist excludes third-party or
     # fictional subjects (e.g. "I am looking for a girl", "I'm drawing a woman")
     r"\b(?:i\s+am|i'm|im)\s+(?:an?\s+)?(?:(?!(?:not|never|told|said|think|want|need|writing|asking|looking|seeking|searching|creating|drawing|painting|sketching|making|designing|developing|building|playing|roleplaying|portraying|voicing|controlling|generating|rendering|animating|modeling|modelling|describing|imagining|picturing|for|about|with|into)\b)\w+\s+){1,3}(?:woman|female|girl|lady)\b",
-
     # Pronouns
     r"\bmy\s+pronouns\s+are\s+(?:she/her|she\s*/\s*her)\b",
     r"\bi\s+use\s+(?:she/her|she\s*/\s*her)\s+pronouns\b",
@@ -139,20 +132,17 @@ FEMALE_SELF_PATTERNS = [
 MALE_SHORTHAND_PATTERNS = [
     # "I am 25M" — age and letter glued, so "25 minutes" / "30 million" don't match
     rf"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?\(?{AGE_PATTERN}m\)?(?![a-z])",
-
     # "I (25M) need advice"
     rf"\bi\s*\(\s*{AGE_PATTERN}\s*m\s*\)",
-
     # "25M here" / "M25 looking"
     rf"(?<![a-z0-9])(?:{AGE_PATTERN}m|m{AGE_PATTERN})\s+(?:here|looking|seeking|needing|wanting)\b",
-
     # Spelled-out "28 male" near a first-person word (bare "m" excluded — unit collision)
     r"(?:"
-      r"(?:i\b|i'm|im\b|i\s+am|i\s+need|me\b).{0,60}?"
-      r"\b(?:" + AGE_PATTERN + r"[\s,]?\s*male\b|male[\s,]+" + AGE_PATTERN + r"\b)"
+    r"(?:i\b|i'm|im\b|i\s+am|i\s+need|me\b).{0,60}?"
+    r"\b(?:" + AGE_PATTERN + r"[\s,]?\s*male\b|male[\s,]+" + AGE_PATTERN + r"\b)"
     r"|"
-      r"(?:" + AGE_PATTERN + r"[\s,]?\s*male\b|male[\s,]+" + AGE_PATTERN + r"\b)"
-      r".{0,60}?(?:\b(?:here|i\b|i'm|im\b|me\b|my\b))"
+    r"(?:" + AGE_PATTERN + r"[\s,]?\s*male\b|male[\s,]+" + AGE_PATTERN + r"\b)"
+    r".{0,60}?(?:\b(?:here|i\b|i'm|im\b|me\b|my\b))"
     r")",
 ]
 
@@ -160,23 +150,19 @@ MALE_SHORTHAND_PATTERNS = [
 FEMALE_SHORTHAND_PATTERNS = [
     # "I am 25F" — age and letter glued, so "bake at 80f" / "32 f" don't match
     rf"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?\(?{AGE_PATTERN}f\)?(?![a-z])",
-
     # "I (25F) need advice"
     rf"\bi\s*\(\s*{AGE_PATTERN}\s*f\s*\)",
-
     # "25F here" / "F25 looking"
     rf"(?<![a-z0-9])(?:{AGE_PATTERN}f|f{AGE_PATTERN})\s+(?:here|looking|seeking|needing|wanting)\b",
-
     # "28/F" slash notation ("F/28" excluded — collides with aperture values like f/22)
     rf"\b{AGE_PATTERN}\s*/\s*f\b",
-
     # Spelled-out "28 female" near a first-person word (bare "f" excluded — Fahrenheit collision)
     r"(?:"
-      r"(?:i\b|i'm|im\b|i\s+am|i\s+need|me\b).{0,60}?"
-      r"\b(?:" + AGE_PATTERN + r"[\s,]?\s*female\b|female[\s,]+" + AGE_PATTERN + r"\b)"
+    r"(?:i\b|i'm|im\b|i\s+am|i\s+need|me\b).{0,60}?"
+    r"\b(?:" + AGE_PATTERN + r"[\s,]?\s*female\b|female[\s,]+" + AGE_PATTERN + r"\b)"
     r"|"
-      r"(?:" + AGE_PATTERN + r"[\s,]?\s*female\b|female[\s,]+" + AGE_PATTERN + r"\b)"
-      r".{0,60}?(?:\b(?:here|i\b|i'm|im\b|me\b|my\b))"
+    r"(?:" + AGE_PATTERN + r"[\s,]?\s*female\b|female[\s,]+" + AGE_PATTERN + r"\b)"
+    r".{0,60}?(?:\b(?:here|i\b|i'm|im\b|me\b|my\b))"
     r")",
 ]
 
@@ -188,7 +174,6 @@ FEMALE_SHORTHAND_PATTERNS = [
 GENDER_TRANSITION_CONTEXT_PATTERNS = [
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?boy\b.{0,120}\b(?:want|wanna|wish|would\s+like)\s+(?:to\s+)?(?:be|become|look|present)\s+(?:like\s+)?(?:a\s+)?girl\b",
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?girl\b.{0,120}\b(?:want|wanna|wish|would\s+like)\s+(?:to\s+)?(?:be|become|look|present)\s+(?:like\s+)?(?:a\s+)?boy\b",
-
     r"\b(?:i\s+am|i'm|im)\s+transgender\b",
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?trans\s+(?:man|woman|girl|boy|male|female)\b",
     r"\b(?:i\s+identify\s+as)\s+(?:a\s+)?trans\s+(?:man|woman|girl|boy|male|female)\b",
@@ -207,12 +192,10 @@ GENDER_TRANSITION_CONTEXT_PATTERNS = [
 MALE_ROLE_PATTERNS = [
     # First-person gendered family/relationship roles (strict adjacency)
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?(?:father|dad|daddy|husband|boyfriend|son|uncle|brother|grandfather|grandpa|stepfather|stepdad)\b",
-
     # Descriptor/age-tolerant roles, e.g. "I'm a 30yo dad" — blocklist prevents
     # matches like "I'm writing a dad joke"
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?(?:(?!(?:not|never|of|told|said|think|want|need|writing|asking|looking|seeking|searching|creating|drawing|painting|sketching|making|designing|developing|building|playing|roleplaying|portraying|voicing|controlling|generating|rendering|animating|modeling|modelling|describing|imagining|picturing|for|about|with|into)\b)\w+\s+){0,3}"
     r"(?:father|dad|daddy|husband|grandfather|grandpa|stepfather|stepdad)\b",
-
     # "as a father/dad, I..."
     r"as\s+(?:a\s+)?(?:father|dad|daddy|husband|boyfriend|son|uncle|brother|grandfather|grandpa)\b(?=[^.!?]{0,200}\b(?:i|me|my)\b)",
 ]
@@ -221,15 +204,12 @@ FEMALE_ROLE_PATTERNS = [
     # First-person gendered roles (strict adjacency); relational roles appear
     # here only, to avoid false hits like "I'm a fan of my sister"
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?(?:woman|female|mother|mom|mommy|mum|mummy|wife|girlfriend|daughter|aunt|auntie|sister|grandmother|grandma|nana|niece|stepmom|stepmother|nursing\s+mother|breastfeeding\s+mother)\b",
-
     # Descriptor/age-tolerant roles, e.g. "I'm a 23yo mom" — blocklist prevents
     # matches like "I'm writing a mom blog"
     r"\b(?:i\s+am|i'm|im)\s+(?:a\s+)?(?:(?!(?:not|never|of|told|said|think|want|need|writing|asking|looking|seeking|searching|creating|drawing|painting|sketching|making|designing|developing|building|playing|roleplaying|portraying|voicing|controlling|generating|rendering|animating|modeling|modelling|describing|imagining|picturing|for|about|with|into)\b)\w+\s+){0,3}"
     r"(?:mother|mom|mommy|mum|mummy|wife|grandmother|grandma|nana|stepmom|stepmother)\b",
-
     # "as a mother/wife, I..."
     r"as\s+(?:a\s+)?(?:mother|mom|mum|wife|girlfriend|daughter|aunt|sister|grandmother|grandma)\b(?=[^.!?]{0,200}\b(?:i|me|my)\b)",
-
     # Compound role phrases
     r"\bsingle\s+mom\b",
     r"\bstay[\s-]?at[\s-]?home\s+mom\b",
@@ -238,7 +218,6 @@ FEMALE_ROLE_PATTERNS = [
     r"\bi(?:'m|\s+am|\s+just\s+became)\s+(?:a\s+)?grandma\b",
     r"\bi'?m?\s+(?:the\s+)?maid\s+of\s+honor\b",
     r"\bi'?m?\s+(?:a\s+)?bridesmaid\b",
-
 ]
 
 # Request-style context ("give me a workout for a woman") — applied as an
@@ -273,39 +252,28 @@ FIRST_PERSON_PATTERN = re.compile(
 # 6. Compile regex
 # ---------------------------------------------------------------------------
 
-MALE_SELF_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.DOTALL)
-    for pattern in MALE_SELF_PATTERNS
-]
+MALE_SELF_REGEX = [re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in MALE_SELF_PATTERNS]
 
 FEMALE_SELF_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.DOTALL)
-    for pattern in FEMALE_SELF_PATTERNS
+    re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in FEMALE_SELF_PATTERNS
 ]
 
 MALE_SHORTHAND_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.MULTILINE)
-    for pattern in MALE_SHORTHAND_PATTERNS
+    re.compile(pattern, re.IGNORECASE | re.MULTILINE) for pattern in MALE_SHORTHAND_PATTERNS
 ]
 
 FEMALE_SHORTHAND_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.MULTILINE)
-    for pattern in FEMALE_SHORTHAND_PATTERNS
+    re.compile(pattern, re.IGNORECASE | re.MULTILINE) for pattern in FEMALE_SHORTHAND_PATTERNS
 ]
 
 GENDER_TRANSITION_CONTEXT_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.DOTALL)
-    for pattern in GENDER_TRANSITION_CONTEXT_PATTERNS
+    re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in GENDER_TRANSITION_CONTEXT_PATTERNS
 ]
 
-MALE_ROLE_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.DOTALL)
-    for pattern in MALE_ROLE_PATTERNS
-]
+MALE_ROLE_REGEX = [re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in MALE_ROLE_PATTERNS]
 
 FEMALE_ROLE_REGEX = [
-    re.compile(pattern, re.IGNORECASE | re.DOTALL)
-    for pattern in FEMALE_ROLE_PATTERNS
+    re.compile(pattern, re.IGNORECASE | re.DOTALL) for pattern in FEMALE_ROLE_PATTERNS
 ]
 
 
@@ -313,7 +281,8 @@ FEMALE_ROLE_REGEX = [
 # 7. Helper functions
 # ---------------------------------------------------------------------------
 
-def normalize_text(text):
+
+def normalize_text(text: str | None) -> str:
     """Normalize whitespace and apostrophes."""
     text = text or ""
     text = text.replace("\u2019", "'").replace("\u2018", "'").replace("`", "'")
@@ -321,21 +290,17 @@ def normalize_text(text):
     return text.strip()
 
 
-def get_first_user_prompt(messages):
+def get_first_user_prompt(messages: list[dict[str, Any]]) -> str:
     """Returns only the first user message in the conversation."""
     return next(
-        (
-            normalize_text(m.get("content", "") or "")
-            for m in messages
-            if m.get("role") == "user"
-        ),
-        ""
+        (normalize_text(m.get("content", "") or "") for m in messages if m.get("role") == "user"),
+        "",
     )
 
 
-def find_pattern_hits(regex_list, text):
+def find_pattern_hits(regex_list: list[re.Pattern[str]], text: str) -> list[str]:
     """Returns matched text plus the regex pattern that fired."""
-    hits = []
+    hits: list[str] = []
     for regex in regex_list:
         match = regex.search(text)
         if match:
@@ -348,7 +313,8 @@ def find_pattern_hits(regex_list, text):
 # 8. Filter functions
 # ---------------------------------------------------------------------------
 
-def is_toxic_conversation(example, first_prompt: str) -> bool:
+
+def is_toxic_conversation(example: dict[str, Any]) -> bool:
     """
     True if the conversation should be dropped on safety grounds.
     Primary signal: WildChat's conversation-level `toxic` flag.
@@ -372,17 +338,17 @@ def is_toxic_conversation(example, first_prompt: str) -> bool:
     return False
 
 
-def passes_language_gate(example) -> tuple[bool, str]:
+def passes_language_gate(example: dict[str, Any]) -> tuple[bool, str]:
     """Gate 1: language field check, applied before the max_scan budget."""
     if example.get("language", "") != FILTER_LANGUAGE:
         return False, "non_english_field"
     return True, "ok"
 
 
-def passes_filters(example, first_prompt: str) -> tuple[bool, str]:
+def passes_filters(example: dict[str, Any], first_prompt: str) -> tuple[bool, str]:
     """Gate 2 (English heuristic) + safety and content filters."""
     # Safety gate: drop conversations WildChat flags as toxic
-    if FILTER_TOXIC and is_toxic_conversation(example, first_prompt):
+    if FILTER_TOXIC and is_toxic_conversation(example):
         return False, "toxic"
 
     # Backup language check
@@ -407,7 +373,8 @@ def passes_filters(example, first_prompt: str) -> tuple[bool, str]:
 # 9. Scoring function
 # ---------------------------------------------------------------------------
 
-def score_initial_prompt(first_prompt):
+
+def score_initial_prompt(first_prompt: str) -> dict[str, Any]:
     """
     Classifies whether the initial prompt contains explicit gender evidence.
     High: direct self-identification or shorthand. Medium: gendered role or
@@ -416,18 +383,14 @@ def score_initial_prompt(first_prompt):
 
     text = normalize_text(first_prompt)
 
-    gender_transition_hits = find_pattern_hits(
-        GENDER_TRANSITION_CONTEXT_REGEX, text
+    gender_transition_hits = find_pattern_hits(GENDER_TRANSITION_CONTEXT_REGEX, text)
+
+    male_self_hits = find_pattern_hits(MALE_SELF_REGEX, text) + find_pattern_hits(
+        MALE_SHORTHAND_REGEX, text
     )
 
-    male_self_hits = (
-        find_pattern_hits(MALE_SELF_REGEX, text)
-        + find_pattern_hits(MALE_SHORTHAND_REGEX, text)
-    )
-
-    female_self_hits = (
-        find_pattern_hits(FEMALE_SELF_REGEX, text)
-        + find_pattern_hits(FEMALE_SHORTHAND_REGEX, text)
+    female_self_hits = find_pattern_hits(FEMALE_SELF_REGEX, text) + find_pattern_hits(
+        FEMALE_SHORTHAND_REGEX, text
     )
 
     # First-person roles count as self-identification (high confidence)
@@ -447,13 +410,9 @@ def score_initial_prompt(first_prompt):
         female_request = FEMALE_REQUEST_GENDER_PATTERN.search(text)
 
         if male_request:
-            male_context_hits.append(
-                f"{male_request.group(0)!r} [+personal topic]"
-            )
+            male_context_hits.append(f"{male_request.group(0)!r} [+personal topic]")
         if female_request:
-            female_context_hits.append(
-                f"{female_request.group(0)!r} [+personal topic]"
-            )
+            female_context_hits.append(f"{female_request.group(0)!r} [+personal topic]")
 
     male_score = len(male_self_hits) * 3 + len(male_context_hits)
     female_score = len(female_self_hits) * 3 + len(female_context_hits)
@@ -509,7 +468,8 @@ def score_initial_prompt(first_prompt):
 # Each turn, however, carries a globally unique `turn_identifier`, so the
 # first turn's identifier is a stable, unique per-conversation key.
 
-def get_conversation_id(example, messages):
+
+def get_conversation_id(example: dict[str, Any], messages: list[dict[str, Any]]) -> str | None:
     """Unique conversation ID: first turn's turn_identifier (prefixed 'wc_')."""
     for m in messages:
         tid = m.get("turn_identifier")
@@ -525,25 +485,23 @@ def get_conversation_id(example, messages):
 # 10. Main pipeline
 # ---------------------------------------------------------------------------
 
-def analyze_wildchat(
-    split="train",
-    max_samples=DEFAULT_MAX_SAMPLES,
-    max_scan=DEFAULT_MAX_SCAN,
-    conversations_path=OUTPUT_DIR / "wildchat_conversations.jsonl",
-):
-    ds = load_dataset(
-        "allenai/WildChat-1M",
-        split=split,
-        streaming=True
-    )
 
-    rows = []
+def analyze_wildchat(
+    split: str = "train",
+    max_samples: int = DEFAULT_MAX_SAMPLES,
+    max_scan: int = DEFAULT_MAX_SCAN,
+    conversations_path: Path = OUTPUT_DIR / "wildchat_conversations.jsonl",
+) -> pd.DataFrame:
+    ds = load_dataset("allenai/WildChat-1M", split=split, streaming=True)
+
+    rows: list[dict[str, Any]] = []
     scanned = 0
 
     # Sidecar file with full conversations, needed for the downstream analysis.
     # Written incrementally during iteration so a full 1M-conversation run
     # never holds every transcript in memory at once.
     import json as _json
+
     with open(conversations_path, "w", encoding="utf-8") as _cf:
         for example in ds:
             # Gate 1: non-English rows don't count toward max_scan
@@ -586,33 +544,36 @@ def analyze_wildchat(
                 "model": model,
                 "num_turns": len(messages),
                 "first_prompt_words": prompt_words,
-
                 "predicted_gender": result["predicted_gender"],
                 "confidence": result["confidence"],
                 "female_score": result["female_score"],
                 "male_score": result["male_score"],
-
                 "male_self_hits": result["male_self_hits"],
                 "female_self_hits": result["female_self_hits"],
                 "male_context_hits": result["male_context_hits"],
                 "female_context_hits": result["female_context_hits"],
                 "gender_transition_hits": result["gender_transition_hits"],
-
                 "initial_prompt": first_prompt,
             }
 
             rows.append(row)
 
             # Stream the full conversation to the sidecar as we go
-            _cf.write(_json.dumps({
-                "conversation_id": conversation_id,
-                "conversation_hash": example.get("conversation_hash", ""),
-                "messages": [
-                    {"role": m.get("role"), "content": m.get("content")}
-                    for m in messages
-                    if m.get("role") is not None and m.get("content") is not None
-                ],
-            }, ensure_ascii=False) + "\n")
+            _cf.write(
+                _json.dumps(
+                    {
+                        "conversation_id": conversation_id,
+                        "conversation_hash": example.get("conversation_hash", ""),
+                        "messages": [
+                            {"role": m.get("role"), "content": m.get("content")}
+                            for m in messages
+                            if m.get("role") is not None and m.get("content") is not None
+                        ],
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n"
+            )
 
     df = pd.DataFrame(rows)
 
@@ -623,19 +584,22 @@ def analyze_wildchat(
 # 11. Save outputs
 # ---------------------------------------------------------------------------
 
+
 def save_gender_evidence(
-    df,
-    output_csv=OUTPUT_DIR / "wildchat_gender_evidence_results.csv",
-    checked_csv=OUTPUT_DIR / "wildchat_gender_evidence_results_checked.csv",
-):
+    df: pd.DataFrame,
+    output_csv: Path = OUTPUT_DIR / "wildchat_gender_evidence_results.csv",
+    checked_csv: Path = OUTPUT_DIR / "wildchat_gender_evidence_results_checked.csv",
+) -> pd.DataFrame:
     evidence = df[
-        df["predicted_gender"].isin([
-            "male_self_identified",
-            "female_self_identified",
-            "male_contextual_evidence",
-            "female_contextual_evidence",
-            "gender_questioning_or_transition_context",
-        ])
+        df["predicted_gender"].isin(
+            [
+                "male_self_identified",
+                "female_self_identified",
+                "male_contextual_evidence",
+                "female_contextual_evidence",
+                "gender_questioning_or_transition_context",
+            ]
+        )
     ].copy()
 
     # Empty column for manual review: put 1 (keep) or 0 (drop) on each row.
@@ -658,7 +622,6 @@ def save_gender_evidence(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     df = analyze_wildchat(
         split="train",
         max_samples=DEFAULT_MAX_SAMPLES,

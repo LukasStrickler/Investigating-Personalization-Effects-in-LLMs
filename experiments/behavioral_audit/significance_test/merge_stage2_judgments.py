@@ -13,14 +13,17 @@ import argparse
 import csv
 from pathlib import Path
 
-
-_AUDIT_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in significance_test/)
+_AUDIT_DIR = (
+    Path(__file__).resolve().parent.parent
+)  # experiments/behavioral_audit (this file lives in significance_test/)
+_RESULTS_ROOT = _AUDIT_DIR / "results_behavioral_audit"
 _DEFAULT_SOURCE_DIRS = [
-    _AUDIT_DIR / "results_full001",
-    _AUDIT_DIR / "results_full001-e2b",
-    _AUDIT_DIR / "results_full001-ministral3-8b",
-    _AUDIT_DIR / "results_full002",
+    _RESULTS_ROOT / "results_full001",
+    _RESULTS_ROOT / "results_full001-e2b",
+    _RESULTS_ROOT / "results_full001-ministral3-8b",
+    _RESULTS_ROOT / "results_full002",
 ]
+_DEFAULT_OUTPUT_DIR = _RESULTS_ROOT / "results_merged"
 
 
 def _result_dir_to_run_tag(result_dir: Path) -> str:
@@ -104,7 +107,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=_AUDIT_DIR / "results_merged",
+        default=_DEFAULT_OUTPUT_DIR,
         help="Directory where the merged q1/q2 CSVs will be written.",
     )
     parser.add_argument(

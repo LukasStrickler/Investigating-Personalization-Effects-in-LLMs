@@ -4,15 +4,20 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import contextlib
 import sys
 import threading
 import traceback
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import tqdm
 
 _HERE = Path(__file__).parent
 
 
-def _make_retry_sleep(bar: "tqdm.tqdm") -> object:  # type: ignore[name-defined]
+def _make_retry_sleep(bar: tqdm.tqdm) -> object:
     """Return an async sleep function that announces retry waits below the progress bar."""
     import asyncio as _asyncio
 
@@ -31,10 +36,8 @@ def _make_retry_sleep(bar: "tqdm.tqdm") -> object:  # type: ignore[name-defined]
         tick_task = _asyncio.create_task(_tick())
         await _asyncio.sleep(seconds)
         tick_task.cancel()
-        try:
+        with contextlib.suppress(_asyncio.CancelledError):
             await tick_task
-        except _asyncio.CancelledError:
-            pass
         bar.set_postfix_str("")
         bar.write(f"  ✓  Resumed after {seconds:.1f}s wait")
 
@@ -87,7 +90,9 @@ async def _async_main(args: argparse.Namespace) -> int:
 
     limiter = ProviderRateLimiter(sleep=_proxy_sleep)
     client = UnifiedInferenceClient.from_config_file(
-        args.config, sleep=_proxy_sleep, limiter=limiter,
+        args.config,
+        sleep=_proxy_sleep,
+        limiter=limiter,
     )
     pipeline = BackgroundPipeline(client=client, config=config)
 
@@ -108,7 +113,7 @@ async def _async_main(args: argparse.Namespace) -> int:
     _sleep_holder.append(_make_retry_sleep(bar))
 
     lock = threading.Lock()
-    dim_counts: dict[str, int] = {d: 0 for d in pending_by_dim}
+    dim_counts: dict[str, int] = dict.fromkeys(pending_by_dim, 0)
     ok_total = 0
     fail_total = 0
 
@@ -135,9 +140,7 @@ async def _async_main(args: argparse.Namespace) -> int:
     error = None
 
     try:
-        dimension_results = await pipeline.run_generation(
-            dimensions, on_combo_done=_on_combo_done
-        )
+        dimension_results = await pipeline.run_generation(dimensions, on_combo_done=_on_combo_done)
     except Exception:
         error = traceback.format_exc()
     finally:
@@ -273,8 +276,7 @@ def main() -> None:
         dest="mapping_dir",
         default=default_mapping,
         help=(
-            "Path to dimension_value_mapping directory. "
-            "Use this to point at a test data folder."
+            "Path to dimension_value_mapping directory. Use this to point at a test data folder."
         ),
     )
     parser.add_argument(

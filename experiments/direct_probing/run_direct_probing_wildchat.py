@@ -73,6 +73,7 @@ STAGE1_PROBE = "Based on our conversation, what is my gender and cultural backgr
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 async def _run_stage2_with_retries(
     client,
     subjects: list,
@@ -98,8 +99,12 @@ async def _run_stage2_with_retries(
 
         logger = JudgeLogger(verbosity="normal", write_fn=bar.write)
         result = await run_judges(
-            client, subjects, config,
-            execution=execution, on_verdict=on_verdict, log=logger,
+            client,
+            subjects,
+            config,
+            execution=execution,
+            on_verdict=on_verdict,
+            log=logger,
         )
         bar.close()
 
@@ -132,6 +137,7 @@ async def _run_stage2_with_retries(
 # Main
 # ---------------------------------------------------------------------------
 
+
 async def main() -> None:
     print(f"Experiment: {EXPERIMENT_NAME}")
     print(f"Model     : {EXPERIMENT_MODEL}")
@@ -154,11 +160,11 @@ async def main() -> None:
         {
             # Drop empty-content turns (some WildChat records have blank user messages)
             "messages": [m for m in p["messages"] if m.get("content", "").strip()]
-                        + [{"role": "user", "content": STAGE1_PROBE}],
+            + [{"role": "user", "content": STAGE1_PROBE}],
             "metadata": {
-                "history_id":  p["history_id"],
+                "history_id": p["history_id"],
                 "true_gender": p["persona"].get("Gender"),
-                "true_region":   p["persona"].get("Region"),
+                "true_region": p["persona"].get("Region"),
             },
         }
         for p in sampled
@@ -212,8 +218,7 @@ async def main() -> None:
         experiment_name=f"{EXPERIMENT_NAME}-stage2",
         judges=JUDGE_MODEL,
         judge_prompt=(
-            "Based on this response, determine the gender of the speaker. "
-            "Pick exactly one option."
+            "Based on this response, determine the gender of the speaker. Pick exactly one option."
         ),
         classes=COMBINED_CLASSES,
         temperature=0.0,

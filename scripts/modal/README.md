@@ -16,7 +16,8 @@ for the repo's `modal` inference provider.
 
 Stage 1 writes matrix CSVs to the gitignored `logs/` working area. Use
 `export_results.py` to copy finished Stage-1 artifacts into a committable
-`results_<tag>/` directory (same layout as `results_full001/`, ...).
+`experiments/behavioral_audit/results_behavioral_audit/results_<tag>/`
+directory (same layout as `results_full001/`, ...).
 
 Stage 2 (LLM judge) is **not** part of the personalized path above - run it
 separately with `run_behavioral_audit.py` (`STAGE2_ONLY=True`) once Stage-1 CSVs
@@ -113,7 +114,7 @@ export MODAL_API_KEY="EMPTY"
 # ── Gemma 4 E2B - default deploy (pers-subject-serve, 1× L4) ──
 modal deploy scripts/modal/modal_serve.py
 export MODAL_BASE_URL="https://<workspace>--pers-subject-serve-serve.modal.run/v1"
-python experiments/behavioral_audit/run_behavioral_audit_baseline_modal.py \
+python experiments/behavioral_audit/baseline/run_behavioral_audit_baseline_modal.py \
     --run-tag baseline-e2b --subject-alias gemma-4-e2b_modal
 python experiments/behavioral_audit/export_results.py \
     --run-tag baseline-e2b --subject-alias gemma-4-e2b_modal
@@ -121,22 +122,24 @@ modal app stop pers-subject-serve
 
 # ── Ministral 3 8B - gated (see § Gated models for setup_modal_hf.py + deploy env) ──
 export MODAL_BASE_URL="https://<workspace>--pers-ministral3-8b-serve-serve.modal.run/v1"
-python experiments/behavioral_audit/run_behavioral_audit_baseline_modal.py \
+python experiments/behavioral_audit/baseline/run_behavioral_audit_baseline_modal.py \
     --run-tag baseline-ministral3-8b --subject-alias ministral-3-8b_modal
 python experiments/behavioral_audit/export_results.py \
     --run-tag baseline-ministral3-8b --subject-alias ministral-3-8b_modal
 modal app stop pers-ministral3-8b-serve
 ```
 
-Each run writes `results_baseline-<tag>/` with the **same layout** as
-`results_full001-*/` - per question a Stage-1 matrix CSV (`...-q{1,2}-stage1/*.csv` +
-`.meta.json`) and a Stage-2 `...-q{1,2}-stage2.judgments.csv`, plus one
-`EXPORT_MANIFEST.json`. That per-question split is the pipeline's standard export
-format (produced by `export_results.py`, read by `eval_behavioral_audit_baseline.ipynb`);
-do not merge the files. Baseline dirs are small (~100 rows/model total).
+Each run writes `results_behavioral_audit/results_baseline-<tag>/` with the
+**same layout** as `results_full001-*/` - per question a Stage-1 matrix CSV
+(`...-q{1,2}-stage1/*.csv` + `.meta.json`) and a Stage-2
+`...-q{1,2}-stage2.judgments.csv`, plus one `EXPORT_MANIFEST.json`. That
+per-question split is the pipeline's standard export format (produced by
+`export_results.py`, read by `eval_behavioral_audit_baseline.ipynb`); do not
+merge the files. Baseline dirs are small (~100 rows/model total).
 
 Both baselines were produced on a single L4 (`N_ITERATIONS=50`, judge
-`gpt-4o-mini_paid`) → `results_baseline-e2b/` and `results_baseline-ministral3-8b/`.
+`gpt-4o-mini_paid`) → `results_behavioral_audit/results_baseline-e2b/` and
+`results_behavioral_audit/results_baseline-ministral3-8b/`.
 
 ## Files
 
@@ -146,11 +149,11 @@ Both baselines were produced on a single L4 (`N_ITERATIONS=50`, judge
 | `setup_modal_hf.py` | verify HF token + sync Modal `huggingface-token` secret |
 | `modal_utils.py` | shared `.env` loader for setup script |
 | `config/inference.modal.example.yaml` | provider + model aliases |
-| `../behavioral_audit/run_behavioral_audit_modal.py` | Stage 1 matrix runner (personalized runs) |
-| `../behavioral_audit/run_behavioral_audit_baseline_modal.py` | persona-free baseline runner for Modal subjects (Stage 1 + Stage 2) |
-| `../behavioral_audit/run_behavioral_audit_baseline.py` | persona-free baseline runner for paid-API subjects (edit constants in-file) |
-| `../run_direct_probing_modal.py` | direct-probing two-stage runner for Modal subjects (Stage 1 + Stage 2 + export) |
-| `../behavioral_audit/export_results.py` | copy Stage-1 CSVs and Stage-2 judgments from `logs/` → `results_<tag>/` |
+| `experiments/behavioral_audit/run_behavioral_audit_modal.py` | Stage 1 matrix runner (personalized runs) |
+| `experiments/behavioral_audit/baseline/run_behavioral_audit_baseline_modal.py` | persona-free baseline runner for Modal subjects (Stage 1 + Stage 2) |
+| `experiments/behavioral_audit/baseline/run_behavioral_audit_baseline.py` | persona-free baseline runner for paid-API subjects (edit constants in-file) |
+| `experiments/direct_probing/run_direct_probing_modal.py` | direct-probing two-stage runner for Modal subjects (Stage 1 + Stage 2 + export) |
+| `experiments/behavioral_audit/export_results.py` | copy Stage-1 CSVs and Stage-2 judgments from `logs/` → `results_behavioral_audit/results_<tag>/` |
 
 ## Bug fixes since the initial Modal PR (#28)
 

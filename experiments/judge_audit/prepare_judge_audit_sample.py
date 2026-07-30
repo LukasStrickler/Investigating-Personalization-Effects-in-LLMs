@@ -82,21 +82,48 @@ VALID_PARSE = frozenset({"matched", "none_declared"})
 
 JUDGMENT_GLOBS = (
     EXPERIMENTS / "behavioral_audit" / "results_behavioral_audit" / "results_*" / "*.judgments.csv",
-    EXPERIMENTS / "direct_probing" / "results_direct_probing" / "*.judgments.csv",
+    # Direct-probing stage-2 judgments live under stage2/
+    EXPERIMENTS / "direct_probing" / "results_direct_probing" / "stage2" / "*.judgments.csv",
 )
 
 STAGE1_GLOBS = (
-    EXPERIMENTS / "behavioral_audit" / "results_behavioral_audit" / "results_*" / "*stage1" / "*.csv",
-    EXPERIMENTS / "direct_probing" / "results_direct_probing" / "*stage1" / "*.csv",
+    EXPERIMENTS
+    / "behavioral_audit"
+    / "results_behavioral_audit"
+    / "results_*"
+    / "*stage1"
+    / "*.csv",
+    # Direct-probing stage-1 matrices live under stage1/<run>/
+    EXPERIMENTS / "direct_probing" / "results_direct_probing" / "stage1" / "*" / "*.csv",
 )
 
 SAMPLE_FIELDS = [
-    "sample_rank", "in_audit_50", "judgment_id", "run_tag", "question",
-    "subject_model_alias", "judge_alias", "status", "parse_status",
-    "none_declared", "final_class", "probe_question", "subject_response",
-    "raw_output", "true_gender", "true_region", "history_id", "prompt_id",
-    "subject_id", "stage1_csv", "judgments_file", "stratum", "source_id",
-    "error_message", "latency_ms", "total_tokens",
+    "sample_rank",
+    "in_audit_50",
+    "judgment_id",
+    "run_tag",
+    "question",
+    "subject_model_alias",
+    "judge_alias",
+    "status",
+    "parse_status",
+    "none_declared",
+    "final_class",
+    "probe_question",
+    "subject_response",
+    "raw_output",
+    "true_gender",
+    "true_region",
+    "history_id",
+    "prompt_id",
+    "subject_id",
+    "stage1_csv",
+    "judgments_file",
+    "stratum",
+    "source_id",
+    "error_message",
+    "latency_ms",
+    "total_tokens",
 ]
 
 
@@ -120,12 +147,10 @@ def in_research_scope(row: dict) -> bool:
     canonical = CANONICAL_PROBES.get(row["question"])
     if canonical and row.get("probe_question", "").strip() != canonical:
         return False
-    if row["run_tag"] == "full001" and row["question"] == "q1":
-        return False
-    return True
+    return not (row["run_tag"] == "full001" and row["question"] == "q1")
 
 
-def _infer_run_tag(judgments_path: Path, question: str) -> str:
+def _infer_run_tag(judgments_path: Path, _question: str) -> str:
     name = judgments_path.name
     if "wildchat-wildchat" in name:
         return "wildchat_wildchat001"
@@ -215,7 +240,8 @@ def _load_stage1_rows(path: Path) -> dict[tuple[str, str], dict]:
     with open(path, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         model_cols = [
-            c for c in (reader.fieldnames or [])
+            c
+            for c in (reader.fieldnames or [])
             if c not in {"prompt_id", "prompt", "prompt_metadata"}
         ]
         for row in reader:
@@ -310,8 +336,7 @@ def load_population(stage1_index: dict[str, Path] | None = None) -> list[dict]:
                     "none_declared": row["none_declared"],
                     "final_class": (
                         "__NONE__"
-                        if str(row.get("none_declared", "")).strip().lower()
-                        in ("true", "1", "yes")
+                        if str(row.get("none_declared", "")).strip().lower() in ("true", "1", "yes")
                         else (row.get("final_class") or "")
                     ),
                     "probe_question": cell["probe_question"],
@@ -420,12 +445,13 @@ def _gender_balanced_sample(
         return []
     females = [r for r in pool if r["true_gender"] == "Female"]
     males = [r for r in pool if r["true_gender"] == "Male"]
-    other = [r for r in pool if r["true_gender"] not in ("Female", "Male")]
     n_f = n // 2
     n_m = n - n_f
     chosen: list[dict] = []
     if females:
-        chosen.extend(_stratified_sample(females, min(n_f, len(females)), rng, stratum_fn=stratum_fn))
+        chosen.extend(
+            _stratified_sample(females, min(n_f, len(females)), rng, stratum_fn=stratum_fn)
+        )
     if males:
         chosen.extend(_stratified_sample(males, min(n_m, len(males)), rng, stratum_fn=stratum_fn))
     if len(chosen) < n:
@@ -493,7 +519,9 @@ def build_research_sample(population: list[dict], n: int, rng: random.Random) ->
 def _distribution_report(population: list[dict], sample: list[dict]) -> dict:
     def pct(rows: list[dict], col: str) -> dict[str, float]:
         n = len(rows) or 1
-        return {k: v / n * 100 for k, v in Counter(r.get(col, "") or "(empty)" for r in rows).items()}
+        return {
+            k: v / n * 100 for k, v in Counter(r.get(col, "") or "(empty)" for r in rows).items()
+        }
 
     report: dict = {}
     for col in ("question", "run_tag", "subject_model_alias", "true_gender", "true_region"):
@@ -512,7 +540,9 @@ def main() -> None:
     all_rows = load_population(stage1_index)
     research, dropped = filter_research_population(all_rows)
     print(f"All eligible {JUDGE_ALIAS} rows: {len(all_rows)}")
-    print(f"Research-scope rows   : {len(research)}  (dropped {sum(dropped.values())}: {dict(dropped)})")
+    print(
+        f"Research-scope rows   : {len(research)}  (dropped {sum(dropped.values())}: {dict(dropped)})"
+    )
 
     if len(research) < SAMPLE_SIZE:
         raise SystemExit(f"Need at least {SAMPLE_SIZE} research-scope rows, found {len(research)}")

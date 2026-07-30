@@ -39,7 +39,7 @@ def _report(csv_path: Path) -> None:
         return
 
     skip = {"prompt_id", "prompt", "prompt_metadata", ""}
-    models = [h for h in rows[0].keys() if h not in skip]
+    models = [h for h in rows[0] if h not in skip]
 
     print(f"File    : {csv_path}")
     print(f"Models  : {', '.join(m.split('_')[0] for m in models) or '(unknown)'}")

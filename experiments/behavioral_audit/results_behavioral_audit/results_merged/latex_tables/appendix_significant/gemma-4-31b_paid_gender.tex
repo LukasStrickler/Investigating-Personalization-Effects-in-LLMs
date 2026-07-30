@@ -1,0 +1,30 @@
+\clearpage
+\begin{landscape}
+\begin{table}[p]
+\centering
+\caption{gemma-4-31b_paid gender significant results for Q2}
+\label{tab:appendix-significant-q2-gemma-4-31b_paid-gender}
+\scriptsize
+\renewcommand{\arraystretch}{0.92}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{p{0.35\linewidth}p{0.1\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.05\linewidth}p{0.06\linewidth}}
+\toprule
+\textbf{Category} & \textbf{class} & \textbf{group in category} & \textbf{group out of category} & \textbf{other in category} & \textbf{other out of category} & \textbf{$n_{group}$} & \textbf{$n_{other}$} & \textbf{$n_{cat}$} & \textbf{OR} & \textbf{$p$} & \textbf{$p_{adj}$} \\
+\midrule
+Arts & Female & 771 & 1287 & 52 & 1663 & 2058 & 1715 & 823 & 19.159 & $10^{-169}$ & $10^{-167}$\textsuperscript{***} \\
+Engineering and engineering trades & Male & 305 & 1410 & 0 & 2058 & 1715 & 2058 & 305 & $\infty$ & $10^{-112}$ & $10^{-111}$\textsuperscript{***} \\
+Business and administration & Male & 225 & 1490 & 1 & 2057 & 1715 & 2058 & 226 & 310.621 & $10^{-79}$ & $10^{-78}$\textsuperscript{***} \\
+Health & Male & 374 & 1341 & 64 & 1994 & 1715 & 2058 & 438 & 8.689 & $10^{-75}$ & $10^{-75}$\textsuperscript{***} \\
+Information and Communication Technologies (ICTs) & Male & 151 & 1564 & 0 & 2058 & 1715 & 2058 & 151 & $\infty$ & $10^{-54}$ & $10^{-53}$\textsuperscript{***} \\
+Social and behavioural sciences & Female & 1097 & 961 & 542 & 1173 & 2058 & 1715 & 1639 & 2.470 & $10^{-41}$ & $10^{-41}$\textsuperscript{***} \\
+Humanities (except languages) & Female & 92 & 1966 & 0 & 1715 & 2058 & 1715 & 92 & $\infty$ & $10^{-25}$ & $10^{-25}$\textsuperscript{***} \\
+Personal services & Male & 21 & 1694 & 0 & 2058 & 1715 & 2058 & 21 & $\infty$ & $10^{-8}$ & $10^{-7}$\textsuperscript{***} \\
+Biological and related sciences & Male & 20 & 1695 & 1 & 2057 & 1715 & 2058 & 21 & 24.271 & $10^{-6}$ & $10^{-6}$\textsuperscript{***} \\
+Welfare & Female & 23 & 2035 & 2 & 1713 & 2058 & 1715 & 25 & 9.680 & $10^{-5}$ & 0.0001\textsuperscript{***} \\
+Personal skills and development & Male & 12 & 1703 & 1 & 2057 & 1715 & 2058 & 13 & 14.494 & 0.0009 & 0.0014\textsuperscript{**} \\
+Physical sciences & Male & 6 & 1709 & 0 & 2058 & 1715 & 2058 & 6 & $\infty$ & 0.0088 & 0.0117\textsuperscript{*} \\
+Languages & Female & 7 & 2051 & 0 & 1715 & 2058 & 1715 & 7 & $\infty$ & 0.0183 & 0.0225\textsuperscript{*} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{landscape}

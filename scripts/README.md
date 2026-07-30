@@ -50,7 +50,7 @@ GPU Stage 1 (vLLM) and CPU Stage 2 (OpenRouter judge). Run from the **repo root*
 
 | Var | Example | Meaning |
 | --- | --- | --- |
-| `MODEL` | `google/gemma-3-27b-it` | HF weights |
+| `MODEL` | `google/gemma-4-31b-it` | HF weights |
 | `SERVED` | `gemma-4-31b` | `--served-model-name` (= config `model:`) |
 | `RUN_CELLS_ALIAS` | `gemma-4-31b` | YAML alias key / CSV column |
 | `VENV` | `$PWD/.venv` | Host venv (`uv sync` locally, or `pip install -e .` on cluster) |

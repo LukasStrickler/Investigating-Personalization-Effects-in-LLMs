@@ -18,9 +18,7 @@ class FakeClock:
         self.now += seconds
 
 
-def _provider(
-    name: ProviderName = "openrouter", env: str = "OPENROUTER_API_KEY"
-) -> ProviderConfig:
+def _provider(name: ProviderName = "openrouter", env: str = "OPENROUTER_API_KEY") -> ProviderConfig:
     return ProviderConfig(
         name=name,
         api_key_env=env,
@@ -33,9 +31,7 @@ class TestResolveApiKeys:
         monkeypatch.setenv("OPENROUTER_API_KEY", "sk-or-v1-solo")
         assert resolve_api_keys(_provider()) == ["sk-or-v1-solo"]
 
-    def test_comma_parsing_strips_and_drops_empties(
-        self, monkeypatch: pytest.MonkeyPatch
-    ) -> None:
+    def test_comma_parsing_strips_and_drops_empties(self, monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.setenv("OPENROUTER_API_KEY", " a , b ,, c , ")
         assert resolve_api_keys(_provider()) == ["a", "b", "c"]
 
@@ -51,9 +47,7 @@ class TestResolveApiKeys:
 
     def test_mock_returns_placeholder_list(self, monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.delenv("MOCK_API_KEY", raising=False)
-        assert resolve_api_keys(_provider(name="mock", env="MOCK_API_KEY")) == [
-            "mock-key-for-mock"
-        ]
+        assert resolve_api_keys(_provider(name="mock", env="MOCK_API_KEY")) == ["mock-key-for-mock"]
 
 
 class TestApiKeyPool:

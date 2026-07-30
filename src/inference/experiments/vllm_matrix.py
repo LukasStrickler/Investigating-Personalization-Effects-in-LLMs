@@ -11,6 +11,7 @@ import urllib.request
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from inference.client import UnifiedInferenceClient
 from inference.config import load_config_from_file, resolve_provider_base_url
@@ -199,7 +200,7 @@ def load_direct_probing_stage1(
 
 
 def build_direct_probing_judge_subjects(
-    df,
+    df: Any,
     *,
     model_alias: str,
     csv_path: Path,
@@ -237,9 +238,7 @@ def load_matrix_prompts(
     if source == "demo":
         return list(DEMO_PROMPTS)
     if source == "direct-probing":
-        prompts, _classes = load_direct_probing_stage1(
-            sample_per_group=sample_per_group, seed=seed
-        )
+        prompts, _classes = load_direct_probing_stage1(sample_per_group=sample_per_group, seed=seed)
         return prompts
     raise ValueError(f"unknown prompts source {source!r} (choose: demo, direct-probing)")
 

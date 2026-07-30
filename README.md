@@ -7,7 +7,21 @@ This repo holds the study's data, experiment code, committed model outputs, and
 notebooks that reproduce the paper's main Results figures. Start with the
 research questions below; setup and re-runs come later.
 
-University of Mannheim research project. License: [MIT](LICENSE).
+University of Mannheim FSS26 team project.
+Authors: Nick Birkholz, Julian Ilting, Javier Miranda, Jannis Peters, and Lukas Strickler.
+Supervisor: Dr. Indira Sen.
+License: [MIT](LICENSE).
+
+## Citation
+
+If you use this work, please cite the preferred citation in
+[`CITATION.cff`](CITATION.cff) (also available via GitHub “Cite this repository”):
+
+> Birkholz, N., Ilting, J., Miranda, J., Peters, J., & Strickler, L. (2026).
+> *What do LLMs Know About Their Users? Investigating Personalization Effects in
+> Large Language Models* (University of Mannheim, FSS26 Team Project; supervisor:
+> Dr. Indira Sen).
+> <https://github.com/LukasStrickler/Investigating-Personalization-Effects-in-LLMs>
 
 ## Research questions
 
@@ -29,7 +43,9 @@ Each **subject model** (the LLM under study) answers in free text. A separate
 **LLM judge** (GPT-4o-mini via OpenRouter) maps answers
 onto standard taxonomies: [ISCO-08](https://www.ilo.org/publications/international-standard-classification-occupations-2008-isco-08) job groups and
 [ISCED-F 2013](https://uis.unesco.org/sites/default/files/documents/isced-fields-of-education-and-training-2013-en.pdf)
-fields of study. Refusals and unclear answers get a reserved None-style label
+fields of study (committed under
+[`experiments/behavioral_audit/indicator_hierarchy/`](experiments/behavioral_audit/indicator_hierarchy/)).
+Refusals and unclear answers get a reserved None-style label
 (`__NONE__` in direct-probing CSVs).
 
 Experiment runners write two CSV stages:
@@ -59,7 +75,7 @@ Click a name to open its README (or best guide). `run_*.py` writes CSVs;
   - [`judge_audit/`](experiments/judge_audit/README.md) — human-rater validation of the stage-2 judge
 - `src/`
   - [`generate_backgrounds/`](src/generate_backgrounds/README.md) - synthetic personas
-  - [`real_conversation_histories/`](src/real_conversation_histories/README.txt) - WildChat extraction
+  - [`real_conversation_histories/`](src/real_conversation_histories/README.md) - WildChat extraction
   - [`inference/`](docs/architecture.md) - shared client
 - [`scripts/`](scripts/README.md)
   - [`slurm/`](docs/running-vllm-on-clusters.md) - cluster launchers
@@ -88,7 +104,8 @@ Other committed Modal runs (Gemma 4 31B / E2B, Ministral 3 8B, ablation):
 
 The same histories end with a job or college-major question. Stage 1 is subject
 advice; stage 2 is the judge mapping into the taxonomies under
-`indicator_hierarchy/`. Canonical committed tree (prefer this over any top-level
+[`experiments/behavioral_audit/indicator_hierarchy/`](experiments/behavioral_audit/indicator_hierarchy/).
+Canonical committed tree (prefer this over any top-level
 partial copies):
 [`results_behavioral_audit/`](experiments/behavioral_audit/results_behavioral_audit/).
 
@@ -119,7 +136,9 @@ does not call models. Appendix, baseline, and ablation plots live in the
 per-experiment `eval_*.ipynb` notebooks.
 
 Merged significance tables live in
-[`experiments/behavioral_audit/README.md`](experiments/behavioral_audit/README.md).
+[`experiments/behavioral_audit/results_behavioral_audit/results_merged/`](experiments/behavioral_audit/results_behavioral_audit/results_merged/)
+(rebuild instructions:
+[`experiments/behavioral_audit/README.md`](experiments/behavioral_audit/README.md)).
 
 ### Setup (when you need more than figures)
 

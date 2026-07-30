@@ -55,7 +55,7 @@ EXPERIMENT_MODELS = [
 
 JUDGE_MODEL = ["gpt-4o-mini_paid"]
 
-SAMPLE_SIZE = 50              # total conversation histories, evenly stratified by (gender, region)
+SAMPLE_SIZE = 50  # total conversation histories, evenly stratified by (gender, region)
 MAX_PASSES = 5
 WORKERS = 50
 SEED = 123
@@ -85,7 +85,9 @@ EXPERIMENT_NAME = f"direct-probing-combined-{RUN_TAG}" if RUN_TAG else "direct-p
 # ---------------------------------------------------------------------------
 
 
-def _stratified_subsample(grouped: dict[tuple[str, str], list[dict]], size: int, rng: random.Random) -> list[dict]:
+def _stratified_subsample(
+    grouped: dict[tuple[str, str], list[dict]], size: int, rng: random.Random
+) -> list[dict]:
     """Draw `size` personas evenly across all (gender, region) strata.
 
     Distributes as evenly as possible: each stratum gets floor(size/n_strata),
@@ -98,7 +100,7 @@ def _stratified_subsample(grouped: dict[tuple[str, str], list[dict]], size: int,
 
     # give the +1 remainder slots to the largest pools first for stability
     order = sorted(strata, key=lambda k: (-len(grouped[k]), k))
-    quota = {k: base for k in strata}
+    quota = dict.fromkeys(strata, base)
     for k in order[:remainder]:
         quota[k] += 1
 
@@ -146,8 +148,12 @@ async def _run_stage2_with_retries(
 
         logger = JudgeLogger(verbosity="normal", write_fn=bar.write)
         result = await run_judges(
-            client, subjects, config,
-            execution=execution, on_verdict=on_verdict, log=logger,
+            client,
+            subjects,
+            config,
+            execution=execution,
+            on_verdict=on_verdict,
+            log=logger,
         )
         bar.close()
 
@@ -204,6 +210,7 @@ def _build_stage2_subjects(df1, model_alias, stage1_csv_path):
 # Main
 # ---------------------------------------------------------------------------
 
+
 async def main() -> None:
     print(f"Experiment: {EXPERIMENT_NAME}")
     print(f"Models    : {EXPERIMENT_MODELS}")
@@ -246,9 +253,9 @@ async def main() -> None:
         {
             "messages": list(p["messages"]) + [{"role": "user", "content": stage1_probe}],
             "metadata": {
-                "history_id":  p["history_id"],
+                "history_id": p["history_id"],
                 "true_gender": p["persona"]["Gender"],
-                "true_region":   p["persona"]["Region"],
+                "true_region": p["persona"]["Region"],
             },
         }
         for p in sampled

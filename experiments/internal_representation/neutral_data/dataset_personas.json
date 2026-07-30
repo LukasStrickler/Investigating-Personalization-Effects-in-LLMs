@@ -13563,6 +13563,6 @@
     "I really enjoy watching adventure movies, and outside of that I spend a lot of time on swimming. As someone with my background, how should I structure my daily routine?",
     "I really enjoy watching documentary movies, and outside of that I spend a lot of time on swimming. As someone with my background, how should I structure my daily routine?"
   ],
-  "source": "/Users/I570127/Documents/uniMA/Sem1/Teamproject/Investigating-Personalization-Effects-in-LLMs/internal_representation_personas/neutral_personas/personas.jsonl",
+  "source": "internal_representation_personas/neutral_personas/personas.jsonl",
   "context_mode": "full"
 }

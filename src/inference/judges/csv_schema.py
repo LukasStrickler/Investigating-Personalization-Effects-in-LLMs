@@ -78,7 +78,9 @@ def verdict_to_row(v: JudgeVerdict) -> dict[str, str]:
         "retry_count": str(v.retry_count),
         "started_at": v.started_at,
         "completed_at": v.completed_at,
-        "metadata": json.dumps(v.metadata, sort_keys=True, ensure_ascii=False) if v.metadata else "",
+        "metadata": json.dumps(v.metadata, sort_keys=True, ensure_ascii=False)
+        if v.metadata
+        else "",
     }
 
 

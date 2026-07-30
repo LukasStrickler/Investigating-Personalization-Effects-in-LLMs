@@ -48,14 +48,14 @@ Stage 2 is a separate step after prod Stage 1 completes.
 
 | Role | Example | Set via |
 | --- | --- | --- |
-| Weights | `google/gemma-3-27b-it` | `vllm serve` first arg / `MODEL=` |
+| Weights | `google/gemma-4-31b-it` | `vllm serve` first arg / `MODEL=` |
 | Served name | `gemma-4-31b` | `--served-model-name` / `SERVED=` — must match config `model:` |
 | Alias key | `gemma-4-31b` | YAML key under `model_aliases:` / `EXPERIMENT_MODEL` |
 
 Stage 1 Slurm env: `RUN_CELLS_ALIAS` (= alias key). Stage 2 Slurm env: `MODEL_ALIAS` (same value).
 
 ```bash
-vllm serve google/gemma-3-27b-it --served-model-name gemma-4-31b --port 8000
+vllm serve google/gemma-4-31b-it --served-model-name gemma-4-31b --port 8000
 curl -s http://127.0.0.1:8000/v1/models -H "Authorization: Bearer EMPTY" | grep gemma-4-31b
 ```
 
@@ -65,7 +65,7 @@ curl -s http://127.0.0.1:8000/v1/models -H "Authorization: Bearer EMPTY" | grep 
 
 ```bash
 # terminal 1
-vllm serve google/gemma-3-27b-it --served-model-name gemma-4-31b --port 8000
+vllm serve google/gemma-4-31b-it --served-model-name gemma-4-31b --port 8000
 
 # terminal 2
 cp config/inference.vllm.example.yaml config/inference.yaml
@@ -112,7 +112,7 @@ Manual `sbatch` without `PROMPTS_SOURCE=demo,LIMIT=1` runs the full persona set 
 
 Prod: `bash scripts/slurm/submit_vllm.sh prod bwunicluster`
 
-Gemma direct probing: prefetch `google/gemma-3-27b-it`, set `MODEL`/`SERVED`/`RUN_CELLS_ALIAS` to
+Gemma direct probing: prefetch `google/gemma-4-31b-it`, set `MODEL`/`SERVED`/`RUN_CELLS_ALIAS` to
 `gemma-4-31b`. Match `SAMPLE_PER_GROUP` (default 10000) between Stage 1 and Stage 2.
 
 ## Stage 2 (judge)
@@ -121,7 +121,7 @@ After `logs/vllm-<alias>/matrix.csv.<alias>.complete` exists (or column fully SU
 
 ```bash
 # Stage 2 needs a config that defines the judge alias (paper runs used gpt-4o-mini_paid).
-# inference.modal.example.yaml includes it; inference.example.yaml is free-tier demos only.
+# inference.example.yaml and inference.modal.example.yaml both include it.
 cp config/inference.modal.example.yaml config/inference.yaml
 export OPENROUTER_API_KEY=sk-or-...
 

@@ -59,7 +59,7 @@ the three-layer inference model.
 
 | Concept | Where | Meaning |
 | --- | --- | --- |
-| Provider | `config/inference.yaml` | A backend such as `openai`, `anthropic`, `openrouter`, or `mock`. |
+| Provider | `config/inference.yaml` | A backend such as `openai`, `anthropic`, `openrouter`, `vllm`, `modal`, or `mock`. |
 | Model alias | `config/inference.yaml` | Stable project-local name that maps to a provider model id. |
 | `InferenceRequest` | `inference` | One low-level request: alias, prompt or messages, optional generation settings and tools. |
 | `InferenceResult` | `inference` | One provider response plus model metadata, token counts, latency, retries, and tool calls. |

@@ -36,42 +36,36 @@ uv run python -m generate_backgrounds \
 src/generate_backgrounds/
 │
 │ # Source modules
-├── **init**.py Public API exports
-├── **main**.py Entry point for `python -m generate_backgrounds`
-├── cli.py argparse CLI — argument parsing + summary printing
-├── pipeline.py Three-phase async pipeline + all data classes
-├── combination.py CSV loading + indicator combination generation
-├── rendering.py Template loading + placeholder rendering
+├── __init__.py                Public API exports
+├── __main__.py                Entry point for `python -m generate_backgrounds`
+├── cli.py                     argparse CLI — argument parsing + summary printing
+├── pipeline.py                Three-phase async pipeline + all data classes
+├── combination.py             CSV loading + indicator combination generation
+├── rendering.py               Template loading + placeholder rendering
 │
 │ # Static data
-├── dimension_templates.json One prompt template per dimension
+├── dimension_templates.json   One prompt template per dimension
 │
 │ # Dimension value mappings (production data — add CSVs here)
 ├── dimension_value_mapping/
-│ └── social_status.csv
+│ ├── gender.csv
+│ ├── gender_name.csv
+│ └── region.csv
 │
 │ # How the region-related attributes (names, artists) were sampled — see note below
 ├── attributes_region_sampling/
 │ ├── names/   Perceived-origin name selection → gender_name.csv, top4_names_per_region.*
 │ └── artists/ Regional artist cues → selected_artists.*
 │
-│ # Dummy data for testing (delete when real data is ready)
-├── dimension_value_mapping_test/
-│ ├── region.csv
-│ ├── age.csv
-│ ├── gender.csv
-│ └── social_status.csv
-│
 │ # Generated output (created at runtime — safe to delete and regenerate)
 └── data/
-├── backgrounds/
-│ ├── Social_Status/
-│ │ └── <timestamp>.jsonl One BackgroundRecord per indicator combo
-│ ├── Age/...
-│ ├── Region/...
-│ └── Gender/...
-└── personas/
-└── <timestamp>.jsonl One ConversationHistory per persona × indicator cross
+    ├── backgrounds/
+    │ ├── Gender/
+    │ │ └── gender.jsonl One BackgroundRecord per indicator combo
+    │ └── Region/
+    │   └── region.jsonl
+    └── personas/
+      └── personas.jsonl One ConversationHistory per persona × indicator cross
 
 ```
 
@@ -91,7 +85,7 @@ module here. It is standalone, offline analysis kept for provenance and reproduc
 
 The connection to this package is only through the **outputs**: the results feed into the
 `dimension_value_mapping/` CSVs (e.g. `gender_name.csv`) that the pipeline actually consumes.
-Each subfolder has its own `README.txt` with full methodology and data attribution.
+Each subfolder has its own `README.md` with full methodology and data attribution.
 
 ---
 
@@ -268,14 +262,13 @@ Runs can be interrupted and resumed freely. On each run the pipeline scans exist
 ## Quick start
 
 ```bash
-# Test with mock provider and dummy data (no API key needed)
+# Test with mock provider on the real mapping data (no API key needed)
 uv run python -m generate_backgrounds \
   --config config/inference.yaml \
-  --model-alias mock-test \
-  --mapping-dir src/generate_backgrounds/dimension_value_mapping_test
+  --model-alias mock-test
 
 # Production run
 uv run python -m generate_backgrounds \
   --config config/inference.yaml \
-  --model-alias gemma-3-4b
+  --model-alias gemma-4-31b_paid
 ```

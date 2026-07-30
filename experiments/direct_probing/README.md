@@ -12,7 +12,7 @@ See the [experiments overview](../README.md) for how this fits the wider project
 ```
 persona history → [run_direct_probing*.py]  → stage-1 subject answer
                 → [judge]                    → stage-2 judgments.csv  (final_class = "gender - region")
-                → [postprocess_none.ipynb]   → stage2/postprocessed/*.postprocessed.csv
+                → [postprocess_none.ipynb]   → results_direct_probing/stage2/postprocessed/*.postprocessed.csv
                 → [eval_direct_probing.ipynb]→ figures / accuracy tables
 ```
 
@@ -31,7 +31,8 @@ persona history → [run_direct_probing*.py]  → stage-1 subject answer
 - **`postprocess_none.ipynb`** — the subject model sometimes declines to state an
   attribute, but the judge is forced to emit a class anyway. A per-axis refusal pass
   (`_refusal_filter/`) marks each declined axis, and this notebook relabels it as
-  `__NONE__` in `final_class`, writing `stage2/postprocessed/*.judgments.postprocessed.csv`.
+  `__NONE__` in `final_class`, writing
+  `results_direct_probing/stage2/postprocessed/*.judgments.postprocessed.csv`.
   Run this **before** the eval notebook.
 - **`eval_direct_probing.ipynb`** — main evaluation (accuracy, confusion matrices,
   per-axis NONE rate). Reads the postprocessed CSVs.

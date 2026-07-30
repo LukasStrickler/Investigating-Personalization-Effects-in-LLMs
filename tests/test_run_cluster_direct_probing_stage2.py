@@ -7,9 +7,7 @@ from pathlib import Path
 
 import pytest
 
-_SCRIPT_PATH = (
-    Path(__file__).parent.parent / "scripts" / "run_cluster_direct_probing_stage2.py"
-)
+_SCRIPT_PATH = Path(__file__).parent.parent / "scripts" / "run_cluster_direct_probing_stage2.py"
 
 
 def _load_cli():  # type: ignore[no-untyped-def]
@@ -46,7 +44,9 @@ def test_missing_csv_returns_nonzero(tmp_path: Path) -> None:
     assert code == 2
 
 
-def test_vllm_config_rejected_for_stage2(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+def test_vllm_config_rejected_for_stage2(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
     config = Path(__file__).parent.parent / "config" / "inference.vllm.example.yaml"
     csv_path = tmp_path / "matrix.csv"
     csv_path.write_text("prompt_id,prompt\n", encoding="utf-8")

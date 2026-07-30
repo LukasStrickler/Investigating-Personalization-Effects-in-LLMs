@@ -14,6 +14,7 @@ use verbosity=\"silent\" or a dedicated sink if that matters.
 
 from __future__ import annotations
 
+import contextlib
 import sys
 import time
 from collections.abc import Callable
@@ -60,9 +61,11 @@ class JudgeLogger:
             self._emit_fn: Callable[[str], None] = self.write_fn
         else:
             stream = self.sink if self.sink is not None else sys.stderr
+
             def _stream_write(line: str, _s: TextIO = stream) -> None:
                 _s.write(line + "\n")
                 _s.flush()
+
             self._emit_fn = _stream_write
         self._counters: dict[str, _JudgeCounters] = {}
         self._t0: float = self.clock()
@@ -98,9 +101,7 @@ class JudgeLogger:
             self._emit(f"judge: resume -> {skipped_resume} (subject, judge) cells already done")
         for a in judges:
             pending = per_judge_pending.get(a, 0)
-            self._emit(
-                f"judge: {a} | workers={workers_per_judge.get(a, 1)} pending={pending}"
-            )
+            self._emit(f"judge: {a} | workers={workers_per_judge.get(a, 1)} pending={pending}")
 
     def judge_queue_empty(self, judge_alias: str) -> None:
         if self.is_enabled("normal"):
@@ -191,8 +192,7 @@ class JudgeLogger:
         elapsed = _fmt_elapsed(self.clock() - self._t0)
         total_ok = sum(b.get("completed", 0) for b in per_judge.values())
         total_fail = sum(
-            b.get("classification_failed", 0) + b.get("call_failed", 0)
-            for b in per_judge.values()
+            b.get("classification_failed", 0) + b.get("call_failed", 0) for b in per_judge.values()
         )
         self._emit(
             f"judge: SUMMARY ok={total_ok} fail={total_fail} "
@@ -210,10 +210,8 @@ class JudgeLogger:
         return f"[{done:>3}/{total:<3}]"
 
     def _emit(self, line: str) -> None:
-        try:
+        with contextlib.suppress(Exception):
             self._emit_fn(line)
-        except Exception:
-            pass
 
 
 __all__ = ["JudgeLogger", "LogVerbosity"]

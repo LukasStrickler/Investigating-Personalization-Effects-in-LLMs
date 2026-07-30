@@ -88,9 +88,14 @@ def _write_frequency_table(table: dict[str, dict[str, int]], output_path: Path) 
         for row_label in row_labels:
             counts = table[row_label]
             row_total = sum(counts.get(col, 0) for col in col_labels_sorted)
-            writer.writerow([row_label, *[counts.get(col, 0) for col in col_labels_sorted], row_total])
+            writer.writerow(
+                [row_label, *[counts.get(col, 0) for col in col_labels_sorted], row_total]
+            )
 
-        column_totals = [sum(table[row_label].get(col, 0) for row_label in row_labels) for col in col_labels_sorted]
+        column_totals = [
+            sum(table[row_label].get(col, 0) for row_label in row_labels)
+            for col in col_labels_sorted
+        ]
         grand_total = sum(column_totals)
         writer.writerow(["Total", *column_totals, grand_total])
 
@@ -141,7 +146,9 @@ def build_frequency_tables(q1_csv: Path, q2_csv: Path, output_dir: Path) -> list
     model_aliases = _collect_model_aliases(q1_csv, q2_csv)
     for model_alias in model_aliases:
         model_dir = output_dir / "by_model" / _safe_folder_name(model_alias)
-        outputs.extend(_write_tables_for_specs(specs, output_dir=model_dir, model_alias=model_alias))
+        outputs.extend(
+            _write_tables_for_specs(specs, output_dir=model_dir, model_alias=model_alias)
+        )
 
     # Record folder-to-model mapping for traceability
     mapping_path = output_dir / "by_model" / "model_folder_mapping.csv"
@@ -157,7 +164,8 @@ def build_frequency_tables(q1_csv: Path, q2_csv: Path, output_dir: Path) -> list
 
 
 def parse_args() -> argparse.Namespace:
-    default_root = Path("experiments/behavioral_audit/results_merged")
+    _audit_dir = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit
+    default_root = _audit_dir / "results_behavioral_audit" / "results_merged"
     parser = argparse.ArgumentParser(
         description="Create q1/q2 gender/region frequency tables mapped to final_class values from merged stage2 judgments."
     )

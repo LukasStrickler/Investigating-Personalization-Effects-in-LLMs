@@ -94,9 +94,13 @@ def sync_modal_secret(token: str) -> None:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     ap.add_argument("--model-id", default=DEFAULT_MODEL, help="HF repo to verify access for")
-    ap.add_argument("--check-only", action="store_true", help="verify HF access only, skip Modal secret")
+    ap.add_argument(
+        "--check-only", action="store_true", help="verify HF access only, skip Modal secret"
+    )
     args = ap.parse_args()
 
     load_dotenv()

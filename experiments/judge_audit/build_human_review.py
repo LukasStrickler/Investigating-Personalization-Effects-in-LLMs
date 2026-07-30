@@ -73,8 +73,12 @@ def _load_option_sets() -> dict[str, list[str]]:
 
 
 CONTEXT_COLS = [
-    "sample_rank", "judgment_id", "run_tag", "question",
-    "subject_model_alias", "judge_alias",
+    "sample_rank",
+    "judgment_id",
+    "run_tag",
+    "question",
+    "subject_model_alias",
+    "judge_alias",
 ]
 REVIEW_CORE_COLS = [
     "probe_question",
@@ -105,8 +109,13 @@ RATER_COLS = [
     "n_raters",
 ]
 PROVENANCE_COLS = [
-    "true_gender", "true_region", "history_id", "prompt_id", "subject_id",
-    "stratum", "source_id",
+    "true_gender",
+    "true_region",
+    "history_id",
+    "prompt_id",
+    "subject_id",
+    "stratum",
+    "source_id",
 ]
 
 FIELDNAMES = CONTEXT_COLS + REVIEW_CORE_COLS + HUMAN_COLS + RATER_COLS + PROVENANCE_COLS
@@ -120,7 +129,9 @@ def _build_row(r: dict, option_sets: dict[str, list[str]]) -> dict:
     q = r["question"]
     opts = option_sets.get(q)
     if opts is None:
-        print(f"WARNING: no option set for question={q!r} (rank {r['sample_rank']})", file=sys.stderr)
+        print(
+            f"WARNING: no option set for question={q!r} (rank {r['sample_rank']})", file=sys.stderr
+        )
         opts = [NONE_SENTINEL]
     none_declared = str(r.get("none_declared", "")).strip().lower() in ("true", "1", "yes")
     judge_label = NONE_SENTINEL if none_declared else r["final_class"]

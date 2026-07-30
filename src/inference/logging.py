@@ -168,9 +168,8 @@ class InferenceLogger:
             entry: LogEntry to write
         """
         json_line = entry.to_json()
-        with self._lock:
-            with open(self.log_file, "a", encoding="utf-8") as f:
-                f.write(json_line + "\n")
+        with self._lock, open(self.log_file, "a", encoding="utf-8") as f:
+            f.write(json_line + "\n")
 
 
 def log_success(

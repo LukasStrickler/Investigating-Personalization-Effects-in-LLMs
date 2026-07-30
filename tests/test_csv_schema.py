@@ -75,8 +75,12 @@ def test_compute_prompt_id_for_spec_default_excludes_metadata() -> None:
     tagged_b = {"messages": [{"role": "user", "content": "x"}], "metadata": {"iteration": 1}}
 
     # Default: metadata ignored, same content -> same id
-    assert csv_schema.compute_prompt_id_for_spec(bare) == csv_schema.compute_prompt_id_for_spec(tagged_a)
-    assert csv_schema.compute_prompt_id_for_spec(tagged_a) == csv_schema.compute_prompt_id_for_spec(tagged_b)
+    assert csv_schema.compute_prompt_id_for_spec(bare) == csv_schema.compute_prompt_id_for_spec(
+        tagged_a
+    )
+    assert csv_schema.compute_prompt_id_for_spec(tagged_a) == csv_schema.compute_prompt_id_for_spec(
+        tagged_b
+    )
 
 
 def test_compute_prompt_id_for_spec_with_metadata_distinguishes_iterations() -> None:
