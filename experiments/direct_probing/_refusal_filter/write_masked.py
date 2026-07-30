@@ -21,20 +21,26 @@ from pathlib import Path
 csv.field_size_limit(10 ** 7)
 
 HERE = Path(__file__).resolve().parent
-REPO = HERE.parents[4]
+REPO = HERE.parents[3]
 SENTINEL = "REFUSED"
 
 BY_MODEL = json.loads((HERE / "verdicts_by_model.json").read_text())
 
 MM = "logs/judges/direct-probing/direct-probing-combined-direct_multimodel001"
+# ministral + e2b stage-2 CSVs live under results_direct_probing/stage2/
+STAGE2_DIR = "experiments/direct_probing/results_direct_probing/stage2"
 STAGE2 = {
     "gemma-4-31b_paid": REPO / "logs/judges/direct-probing/direct-probing-combined-direct_complete002-stage2.judgments.csv",
     "deepseek-v4-flash_paid": REPO / f"{MM}-deepseek-v4-flash_paid-stage2.judgments.csv",
     "glm-5.2_paid": REPO / f"{MM}-glm-5.2_paid-stage2.judgments.csv",
     "grok-4.3_paid": REPO / f"{MM}-grok-4.3_paid-stage2.judgments.csv",
-    "ministral-3-8b_modal": REPO / "experiments/direct_probing/results_direct_probing/direct-probing-combined-ministral3-8b-ministral-3-8b_modal-stage2.judgments.csv",
-    "gemma-4-e2b_modal": REPO / "experiments/direct_probing/results_direct_probing/direct-probing-combined-e2b-gemma-4-e2b_modal-stage2.judgments.csv",
+    "ministral-3-8b_modal": REPO / f"{STAGE2_DIR}/direct-probing-combined-ministral3-8b-ministral-3-8b_modal-stage2.judgments.csv",
+    "gemma-4-e2b_modal": REPO / f"{STAGE2_DIR}/direct-probing-combined-e2b-gemma-4-e2b_modal-stage2.judgments.csv",
 }
+
+# all masked copies are collected in one folder alongside the stage2 CSVs
+MASKED_OUT = REPO / STAGE2_DIR / "masked_csv"
+MASKED_OUT.mkdir(parents=True, exist_ok=True)
 
 
 def mask_final_class(final_class, refuse_g, refuse_b):
@@ -67,7 +73,7 @@ for name, path in STAGE2.items():
             masked_g += int(rg)
             masked_b += int(rb)
 
-    out = path.with_name(path.name.replace(".judgments.csv", ".judgments.masked.csv"))
+    out = MASKED_OUT / path.name.replace(".judgments.csv", ".judgments.masked.csv")
     with open(out, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()

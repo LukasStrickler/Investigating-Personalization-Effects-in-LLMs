@@ -11,7 +11,7 @@ import glob
 import json
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[4]
+REPO = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).resolve().parent
 OUT.mkdir(parents=True, exist_ok=True)
 
