@@ -13,7 +13,7 @@ import importlib
 import sys
 from pathlib import Path
 
-_AUDIT_DIR = Path(__file__).resolve().parent
+_AUDIT_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in significance_test/)
 _DEFAULT_OUTPUT_ROOT = _AUDIT_DIR / "results_merged"
 
 if str(_AUDIT_DIR) not in sys.path:

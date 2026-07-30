@@ -60,30 +60,6 @@ linearly decodable from that layer. This means the information is present in an
 accessible form; it does not by itself prove that the model uses it to generate
 its answer.
 
-## Difference from `internal_representation`
-
-The original `internal_representation` folder is the baseline implementation.
-It creates synthetic programming conversations labelled by expertise:
-
-```text
-novice / intermediate / expert
-```
-
-It then asks whether expertise can be decoded from the model's hidden states.
-
-This copied implementation keeps the same basic method but changes the data and
-target:
-
-| Baseline | Persona version |
-|---|---|
-| Synthetic programming conversations | Generated persona conversation histories |
-| Expertise label | Gender label |
-| Novice/intermediate/expert classifier | Male/Female classifier |
-| Tests expertise representation | Tests persona-gender representation |
-
-Both folders therefore produce the same kind of layer-wise probing graph, but
-they investigate different information.
-
 ## Understanding the layer graph
 
 `plots/probe_accuracy_Gender_logistic.png` shows:
@@ -121,7 +97,7 @@ by the LLM.
 local LLM, and measures how much the best Gender probe's probability changes.
 
 ```bash
-.venv/bin/python analyze_words.py --dataset-index 22
+uv run python analyze_words.py --dataset-index 22
 ```
 
 Outputs:
@@ -143,7 +119,7 @@ are treated as complete phrases. The change in the saved probe's `P(Male)` is
 aggregated across histories.
 
 ```bash
-.venv/bin/python aggregate_word_analysis.py --batch-size 16
+uv run python aggregate_word_analysis.py --batch-size 16
 ```
 
 Outputs include `gender_indicator_presence.csv`,
@@ -190,7 +166,7 @@ python download_model.py \
 A tested balanced run with 40 histories per Gender class:
 
 ```bash
-.venv/bin/python main.py \
+uv run python main.py \
   --attributes Gender \
   --samples 40 \
   --device-map mps \
@@ -201,7 +177,7 @@ A tested balanced run with 40 histories per Gender class:
 For CPU execution:
 
 ```bash
-.venv/bin/python main.py \
+uv run python main.py \
   --attributes Gender \
   --samples 40 \
   --device-map cpu \
@@ -224,7 +200,7 @@ Gated Gemma repos need the `huggingface-token` Modal secret. Sync it once with t
 existing helper (accept the model licence on Hugging Face first):
 
 ```bash
-.venv/bin/python experiments/modal_gpu_poc/setup_modal_hf.py \
+uv run python experiments/modal_gpu_poc/setup_modal_hf.py \
   --model-id google/gemma-4-31B-it
 ```
 

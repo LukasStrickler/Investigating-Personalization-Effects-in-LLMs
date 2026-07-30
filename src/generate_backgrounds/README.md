@@ -50,6 +50,11 @@ src/generate_backgrounds/
 ├── dimension_value_mapping/
 │ └── social_status.csv
 │
+│ # How the region-related attributes (names, artists) were sampled — see note below
+├── attributes_region_sampling/
+│ ├── names/   Perceived-origin name selection → gender_name.csv, top4_names_per_region.*
+│ └── artists/ Regional artist cues → selected_artists.*
+│
 │ # Dummy data for testing (delete when real data is ready)
 ├── dimension_value_mapping_test/
 │ ├── race.csv
@@ -69,6 +74,24 @@ src/generate_backgrounds/
 └── <timestamp>.jsonl One ConversationHistory per persona × indicator cross
 
 ```
+
+---
+
+## Region attribute sampling (`attributes_region_sampling/`)
+
+This folder documents **how the region-related attribute values were derived**; it is
+**not part of the `generate_backgrounds` runtime pipeline** and is not imported by any
+module here. It is standalone, offline analysis kept for provenance and reproducibility.
+
+- **`names/`** — selects personal names by their *perceived* ethnic/regional origin and
+  gender, from a European name-perception survey (Ghekiere et al., 2025). `names_analysis.py`
+  produces `top4_names_per_region.*` and `gender_name.csv`.
+- **`artists/`** — manually collected regional artist lists used as cultural/regional cues;
+  `artists_analysis.py` produces `selected_artists.*`.
+
+The connection to this package is only through the **outputs**: the results feed into the
+`dimension_value_mapping/` CSVs (e.g. `gender_name.csv`) that the pipeline actually consumes.
+Each subfolder has its own `README.txt` with full methodology and data attribution.
 
 ---
 

@@ -36,7 +36,11 @@ dependencies = [
     # and the significance-table builders.
     "matplotlib>=3.7.0",
     "mpmath>=1.3.0",
+    "scipy>=1.10.0",
+    "statsmodels>=0.14.0",
     "ipykernel>=6.0.0",
+    # Real-conversation-history extraction (src/real_conversation_histories/): WildChat.
+    "datasets>=2.14.0",
 ]
 
 [project.optional-dependencies]
@@ -66,6 +70,7 @@ vllm = [
 # The inference client reaches the deployed endpoint over HTTP, so it needs no new dep.
 modal = [
     "modal>=1.0",
+    "starlette>=0.37.0",  # modal_gpu_poc/modal_serve.py request handling
 ]
 
 [tool.repo_quality]

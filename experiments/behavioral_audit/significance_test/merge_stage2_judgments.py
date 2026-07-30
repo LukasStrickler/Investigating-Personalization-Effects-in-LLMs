@@ -14,7 +14,7 @@ import csv
 from pathlib import Path
 
 
-_AUDIT_DIR = Path(__file__).resolve().parent
+_AUDIT_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in significance_test/)
 _DEFAULT_SOURCE_DIRS = [
     _AUDIT_DIR / "results_full001",
     _AUDIT_DIR / "results_full001-e2b",

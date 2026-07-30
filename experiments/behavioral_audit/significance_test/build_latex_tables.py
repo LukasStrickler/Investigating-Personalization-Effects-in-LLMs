@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Iterable
 
 
-_AUDIT_DIR = Path(__file__).resolve().parent
+_AUDIT_DIR = Path(__file__).resolve().parent.parent  # experiments/behavioral_audit (this file lives in significance_test/)
 _DEFAULT_INPUT_DIR = _AUDIT_DIR / "results_merged" / "frequency_tables" / "significance_tests"
 _DEFAULT_OUTPUT_DIR = _AUDIT_DIR / "results_merged" / "latex_tables"
 _MODEL_ORDER = ["all_models", "deepseek-v4-flash_paid", "gemma-4-31b_paid", "gemma-4-e2b_modal", "glm-5.2_paid", "grok-4.3_paid", "ministral-3-8b_modal"]

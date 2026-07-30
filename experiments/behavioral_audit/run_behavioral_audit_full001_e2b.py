@@ -47,8 +47,8 @@ STAGE2_ONLY = True
 # ---------------------------------------------------------------------------
 
 _EXPERIMENTS_DIR = Path(__file__).resolve().parent
-_JOBS_JSON = _EXPERIMENTS_DIR / "jobs_classification.json"
-_COLLEGE_JSON = _EXPERIMENTS_DIR / "college_classification.json"
+_JOBS_JSON = _EXPERIMENTS_DIR / "indicator_hierarchy" / "jobs_classification.json"
+_COLLEGE_JSON = _EXPERIMENTS_DIR / "indicator_hierarchy" / "college_classification.json"
 
 with open(_JOBS_JSON, encoding="utf-8") as _f:
     _jobs_data = json.load(_f)
